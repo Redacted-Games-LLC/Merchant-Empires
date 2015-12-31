@@ -1,2 +1,2 @@
 # Merchant-Empires
-A space trading game of war
+A space merchant game of war
