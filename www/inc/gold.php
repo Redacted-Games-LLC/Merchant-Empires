@@ -1,6 +1,6 @@
 <?php
 /**
- * Handles gold key actions
+ * Loads gold key information
  *
  * @package [Redacted]Me
  * ---------------------------------------------------------------------------
@@ -21,42 +21,25 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-	include_once('inc/page.php');
+	include_once('inc/game.php');
 	
-
-	
-
 	do { // Dummy loop
+		
+		$spacegame['gold_keys'] = array();
+		$spacegame['gold_key_count'] = 0;
+		
+		$db = isset($db) ? $db : new DB;
 
-		switch ($_REQUEST['subtask']) {
+		$rs = $db->get_db()->query("select * from gold_keys where user = '". USER_ID ."' and used <= 0 order by record_id");
+		
+		$rs->data_seek(0);
+		while ($row = $rs->fetch_assoc()) {
+			$spacegame['gold_keys'][$row['record_id']] = $row;
+			$spacegame['gold_key_count']++;
+		}
 
-			case 'enable':
-			case 'add':
-			case 'remove':
-			case 'transfer':
-			case 'insert':
-			case 'obtain':
-
-			
-				$sub_page = $_REQUEST['subtask'];
-				$return_vars['page'] = $sub_page;
-				
-				$sub_file = "hndl/sub/gold_{$sub_page}.php";
-
-				if (!file_exists($sub_file)) {
-					$return_codes[] = 1041;
-					error_log(__FILE__ . '::' . __LINE__ . ' Valid subtask does not have an include.');
-					break;
-				}
-				
-				include_once($sub_file);
-				break;
-
-			default:
-				$return_codes[] = 1041;
-				break;
- 		}
 	} while (false);
+
 
 
 ?>

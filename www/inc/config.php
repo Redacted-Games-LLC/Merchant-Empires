@@ -32,7 +32,7 @@
 
 	// Set this to a time to start the round. Inflation begins here, so be sure
 	// to have a good policy of when the flood gates are opened.
-	define('START_OF_ROUND', 1435000000);
+	define('START_OF_ROUND', 1445000000);
 
 	// Set this to a time bigger than start of round to end the game. This allows
 	// players to create replacement gold keys for their remaining time.
@@ -303,4 +303,12 @@
 	// Turn cost multiplier for taking off from a base.
 	define('BASE_TAKEOFF_TURN_MULTIPLIER', 10);
 
+	// Minimum length of a gold key
+	define('MINIMUM_KEY_LENGTH', 17);
+
+	// Maximum length of a gold key
+	define('MAXIMUM_KEY_LENGTH', 72);
+
+	// Cannot activate a gold key if there are this many days active already.
+	define('KEY_ACTIVATION_LIMIT', 93);
 ?>

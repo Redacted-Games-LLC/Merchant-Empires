@@ -1,6 +1,6 @@
 <?php
 /**
- * Handles adding gold to a player
+ * Handles creating an end of round gold key for players with remaining gold
  *
  * @package [Redacted]Me
  * ---------------------------------------------------------------------------
@@ -28,49 +28,56 @@
 	
 	do { // Dummy Loop
 
-		if (HAVOC_ROUND) {
-			$return_codes[] = 1129;
-			break;
-		}
-		
-		if (!isset($_REQUEST['key']) || !validate_key($_REQUEST['key'])) {
-			$return_codes[] = 1121;
+		if (!HAVOC_ROUND) {
+			$return_codes[] = 1132;
 			break;
 		}
 
-		$key = $_REQUEST['key'];
-		$user = 0;
-		$time = 0;
+		$exp = $spacegame['player']['gold_expiration'];
 
-		$db = isset($db) ? $db : new DB;
-
-		$rs = $db->get_db()->query("select `user`, `time` from gold_keys where `key` = '". $key ."' and `used` <= 0 limit 1");
-		$rs->data_seek(0);
-		
-		if ($row = $rs->fetch_assoc()) {
-			$user = $row['user'];
-			$time = $row['time'];
-		}
-		else {
-			$return_codes[] = 1123;
+		if ($exp <= END_OF_ROUND) {
+			$return_codes[] = 1133;
 			break;
 		}
 
-		if ($user > 0 && $user != USER_ID) {
-			$return_codes[] = 1123;
-			break;
-		}
+		$player_id = PLAYER_ID;
 
-		$user_id = USER_ID;
-		$time_now = PAGE_START_TIME;
-		
-		if (!($st = $db->get_db()->prepare('update gold_keys set `user` = ?, `used` = ? where `key` = ? and used <= 0 and (`user` is null or `user` = ?)'))) {
+		if (!($st = $db->get_db()->prepare('update players set gold_expiration = 0 where record_id = ?'))) {
 			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			$return_codes[] = 1006;
 			break;
 		}
 		
-		$st->bind_param("iisi", $user_id, $time_now, $key, $user_id);
+		$st->bind_param("i", $player_id);
+		
+		if (!$st->execute()) {
+			$return_codes[] = 1006;
+			error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
+			break;
+		}
+
+		if ($db->get_db()->affected_rows <= 0) {
+			$return_codes[] = 1135;
+			break;
+		}
+
+
+		$exp -= END_OF_ROUND;
+		$days = ceil($exp / 86400);
+		$exp = $days * 86400;
+		$user_id = USER_ID;
+
+		mt_srand(PAGE_START_TIME * PLAYER_ID);
+		$key = 'REDACTED-TIME-' . sprintf('%03d', $days) . '-' . dechex($user_id) . '-' . dechex(END_OF_ROUND) . '-' . dechex(mt_rand());
+		$type = 2;
+		
+		if (!($st = $db->get_db()->prepare('insert into gold_keys (`key`, `time`, `type`, `user`) values (?, ?, ?, ?)'))) {
+			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			$return_codes[] = 1006;
+			break;
+		}
+		
+		$st->bind_param("siii", $key, $exp, $type, $user_id);
 		
 		if (!$st->execute()) {
 			$return_codes[] = 1006;
@@ -83,32 +90,8 @@
 			break;
 		}
 
-		$exp = $spacegame['player']['gold_expiration'];
-
-		if ($exp < PAGE_START_TIME) {
-			$exp = PAGE_START_TIME;
-		}
-
-		$exp += $time;
-
-		if (!($st = $db->get_db()->prepare('update players set gold_expiration = ? where record_id = ?'))) {
-			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
-			$return_codes[] = 1006;
-			break;
-		}
-		
-		$player_id = PLAYER_ID;
-		$st->bind_param("ii", $exp, $player_id);
-		
-		if (!$st->execute()) {
-			$return_codes[] = 1006;
-			error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
-			break;
-		}
-
-
-		$return_codes[] = 1128;
-		
+		$return_codes[] = 1134;
+	
 	} while (false);
 
 

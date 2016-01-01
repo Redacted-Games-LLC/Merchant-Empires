@@ -1,6 +1,6 @@
 <?php
 /**
- * 
+ * Documentation for Gold Memberships
  *
  * @package [Redacted]Me
  * ---------------------------------------------------------------------------
@@ -29,34 +29,38 @@
 	of time conferring some some cosmetic and convenience perks, but nothing which gives
 	significant advantage against other players. 
 </div>
-<div class="header2">Benefits</div>
+<div class="header3">Benefits</div>
 <div class="docs_text">
 	Gold Membership benefits are almost always cosmetic. Here is the list:
 </div>
 <div class="docs_text">
 	<ul>
 		<li>
-			You can mark up your <a href="docs.php?page=ships">ship name</a> with
-			a style string visible to other players.
-		</li>
-		<li>
-			
-		</li>
-		<li>
-
-		</li>
-		<li>
-			You get a <img src="res/gold.png" height="20" /> Gold Membership ribbon next to your name in various places.
+			You get a <img src="res/gold.png" height="20" /> Gold Membership ribbon next to your name in various places, and your name is bolded.
 		</li>
 	</ul>
 </div>
-<div class="header3">Entitlement</div>
 <div class="docs_text">
-	<strong>Friendly warning:</strong> We have written up a brief
-	<a href="docs.php?page=terms">Terms and Conditions</a> page which clarifies our position
-	on bug compensation. While we will put more time and effort into responding to Gold
-	Members we stand firm that these terms apply to <em>all</em> users and/or players.
+	We have written up a brief <a href="docs.php?page=terms">Terms and Conditions</a> page
+	which clarifies our position on bug compensation. While we will put more time and effort
+	into responding to Gold Members we stand firm that these terms apply to <em>all</em>
+	users and/or players.
 </div>
 <div class="docs_text">
 	There is more information on the Terms and Conditions page about refunds, etc.
 </div>
+<div class="header3">Enabling a Gold Membership</div>
+<div class="docs_text">
+	Gold Memberships are enabled using Keys which may look like the following:	
+</div>
+<pre>
+	REDACTED-GOLD-031-a0b1c2
+</pre>
+<div class="docs_text">
+	When logged into an active player the menu at the top of the window will have the Gold
+	option. This brings up the Gold Key page to manage your keys. Use this page to enable
+	a Gold membership, store and protect your unused keys, and transfer keys securely to
+	other players.
+</div>
+
+

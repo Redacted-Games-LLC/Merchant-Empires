@@ -1,6 +1,6 @@
 <?php
 /**
- * Sets a target for navigational purposes.
+ * Handles storing a gold key with a user
  *
  * @package [Redacted]Me
  * ---------------------------------------------------------------------------
@@ -21,83 +21,67 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-	include_once('inc/page.php');
+	include_once('hndl/common.php');
 	include_once('inc/game.php');
 
-	$return_page = 'viewport';
-
-	do { // dummy loop
-
-		$turns = $spacegame['player']['turns'];
-		$turn_cost = TARGET_TURN_COST;
-		
-		if ($turn_cost > $turns) {
-			$return_codes[] = 1018;
-			break;
-		}
-		
-
-		$rx = 0;
-		$ry = 0;
-		$rtype = 0;
+	$return_page = 'gold';
 	
-		if (!isset($_REQUEST['x']) || !is_numeric($_REQUEST['x'])) {
-			$return_codes[] = 1052;
+	do { // Dummy Loop
+		
+		if (!isset($_REQUEST['key']) || !validate_key($_REQUEST['key'])) {
+			$return_codes[] = 1121;
 			break;
 		}
 
-		$rx = $_REQUEST['x'];
-		
-		if ($rx < 0 || $rx > 999) {
-			$return_codes[] = 1016;
-			break;
-		}
+		$key = $_REQUEST['key'];
+		$user = 0;
 
-		if (!isset($_REQUEST['y']) || !is_numeric($_REQUEST['y'])) {
-			$return_codes[] = 1052;
-			break;
-		}
-
-		$ry = $_REQUEST['y'];
-		
-		if ($ry < 0 || $ry > 999) {
-			$return_codes[] = 1016;
-			break;
-		}
-		
-		if (!isset($_REQUEST['type']) || !is_numeric($_REQUEST['type'])) {
-			$return_codes[] = 1059;
-			break;
-		}
-
-		$rtype = $_REQUEST['type'];
-		
-		// TODO: Get the type range from elsewhere. Right now it is arbitrary.
-		if ($rtype < 1 || $rtype > 5) {
-			$return_codes[] = 1059;
-			break;
-		}
-		
 		$db = isset($db) ? $db : new DB;
 
-		if (!($st = $db->get_db()->prepare('update players set target_x = ?, target_y = ?, target_type = ?, turns = turns - ? where record_id = ? and turns = ?'))) {
+		$rs = $db->get_db()->query("select `user` from gold_keys where `key` = '". $key ."' and `used` <= 0 limit 1");
+		$rs->data_seek(0);
+		
+		if ($row = $rs->fetch_assoc()) {
+			$user = $row['user'];
+		}
+		else {
+			$return_codes[] = 1123;
+			break;
+		}
+
+		if ($user == USER_ID) {
+			$return_codes[] = 1124;
+			break;
+		}
+		elseif ($user > 0) {
+			$return_codes[] = 1123;
+			break;
+		}
+
+		$user_id = USER_ID;
+		
+		if (!($st = $db->get_db()->prepare('update gold_keys set `user` = ? where `key` = ? and used <= 0 and `user` is null'))) {
 			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			$return_codes[] = 1006;
 			break;
 		}
 		
-		$player_id = PLAYER_ID;
-		$st->bind_param("iiiiii", $rx, $ry, $rtype, $turn_cost, $player_id, $turns);
+		$st->bind_param("is", $user_id, $key);
 		
 		if (!$st->execute()) {
 			$return_codes[] = 1006;
 			error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
 			break;
 		}
-	
-		
+
+		if ($db->get_db()->affected_rows <= 0) {
+			$return_codes[] = 1126;
+			break;
+		}
+
+		$return_codes[] = 1125;
+
 	} while (false);
-	
-	
-	
+
+
 ?>

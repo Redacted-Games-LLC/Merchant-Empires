@@ -123,22 +123,24 @@
 						echo '<a class="game_menu" href="viewport.php">Refresh Viewport</a>';
 						echo '&nbsp;&nbsp;|&nbsp;&nbsp;';
 					
-						echo '<a class="game_menu" href="handler.php?task=deselect_player">Select Player</a>';
+						echo '<a class="game_menu" href="gold.php">Gold</a>';
 						echo '&nbsp;&nbsp;|&nbsp;&nbsp;';
 					}
 					else {
 						echo '<a class="game_menu" href="select_player.php">Select Player</a>';
 						echo '&nbsp;&nbsp;|&nbsp;&nbsp;';
 					}
-
-					echo '<a class="game_menu" href="gold.php">Gold</a>';
-					echo '&nbsp;&nbsp;|&nbsp;&nbsp;';
 				}
 				
 				echo '<a class="game_menu" href="docs.php">Docs</a>';
 				echo '&nbsp;&nbsp;|&nbsp;&nbsp;';
 					
 				if (USER_ID > 0) {
+					if (PLAYER_ID > 0) {
+						echo '<a class="game_menu" href="handler.php?task=deselect_player">Select Player</a>';
+						echo '&nbsp;&nbsp;|&nbsp;&nbsp;';
+					}
+
 					echo '<a class="game_menu" href="handler.php?task=logout">Logout</a>';
 				} else {
 					echo '<a class="game_menu" href="login.php">Login</a>';
