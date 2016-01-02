@@ -79,7 +79,7 @@
 		// Remove some turns and move the player
 				
 		if (!($st = $db->get_db()->prepare('update players set base_id = ?, base_x = ?, base_y = ?, turns = turns - ?, last_move = ? where record_id = ? and base_id = 0'))) {
-			error_log("Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			$return_codes[] = 1006;
 			break;
 		}
@@ -88,7 +88,7 @@
 		
 		if (!$st->execute()) {
 			$return_codes[] = 1006;
-			error_log("Query execution failed: (" . $st->errno . ") " . $st->error);
+			error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
 			break;
 		}
 				

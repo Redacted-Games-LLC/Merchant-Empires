@@ -31,11 +31,7 @@
 <div class="header2">Bug reports and fixes</div>
 <div class="docs_text">
 	If you discover a bug or potential exploit you can report it. If you are able to code
-	you can also submit a pull request.
-</div>
-<div class="docs_text">
-	There is a file in the source root called CODING.txt which should help with the
-	standards.
+	you can also submit a pull request at our <a href="https://github.com/Redacted-Games-LLC/Merchant-Empires">GitHub repository</a>.
 </div>
 <div class="header2">Images and Art</div>
 <div class="docs_text">
@@ -51,17 +47,14 @@
 	<a href="docs.php?page=credits">Credits</a> page to save us the extra step, if we decide
 	to use your image.
 </div>
-<div class="header2">New Goods</div>
+<div class="header2">New Goods and Ships</div>
 <div class="docs_text">
-	Aside from the image pull request requirements above, include <em>everything</em> which
-	would need to change to integrate your good. Include upgrade paths, planetary random start
-	supply/demand levels, tech associations or whatever. Depending on how complex the good is
-	it may not make it in until the new round.
+	There are no goods and ships which come with the Merchant Empires open source release.
+	Goods and ships are added by the game hosts to make their own ME unique.
 </div>
 <div class="header2">Suggestions without Contributions</div>
 <div class="docs_text">
 	If you are unable to create art or code you can try pitching your idea on the
 	<a href="http://reddit.com/r/MerchantEmpires">subreddit</a> with the [Suggestion] tag to
-	see if someone is willing to implement it for you. I won't, as I must focus my attention
-	on the <a href="docs.php?page=roadmap">roadmap</a>.
+	see if someone is willing to implement it for you.
 </div>

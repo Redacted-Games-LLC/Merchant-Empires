@@ -380,6 +380,16 @@ function open_alliance() {
 
 }
 
+function open_message() {
+	
+	var frame = document.getElementById('main_iframe');
+	frame.src = 'message.php';
+
+	show_div('main_popup');
+	return false;
+
+}
+
 function open_base_build() {
 	
 	var frame = document.getElementById('main_iframe');

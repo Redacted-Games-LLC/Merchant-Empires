@@ -311,6 +311,7 @@ div.viewport_console_item {
 	text-align: center;
 	padding: 6px 0px;
 	margin: 8px 0px 0px 0px;
+	cursor: pointer;
 }
 
 div.viewport_dss {
@@ -413,16 +414,16 @@ div.popup_spread {
 ul.popup_list {
 	list-style-type: none;
 	margin: 0;
-	padding: 0;
+	padding: 0px;
 	display: inline;
 }
 
 li.popup_list {
-	display: inline;
+	display: inline-block;
 	border: solid 1px #cccccc;
-	padding: 3px;
+	padding: 3px 16px;
 	margin: 4px;
-	width: 128px;
+	white-space: nowrap;
 }
 
 iframe#main_iframe {
@@ -1127,7 +1128,7 @@ div.port_text {
 }
 
 div.port_update_button {
-	margin: 20px;
+	margin: 0px;
 	width: 150px;
 	height: 24px;
 	float: right;
@@ -1433,14 +1434,14 @@ input.ship_form_input {
 /* alliance_list.php */
 
 div.alliance_list {
-	width: 95%;
-	margin: 4px auto;
+	width: 99%;
+	margin: 2px auto;
 	text-align: left;
 }
 
 div.alliance_list_item {
 	display: inline-block;
-	width: 320px;
+	width: 310px;
 	text-align: left;
 	margin: 2px;
 	padding: 2px;
@@ -1646,4 +1647,67 @@ td.gold_actions {
 	padding: 2px 8px;
 	text-align: center;
 }
+
+/* message.php */
+
+span.turn_cost {
+	color: yellow;
+	padding-left: 8px;
+	font-weight: bold;
+}
+
+input.msg_form_input {
+	background-color: black;
+	color: white;
+}
+
+textarea.msg_form_input {
+	background-color: black;
+	color: white;
+}
+
+table.message {
+
+}
+
+tr.message {
+
+}
+
+td.message {
+	vertical-align: top;
+}
+
+div.message {
+	border: solid 1px #444;
+	padding: 0px;
+	margin: 8px;
+}
+
+div.message_head {
+	background-color: #113;
+	padding: 8px 16px;
+	margin: 0px;
+}
+
+div.message_actions {
+	float: right;
+}
+
+div.message_text {
+	background-color: #111;
+	padding: 8px 16px;
+	margin: 0px;
+	font-size: 120%;
+	font-family: serif;
+}
+
+div.message_posted {
+	background-color: #111;
+	width: 100%;
+	text-align:right;
+	font-size: 80%;
+	color: green;
+}
+
 

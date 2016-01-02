@@ -42,7 +42,7 @@
 		<li>Ship combat, sector force destruction <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
 		<li>Base busting <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
 		<li>News, messaging, and subspace broadcasts <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
-		<li>Gold Memberships and keys <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
+		<li>Gold Memberships and keys <img src="res/safe_scan_force.png" width="18" height="18" alt="Not done" /></li>
 		<li>Admin console with players, ships, and some moderation. <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
 	</ol>
 </div>

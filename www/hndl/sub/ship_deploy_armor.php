@@ -50,7 +50,7 @@
 		// Remove from cargo
 
 		if (!($st = $db->get_db()->prepare("update player_cargo set amount = amount - ? where record_id = ? and amount = ?"))) {
-			error_log("Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			$return_codes[] = 1006;
 			break;
 		}
@@ -59,14 +59,14 @@
 		
 		if (!$st->execute()) {
 			$return_codes[] = 1006;
-			error_log("Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			break;
 		}
 		
 		// Add tech to player
 
 		if (!($st = $db->get_db()->prepare("update players set ". $good['safe_caption']  ." = " . $good['safe_caption'] . " + ?, turns = turns - ? where record_id = ? and " . $good['safe_caption'] . " = ?"))) {
-			error_log("Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			$return_codes[] = 1006;
 			break;
 		}
@@ -78,7 +78,7 @@
 		
 		if (!$st->execute()) {
 			$return_codes[] = 1006;
-			error_log("Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			break;
 		}
 		

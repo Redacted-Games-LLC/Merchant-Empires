@@ -1,6 +1,6 @@
 <?php
 /**
- * Information about downloading and hosting your own game 
+ * Handles messaging stuff by passing it off.
  *
  * @package [Redacted]Me
  * ---------------------------------------------------------------------------
@@ -21,14 +21,38 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-	include_once('tmpl/common.php');
+	include_once('inc/page.php');
+	include_once('inc/game.php');
+
+	$return_page = 'message';
+
+
+	do { // Dummy loop
+
+		switch ($_REQUEST['subtask']) {
+
+			case 'player':
+			case 'alliance':
+			case 'subspace':
+			case 'ignore':
+
+				$page = $_REQUEST['subtask'];
+				$file = "hndl/sub/msg_{$page}.php";
+
+				if (!file_exists($file)) {
+					$return_codes[] = 1041;
+					error_log(__FILE__ . '::' . __LINE__ . ' Valid subtask does not have an include.');
+					break;
+				}
+				
+				include_once($file);
+				break;
+
+			default:
+				$return_codes[] = 1041;
+				break;
+ 		}
+	} while (false);
+
+
 ?>
-<div class="header2">Downloading and Hosting</div>
-<div class="docs_text">
-	You can get ahold of the source at our <a href="https://github.com/Redacted-Games-LLC/Merchant-Empires">GitHub repository</a>.
-	The game does not come with any goods or ships, those must be added by 
-	you before the game is playable.
-</div>
-<div class="docs_text">
-	More information will follow as we streamline this process.
-</div>

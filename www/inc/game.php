@@ -103,14 +103,14 @@
 		$db = isset($db) ? $db : new DB;
 
 		if (!($st = $db->get_db()->prepare('insert into player_log (player, action, target, amount1, amount2, timestamp) values (?,?,?,?,?,?)'))) {
-			error_log("Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			return false;
 		}
 	
 		$st->bind_param("iiiiii", $player_id, $action, $target, $amount1, $amount2, $time);
 	
 		if (!$st->execute()) {
-			error_log("Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			return false;
 		}
 
@@ -182,7 +182,7 @@
 			
 			if (!($st = $db->get_db()->prepare('update players set turns = turns + ?, last_turns = last_turns + ? where record_id = ?'))) {
 				$return_codes[] = 1006;
-				error_log("Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+				error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 				break;
 			}
 		
@@ -191,7 +191,7 @@
 		
 			if (!$st->execute()) {
 				$return_codes[] = 1006;
-				error_log("Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+				error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 				break;
 			}
 
@@ -272,7 +272,7 @@
 					if (!($st = $db->get_db()->prepare("update player_log set reconciled = ? where record_id = ?"))) {
 						$db->get_db()->rollback();
 						$db->get_db()->autocommit(true);
-						error_log("Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+						error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 						$return_codes[] = 1006;
 						return;
 					}
@@ -283,7 +283,7 @@
 						$db->get_db()->rollback();
 						$db->get_db()->autocommit(true);
 						$return_codes[] = 1006;
-						error_log("Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+						error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 						return;
 					}
 				}
@@ -294,7 +294,7 @@
 				if (!($st = $db->get_db()->prepare("update players set alignment = ?, last_alignment = ? where record_id = ? and alignment = ?"))) {
 					$db->get_db()->rollback();
 					$db->get_db()->autocommit(true);
-					error_log("Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+					error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 					$return_codes[] = 1006;
 					return;
 				}
@@ -305,7 +305,7 @@
 					$db->get_db()->rollback();
 					$db->get_db()->autocommit(true);
 					$return_codes[] = 1006;
-					error_log("Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+					error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 					return;
 				}
 			}

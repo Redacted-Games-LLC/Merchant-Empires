@@ -249,6 +249,9 @@
 									<div class="viewport_console_item" onclick="return open_alliance()">
 										TEAM
 									</div>
+									<div class="viewport_console_item" onclick="return open_message()">
+										COM
+									</div>
 								</div>
 					<?php
 							} 

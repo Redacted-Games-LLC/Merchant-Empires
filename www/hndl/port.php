@@ -127,7 +127,7 @@
 				$db->get_db()->rollback();
 				$db->get_db()->autocommit(true);
 				$return_codes[] = 1006;
-				error_log("Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+				error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 				break;
 			}
 
@@ -153,7 +153,7 @@
 						$db->get_db()->rollback();
 						$db->get_db()->autocommit(true);
 						$return_codes[] = 1006;
-						error_log("Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+						error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 						break;
 					}
 				}
@@ -176,7 +176,7 @@
 				$db->get_db()->rollback();
 				$db->get_db()->autocommit(true);
 				$return_codes[] = 1006;
-				error_log("Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+				error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 				break;
 			}
 
@@ -191,7 +191,7 @@
 			if (!($st = $db->get_db()->prepare("update player_cargo set sold = sold + ?, amount = amount - ? where record_id = ?"))) {
 				$db->get_db()->rollback();
 				$db->get_db()->autocommit(true);
-				error_log("Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+				error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 				$return_codes[] = 1006;
 				break;
 			}
@@ -202,7 +202,7 @@
 				$db->get_db()->rollback();
 				$db->get_db()->autocommit(true);
 				$return_codes[] = 1006;
-				error_log("Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+				error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 				break;
 			}
 			
@@ -282,7 +282,7 @@
 					$db->get_db()->rollback();
 					$db->get_db()->autocommit(true);
 					$return_codes[] = 1006;
-					error_log("Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+					error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 					break;
 				}
 			}
@@ -311,7 +311,7 @@
 				$db->get_db()->rollback();
 				$db->get_db()->autocommit(true);
 				$return_codes[] = 1006;
-				error_log("Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+				error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 				break;
 			}
 
@@ -329,7 +329,7 @@
 				$db->get_db()->rollback();
 				$db->get_db()->autocommit(true);
 				$return_codes[] = 1006;
-				error_log("Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+				error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 				break;
 			}
 
@@ -341,7 +341,7 @@
 				if (!($st = $db->get_db()->prepare("update player_cargo set bought = bought + ?, amount = amount + ? where record_id = ?"))) {
 					$db->get_db()->rollback();
 					$db->get_db()->autocommit(true);
-					error_log("Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+					error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 					$return_codes[] = 1006;
 					break;
 				}
@@ -352,7 +352,7 @@
 					$db->get_db()->rollback();
 					$db->get_db()->autocommit(true);
 					$return_codes[] = 1006;
-					error_log("Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+					error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 					break;
 				}
 
@@ -375,7 +375,7 @@
 					$db->get_db()->rollback();
 					$db->get_db()->autocommit(true);
 					$return_codes[] = 1006;
-					error_log("Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+					error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 					break;
 				}
 

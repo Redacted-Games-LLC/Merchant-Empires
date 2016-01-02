@@ -101,7 +101,7 @@
 		// Delete ordnance
 
 		if (!($st = $db->get_db()->prepare("delete from ordnance where record_id = ?"))) {
-			error_log("Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			$return_codes[] = 1006;
 			break;
 		}
@@ -110,7 +110,7 @@
 		
 		if (!$st->execute()) {
 			$return_codes[] = 1006;
-			error_log("Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			break;
 		}
 
@@ -125,7 +125,7 @@
 			// Update
 			
 			if (!($st = $db->get_db()->prepare("update player_cargo set amount = amount + ? where record_id = ?"))) {
-				error_log("Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+				error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 				$return_codes[] = 1006;
 				break;
 			}
@@ -134,7 +134,7 @@
 			
 			if (!$st->execute()) {
 				$return_codes[] = 1006;
-				error_log("Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+				error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 				break;
 			}
 
@@ -153,7 +153,7 @@
 			
 			if (!$st->execute()) {
 				$return_codes[] = 1006;
-				error_log("Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+				error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 				break;
 			}
 

@@ -45,12 +45,12 @@
 		$task = $_REQUEST['task'];
 	
 		if (!include_once("hndl/{$task}.php")) {
-			error_log("Someone at {$_SERVER['REMOTE_ADDR']} attempted to access an invalid form handler.");
+			error_log(__FILE__ . '::' . __LINE__ . " Someone at {$_SERVER['REMOTE_ADDR']} attempted to access an invalid form handler.");
 			$return_codes[] = 1010;
 		}
 
 		if (!is_array($return_codes)) {
-			error_log("Task {$task} malformed the return_codes array. Fix it!");
+			error_log(__FILE__ . '::' . __LINE__ . " Task {$task} malformed the return_codes array. Fix it!");
 		}
 	}
 	else {

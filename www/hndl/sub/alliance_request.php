@@ -71,7 +71,7 @@
 		$player_id = PLAYER_ID;
 
 		if (!($st = $db->get_db()->prepare('insert into alliance_invitations (player, alliance, requested) values (?, ?, ?)'))) {
-			error_log("Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			$return_codes[] = 1006;
 			break;
 		}
@@ -80,7 +80,7 @@
 		
 		if (!$st->execute()) {
 			$return_codes[] = 1006;
-			error_log("Query execution failed: (" . $st->errno . ") " . $st->error);
+			error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
 			break;
 		}
 

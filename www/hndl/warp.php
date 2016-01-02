@@ -51,7 +51,7 @@
 		$y = $spacegame['player']['y'];
 
 		if (!($st = $db->get_db()->prepare('update players set x = ?, y = ?, turns = turns - ?, target_type = 0, target_x = 0, target_y = 0, last_move = ? where record_id = ? and x = ? and y = ?'))) {
-			error_log("Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			$return_codes[] = 1006;
 			break;
 		}
@@ -60,7 +60,7 @@
 		
 		if (!$st->execute()) {
 			$return_codes[] = 1006;
-			error_log("Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			break;
 		}
 	

@@ -50,7 +50,7 @@
 					$days_left = ceil($time_left / 86400);
 					echo $days_left . ' day' . ($days_left == 1 ? '' : 's');
 				}
-				elseif ($hours_left > 3600) {
+				elseif ($time_left > 3600) {
 					$hours_left = ceil($time_left / 3600);
 					echo $hours_left . ' hour' . ($hours_left == 1 ? '' : 's');
 				}

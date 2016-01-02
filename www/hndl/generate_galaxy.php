@@ -228,7 +228,7 @@
 					
 					if (!$st->execute()) {
 						$return_codes[] = 1006;
-						error_log("Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+						error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 						break 3;
 					}
 
@@ -248,7 +248,7 @@
 							
 							if (!$st->execute()) {
 								$return_codes[] = 1006;
-								error_log("Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+								error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 								break 3;
 							}
 
@@ -264,7 +264,7 @@
 							
 							if (!$st->execute()) {
 								$return_codes[] = 1006;
-								error_log("Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+								error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 								break 3;
 							}
 
@@ -304,7 +304,7 @@
 			
 			if (!$st->execute()) {
 				$return_codes[] = 1006;
-				error_log("Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+				error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 				break 3;
 			}
 
@@ -388,7 +388,7 @@
 			
 			if (!$st->execute()) {
 				$return_codes[] = 1006;
-				error_log("Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+				error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 				break 3;
 			}
 

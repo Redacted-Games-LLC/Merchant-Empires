@@ -40,7 +40,7 @@
 		$turn_cost = DEPLOY_TURN_COST;
 		
 		if (!($st = $db->get_db()->prepare('update players set turns = turns - ? where record_id = ?'))) {
-			error_log("Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			$return_codes[] = 1006;
 			break;
 		}
@@ -49,7 +49,7 @@
 		
 		if (!$st->execute()) {
 			$return_codes[] = 1006;
-			error_log("Query execution failed: (" . $st->errno . ") " . $st->error);
+			error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
 			break;
 		}
 
@@ -124,7 +124,7 @@
 		// Remove from cargo
 
 		if (!($st = $db->get_db()->prepare("update player_cargo set amount = amount - ? where record_id = ? and amount = ?"))) {
-			error_log("Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			$return_codes[] = 1006;
 			break;
 		}
@@ -133,7 +133,7 @@
 		
 		if (!$st->execute()) {
 			$return_codes[] = 1006;
-			error_log("Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			break;
 		}
 
@@ -144,7 +144,7 @@
 			$amount += $player_count;
 
 			if (!($st = $db->get_db()->prepare("update ordnance set amount = ? where record_id = ?"))) {
-				error_log("Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+				error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 				$return_codes[] = 1006;
 				break;
 			}
@@ -153,7 +153,7 @@
 			
 			if (!$st->execute()) {
 				$return_codes[] = 1006;
-				error_log("Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+				error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 				break;
 			}						
 
@@ -163,7 +163,7 @@
 			$alliance = $spacegame['player']['alliance'] > 0 ? $spacegame['player']['alliance'] : null;
 
 			if (!($st = $db->get_db()->prepare("insert into ordnance (system, x, y, good, amount, owner, alliance) values (?, ?, ?, ?, ?, ?, ?)"))) {
-				error_log("Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+				error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 				$return_codes[] = 1006;
 				break;
 			}
@@ -172,7 +172,7 @@
 			
 			if (!$st->execute()) {
 				$return_codes[] = 1006;
-				error_log("Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+				error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 				break;
 			}
 		}

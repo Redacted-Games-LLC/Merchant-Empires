@@ -80,7 +80,7 @@
 				}
 
 				if (!($st = $db->get_db()->prepare('insert into goods (caption, level) values (?,?)'))) {
-					error_log("Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+					error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 					$return_codes[] = 1006;
 					break;
 				}
@@ -89,7 +89,7 @@
 				
 				if (!$st->execute()) {
 					$return_codes[] = 1006;
-					error_log("Query execution failed: (" . $st->errno . ") " . $st->error);
+					error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
 					break;
 				}
 
@@ -137,7 +137,7 @@
 				}
 
 				if (!($st = $db->get_db()->prepare('update goods set caption = ?, level = ?, tech = ? where record_id = ?'))) {
-					error_log("Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+					error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 					$return_codes[] = 1006;
 					break;
 				}
@@ -146,7 +146,7 @@
 				
 				if (!$st->execute()) {
 					$return_codes[] = 1006;
-					error_log("Query execution failed: (" . $st->errno . ") " . $st->error);
+					error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
 					break;
 				}
 
@@ -181,7 +181,7 @@
 				}
 
 				if (!($st = $db->get_db()->prepare("insert into good_upgrades (good, target) values (?,?)"))) {
-					error_log("Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+					error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 					$return_codes[] = 1006;
 					break;
 				}
@@ -190,7 +190,7 @@
 				
 				if (!$st->execute()) {
 					$return_codes[] = 1006;
-					error_log("Query execution failed: (" . $st->errno . ") " . $st->error);
+					error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
 					break;
 				}
 
@@ -225,7 +225,7 @@
 				}
 
 				if (!($st = $db->get_db()->prepare("delete from good_upgrades where good = ? and target = ?"))) {
-					error_log("Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+					error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 					$return_codes[] = 1006;
 					break;
 				}
@@ -234,7 +234,7 @@
 				
 				if (!$st->execute()) {
 					$return_codes[] = 1006;
-					error_log("Query execution failed: (" . $st->errno . ") " . $st->error);
+					error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
 					break;
 				}
 
@@ -278,7 +278,7 @@
 				}
 
 				if (!($st = $db->get_db()->prepare("insert into start_goods (good, place_type, percent, supply) values (?,?,?,?)"))) {
-					error_log("Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+					error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 					$return_codes[] = 1006;
 					break;
 				}
@@ -287,7 +287,7 @@
 				
 				if (!$st->execute()) {
 					$return_codes[] = 1006;
-					error_log("Query execution failed: (" . $st->errno . ") " . $st->error);
+					error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
 					break;
 				}
 
@@ -311,7 +311,7 @@
 				$db = isset($db) ? $db : new DB;
 
 				if (!($st = $db->get_db()->prepare("delete from start_goods where record_id = ?"))) {
-					error_log("Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+					error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 					$return_codes[] = 1006;
 					break;
 				}
@@ -320,7 +320,7 @@
 				
 				if (!$st->execute()) {
 					$return_codes[] = 1006;
-					error_log("Query execution failed: (" . $st->errno . ") " . $st->error);
+					error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
 					break;
 				}
 
@@ -341,7 +341,7 @@
 				$db = isset($db) ? $db : new DB;
 
 				if (!($st = $db->get_db()->prepare("delete from dealer_inventory where item_type = (select record_id from item_types where caption = 'Goods') and item = ?"))) {
-					error_log("Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+					error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 					$return_codes[] = 1006;
 					break;
 				}
@@ -350,12 +350,12 @@
 				
 				if (!$st->execute()) {
 					$return_codes[] = 1006;
-					error_log("Query execution failed: (" . $st->errno . ") " . $st->error);
+					error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
 					break;
 				}
 
 				if (!($st = $db->get_db()->prepare("delete from port_goods where good = ? or upgrade = ?"))) {
-					error_log("Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+					error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 					$return_codes[] = 1006;
 					break;
 				}
@@ -364,12 +364,12 @@
 				
 				if (!$st->execute()) {
 					$return_codes[] = 1006;
-					error_log("Query execution failed: (" . $st->errno . ") " . $st->error);
+					error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
 					break;
 				}
 
 				if (!($st = $db->get_db()->prepare("delete from good_upgrades where good = ? or target = ?"))) {
-					error_log("Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+					error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 					$return_codes[] = 1006;
 					break;
 				}
@@ -378,12 +378,12 @@
 				
 				if (!$st->execute()) {
 					$return_codes[] = 1006;
-					error_log("Query execution failed: (" . $st->errno . ") " . $st->error);
+					error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
 					break;
 				}
 
 				if (!($st = $db->get_db()->prepare("delete from start_goods where good = ?"))) {
-					error_log("Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+					error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 					$return_codes[] = 1006;
 					break;
 				}
@@ -392,12 +392,12 @@
 				
 				if (!$st->execute()) {
 					$return_codes[] = 1006;
-					error_log("Query execution failed: (" . $st->errno . ") " . $st->error);
+					error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
 					break;
 				}
 
 				if (!($st = $db->get_db()->prepare("delete from player_cargo where good = ?"))) {
-					error_log("Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+					error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 					$return_codes[] = 1006;
 					break;
 				}
@@ -406,7 +406,7 @@
 				
 				if (!$st->execute()) {
 					$return_codes[] = 1006;
-					error_log("Query execution failed: (" . $st->errno . ") " . $st->error);
+					error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
 					break;
 				}
 
@@ -414,7 +414,7 @@
 				// Last one...
 
 				if (!($st = $db->get_db()->prepare("delete from goods where record_id = ?"))) {
-					error_log("Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+					error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 					$return_codes[] = 1006;
 					break;
 				}
@@ -423,7 +423,7 @@
 				
 				if (!$st->execute()) {
 					$return_codes[] = 1006;
-					error_log("Query execution failed: (" . $st->errno . ") " . $st->error);
+					error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
 					break;
 				}
 

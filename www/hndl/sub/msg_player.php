@@ -1,6 +1,6 @@
 <?php
 /**
- * Handles base research options.
+ * Handles sending a message to a specific player
  *
  * @package [Redacted]Me
  * ---------------------------------------------------------------------------
@@ -21,77 +21,75 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-	include_once('inc/page.php');
+	include_once('hndl/common.php');
 	include_once('inc/game.php');
+	include_once('inc/msg_functions.php');
+
+	$return_vars['page'] = 'player';
 	
-	$return_page = 'viewport';
-
-	do { // dummy loop
-
-		// This sub page should have common stuff loaded by its parent.
+	do { // Dummy Loop
 		
-		if ($spacegame['player']['base_id'] <= 0) {
-			$return_codes[] = 1116;
-			break;
-		}
-
-		$x = $spacegame['player']['base_x'];
-		$y = $spacegame['player']['base_y'];
-
-		// Make sure we are over a control pad or other lab
-		$success = false;
-
-		foreach ($spacegame['over_rooms'] as $room) {
-			if ($room['caption'] == 'Control Pad') {
-				$success = true;
-
-				$x = $room['x'] + $room['width'] - 3;
-				$y = $room['y'] + $room['height'] - 3;
-
-				break;
-			}
-		}
-
-		if (!$success) {
-			$return_codes[] = 1118;
-			break;
-		}
-
-
-		$time = PAGE_START_TIME;
-		$turns = $spacegame['player']['turns'];
-		$turn_cost = 1; // TODO: get turn cost from research item.
-
-		if ($turn_cost > $turns) {
+		if (MESSAGE_TURN_COST > $spacegame['player']['turns']) {
 			$return_codes[] = 1018;
+			break;
+		}
+
+		if (!isset($_REQUEST['player']) || !validate_playername($_REQUEST['player'])) {
+			$return_codes[] = 1011;
+			break;
+		}
+
+		if (!isset($_REQUEST['message']) || strlen($_REQUEST['message']) <= 0) {
+			$return_codes[] = 1136;
 			break;
 		}
 
 		$db = isset($db) ? $db : new DB;
 
+		$player = 0;
+
+		$rs = $db->get_db()->query("select record_id from players where lower(`caption`) = '". strtolower($_REQUEST['player']) ."'");
+		
+		$rs->data_seek(0);
+		if ($row = $rs->fetch_assoc()) {
+			$player = $row['record_id'];
+		}
+		else {
+			$return_codes[] = 1135;
+			break;
+		}
+
+		$targets = array();
+		$targets[] = $player;
+
+		$turn_cost = MESSAGE_TURN_COST;
 		$player_id = PLAYER_ID;
 
-		// Remove some turns from the player
-				
+		// Remove some turns
 		if (!($st = $db->get_db()->prepare('update players set turns = turns - ? where record_id = ?'))) {
 			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			$return_codes[] = 1006;
 			break;
 		}
 		
-		$st->bind_param("di", $turn_cost, $player_id);
+		$st->bind_param("ii", $turn_cost, $player_id);
 		
 		if (!$st->execute()) {
 			$return_codes[] = 1006;
 			error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
 			break;
 		}
-		
 
-		// TODO: Load info and start the research project
+		if ($db->get_db()->affected_rows <= 0) {
+			$return_codes[] = 1135;
+			break;
+		}
+
+		send_message($_REQUEST['message'], $targets, MESSAGE_EXPIRY, 1);
+
+		$return_codes[] = 1137;
 
 	} while (false);
-	
-	
+
 
 ?>

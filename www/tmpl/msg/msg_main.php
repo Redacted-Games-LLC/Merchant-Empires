@@ -1,6 +1,6 @@
 <?php
 /**
- * Information about downloading and hosting your own game 
+ * Entry template page for messaging
  *
  * @package [Redacted]Me
  * ---------------------------------------------------------------------------
@@ -23,12 +23,4 @@
 
 	include_once('tmpl/common.php');
 ?>
-<div class="header2">Downloading and Hosting</div>
-<div class="docs_text">
-	You can get ahold of the source at our <a href="https://github.com/Redacted-Games-LLC/Merchant-Empires">GitHub repository</a>.
-	The game does not come with any goods or ships, those must be added by 
-	you before the game is playable.
-</div>
-<div class="docs_text">
-	More information will follow as we streamline this process.
-</div>
+<div class="header2">Galaxy News</div>

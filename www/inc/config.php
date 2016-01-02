@@ -311,4 +311,22 @@
 
 	// Cannot activate a gold key if there are this many days active already.
 	define('KEY_ACTIVATION_LIMIT', 93);
+
+	// Subspace messages will expire after this amount of time.
+	define('SUBSPACE_MESSAGE_EXPIRY', 600);
+
+	// Regular messages will expire after this amount of time.
+	define('MESSAGE_EXPIRY', 604800);
+
+	// Subspace messages cost this amount of turns
+	define('SUBSPACE_MESSAGE_TURN_COST', 50);
+
+	// Regular messages cost this amount of turns
+	define('MESSAGE_TURN_COST', 10);
+
+	// Alliance messages cost this amount of turns per member
+	define('ALLIANCE_MESSAGE_TURN_COST', 5);
+
+
+
 ?>

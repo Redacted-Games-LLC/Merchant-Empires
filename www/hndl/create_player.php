@@ -119,7 +119,7 @@
 			$db->get_db()->rollback();
 			$db->get_db()->autocommit(true);
 			$return_codes[] = 1006;
-			error_log("Insert Player prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			error_log(__FILE__ . '::' . __LINE__ . " Insert Player prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			break;
 		}
 		
@@ -129,7 +129,7 @@
 			$db->get_db()->rollback();
 			$db->get_db()->autocommit(true);
 			$return_codes[] = 1006;
-			error_log("Insert player query execution failed: (" . $st->errno . ") " . $st->error);
+			error_log(__FILE__ . '::' . __LINE__ . " Insert player query execution failed: (" . $st->errno . ") " . $st->error);
 			break;
 		}
 		
@@ -139,14 +139,14 @@
 			$db->get_db()->rollback();
 			$db->get_db()->autocommit(true);
 			$return_codes[] = '1006';
-			error_log("Failed to get last insert id after successful player creation. (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			error_log(__FILE__ . '::' . __LINE__ . " Failed to get last insert id after successful player creation. (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			break;
 		}
 
 		if (!($st = $db->get_db()->prepare('INSERT INTO user_players (user, player, session_id, session_time) VALUES (?,?,?,?)'))) {
 			$db->get_db()->rollback();
 			$db->get_db()->autocommit(true);
-			error_log("Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			$return_codes[] = 1006;
 			break;
 		}
@@ -161,7 +161,7 @@
 			$db->get_db()->rollback();
 			$db->get_db()->autocommit(true);
 			$return_codes[] = 1006;
-			error_log("Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			break;
 		}
 		
@@ -171,7 +171,7 @@
 			$db->get_db()->rollback();
 			$db->get_db()->autocommit(true);
 			$return_codes[] = '1006';
-			error_log("Failed to get last insert id after successful user/player link. (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			error_log(__FILE__ . '::' . __LINE__ . " Failed to get last insert id after successful user/player link. (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			// TODO: Better way to deal with this situation.
 			break;
 		}

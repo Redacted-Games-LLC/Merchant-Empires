@@ -49,7 +49,7 @@
 		if (!$st->execute()) {
 			$db->get_db()->rollback();
 			$db->get_db()->autocommit(true);
-			error_log("Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			header('Location: error.php?rc=1006');
 			die();
 		}

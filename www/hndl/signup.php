@@ -101,7 +101,7 @@
 		}
 		else {
 			$return_codes[] = '1006';
-			error_log("Failed to get last insert id after successful insertion. (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			error_log(__FILE__ . '::' . __LINE__ . " Failed to get last insert id after successful insertion. (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			// TODO: Better way to deal with this situation.
 			break;
 		}

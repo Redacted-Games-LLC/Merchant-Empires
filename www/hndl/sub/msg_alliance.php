@@ -1,6 +1,6 @@
 <?php
 /**
- * Handles transferring a gold key to another player's user
+ * Handles sending a message to a specific alliance
  *
  * @package [Redacted]Me
  * ---------------------------------------------------------------------------
@@ -23,67 +23,75 @@
 
 	include_once('hndl/common.php');
 	include_once('inc/game.php');
+	include_once('inc/msg_functions.php');
 
-	$return_page = 'gold';
+	$return_vars['page'] = 'alliance';
 	
 	do { // Dummy Loop
-
-		if (!isset($_REQUEST['key']) || !validate_key($_REQUEST['key'])) {
-			$return_codes[] = 1121;
+		if (ALLIANCE_MESSAGE_TURN_COST > $spacegame['player']['turns']) {
+			$return_codes[] = 1018;
 			break;
 		}
 
-		$key = $_REQUEST['key'];
-
-		if (!isset($_REQUEST['player']) || !validate_playername($_REQUEST['player'])) {
-			$return_codes[] = 1011;
+		if (!isset($_REQUEST['alliance']) || !validate_alliancename($_REQUEST['alliance'])) {
+			$return_codes[] = 1080;
 			break;
 		}
 
-		$player_name = $_REQUEST['player'];
-
-		$user = 0;
+		if (!isset($_REQUEST['message']) || strlen($_REQUEST['message']) <= 0) {
+			$return_codes[] = 1136;
+			break;
+		}
 
 		$db = isset($db) ? $db : new DB;
 
-		$rs = $db->get_db()->query("select `user` from gold_keys where `key` = '". $key ."' and `used` <= 0 limit 1");
-		$rs->data_seek(0);
+
+		$alliance_id = 0;
+
+		$rs = $db->get_db()->query("select record_id from alliances where lower(`caption`) = '". strtolower($_REQUEST['alliance']) ."'");
 		
+		$rs->data_seek(0);
 		if ($row = $rs->fetch_assoc()) {
-			$user = $row['user'];
+			$alliance_id = $row['record_id'];
 		}
 		else {
-			$return_codes[] = 1123;
+			$return_codes[] = 1084;
 			break;
 		}
 
-		if ($user > 0 && $user != USER_ID) {
-			$return_codes[] = 1123;
-			break;
-		}
+		$targets = array();
+		$target_count = 0;
 
+		$rs = $db->get_db()->query("select record_id from players where alliance_id = '" . $alliance_id . "'");
 
-		$rs = $db->get_db()->query("select user_players.user as user_id from user_players, players where user_players.player = players.record_id and lower(players.caption) = '". strtolower($player_name) ."'");
 		$rs->data_seek(0);
-		
-		if ($row = $rs->fetch_assoc()) {
-			$user = $row['user_id'];
+		while ($row = $rs->fetch_assoc()) {
+			$targets[] = $row['record_id'];
+			$target_count++;
 		}
-		else {
-			$return_codes[] = 1130;
+
+		if ($target_count <= 0) {
+			$return_codes[] = 1138;
+			break;
+		}
+
+		$turn_cost = ALLIANCE_MESSAGE_TURN_COST * $target_count;
+		$player_id = PLAYER_ID;
+
+		if ($turn_cost > $spacegame['player']['turns']) {
+			$return_codes[] = 1018;
 			break;
 		}
 
 
-		$user_id = USER_ID;
-		
-		if (!($st = $db->get_db()->prepare('update gold_keys set `user` = ? where `key` = ? and `used` <= 0 and (`user` is null or `user` = ?)'))) {
+		// Remove some turns
+		if (!($st = $db->get_db()->prepare('update players set turns = turns - ? where record_id = ?'))) {
 			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			$return_codes[] = 1006;
 			break;
 		}
 		
-		$st->bind_param("isi", $user, $key, $user_id);
+		$st->bind_param("ii", $turn_cost, $player_id);
 		
 		if (!$st->execute()) {
 			$return_codes[] = 1006;
@@ -92,13 +100,14 @@
 		}
 
 		if ($db->get_db()->affected_rows <= 0) {
-			$return_codes[] = 1126;
+			$return_codes[] = 1135;
 			break;
 		}
 
+		send_message($_REQUEST['message'], $targets, MESSAGE_EXPIRY, 2);
 
-		$return_codes[] = 1131;
-		
+		$return_codes[] = 1137;
+
 	} while (false);
 
 

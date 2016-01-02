@@ -61,6 +61,9 @@
 		Alignment: <?php echo $player['alignment']; ?><br />
 		Rank: <?php echo $spacegame['ranks'][$player['rank']]['caption']; ?><br />
 	</div>
+	<div class="docs_text">
+		<a href="message.php?page=player&amp;name=<?php echo $player['caption']; ?>">Send Message</a>
+	</div>
 	<hr />
 	<?php if ($player['alliance'] > 0) { ?>
 		<div class="header2">Alliance : <?php echo $spacegame['alliances'][$player['alliance']]['caption']; ?></div>

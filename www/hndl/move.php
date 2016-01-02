@@ -138,7 +138,7 @@
 				$hitters[] = array('hitter' => $row['owner'], 'damage' => $hit_amount * MINE_ATTACK_DAMAGE);
 				
 				if (!($st = $db->get_db()->prepare('update ordnance set amount = amount - ? where record_id = ?'))) {
-					error_log("Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+					error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 					$return_codes[] = 1006;
 					break;
 				}
@@ -147,12 +147,12 @@
 				
 				if (!$st->execute()) {
 					$return_codes[] = 1006;
-					error_log("Query execution failed: (" . $st->errno . ") " . $st->error);
+					error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
 					break;
 				}
 
 				if (!($st = $db->get_db()->prepare('delete from ordnance where record_id = ? and amount <= 0'))) {
-					error_log("Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+					error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 					$return_codes[] = 1006;
 					break;
 				}
@@ -161,7 +161,7 @@
 				
 				if (!$st->execute()) {
 					$return_codes[] = 1006;
-					error_log("Query execution failed: (" . $st->errno . ") " . $st->error);
+					error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
 					break;
 				}
 
@@ -186,7 +186,7 @@
 		// Remove some turns and move the player
 				
 		if (!($st = $db->get_db()->prepare('update players set x = x + ?, y = y + ?, turns = turns - ?, target_type = ?, last_move = ?, base_id = 0, base_x = 50, base_y = 50 where record_id = ? and x = ? and y = ? and turns = ?'))) {
-			error_log("Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			$return_codes[] = 1006;
 			break;
 		}
@@ -195,7 +195,7 @@
 		
 		if (!$st->execute()) {
 			$return_codes[] = 1006;
-			error_log("Query execution failed: (" . $st->errno . ") " . $st->error);
+			error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
 			break;
 		}
 	

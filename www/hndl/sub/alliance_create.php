@@ -40,7 +40,7 @@
 
 		$name = $_REQUEST['name'];
 
-		if (!preg_match('/^[a-zA-Z0-9 ]{2,24}$/', $name)) {
+		if (!validate_alliancename($name)) {
 			$return_codes[] = 1080;
 			break;
 		}
@@ -64,7 +64,7 @@
 		}
 
 		if (!($st = $db->get_db()->prepare('insert into alliances (caption, tax_mult, founder) values (?,?,?)'))) {
-			error_log("Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			$return_codes[] = 1006;
 			break;
 		}
@@ -73,14 +73,14 @@
 		
 		if (!$st->execute()) {
 			$return_codes[] = 1006;
-			error_log("Query execution failed: (" . $st->errno . ") " . $st->error);
+			error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
 			break;
 		}
 
 		$alliance_id = $db->last_insert_id('alliances');
 
 		if (!($st = $db->get_db()->prepare('update players set alliance = ? where record_id = ? and alliance <> ?'))) {
-			error_log("Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			$return_codes[] = 1006;
 			break;
 		}
@@ -89,7 +89,7 @@
 		
 		if (!$st->execute()) {
 			$return_codes[] = 1006;
-			error_log("Query execution failed: (" . $st->errno . ") " . $st->error);
+			error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
 			break;
 		}
 

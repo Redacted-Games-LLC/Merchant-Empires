@@ -63,7 +63,7 @@
 			$_SESSION['pid'] = 0;
 			$_SESSION['ps'] = '';
 			session_write_close();
-			error_log("Someone at {$_SERVER['REMOTE_ADDR']} attempted to spoof a session using a bad or missing id.");
+			error_log(__FILE__ . '::' . __LINE__ . " Someone at {$_SERVER['REMOTE_ADDR']} attempted to spoof a session using a bad or missing id.");
 			die('Session spoof attempt suspected and logged.');
 		}
 		
@@ -94,7 +94,7 @@
 			$_SESSION['pid'] = 0;
 			$_SESSION['ps'] = '';
 			session_write_close();
-			error_log("Someone at {$_SERVER['REMOTE_ADDR']} attempted to spoof user #$supplied_user_id using a bad or missing salt.");
+			error_log(__FILE__ . '::' . __LINE__ . " Someone at {$_SERVER['REMOTE_ADDR']} attempted to spoof user #$supplied_user_id using a bad or missing salt.");
 			die('User spoof attempt suspected and logged');
 		}
 		
@@ -123,7 +123,7 @@
 				$_SESSION['ps'] = '';
 				
 				session_write_close();
-				error_log("Someone at {$_SERVER['REMOTE_ADDR']} attempted to spoof player #$supplied_player_id using a bad or missing salt.");
+				error_log(__FILE__ . '::' . __LINE__ . " Someone at {$_SERVER['REMOTE_ADDR']} attempted to spoof player #$supplied_player_id using a bad or missing salt.");
 				die('Player spoof attempt suspected and logged');
 			}
 		}
@@ -150,7 +150,7 @@
 			$_SESSION['ps'] = '';
 			
 			session_write_close();
-			error_log("Someone at {$_SERVER['REMOTE_ADDR']} attempted to spoof user #$supplied_user_id using session hijacking.");
+			error_log(__FILE__ . '::' . __LINE__ . " Someone at {$_SERVER['REMOTE_ADDR']} attempted to spoof user #$supplied_user_id using session hijacking.");
 			die('User spoof attempt suspected and logged');
 		}
 		
@@ -174,7 +174,7 @@
 				$_SESSION['ps'] = '';
 				
 				session_write_close();
-				error_log("User {$user_id} at {$_SERVER['REMOTE_ADDR']} attempted to spoof player #$supplied_player_id using session hijacking.");
+				error_log(__FILE__ . '::' . __LINE__ . " User {$user_id} at {$_SERVER['REMOTE_ADDR']} attempted to spoof player #$supplied_player_id using session hijacking.");
 				die('Player spoof attempt suspected and logged');
 			}
 		}
@@ -209,8 +209,12 @@
 		return preg_match('/^[a-zA-Z0-9]{2,12}$/', $playername) > 0;
 	}
 	
+	function validate_alliancename($alliancename) {
+		return preg_match('/^[a-zA-Z0-9 ]{2,24}$/', $alliancename) > 0;
+	}
+
 	function validate_key($key) {
-		return preg_match('/[-a-z0-9]{'.MINIMUM_KEY_LENGTH.','.MAXIMUM_KEY_LENGTH.'}/i', $key);
+		return preg_match('/[-a-z0-9]{'.MINIMUM_KEY_LENGTH.','.MAXIMUM_KEY_LENGTH.'}/i', $key) > 0;
 	}
 	
 	function get_user_field($group, $key = null, $default = null, $db = null) {

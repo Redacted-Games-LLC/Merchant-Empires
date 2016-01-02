@@ -88,7 +88,7 @@
 		// Remove the player
 
 		if (!($st = $db->get_db()->prepare('update players set alliance = null where record_id = ?'))) {
-			error_log("Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			$return_codes[] = 1006;
 			break;
 		}
@@ -97,7 +97,7 @@
 		
 		if (!$st->execute()) {
 			$return_codes[] = 1006;
-			error_log("Query execution failed: (" . $st->errno . ") " . $st->error);
+			error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
 			break;
 		}
 
@@ -114,7 +114,7 @@
 
 			if ($row['count'] > 0) {
 				if (!($st = $db->get_db()->prepare('update alliances set tax_mult = ? where record_id = ?'))) {
-					error_log("Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+					error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 					$return_codes[] = 1006;
 					break;
 				}
@@ -123,7 +123,7 @@
 				
 				if (!$st->execute()) {
 					$return_codes[] = 1006;
-					error_log("Query execution failed: (" . $st->errno . ") " . $st->error);
+					error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
 					break;
 				}
 
@@ -132,7 +132,7 @@
 				// Remove the alliance
 
 				if (!($st = $db->get_db()->prepare('delete from alliances where record_id = ?'))) {
-					error_log("Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+					error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 					$return_codes[] = 1006;
 					break;
 				}
@@ -141,7 +141,7 @@
 				
 				if (!$st->execute()) {
 					$return_codes[] = 1006;
-					error_log("Query execution failed: (" . $st->errno . ") " . $st->error);
+					error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
 					break;
 				}
 			}
