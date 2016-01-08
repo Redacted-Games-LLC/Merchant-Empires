@@ -1,6 +1,6 @@
 <?php
 /**
- * Handles sending a message to a specific alliance
+ * Handles hiding and unhiding messages.
  *
  * @package [Redacted]Me
  * ---------------------------------------------------------------------------
@@ -23,75 +23,51 @@
 
 	include_once('hndl/common.php');
 	include_once('inc/game.php');
-	include_once('inc/msg_functions.php');
 
-	$return_vars['page'] = 'alliance';
+	$return_vars['page'] = 'inbox';
+	$return_vars['p'] = $_REQUEST['p'];
+	$return_vars['pp'] = $_REQUEST['pp'];
 	
 	do { // Dummy Loop
-		if (ALLIANCE_MESSAGE_TURN_COST > $spacegame['player']['turns']) {
-			$return_codes[] = 1018;
+		
+		if (!isset($_REQUEST['message']) || !is_numeric($_REQUEST['message']) || $_REQUEST['message'] <= 0) {
+			$return_codes[] = 1044;
 			break;
 		}
 
-		if (!isset($_REQUEST['alliance']) || !validate_alliancename($_REQUEST['alliance'])) {
-			$return_codes[] = 1080;
-			break;
-		}
-
-		if (!isset($_REQUEST['message']) || strlen($_REQUEST['message']) <= 0) {
-			$return_codes[] = 1136;
-			break;
-		}
+		$player_id = PLAYER_ID;
+		$message = $_REQUEST['message'];
+		$read = 0;
 
 		$db = isset($db) ? $db : new DB;
 
-
-		$alliance_id = 0;
-
-		$rs = $db->get_db()->query("select record_id from alliances where lower(`caption`) = '". strtolower($_REQUEST['alliance']) ."'");
+		$rs = $db->get_db()->query("select * from message_targets where target = '$player_id' and message = '$message'");
 		
 		$rs->data_seek(0);
 		if ($row = $rs->fetch_assoc()) {
-			$alliance_id = $row['record_id'];
+			$read = $row['read'];
 		}
 		else {
-			$return_codes[] = 1084;
+			$return_codes[] = 1145;
 			break;
 		}
 
-		$targets = array();
-		$target_count = 0;
-
-		$rs = $db->get_db()->query("select record_id from players where alliance = '" . $alliance_id . "'");
-
-		$rs->data_seek(0);
-		while ($row = $rs->fetch_assoc()) {
-			$targets[] = $row['record_id'];
-			$target_count++;
+		if ($read <= 0) {
+			$read = PAGE_START_TIME;
 		}
-
-		if ($target_count <= 0) {
-			$return_codes[] = 1138;
-			break;
-		}
-
-		$turn_cost = ALLIANCE_MESSAGE_TURN_COST * $target_count;
-		$player_id = PLAYER_ID;
-
-		if ($turn_cost > $spacegame['player']['turns']) {
-			$return_codes[] = 1018;
-			break;
+		else {
+			$read = 0;
 		}
 
 
-		// Remove some turns
-		if (!($st = $db->get_db()->prepare('update players set turns = turns - ? where record_id = ?'))) {
+
+		if (!($st = $db->get_db()->prepare("update message_targets set `read` = ? where `target` = ? and message = ?"))) {
 			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			$return_codes[] = 1006;
 			break;
 		}
 		
-		$st->bind_param("ii", $turn_cost, $player_id);
+		$st->bind_param("iii", $read, $player_id, $message);
 		
 		if (!$st->execute()) {
 			$return_codes[] = 1006;
@@ -100,13 +76,14 @@
 		}
 
 		if ($db->get_db()->affected_rows <= 0) {
-			$return_codes[] = 1135;
+			$return_codes[] = 1146;
 			break;
-		}
+		}			
+		
 
-		send_message($_REQUEST['message'], $targets, MESSAGE_EXPIRY, 2);
+		$return_codes[] = 1147;
 
-		$return_codes[] = 1137;
+		
 
 	} while (false);
 

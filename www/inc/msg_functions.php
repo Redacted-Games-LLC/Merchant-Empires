@@ -22,19 +22,40 @@
  */
 
 	include_once('inc/game.php');
-	
+
+
+	do { // Dummy Loop
+
+		
+
+		$db = isset($db) ? $db : new DB;
+
+		$spacegame['ignore_list'] = array();
+		$spacegame['ignore_index'] = array();
+		$spacegame['ignore_list_count'] = 0;
+		
+		$rs = null;
+
+		if (defined('LOAD_IGNORE_CAPTIONS')) {
+			$rs = $db->get_db()->query("select message_ignore.*, players.caption from message_ignore, players where player = '". PLAYER_ID ."' and message_ignore.ignore = players.record_id");
+		}
+		else {
+			$rs = $db->get_db()->query("select * from message_ignore where player = '". PLAYER_ID ."'");
+		}
+
+		$rs->data_seek(0);
+		while ($row = $rs->fetch_assoc()) {
+			$spacegame['ignore_list'][$row['record_id']] = $row;
+			$spacegame['ignore_index'][$row['ignore']] = $row['record_id'];
+			$spacegame['ignore_list_count']++;
+		}
+
+	} while (false);
+
 
 	function send_message($message, $targets = array(), $ttl = 600, $type = 1) {
 
 		global $spacegame;
-
-		$targets_copy = $targets;
-
-		foreach ($targets_copy as $index => $target) {
-			if (isset($spacegame['ignore_list'][$target])) {
-				unset($targets[$index]);
-			}
-		}
 
 		if (count($targets) <= 0) {
 			return true;
@@ -63,13 +84,13 @@
 
 		$message_id = $db->last_insert_id('messages');
 
-		if (!($st = $db->get_db()->prepare('insert into message_targets (message, target) values (?, ?)'))) {
+		if (!($st = $db->get_db()->prepare('insert into message_targets (message, target, sender) values (?, ?, ?)'))) {
 			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			$return_codes[] = 1006;
 			return false;
 		}
 
-		$st->bind_param("ii", $message_id, $target);
+		$st->bind_param("iii", $message_id, $target, $sender);
 
 		foreach ($targets as $target) {
 
@@ -83,22 +104,6 @@
 		return true;
 	}
 
-
-
-	do { // Dummy Loop
-		$db = isset($db) ? $db : new DB;
-
-		$spacegame['ignore_list'] = array();
-		
-		$rs = $db->get_db()->query("select * from message_ignore where player = '". PLAYER_ID ."' or `ignore` = '". PLAYER_ID ."'");
-
-		$rs->data_seek(0);
-		while ($row = $rs->fetch_assoc()) {
-			$spacegame['ignore_list'][$row['player']] = true;
-			$spacegame['ignore_list'][$row['target']] = true;
-		}
-
-	} while (false);
 
 
 ?>

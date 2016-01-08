@@ -31,10 +31,13 @@
 
 		switch ($_REQUEST['subtask']) {
 
+			case 'admin':
 			case 'player':
 			case 'alliance':
 			case 'subspace':
 			case 'ignore':
+			case 'hide':
+			case 'delete':
 
 				$page = $_REQUEST['subtask'];
 				$file = "hndl/sub/msg_{$page}.php";

@@ -79,13 +79,13 @@
 
 		$alliance_id = $db->last_insert_id('alliances');
 
-		if (!($st = $db->get_db()->prepare('update players set alliance = ? where record_id = ? and alliance <> ?'))) {
+		if (!($st = $db->get_db()->prepare('update players set alliance = ? where record_id = ?'))) {
 			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			$return_codes[] = 1006;
 			break;
 		}
 		
-		$st->bind_param("iii", $alliance_id, $player_id, $alliance_id);
+		$st->bind_param("ii", $alliance_id, $player_id);
 		
 		if (!$st->execute()) {
 			$return_codes[] = 1006;
@@ -94,6 +94,8 @@
 		}
 
 
+		$return_vars['page'] = 'main';
+		$return_codes[] = 1148;
 	} while (false);
 
 

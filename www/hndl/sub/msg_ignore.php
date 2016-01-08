@@ -25,10 +25,91 @@
 	include_once('inc/game.php');
 
 	$return_vars['page'] = 'inbox';
+	$return_vars['p'] = $_REQUEST['p'];
+	$return_vars['pp'] = $_REQUEST['pp'];
 	
 	do { // Dummy Loop
 		
+		if (!isset($_REQUEST['player']) || !validate_playername($_REQUEST['player'])) {
+			$return_codes[] = 1011;
+			break;
+		}
 
+		$db = isset($db) ? $db : new DB;
+
+		$player = 0;
+
+		$rs = $db->get_db()->query("select record_id from players where lower(`caption`) = '". strtolower($_REQUEST['player']) ."'");
+		
+		$rs->data_seek(0);
+		if ($row = $rs->fetch_assoc()) {
+			$player = $row['record_id'];
+		}
+		else {
+			$return_codes[] = 1135;
+			break;
+		}
+
+		$player_id = PLAYER_ID;
+		$enabled = false;
+
+		$rs = $db->get_db()->query("select * from message_ignore where player = '$player_id' and `ignore` = '$player'");
+
+		$rs->data_seek(0);
+		if ($row = $rs->fetch_assoc()) {
+			$enabled = true;
+		}
+		
+
+		$expiration = PAGE_START_TIME + IGNORE_DURATION;
+
+
+		if ($enabled) {
+
+			if (!($st = $db->get_db()->prepare("delete from message_ignore where player = ? and `ignore` = ?"))) {
+				error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+				$return_codes[] = 1006;
+				break;
+			}
+			
+			$st->bind_param("ii", $player_id, $player);
+			
+			if (!$st->execute()) {
+				$return_codes[] = 1006;
+				error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
+				break;
+			}
+
+		}
+		else {
+
+			if (!($st = $db->get_db()->prepare("insert into message_ignore (player, `ignore`, expiration) values (?, ?, ?)"))) {
+				error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+				$return_codes[] = 1006;
+				break;
+			}
+			
+			$st->bind_param("iii", $player_id, $player, $expiration);
+			
+			if (!$st->execute()) {
+				$return_codes[] = 1006;
+				error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
+				break;
+			}
+
+
+			if ($db->get_db()->affected_rows <= 0) {
+				$return_codes[] = 1142;
+				break;
+			}
+		}
+		
+		if ($db->get_db()->affected_rows <= 0) {
+			$return_codes[] = 1141;
+			break;
+		}
+
+		$return_codes[] = 1143;
 
 		
 

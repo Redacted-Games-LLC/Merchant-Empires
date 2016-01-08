@@ -57,8 +57,8 @@
 	Our signup page asks an email address but you do not have to give one. Email addresses may be
 	personally identifiable by nature; we only use it for password recovery and if we have to
 	notify you about an issue with your account, not with your players. We will not send you news,
-	updates, or other spam emails. Your email address will not be shared, sold, or made available
-	publicly by us.
+	updates, or other spam emails. Your email address will not be shared, sold, or intentionally 
+	publicized by us.
 </div>
 <div class="header4">Player Names</div>
 <div class="docs_text">

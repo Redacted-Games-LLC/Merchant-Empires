@@ -1461,13 +1461,15 @@ div.alliance_list_item_caption {
 
 div.alliance_list_item_kick {
 	float: right;
-	width: 35%;
+	text-align: right;
+	width:72px;
 }
 
 div.alliance_list_item_alliance {
 	text-align: right;
 	float: right;
 	width: 45%;
+	white-space: nowrap;
 }
 
 img.alliance_list_recruit_image {
@@ -1620,7 +1622,7 @@ table.gold_key {
 }
 
 tr.gold_key {
-	border-style: solid 1px #888;
+	border: solid 1px #888;
 }
 
 th.gold_key {
@@ -1678,32 +1680,99 @@ td.message {
 	vertical-align: top;
 }
 
+
+div.message_ignored {
+	width: 100%;
+	border: solid 1px #888;
+	padding: 0px;
+	margin: 4px;
+	background-color: #444;
+	padding: 4px 8px;
+	margin: 0px;
+}
+
+div.official_message {
+	background-color: #033;
+	width: 100%;
+	border: solid 2px #090;
+	padding: 0px;
+	margin: 4px;
+}
+
+div.official_message_head {
+	background-color: #040;
+	padding: 4px 8px;
+	margin: 0px;
+}
+
 div.message {
+	width: 100%;
 	border: solid 1px #444;
 	padding: 0px;
-	margin: 8px;
+	margin: 4px;
 }
 
 div.message_head {
-	background-color: #113;
-	padding: 8px 16px;
+	background-color: #333;
+	padding: 4px 8px;
+	margin: 0px;
+}
+
+div.subspace_message {
+	background-color: #330;
+	width: 100%;
+	border: solid 1px #990;
+	padding: 0px;
+	margin: 4px;
+}
+
+div.subspace_message_head {
+	background-color: #660;
+	padding: 4px 8px;
+	margin: 0px;
+}
+
+div.alliance_message {
+	background-color: #003;
+	width: 100%;
+	border: solid 1px #009;
+	padding: 0px;
+	margin: 4px;
+}
+
+div.alliance_message_head {
+	background-color: #004;
+	padding: 4px 8px;
+	margin: 0px;
+}
+
+div.battle_message {
+	background-color: #300;
+	width: 100%;
+	border: dashed 2px #900;
+	padding: 0px;
+	margin: 4px;
+}
+
+div.battle_message_head {
+	background-color: #500;
+	padding: 4px 8px;
 	margin: 0px;
 }
 
 div.message_actions {
+	font-size:80%;
 	float: right;
 }
 
 div.message_text {
-	background-color: #111;
-	padding: 8px 16px;
+	padding: 4px 8px;
 	margin: 0px;
 	font-size: 120%;
-	font-family: serif;
 }
 
 div.message_posted {
-	background-color: #111;
+	background-color: #000;
 	width: 100%;
 	text-align:right;
 	font-size: 80%;
@@ -1711,3 +1780,37 @@ div.message_posted {
 }
 
 
+ul.ignore_list {
+	list-style-type: none;
+	margin: 0;
+	padding: 0px;
+	display: inline;
+}
+
+li.ignore_list {
+	display: inline-block;
+	border: solid 1px #cccccc;
+	padding: 2px 10px;
+	margin: 4px;
+	white-space: nowrap;
+	font-size: 70%;
+}
+
+
+/* alliance_players.php, msg_inbox.php, msg_sent.php */
+
+div#pagination {
+	text-align: center;
+}
+
+a.pagination_link ,span.pagination_link {
+	margin: 2px 8px;
+	padding: 4px;
+}
+
+a.pagination_current_link {
+	margin: 2px 12px;
+	border: dotted 2px white;
+	font-size: 120%;
+	padding: 3px 8px;
+}

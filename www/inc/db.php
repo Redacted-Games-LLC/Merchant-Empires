@@ -79,15 +79,31 @@
 				return 0;
 			}
 
-			$insert_id = 0;
+			$rs->data_seek(0);
+
+			if ($row = $rs->fetch_assoc()) {
+				return $row['id'];
+			}
+
+			return 0;
+		}
+
+		public function found_rows() {
+
+			$rs = $this->db->query("select found_rows() as count");
+
+			if (!$rs) {
+				error_log(__FILE__ . '::' . __LINE__ . " Query selection failed: (" . $this->db->errno . ") " . $this->db->error);
+				return 0;
+			}
 
 			$rs->data_seek(0);
 
-			while ($row = $rs->fetch_assoc()) {
-				$insert_id = $row['id'];
+			if ($row = $rs->fetch_assoc()) {
+				return $row['count'];
 			}
 
-			return $insert_id;
+			return 0;
 		}		
 	}
 

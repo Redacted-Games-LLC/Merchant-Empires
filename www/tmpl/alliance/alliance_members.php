@@ -84,10 +84,22 @@
 			echo '<div class="alliance_list_item" title="Level '. $member['level'] .'">';
 
 			if ($member['gold_expiration'] > PAGE_START_TIME) {
-				echo '<img src="res/gold.png" alt="Gold" title="Gold Member" />';
-			}
+				echo '<div class="alliance_list_item_gold">';
+				echo '<img src="res/gold.png" alt="Gold" height="20" title="Gold Member" />';
+				echo '</div>';
 
-			echo '<strong>' . $member['caption'] . '</strong> ';
+				echo '<div class="alliance_list_item_caption">';
+				echo '<strong><a href="alliance.php?page=player&amp;player_id='. $member['record_id'] .'">';
+				echo $member['caption'] . '</a></strong>&nbsp;';
+				echo '</div>';
+			}
+			else {
+				echo '<div class="alliance_list_item_caption">';
+				echo '<a href="alliance.php?page=player&amp;player_id='. $member['record_id'] .'">';
+				echo $member['caption'] . '</a>&nbsp;';	
+				echo '</div>';
+			}
+			
 			echo '<small>' . $member['rank'] . '</small>';
 
 			if ($spacegame['player']['alliance'] == $alliance_id && $spacegame['player']['record_id'] == $spacegame['alliances'][$alliance_id]['founder']) {
@@ -99,6 +111,7 @@
 				}
 			
 			}
+
 			echo '</div>';
 		}
 	?>

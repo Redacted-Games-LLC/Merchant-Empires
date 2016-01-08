@@ -95,7 +95,7 @@
 			$_SESSION['ps'] = '';
 			session_write_close();
 			error_log(__FILE__ . '::' . __LINE__ . " Someone at {$_SERVER['REMOTE_ADDR']} attempted to spoof user #$supplied_user_id using a bad or missing salt.");
-			die('User spoof attempt suspected and logged');
+			die('User spoof attempt suspected and logged 1');
 		}
 		
 		// Check player for validity
@@ -131,8 +131,7 @@
 		// Salt and session appear ok. Let's hit the database.
 		$db = isset($db) ? $db : new DB;
 		
-		$rs = $db->get_db()->query("select record_id as id from users where record_id = '{$supplied_user_id}' and session_id = '{$supplied_session_id}' limit 1");
-		
+		$rs = $db->get_db()->query("select record_id as id from users where record_id = '{$supplied_user_id}' and session_id = '{$supplied_session_id}' limit 1");		
 		$user_id = 0;
 		$rs->data_seek(0);
 		while ($row = $rs->fetch_assoc()) {
@@ -151,7 +150,7 @@
 			
 			session_write_close();
 			error_log(__FILE__ . '::' . __LINE__ . " Someone at {$_SERVER['REMOTE_ADDR']} attempted to spoof user #$supplied_user_id using session hijacking.");
-			die('User spoof attempt suspected and logged');
+			die('User spoof attempt suspected and logged 2');
 		}
 		
 		if ($supplied_player_id > 0) {

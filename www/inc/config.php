@@ -327,6 +327,16 @@
 	// Alliance messages cost this amount of turns per member
 	define('ALLIANCE_MESSAGE_TURN_COST', 5);
 
+	// This is the default ignore length
+	define('IGNORE_DURATION', 1814400);
 
+	// Minimum amount of items per page where pagination is used
+	define('MIN_PER_PAGE', 3);
+
+	// Maximum amount of items per page where pagination is used
+	define('MAX_PER_PAGE', 20);
+
+
+	
 
 ?>

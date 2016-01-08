@@ -922,3 +922,85 @@ function load_base_field() {
 }
 
 
+
+
+function load_pagination(current_page, total_pages, base_url) {
+
+	var div = document.getElementById('pagination');
+	var a = null;
+
+	if (current_page > 2) {
+		a = document.createElement('a');
+		a.setAttribute('href', base_url + 'p=1');
+	}
+	else {
+		a = document.createElement('span');
+	}
+	
+	a.className = 'pagination_link';
+	a.innerHTML = '<<';
+	div.appendChild(a);
+
+	if (current_page > 1) {
+		a = document.createElement('a');
+		a.setAttribute('href', base_url + 'p=' + (current_page - 1));
+	}
+	else {
+		a = document.createElement('span');
+	}
+	
+	a.className = 'pagination_link';
+	a.innerHTML = '<';
+	div.appendChild(a);
+
+
+	var start = Math.max(0, Math.min(total_pages, current_page + 5) - 10);
+
+	for (var i = 0; i <= 10; i++) {
+		if (i > 0 && i <= total_pages) {
+			a = document.createElement('a');
+			a.setAttribute('href', base_url + 'p=' + (start + i));
+
+			if (start + i == current_page) {
+				a.className = 'pagination_current_link';
+			}
+			else {
+				a.className = 'pagination_link';
+			}
+			
+			a.innerHTML = (start + i);
+			div.appendChild(a);
+		}
+	}
+
+	if (current_page < total_pages) {
+		a = document.createElement('a');
+		a.setAttribute('href', base_url + 'p=' + (current_page + 1));
+	}
+	else {
+		a = document.createElement('span');
+	}
+	
+	a.className = 'pagination_link';
+	a.innerHTML = '>';
+	div.appendChild(a);
+
+
+	if (current_page < total_pages - 1) {
+		a = document.createElement('a');
+		a.setAttribute('href', base_url + 'p=' + total_pages);
+	}
+	else {
+		a = document.createElement('span');
+	}
+	
+	a.className = 'pagination_link';
+	a.innerHTML = '>>';
+	div.appendChild(a);
+
+
+}
+
+
+
+

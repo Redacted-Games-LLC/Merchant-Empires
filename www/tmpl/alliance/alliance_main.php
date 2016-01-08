@@ -40,8 +40,10 @@
 		<?php
 		}
 
-
 	?>
+</div>
+<div class="docs_text">
+	<a href="message.php?page=alliance&amp;name=<?php echo $spacegame['alliance']['caption']; ?>">Send Message</a>
 </div>
 <?php
 	if ($spacegame['invites_count'] > 0) {

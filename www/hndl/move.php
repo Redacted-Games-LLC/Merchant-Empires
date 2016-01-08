@@ -24,6 +24,7 @@
 	include_once('inc/page.php');
 	include_once('inc/game.php');
 	include_once('inc/combat.php');
+	include_once('inc/msg_functions.php');
 
 	$return_page = 'viewport';
 
@@ -126,16 +127,23 @@
 			}
 
 			$hitters = array();
+
+			$complete_count = 0;
+			$complete_damage = 0;
 			
 			foreach ($mines as $record_id => $row) {
 
 				$hit_amount = mt_rand(0, ceil($row['amount'] * MINES_ATTACKING_PER_PLAYER));
+				$total_damage = $hit_amount * MINE_ATTACK_DAMAGE;
 
-				if ($hit_amount <= 0) {
+				if ($total_damage <= 0) {
 					continue;
 				}
 
-				$hitters[] = array('hitter' => $row['owner'], 'damage' => $hit_amount * MINE_ATTACK_DAMAGE);
+				$complete_count += $hit_amount;
+				$complete_damage += $total_damage;
+
+				$hitters[$row['owner']] = array('hitter' => $row['owner'], 'damage' => $total_damage);
 				
 				if (!($st = $db->get_db()->prepare('update ordnance set amount = amount - ? where record_id = ?'))) {
 					error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
@@ -168,14 +176,31 @@
 				$return_vars['dmg'] = 'true';
 				
 				// Message mine owners about potential damage to ship
+				$message = '';
+				$message .= $hit_amount . ' mines in sector ';
+				$message .= $spacegame['player']['x'] . ',' . $spacegame['player']['y'];
+				$message .= ' caused ' . $total_damage . ' damage to player ';
+				$message .= $spacegame['player']['caption'] . '.';
+				
+				$targets = array($row['owner']);
+				send_message($message, $targets, MESSAGE_EXPIRY, 4);
 
+			}
 
-
-
+			if ($complete_damage > 0) {
+				// Message player about getting hit.
+				$message = '';
+				$message .= 'You were hit by ' . $complete_count . ' mines in sector ';
+				$message .= $spacegame['player']['x'] . ',' . $spacegame['player']['y'];
+				$message .= ' causing ' . $complete_damage . ' damage.';
+				
+				$targets = array($player_id);
+				send_message($message, $targets, MESSAGE_EXPIRY, 4);
 			}
 
 
 			if (players_attack_player($player_id, $hitters)) {
+				// Player is dead
 				break;
 			}
 		}
@@ -218,6 +243,9 @@
 				$drones[$row['record_id']] = $row;
 			}
 
+			$complete_count = 0;
+			$complete_damage = 0;
+
 			$hitters = array();
 			
 			foreach ($drones as $record_id => $row) {
@@ -226,33 +254,54 @@
 
 					// Send alert and move on
 
-
-
-
-
-
-
-
+					$message = '';
+					$message .= 'Player ' . $spacegame['player']['caption'] . ' ';
+					$message .= 'detected but not engaged in sector ';
+					$message .= $rx . ',' . $ry;
+					$message .= '.';
+					
+					$targets = array($row['owner']);
+					send_message($message, $targets, MESSAGE_EXPIRY, 4);
 
 					continue;
 				}
 
 				$hit_amount = mt_rand(0, ceil($row['amount'] * DRONES_ATTACKING_PER_PLAYER));
+				$total_damage = $hit_amount * DRONE_ATTACK_DAMAGE;
 
-				if ($hit_amount <= 0) {
-					continue;
+				if ($total_damage > 0) {
+					$hitters[] = array('hitter' => $row['owner'], 'damage' => $total_damage);
+					$return_vars['dmg'] = 'true';
 				}
 
-				$hitters[] = array('hitter' => $row['owner'], 'damage' => $hit_amount * DRONE_ATTACK_DAMAGE);
-				$return_vars['dmg'] = 'true';
+				$complete_count += $hit_amount;
+				$complete_damage += $total_damage;
 
 				// Message drone owners about potential damage to ship
 
+				$message = '';
+				$message .= 'Player ' . $spacegame['player']['caption'] . ' ';
+				$message .= 'detected and engaged by ' . $hit_amount;
+				$message .= ' drones in sector ' . $rx . ',' . $ry;
+				$message .= ' causing ' . $total_damage . ' damage.';
+				
+				$targets = array($row['owner']);
+				send_message($message, $targets, MESSAGE_EXPIRY, 4);				
 
 			}
 
+			// Message player about getting hit.
+			if ($complete_damage > 0) {
+				$message = '';
+				$message .= 'You were engaged by ' . $complete_count . ' drones in sector ';
+				$message .= $rx . ',' . $ry . ' causing ' . $complete_damage . ' damage.';
+				
+				$targets = array($player_id);
+				send_message($message, $targets, MESSAGE_EXPIRY, 4);
+			}
 
 			if (players_attack_player($player_id, $hitters)) {
+				// Player is dead
 				break;
 			}
 		}

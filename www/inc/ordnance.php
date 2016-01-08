@@ -81,7 +81,7 @@
 						$spacegame['sector'][$dir]['hostile_ordnance_count'] = 0;
 					}
 					
-					if ($row['owner'] == $spacegame['player']['record_id'] || ($row['alliance'] > 0 && $row['alliance'] == $spacegame['player']['record_id'])) {
+					if ($row['owner'] == $spacegame['player']['record_id'] || ($row['alliance'] == $spacegame['player']['alliance']) && $row['alliance'] > 0) {
 						// Allied force
 
 						$spacegame['sector'][$dir]['allied_ordnance'][$ordnance_id] = $row;
