@@ -22,6 +22,10 @@
  */
 
 	include_once('tmpl/common.php');
+	
+	define('SENT_MSG_TYPE', 3);
+	include_once('inc/messages.php');
+
 ?>
 <div class="header2">Subspace Broadcast</div>
 <div class="docs_text">
@@ -32,13 +36,23 @@
 	<form action="handler.php" method="post">
 		<table class="message">
 			<tr class="message">
+				<td class="message align_right" colspan="2">
+					<span class="characters_left" id="characters_left">&nbsp;</span>
+				</td>
+			</tr>
+			<tr class="message">
 				<td class="message">Message:</td>
-				<td class="message"><textarea class="msg_form_input" name="message" rows="6" cols="60" maxlength="400"></textarea></td>
+				<td class="message">
+					<textarea class="msg_form_input" id="msg_input" name="message" rows="6" cols="60" maxlength="<?php echo MAXIMUM_SUBSPACE_MESSAGE_LENGTH; ?>"></textarea>
+				</td>
 			</tr>
 			<tr class="message">
 				<td class="message">&nbsp;</td>
 				<td class="message">
-					<script type="text/javascript">drawButton('send', 'send', 'validate_send()');</script>
+					<script type="text/javascript">
+						drawButton('send', 'send', 'validate_send()');
+						register_textarea_length_handlers('msg_input', 'characters_left', <?php echo MAXIMUM_SUBSPACE_MESSAGE_LENGTH; ?>);
+					</script>
 					<span class="turn_cost">This action costs <?php echo SUBSPACE_MESSAGE_TURN_COST; ?> turns.</span>
 				</td>
 			</tr>
@@ -50,5 +64,17 @@
 <div class="docs_text">
 	Subspace messages expire after <?php echo floor(SUBSPACE_MESSAGE_EXPIRY / 60); ?>
 	minutes.
+</div>
+<hr />
+<div class="header3">Sent Messages</div>
+<div class="docs_text">
+	<?php 
+		if ($spacegame['message_count'] <= 0) {
+			echo 'You have no sent messages to display.';
+		}
+		else {
+			include_once('tmpl/msg/msg.php');
+		}
+	?>
 </div>
 

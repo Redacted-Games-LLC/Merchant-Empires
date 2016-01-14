@@ -25,7 +25,7 @@
 ?>
 	
 	<ul class="popup_list">
-		<li class="popup_list"><?php echo get_msg_link('main', 'Galaxy News'); ?></li>
+		<li class="popup_list"><?php echo get_msg_link('main', 'News'); ?></li>
 		<li class="popup_list"><?php echo get_msg_link('inbox', 'Inbox'); ?></li>
 		<li class="popup_list"><?php echo get_msg_link('player', 'Send to Player'); ?></li>
 		<li class="popup_list"><?php echo get_msg_link('alliance', 'Send to Alliance'); ?></li>

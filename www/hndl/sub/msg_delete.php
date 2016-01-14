@@ -30,12 +30,39 @@
 	
 	do { // Dummy Loop
 		
+		if (MSG_HIDE_DELETE_TURN_COST > $spacegame['player']['turns']) {
+			$return_codes[] = 1018;
+			break;
+		}
+
 		if (!isset($_REQUEST['message']) || !is_numeric($_REQUEST['message']) || $_REQUEST['message'] <= 0) {
 			$return_codes[] = 1044;
 			break;
 		}
 
+		$turn_cost = MSG_HIDE_DELETE_TURN_COST;
 		$player_id = PLAYER_ID;
+
+		// Remove some turns
+		if (!($st = $db->get_db()->prepare('update players set turns = turns - ? where record_id = ?'))) {
+			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			$return_codes[] = 1006;
+			break;
+		}
+		
+		$st->bind_param("ii", $turn_cost, $player_id);
+		
+		if (!$st->execute()) {
+			$return_codes[] = 1006;
+			error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
+			break;
+		}
+
+		if ($db->get_db()->affected_rows <= 0) {
+			$return_codes[] = 1135;
+			break;
+		}
+
 		$message = $_REQUEST['message'];
 		
 		$db = isset($db) ? $db : new DB;

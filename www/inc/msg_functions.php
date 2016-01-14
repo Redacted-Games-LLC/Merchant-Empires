@@ -68,13 +68,13 @@
 		$exp = $time + $ttl;
 		$sender = PLAYER_ID;
 
-		if (!($st = $db->get_db()->prepare('insert into messages (posted, expiration, message, sender, `type`) values (?, ?, ?, ?, ?)'))) {
+		if (!($st = $db->get_db()->prepare('insert into messages (posted, expiration, message, sender, `type`, `id`) values (?, ?, ?, ?, ?, ?)'))) {
 			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			$return_codes[] = 1006;
 			return false;
 		}
 		
-		$st->bind_param("iisii", $time, $exp, $message, $sender, $type);
+		$st->bind_param("iisiii", $time, $exp, $message, $sender, $type, $targets[0]);
 		
 		if (!$st->execute()) {
 			$return_codes[] = 1006;

@@ -39,8 +39,20 @@
 			break;
 		}
 
-		if (!isset($_REQUEST['message']) || strlen($_REQUEST['message']) <= 0) {
+	if (!isset($_REQUEST['message'])) {
 			$return_codes[] = 1136;
+			break;
+		}
+
+		$len = strlen($_REQUEST['message']);
+
+		if ($len <= 0) {
+			$return_codes[] = 1136;
+			break;
+		}
+
+		if ($len > MAXIMUM_MESSAGE_LENGTH) {
+			$return_codes[] = 1149;
 			break;
 		}
 

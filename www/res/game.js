@@ -1002,5 +1002,42 @@ function load_pagination(current_page, total_pages, base_url) {
 }
 
 
+function update_textarea_length(input_id, output_id, limit) {
+	
+	var input_element = document.getElementById(input_id);
+	var output_element = document.getElementById(output_id);
 
+	output_element.innerHTML = (limit - input_element.value.length) + ' characters remaining';
+}
+
+function register_textarea_length_handlers(input_id, output_id, limit) {
+
+	var input_element = document.getElementById(input_id);
+
+	input_element.addEventListener('keydown', function() {
+		update_textarea_length(input_id, output_id, limit);
+	});
+
+	input_element.addEventListener('keyup', function() {
+		update_textarea_length(input_id, output_id, limit);
+	});
+
+	input_element.addEventListener('change', function() {
+		update_textarea_length(input_id, output_id, limit);
+	});
+
+	input_element.addEventListener('input', function() {
+		update_textarea_length(input_id, output_id, limit);
+	});
+
+	input_element.addEventListener('cut', function() {
+		update_textarea_length(input_id, output_id, limit);
+	});
+
+	input_element.addEventListener('paste', function() {
+		update_textarea_length(input_id, output_id, limit);
+	});
+
+	update_textarea_length(input_id, output_id, limit);
+}
 

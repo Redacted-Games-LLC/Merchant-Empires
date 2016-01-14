@@ -312,6 +312,12 @@
 	// Cannot activate a gold key if there are this many days active already.
 	define('KEY_ACTIVATION_LIMIT', 93);
 
+	// Maximum length of a message
+	define('MAXIMUM_MESSAGE_LENGTH', 512);
+
+	// Maximum length of a subspace broadcast
+	define('MAXIMUM_SUBSPACE_MESSAGE_LENGTH', 128);
+
 	// Subspace messages will expire after this amount of time.
 	define('SUBSPACE_MESSAGE_EXPIRY', 600);
 
@@ -326,6 +332,12 @@
 
 	// Alliance messages cost this amount of turns per member
 	define('ALLIANCE_MESSAGE_TURN_COST', 5);
+
+	// Turn cost to hide or delete a message
+	define('MSG_HIDE_DELETE_TURN_COST', 1);
+
+	// Turn cost to toggle the ignore flag for player messages.
+	define('PLAYER_MESSAGE_IGNORE_COST', 5);
 
 	// This is the default ignore length
 	define('IGNORE_DURATION', 1814400);

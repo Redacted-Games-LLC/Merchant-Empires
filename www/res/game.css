@@ -349,6 +349,14 @@ div.viewport_dss_background {
 	float: right;
 }
 
+.align_left {
+	text-align: left;
+}
+
+.align_right {
+	text-align: right;
+}
+
 .clear {
 	clear: both;
 }
@@ -1692,47 +1700,62 @@ div.message_ignored {
 }
 
 div.official_message {
-	background-color: #033;
+	background-color: #303;
 	width: 100%;
-	border: solid 2px #090;
+	border: solid 2px #909;
 	padding: 0px;
 	margin: 4px;
 }
 
 div.official_message_head {
-	background-color: #040;
+	background-color: #404;
 	padding: 4px 8px;
 	margin: 0px;
 }
 
 div.message {
+	background-color: #333;
 	width: 100%;
-	border: solid 1px #444;
+	border: solid 1px #999;
 	padding: 0px;
 	margin: 4px;
 }
 
 div.message_head {
-	background-color: #333;
+	background-color: #444;
 	padding: 4px 8px;
 	margin: 0px;
 }
 
 div.subspace_message {
-	background-color: #330;
+	background-color: #033;
 	width: 100%;
-	border: solid 1px #990;
+	border: solid 1px #099;
 	padding: 0px;
 	margin: 4px;
 }
 
 div.subspace_message_head {
-	background-color: #660;
+	background-color: #044;
 	padding: 4px 8px;
 	margin: 0px;
 }
 
-div.alliance_message {
+div.hostile_alliance_message {
+	background-color: #300;
+	width: 100%;
+	border: solid 1px #900;
+	padding: 0px;
+	margin: 4px;
+}
+
+div.hostile_alliance_message_head {
+	background-color: #400;
+	padding: 4px 8px;
+	margin: 0px;
+}
+
+div.friendly_alliance_message {
 	background-color: #003;
 	width: 100%;
 	border: solid 1px #009;
@@ -1740,22 +1763,23 @@ div.alliance_message {
 	margin: 4px;
 }
 
-div.alliance_message_head {
+div.friendly_alliance_message_head {
 	background-color: #004;
 	padding: 4px 8px;
 	margin: 0px;
 }
 
+
 div.battle_message {
-	background-color: #300;
+	background-color: #330;
 	width: 100%;
-	border: dashed 2px #900;
+	border: dashed 2px #990;
 	padding: 0px;
 	margin: 4px;
 }
 
 div.battle_message_head {
-	background-color: #500;
+	background-color: #440;
 	padding: 4px 8px;
 	margin: 0px;
 }
@@ -1813,4 +1837,9 @@ a.pagination_current_link {
 	border: dotted 2px white;
 	font-size: 120%;
 	padding: 3px 8px;
+}
+
+.characters_left {
+	font-size: 85%;
+	color: cyan;
 }

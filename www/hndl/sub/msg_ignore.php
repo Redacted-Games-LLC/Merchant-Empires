@@ -29,6 +29,11 @@
 	$return_vars['pp'] = $_REQUEST['pp'];
 	
 	do { // Dummy Loop
+
+		if (PLAYER_MESSAGE_IGNORE_COST > $spacegame['player']['turns']) {
+			$return_codes[] = 1018;
+			break;
+		}
 		
 		if (!isset($_REQUEST['player']) || !validate_playername($_REQUEST['player'])) {
 			$return_codes[] = 1011;
@@ -50,7 +55,30 @@
 			break;
 		}
 
+		$turn_cost = PLAYER_MESSAGE_IGNORE_COST;
 		$player_id = PLAYER_ID;
+
+		// Remove some turns
+		if (!($st = $db->get_db()->prepare('update players set turns = turns - ? where record_id = ?'))) {
+			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			$return_codes[] = 1006;
+			break;
+		}
+		
+		$st->bind_param("ii", $turn_cost, $player_id);
+		
+		if (!$st->execute()) {
+			$return_codes[] = 1006;
+			error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
+			break;
+		}
+
+		if ($db->get_db()->affected_rows <= 0) {
+			$return_codes[] = 1135;
+			break;
+		}
+
+
 		$enabled = false;
 
 		$rs = $db->get_db()->query("select * from message_ignore where player = '$player_id' and `ignore` = '$player'");

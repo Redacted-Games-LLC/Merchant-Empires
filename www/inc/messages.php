@@ -49,25 +49,33 @@
 		}
 
 
-
-
-		
 		$spacegame['messages'] = array();
 		$spacegame['message_count'] = 0;
 
 		$spacegame['message_senders'] = array();
 		$spacegame['message_sender_count'] = 0;
 
+		$spacegame['message_receivers'] = array();
+		$spacegame['message_receivers_count'] = 0;
+			
 
 		$db = isset($db) ? $db : new DB;
 
-		if (defined('HIDDEN_MESSAGES')) {
-			$rs = $db->get_db()->query("select SQL_CALC_FOUND_ROWS messages.record_id as message_id, messages.posted, messages.message, messages.type, messages.sender, message_targets.record_id, message_targets.`read` from messages, message_targets where messages.record_id = message_targets.message and message_targets.target = '". PLAYER_ID ."' order by messages.posted desc limit ". (($spacegame['page_number'] - 1) * $spacegame['per_page']) . "," . $spacegame['per_page']);
+		if (defined('SENT_MSG_TYPE')) {
+			// Sent folder
+
+			$rs = $db->get_db()->query("select SQL_CALC_FOUND_ROWS messages.record_id as message_id, messages.posted, messages.message, messages.type, messages.id, message_targets.record_id from messages, message_targets where messages.record_id = message_targets.message and messages.sender = '". PLAYER_ID ."' and messages.`type` = '". SENT_MSG_TYPE ."' order by messages.posted desc limit ". (($spacegame['page_number'] - 1) * $spacegame['per_page']) . "," . $spacegame['per_page']);	
 		}
 		else {
-			$rs = $db->get_db()->query("select SQL_CALC_FOUND_ROWS messages.record_id as message_id, messages.posted, messages.message, messages.type, messages.sender, message_targets.record_id, message_targets.`read` from messages, message_targets where message_targets.`read` <= 0 and messages.record_id = message_targets.message and message_targets.target = '". PLAYER_ID ."' order by messages.posted desc limit ". (($spacegame['page_number'] - 1) * $spacegame['per_page']) . "," . $spacegame['per_page']);	
+			// Inbox
+
+			if (defined('HIDDEN_MESSAGES')) {
+				$rs = $db->get_db()->query("select SQL_CALC_FOUND_ROWS messages.record_id as message_id, messages.posted, messages.message, messages.type, messages.id, messages.sender, message_targets.record_id, message_targets.`read` from messages, message_targets where messages.record_id = message_targets.message and message_targets.target = '". PLAYER_ID ."' order by messages.posted desc limit ". (($spacegame['page_number'] - 1) * $spacegame['per_page']) . "," . $spacegame['per_page']);
+			}
+			else {
+				$rs = $db->get_db()->query("select SQL_CALC_FOUND_ROWS messages.record_id as message_id, messages.posted, messages.message, messages.type, messages.id, messages.sender, message_targets.record_id, message_targets.`read` from messages, message_targets where message_targets.`read` <= 0 and messages.record_id = message_targets.message and message_targets.target = '". PLAYER_ID ."' order by messages.posted desc limit ". (($spacegame['page_number'] - 1) * $spacegame['per_page']) . "," . $spacegame['per_page']);	
+			}
 		}
-		
 
 		$total_count = $db->found_rows();
 
@@ -78,14 +86,56 @@
 			$spacegame['messages'][$row['record_id']] = $row;
 			$spacegame['message_count']++;
 
-			if ($row['sender'] > 0) {
-				$spacegame['message_senders'][$row['sender']] = null;
-				$spacegame['message_sender_count']++;
+			if (defined('SENT_MSG_TYPE')) {
+				if ($row['id'] > 0) {
+					$spacegame['message_receivers'][$row['id']] = null;
+					$spacegame['message_receivers_count']++;
+				}
 			}
+			else {
+				if ($row['sender'] > 0) {
+					$spacegame['message_senders'][$row['sender']] = null;
+					$spacegame['message_sender_count']++;
+				}
+			}
+			
 		}
 
 		
-		if ($spacegame['message_sender_count'] > 0) {
+		if (defined('SENT_MSG_TYPE') && $spacegame['message_receivers_count'] > 0) {
+
+			switch (SENT_MSG_TYPE) {
+				case 1: // Player message
+					$receivers = array_keys($spacegame['message_receivers']);
+
+					$rs = $db->get_db()->query("select record_id, caption from players where record_id in (" . implode(',', $receivers) . ")");
+
+					$rs->data_seek(0);
+
+					while ($row = $rs->fetch_assoc()) {
+						$spacegame['message_receivers'][$row['record_id']] = $row['caption'];
+					}	
+
+					break;
+
+
+				case 2: // Alliance message
+					$receivers = array_keys($spacegame['message_receivers']);
+
+					$rs = $db->get_db()->query("select record_id, caption from alliances where record_id in (" . implode(',', $receivers) . ")");
+
+					$rs->data_seek(0);
+
+					while ($row = $rs->fetch_assoc()) {
+						$spacegame['message_receivers'][$row['record_id']] = $row['caption'];
+					}	
+
+					break;
+			}
+
+		}
+		else if ($spacegame['message_sender_count'] > 0) {
+
 			$senders = array_keys($spacegame['message_senders']);
 
 			$rs = $db->get_db()->query("select record_id, caption from players where record_id in (" . implode(',', $senders) . ")");

@@ -22,6 +22,10 @@
  */
 
 	include_once('tmpl/common.php');
+
+	if (isset($_REQUEST['all'])) {
+		define('HIDDEN_MESSAGES', true);
+	}
 	include_once('inc/messages.php');
 
 	define('LOAD_IGNORE_CAPTIONS', true);
@@ -37,118 +41,24 @@
 			echo 'You have no messages in your inbox.';
 		}
 		else {
+			echo 'This page shows you the messages you have received. You can hide or ';
+			echo 'delete individual messages for ' . MSG_HIDE_DELETE_TURN_COST . ' turn';
+			echo (MSG_HIDE_DELETE_TURN_COST == 1 ? ', ' : 's, ');
+			echo 'or you can ignore all messages from a player for ' . PLAYER_MESSAGE_IGNORE_COST;
+			echo ' turn' . (PLAYER_MESSAGE_IGNORE_COST == 1 ? '.' : 's.');
 
-
-			$ignore_counter = 0;
-
-			foreach ($spacegame['messages'] as $record_id => $message) {
-
-				if ($message['type'] != 4 && isset($spacegame['ignore_index'][$message['sender']])) {
-					$ignore_counter += 1;
-					continue;
-				}
-
-				if ($ignore_counter > 0) {
-
-					echo '<div class="message_ignored">';
-					echo $ignore_counter . ' message' . ($ignore_counter == 1 ? '' : 's');
-					echo ' ignored.';
-					echo '</div>';
-
-					$ignore_counter = 0;
-				}
-
-				$msg_type = 'Unknown Message';
-				$msg_box = 'message';
-				$msg_head = 'message_head';
-				
-
-				switch ($message['type']) {
-					case 0:
-						$msg_type = 'Official Broadcast';
-						$msg_box = 'official_message';
-						$msg_head = 'official_message_head';
-						break;
-
-					case 1:
-						$msg_type = 'Message';
-						break;
-
-					case 2:
-						$msg_type = 'Alliance message';
-						$msg_box = 'alliance_message';
-						$msg_head = 'alliance_message_head';
-						break;
-
-					case 3:
-						$msg_type = 'Subspace broadcast';
-						$msg_box = 'subspace_message';
-						$msg_head = 'subspace_message_head';
-						break;
-
-					case 4:
-						$msg_type = 'Battle report';
-						$msg_box = 'battle_message';
-						$msg_head = 'battle_message_head';
-						break;
-
-				}
-
-
-				echo '<div class="' . $msg_box . '">';
-					echo '<div class="'. $msg_head .'">';
-						echo '<div class="message_actions">';
-
-							if ($message['sender'] > 0) {
-								echo '<a href="message.php?page=player&amp;name='. $spacegame['message_senders'][$message['sender']] . '">';
-								echo 'Reply';
-								echo '</a>';
-								echo '&nbsp;&nbsp;&nbsp;&nbsp;';
-							}
-
-							echo '<a href="handler.php?task=message&amp;subtask=hide&amp;message='. $message['message_id'] .'&amp;p='. $spacegame['page_number'] .'&amp;pp='. $spacegame['per_page'] .'">Hide</a>';
-							echo '&nbsp;&nbsp;&nbsp;&nbsp;';
-							echo '<a href="handler.php?task=message&amp;subtask=delete&amp;message='. $message['message_id'] .'&amp;p='. $spacegame['page_number'] .'&amp;pp='. $spacegame['per_page'] .'">Delete</a>';
-
-							if ($message['sender'] > 0) {
-								echo '&nbsp;&nbsp;&nbsp;&nbsp;';
-								echo '<a href="handler.php?task=message&amp;subtask=ignore&amp;player='. $spacegame['message_senders'][$message['sender']] .'&amp;p='. $spacegame['page_number'] .'&amp;pp='. $spacegame['per_page'] .'">Ignore</a>';
-							}
-							
-						echo '</div>';
-						
-						echo $msg_type;
-
-						if ($message['sender'] > 0) {
-							echo ' from ';
-							echo '<a href="alliance.php?page=player&amp;player_id=' . $message['sender'] . '">';
-							echo $spacegame['message_senders'][$message['sender']];
-							echo '</a>';
-						}
-
-					echo '</div>';
-					echo '<div class="message_text">';
-						echo htmlentities($message['message']);
-					echo '</div>';
-					echo '<div class="message_posted">';
-						echo 'Sent '. date(DATE_RFC850, $message['posted']);
-					echo '</div>';
-					
-				echo '</div>';
+			if (defined('HIDDEN_MESSAGES')) {
+				echo '<p>Showing all messages. ';
+				echo '<a href="message.php?page=inbox">Click here</a>';
+				echo ' to conceal hidden messages.</p>';
+			}
+			else {
+				echo '<p>Concealing hidden messages. ';
+				echo '<a href="message.php?page=inbox&amp;all=1">Click here</a>';
+				echo ' to show all messages.</p>';
 			}
 
-			if ($ignore_counter > 0) {
-
-				echo '<div class="message_ignored">';
-				echo $ignore_counter . ' message' . ($ignore_counter == 1 ? '' : 's');
-				echo ' ignored.';
-				echo '</div>';
-			}
-
-			echo '<div id="pagination">';
-			echo '<br clear="all" />';
-			echo '</div>';
-			echo '<script type="text/Javascript">load_pagination('. $spacegame['page_number'] .', '. $spacegame['max_pages'] .',"message.php?page=inbox&pp='. $spacegame['per_page'] .'&")</script>';
+			include_once('tmpl/msg/msg.php');
 		}
 
 	?>
@@ -165,7 +75,9 @@
 
 		}
 		else {
-			echo 'Click on the player name to remove them from the ignore list.';
+			echo 'Click on the player name to remove them from the ignore list. This action ';
+			echo 'will cost ' . MSG_HIDE_DELETE_TURN_COST . ' turn';
+			echo (MSG_HIDE_DELETE_TURN_COST == 1 ? '. ' : 's. ');
 			echo '<br /><br />';
 
 			echo '<div class="ingore_menu">';
