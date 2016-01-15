@@ -26,28 +26,11 @@
 
 	do { // Dummy loop
 
-		if (isset($_GET['p']) && is_numeric($_GET['p']) && $_GET['p'] > 0) {
-			$spacegame['page_number'] = $_GET['p'];
-		}
-		else {
+		include_once('inc/pagination.php');
+
+		if ($spacegame['page_number'] <= 0) {
 			$spacegame['page_number'] = 1;
 		}
-
-		if (isset($_GET['pp']) && is_numeric($_GET['pp']) && $_GET['pp'] > 0) {
-			$spacegame['per_page'] = $_GET['pp'];
-
-			if ($spacegame['per_page'] < MIN_PER_PAGE) {
-				$spacegame['per_page'] = MIN_PER_PAGE;
-			}
-			
-			if ($spacegame['per_page'] > MAX_PER_PAGE) {
-				$spacegame['per_page'] = MAX_PER_PAGE;
-			}
-		}
-		else {
-			$spacegame['per_page'] = ceil((MAX_PER_PAGE - MIN_PER_PAGE) / 2);
-		}
-
 
 		$spacegame['messages'] = array();
 		$spacegame['message_count'] = 0;
@@ -73,7 +56,7 @@
 				$rs = $db->get_db()->query("select SQL_CALC_FOUND_ROWS messages.record_id as message_id, messages.posted, messages.message, messages.type, messages.id, messages.sender, message_targets.record_id, message_targets.`read` from messages, message_targets where messages.record_id = message_targets.message and message_targets.target = '". PLAYER_ID ."' order by messages.posted desc limit ". (($spacegame['page_number'] - 1) * $spacegame['per_page']) . "," . $spacegame['per_page']);
 			}
 			else {
-				$rs = $db->get_db()->query("select SQL_CALC_FOUND_ROWS messages.record_id as message_id, messages.posted, messages.message, messages.type, messages.id, messages.sender, message_targets.record_id, message_targets.`read` from messages, message_targets where message_targets.`read` <= 0 and messages.record_id = message_targets.message and message_targets.target = '". PLAYER_ID ."' order by messages.posted desc limit ". (($spacegame['page_number'] - 1) * $spacegame['per_page']) . "," . $spacegame['per_page']);	
+				$rs = $db->get_db()->query("select SQL_CALC_FOUND_ROWS messages.record_id as message_id, messages.posted, messages.message, messages.type, messages.id, messages.sender, message_targets.record_id, message_targets.`read` from messages, message_targets where message_targets.`read` <= 0 and messages.record_id = message_targets.message and message_targets.target = '". PLAYER_ID ."' order by messages.posted desc limit ". (($spacegame['page_number']) * $spacegame['per_page']) . "," . $spacegame['per_page']);	
 			}
 		}
 

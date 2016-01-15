@@ -39,7 +39,7 @@
 			break;
 		}
 
-	if (!isset($_REQUEST['message'])) {
+		if (!isset($_REQUEST['message'])) {
 			$return_codes[] = 1136;
 			break;
 		}

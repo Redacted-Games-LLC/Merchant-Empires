@@ -24,7 +24,10 @@
 	include_once('tmpl/common.php');
 	
 
-
+	if (!get_user_field(USER_ID, 'admin', 'gold')) {
+		header('Location: viewport.php?rc=1030');
+		die();
+	}
 
 ?>
 	<div class="header2">Gold Key Administration</div>

@@ -40,6 +40,9 @@
 			break;
 		}
 
+
+		$db = isset($db) ? $db : new DB;
+
 		$turn_cost = MSG_HIDE_DELETE_TURN_COST;
 		$player_id = PLAYER_ID;
 
@@ -65,8 +68,6 @@
 
 		$message = $_REQUEST['message'];
 		$read = 0;
-
-		$db = isset($db) ? $db : new DB;
 
 		$rs = $db->get_db()->query("select * from message_targets where target = '$player_id' and message = '$message'");
 		

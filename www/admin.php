@@ -28,7 +28,7 @@
 		die();
 	}
 	
-	if (!get_user_field('admin')) {
+	if (!get_user_field(USER_ID, 'admin')) {
 		if (PLAYER_ID <= 0) {
 			header('Location: select_player.php?rc=1030');
 		}
@@ -39,7 +39,7 @@
 	}
 
 	function get_admin_link($page, $caption, $access) {
-		if (get_user_field('admin', $access)) {
+		if (get_user_field(USER_ID, 'admin', $access)) {
 			echo "<a href='admin.php?page={$page}'>{$caption}</a>";
 		}
 		else {

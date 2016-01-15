@@ -189,10 +189,8 @@
 		return md5($_SERVER['REMOTE_ADDR'] . $input . GLOBAL_SALT);
 	}
 	
-	
-	
 	function validate_username($username) {
-		return preg_match('/^[a-zA-Z0-9]{2,16}$/', $username) > 0;
+		return preg_match('/^[a-zA-Z0-9_]{2,16}$/', $username) > 0;
 	}
 
 	function validate_password($password) {
@@ -205,7 +203,7 @@
 	}
 	
 	function validate_playername($playername) {
-		return preg_match('/^[a-zA-Z0-9]{2,12}$/', $playername) > 0;
+		return preg_match('/^[a-zA-Z0-9_]{2,12}$/', $playername) > 0;
 	}
 	
 	function validate_alliancename($alliancename) {
@@ -215,8 +213,22 @@
 	function validate_key($key) {
 		return preg_match('/[-a-z0-9]{'.MINIMUM_KEY_LENGTH.','.MAXIMUM_KEY_LENGTH.'}/i', $key) > 0;
 	}
+
+	function validate_groupname($group) {
+		return preg_match('/^[a-zA-Z0-9_]{1,16}$/', $group) > 0;
+	}
+
+	function validate_keyname($key) {
+		return preg_match('/^[a-zA-Z0-9_]{1,16}$/', $key) > 0;
+	}
+
+	function validate_value($value) {
+		$len = strlen($value);
+
+		return $len > 0 && $len <= 64;
+	}
 	
-	function get_user_field($group, $key = null, $default = null, $db = null) {
+	function get_user_field($user, $group = null, $key = null, $default = null, $db = null) {
 
 		static $user_fields = null;
 
@@ -225,12 +237,16 @@
 
 			$db = $db == null ? new DB : $db;
 
-			$rs = $db->get_db()->query("select * from user_fields where user = '". USER_ID ."'");
+			$rs = $db->get_db()->query("select * from user_fields where user = '". $user ."'");
 
 			$rs->data_seek(0);
 			while ($row = $rs->fetch_assoc()) {
-				$user_fields[$row['group']][$row['key']] = $row['value'];
+				$user_fields[$user][$row['group']][$row['key']] = $row['value'];
 			}
+		}
+
+		if ($group == null) {
+			return $user_fields[$user];
 		}
 
 		if (preg_match('/^[a-zA-Z0-9]{1,16}$/', $group) <= 0) {
@@ -238,50 +254,64 @@
 		}
 
 		if ($key == null) {
-			return isset($user_fields[$group]);
+			return isset($user_fields[$user][$group]);
 		}
 
 		if (preg_match('/^[a-zA-Z0-9]{1,16}$/', $key) <= 0) {
 			return false;
 		}
 		
-		if (!isset($user_fields[$group][$key])) {
+		if (!isset($user_fields[$user][$group][$key])) {
 			return $default;	
 		}
 		
-		return $user_fields[$group][$key];
+		return $user_fields[$user][$group][$key];
 	}
 	
 	
-	function set_user_field($group, $key = null, $value = null) {
+	function set_user_field($user, $group, $key, $value = null) {
 
 		global $db;
 		$db = $db == null ? new DB : $db;
 
 		if (preg_match('/^[a-zA-Z0-9]{1,16}$/', $group) <= 0) {
-			error_log(__FILE__ . ':' . __LINE__ . ' ');
 			return false;
 		}
 
 		if (preg_match('/^[a-zA-Z0-9]{1,16}$/', $key) <= 0) {
 			return false;
 		}
-		
-		if (!($st = $db->get_db()->prepare("insert into user_fields (group, key, value) values (?,?,?)"))) {
-			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
-			$return_codes[] = 1006;
-			return false;
+	
+		if ($value == null) {
+
+			if (!($st = $db->get_db()->prepare("delete from user_fields where `user` = ? and `group` = ? and `key` = ?"))) {
+				error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+				return false;
+			}
+
+			$st->bind_param("iss", $user, $group, $key);
+			
+			if (!$st->execute()) {
+				error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
+				return false;
+			}
+		}
+		else {
+
+			if (!($st = $db->get_db()->prepare("insert into user_fields (`user`, `group`, `key`, `value`) values (?, ?,?,?)"))) {
+				error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+				return false;
+			}
+
+			$st->bind_param("isss", $user, $group, $key, $value);
+			
+			if (!$st->execute()) {
+				error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
+				return false;
+			}
 		}
 
-		$st->bind_param("sss", $group, $key, $value);
-		
-		if (!$st->execute()) {
-			error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
-			$return_codes[] = 1006;
-			return false;
-		}
-
-		return true;
+		return $db->get_db()->affected_rows > 0;
 	}
 
 

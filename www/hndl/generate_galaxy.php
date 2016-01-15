@@ -27,7 +27,7 @@
 	$return_page = 'admin';
 	$return_vars['page'] = 'system';
 
-	if (!get_user_field('admin', 'system')) {
+	if (!get_user_field(USER_ID, 'admin', 'system')) {
 		header('Location: viewport.php?rc=1030');
 		die();
 	}
@@ -40,7 +40,7 @@
 			$seed = $_REQUEST['seed'];
 		}
 
-		set_user_field('admin', 'system_seed', $seed);
+		set_user_field(USER_ID, 'admin', 'system_seed', $seed);
 
 		$db = isset($db) ? $db : new DB;
 

@@ -234,11 +234,12 @@ function unlock_validation() {
 function drawButton(id, label, action, classes) {
 	
 	document.write('<input id="' + id + '" type="image" ');
+	document.write('name="btn_' + label + '" ')
 	document.write('class="form_button ' + classes + '" ')
 	document.write('src="res/btn/' + label + '.png" ');
 	document.write('onmousedown="document.getElementById(' + "'" + id + "').src='res/btn/" + label + "_d.png';" + '"' );
 	document.write('onmouseup="document.getElementById(' + "'" + id + "').src='res/btn/" + label + ".png';" + '"' );
-	document.write('onclick="return ' + action + '" />');
+	document.write('onclick="return ' + action + ';" />');
 	
 }
 

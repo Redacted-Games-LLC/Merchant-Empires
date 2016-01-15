@@ -25,12 +25,7 @@
 
 	do { // Dummy loop
 
-		if (isset($_GET['p']) && is_numeric($_GET['p']) && $_GET['p'] > 0) {
-			$spacegame['page_number'] = $_GET['p'];
-		}
-		else {
-			$spacegame['page_number'] = 0;
-		}
+		include_once('inc/pagination.php');
 
 	
 		$db = isset($db) ? $db : new DB;

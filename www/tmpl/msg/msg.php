@@ -183,7 +183,7 @@
 			echo 'all=1&';
 		}
 
-		echo 'pp='. $spacegame['per_page'] .'&"';
+		echo 'pp='. $spacegame['per_page'] .'"';
 		echo ')</script>';
 
 	} while (false);

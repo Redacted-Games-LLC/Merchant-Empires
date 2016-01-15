@@ -23,7 +23,10 @@
 
 	include_once('inc/page.php');
 	
-
+	if (!get_user_field(USER_ID, 'admin', 'gold')) {
+		$return_codes[] = 1030;
+		break;
+	}
 	
 
 	do { // Dummy loop

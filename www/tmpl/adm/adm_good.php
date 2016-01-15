@@ -22,6 +22,12 @@
  */
 
 	include_once('tmpl/common.php');
+
+	if (!get_user_field(USER_ID, 'admin', 'goods')) {
+		header('Location: viewport.php?rc=1030');
+		die();
+	}
+
 	include_once('inc/goods.php');
 	include_once('inc/place_types.php');
 

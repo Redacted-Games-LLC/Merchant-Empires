@@ -40,6 +40,8 @@
 			break;
 		}
 
+		$db = isset($db) ? $db : new DB;
+
 		$turn_cost = MSG_HIDE_DELETE_TURN_COST;
 		$player_id = PLAYER_ID;
 
@@ -65,8 +67,6 @@
 
 		$message = $_REQUEST['message'];
 		
-		$db = isset($db) ? $db : new DB;
-
 		if (!($st = $db->get_db()->prepare("delete from message_targets where `target` = ? and message = ?"))) {
 			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			$return_codes[] = 1006;

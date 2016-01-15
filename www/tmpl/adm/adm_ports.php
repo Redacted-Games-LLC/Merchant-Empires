@@ -1,6 +1,6 @@
 <?php
 /**
- * 
+ * Administration page for ports
  *
  * @package [Redacted]Me
  * ---------------------------------------------------------------------------
@@ -22,23 +22,15 @@
  */
 
 	include_once('tmpl/common.php');
+
+	if (!get_user_field(USER_ID, 'admin', 'ports')) {
+		header('Location: viewport.php?rc=1030');
+		die();
+	}
 ?>
 <div class="header2">Port Administration</div>
 <div class="docs_text">
 	You can manipulate existing ports or create new ones using this tool.
 </div>
-<hr />
-<div class="header3">Reset All Ports</div>
-<div class="docs_text">
-	If you hit this button you will remove all ports from the galaxy. New
-	ports will regenerate in protected systems. If you aren't doing this
-	because of a galaxy reset then please consider how pissed off all of
-	the players are going to be.
-</div>
-<div class="docs_text">
-	<form action="handler.php" method="post">
-		<script type="text/javascript">drawButton('reset_ports', 'reset', 'validate_reset()')</script>
-		<input type="hidden" name="task" value="reset_ports" />
-	</form>
-</div>
+
 

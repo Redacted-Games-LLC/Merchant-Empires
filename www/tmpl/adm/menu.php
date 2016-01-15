@@ -27,9 +27,11 @@
 	<div class="header4"><a href="admin.php?page=main">Game Administration</a></div>
 	<hr noshade="noshade" size="1" />
 	<ul class="docs_menu">
+		<li class="docs_menu"><?php echo get_admin_link('users', 'User Editor', 'users'); ?></li>
 		<li class="docs_menu"><?php echo get_admin_link('system', 'System Editor', 'system'); ?></li>
-		<li class="docs_menu"><?php echo get_admin_link('ports', 'Port Editor', 'port'); ?></li>
-		<li class="docs_menu"><?php echo get_admin_link('goods', 'Goods Editor', 'port'); ?></li>
+		<li class="docs_menu"><?php echo get_admin_link('ports', 'Port Editor', 'ports'); ?></li>
+		<li class="docs_menu"><?php echo get_admin_link('goods', 'Goods Editor', 'goods'); ?></li>
 		<li class="docs_menu"><?php echo get_admin_link('gold', 'Gold Keys', 'gold'); ?></li>
+		<li class="docs_menu"><?php echo get_admin_link('news', 'News Desk', 'news'); ?></li>
 	</ul>
 

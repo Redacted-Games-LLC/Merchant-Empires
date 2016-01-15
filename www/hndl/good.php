@@ -1,6 +1,6 @@
 <?php
 /**
- * 
+ * Handles administering goods
  *
  * @package [Redacted]Me
  * ---------------------------------------------------------------------------
@@ -28,7 +28,7 @@
 		die();
 	}
 	
-	if (!get_user_field('admin', 'port')) {
+	if (!get_user_field(USER_ID, 'admin', 'goods')) {
 		header('Location: viewport.php?rc=1030');
 		die();
 	}

@@ -28,7 +28,7 @@
 		die();
 	}
 	
-	if (!get_user_field('admin', 'port')) {
+	if (!get_user_field(USER_ID, 'admin', 'ports')) {
 		header('Location: viewport.php?rc=1030');
 		die();
 	}

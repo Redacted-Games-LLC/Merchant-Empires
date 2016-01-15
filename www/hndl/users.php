@@ -1,6 +1,6 @@
 <?php
 /**
- * Entry page for administration actions.
+ * Handles user manipulation actions
  *
  * @package [Redacted]Me
  * ---------------------------------------------------------------------------
@@ -21,17 +21,42 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-	include_once('tmpl/common.php');
+	include_once('inc/page.php');
 
-	if (!get_user_field(USER_ID, 'admin')) {
-		header('Location: viewport.php?rc=1030');
-		die();
-	}
+	$return_page = 'admin';
+	$return_vars['page'] = 'users';	
+
+	do { // Dummy loop
+
+		if (!get_user_field(USER_ID, 'admin', 'users')) {
+			$return_codes[] = 1030;
+			break;
+		}
+
+
+		switch ($_REQUEST['subtask']) {
+
+			case 'field':
+
+				$sub_page = $_REQUEST['subtask'];
+				$return_vars['page'] = $sub_page;
+				
+				$sub_file = "hndl/sub/users_{$sub_page}.php";
+
+				if (!file_exists($sub_file)) {
+					$return_codes[] = 1041;
+					error_log(__FILE__ . '::' . __LINE__ . ' Valid subtask does not have an include.');
+					break;
+				}
+				
+				include_once($sub_file);
+				break;
+
+			default:
+				$return_codes[] = 1041;
+				break;
+ 		}
+	} while (false);
+
+
 ?>
-<div class="header2">Game Administration</div>
-<div class="docs_text">
-	Select a page on the left.
-</div>
-<div class="docs_text">
-	All administration actions are logged.
-</div>

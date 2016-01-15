@@ -24,7 +24,7 @@
 	include_once('inc/page.php');
 	include_once('inc/galaxy.php');
 	
-	if (!get_user_field('admin', 'system')) {
+	if (!get_user_field(USER_ID, 'admin', 'system')) {
 		header('Location: viewport.php?rc=1030');
 		die();
 	}

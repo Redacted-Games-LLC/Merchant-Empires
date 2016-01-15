@@ -1,6 +1,6 @@
 <?php
 /**
- * Entry page for administration actions.
+ * Common code for pagination stuff
  *
  * @package [Redacted]Me
  * ---------------------------------------------------------------------------
@@ -21,17 +21,38 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-	include_once('tmpl/common.php');
+	include_once('hndl/common.php');
+	
+	do { // Dummy Loop
 
-	if (!get_user_field(USER_ID, 'admin')) {
-		header('Location: viewport.php?rc=1030');
-		die();
-	}
+		if (isset($_GET['p']) && is_numeric($_GET['p']) && $_GET['p'] > 0) {
+			$spacegame['page_number'] = $_GET['p'];
+		}
+		else {
+			$spacegame['page_number'] = 0;
+		}
+
+		if (isset($_GET['pp']) && is_numeric($_GET['pp']) && $_GET['pp'] > 0) {
+			$spacegame['per_page'] = $_GET['pp'];
+
+			if ($spacegame['per_page'] < MIN_PER_PAGE) {
+				$spacegame['per_page'] = MIN_PER_PAGE;
+			}
+			
+			if ($spacegame['per_page'] > MAX_PER_PAGE) {
+				$spacegame['per_page'] = MAX_PER_PAGE;
+			}
+		}
+		else {
+			$spacegame['per_page'] = ceil((MAX_PER_PAGE - MIN_PER_PAGE) / 2);
+		}
+
+		
+		
+
+		
+	
+	} while (false);
+
+
 ?>
-<div class="header2">Game Administration</div>
-<div class="docs_text">
-	Select a page on the left.
-</div>
-<div class="docs_text">
-	All administration actions are logged.
-</div>
