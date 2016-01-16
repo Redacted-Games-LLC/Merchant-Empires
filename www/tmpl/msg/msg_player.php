@@ -38,8 +38,8 @@
 	Sends a message to a specific <a href="alliance.php?page=players">player</a> by name.	
 </div>
 <div class="docs_text">
-		<form action="handler.php" method="post">
-			<table class="message">
+	<form action="handler.php" method="post">
+		<table class="message">
 			<tr class="message">
 				<td class="message">Player:</td>
 				<td class="message"><input class="msg_form_input" type="text" name="player" value="<?php echo $name ?>" maxlength="24" size="24" /></td>

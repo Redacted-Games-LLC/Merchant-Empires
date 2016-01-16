@@ -33,9 +33,6 @@
 
 		$spacegame['players'] = array();
 		$spacegame['player_count'] = 0;
-		
-
-		$db = isset($db) ? $db : new DB;
 
 		if ($spacegame['page_number'] > 0) {
 			// All players

@@ -348,7 +348,24 @@
 	// Maximum amount of items per page where pagination is used
 	define('MAX_PER_PAGE', 20);
 
+	// News headline length limit
+	define('NEWS_HEADLINE_LIMIT', 48);
 
+	// News abstract length limit
+	define('NEWS_ABSTRACT_LIMIT', 128);
+
+	// News headline length limit
+	define('NEWS_ARTICLE_LIMIT', 65536);
+
+	// Allowed news abstract tags to use in strip_tags
+	define('ALLOWED_ABSTRACT_TAGS', '<font><img><a><span><s><big><strong><em><u>');
+
+	// Allowed news article tags to use in strip_tags
+	define('ALLOWED_ARTICLE_TAGS', '<h1><h2><h3><h4><h5><h6><font><img><li><ul><ol><br><a><td><tr><table><span><s><big><strong><em><u><p>');
 	
+	// When to archive news articles by default
+	define('DEFAULT_NEWS_ARCHIVE_TIME', 86400 * 14);
 
+	// When to expire news articles by default
+	define('DEFAULT_NEWS_EXPIRY_TIME', 86400 * 31);
 ?>

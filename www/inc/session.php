@@ -211,7 +211,7 @@
 	}
 
 	function validate_key($key) {
-		return preg_match('/[-a-z0-9]{'.MINIMUM_KEY_LENGTH.','.MAXIMUM_KEY_LENGTH.'}/i', $key) > 0;
+		return preg_match('/^[-a-z0-9]{'.MINIMUM_KEY_LENGTH.','.MAXIMUM_KEY_LENGTH.'}$/i', $key) > 0;
 	}
 
 	function validate_groupname($group) {

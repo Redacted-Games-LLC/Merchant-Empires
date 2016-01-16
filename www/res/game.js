@@ -1008,7 +1008,7 @@ function update_textarea_length(input_id, output_id, limit) {
 	var input_element = document.getElementById(input_id);
 	var output_element = document.getElementById(output_id);
 
-	output_element.innerHTML = (limit - input_element.value.length) + ' characters remaining';
+	output_element.innerHTML = (limit - input_element.value.length) + ' chars left';
 }
 
 function register_textarea_length_handlers(input_id, output_id, limit) {

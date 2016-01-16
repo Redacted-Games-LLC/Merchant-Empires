@@ -1,6 +1,6 @@
 <?php
 /**
- * 
+ * Master form handler for the game.
  *
  * @package [Redacted]Me
  * ---------------------------------------------------------------------------
@@ -33,8 +33,6 @@
 		else {
 			//TODO: Log malformed return link as fixit item.
 		}
-	} else {
-		// TODO: Log missing return link as a fixit item.
 	}
 
 	$return_codes = array();
@@ -51,6 +49,8 @@
 
 		if (!is_array($return_codes)) {
 			error_log(__FILE__ . '::' . __LINE__ . " Task {$task} malformed the return_codes array. Fix it!");
+			$return_codes = array($return_code);
+			$return_codes[] = 1162;
 		}
 	}
 	else {
@@ -58,9 +58,11 @@
 	}
 
 
+	if (!defined('CANCEL_REDIRECT')) {
+		$return_code_list = implode($return_codes, ',');
+		$return_var_list = http_build_query($return_vars);
+		header("Location: {$return_page}.php?rc={$return_code_list}&{$return_var_list}");
+	}
 	
-	$return_code_list = implode($return_codes, ',');
-	$return_var_list = http_build_query($return_vars);
-	header("Location: {$return_page}.php?rc={$return_code_list}&{$return_var_list}");
 	die();
 ?>

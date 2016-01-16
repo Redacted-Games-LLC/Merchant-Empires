@@ -1,6 +1,6 @@
 <?php
 /**
- * Entry template page for messaging
+ * Article page
  *
  * @package [Redacted]Me
  * ---------------------------------------------------------------------------
@@ -21,26 +21,21 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-	include_once('tmpl/common.php');
-	include_once('inc/news.php');
-
 ?>
-<div class="header2">Galaxy News</div>
-<div class="docs_text">
-	<?php
-
-		if ($spacegame['news']['article_count'] <= 0) {
-		
-			echo 'There are no articles to display.';
-
-		} else { 
-
-			foreach ($spacegame['news']['articles'] as $article) {
-				include('tmpl/news_article.php');
-			}
-		}
-
-	?>
+<div class="news <?php echo 'news_author' . $article['author']; ?>">
+	<div class="news_date">
+		<?php echo date(DATE_RFC850, $article['live']); ?><br />
+		<em>By: <strong><?php echo $spacegame['news']['authors'][$article['author']]; ?></strong></em>
+	</div>
+	<div class="news_headline">
+		<?php echo $article['headline']; ?>
+	</div>
+	<div class="news_abstract">
+		&nbsp;<br />
+		<?php echo $article['abstract']; ?>
+	</div>
+	<hr noshade="noshade" />
+	<div class="news_article">
+		<?php echo $article['article']; ?>
+	</div>
 </div>
-
-
