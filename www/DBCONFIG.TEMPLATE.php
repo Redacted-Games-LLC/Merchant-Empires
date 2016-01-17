@@ -33,7 +33,7 @@
 
 
 	// DELETE THE FOLLOWING LINE WHEN YOU HAVE FINISHED MAKING CHANGES.
-	die('I did not delete the line I was supposed to in DBCONFIG.TEMPLATE.php when done.');
+	die('I did not delete the line I was supposed to in DBCONFIG.php when done.');
 
 
 	define('DB_HOST', 'localhost');

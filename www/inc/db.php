@@ -40,10 +40,13 @@
 		private $db = null;
 		
 		function __construct() {
-			$db = new MySQLi(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
+			$db = @(new MySQLi(DB_HOST, DB_USER, DB_PASS, DB_NAME));
 			
 			if ($db->connect_errno) {
-				die('DB Construct: ' . $db->connect_errno . ' - ' . $db->connect_error);
+				error_log(__FILE__ . '::' . __LINE__ . 'Database connect error: ' . $db->connect_error);
+				header('Location: login.php?rc=1165');
+				die();
 			}
 			
 			$this->db = $db;

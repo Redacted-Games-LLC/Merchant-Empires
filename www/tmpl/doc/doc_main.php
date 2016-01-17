@@ -1,6 +1,6 @@
 <?php
 /**
- * 
+ * Main documentation page
  *
  * @package [Redacted]Me
  * ---------------------------------------------------------------------------
@@ -27,10 +27,21 @@
 	Welcome to Merchant Empires
 </div>
 <div class="docs_text">
-	The nostalgia lives on! I played Advanced Powers Merchant Empires for a few years and
-	worked with the development team. I wasn't the greatest asset to the team, but I did
-	enjoy what I was doing for the time. Here is my attempt at revitalizing that wonderful
-	browser game and releasing it as open source just as Bryan Brunton wanted it to be.
+	This is a space merchant game of war. The galaxy has been at war for a long time, so long that
+	our origins have been forgotten. Dozens of habitable planets filled with life, but no fossils,
+	only remains. We didn’t come from this place, we infested it. We don’t know when or how, we
+	only know war.
+</div>
+<div class="docs_text">
+	There are three powerful races of intelligent species in the galaxy called Mawlor, Xollian, and
+	Zyck’lirg, and they have been fighting each other hundreds of years. The Imperial Government
+	does nothing to intervene. Space flight is restricted to military ships only in all three zones.
+	Interplanetary trade is non-existent. People are quickly running out of stuff and getting desperate. 
+</div>
+<div class="docs_text">
+	Now restrictions on trade have been relaxed. Military ships have been authorized to establish
+	ports on any planet in the galaxy. Recruitment has skyrocketed. Some see it as a ruse to expand
+	the war, others wonder who is pulling the strings.
 </div>
 <div class="docs_text">
 	New players to [Redacted]ME head over to the <a href="docs.php?page=quick">Quick Start</a>

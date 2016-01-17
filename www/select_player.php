@@ -1,6 +1,6 @@
 <?php
 /**
- * 
+ * Allows a user to create and select players for the game
  *
  * @package [Redacted]Me
  * ---------------------------------------------------------------------------
@@ -60,7 +60,13 @@
 		
 		$rs = $db->get_db()->query("select * from select_player_list where user_id = '". USER_ID ."' limit " . MAX_PLAYERS_PER_USER);
 		
+		if (!$rs){
+			error_log(__FILE__ . '::' . __LINE__ . ' Error while accessing the select_player_list view. Try recreating it.');
+			die('<center>Player Selection is briefly unavailable.</center>');
+		}
+
 		$rs->data_seek(0);
+
 		while ($row = $rs->fetch_assoc()) {
 			$player_list[] = array('id' => $row['player_id'], 'caption' => $row['caption'], 'race' => $row['race']);
 			$player_count += 1;
