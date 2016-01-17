@@ -36,8 +36,21 @@
 	$tmpl['page_title'] = 'Login User';
 
 	include_once('tmpl/html_begin.php');
+
+
+
+
+	if (LOGIN_LOCKED) {
+		echo '<div class="login_locked">';
+
+		echo '<strong>Notice!</strong> Logins are currently disabled while the game is under ';
+		echo 'maintenance. Please try again shortly.';
+
+		echo '</div>';
+	}
 ?>
-	
+
+
 	<div id="login_form_box">
 		<form id="login_form" action="handler.php" method="post">
 			<div class="login_intro">
@@ -93,14 +106,13 @@
 			<div class="login_form_item">
 				&nbsp;
 				<div class="left_column login_form_label">
-					<label for="password1b">Password:</label>
+					<label for="password1b">Pass (6+ chrs):</label><br />
 				</div>
 				<div class="right_column">
 					<input id="password1b" name="password1" type="password" maxlength="16" size="20" />
 				</div>
 			</div>
 			
-
 			<div class="login_form_item">
 				&nbsp;
 				<div class="left_column login_form_label">

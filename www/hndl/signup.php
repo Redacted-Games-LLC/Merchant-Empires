@@ -1,6 +1,6 @@
 <?php
 /**
- * 
+ * Handles signing up a user for the game
  *
  * @package [Redacted]Me
  * ---------------------------------------------------------------------------
@@ -28,6 +28,11 @@
 	
 		
 	do { /* Dummy loop for "break" support. */
+
+		if (LOGIN_LOCKED) {
+			$return_codes[] = 1120;
+			break;
+		}
 		
 		$username = $_POST['username'];
 		$password1 = $_POST['password1'];
