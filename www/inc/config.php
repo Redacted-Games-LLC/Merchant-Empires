@@ -24,7 +24,7 @@
 	// This prevents anyone from logging into a game unless they have been
 	// granted admin or dev status. If you need to log everyone out at once
 	// then use admin tools in game
-	define('LOGIN_LOCKED', true);
+	define('LOGIN_LOCKED', false);
 
 	// Whether or not we are in development. This will reduce upgrades, build,
 	// and research times to make it easier to test the game.

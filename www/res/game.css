@@ -863,6 +863,14 @@ div.solar_collector {
 
 /* login.php */
 
+div.login_locked {
+	border: solid 2px white;
+	background-color: #333300;
+	margin: 32px 64px;
+	padding: 24px;
+	color: white;
+}
+
 div#login_form_box {
 	position: relative;
 	width: 640px;
@@ -1877,6 +1885,7 @@ div.user_list_item_caption {
 /* adm_news.php msg_main.php */
 
 .news {
+	width: 100%;
 	margin: 10px;
 	padding: 26px;
 	color: black;
