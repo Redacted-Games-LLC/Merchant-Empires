@@ -89,7 +89,7 @@
 		$starts = array();
 		$start_count = 0;
 
-		$rs = $db->get_db()->query("select places.x, places.y from places, place_types, systems where places.type = place_types.record_id and places.system = systems.record_id and place_types.caption = 'Ship Dealer' and Systems.race = " . $player_race);
+		$rs = $db->get_db()->query("select places.x, places.y from places, place_types, systems where places.type = place_types.record_id and places.system = systems.record_id and place_types.caption = 'Ship Dealer' and systems.race = " . $player_race);
 		
 		$rs->data_seek(0);
 		while ($row = $rs->fetch_assoc()) {
