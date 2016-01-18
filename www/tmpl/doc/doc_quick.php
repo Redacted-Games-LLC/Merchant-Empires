@@ -1,6 +1,6 @@
 <?php
 /**
- * 
+ * Quick start information for impatient players
  *
  * @package [Redacted]Me
  * ---------------------------------------------------------------------------
@@ -33,14 +33,29 @@
 <div class="docs_text">
 	This is a web browser game, so you play by clicking links. The server will
 	process your request and update your viewport. You don't need any plugins
-	or downloads, just a modern browser. For nostalgia the old click, process, redirect is intended and you might
-	get funky results if you use the back button.
+	or downloads, just a modern browser. For nostalgia the old click, process,
+	redirect is intended and you might get funky results if you use the back
+	button.
 </div>
 <div class="header3">Joining a Game</div>
 <div class="docs_text">
 	After signing up you can link up to 4 players with your account. How many
 	players you run will depend on the life commitments you have, but to start
 	out just make one, picking a name and <a href="docs.php?page=races">race</a>.
+	If in a hurry pick Zyck'lirg for early round advantage, Mawlor for late
+	round advantage, and Xollian for a balanced round. The current round began
+	<?php 
+
+		$round_so_far = ceil((PAGE_START_TIME - START_OF_ROUND) / 86400);
+		$round_left = ceil((END_OF_ROUND - PAGE_START_TIME) / 86400);
+
+		echo $round_so_far . ' day' . ($round_so_far == 1 ? '' : 's');
+		echo ' ago and will end ';
+		echo $round_left . ' day' . ($round_left == 1 ? '' : 's');
+		echo ' from now.';
+
+
+	?>
 </div>
 <div class="docs_text">
 	You will spawn in an escape pod with no scanner or access to ports. You must

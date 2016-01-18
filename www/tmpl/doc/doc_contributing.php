@@ -24,16 +24,30 @@
 	include_once('tmpl/common.php');
 ?>
 <div class="header2">Contributing</div>
-<div class="docs_text">	
-	Outside of <a href="docs.php?page=gold">donating money</a> there are a few things you
-	can do. Note that no contribution can confer any favoritism from [Redacted]Me Staff.
-</div>
-<div class="header2">Bug reports and fixes</div>
 <div class="docs_text">
-	If you discover a bug or potential exploit you can report it. If you are able to code
-	you can also submit a pull request at our <a href="https://github.com/Redacted-Games-LLC/Merchant-Empires">GitHub repository</a>.
+	Outside of <a href="docs.php?page=gold">donating money</a> there are a few things you
+	can do. Note that contributions cannot earn any favoritism from [Redacted]Me Staff.
 </div>
-<div class="header2">Images and Art</div>
+<div class="header3">What project are you contributing towards?</div>
+<div class="docs_text">
+	The Merchant Empires game consists of a fully functioning, open source engine for space
+	trade and combat, but it does not come with a complete ship, weps or goods list, those
+	are provided by the server host. Official games are hosted by [Redacted] Games, LLC using
+	custom ship, weps and goods. When contributing, it is important to distinguish which
+	project you are contributing towards.
+</div>
+<div class="docs_text">
+	If your contribution is open source, then it should be submitted in the form of a
+	pull request to the public
+	<a href="https://github.com/Redacted-Games-LLC/Merchant-Empires">GitHub repository</a>.
+</div>
+<div class="docs_text">
+	If your contribution is towards the commercial hosting variant of Merchant Empires, that is
+	you have an idea for a new ship, weapon, or good you can submit this via our
+	<a href="https://www.reddit.com/r/merchantempires" target="_blank">subreddit</a> for
+	community feedback.
+</div>
+<div class="header3">Images and Art</div>
 <div class="docs_text">
 	New artwork can be submitted via pull request. Include the image file and another text
 	file containing the commercial license or public domain release. Name it like so:
@@ -43,16 +57,11 @@
         replacedimage.png.license
 </pre>
 <div class="docs_text">
-	We'll favor pull requests which include adding your own line to the
-	<a href="docs.php?page=credits">Credits</a> page to save us the extra step, if we decide
-	to use your image.
+	If you want recognition then add a separate single commit with your own changes to the
+	<a href="docs.php?page=credits">Credits</a>. You get one line, but if you want to ref
+	the commit count or something without getting spammy it may not be out of question.
 </div>
-<div class="header2">New Goods and Ships</div>
-<div class="docs_text">
-	There are no goods and ships which come with the Merchant Empires open source release.
-	Goods and ships are added by the game hosts to make their own ME unique.
-</div>
-<div class="header2">Suggestions without Contributions</div>
+<div class="header3">Suggestions without Contributions</div>
 <div class="docs_text">
 	If you are unable to create art or code you can try pitching your idea on the
 	<a href="http://reddit.com/r/MerchantEmpires">subreddit</a> with the [Suggestion] tag to
