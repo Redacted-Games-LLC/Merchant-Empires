@@ -1,4 +1,3 @@
-/**
 
  NOTICE: Before you can start this game you need to set it up.
  
@@ -87,8 +86,4 @@
 
     9) You should be ready to make the game public and play!
 
- *
- *
- *
- */
  
