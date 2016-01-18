@@ -32,7 +32,7 @@
 <div class="docs_text">
 	<ul>
 		<li><a href="docs.php?page=mines">Mines</a></li>
-		<li><a href="docs.php?page=mines">Drones</a></li>
+		<li><a href="docs.php?page=drones">Drones</a></li>
 	</ul>
 </div>
 <div class="docs_text">

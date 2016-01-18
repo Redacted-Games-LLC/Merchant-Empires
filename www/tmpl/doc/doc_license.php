@@ -1,6 +1,6 @@
 <?php
 /**
- * 
+ * Information about the licensing of the open source version of the game.
  *
  * @package [Redacted]Me
  * ---------------------------------------------------------------------------
@@ -36,5 +36,5 @@
 	The following is the full text of the GNU GPLv3 License as it applies to this software:
 </div>
 <pre>
-	<?php include_once('LICENSE.txt'); ?>
+	<?php include_once('../LICENSE.txt'); ?>
 </pre>

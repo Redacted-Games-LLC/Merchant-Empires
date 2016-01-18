@@ -58,10 +58,10 @@
 		$player_list = array();
 		$player_count = 0;
 		
-		$rs = $db->get_db()->query("select * from select_player_list where user_id = '". USER_ID ."' limit " . MAX_PLAYERS_PER_USER);
+		$rs = $db->get_db()->query("select user as user_id, player as player_id, players.caption, races.caption as race from user_players, players, races where player = players.record_id and players.race = races.record_id and user = '". USER_ID ."' limit " . MAX_PLAYERS_PER_USER);
 		
 		if (!$rs){
-			error_log(__FILE__ . '::' . __LINE__ . ' Error while accessing the select_player_list view. Try recreating it.');
+			error_log(__FILE__ . '::' . __LINE__ . ' Error while a list of players for a user.');
 			die('<center>Player Selection is briefly unavailable.</center>');
 		}
 

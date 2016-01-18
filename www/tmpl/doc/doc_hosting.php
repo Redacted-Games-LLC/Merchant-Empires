@@ -25,9 +25,17 @@
 ?>
 <div class="header2">Downloading and Hosting</div>
 <div class="docs_text">
-	You can get ahold of the source at our <a href="https://github.com/Redacted-Games-LLC/Merchant-Empires">GitHub repository</a>.
-	The game does not come with any goods or ships, those must be added by 
-	you before the game is playable.
+	To host your own Merchant Empires server you should be able to set up and secure a 
+	MySQL database server and an Apache web server running PHP. If doing these things
+	are out of your reach you may want to seek assistance. We may be able to set you
+	up at a low cost.
+</div>
+<div class="docs_text">
+	You can get ahold of the source at our
+	<a href="https://github.com/Redacted-Games-LLC/Merchant-Empires">GitHub repository</a>.
+	The game does not come with any goods or ships, those must be added by you before
+	the game is playable. There is a starter pack which contains some early goods and
+	upgrades available.
 </div>
 <div class="docs_text">
 	More information will follow as we streamline this process.
