@@ -105,6 +105,12 @@
 		$player_id = PLAYER_ID;
 		$alliance_id = $spacegame['player']['alliance'];
 
+		$bonus = 0;
+
+		if ($spacegame['races'][$spacegame['player']['race']]['caption'] == "Zyck'lirg") {
+			$bonus = ZYCK_ORDNANCE_BONUS;
+		}
+			
 
 
 
@@ -130,10 +136,12 @@
 
 			$complete_count = 0;
 			$complete_damage = 0;
+
+			$mines = MINES_ATTACKING_PER_PLAYER - $bonus;
 			
 			foreach ($mines as $record_id => $row) {
 
-				$hit_amount = mt_rand(0, ceil($row['amount'] * MINES_ATTACKING_PER_PLAYER));
+				$hit_amount = mt_rand(0, ceil($row['amount'] * $bonus));
 				$total_damage = $hit_amount * MINE_ATTACK_DAMAGE;
 
 				if ($total_damage <= 0) {
@@ -247,6 +255,8 @@
 			$complete_damage = 0;
 
 			$hitters = array();
+
+			$drones = DRONES_ATTACKING_PER_PLAYER - $bonus;
 			
 			foreach ($drones as $record_id => $row) {
 
@@ -266,7 +276,7 @@
 					continue;
 				}
 
-				$hit_amount = mt_rand(0, ceil($row['amount'] * DRONES_ATTACKING_PER_PLAYER));
+				$hit_amount = mt_rand(0, ceil($row['amount'] * $drones));
 				$total_damage = $hit_amount * DRONE_ATTACK_DAMAGE;
 
 				if ($total_damage > 0) {

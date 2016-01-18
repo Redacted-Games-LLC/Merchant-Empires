@@ -40,7 +40,7 @@
 	they operate and therefore cannot learn to fly Xollian or
 	Mawlor craft.
 </div>
-<div class="header3">Swarm Technology</div>
+<div class="header3">Swarm Technology (Upcoming)</div>
 <div class="docs_text">
 	Zyck'lirgs ships are equipped with Swarm Technology. They can deploy
 	combat drones in all surrounding sectors with a single click. This

@@ -30,13 +30,7 @@
 	action to be taken.
 </div>
 <div class="docs_text">
-	Historically the scanner was considered an upgrade to be purchased separately due
-	primarily to the fact that <a href="docs.php?page=ordnance">sector forces</a> were
-	sort of a new thing. Usage of scanner grew in step with force deployment until all
-	races were demanding ship builders provide them standard.
-</div>
-<div class="docs_text">
-	The scanner can show you the following:
+	The scanner looks like the following image:
 </div>
 <div class="docs_text">
 	<img src="res/doc/scanner.png" alt="Example of scanner features" title="Features of the scanner" width="240" />
