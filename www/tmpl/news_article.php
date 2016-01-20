@@ -21,6 +21,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+	include_once('tmpl/common.php');
+
 ?>
 <div class="news <?php echo 'news_author' . $article['author']; ?>">
 	<div class="news_date">
@@ -35,7 +37,13 @@
 		<?php echo $article['abstract']; ?>
 	</div>
 	<hr noshade="noshade" />
-	<div class="news_article">
+	<div id="news_readme_show_<?php echo $article['record_id']; ?>" class="news_readme" onclick="show_article_div('news_readme_show_', 'news_readme_hide_', 'news_article_', '<?php echo $article['record_id']; ?>')">
+		(Read Article...)
+	</div>
+	<div id="news_article_<?php echo $article['record_id']; ?>" class="news_article">
 		<?php echo $article['article']; ?>
+		<div id="news_readme_hide_<?php echo $article['record_id']; ?>" class="news_readme" onclick="hide_article_div('news_readme_show_', 'news_readme_hide_', 'news_article_', '<?php echo $article['record_id']; ?>')">
+		(Hide Article...)
+		</div>
 	</div>
 </div>

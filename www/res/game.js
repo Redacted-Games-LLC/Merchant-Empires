@@ -85,11 +85,25 @@ function page_onload(no_fluff) {
 function hide_div(object) {
 	var element = document.getElementById(object);
 	element.style.visibility = 'hidden';
+	element.style.display = 'none';
 }
 
 function show_div(object) {
 	var element = document.getElementById(object);
 	element.style.visibility = 'visible';
+	element.style.display = 'block';
+}
+
+function hide_article_div(show_div_label, hide_div_label, div, id) {
+	show_div(show_div_label + id);
+	hide_div(hide_div_label + id);
+	hide_div(div + id);
+}
+
+function show_article_div(show_div_label, hide_div_label, div, id) {
+	hide_div(show_div_label + id);
+	show_div(hide_div_label + id);
+	show_div(div + id);
 }
 
 
@@ -929,6 +943,10 @@ function load_pagination(current_page, total_pages, base_url) {
 
 	var div = document.getElementById('pagination');
 	var a = null;
+
+	if (current_page <= 0) {
+		current_page = 1;
+	}
 
 	if (current_page > 2) {
 		a = document.createElement('a');

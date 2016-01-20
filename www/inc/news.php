@@ -28,44 +28,48 @@
 		include_once('inc/game.php');
 	}
 
-	include_once('inc/pagination.php');
+	
 	
 	do { // Dummy Loop
+		if (!defined('SKIP_ARTICLES')) {
 
-		$spacegame['news']['authors'] = array();
-		$spacegame['news']['authors'][0] = 'News Desk Admins';
-		$spacegame['news']['authors'][-1] = 'Imperial Government';
-		$spacegame['news']['authors'][-2] = 'Battle Report Office';
+			include_once('inc/pagination.php');
 
-		$spacegame['news']['articles'] = array();
-		$spacegame['news']['article_count'] = 0;
+			$spacegame['news']['authors'] = array();
+			$spacegame['news']['authors'][0] = 'News Desk Admins';
+			$spacegame['news']['authors'][-1] = 'Imperial Government';
+			$spacegame['news']['authors'][-2] = 'Battle Report Office';
 
-		$db = isset($db) ? $db : new DB;
+			$spacegame['news']['articles'] = array();
+			$spacegame['news']['article_count'] = 0;
 
-		$rs = null;
+			$db = isset($db) ? $db : new DB;
 
-		if (defined('NEWS_ARCHIVE')) {
-			$rs = $db->get_db()->query("select SQL_CALC_FOUND_ROWS * from news where live < '". PAGE_START_TIME ."' and expiry > '". PAGE_START_TIME ."' and archive <= '". PAGE_START_TIME ."' order by live limit ". $spacegame['page_number'] .", " . $spacegame['per_page']);
+			$rs = null;
+
+			if (defined('NEWS_ARCHIVE')) {
+				$rs = $db->get_db()->query("select SQL_CALC_FOUND_ROWS * from news where live < '". PAGE_START_TIME ."' and expiry > '". PAGE_START_TIME ."' and archive <= '". PAGE_START_TIME ."' order by live limit ". $spacegame['page_number'] .", " . $spacegame['per_page']);
+			}
+			else {
+				$rs = $db->get_db()->query("select SQL_CALC_FOUND_ROWS * from news where live < '". PAGE_START_TIME ."' and expiry > '". PAGE_START_TIME ."' and archive > '". PAGE_START_TIME ."' order by live limit ". $spacegame['page_number'] .", " . $spacegame['per_page']);
+			}
+
+			$total_count = $db->found_rows();
+
+			$rs->data_seek(0);
+
+			while ($row = $rs->fetch_assoc()) {
+				$spacegame['news']['articles'][$row['record_id']] = $row;
+				$spacegame['news']['article_count']++;
+			}
+		
+			$spacegame['max_pages'] = ceil($total_count / $spacegame['per_page']);
+
+			if ($spacegame['page_number'] > $spacegame['max_pages']) {
+				$spacegame['page_number'] = $spacegame['max_pages'];
+			}
+
 		}
-		else {
-			$rs = $db->get_db()->query("select SQL_CALC_FOUND_ROWS * from news where live < '". PAGE_START_TIME ."' and expiry > '". PAGE_START_TIME ."' and archive > '". PAGE_START_TIME ."' order by live limit ". $spacegame['page_number'] .", " . $spacegame['per_page']);
-		}
-
-		$total_count = $db->found_rows();
-
-		$rs->data_seek(0);
-
-		while ($row = $rs->fetch_assoc()) {
-			$spacegame['news']['articles'][$row['record_id']] = $row;
-			$spacegame['news']['article_count']++;
-		}
-	
-		$spacegame['max_pages'] = ceil($total_count / $spacegame['per_page']);
-
-		if ($spacegame['page_number'] > $spacegame['max_pages']) {
-			$spacegame['page_number'] = $spacegame['max_pages'];
-		}
-
 	} while (false);
 
 

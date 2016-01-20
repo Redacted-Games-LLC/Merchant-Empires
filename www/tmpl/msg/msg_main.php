@@ -40,7 +40,15 @@
 			}
 		}
 
+		echo '<div id="pagination">';
+		echo '<br clear="all" />';
+		echo '</div>';
+		echo '<script type="text/Javascript">load_pagination(';
+		echo $spacegame['page_number'] .', '. $spacegame['max_pages'] .',';
+		echo '"message.php?page=main&pp='. $spacegame['per_page'] .'&"';
+		echo ')</script>';
 	?>
+
 </div>
 
 

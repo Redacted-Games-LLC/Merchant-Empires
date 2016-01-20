@@ -1926,4 +1926,17 @@ div.user_list_item_caption {
 
 .news_article {
 	font-family: serif;
+	visibility: hidden;
+	display: none;
+}
+
+.news_readme {
+	margin: 12px 4px;
+	text-decoration: underline;
+	font-style: italic;
+	color: #004400;
+	font-size: 90%;
+	font-variant: small-caps;
+	font-family: sans-serif;
+	cursor: pointer;
 }
