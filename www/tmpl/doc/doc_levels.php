@@ -31,7 +31,7 @@
 	<ul>
 		<li>1 point for every 5 goods sold to a port trade demand multiplied by the good level, rounded down. That is 100 L2 goods is 40 xp.</li>
 		<li>1 point for every 4 goods sold to a port upgrade demand multiplied by the good level, rounded down. That is 100 L2 goods is 50 xp.</li>
-		<li>5% of the experience of <em>enemy</em> players killed, enemy being non-racial or non-allied.</li>
+		<li><?php echo ASSIST_EXP_PER_DAMAGE; ?> points per damage when assisting in any part of a war kill.</li>
 	</ul>
 </div>
 <div class="docs_text">

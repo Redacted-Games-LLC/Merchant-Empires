@@ -37,23 +37,25 @@
 		<li>Ship dealer, tech dealer, and solar collectors <img src="res/safe_scan_force.png" width="18" height="18" alt="Done" /></li>
 		<li>Ports with supplies, demands, and upgrades <img src="res/safe_scan_force.png" width="18" height="18" alt="Done" /></li>
 		<li>Alliances, member lists, and player info <img src="res/safe_scan_force.png" width="18" height="18" alt="Done" /></li>
-		<li>Sector forces and scanning <img src="res/safe_scan_force.png" width="18" height="18" alt="Not done" /></li>
-		<li>Bases and construction <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
-		<li>Ship combat, sector force destruction <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
-		<li>Base busting <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
-		<li>News, messaging, and subspace broadcasts <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
-		<li>Gold Memberships and keys <img src="res/safe_scan_force.png" width="18" height="18" alt="Not done" /></li>
+		<li>Sector forces and scanning <img src="res/safe_scan_force.png" width="18" height="18" alt="Done" /></li>
+		<li>Gold Memberships and keys <img src="res/safe_scan_force.png" width="18" height="18" alt="Done" /></li>
+		<li>News, messaging, and subspace broadcasts <img src="res/safe_scan_force.png" width="18" height="18" alt="Done" /></li>
 		<li>Admin console with players, ships, and some moderation. <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
+		<li>Bases and construction <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
+		<li>Ship weapons and combat <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
+		<li>Sector force destruction <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
+		<li>Base busting <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
+		<li>Victory Condition <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
 	</ol>
 </div>
 <div class="header3">Major Release 1.1 goals</div>
 <div class="docs_text">
 	<ol>
+		<li>Base research <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
+		<li>Non-founder alliance leadership roles <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
 		<li>Xollian cloak, Mawlor jump, Zyck'lirg swarm <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
 		<li>Tractor beam hold, raiding <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
-		<li>Non-founder alliance lead <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
 		<li>Alliance mutiny <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
-		<li>Base research <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
 	</ol>
 </div>
 <div class="header3">Stuff that is probably not going to get implemented.</div>

@@ -59,9 +59,9 @@
 			$author = $_REQUEST['author'];
 			$live = $_REQUEST['live_date'];
 			$archive = $_REQUEST['archive_date'];
-			$expiry = $_REQUEST['expiry_date'];
+			$expiration = $_REQUEST['expiration_date'];
 
-			if (insert_article($headline, $abstract, $article, $author, $live, $archive, $expiry, $return_codes)) {
+			if (insert_article($headline, $abstract, $article, $author, $live, $archive, $expiration, $return_codes)) {
 				$return_codes[] = 1163;
 				break;
 			}

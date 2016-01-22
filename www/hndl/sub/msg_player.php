@@ -97,7 +97,7 @@
 			break;
 		}
 
-		send_message($_REQUEST['message'], $targets, MESSAGE_EXPIRY, 1);
+		send_message($_REQUEST['message'], $targets, MESSAGE_EXPIRATION, 1);
 
 		$return_codes[] = 1137;
 

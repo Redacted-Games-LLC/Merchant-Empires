@@ -110,7 +110,8 @@
 				}
 			}
 
-
+			player_log($hitter['owner'], $spacegame['actions']['damage'], $hitter['damage'], $player_id);
+			
 			if ($player['armor'] <= 0) {
 				// Dead player
 
@@ -131,18 +132,6 @@
 					$db->get_db()->autocommit(true);
 					return true;
 				}
-
-
-				// Send messages, update xp, logs, etc
-
-
-
-
-
-
-
-
-
 
 				if (!$already_in_a_transaction) {
 					if (!$db->get_db()->commit()) {
@@ -176,11 +165,6 @@
 				$db->get_db()->autocommit(true);
 				break;
 			}
-
-
-			// Send messages, update xp, logs, etc
-
-
 			
 		}
 

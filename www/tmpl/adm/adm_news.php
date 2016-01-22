@@ -37,7 +37,7 @@
 	$article['author'] = 0;
 	$article['live'] = PAGE_START_TIME;
 	$article['archive'] = PAGE_START_TIME + DEFAULT_NEWS_ARCHIVE_TIME;
-	$article['expiry'] = PAGE_START_TIME + DEFAULT_NEWS_EXPIRY_TIME;
+	$article['expiration'] = PAGE_START_TIME + DEFAULT_NEWS_EXPIRATION_TIME;
 
 	if ($preview) {
 		$article['headline'] = htmlentities(strip_tags($_REQUEST['headline']));
@@ -46,7 +46,7 @@
 		$article['author'] = $_REQUEST['author'];
 		$article['live'] = $_REQUEST['live_date'];
 		$article['archive'] = $_REQUEST['archive_date'];
-		$article['expiry'] = $_REQUEST['expiry_date'];
+		$article['expiration'] = $_REQUEST['expiration_date'];
 	}
 
 ?>
@@ -118,7 +118,7 @@
 			</tr>
 			<tr class="message">
 				<td class="message">Expiry&nbsp;Timestamp:</td>
-				<td class="message" colspan="2"><input class="msg_form_input" type="text" name="expiry_date" maxlength="10" size="12" value="<?php echo $article['expiry']; ?>" /></td>
+				<td class="message" colspan="2"><input class="msg_form_input" type="text" name="expiration_date" maxlength="10" size="12" value="<?php echo $article['expiration']; ?>" /></td>
 			</tr>
 			<tr class="message">
 				<td class="message">Submit:</td>

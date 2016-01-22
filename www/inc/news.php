@@ -27,31 +27,29 @@
 	if (PLAYER_ID > 0) {
 		include_once('inc/game.php');
 	}
-
-	
 	
 	do { // Dummy Loop
+		$spacegame['news']['authors'] = array();
+		$spacegame['news']['authors'][0] = 'News Desk Admins';
+		$spacegame['news']['authors'][-1] = 'Imperial Government';
+		$spacegame['news']['authors'][-2] = 'Battle Report Office';
+
+		$spacegame['news']['articles'] = array();
+		$spacegame['news']['article_count'] = 0;
+
 		if (!defined('SKIP_ARTICLES')) {
 
 			include_once('inc/pagination.php');
-
-			$spacegame['news']['authors'] = array();
-			$spacegame['news']['authors'][0] = 'News Desk Admins';
-			$spacegame['news']['authors'][-1] = 'Imperial Government';
-			$spacegame['news']['authors'][-2] = 'Battle Report Office';
-
-			$spacegame['news']['articles'] = array();
-			$spacegame['news']['article_count'] = 0;
 
 			$db = isset($db) ? $db : new DB;
 
 			$rs = null;
 
 			if (defined('NEWS_ARCHIVE')) {
-				$rs = $db->get_db()->query("select SQL_CALC_FOUND_ROWS * from news where live < '". PAGE_START_TIME ."' and expiry > '". PAGE_START_TIME ."' and archive <= '". PAGE_START_TIME ."' order by live limit ". $spacegame['page_number'] .", " . $spacegame['per_page']);
+				$rs = $db->get_db()->query("select SQL_CALC_FOUND_ROWS * from news where live < '". PAGE_START_TIME ."' and expiration > '". PAGE_START_TIME ."' and archive <= '". PAGE_START_TIME ."' order by live desc limit ". $spacegame['page_number'] .", " . $spacegame['per_page']);
 			}
 			else {
-				$rs = $db->get_db()->query("select SQL_CALC_FOUND_ROWS * from news where live < '". PAGE_START_TIME ."' and expiry > '". PAGE_START_TIME ."' and archive > '". PAGE_START_TIME ."' order by live limit ". $spacegame['page_number'] .", " . $spacegame['per_page']);
+				$rs = $db->get_db()->query("select SQL_CALC_FOUND_ROWS * from news where live < '". PAGE_START_TIME ."' and expiration > '". PAGE_START_TIME ."' and archive > '". PAGE_START_TIME ."' order by live desc limit ". $spacegame['page_number'] .", " . $spacegame['per_page']);
 			}
 
 			$total_count = $db->found_rows();
@@ -91,7 +89,7 @@
 		}
 
 		if (!preg_match('/^[a-zA-Z0-9 ]{2,'. NEWS_HEADLINE_LIMIT .'}$/', $headline)) {
-			$return_codes[] = 1199;
+			$return_codes[] = 1159;
 			return false;
 		}
 
@@ -122,7 +120,7 @@
 			$db = isset($db) ? $db : new DB;
 		}
 
-		if (!($st = $db->get_db()->prepare("insert into news (headline, abstract, article, author, live, archive, expiry) values (?,?,?,?,?,?,?)"))) {
+		if (!($st = $db->get_db()->prepare("insert into news (headline, abstract, article, author, live, archive, expiration) values (?,?,?,?,?,?,?)"))) {
 			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			return false;
 		}

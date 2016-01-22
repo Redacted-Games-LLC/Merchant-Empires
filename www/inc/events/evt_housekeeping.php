@@ -54,6 +54,38 @@
 				echo ("Query execution failed: (" . $st->errno . ") " . $st->error);
 				return;
 			}
+
+
+			// Expired messages
+
+			if (!($st = $db->get_db()->prepare('delete from messages where expiration <= ?'))) {
+				echo (__FILE__ . '::' . __LINE__ . "Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+				return;
+			}
+		
+			$st->bind_param("i", $time);
+				
+			if (!$st->execute()) {
+				echo ("Query execution failed: (" . $st->errno . ") " . $st->error);
+				return;
+			}
+
+
+			// Expired news
+
+			if (!($st = $db->get_db()->prepare('delete from news where expiration <= ?'))) {
+				echo (__FILE__ . '::' . __LINE__ . "Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+				return;
+			}
+		
+			$st->bind_param("i", $time);
+				
+			if (!$st->execute()) {
+				echo ("Query execution failed: (" . $st->errno . ") " . $st->error);
+				return;
+			}
+
+
 		}
 
 	};

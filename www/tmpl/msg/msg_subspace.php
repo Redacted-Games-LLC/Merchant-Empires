@@ -62,7 +62,7 @@
 	</form>
 </div>
 <div class="docs_text">
-	Subspace messages expire after <?php echo floor(SUBSPACE_MESSAGE_EXPIRY / 60); ?>
+	Subspace messages expire after <?php echo floor(SUBSPACE_MESSAGE_EXPIRATION / 60); ?>
 	minutes.
 </div>
 <hr />

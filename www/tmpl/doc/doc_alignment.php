@@ -40,8 +40,9 @@
 	alignment.
 </div>
 <div class="docs_text">
-	The range is <strong>-500</strong> to <strong>+500</strong>. Benefits and
-	malefits of non-zero alignment are explained later in this page. 
+	The range is <strong>-<?php echo ALIGNMENT_LIMIT; ?></strong> to
+	<strong>+<?php echo ALIGNMENT_LIMIT; ?></strong>. Benefits and malefits of non-zero
+	alignment are explained later in this page. 
 </div>
 <div class="docs_text">
 	Alignment has nothing to do with <a href="docs.php?page=alliance">alliances</a>;

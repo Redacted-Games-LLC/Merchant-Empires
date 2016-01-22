@@ -26,6 +26,9 @@
 	include_once('inc/combat.php');
 	include_once('inc/msg_functions.php');
 
+	define('SKIP_ARTICLES', 1);
+	include_once('inc/news.php');
+
 	$return_page = 'viewport';
 
 	do { // dummy loop
@@ -105,14 +108,11 @@
 		$player_id = PLAYER_ID;
 		$alliance_id = $spacegame['player']['alliance'];
 
-		$bonus = 0;
+		$bonus = 1.0;
 
 		if ($spacegame['races'][$spacegame['player']['race']]['caption'] == "Zyck'lirg") {
-			$bonus = ZYCK_ORDNANCE_BONUS;
+			$bonus -= ZYCK_ORDNANCE_BONUS;
 		}
-			
-
-
 
 		// Mines attack when exiting a sector
 		if ($spacegame['player']['base_id'] <= 0 && $spacegame['player']['ship_type'] > 0) {
@@ -137,7 +137,6 @@
 			$complete_count = 0;
 			$complete_damage = 0;
 
-			$mines = MINES_ATTACKING_PER_PLAYER - $bonus;
 			
 			foreach ($mines as $record_id => $row) {
 
@@ -151,8 +150,12 @@
 				$complete_count += $hit_amount;
 				$complete_damage += $total_damage;
 
-				$hitters[$row['owner']] = array('hitter' => $row['owner'], 'damage' => $total_damage);
-				
+				$hitters[$row['owner']] = 
+					array(
+						'hitter' => $row['owner'],
+						'damage' => $total_damage
+					);
+
 				if (!($st = $db->get_db()->prepare('update ordnance set amount = amount - ? where record_id = ?'))) {
 					error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 					$return_codes[] = 1006;
@@ -191,7 +194,7 @@
 				$message .= $spacegame['player']['caption'] . '.';
 				
 				$targets = array($row['owner']);
-				send_message($message, $targets, MESSAGE_EXPIRY, 4);
+				send_message($message, $targets, MESSAGE_EXPIRATION, 4);
 
 			}
 
@@ -203,12 +206,14 @@
 				$message .= ' causing ' . $complete_damage . ' damage.';
 				
 				$targets = array($player_id);
-				send_message($message, $targets, MESSAGE_EXPIRY, 4);
+				send_message($message, $targets, MESSAGE_EXPIRATION, 4);
 			}
 
 
 			if (players_attack_player($player_id, $hitters)) {
 				// Player is dead
+				$serial = ($spacegame['player']['y'] * 1000) + $spacegame['player']['x'];
+				player_log($player_id, $spacegame['actions']['death'], $complete_damage, $serial);
 				break;
 			}
 		}
@@ -256,8 +261,6 @@
 
 			$hitters = array();
 
-			$drones = DRONES_ATTACKING_PER_PLAYER - $bonus;
-			
 			foreach ($drones as $record_id => $row) {
 
 				if ($row['amount'] == 1) {
@@ -271,16 +274,20 @@
 					$message .= '.';
 					
 					$targets = array($row['owner']);
-					send_message($message, $targets, MESSAGE_EXPIRY, 4);
+					send_message($message, $targets, MESSAGE_EXPIRATION, 4);
 
 					continue;
 				}
 
-				$hit_amount = mt_rand(0, ceil($row['amount'] * $drones));
+				$hit_amount = mt_rand(0, ceil($row['amount'] * $bonus));
 				$total_damage = $hit_amount * DRONE_ATTACK_DAMAGE;
 
 				if ($total_damage > 0) {
-					$hitters[] = array('hitter' => $row['owner'], 'damage' => $total_damage);
+					$hitters[] = array(
+						'hitter' => $row['owner'],
+						'damage' => $total_damage
+					);
+
 					$return_vars['dmg'] = 'true';
 				}
 
@@ -296,7 +303,7 @@
 				$message .= ' causing ' . $total_damage . ' damage.';
 				
 				$targets = array($row['owner']);
-				send_message($message, $targets, MESSAGE_EXPIRY, 4);				
+				send_message($message, $targets, MESSAGE_EXPIRATION, 4);				
 
 			}
 
@@ -307,11 +314,12 @@
 				$message .= $rx . ',' . $ry . ' causing ' . $complete_damage . ' damage.';
 				
 				$targets = array($player_id);
-				send_message($message, $targets, MESSAGE_EXPIRY, 4);
+				send_message($message, $targets, MESSAGE_EXPIRATION, 4);
 			}
 
 			if (players_attack_player($player_id, $hitters)) {
-				// Player is dead
+				$serial = ($rx * 1000) + $ry;
+				player_log($player_id, $spacegame['actions']['death'], $complete_damage, $serial);
 				break;
 			}
 		}

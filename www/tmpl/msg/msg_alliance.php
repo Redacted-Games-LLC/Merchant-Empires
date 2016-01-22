@@ -68,7 +68,7 @@
 	</form>
 </div>
 <div class="docs_text">
-	Alliance messages expire after <?php echo floor(MESSAGE_EXPIRY / 86400); ?>
+	Alliance messages expire after <?php echo floor(MESSAGE_EXPIRATION / 86400); ?>
 	days.
 </div>
 <hr />

@@ -307,7 +307,7 @@ CREATE TABLE `news` (
   `author` int(11) DEFAULT NULL,
   `live` int(11) DEFAULT '0',
   `archive` int(11) DEFAULT '0',
-  `expiry` int(11) DEFAULT '0',
+  `expiration` int(11) DEFAULT '0',
   PRIMARY KEY (`record_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;

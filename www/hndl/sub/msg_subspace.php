@@ -92,7 +92,7 @@
 			break;
 		}
 
-		send_message($_REQUEST['message'], $targets, SUBSPACE_MESSAGE_EXPIRY, 3);
+		send_message($_REQUEST['message'], $targets, SUBSPACE_MESSAGE_EXPIRATION, 3);
 
 		$return_codes[] = 1137;
 

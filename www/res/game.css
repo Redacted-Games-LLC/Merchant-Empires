@@ -1894,15 +1894,15 @@ div.user_list_item_caption {
 }
 
 .news_author0 {
-	background-color: #b09070;
+	background-color: #bbbb66;
 }
 
 .news_author-1 {
-	background-color: #90b070;
+	background-color: #60dd60;
 }
 
 .news_author-2 {
-	background-color: #d08070;
+	background-color: #ff4444;
 }
 
 .news_date {
@@ -1928,6 +1928,7 @@ div.user_list_item_caption {
 	font-family: serif;
 	visibility: hidden;
 	display: none;
+	font-size: 110%;
 }
 
 .news_readme {

@@ -69,7 +69,7 @@
 	</form>
 </div>
 <div class="docs_text">
-	Player messages expire after <?php echo floor(MESSAGE_EXPIRY / 86400); ?>
+	Player messages expire after <?php echo floor(MESSAGE_EXPIRATION / 86400); ?>
 	days.
 </div>
 <hr />

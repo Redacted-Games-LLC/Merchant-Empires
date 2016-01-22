@@ -180,8 +180,14 @@
 	// One of the events spits a timestamp on the console at this interval.
 	define('TIMESTAMP_TIME', 600);
 
+	// How often to check damage and death reports to produce battle reports.
+	define('PLAYER_LOG_TIME', 10);
+
 	// One of the events performs housekeeping tasks at this interval.
 	define('HOUSEKEEPING_TIME', 41);
+
+	// Minimum and maximum alignment
+	define('ALIGNMENT_LIMIT', 500);
 
 	// How often the game updates the aligment of a player in seconds.
 	define('ALIGNMENT_UPDATE_TIME', 600);
@@ -276,7 +282,7 @@
 	// Damage each exploding mine can do
 	define('MINE_ATTACK_DAMAGE', 5);
 
-	// The amount of mines and drones attacking a zyck as oopsed to a mawlor.
+	// The amount of mines and drones attacking a zyck as opposed to a mawlor or xollian.
 	define('ZYCK_ORDNANCE_BONUS', 0.05);
 
 	// Total number of bases that could be on a planet.
@@ -322,10 +328,10 @@
 	define('MAXIMUM_SUBSPACE_MESSAGE_LENGTH', 128);
 
 	// Subspace messages will expire after this amount of time.
-	define('SUBSPACE_MESSAGE_EXPIRY', 600);
+	define('SUBSPACE_MESSAGE_EXPIRATION', 600);
 
 	// Regular messages will expire after this amount of time.
-	define('MESSAGE_EXPIRY', 604800);
+	define('MESSAGE_EXPIRATION', 604800);
 
 	// Subspace messages cost this amount of turns
 	define('SUBSPACE_MESSAGE_TURN_COST', 50);
@@ -367,10 +373,16 @@
 	define('ALLOWED_ARTICLE_TAGS', '<h1><h2><h3><h4><h5><h6><font><img><li><ul><ol><br><a><td><tr><table><span><s><big><strong><em><u><p>');
 	
 	// When to archive news articles by default
-	define('DEFAULT_NEWS_ARCHIVE_TIME', 86400 * 14);
+	define('DEFAULT_NEWS_ARCHIVE_TIME', 86400 * 7);
 
 	// When to expire news articles by default
-	define('DEFAULT_NEWS_EXPIRY_TIME', 86400 * 31);
+	define('DEFAULT_NEWS_EXPIRATION_TIME', 86400 * 31);
+
+	// How much time between damage and kill for it to count as an assist.
+	define('ASSIST_TIME', 30);
+
+	// How much experience to grant per damage point during assist time.
+	define('ASSIST_EXP_PER_DAMAGE', 3);
 
 
 ?>

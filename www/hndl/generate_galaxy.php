@@ -58,13 +58,14 @@
 
 
 		$tables = array(
+			'user_players',
 			'alliance_invitations',
+			'messages',
 			'port_goods',
 			'dealer_inventory',
 			'places',
 			'ordnance',
 			'systems',
-			'user_players',
 			'player_cargo',
 			'player_log',
 			'alliances',
