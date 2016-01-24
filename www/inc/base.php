@@ -31,6 +31,8 @@
 
 		if ($spacegame['player']['base_id'] > 0) {
 		
+			// Landed on a base
+
 			$rs = $db->get_db()->query("select * from bases where record_id = '". $spacegame['player']['base_id'] ."'");
 			
 			$rs->data_seek(0);

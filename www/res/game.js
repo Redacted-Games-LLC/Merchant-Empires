@@ -800,44 +800,72 @@ function load_base_field() {
 		var safe_caption = room.caption.toLowerCase().replace(' ', '_');
 
 		if (room.over) {
-			switch (safe_caption) {
-				case 'control_pad':
+			if (room.build_time > 0) {
+				var time_left = 'Time Left: ';
 
-					if (base_id > 0) {
-						over_links.push('<a href="#" onclick="open_base_build()">Build Something</a>');
-						over_links.push('<a href="#" onclick="open_base_learn()">Learn Something</a>');
-					}
-					else {
-						over_links.push('<a href="handler.php?task=base&amp;subtask=land&amp;plid='+ base_place +'">Land Here</a>');
-					}
+				if (room.build_time > 86400) {
+					time_left = time_left + Math.ceil(room.build_time / 86400) + ' day(s)';
+				}
+				else if (room.build_time > 3600) {
+					time_left = time_left + Math.ceil(room.build_time / 3600) + ' hour(s)';
+				}
+				else if (room.build_time > 60) {
+					time_left = time_left + Math.floor(room.build_time / 60) + ' minute(s)';
+				}
+				else {
+					time_left = time_left + room.build_time + ' second(s)';
+				}
 
-					break;
+				over_links.push(time_left);
+			}
+			else {
+				switch (safe_caption) {
+					case 'control_pad':
 
+						if (base_id > 0) {
+							over_links.push('<a href="#" onclick="open_base_build()">Build Something</a>');
+							over_links.push('<a href="#" onclick="open_base_learn()">Learn Something</a>');
+						}
+						else {
+							over_links.push('<a href="handler.php?task=base&amp;subtask=land&amp;plid='+ base_place +'">Land Here</a>');
+						}
+
+						break;
+
+				}
 			}
 		}
 
 
-
+		// Display room image
+		var room_div = document.createElement('div');
+		room_div.className = 'grid_room';
+		
+		if (base_id > 0) {
+			room_div.style.left = ((room.x - bx + ds) * image_size) + 'px';
+			room_div.style.top = 560 - ((room.y - by + ds + room.height) * image_size) + 'px';
+		}
+		else {
+			room_div.style.left = (((room.x - bx + ds) * image_size) - 40) + 'px';
+			room_div.style.top = 600 - ((room.y - by + ds + room.height) * image_size) + 'px';
+		}
 
 		var img = document.createElement('img');
 
-		img.className = 'grid_room';
 		img.setAttribute('src', 'res/base/' + safe_caption + '.png');
-
 		img.setAttribute('width', room.width * image_size);
 		img.setAttribute('height', room.height * image_size);
 
-		if (base_id > 0) {
-			img.style.left = ((room.x - bx + ds) * image_size) + 'px';
-			img.style.top = 560 - ((room.y - by + ds + room.height) * image_size) + 'px';
-		}
-		else {
-			img.style.left = (((room.x - bx + ds) * image_size) - 40) + 'px';
-			img.style.top = 600 - ((room.y - by + ds + room.height) * image_size) + 'px';
-		}
-		
+		room_div.appendChild(img);
 
-		grid.appendChild(img);
+		if (room.build_time > 0) {
+			var building_div = document.createElement('div');
+			building_div.className = 'under_construction';
+			building_div.innerHTML = '&nbsp;';
+			room_div.appendChild(building_div);
+		}
+
+		grid.appendChild(room_div);
 	}
 
 

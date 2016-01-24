@@ -93,6 +93,33 @@
 			break;
 		}
 
+		if (!($st = $db->get_db()->prepare('update bases set alliance = ? where owner = ?'))) {
+			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			$return_codes[] = 1006;
+			break;
+		}
+		
+		$st->bind_param("ii", $alliance_id, $player_id);
+		
+		if (!$st->execute()) {
+			$return_codes[] = 1006;
+			error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
+			break;
+		}
+
+		if (!($st = $db->get_db()->prepare('update ordnance set alliance = ? where owner = ?'))) {
+			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			$return_codes[] = 1006;
+			break;
+		}
+		
+		$st->bind_param("ii", $alliance_id, $player_id);
+		
+		if (!$st->execute()) {
+			$return_codes[] = 1006;
+			error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
+			break;
+		}
 
 		$return_vars['page'] = 'main';
 		$return_codes[] = 1148;

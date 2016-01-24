@@ -64,7 +64,7 @@
 		foreach ($spacegame['places'] as $place_id => $place) {
 			
 			if ($place['type'] == 'Base') {
-				$base_already_here++;
+				$bases_already_here++;
 			}
 			elseif ($spacegame['place_types'][$place['place_type']]['deploy_bases'] > 0) {
 				$over_a_base_carrier = true;
@@ -72,7 +72,7 @@
 
 		}
 
-		if ($base_already_here >= MAX_BASES_PER_PLANET) {
+		if ($bases_already_here >= MAX_BASES_PER_PLANET) {
 			$return_codes[] = 1108;
 			break;
 		}

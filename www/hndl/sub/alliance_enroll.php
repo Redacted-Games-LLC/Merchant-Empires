@@ -109,6 +109,21 @@
 			break;
 		}
 
+		// Remove invitations from the player
+
+		if (!($st = $db->get_db()->prepare('delete from alliance_invitations where player = ?'))) {
+			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			$return_codes[] = 1006;
+			break;
+		}
+		
+		$st->bind_param("i", $other_player_id);
+		
+		if (!$st->execute()) {
+			$return_codes[] = 1006;
+			error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
+			break;
+		}
 
 		// Enroll the player
 
@@ -127,21 +142,38 @@
 		}
 
 
-		// Remove invitations from the player
+		// Update bases and ordnance
 
-		if (!($st = $db->get_db()->prepare('delete from alliance_invitations where player = ?'))) {
+		if (!($st = $db->get_db()->prepare('update bases set alliance = ? where owner = ?'))) {
 			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			$return_codes[] = 1006;
 			break;
 		}
 		
-		$st->bind_param("i", $other_player_id);
+		$st->bind_param("ii", $spacegame['player']['alliance'], $other_player_id);
 		
 		if (!$st->execute()) {
 			$return_codes[] = 1006;
 			error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
 			break;
 		}
+
+		if (!($st = $db->get_db()->prepare('update ordnance set alliance = ? where owner = ?'))) {
+			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			$return_codes[] = 1006;
+			break;
+		}
+		
+		$st->bind_param("ii", $spacegame['player']['alliance'], $other_player_id);
+		
+		if (!$st->execute()) {
+			$return_codes[] = 1006;
+			error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
+			break;
+		}
+
+
+
 
 		$return_codes[] = 1096;
 

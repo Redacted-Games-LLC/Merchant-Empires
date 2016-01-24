@@ -92,6 +92,7 @@
 					echo "width: ". $room['width'] .", ";
 					echo "height: ". $room['height'] .", ";
 					echo "over: ". (isset($spacegame['over_rooms'][$room_id]) ? 'true' : 'false') .", ";
+					echo "build_time: " . ($room['finish_time'] - PAGE_START_TIME)  .", ";
 					echo "}, \n";
 				}
 

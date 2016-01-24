@@ -24,27 +24,31 @@
 	include_once('tmpl/common.php');
 ?>
 <div class="header2">Alliance Status</div>
-<div class="docs_text">
-	<?php
-		if ($spacegame['player']['alliance'] > 0) {
+<?php
+	if ($spacegame['player']['alliance'] > 0) {
 
-			echo 'Alliance name: ' . $spacegame['alliance']['caption'] . '<br />';
-			echo 'Imperial Tax: ' . (($spacegame['alliance']['tax_mult'] - 1.0) * 100) . '%<br />';
+		echo '<div class="docs_text">';
 
-		}
-		else {
+		echo 'Alliance name: ' . $spacegame['alliance']['caption'] . '<br />';
+		echo 'Imperial Tax: ' . (($spacegame['alliance']['tax_mult'] - 1.0) * 100) . '%<br />';
+
+		echo '</div>';
+
+		echo '<div class="docs_text">';
+			echo '<a href="message.php?page=alliance&amp;name=' . $spacegame['alliance']['caption'] . '">Send Message</a>';
+		echo '</div>';
+	}
+	else {
 		?>
+		<div class="docs_text">
 			You are not in an alliance. Check out the <a href="alliance.php?page=list">alliance list</a>
 			and find one which is recruiting. You can request to join up to <?php echo ALLIANCE_REQUEST_LIMIT ?>
 			alliances at a time.
-		<?php
-		}
+		</div>
+<?php
+	}
+?>
 
-	?>
-</div>
-<div class="docs_text">
-	<a href="message.php?page=alliance&amp;name=<?php echo $spacegame['alliance']['caption']; ?>">Send Message</a>
-</div>
 <?php
 	if ($spacegame['invites_count'] > 0) {
 	

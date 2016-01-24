@@ -745,6 +745,28 @@
 		if ($row = $rs->fetch_assoc()) {
 			$place_type = $row['record_id'];
 		}
+		else {
+			return false;
+		}
+
+		$room = array();
+
+		$rs = $db->get_db()->query("select record_id, width, height, build_time from room_types where caption = 'Control Pad'");
+	
+		if (!($rs && $rs->data_seek(0))) {
+			error_log(__FILE__ . '::' . __LINE__ . " Query selection failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			return false;
+		}
+
+		if ($row = $rs->fetch_assoc()) {
+			$room = $row;
+		}
+		else {
+			error_log('Missing control pad in base room types.');
+			return false;
+		}
+
+
 
 		if (!($st = $db->get_db()->prepare("insert into places (caption, system, x, y, type) values (?,?,?,?,?)"))) {
 			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
@@ -765,12 +787,12 @@
 		$shields = START_BASE_SHIELDS;
 
 		if ($alliance > 0) {
-			if (!($st = $db->get_db()->prepare("insert into bases (owner, alliance, seed, shields) values (?,?,?,?)"))) {
+			if (!($st = $db->get_db()->prepare("insert into bases (owner, alliance, seed, shields, place) values (?,?,?,?,?)"))) {
 				error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 				return 0;
 			}
 
-			$st->bind_param("iiii", $owner, $alliance, $seed, $shields);
+			$st->bind_param("iiiii", $owner, $alliance, $seed, $shields, $place_id);
 			
 			if (!$st->execute()) {
 				error_log(__FILE__ . '::' . __LINE__ . " Execution failed: (" . $st->errno . ") " . $st->error);
@@ -778,12 +800,12 @@
 			}
 		}
 		else {
-			if (!($st = $db->get_db()->prepare("insert into bases (owner, seed, shields) values (?,?,?)"))) {
+			if (!($st = $db->get_db()->prepare("insert into bases (owner, seed, shields, place) values (?,?,?,?)"))) {
 				error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 				return 0;
 			}
 
-			$st->bind_param("iii", $owner, $seed, $shields);
+			$st->bind_param("iii", $owner, $seed, $shields, $place_id);
 			
 			if (!$st->execute()) {
 				error_log(__FILE__ . '::' . __LINE__ . " Execution failed: (" . $st->errno . ") " . $st->error);
@@ -791,13 +813,24 @@
 			}
 		}
 		
-
 		$base_id = $db->last_insert_id('bases');
-
+		$x = 50 + mt_rand($room['width'] * 2) - $room['width'];
+		$y = 50 + mt_rand($room['height'] * 2) - $room['height'];
+		$time = PAGE_START_TIME + $room['build_time'];
 
 		// Insert the Landing Pad
 
+		if (!($st = $db->get_db()->prepare("insert into base_rooms (base, room, x, y, finish_time) values (?,?,?,?,?)"))) {
+			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			return 0;
+		}
 
+		$st->bind_param("iiiii", $base_id, $room['record_id'], $x, $y, $time);
+		
+		if (!$st->execute()) {
+			error_log(__FILE__ . '::' . __LINE__ . " Execution failed: (" . $st->errno . ") " . $st->error);
+			return 0;
+		}
 
 
 		return $base_id;
