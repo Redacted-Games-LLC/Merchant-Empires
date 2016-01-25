@@ -42,6 +42,11 @@
 		$success = false;
 
 		foreach ($spacegame['over_rooms'] as $room) {
+
+			if ($room['finish_time'] > PAGE_START_TIME) {
+				continue;
+			}
+			
 			if ($room['caption'] == 'Control Pad') {
 				$success = true;
 
