@@ -25,13 +25,10 @@
 ?>
 <div class="header2">Privacy Practices</div>
 <div class="docs_text">
-	We don't intentionally share your information. We try to prevent accidentally sharing your
-	data. If compelled by US law we will of course comply.
-</div>
-<div class="docs_text">
-	If we show ads we will only share our own info such as affiliate identifiers but the ad may have
-	access to some request info like your ip address. We might not be able to prevent this depending
-	on the ad company we affiliate with.
+	The privacy policy for products in the [Redacted] Games LLC family 
+	<a href="https://civcraft.github.io/civcraftsite/privacypolicy.html" target="_blank">can be found here</a>.
+	The rest of this page discusses specific information collected by
+	the Merchant Empires game.
 </div>
 <div class="header3">Personal Information</div>
 <div class="docs_text">

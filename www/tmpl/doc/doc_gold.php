@@ -46,9 +46,6 @@
 	into responding to Gold Members we stand firm that these terms apply to <em>all</em>
 	users and/or players.
 </div>
-<div class="docs_text">
-	There is more information on the Terms and Conditions page about refunds, etc.
-</div>
 <div class="header3">Enabling a Gold Membership</div>
 <div class="docs_text">
 	Gold Memberships are enabled using Keys which may look like the following:	
@@ -62,5 +59,13 @@
 	a Gold membership, store and protect your unused keys, and transfer keys securely to
 	other players.
 </div>
-
+<div class="docs_text">
+	When the round officially ends a special key will be generated with any remaining gold
+	membership time.
+</div>
+<div class="header3">Support</div>
+<div class="docs_text">
+	You can contact <a href="mailto:<?php echo GOLD_EMAIL; ?>">Gold Support</a> if you have
+	any issues with your membership.
+</div>
 

@@ -35,10 +35,32 @@
 	// DELETE THE FOLLOWING LINE WHEN YOU HAVE FINISHED MAKING CHANGES.
 	die('I did not delete the line I was supposed to in DBCONFIG.php when done.');
 
-
+	// This information is for the database server which holds all game tables
 	define('DB_HOST', 'localhost');
 	define('DB_USER', 'spacegame');
 	define('DB_PASS', 'db password here');
 	define('DB_NAME', 'spacegame');
+
+	// This information is for the database server which holds user tables
+	define('USER_DB_HOST', 'localhost');
+	define('USER_DB_USER', 'spacegame');
+	define('USER_DB_PASS', 'db password here');
+	define('USER_DB_NAME', 'spacegame');
+
+	// IMPORTANT: The following is a global salt used to encrypt a password for
+	// storage in the database. You should change this to a different random
+	// string. If you don't have access to a secure random number generator you
+	// *could* fall back on grabbing some random chars from https://www.random.org/
+	//
+	//        https://www.random.org/bytes/
+	//
+	// If you set this to about 15 or 20 hexadecimal bytes you can remove the
+	// spaces and dump the output into this define.
+	//
+	// CHANGING THIS INVALIDATES ALL PASSWORDS FOR ALL USERS
+
+	define('GLOBAL_SALT', '8b5991b7d11a3cf7cf54ce85237a336d');
+
+
 
 ?>

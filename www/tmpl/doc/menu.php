@@ -50,7 +50,7 @@
 	<li class="docs_menu">
 		<a href="docs.php?page=ships">Ships</a>
 		<ul class="docs_menu">
-			<li class="docs_menu"><a href="docs.php?page=ship_rating">Attack/Defense Rating</li>
+			<li class="docs_menu"><a href="docs.php?page=ship_rating">Attack/Defense Rating</a></li>
 			<li class="docs_menu"><a href="docs.php?page=tech">Ship Technology</a></li>
 			<li class="docs_menu">
 				<a href="docs.php?page=trade">Trade</a>
@@ -79,9 +79,9 @@
 	<li class="docs_menu">
 		<a href="docs.php?page=bases">Bases</a>
 		<ul class="docs_menu">
-			<li class="docs_menu"><a href="docs.php?page=base_package">Package Deployment</li>
-			<li class="docs_menu"><a href="docs.php?page=base_defense">Defense</li>
-			<li class="docs_menu"><a href="docs.php?page=base_sharing">Alliance Use</li>
+			<li class="docs_menu"><a href="docs.php?page=base_package">Package Deployment</a></li>
+			<li class="docs_menu"><a href="docs.php?page=base_defense">Defense</a></li>
+			<li class="docs_menu"><a href="docs.php?page=base_sharing">Alliance Use</a></li>
 			<li class="docs_menu">
 				<a href="docs.php?page=construction">Construction</a>
 				<ul class="docs_menu">

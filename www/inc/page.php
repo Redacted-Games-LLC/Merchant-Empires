@@ -1,6 +1,6 @@
 <?php
 /**
- * 
+ * Include file for all http access pages.
  *
  * @package [Redacted]Me
  * ---------------------------------------------------------------------------
@@ -22,9 +22,6 @@
  */
 
 	define('SPACEGAME', true);
-	
-	// This should be used to compute other salts.
-	define('GLOBAL_SALT', '8b5991b7d11a3cf7cf54ce85237a336d');
 	
 	include_once('inc/common.php');
 	include_once('inc/session.php');

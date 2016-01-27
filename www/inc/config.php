@@ -38,6 +38,15 @@
 	// players to create replacement gold keys for their remaining time.
 	define('END_OF_ROUND', START_OF_ROUND + 16070400);
 
+	// Email for support
+	define('EMAIL', 'support@merchantempires.net');
+
+	// Email for gold support
+	define('GOLD_EMAIL', 'goldsupport@merchantempires.net');
+
+	// ----------------------------------------------------------------------------
+	// The rest of this file should be edited with care.
+
 	// The title of the game to display at the top of all pages. Can be html...
 	define('GAME_TITLE', 'Merchant Empires');
 

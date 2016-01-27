@@ -51,7 +51,7 @@
 	Using a combat bot is on par with griefing. <a href="docs.php?page=hosting">Download and host</a>
 	your own version of the game and run it as an anarchy server if you want to combat bot.
 </div>
-<div class="header3">Forensics</Bots>
+<div class="header3">Forensics</div>
 <div class="docs_text">
 	We are able to track and document the long term behavior of players, if you suspect a player is
 	using a bot in a manner inconsistent with the policies report it. This takes quite a bit of time

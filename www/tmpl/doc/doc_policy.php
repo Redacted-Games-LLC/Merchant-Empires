@@ -37,11 +37,10 @@
 		<li><a href="docs.php?page=bots">Bot Policy</a></li>
 	</ul>
 </div>
+<div class="header2">General Rules</div>
 <div class="docs_text">
-	Game rounds are 9 months long. New rounds will start when old
-	ones have 3 months remaining. There is also a development round
-	constantly running and resetting as needed.
-</div>
-<div class="docs_text">
-	
+	Experience farming through combat is the big no-no in this game. We
+	don't want you creating players or using meat puppets just so your
+	other players can pod them and collect the damage experience. If you
+	are that desperate for xp then create a trade bot or something.
 </div>

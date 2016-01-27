@@ -25,8 +25,10 @@
 ?>
 <div class="header2">Terms of Use</div>
 <div class="docs_text">
-	By joining this server as a user and/or player you agree to the following
-	terms and conditions of use.
+	Global terms of use for [Redacted] Games LLC and products
+	<a href="https://civcraft.github.io/civcraftsite/termsofservice.html" target="_blank">can be found here</a>.
+	The following are specific terms to the Merchant Empires game. By joining
+	this server as a user and/or player you agree to the following terms of use.
 </div>
 <div class="header3">Basic Stuff</div>
 <div class="docs_text">
@@ -55,10 +57,7 @@
 	activation.
 </div>
 <div class="docs_text">
-	When the round officially ends a special key will be generated with any remaining gold
-	membership time.
-</div>
-<div class="docs_text">
-	If you have issues with your keys please contact the administration.
+	If you have issues with your keys please contact
+	<a href="mailto:<?php echo GOLD_EMAIL; ?>">Gold Support</a>.
 </div>
 
