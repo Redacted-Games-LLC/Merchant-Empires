@@ -28,7 +28,7 @@
 	The goal is to bring back the feeling of playing APME right around
 	the Profit &amp; Prey round, with a marked improvement on bases.
 </div>
-<div class="header3">Major Release 1.0 goals</div>
+<div class="header3">Major Release 1.0 goals - Dev Round 1</div>
 <div class="docs_text">
 	<ol>
 		<li>Fully navigable galaxy environment for multiple players <img src="res/safe_scan_force.png" width="18" height="18" alt="Done" /></li>
@@ -40,24 +40,34 @@
 		<li>Sector forces and scanning <img src="res/safe_scan_force.png" width="18" height="18" alt="Done" /></li>
 		<li>Gold Memberships and keys <img src="res/safe_scan_force.png" width="18" height="18" alt="Done" /></li>
 		<li>News, messaging, and subspace broadcasts <img src="res/safe_scan_force.png" width="18" height="18" alt="Done" /></li>
-		<li>Admin console with players, ships, and some moderation. <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
-		<li>Bases and construction <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
 		<li>Ship weapons and combat <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
 		<li>Sector force destruction <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
-		<li>Base busting <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
-		<li>Victory Condition <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
+		<li>...and not much more! <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
 	</ol>
 </div>
-<div class="header3">Major Release 1.1 goals</div>
+<div class="header3">Major Release 1.1 goals - Live Round 1</div>
 <div class="docs_text">
 	<ol>
-		<li>Base research <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
+		<li>Base construction and research <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
+		<li>Base busting <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
+		<li>Victory Condition <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
+		<li>Admin console with players, ships, and some moderation. <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
 		<li>Non-founder alliance leadership roles <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
 		<li>Xollian cloak, Mawlor jump, Zyck'lirg swarm <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
-		<li>Tractor beam hold, raiding <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
 		<li>Alliance mutiny <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
+		<li>...and much more! <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
 	</ol>
 </div>
+<div class="header3">Major Release 1.2 goals - Dev Round 2</div>
+<div class="docs_text">
+	<ol>
+		<li>Tractor beam hold, raiding <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
+		<li>Moving or Recycling base rooms <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
+		<li>Research blueprint system <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
+		<li>...and much more! <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
+	</ol>
+</div>
+
 <div class="header3">Stuff that is probably not going to get implemented.</div>
 <div class="docs_text">
 	<ol>

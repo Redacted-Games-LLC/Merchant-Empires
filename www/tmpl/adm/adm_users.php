@@ -1,6 +1,6 @@
 <?php
 /**
- * Administration page users.
+ * Administration page for users.
  *
  * @package [Redacted]Me
  * ---------------------------------------------------------------------------

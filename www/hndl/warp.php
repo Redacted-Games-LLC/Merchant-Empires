@@ -23,6 +23,7 @@
 
 	include_once('inc/page.php');
 	include_once('inc/warp.php');
+	include_once('inc/ships.php');
 
 	$return_page = 'viewport';
 

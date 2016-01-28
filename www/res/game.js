@@ -20,6 +20,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+
+/*
+ * I am very, very sorry for this file. --Celdecea
+ */
+
+
+
+
 var form_validate_lock = false;
 
 
@@ -852,7 +860,7 @@ function load_base_field() {
 
 		var img = document.createElement('img');
 
-		img.setAttribute('src', 'res/base/' + safe_caption + '.png');
+		img.setAttribute('src', 'res/base/rooms/' + safe_caption + '.png');
 		img.setAttribute('width', room.width * image_size);
 		img.setAttribute('height', room.height * image_size);
 

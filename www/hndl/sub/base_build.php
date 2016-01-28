@@ -43,16 +43,12 @@
 
 		foreach ($spacegame['over_rooms'] as $room) {
 
-			if ($room['finish_time'] > PAGE_START_TIME) {
+			if ($room['finish_time'] >= PAGE_START_TIME) {
 				continue;
 			}
 
 			if ($room['caption'] == 'Control Pad') {
 				$success = true;
-
-				$x = $room['x'] + $room['width'] - 3;
-				$y = $room['y'] + $room['height'] - 3;
-
 				break;
 			}
 		}
@@ -61,6 +57,8 @@
 			$return_codes[] = 1117;
 			break;
 		}
+
+		include_once('inc/rooms.php');
 
 
 		$time = PAGE_START_TIME;
@@ -93,7 +91,13 @@
 		}
 		
 
+		// TODO: Check to see if we are at our limit for concurrent builds
+
+
 		// TODO: Load info and start the build
+
+		
+
 
 	} while (false);
 	

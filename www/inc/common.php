@@ -26,13 +26,42 @@
 		die('Unauthorized script access. An entry has been made in the error log file with more information.');
 	}
 
+	// This should be used in place of time() outside of events. Since this file
+	// is included early it actions can be computed from delta page load, not 
+	// after some other stuff has been running.
+	define('PAGE_START_TIME', time());
+	
+	// This is used for page build later on.
+	define('PAGE_START_OFFSET', -microtime(true));
+	mt_srand(PAGE_START_TIME);
+
 	include_once('inc/config.php');
 	include_once('inc/db.php');
 	include_once('inc/return_codes.php');
 
+	function dump_r($dump = array()) {
+		echo '<pre class="dump">';
+		
+		if (is_array($dump)) {
+			echo htmlentities(print_r($dump, true));
+		}
+		else {
+			echo htmlentities($dump);
+		}
+		
+		echo '</pre>';
+	}
+
 	function quit($dump = null) {
-		global $spacegame;
-		echo '<pre>' . print_r(is_null($dump) ? $spacegame : $dump, true) . '</pre>';
+		
+		if (is_null($dump)) {
+			global $spacegame;
+			dump_r($spacegame);
+		}
+		else {
+			dump_r($dump);
+		}
+		
 		die();
 	}
 

@@ -107,6 +107,7 @@
 			$rs->data_seek(0);
 			if ($row = $rs->fetch_assoc()) {
 				$spacegame['base'] = $row;
+				
 				$spacegame['over_rooms'] = array();
 				$spacegame['over_room_count'] = 0;
 				$spacegame['rooms'] = array();

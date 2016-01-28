@@ -25,13 +25,13 @@
 	include_once('inc/game.php');
 	include_once('inc/port.php');
 	include_once('inc/cargo.php');
-
+	
 	if ($spacegame['player']['ship_type'] <= 0) {
 		header('Location: error.php?rc=1031');
 		die();
 	}
 
-
+	include_once('inc/ships.php');
 
 
 	$empty_holds_available = $spacegame['ship']['holds'];

@@ -1,6 +1,6 @@
 <?php
 /**
- * Include file for all http access pages.
+ * Handles deleting a room type requirement from the database.
  *
  * @package [Redacted]Me
  * ---------------------------------------------------------------------------
@@ -21,8 +21,31 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-	define('SPACEGAME', true);
-	include_once('inc/common.php');
-	
-	include_once('inc/session.php');
+	include_once('hndl/common.php');
+	include_once('inc/game.php');
+
+	$return_page = 'admin';
+	$return_vars['page'] = 'build';
+
+	do { // Dummy Loop
+		
+		if (!isset($_REQUEST['room']) || !isset($spacegame['room_index'][$_REQUEST['room']])) {
+			$return_codes[] = 1166;
+			break;
+		}
+
+		$room = $spacegame['room_types'][$spacegame['room_index'][$_REQUEST['room']]];
+		$return_vars['page'] = 'room';
+		$return_vars['room'] = $room['safe_caption'];
+		
+		
+		
+
+
+		$db = isset($db) ? $db : new DB;
+
+		
+	} while (false);
+
+
 ?>

@@ -41,6 +41,10 @@
 			$spacegame['ships_count']++;
 		}
 
+		if (isset($spacegame['player'])) {
+			$spacegame['ship'] = $spacegame['ships'][$spacegame['player']['ship_type']];
+		}
+		
 	} while (false);
 
 

@@ -28,7 +28,7 @@
 		
 		$spacegame['goods'] = array();
 		$spacegame['goods_count'] = 0;
-		$spacegame['goods_index'] = array();
+		$spacegame['good_index'] = array();
 
 		$db = isset($db) ? $db : new DB;
 
@@ -43,7 +43,7 @@
 			$row['targets'] = array();
 			
 			$spacegame['goods'][$row['record_id']] = $row;
-			$spacegame['goods_index'][$row['caption']] = $row['record_id'];
+			$spacegame['good_index'][$row['safe_caption']] = $row['record_id'];
 			$spacegame['goods_count']++;
 		}
 

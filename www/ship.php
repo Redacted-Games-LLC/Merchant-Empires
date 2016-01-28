@@ -25,6 +25,7 @@
 	include_once('inc/game.php');
 	include_once('inc/cargo.php');
 	include_once('inc/systems.php');
+	include_once('inc/ships.php');
 
 	$tmpl['no_fluff'] = true;
 	$tmpl['page_title'] = 'Ship Information';

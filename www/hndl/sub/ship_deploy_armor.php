@@ -33,6 +33,8 @@
 			break;
 		}
 
+		include_once('inc/ships.php');
+
 		$current_amount = $spacegame['player'][$good['safe_caption']];
 		$max_amount = $spacegame['ships'][$spacegame['player']['ship_type']][$good['safe_caption']];
 

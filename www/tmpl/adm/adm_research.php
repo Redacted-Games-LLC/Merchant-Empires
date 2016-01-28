@@ -1,6 +1,6 @@
 <?php
 /**
- * Include file for all http access pages.
+ * Administration page for base construction.
  *
  * @package [Redacted]Me
  * ---------------------------------------------------------------------------
@@ -21,8 +21,20 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-	define('SPACEGAME', true);
-	include_once('inc/common.php');
+	include_once('tmpl/common.php');
 	
-	include_once('inc/session.php');
+	if (!get_user_field(USER_ID, 'admin', 'research')) {
+		header('Location: viewport.php?rc=1030');
+		die();
+	}
+
+	include_once('inc/research.php');
+
+
 ?>
+	<div class="header2">Base Research Administration</div>
+	<div class="docs_text">
+		You can manipulate base research using this page.
+	</div>
+	<hr />
+	

@@ -24,13 +24,15 @@
 	include_once('inc/page.php');
 	include_once('inc/game.php');
 	include_once('inc/dealer.php');
-	include_once('inc/cargo.php');
 
 	// Players in escape pods can only enter ship dealers
 	if ($spacegame['player']['ship_type'] <= 0 && $spacegame['places'][$place_id]['type'] != 'Ship Dealer') {
 		header('Location: error.php?rc=1031');
 		die();
 	}
+
+	include_once('inc/cargo.php');
+	include_once('inc/ships.php');
 
 	$tmpl['no_fluff'] = true;
 	$tmpl['page_title'] = 'Dealer';

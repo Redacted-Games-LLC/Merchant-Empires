@@ -57,11 +57,12 @@
 			break;
 		}
 
+		include_once('inc/ships.php');
 		include_once('inc/goods.php');
 
 		$good_id = $_REQUEST['good'];
 
-		if ($good_id != $spacegame['goods_index']['Drones']) {
+		if ($good_id != $spacegame['good_index']['drones']) {
 			$return_codes[] = 1103;
 			break;
 		}

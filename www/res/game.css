@@ -58,6 +58,15 @@ input.form_input {
 	color: white;
 }
 
+pre.dump {
+	background-color: white;
+	color: black;
+	font-family: fixed;
+	margin: 10px;
+	padding: 10px;
+	border: solid 2px gray;
+}
+
 div#page_build {
 	position: absolute;
 	width: 192px;
@@ -1949,3 +1958,21 @@ div.user_list_item_caption {
 	font-family: sans-serif;
 	cursor: pointer;
 }
+
+/* adm_build.php build.php */
+
+div.room_list {
+	width: 99%;
+	margin: 2px auto;
+	text-align: left;
+}
+
+div.room_list_item {
+	display: inline-block;
+	width: 205px;
+	text-align: left;
+	margin: 2px;
+	padding: 2px;
+	border: solid 1px #777777;
+}
+

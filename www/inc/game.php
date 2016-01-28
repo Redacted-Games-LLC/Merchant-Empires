@@ -88,20 +88,15 @@
 		}
 
 		$spacegame['gold'] = $spacegame['player']['gold_expiration'] > PAGE_START_TIME;
-		$spacegame['ship'] = array();
 
 		if ($spacegame['player']['ship_type'] <= 0) {
+			$spacegame['ship'] = array();
 			$spacegame['ship']['id'] = 0;
 			$spacegame['ship']['tps'] = 1;
 			$spacegame['ship']['caption'] = 'Escape Pod';
 			$spacegame['player']['ship_name'] = 'Long Journey';
 		}
-		else {
-			include_once('inc/ships.php');
-			$spacegame['ship'] = $spacegame['ships'][$spacegame['player']['ship_type']];
-		}
-
-
+		
 		include_once('inc/update_turns.php');
 		include_once('inc/update_alignment.php');
 

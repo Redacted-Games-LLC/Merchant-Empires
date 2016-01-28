@@ -21,8 +21,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-	include_once('inc/config.php');
-	
+	define('SPACEGAME', true);
+	include_once('inc/common.php');
 
 	$return_page = 'viewport';
 	

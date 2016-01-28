@@ -47,6 +47,12 @@
 	define('USER_DB_PASS', 'db password here');
 	define('USER_DB_NAME', 'spacegame');
 
+	// Email for support
+	define('EMAIL', 'email_here');
+
+	// Email for gold support
+	define('GOLD_EMAIL', 'email_here');
+
 	// IMPORTANT: The following is a global salt used to encrypt a password for
 	// storage in the database. You should change this to a different random
 	// string. If you don't have access to a secure random number generator you
@@ -57,7 +63,9 @@
 	// If you set this to about 15 or 20 hexadecimal bytes you can remove the
 	// spaces and dump the output into this define.
 	//
-	// CHANGING THIS INVALIDATES ALL PASSWORDS FOR ALL USERS
+	// CHANGING THIS INVALIDATES ALL PASSWORDS FOR ALL USERS. You should change
+	// this when you first setup the user tables above and after that only if
+	// compromised or the user db changes.
 
 	define('GLOBAL_SALT', '8b5991b7d11a3cf7cf54ce85237a336d');
 

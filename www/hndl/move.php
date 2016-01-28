@@ -23,12 +23,7 @@
 
 	include_once('inc/page.php');
 	include_once('inc/game.php');
-	include_once('inc/combat.php');
-	include_once('inc/msg_functions.php');
-
-	define('SKIP_ARTICLES', 1);
-	include_once('inc/news.php');
-
+	
 	$return_page = 'viewport';
 
 	do { // dummy loop
@@ -73,6 +68,8 @@
 			$target_type = 0;
 		}
 
+		include_once('inc/ships.php');
+
 		$time = PAGE_START_TIME;
 		$turns = $spacegame['player']['turns'];
 		$turn_cost = $spacegame['ship']['tps'];
@@ -114,6 +111,12 @@
 			$bonus -= ZYCK_ORDNANCE_BONUS;
 		}
 
+		include_once('inc/combat.php');
+		include_once('inc/msg_functions.php');
+				
+		define('SKIP_ARTICLES', 1);
+		include_once('inc/news.php');
+		
 		// Mines attack when exiting a sector
 		if ($spacegame['player']['base_id'] <= 0 && $spacegame['player']['ship_type'] > 0) {
 			
@@ -194,6 +197,7 @@
 				$message .= $spacegame['player']['caption'] . '.';
 				
 				$targets = array($row['owner']);
+
 				send_message($message, $targets, MESSAGE_EXPIRATION, 4);
 
 			}

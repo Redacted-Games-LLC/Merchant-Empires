@@ -22,6 +22,7 @@
  */
 
 	include_once('tmpl/common.php');
+	include_once('inc/ships.php');
 ?>
 <div class="viewport_ship_info">
 	<br />

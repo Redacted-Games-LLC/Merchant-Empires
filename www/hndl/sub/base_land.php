@@ -23,6 +23,7 @@
 
 	include_once('inc/page.php');
 	include_once('inc/game.php');
+	include_once('inc/ships.php');
 	
 	$return_page = 'viewport';
 
@@ -48,7 +49,7 @@
 
 		foreach ($spacegame['over_rooms'] as $room) {
 
-			if ($room['finish_time'] > PAGE_START_TIME) {
+			if ($room['finish_time'] >= PAGE_START_TIME) {
 				continue;
 			}
 			

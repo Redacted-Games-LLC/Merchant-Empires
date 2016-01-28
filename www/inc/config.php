@@ -38,25 +38,11 @@
 	// players to create replacement gold keys for their remaining time.
 	define('END_OF_ROUND', START_OF_ROUND + 16070400);
 
-	// Email for support
-	define('EMAIL', 'support@merchantempires.net');
-
-	// Email for gold support
-	define('GOLD_EMAIL', 'goldsupport@merchantempires.net');
-
 	// ----------------------------------------------------------------------------
 	// The rest of this file should be edited with care.
 
 	// The title of the game to display at the top of all pages. Can be html...
 	define('GAME_TITLE', 'Merchant Empires');
-
-	// This should be used in place of time() outside of events. Since this file
-	// is included early it actions can be computed from delta page load, not 
-	// after some other stuff has been running.
-	define('PAGE_START_TIME', time());
-	
-	// This is used for page build later on.
-	define('PAGE_START_OFFSET', -microtime(true));
 
 	// Defines inflation to be about 3% per day from start of round
 	define('INFLATION', (PAGE_START_TIME - START_OF_ROUND) * 3 / 86400);

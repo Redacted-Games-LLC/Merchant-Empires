@@ -30,7 +30,7 @@
 		break;
 	}
 
-	include_once('inc/cargo.php');
+	include_once('inc/rooms.php');
 
 	$tmpl['no_fluff'] = true;
 	$tmpl['page_title'] = 'Base Construction';
@@ -52,7 +52,7 @@
 	<?php echo $base_caption; ?>
 </div>
 <div class="dealer_text">
-
+	<?php quit($spacegame); ?>
 </div>
 
 	

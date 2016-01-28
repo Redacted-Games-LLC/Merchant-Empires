@@ -25,6 +25,7 @@
 	include_once('inc/game.php');
 	include_once('inc/systems.php');
 	include_once('inc/port.php');
+	include_once('inc/ships.php');
 
 	define('ALL_CARGO', true);
 	include_once('inc/cargo.php');

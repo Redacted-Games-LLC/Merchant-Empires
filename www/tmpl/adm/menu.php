@@ -31,6 +31,8 @@
 		<li class="docs_menu"><?php echo get_admin_link('system', 'System Editor', 'system'); ?></li>
 		<li class="docs_menu"><?php echo get_admin_link('ports', 'Port Editor', 'ports'); ?></li>
 		<li class="docs_menu"><?php echo get_admin_link('goods', 'Goods Editor', 'goods'); ?></li>
+		<li class="docs_menu"><?php echo get_admin_link('research', 'Base Research', 'research'); ?></li>
+		<li class="docs_menu"><?php echo get_admin_link('build', 'Base Construction', 'build'); ?></li>
 		<li class="docs_menu"><?php echo get_admin_link('gold', 'Gold Keys', 'gold'); ?></li>
 		<li class="docs_menu"><?php echo get_admin_link('news', 'News Desk', 'news'); ?></li>
 	</ul>

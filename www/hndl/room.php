@@ -1,6 +1,6 @@
 <?php
 /**
- * Viewport popup for base research
+ * Handles room/construction related tasks.
  *
  * @package [Redacted]Me
  * ---------------------------------------------------------------------------
@@ -23,39 +23,47 @@
 
 	include_once('inc/page.php');
 	include_once('inc/game.php');
-	include_once('inc/base.php');
 
-	if ($spacegame['player']['base_id'] <= 0) {
-		header('Location: viewport.php?rc=1116');
-		break;
-	}
-
-	include_once('inc/research.php');
+	$return_page = 'build';
 	
-	$tmpl['no_fluff'] = true;
-	$tmpl['page_title'] = 'Base Research';
 
-	include_once('tmpl/html_begin.php');
+	do { // Dummy loop
 
-	
-?>
+		switch ($_REQUEST['subtask']) {
 
-<div class="port_update_button">
-	<a href="viewport.php" target="_top">
-		<script type="text/javascript">drawButton('close', 'close', 'return true;');</script>
-	</a>
-</div>
-<div class="header2">
-	<?php echo $tmpl['page_title']; ?>
-</div>
-<div class="header3">
-	<?php echo $base_caption; ?>
-</div>
-<div class="dealer_text">
-	<?php quit($spacegame); ?>
-</div>
+			case 'add':
+			case 'edit':
+			case 'delete':
+			case 'add_requirement':
+			case 'delete_requirement':
 
-	
-<?php
-	include_once('tmpl/html_end.php');
+				$return_page = 'admin';
+				$return_vars['page'] = 'build';
+
+				if (!get_user_field(USER_ID, 'admin', 'build')) {
+					$return_codes[] = 1030;
+					break 2;
+				}
+
+				include_once('inc/rooms.php');
+			
+				$subtask_page = $_REQUEST['subtask'];
+				$subtask_file = "hndl/sub/room_{$subtask_page}.php";
+
+				if (!file_exists($subtask_file)) {
+					$return_codes[] = 1041;
+					error_log(__FILE__ . '::' . __LINE__ . ' Valid subtask does not have an include.');
+					break;
+				}
+				
+				include_once($subtask_file);
+				break;
+
+			default:
+				$return_codes[] = 1041;
+				break 2;
+ 		}
+	} while (false);
+
+
 ?>

@@ -43,16 +43,12 @@
 
 		foreach ($spacegame['over_rooms'] as $room) {
 
-			if ($room['finish_time'] > PAGE_START_TIME) {
+			if ($room['finish_time'] >= PAGE_START_TIME) {
 				continue;
 			}
 			
 			if ($room['caption'] == 'Control Pad') {
 				$success = true;
-
-				$x = $room['x'] + $room['width'] - 3;
-				$y = $room['y'] + $room['height'] - 3;
-
 				break;
 			}
 		}
@@ -62,6 +58,7 @@
 			break;
 		}
 
+		include_once('inc/research.php');
 
 		$time = PAGE_START_TIME;
 		$turns = $spacegame['player']['turns'];
@@ -91,8 +88,9 @@
 			error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
 			break;
 		}
-		
 
+		// TODO: Check to see if we are at our limit for concurrent researches
+		
 		// TODO: Load info and start the research project
 
 	} while (false);
