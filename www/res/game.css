@@ -1968,8 +1968,9 @@ div.room_list {
 }
 
 div.room_list_item {
+	font-size:90%;
 	display: inline-block;
-	width: 205px;
+	width: 190px;
 	text-align: left;
 	margin: 2px;
 	padding: 2px;

@@ -46,6 +46,7 @@
 			echo '</div>';
 		}
 		else {
+			echo '<div class="docs_text">';
 			echo '<div class="room_list">';
 
 			foreach ($spacegame['room_types'] as $room_type_id => $room_type) {
@@ -60,6 +61,7 @@
 			}
 
 			echo '</div>';
+			echo '</div>';
 		}
 
 
@@ -68,8 +70,22 @@
 	<hr />
 	<div class="header2">Add New Room</div>
 	<div class="docs_text">
+		Your room will be created with a build limit of 0 preventing it from being used by players
+		until you have configured it, but it won't be visible.
+	</div>
+	<div class="docs_text">
 
-		
+		<form action="handler.php" method="post">
+			<p>
+				<label for="caption">Caption:</label>
+				<input type="text" id="caption" name="caption" maxlength="24" size="25" value="" />
+			</p>
+
+			<script type="text/javascript">drawButton('add', 'add', 'validate_add()')</script>
+
+			<input type="hidden" name="task" value="room" />
+			<input type="hidden" name="subtask" value="add" />
+		</form>
 
 	</div>
 

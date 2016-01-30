@@ -67,6 +67,7 @@
 					<p>
 						<label for="caption">Caption:</label>
 						<input type="text" id="caption" name="caption" maxlength="24" size="25" value="<?php echo $spacegame['room']['caption']; ?>" />
+						(max 24 chars)
 					</p>
 
 					<p>
@@ -75,6 +76,7 @@
 						&nbsp;&nbsp;
 						<label for="height">Height:</label>
 						<input type="text" id="height" name="height" maxlength="2" size="4" value="<?php echo $spacegame['room']['height']; ?>" />
+						(max <?php echo MAX_BASE_ROOM_SIZE; ?> each)
 					</p>
 
 					<p>
@@ -83,7 +85,7 @@
 					</p>
 
 					<p>
-						<input type="checkbox" id="can_land" name="can_land" <?php if ($spacegame['room']['can_land'] > 0) { echo 'checked="checked"'; } ?> />
+						<input type="checkbox" id="can_land" name="can_land" <?php if ($spacegame['room']['can_land'] > 0) { echo 'checked="checked"'; } ?> value="land" />
 						<label for="can_land">Can be used as a landing pad</label>
 					</p>
 
@@ -128,7 +130,7 @@
 					</p>
 
 					<p>
-						<label for="good">Production:</label>
+						<label for="good">Good:</label>
 						<select id="good" name="good">
 							<option value="[none]">[None]</option>
 							<?php
@@ -136,7 +138,7 @@
 								foreach ($spacegame['goods'] as $good_id => $good) {
 									echo '<option value="' . $good['safe_caption'] . '"';
 
-									if ($good_id == $spacegame['room']['production']) {
+									if ($good_id == $spacegame['room']['good']) {
 										echo ' selected="selected"';
 									}
 
@@ -145,8 +147,8 @@
 							?>
 						</select>
 						&nbsp;&nbsp;
-						<label for="amount">Amount:</label>
-						<input type="text" id="amount" name="amount" maxlength="3" size="4" value="<?php echo $spacegame['room']['production']; ?>" />
+						<label for="production">Production:</label>
+						<input type="text" id="production" name="production" maxlength="3" size="4" value="<?php echo $spacegame['room']['production']; ?>" />
 					</p>
 
 					<script type="text/javascript">drawButton('update', 'update', 'validate_update()')</script>
@@ -159,22 +161,51 @@
 
 			<hr />
 			<div class="header3">Room Requirements</div>
+			<div class="docs_text">
+				This section was rushed through. Right now there is no checking for duplicates and
+				deletions take everything out. This will be fixed in a later version.
+			</div>
 			<?php
-
-				if ($room['requirement_count'] <= 0) {
+				if ($spacegame['room']['goods_count'] + $spacegame['room']['researches_count'] + $spacegame['room']['builds_count'] <= 0) {
 					echo '<div class="docs_text">';
 					echo 'There are no requirements for this structure.';
 					echo '</div>';
 				}
 				else {
 					echo '<div class="docs_text">';
-					echo 'This structure requires the following:';
+					echo '<a href="handler.php?task=room&amp;subtask=delete_requirement&amp;room='. $spacegame['room']['safe_caption'] .'">Click here</a>';
+					echo ' to delete all requirements. This structure requires the following:';
 					echo '</div>';
 
-					foreach ($room['requirements'] as $requirement_id => $requirement) {
+					if ($spacegame['room']['goods_count'] > 0) {
+						echo '<div class="header4">Goods</div>';
 						echo '<div class="docs_text">';
+					
+						foreach ($spacegame['room']['goods_needed'] as $good_id) {
+							echo $spacegame['goods'][$good_id]['caption'] . '<br />';
+						}
 
-						dump_r($requirement);
+						echo '</div>';
+					}
+
+					if ($spacegame['room']['researches_count'] > 0) {
+						echo '<div class="header4">Researches</div>';
+						echo '<div class="docs_text">';
+					
+						foreach ($spacegame['room']['researches_needed'] as $research_id) {
+							echo $spacegame['research_items'][$researcn_id]['caption'] . '<br />';
+						}
+
+						echo '</div>';
+					}
+
+					if ($spacegame['room']['builds_count'] > 0) {
+						echo '<div class="header4">Builds</div>';
+						echo '<div class="docs_text">';
+					
+						foreach ($spacegame['room']['builds_needed'] as $build_id) {
+							echo $spacegame['room_types'][$build_id]['caption'] . '<br />';
+						}
 
 						echo '</div>';
 					}
@@ -209,7 +240,7 @@
 							<option value="[none]">[None]</option>
 							<?php
 
-								foreach ($spacegame['research'] as $research_id => $research) {
+								foreach ($spacegame['research_items'] as $research_id => $research) {
 									echo '<option value="' . $research['safe_caption'] . '"';
 									echo '>' . $research['caption'] . '</option>';
 								}
@@ -241,6 +272,44 @@
 					<input type="hidden" name="room" value="<?php echo $spacegame['room']['safe_caption']; ?>" />
 				</form>
 			</div>
+			<hr />
+			<div class="header3">Delete This Room</div>
+			<?php 
+				if ($spacegame['room']['upgrade_count'] > 0) { ?>
+
+				<div class="docs_text">
+					You cannot delete this room because the following rooms depend on it:
+				</div>
+
+				<div class="docs_text">
+				<?php
+					echo '<div class="room_list">';
+
+					foreach ($spacegame['room']['upgrades'] as $room_type_id) {
+
+						echo '<div class="room_list_item">';
+
+						echo '<a href="admin.php?page=room&amp;room='. $spacegame['room_types'][$room_type_id]['safe_caption'] .'">';
+						echo $spacegame['room_types'][$room_type_id]['caption'];
+						echo '</a>';
+
+						echo '</div>';
+					}
+
+					echo '</div>';
+				?>
+				</div>
+
+			<?php } else { ?>
+
+				<div class="docs_text">
+					<a href="handler.php?task=room&amp;subtask=delete&amp;room=<?php echo $spacegame['room']['safe_caption']; ?>">Completely delete</a> this room.
+				</div>
+
+			<?php } ?>
+
+			
+
 
 		<?php
 		}

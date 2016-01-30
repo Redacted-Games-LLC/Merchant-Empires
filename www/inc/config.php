@@ -54,6 +54,9 @@
 	// ships and weapons and eliminates most alignment restrictions. Currently
 	// not implemented in code.
 	define('HAVOC_ROUND', PAGE_START_TIME > END_OF_ROUND);
+
+	// How much to reduce ship cost for Havoc round
+	define('HAVOC_SHIP_COST', 0.10);
 	
 	// Maximum number of turns 
 	define('MAX_TURNS', 3000);
@@ -167,10 +170,20 @@
 	define('DEFAULT_SHIP_NAME', '<em>NO SHIP NAME</em>');
 
 	// How much a level 1 player pays to dump cargo before inflation.
-	define('CARGO_DUMP_COST', 5000);
+	if (DEV_ROUND) {
+		define('CARGO_DUMP_COST', 1000);
+	}
+	else {
+		define('CARGO_DUMP_COST', 5000);
+	}
 
 	// How many turns a player must use to dump cargo
-	define('CARGO_DUMP_TURNS', 100);
+	if (DEV_ROUND) {
+		define('CARGO_DUMP_TURNS', 20);
+	}
+	else {
+		define('CARGO_DUMP_TURNS', 100);
+	}
 
 	// One of the events spits a timestamp on the console at this interval.
 	define('TIMESTAMP_TIME', 600);
@@ -306,6 +319,10 @@
 
 	// Turn cost multiplier for taking off from a base.
 	define('BASE_TAKEOFF_TURN_MULTIPLIER', 10);
+
+	// Maximum size for a base room width or height.
+	// Remember we only use a 64 bit storage for masks.
+	define('MAX_BASE_ROOM_SIZE', 8);
 
 	// Minimum length of a gold key
 	define('MINIMUM_KEY_LENGTH', 17);

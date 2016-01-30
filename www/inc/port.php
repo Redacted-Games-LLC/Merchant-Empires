@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
+	include_once('inc/common.php');
 	include_once('inc/game.php');
 	include_once('inc/goods.php');
 	include_once('inc/systems.php');

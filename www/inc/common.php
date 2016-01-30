@@ -22,7 +22,7 @@
  */
 
 	if (!defined('SPACEGAME')) {
-		error_log('Files in the inc directory may be included by authorized scripts only. This check is in: inc/common.php');
+		error_log('Files in the inc directory may be included by authorized scripts only. This check is in: hndl/common.php');
 		die('Unauthorized script access. An entry has been made in the error log file with more information.');
 	}
 

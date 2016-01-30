@@ -816,7 +816,7 @@
 		$base_id = $db->last_insert_id('bases');
 		$x = 50 + mt_rand($room['width'] * 2) - $room['width'];
 		$y = 50 + mt_rand($room['height'] * 2) - $room['height'];
-		$time = PAGE_START_TIME + $room['build_time'];
+		$time = PAGE_START_TIME + (HAVOC_ROUND ? $room['build_time'] * HAVOC_SHIP_COST : $room['build_time']);
 
 		// Insert the Landing Pad
 

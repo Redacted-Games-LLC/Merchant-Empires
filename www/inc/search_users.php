@@ -21,7 +21,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-	include_once('hndl/common.php');
+	include_once('inc/common.php');
 	include_once('inc/game.php');
 
 	if (!get_user_field(USER_ID, 'admin', 'users')) {

@@ -28,7 +28,6 @@
 		break;
 	}
 	
-
 	do { // Dummy loop
 
 		switch ($_REQUEST['subtask']) {

@@ -20,10 +20,10 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
-	include_once('inc/page.php');
-
-
+	
+	//Warning: may be uncluded by non game docs
+	//include_once('inc/common.php');
+	
 	do { // Dummy loop
 
 		$db = isset($db) ? $db : new DB;

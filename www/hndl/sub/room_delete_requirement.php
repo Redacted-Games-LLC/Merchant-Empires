@@ -34,17 +34,33 @@
 			break;
 		}
 
-		$room = $spacegame['room_types'][$spacegame['room_index'][$_REQUEST['room']]];
+		$room = $spacegame['room_index'][$_REQUEST['room']];
 		$return_vars['page'] = 'room';
-		$return_vars['room'] = $room['safe_caption'];
+		$return_vars['room'] = $spacegame['room_types'][$room]['safe_caption'];
 		
-		
-		
-
-
 		$db = isset($db) ? $db : new DB;
 
+		if (!($st = $db->get_db()->prepare("delete from room_requirements where room = ?"))) {
+			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			$return_codes[] = 1006;
+			break;
+		}
 		
+		$st->bind_param("i", $room);
+		
+		if (!$st->execute()) {
+			$return_codes[] = 1006;
+			error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			break;
+		}
+		
+		if ($db->get_db()->affected_rows <= 0) {
+			$return_codes[] = 1176;
+			break;
+		}
+
+		$return_codes[] = 1177;
+
 	} while (false);
 
 

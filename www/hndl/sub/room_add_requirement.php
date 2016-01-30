@@ -38,26 +38,27 @@
 		$return_vars['page'] = 'room';
 		$return_vars['room'] = $room['safe_caption'];
 
-		$good = 0;
-		$count = 0;
-		$research = 0;
-		$build = 0;
+		$good = null;
+		$amount = 0;
+		$research = null;
+		$build = null;
 	
 		include_once('inc/goods.php');
 
 		if (isset($_REQUEST['good']) && $_REQUEST['good'] != '[none]') {
+			
 			if (!isset($spacegame['good_index'][$_REQUEST['good']])) {
 				$return_codes[] = 1042;
 				break;
 			}
-			elseif (!isset($_REQUEST['amount']) || !is_numeric($_REQUEST['amount']) || $_REQUEST['amount'] <= 0) {
+			
+			if (!isset($_REQUEST['amount']) || !is_numeric($_REQUEST['amount']) || $_REQUEST['amount'] <= 0) {
 				$return_codes[] = 1027;
 				break;
 			}
-			else {
-				$good = $spacegame['good_index'][$_REQUEST['good']];
-				$amount = $_REQUEST['amount'];
-			}
+			
+			$good = $spacegame['good_index'][$_REQUEST['good']];
+			$amount = $_REQUEST['amount'];
 		}
 
 		include_once('inc/research.php');
@@ -82,9 +83,38 @@
 			}
 		}
 
-		quit($GLOBALS);
+		if (is_null($build) && is_null($research) && is_null($good)) {
+			$return_codes[] = 1174;
+			break;
+		}
+
+		// Alright, lets add the room requirement
 
 		$db = isset($db) ? $db : new DB;
+		$st = null;
+
+		if (!($st = $db->get_db()->prepare("insert into room_requirements (room, build, research, good, amount) values (?,?,?,?,?)"))) {
+			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			$return_codes[] = 1006;
+			break;
+		}
+		
+		$st->bind_param("iiiii", $room['record_id'], $build, $research, $good, $amount);
+		
+		if (!$st->execute()) {
+			$return_codes[] = 1006;
+			error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			break;
+		}
+		
+		$room_id = $db->last_insert_id('room_requirements');
+
+		if ($room_id <= 0) {
+			$return_codes[] = 1170;
+			break;
+		}
+
+		$return_codes[] = 1175;
 
 		
 	} while (false);

@@ -29,22 +29,72 @@
 
 	do { // Dummy Loop
 		
-		if (!isset($_REQUEST['room']) || !isset($spacegame['room_index'][$_REQUEST['room']])) {
-			$return_codes[] = 1166;
+		// Did we get a valid caption?
+
+		$caption = '';
+
+		if (!isset($_REQUEST['caption']) || strlen($_REQUEST['caption']) <= 1) {
+				$return_codes[] = 1111;
+				break;
+		}
+		else {
+			if (trim($_REQUEST['caption']) != $_REQUEST['caption']) {
+				$return_codes[] = 1111;
+				break;
+			}
+
+			if (str_replace('  ', ' ', $_REQUEST['caption']) != $_REQUEST['caption']) {
+				$return_codes[] = 1111;
+				break;
+			}
+
+			if (!preg_match('/^[a-zA-Z0-9-_\'" ]{1,24}$/i', $_REQUEST['caption'])) {
+				$return_codes[] = 1110;
+				break;
+			}
+
+			$caption = $_REQUEST['caption'];
+		}
+
+
+		define('MINIMUM_ROOM_INFO', 1);
+		include_once('inc/rooms.php');
+
+		$safe_caption = str_replace(' ', '_', strtolower($caption));
+
+		if (isset($spacegame['room_index'][$safe_caption])) {
+			$return_codes[] = 1169;
 			break;
 		}
 
-		$room = $spacegame['room_types'][$spacegame['room_index'][$_REQUEST['room']]];
-		$return_vars['page'] = 'room';
-		$return_vars['room'] = $room['safe_caption'];
-
-
-
-
-
 		$db = isset($db) ? $db : new DB;
 
+		if (!($st = $db->get_db()->prepare("insert into room_types (caption, build_limit) values (?, 0)"))) {
+			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			$return_codes[] = 1006;
+			break;
+		}
 		
+		$st->bind_param("s", $caption);
+		
+		if (!$st->execute()) {
+			$return_codes[] = 1006;
+			error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			break;
+		}
+		
+		$room_id = $db->last_insert_id('room_types');
+
+		if ($room_id <= 0) {
+			$return_codes[] = 1170;
+			break;
+		}
+
+		$return_page = 'admin';
+		$return_vars['page'] = 'room';
+		$return_vars['room'] = $safe_caption;
+		$return_codes[] = 1171;
+
 	} while (false);
 
 

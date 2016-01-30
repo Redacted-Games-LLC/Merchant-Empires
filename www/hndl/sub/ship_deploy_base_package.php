@@ -53,6 +53,46 @@
 			break;
 		}
 
+		// Did we get a valid caption?
+
+		$caption = '';
+
+		if (!isset($_REQUEST['caption']) || strlen($_REQUEST['caption']) <= 0) {
+			$caption = DEFAULT_BASE_CAPTION;
+		}
+		else {
+			if (trim($_REQUEST['caption']) != $_REQUEST['caption']) {
+				$return_codes[] = 1111;
+				break;
+			}
+
+			if (str_replace('  ', ' ', $_REQUEST['caption']) != $_REQUEST['caption']) {
+				$return_codes[] = 1111;
+				break;
+			}
+
+			if (!preg_match('/^[a-zA-Z0-9-_\'" ]{1,24}$/i', $_REQUEST['caption'])) {
+				$return_codes[] = 1110;
+				break;
+			}
+
+			$caption = $_REQUEST['caption'];
+		}
+
+		// Make sure we aren't in a protected system
+
+		include_once('inc/systems.php');
+
+		if (!isset($spacegame['system'])) {
+			$return_codes[] = 1101;
+			break;
+		}
+
+		if ($spacegame['system']['protected']) {
+			$return_codes[] = 1105;
+			break;
+		}
+
 		// Find out if we are over a place which supports bases
 
 		include_once('inc/places.php');
@@ -82,21 +122,6 @@
 			break;
 		}
 
-		// Make sure we aren't in a protected system
-
-		include_once('inc/systems.php');
-
-		if (!isset($spacegame['system'])) {
-			$return_codes[] = 1101;
-			break;
-		}
-
-		if ($spacegame['system']['protected']) {
-			$return_codes[] = 1105;
-			break;
-		}
-
-
 		// Make sure player isn't at their own limit
 		$base_limit = START_BASE_COUNT + floor($spacegame['player']['level'] / LEVELS_PER_EXTRA_BASE);
 
@@ -114,8 +139,6 @@
 			break;
 		}
 
-
-
 		// Remove a cargo entry
 		
 		if (!($st = $db->get_db()->prepare("update player_cargo set amount = amount - 1 where record_id = ? and amount = ?"))) {
@@ -131,32 +154,6 @@
 			error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			break;
 		}
-
-		$caption = '';
-
-		if (!isset($_REQUEST['caption']) || strlen($_REQUEST['caption']) <= 0) {
-			$caption = DEFAULT_BASE_CAPTION;
-		}
-		else {
-			if (trim($_REQUEST['caption']) != $_REQUEST['caption']) {
-				$return_codes[] = 1111;
-				break;
-			}
-
-			if (str_replace('  ', ' ', $_REQUEST['caption']) != $_REQUEST['caption']) {
-				$return_codes[] = 1111;
-				break;
-			}
-
-			if (!preg_match('/^[a-zA-Z0-9-_\'" ]{1,24}$/i', $_REQUEST['caption'])) {
-				$return_codes[] = 1110;
-				break;
-			}
-
-			$caption = $_REQUEST['caption'];
-		}
-
-
 
 		// Alright, let us deploy the base.
 

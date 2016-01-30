@@ -1,6 +1,6 @@
 <?php
 /**
- * 
+ * Loads information necessary for a dealer to operate.
  *
  * @package [Redacted]Me
  * ---------------------------------------------------------------------------
@@ -21,6 +21,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+	include_once('inc/common.php');
 	include_once('inc/game.php');
 	include_once('inc/places.php');
 	include_once('inc/systems.php');
@@ -74,6 +75,10 @@
 
 			switch ($item_ref['type_caption']) {
 				case 'Ships':
+					if (HAVOC_ROUND) {
+						$item_ref['final_price'] *= HAVOC_SHIP_COST;
+					}
+
 				case 'Goods':
 				case 'People':
 					$table = strtolower($item_ref['type_caption']);

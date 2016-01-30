@@ -21,8 +21,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-	include_once('inc/common.php');
-
+	//Warning: may be loaded by docs outside of user
+	//include_once('inc/common.php');
 	
 	do { // Dummy loop
 		
