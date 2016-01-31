@@ -50,11 +50,12 @@
 	<ol>
 		<li>Base construction and research <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
 		<li>Base busting <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
-		<li>Victory Condition <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
+		<li>Victory condition <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
 		<li>Admin console with players, ships, and some moderation. <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
 		<li>Non-founder alliance leadership roles <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
 		<li>Xollian cloak, Mawlor jump, Zyck'lirg swarm <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
 		<li>Alliance mutiny <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
+		<li>Ship switching, hangars <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
 		<li>...and much more! <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
 	</ol>
 </div>

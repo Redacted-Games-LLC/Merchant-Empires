@@ -28,13 +28,13 @@
 		$player_id = PLAYER_ID;
 
 
-		if (!isset($_REQUEST['ship_name']) || !isset($_REQUEST['ship_style'])) {
+		if (!isset($_REQUEST['ship_name'])) {
 			$return_codes[] = 1068;
 			break;
 		}
 
 		$ship_name = $_REQUEST['ship_name'];
-		$ship_style = $_REQUEST['ship_style'];
+		$ship_style = '';
 
 		if (strlen($ship_name) <= 0) {
 

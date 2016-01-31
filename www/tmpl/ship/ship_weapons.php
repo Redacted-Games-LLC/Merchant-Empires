@@ -1,6 +1,6 @@
 <?php
 /**
- * Loads information about known ships.
+ * Template page for ship weapon solutions
  *
  * @package [Redacted]Me
  * ---------------------------------------------------------------------------
@@ -21,32 +21,29 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-	include_once('inc/common.php');
-
-	do { // Dummy loop
-		
-		$spacegame['ships'] = array();
-		$spacegame['ships_count'] = 0;
-		$spacegame['ships_index'] = array();
-
-		$db = isset($db) ? $db : new DB;
-
-		$rs = $db->get_db()->query("select * from ships order by race, rank, caption");
-
-		$rs->data_seek(0);
-
-		while ($row = $rs->fetch_assoc()) {
-			$spacegame['ships'][$row['record_id']] = $row;
-			$spacegame['ships_index'][$row['caption']] = $row['record_id'];
-			$spacegame['ships_count']++;
-		}
-
-		if (isset($spacegame['player'])) {
-			$spacegame['ship'] = $spacegame['ships'][$spacegame['player']['ship_type']];
-		}
-		
-	} while (false);
-
-
-
+	include_once('tmpl/common.php');
+	include_once('inc/solutions.php');
 ?>
+<div class="header2">Weapon Solutions</div>
+<div class="docs_text">
+	Weapon solutions allow for the installation of weapons on your ship. When you create a
+	solution, weapons are installed and consumed from your cargo. For further info view the
+	<a href="docs.php?page=weapons" target="_blank">documentation on weapons</a>.
+</div>
+<hr />
+<div class="docs_text">
+	<form action="handler.php" method="post">
+	
+
+		<script type="text/javascript">drawButton('add', 'add', 'validate_add()')</script>
+
+		<input type="hidden" name="task" value="weapon" />
+		<input type="hidden" name="subtask" value="add_solution" />
+		<input type="hidden" name="" value="" />
+
+	</form>
+</div>
+
+
+
+
