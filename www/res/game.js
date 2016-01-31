@@ -230,6 +230,10 @@ function validate_password(password) {
 }
 
 function validate_email(email) {
+	if (email.length <= 0) {
+		return true;
+	}
+
 	if (email.length > 128) {
 		return false;
 	}

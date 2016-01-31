@@ -76,7 +76,7 @@
 
 		if ($id > 0) {
 
-			if (LOGIN_LOCKED) {
+			if (LOGIN_LOCKED || START_OF_ROUND - PAGE_START_TIME > 0) {
 
 				$rs = $db->get_db()->query("select count(*) as count from users, user_fields where user_fields.`group` = 'admin' and users.username = '" . $username . "' and users.record_id = user_fields.user");
 

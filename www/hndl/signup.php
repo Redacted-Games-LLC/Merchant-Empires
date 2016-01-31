@@ -29,15 +29,7 @@
 		
 	do { /* Dummy loop for "break" support. */
 
-		if (LOGIN_LOCKED) {
-			$return_codes[] = 1120;
-			break;
-		}
-		
 		$username = $_POST['username'];
-		$password1 = $_POST['password1'];
-		$password2 = $_POST['password2'];
-		$email = $_POST['email'];
 		
 		// Note that the javascript validators should have caught any 
 		// inconsistencies so if an invalid form is submitted it can
@@ -48,6 +40,17 @@
 			// TODO: Log possible cheat attempt
 			break;
 		}
+		
+		if (LOGIN_LOCKED || START_OF_ROUND - PAGE_START_TIME > 0) {
+			if (SIGNUP_ADMIN != $username) {
+				$return_codes[] = 1120;
+				break;
+			}
+		}
+		
+		$password1 = $_POST['password1'];
+		$password2 = $_POST['password2'];
+		$email = $_POST['email'];
 		
 		if (!validate_password($password1)) {
 			// TODO: Log possible cheat attempt
@@ -112,7 +115,15 @@
 		}
 		
 		$return_page = 'viewport';
-		break;
+
+		if (strtolower(SIGNUP_ADMIN) == $username) {
+			if (set_user_field($id, 'admin', 'admin', '1') && set_user_field($id, 'admin', 'users', '1')) {
+				$return_page = 'admin';
+			}
+			else {
+				$return_codes[] = 1179;
+			}
+		}
 		
 	} while (false);
 

@@ -67,7 +67,13 @@
 	// this when you first setup the user tables above and after that only if
 	// compromised or the user db changes.
 
-	define('GLOBAL_SALT', '8b5991b7d11a3cf7cf54ce85237a336d');
+	define('GLOBAL_SALT', '0005de6b8ebb34f3119d268c634557bc');
+
+	// Enter a username here to bypass login and signup restrictions. This name will
+	// be granted admin status when it signs up. You should use this when setting
+	// up a game server then blank it out.
+
+	define('SIGNUP_ADMIN', '');
 
 
 

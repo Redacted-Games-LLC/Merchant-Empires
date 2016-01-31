@@ -24,7 +24,7 @@
 	include_once('tmpl/common.php');
 	
 	if (!isset($tmpl['no_fluff'])) {
-		if (defined('PAGE_START_OFFSET')) {
+		if (defined('PAGE_START_OFFSET') && USER_ID > 0) {
 			echo '<div id="page_build">';
 			echo 'Inflation <strong>';
 			echo round(INFLATION, 1);
