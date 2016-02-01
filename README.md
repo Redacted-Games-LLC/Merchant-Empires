@@ -46,7 +46,7 @@ new DBCONFIG.php file using the instructions inside of it.
 
 7) Start the event system using something like:
       
-	nohup php events.php > /var/log/space_events.log 2>&1&
+	nohup php events.php > /var/log/spacegame/events.log 2>&1&
 	
 8) THE GAME IS NOT READY TO PLAY but now is the time for you to access it from
 a browser to complete setup.
