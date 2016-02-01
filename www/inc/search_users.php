@@ -22,8 +22,7 @@
  */
 
 	include_once('inc/common.php');
-	include_once('inc/game.php');
-
+	
 	if (!get_user_field(USER_ID, 'admin', 'users')) {
 		header('Location: viewport.php?rc=1030');
 		die();

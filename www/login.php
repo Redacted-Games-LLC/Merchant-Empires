@@ -1,6 +1,6 @@
 <?php
 /**
- * 
+ * Primary login page for the game.
  *
  * @package [Redacted]Me
  * ---------------------------------------------------------------------------
@@ -43,8 +43,35 @@
 	if (LOGIN_LOCKED) {
 		echo '<div class="login_locked">';
 
-		echo '<strong>Notice!</strong> Logins are currently disabled while the game is under ';
-		echo 'maintenance. Please try again shortly.';
+		echo '<strong>Notice!</strong> Logins and signups are currently disabled while the game ';
+		echo 'is under maintenance. Please try again shortly.';
+
+		echo '</div>';
+	}
+
+	$round_start = START_OF_ROUND - PAGE_START_TIME;
+
+	if ($round_start > 0) {
+		echo '<div class="login_locked">';
+
+		echo '<strong>Notice!</strong> Logins are currently disabled because the round has not ';
+		echo 'started yet. The round will start in ';
+
+		if ($round_start > 86400 * 2) {
+			$round_start /= 86400;
+			echo ceil($round_start) . ' day' . ($round_start == 1 ? '' : 's') . '.';
+		}
+		else if ($round_start > 3600 * 2) {
+			$round_start /= 3600;
+			echo ceil($round_start) . ' hour' . ($round_start == 1 ? '' : 's') . '.';
+		}
+		else if ($round_start > 60 * 2) {
+			$round_start /= 60;
+			echo ceil($round_start) . ' minute' . ($round_start == 1 ? '' : 's') . '.';
+		}
+		else {
+			echo ceil($round_start) . ' second' . ($round_start == 1 ? '' : 's') . '.';
+		}
 
 		echo '</div>';
 	}
@@ -76,7 +103,6 @@
 					<input id="password1a" name="password1" type="password" maxlength="16" size="20" />
 				</div>
 			</div>
-			
 			
 			<div class="login_form_upper_button">
 				<script type="text/javascript">drawButton('lb1', 'login', 'validate_login()');</script>

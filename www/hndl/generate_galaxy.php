@@ -193,7 +193,7 @@
 			$place_candidates = array();
 			$place_candidate_count = 0;
 
-			$letters = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
+			$letters = 'ABCDEFGHJKLMNPQRSTUVWXYZßΓδµπσΩ';
 			$star_pos = 0;
 			$planet_pos = 4;
 

@@ -198,6 +198,14 @@
 	}
 
 	function validate_email($email) {
+		if (strlen($email) <= 0) {
+			return true;
+		}
+
+		if (strlen($email) > 128) {
+			return false;
+		}
+
 		// http://badsyntax.co/post/javascript-email-validation-rfc822
 		return preg_match('/^([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22))*\x40([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d))*$/', $email) > 0;
 	}
@@ -234,7 +242,10 @@
 
 		if ($user_fields == null) {
 			$user_fields = array();
+		}
 
+		if (!isset($user_fields[$user])) {
+			global $db;
 			$db = $db == null ? new DB : $db;
 
 			$rs = $db->get_db()->query("select * from user_fields where user = '". $user ."'");

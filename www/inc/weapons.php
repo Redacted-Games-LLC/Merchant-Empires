@@ -1,6 +1,6 @@
 <?php
 /**
- * Loads information about known ships.
+ * Loads information about known weapons.
  *
  * @package [Redacted]Me
  * ---------------------------------------------------------------------------
@@ -25,24 +25,20 @@
 
 	do { // Dummy loop
 		
-		$spacegame['ships'] = array();
-		$spacegame['ships_count'] = 0;
-		$spacegame['ships_index'] = array();
+		$spacegame['weapons'] = array();
+		$spacegame['weapon_count'] = 0;
+		$spacegame['weapon_index'] = array();
 
 		$db = isset($db) ? $db : new DB;
 
-		$rs = $db->get_db()->query("select * from ships order by race, rank, caption");
+		$rs = $db->get_db()->query("select * from weapons order by race, caption");
 
 		$rs->data_seek(0);
 
 		while ($row = $rs->fetch_assoc()) {
-			$spacegame['ships'][$row['record_id']] = $row;
-			$spacegame['ships_index'][$row['caption']] = $row['record_id'];
-			$spacegame['ships_count']++;
-		}
-
-		if (isset($spacegame['player'])) {
-			$spacegame['ship'] = $spacegame['ships'][$spacegame['player']['ship_type']];
+			$spacegame['weapons'][$row['record_id']] = $row;
+			$spacegame['weapons_index'][$row['caption']] = $row['record_id'];
+			$spacegame['weapon_count']++;
 		}
 		
 	} while (false);

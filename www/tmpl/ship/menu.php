@@ -1,6 +1,6 @@
 <?php
 /**
- * Loads information about known ships.
+ * Menu of ship related pages.
  *
  * @package [Redacted]Me
  * ---------------------------------------------------------------------------
@@ -21,32 +21,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-	include_once('inc/common.php');
-
-	do { // Dummy loop
-		
-		$spacegame['ships'] = array();
-		$spacegame['ships_count'] = 0;
-		$spacegame['ships_index'] = array();
-
-		$db = isset($db) ? $db : new DB;
-
-		$rs = $db->get_db()->query("select * from ships order by race, rank, caption");
-
-		$rs->data_seek(0);
-
-		while ($row = $rs->fetch_assoc()) {
-			$spacegame['ships'][$row['record_id']] = $row;
-			$spacegame['ships_index'][$row['caption']] = $row['record_id'];
-			$spacegame['ships_count']++;
-		}
-
-		if (isset($spacegame['player'])) {
-			$spacegame['ship'] = $spacegame['ships'][$spacegame['player']['ship_type']];
-		}
-		
-	} while (false);
-
-
-
+	include_once('tmpl/common.php');
 ?>
+	
+	<ul class="popup_list">
+		<li class="popup_list"><?php echo get_ship_link('main', 'Ship Status'); ?></li>
+		<li class="popup_list"><?php echo get_ship_link('deploy', 'Deploy'); ?></li>
+		<li class="popup_list"><?php echo get_ship_link('weapons', 'Weapons'); ?></li>
+
+	</ul>
+
+	<hr />

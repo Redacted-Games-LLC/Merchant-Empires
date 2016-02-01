@@ -39,7 +39,7 @@ INSERT INTO `ranks` (`record_id`,`caption`,`level`,`alignment`) VALUES (9,'Grand
 
 DELETE FROM `item_types`;
 INSERT INTO `item_types` (`record_id`,`caption`,`max_stock`) VALUES (1,'Ships',100);
-INSERT INTO `item_types` (`record_id`,`caption`,`max_stock`) VALUES (2,'Goods',15000);
+INSERT INTO `item_types` (`record_id`,`caption`,`max_stock`) VALUES (2,'Goods',5000);
 INSERT INTO `item_types` (`record_id`,`caption`,`max_stock`) VALUES (3,'Personnel',50);
 
 DELETE FROM `place_types`;

@@ -32,7 +32,7 @@
 
 	// Set this to a time to start the round. Inflation begins here, so be sure
 	// to have a good policy of when the flood gates are opened.
-	define('START_OF_ROUND', 1445000000);
+	define('START_OF_ROUND', 1454328000);
 
 	// Set this to a time bigger than start of round to end the game. This allows
 	// players to create replacement gold keys for their remaining time.
@@ -119,7 +119,7 @@
 	define('GOODS_PER_UPDATE', 5);
 
 	// The maximum amount of goods of one type a port can carry.
-	define('PORT_LIMIT', 15000);
+	define('PORT_LIMIT', 10000);
 
 	// How many goods needed for upgrade triggers.
 	if (DEV_ROUND) {

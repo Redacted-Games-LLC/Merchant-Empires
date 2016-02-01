@@ -1,6 +1,6 @@
-<?php
+<?php 
 /**
- * Loads information about known ships.
+ * Generic folder rejection script.
  *
  * @package [Redacted]Me
  * ---------------------------------------------------------------------------
@@ -21,32 +21,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-	include_once('inc/common.php');
-
-	do { // Dummy loop
-		
-		$spacegame['ships'] = array();
-		$spacegame['ships_count'] = 0;
-		$spacegame['ships_index'] = array();
-
-		$db = isset($db) ? $db : new DB;
-
-		$rs = $db->get_db()->query("select * from ships order by race, rank, caption");
-
-		$rs->data_seek(0);
-
-		while ($row = $rs->fetch_assoc()) {
-			$spacegame['ships'][$row['record_id']] = $row;
-			$spacegame['ships_index'][$row['caption']] = $row['record_id'];
-			$spacegame['ships_count']++;
-		}
-
-		if (isset($spacegame['player'])) {
-			$spacegame['ship'] = $spacegame['ships'][$spacegame['player']['ship_type']];
-		}
-		
-	} while (false);
-
-
-
+	header("Location: ../..");
+	
 ?>
+<a href="..">Click here</a> to get back where you should be.
