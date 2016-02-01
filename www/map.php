@@ -60,8 +60,6 @@
 	
 	$i_hnd = imagecreatetruecolor($galaxy_size, $galaxy_size) or die('Cannot Initialize new GD image stream');
 	
-	imageantialias($i_hnd, false);
-	
 	$races[0]['color'] = imagecolorallocate($i_hnd, 255, 255, 255);
 	$races[1]['color'] = imagecolorallocate($i_hnd, 128, 255, 128);
 	$races[2]['color'] = imagecolorallocate($i_hnd, 255, 128, 128);
