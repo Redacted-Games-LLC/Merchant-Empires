@@ -38,8 +38,8 @@
 </div>
 <div class="docs_text">
 	Some weapons may fire in a volley of more than one projectile or emission in a single
-	attack, like a three-round burst. The ammunition requirement does not increase when this
-	happens; each attack still uses a single unit from the cargo holds.
+	attack, like a three-round burst. The ammunition requirement will increase when this
+	happens; each attack still will use more units from the cargo holds.
 </div>
 <div class="docs_text">
 	Finally, all weapons need to recharge after firing or they will be less effective. Even
@@ -56,11 +56,9 @@
 	weapons. Some weapons require attachment to more than one hardpoint.
 </div>
 <div class="docs_text">
-	Hardpoints differ by race but there are weapons with universal attachments.
-</div>
-<div class="docs_text">
-	All ships should come with at least one hardpoint except in rare circumstances, and
-	most will have several. 
+	Hardpoints differ by race but there are weapons with universal attachments. All ships
+	should come with at least one hardpoint except in rare circumstances, and most will
+	have several.
 </div>
 <div class="header3">Weapon Solutions</div>
 <div class="docs_text">
