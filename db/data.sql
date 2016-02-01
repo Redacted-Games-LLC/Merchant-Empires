@@ -83,6 +83,9 @@ INSERT INTO `ships` (`record_id`,`caption`,`race`,`rank`,`holds`,`shields`,`armo
 INSERT INTO `ships` (`record_id`,`caption`,`race`,`rank`,`holds`,`shields`,`armor`,`tps`,`price`) VALUES (26,'Tarantula',3,6,550,400,500,3.5,35000000);
 INSERT INTO `ships` (`record_id`,`caption`,`race`,`rank`,`holds`,`shields`,`armor`,`tps`,`price`) VALUES (27,'Black Widow',3,7,50,650,800,4.0,45000000);
 
+INSERT INTO `goods` (`caption`, `level`, `tech`, `type`) VALUES ('Newbie Laser', '10', '100000', '1');
+INSERT INTO `weapons` (`caption`, `good`, `racks`, `stations`, `accuracy`, `volley`, `ammunition`, `general_damage`, `shield_damage`, `armor_damage`) VALUES ('Newbie Laser', (select record_id from goods where caption = 'Newbie Laser'), '0', '1', '1.0', '1', (select record_id from goods where caption = 'Energy'), '20', '0', '0');
+
 
 
 

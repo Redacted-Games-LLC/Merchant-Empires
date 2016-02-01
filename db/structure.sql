@@ -20,706 +20,968 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
  
--- MySQL dump 10.13  Distrib 5.6.24, for Win64 (x86_64)
--- ------------------------------------------------------
--- Server version	5.6.25-log
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
---
--- Table structure for table `alliance_invitations`
---
-
-DROP TABLE IF EXISTS `alliance_invitations`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `alliance_invitations` (
-  `record_id` int(11) NOT NULL AUTO_INCREMENT,
-  `alliance` int(11) NOT NULL,
-  `player` int(11) NOT NULL,
-  `requested` int(11) NOT NULL DEFAULT '0',
-  `rejected` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`record_id`),
-  KEY `pk_alliance_invite_idx` (`alliance`),
-  KEY `pk_alliance_player_invite_idx` (`player`),
-  CONSTRAINT `pk_alliance_invite` FOREIGN KEY (`alliance`) REFERENCES `alliances` (`record_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `pk_alliance_player_invite` FOREIGN KEY (`player`) REFERENCES `players` (`record_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `alliances`
---
-
-DROP TABLE IF EXISTS `alliances`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `alliances` (
-  `record_id` int(11) NOT NULL AUTO_INCREMENT,
-  `caption` varchar(24) NOT NULL,
-  `tax_mult` decimal(3,2) DEFAULT '1.00' COMMENT 'Computed from the number of members for speed.',
-  `founder` int(11) NOT NULL,
-  `recruiting` int(11) DEFAULT '1',
-  PRIMARY KEY (`record_id`),
-  UNIQUE KEY `caption_UNIQUE` (`caption`),
-  KEY `fkey_alliance_founder_idx` (`founder`),
-  CONSTRAINT `fkey_alliance_founder` FOREIGN KEY (`founder`) REFERENCES `players` (`record_id`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `base_rooms`
---
-
-DROP TABLE IF EXISTS `base_rooms`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `base_rooms` (
-  `record_id` int(11) NOT NULL AUTO_INCREMENT,
-  `base` int(11) NOT NULL,
-  `room` int(11) NOT NULL,
-  `x` int(11) DEFAULT NULL,
-  `y` int(11) DEFAULT NULL,
-  `theta` int(11) DEFAULT '0' COMMENT '0, 1, 2, or 3 for 90 degree rotations',
-  `finish_time` int(11) DEFAULT '0',
-  PRIMARY KEY (`record_id`),
-  KEY `fkey_room_base_idx` (`base`),
-  KEY `fkey_room_type_idx` (`room`),
-  CONSTRAINT `fkey_room_base` FOREIGN KEY (`base`) REFERENCES `bases` (`record_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fkey_room_type` FOREIGN KEY (`room`) REFERENCES `room_types` (`record_id`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `bases`
---
-
-DROP TABLE IF EXISTS `bases`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `bases` (
-  `record_id` int(11) NOT NULL AUTO_INCREMENT,
-  `owner` int(11) DEFAULT NULL,
-  `alliance` int(11) DEFAULT NULL,
-  `seed` int(11) NOT NULL DEFAULT '0',
-  `last_update` int(11) DEFAULT '0',
-  `shields` int(11) DEFAULT '0',
-  `place` int(11) NOT NULL,
-  PRIMARY KEY (`record_id`),
-  KEY `fk_base_owner_idx` (`owner`),
-  KEY `fk_base_alliance_idx` (`alliance`),
-  KEY `fk_base_place_idx` (`place`),
-  CONSTRAINT `fk_base_alliance` FOREIGN KEY (`alliance`) REFERENCES `alliances` (`record_id`) ON DELETE SET NULL ON UPDATE CASCADE,
-  CONSTRAINT `fk_base_owner` FOREIGN KEY (`owner`) REFERENCES `players` (`record_id`) ON DELETE SET NULL ON UPDATE CASCADE,
-  CONSTRAINT `fk_base_place` FOREIGN KEY (`place`) REFERENCES `places` (`record_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `dealer_inventory`
---
-
-DROP TABLE IF EXISTS `dealer_inventory`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `dealer_inventory` (
-  `record_id` int(11) NOT NULL AUTO_INCREMENT,
-  `place` int(11) NOT NULL,
-  `item_type` int(11) NOT NULL,
-  `item` int(11) DEFAULT NULL,
-  `stock` int(11) DEFAULT '0',
-  `price` int(11) DEFAULT '0',
-  `last_update` int(11) DEFAULT '0',
-  PRIMARY KEY (`record_id`),
-  KEY `fk_dealer_place_idx` (`place`),
-  KEY `fk_item_type_idx` (`item_type`),
-  CONSTRAINT `fk_dealer_place` FOREIGN KEY (`place`) REFERENCES `places` (`record_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_item_type` FOREIGN KEY (`item_type`) REFERENCES `item_types` (`record_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=177 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `gold_keys`
---
-
-DROP TABLE IF EXISTS `gold_keys`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `gold_keys` (
-  `record_id` int(11) NOT NULL AUTO_INCREMENT,
-  `type` int(11) NOT NULL DEFAULT '0',
-  `key` varchar(96) NOT NULL,
-  `time` int(11) NOT NULL DEFAULT '2678400',
-  `used` int(11) NOT NULL DEFAULT '0',
-  `user` int(11) DEFAULT NULL,
-  PRIMARY KEY (`record_id`),
-  UNIQUE KEY `gk_UNIQUE` (`key`),
-  KEY `fkey_gold_user_idx` (`user`),
-  KEY `fkey_gold_type` (`type`),
-  KEY `fkey_gold_used` (`used`),
-  CONSTRAINT `fkey_gold_user` FOREIGN KEY (`user`) REFERENCES `users` (`record_id`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `good_upgrades`
---
-
-DROP TABLE IF EXISTS `good_upgrades`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `good_upgrades` (
-  `record_id` int(11) NOT NULL AUTO_INCREMENT,
-  `good` int(11) NOT NULL,
-  `target` int(11) NOT NULL,
-  PRIMARY KEY (`record_id`),
-  KEY `fkey_good_upgrades_idx` (`good`),
-  KEY `fkey_good_upgrade_target_idx` (`target`),
-  CONSTRAINT `fkey_good_upgrade_source` FOREIGN KEY (`good`) REFERENCES `goods` (`record_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fkey_good_upgrade_target` FOREIGN KEY (`target`) REFERENCES `goods` (`record_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=152 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `goods`
---
-
-DROP TABLE IF EXISTS `goods`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `goods` (
-  `record_id` int(11) NOT NULL AUTO_INCREMENT,
-  `caption` varchar(24) NOT NULL,
-  `level` int(11) NOT NULL DEFAULT '1',
-  `race` int(11) DEFAULT NULL,
-  `tech` int(11) DEFAULT '0',
-  PRIMARY KEY (`record_id`),
-  UNIQUE KEY `caption_UNIQUE` (`caption`),
-  KEY `goods_level` (`level`),
-  KEY `fk_goods_race_idx` (`race`),
-  CONSTRAINT `fk_goods_race` FOREIGN KEY (`race`) REFERENCES `races` (`record_id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `item_types`
---
-
-DROP TABLE IF EXISTS `item_types`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `item_types` (
-  `record_id` int(11) NOT NULL AUTO_INCREMENT,
-  `caption` varchar(16) NOT NULL,
-  `max_stock` int(11) NOT NULL DEFAULT '15000',
-  PRIMARY KEY (`record_id`),
-  UNIQUE KEY `caption_UNIQUE` (`caption`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `message_ignore`
---
-
-DROP TABLE IF EXISTS `message_ignore`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `message_ignore` (
-  `record_id` int(11) NOT NULL AUTO_INCREMENT,
-  `player` int(11) NOT NULL,
-  `ignore` int(11) NOT NULL,
-  `expiration` int(11) DEFAULT NULL,
-  PRIMARY KEY (`record_id`),
-  KEY `fk_ignore_player_idx` (`player`),
-  KEY `fk_player_ignore_idx` (`ignore`),
-  KEY `fk_player_ignore_expiration` (`expiration`),
-  CONSTRAINT `fk_ignore_player` FOREIGN KEY (`player`) REFERENCES `players` (`record_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_player_ignore` FOREIGN KEY (`ignore`) REFERENCES `players` (`record_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `message_targets`
---
-
-DROP TABLE IF EXISTS `message_targets`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `message_targets` (
-  `record_id` int(11) NOT NULL AUTO_INCREMENT,
-  `message` int(11) NOT NULL,
-  `target` int(11) NOT NULL,
-  `read` int(11) NOT NULL DEFAULT '0',
-  `sender` int(11) DEFAULT NULL,
-  PRIMARY KEY (`record_id`),
-  KEY `fkey_target_sender_idx` (`sender`),
-  KEY `fkey_target_message_idx` (`message`),
-  KEY `fkey_target_player_idx` (`target`),
-  CONSTRAINT `fkey_target_message` FOREIGN KEY (`message`) REFERENCES `messages` (`record_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fkey_target_player` FOREIGN KEY (`target`) REFERENCES `players` (`record_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fkey_target_sender` FOREIGN KEY (`sender`) REFERENCES `players` (`record_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=122 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `messages`
---
-
-DROP TABLE IF EXISTS `messages`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `messages` (
-  `record_id` int(11) NOT NULL AUTO_INCREMENT,
-  `posted` int(11) NOT NULL DEFAULT '0',
-  `expiration` int(11) NOT NULL DEFAULT '0',
-  `message` varchar(512) NOT NULL,
-  `sender` int(11) DEFAULT NULL,
-  `type` int(11) NOT NULL DEFAULT '1',
-  `id` int(11) DEFAULT '0',
-  PRIMARY KEY (`record_id`),
-  KEY `i_message_timestamp` (`posted`,`expiration`),
-  KEY `fk_message_sender_idx` (`sender`),
-  CONSTRAINT `fk_message_sender` FOREIGN KEY (`sender`) REFERENCES `players` (`record_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=126 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `news`
---
-
-DROP TABLE IF EXISTS `news`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `news` (
-  `record_id` int(11) NOT NULL AUTO_INCREMENT,
-  `headline` varchar(48) NOT NULL,
-  `abstract` varchar(128) NOT NULL,
-  `article` text NOT NULL,
-  `author` int(11) DEFAULT NULL,
-  `live` int(11) DEFAULT '0',
-  `archive` int(11) DEFAULT '0',
-  `expiration` int(11) DEFAULT '0',
-  PRIMARY KEY (`record_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `ordnance`
---
-
-DROP TABLE IF EXISTS `ordnance`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `ordnance` (
-  `record_id` int(11) NOT NULL AUTO_INCREMENT,
-  `system` int(11) NOT NULL,
-  `x` int(11) DEFAULT '0',
-  `y` int(11) DEFAULT '0',
-  `good` int(11) NOT NULL,
-  `amount` int(11) DEFAULT '0',
-  `owner` int(11) NOT NULL,
-  `alliance` int(11) DEFAULT NULL,
-  PRIMARY KEY (`record_id`),
-  KEY `fk_ordnance_system_idx` (`system`),
-  KEY `fk_ordnance_owner_idx` (`owner`),
-  KEY `ordnance_xy` (`y`,`x`),
-  KEY `fk_ordnance_alliance_idx` (`alliance`),
-  KEY `fk_ordnance_good_idx` (`good`),
-  KEY `fk_amount` (`amount`),
-  CONSTRAINT `fk_ordnance_alliance` FOREIGN KEY (`alliance`) REFERENCES `alliances` (`record_id`) ON DELETE SET NULL ON UPDATE CASCADE,
-  CONSTRAINT `fk_ordnance_good` FOREIGN KEY (`good`) REFERENCES `goods` (`record_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_ordnance_owner` FOREIGN KEY (`owner`) REFERENCES `players` (`record_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_ordnance_system` FOREIGN KEY (`system`) REFERENCES `systems` (`record_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `place_types`
---
-
-DROP TABLE IF EXISTS `place_types`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `place_types` (
-  `record_id` int(11) NOT NULL AUTO_INCREMENT,
-  `caption` varchar(16) NOT NULL,
-  `port_goods` int(11) DEFAULT '0',
-  `deploy_solar_collectors` int(11) DEFAULT '0',
-  `deploy_bases` int(11) DEFAULT '0',
-  PRIMARY KEY (`record_id`),
-  UNIQUE KEY `caption_UNIQUE` (`caption`),
-  KEY `place_deploy_ports` (`port_goods`),
-  KEY `place_deploy_solar` (`deploy_solar_collectors`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `places`
---
-
-DROP TABLE IF EXISTS `places`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `places` (
-  `record_id` int(11) NOT NULL AUTO_INCREMENT,
-  `caption` varchar(24) NOT NULL,
-  `system` int(11) DEFAULT NULL,
-  `x` int(11) NOT NULL DEFAULT '0',
-  `y` int(11) NOT NULL DEFAULT '0',
-  `type` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`record_id`),
-  UNIQUE KEY `fk_unique_place` (`type`,`y`,`x`),
-  KEY `fk_location_places_idx` (`system`),
-  KEY `fk_place_type_idx` (`type`),
-  KEY `fk_places_xy` (`y`,`x`),
-  CONSTRAINT `fk_place_type` FOREIGN KEY (`type`) REFERENCES `place_types` (`record_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_system_places` FOREIGN KEY (`system`) REFERENCES `systems` (`record_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4287 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `player_cargo`
---
-
-DROP TABLE IF EXISTS `player_cargo`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `player_cargo` (
-  `record_id` int(11) NOT NULL AUTO_INCREMENT,
-  `player` int(11) DEFAULT NULL,
-  `good` int(11) DEFAULT NULL,
-  `amount` int(11) NOT NULL DEFAULT '0',
-  `bought` int(11) DEFAULT '0',
-  `sold` int(11) DEFAULT '0',
-  PRIMARY KEY (`record_id`),
-  KEY `fk_player_cargo_id_idx` (`player`),
-  KEY `fk_player_cargo_goods_idx` (`good`),
-  CONSTRAINT `fk_player_cargo_goods` FOREIGN KEY (`good`) REFERENCES `goods` (`record_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_player_cargo_id` FOREIGN KEY (`player`) REFERENCES `players` (`record_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `player_log`
---
-
-DROP TABLE IF EXISTS `player_log`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `player_log` (
-  `record_id` int(11) NOT NULL AUTO_INCREMENT,
-  `player` int(11) NOT NULL,
-  `action` int(11) NOT NULL,
-  `target` int(11) DEFAULT '0',
-  `amount1` int(11) DEFAULT '0',
-  `amount2` int(11) DEFAULT '0',
-  `timestamp` int(11) NOT NULL,
-  `reconciled` int(11) DEFAULT '0',
-  PRIMARY KEY (`record_id`),
-  KEY `fkey_player_log_players_idx` (`player`),
-  KEY `idx_player_log_reconciled` (`reconciled`),
-  CONSTRAINT `fkey_player_log_players` FOREIGN KEY (`player`) REFERENCES `players` (`record_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `players`
---
-
-DROP TABLE IF EXISTS `players`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `players` (
-  `record_id` int(11) NOT NULL AUTO_INCREMENT,
-  `caption` varchar(16) NOT NULL,
-  `x` int(11) NOT NULL DEFAULT '0',
-  `y` int(11) NOT NULL DEFAULT '0',
-  `death` int(11) NOT NULL DEFAULT '0' COMMENT 'Timestamp when death has occured or zero if player is still alive.',
-  `race` int(11) NOT NULL DEFAULT '0',
-  `turns` decimal(6,2) NOT NULL DEFAULT '0.00',
-  `ship_type` int(11) DEFAULT NULL,
-  `ship_name` varchar(16) DEFAULT NULL,
-  `credits` bigint(20) NOT NULL DEFAULT '0',
-  `alliance` int(11) DEFAULT NULL,
-  `experience` int(11) DEFAULT '0',
-  `level` int(11) DEFAULT '0',
-  `alignment` int(11) DEFAULT '0',
-  `rank` int(11) DEFAULT '1',
-  `last_turns` int(11) DEFAULT '0',
-  `shields` int(11) DEFAULT '0',
-  `armor` int(11) DEFAULT '0',
-  `last_move` int(11) DEFAULT '0',
-  `target_x` int(11) DEFAULT '0',
-  `target_y` int(11) DEFAULT '0',
-  `target_type` int(11) DEFAULT '0',
-  `base_id` int(11) DEFAULT '0',
-  `base_x` int(11) DEFAULT '0',
-  `base_y` int(11) DEFAULT '0',
-  `last_alignment` int(11) DEFAULT '0',
-  `gold_expiration` int(11) DEFAULT '0',
-  PRIMARY KEY (`record_id`),
-  UNIQUE KEY `caption_UNIQUE` (`caption`),
-  KEY `fk_player_races_idx` (`race`),
-  KEY `fk_ship_type_idx` (`ship_type`),
-  KEY `fk_player_xy` (`y`,`x`),
-  KEY `fk_player_alliance_idx` (`alliance`),
-  KEY `fk_player_rank_idx` (`rank`),
-  CONSTRAINT `fk_player_alliance` FOREIGN KEY (`alliance`) REFERENCES `alliances` (`record_id`) ON DELETE SET NULL ON UPDATE CASCADE,
-  CONSTRAINT `fk_player_races` FOREIGN KEY (`race`) REFERENCES `races` (`record_id`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  CONSTRAINT `fk_player_rank` FOREIGN KEY (`rank`) REFERENCES `ranks` (`record_id`) ON DELETE SET NULL ON UPDATE CASCADE,
-  CONSTRAINT `fk_ship_type` FOREIGN KEY (`ship_type`) REFERENCES `ships` (`record_id`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `port_goods`
---
-
-DROP TABLE IF EXISTS `port_goods`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `port_goods` (
-  `record_id` int(11) NOT NULL AUTO_INCREMENT,
-  `place` int(11) DEFAULT NULL,
-  `good` int(11) DEFAULT NULL,
-  `amount` int(11) DEFAULT '0',
-  `distance` int(11) DEFAULT '0',
-  `upgrade` int(11) DEFAULT '0',
-  `supply` tinyint(1) DEFAULT '0',
-  `last_update` int(11) DEFAULT '0',
-  PRIMARY KEY (`record_id`),
-  KEY `fk_port_good_idx` (`good`),
-  KEY `fk_port_place_idx` (`place`),
-  CONSTRAINT `fk_port_good` FOREIGN KEY (`good`) REFERENCES `goods` (`record_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_port_place` FOREIGN KEY (`place`) REFERENCES `places` (`record_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=1166 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `races`
---
-
-DROP TABLE IF EXISTS `races`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `races` (
-  `record_id` int(11) NOT NULL AUTO_INCREMENT,
-  `caption` varchar(16) NOT NULL,
-  `tax_rate` decimal(3,1) NOT NULL DEFAULT '0.1',
-  PRIMARY KEY (`record_id`),
-  UNIQUE KEY `caption_UNIQUE` (`caption`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `ranks`
---
-
-DROP TABLE IF EXISTS `ranks`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `ranks` (
-  `record_id` int(11) NOT NULL AUTO_INCREMENT,
-  `caption` varchar(16) NOT NULL,
-  `level` int(11) DEFAULT '0',
-  `alignment` int(11) DEFAULT '0',
-  PRIMARY KEY (`record_id`),
-  UNIQUE KEY `caption_UNIQUE` (`caption`),
-  UNIQUE KEY `alignment_UNIQUE` (`alignment`),
-  UNIQUE KEY `level_UNIQUE` (`level`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `room_types`
---
-
-DROP TABLE IF EXISTS `room_types`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `room_types` (
-  `record_id` int(11) NOT NULL AUTO_INCREMENT,
-  `caption` varchar(24) DEFAULT NULL,
-  `width` int(11) DEFAULT '3',
-  `height` int(11) DEFAULT '3',
-  `floor_mask` bigint(20) DEFAULT '0',
-  `wall_mask` bigint(20) DEFAULT '0',
-  `can_rotate` tinyint(4) DEFAULT '0',
-  PRIMARY KEY (`record_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `ships`
---
-
-DROP TABLE IF EXISTS `ships`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `ships` (
-  `record_id` int(11) NOT NULL AUTO_INCREMENT,
-  `caption` varchar(24) DEFAULT NULL,
-  `race` int(11) NOT NULL,
-  `rank` int(11) NOT NULL DEFAULT '1',
-  `holds` int(11) NOT NULL DEFAULT '100',
-  `shields` int(11) NOT NULL DEFAULT '100',
-  `armor` int(11) NOT NULL DEFAULT '100',
-  `tps` decimal(3,1) NOT NULL DEFAULT '1.0',
-  `price` int(11) DEFAULT '1000000',
-  PRIMARY KEY (`record_id`),
-  KEY `fk_ship_race_idx` (`race`),
-  KEY `idx_ship_level` (`rank`),
-  CONSTRAINT `fk_ship_race` FOREIGN KEY (`race`) REFERENCES `races` (`record_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_ship_rank` FOREIGN KEY (`rank`) REFERENCES `ranks` (`record_id`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `start_goods`
---
-
-DROP TABLE IF EXISTS `start_goods`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `start_goods` (
-  `record_id` int(11) NOT NULL AUTO_INCREMENT,
-  `place_type` int(11) NOT NULL,
-  `good` int(11) NOT NULL,
-  `percent` int(11) NOT NULL DEFAULT '100',
-  `supply` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`record_id`),
-  KEY `fkey_start_goods_place_idx` (`place_type`),
-  KEY `fkey_start_goods_idx` (`good`),
-  CONSTRAINT `fkey_start_goods` FOREIGN KEY (`good`) REFERENCES `goods` (`record_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fkey_start_goods_place` FOREIGN KEY (`place_type`) REFERENCES `place_types` (`record_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=115 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `systems`
---
-
-DROP TABLE IF EXISTS `systems`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `systems` (
-  `record_id` int(11) NOT NULL AUTO_INCREMENT,
-  `caption` varchar(24) NOT NULL,
-  `x` int(11) NOT NULL DEFAULT '0',
-  `y` int(11) NOT NULL DEFAULT '0',
-  `radius` int(11) NOT NULL DEFAULT '8',
-  `protected` tinyint(1) DEFAULT '0',
-  `race` int(11) DEFAULT '0',
-  PRIMARY KEY (`record_id`),
-  UNIQUE KEY `caption_UNIQUE` (`caption`),
-  UNIQUE KEY `system_xy` (`y`,`x`),
-  KEY `fk_system_race_idx` (`race`),
-  CONSTRAINT `fk_system_race` FOREIGN KEY (`race`) REFERENCES `races` (`record_id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=345 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `user_fields`
---
-
-DROP TABLE IF EXISTS `user_fields`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `user_fields` (
-  `record_id` int(11) NOT NULL AUTO_INCREMENT,
-  `user` int(11) DEFAULT NULL,
-  `group` varchar(16) NOT NULL,
-  `key` varchar(16) NOT NULL,
-  `value` varchar(64) NOT NULL,
-  PRIMARY KEY (`record_id`),
-  UNIQUE KEY `fk_group_key` (`group`,`key`,`user`) USING BTREE,
-  KEY `fk_user_flags_idx` (`user`),
-  CONSTRAINT `fk_user_flags` FOREIGN KEY (`user`) REFERENCES `users` (`record_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `user_players`
---
-
-DROP TABLE IF EXISTS `user_players`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `user_players` (
-  `record_id` int(11) NOT NULL AUTO_INCREMENT,
-  `user` int(11) DEFAULT NULL,
-  `player` int(11) DEFAULT NULL,
-  `session_id` varchar(128) DEFAULT NULL,
-  `session_time` int(11) DEFAULT '0',
-  PRIMARY KEY (`record_id`),
-  UNIQUE KEY `idx_user_player` (`user`,`player`),
-  KEY `fk_up_players_idx` (`player`),
-  CONSTRAINT `fk_up_players` FOREIGN KEY (`player`) REFERENCES `players` (`record_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_up_users` FOREIGN KEY (`user`) REFERENCES `users` (`record_id`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `users`
---
-
-DROP TABLE IF EXISTS `users`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `users` (
-  `record_id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(24) NOT NULL,
-  `password1` varchar(256) NOT NULL,
-  `password2` varchar(256) NOT NULL,
-  `session_id` varchar(128) DEFAULT NULL,
-  `session_time` int(11) DEFAULT '0',
-  PRIMARY KEY (`record_id`),
-  UNIQUE KEY `username_UNIQUE` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `warps`
---
-
-DROP TABLE IF EXISTS `warps`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `warps` (
-  `record_id` int(11) NOT NULL AUTO_INCREMENT,
-  `place` int(11) NOT NULL,
-  `x` int(11) DEFAULT NULL COMMENT 'Destination',
-  `y` int(11) DEFAULT NULL COMMENT 'Destination',
-  PRIMARY KEY (`record_id`),
-  KEY `fkey_warp_place_idx` (`place`),
-  CONSTRAINT `fkey_warp_place` FOREIGN KEY (`place`) REFERENCES `places` (`record_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping events for database 'spacegame'
---
-
---
--- Dumping routines for database 'spacegame'
---
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
-
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2016-01-17 17:49:25
+-- MySQL Script generated by MySQL Workbench
+-- 01/31/16 19:35:05
+-- Model: New Model    Version: 1.0
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+-- -----------------------------------------------------
+-- Schema spacegame
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Table `races`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `races` (
+  `record_id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `caption` VARCHAR(16) NOT NULL COMMENT '',
+  `tax_rate` DECIMAL(3,1) NOT NULL DEFAULT 0.1 COMMENT '',
+  PRIMARY KEY (`record_id`)  COMMENT '',
+  UNIQUE INDEX `caption_UNIQUE` (`caption` ASC)  COMMENT '')
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `alliances`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `alliances` (
+  `record_id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `caption` VARCHAR(24) NOT NULL COMMENT '',
+  `tax_mult` DECIMAL(3,2) NULL DEFAULT '1.00' COMMENT 'Computed from the number of members for speed.',
+  `founder` INT NOT NULL COMMENT '',
+  `recruiting` INT NULL DEFAULT 1 COMMENT '',
+  PRIMARY KEY (`record_id`)  COMMENT '',
+  UNIQUE INDEX `caption_UNIQUE` (`caption` ASC)  COMMENT '',
+  INDEX `fkey_alliance_founder_idx` (`founder` ASC)  COMMENT '',
+  CONSTRAINT `fkey_alliance_founder`
+    FOREIGN KEY (`founder`)
+    REFERENCES `players` (`record_id`)
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `ranks`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ranks` (
+  `record_id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `caption` VARCHAR(16) NOT NULL COMMENT '',
+  `level` INT NULL DEFAULT 0 COMMENT '',
+  `alignment` INT NULL DEFAULT 0 COMMENT '',
+  PRIMARY KEY (`record_id`)  COMMENT '',
+  UNIQUE INDEX `caption_UNIQUE` (`caption` ASC)  COMMENT '',
+  UNIQUE INDEX `alignment_UNIQUE` (`alignment` ASC)  COMMENT '',
+  UNIQUE INDEX `level_UNIQUE` (`level` ASC)  COMMENT '')
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `ships`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ships` (
+  `record_id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `caption` VARCHAR(24) NULL COMMENT '',
+  `race` INT NOT NULL COMMENT '',
+  `rank` INT NOT NULL DEFAULT 1 COMMENT '',
+  `holds` INT NOT NULL DEFAULT 100 COMMENT '',
+  `shields` INT NOT NULL DEFAULT 100 COMMENT '',
+  `armor` INT NOT NULL DEFAULT 100 COMMENT '',
+  `tps` DECIMAL(3,1) NOT NULL DEFAULT '1.0' COMMENT '',
+  `price` INT NULL DEFAULT 1000000 COMMENT '',
+  `racks` INT NULL DEFAULT 0 COMMENT '',
+  `stations` INT NULL DEFAULT 0 COMMENT '',
+  `recharge` INT NULL DEFAULT 1 COMMENT '',
+  PRIMARY KEY (`record_id`)  COMMENT '',
+  INDEX `fk_ship_race_idx` (`race` ASC)  COMMENT '',
+  INDEX `idx_ship_level` (`rank` ASC)  COMMENT '',
+  CONSTRAINT `fk_ship_race`
+    FOREIGN KEY (`race`)
+    REFERENCES `races` (`record_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_ship_rank`
+    FOREIGN KEY (`rank`)
+    REFERENCES `ranks` (`record_id`)
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `players`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `players` (
+  `record_id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `caption` VARCHAR(16) NOT NULL COMMENT '',
+  `x` INT NOT NULL DEFAULT 0 COMMENT '',
+  `y` INT NOT NULL DEFAULT 0 COMMENT '',
+  `death` INT NOT NULL DEFAULT 0 COMMENT 'Timestamp when death has occured or zero if player is still alive.',
+  `race` INT NOT NULL DEFAULT 0 COMMENT '',
+  `turns` DECIMAL(6,2) NOT NULL DEFAULT 0 COMMENT '',
+  `ship_type` INT NULL DEFAULT NULL COMMENT '',
+  `ship_name` VARCHAR(16) NULL COMMENT '',
+  `credits` BIGINT NOT NULL DEFAULT 0 COMMENT '',
+  `alliance` INT NULL DEFAULT NULL COMMENT '',
+  `experience` INT NULL DEFAULT 0 COMMENT '',
+  `level` INT NULL DEFAULT 0 COMMENT '',
+  `alignment` INT NULL DEFAULT 0 COMMENT '',
+  `rank` INT NULL DEFAULT 1 COMMENT '',
+  `last_turns` INT NULL DEFAULT 0 COMMENT '',
+  `shields` INT NULL DEFAULT 0 COMMENT '',
+  `armor` INT NULL DEFAULT 0 COMMENT '',
+  `last_move` INT NULL DEFAULT 0 COMMENT '',
+  `target_x` INT NULL DEFAULT 0 COMMENT '',
+  `target_y` INT NULL DEFAULT 0 COMMENT '',
+  `target_type` INT NULL DEFAULT 0 COMMENT '',
+  `base_id` INT NULL DEFAULT 0 COMMENT '',
+  `base_x` INT NULL DEFAULT 0 COMMENT '',
+  `base_y` INT NULL DEFAULT 0 COMMENT '',
+  `last_alignment` INT NULL DEFAULT 0 COMMENT '',
+  `gold_expiration` INT NULL DEFAULT 0 COMMENT '',
+  `messages_read` INT NULL DEFAULT 0 COMMENT '',
+  PRIMARY KEY (`record_id`)  COMMENT '',
+  UNIQUE INDEX `caption_UNIQUE` (`caption` ASC)  COMMENT '',
+  INDEX `fk_player_races_idx` (`race` ASC)  COMMENT '',
+  INDEX `fk_ship_type_idx` (`ship_type` ASC)  COMMENT '',
+  INDEX `fk_player_xy` (`y` ASC, `x` ASC)  COMMENT '',
+  INDEX `fk_player_alliance_idx` (`alliance` ASC)  COMMENT '',
+  INDEX `fk_player_rank_idx` (`rank` ASC)  COMMENT '',
+  CONSTRAINT `fk_player_races`
+    FOREIGN KEY (`race`)
+    REFERENCES `races` (`record_id`)
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_player_alliance`
+    FOREIGN KEY (`alliance`)
+    REFERENCES `alliances` (`record_id`)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_player_rank`
+    FOREIGN KEY (`rank`)
+    REFERENCES `ranks` (`record_id`)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_ship_type`
+    FOREIGN KEY (`ship_type`)
+    REFERENCES `ships` (`record_id`)
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `systems`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `systems` (
+  `record_id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `caption` VARCHAR(24) NOT NULL COMMENT '',
+  `x` INT NOT NULL DEFAULT 0 COMMENT '',
+  `y` INT NOT NULL DEFAULT 0 COMMENT '',
+  `radius` INT NOT NULL DEFAULT 8 COMMENT '',
+  `protected` TINYINT(1) NULL DEFAULT 0 COMMENT '',
+  `race` INT NULL DEFAULT 0 COMMENT '',
+  PRIMARY KEY (`record_id`)  COMMENT '',
+  UNIQUE INDEX `caption_UNIQUE` (`caption` ASC)  COMMENT '',
+  UNIQUE INDEX `system_xy` (`y` ASC, `x` ASC)  COMMENT '',
+  INDEX `fk_system_race_idx` (`race` ASC)  COMMENT '',
+  CONSTRAINT `fk_system_race`
+    FOREIGN KEY (`race`)
+    REFERENCES `races` (`record_id`)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `place_types`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `place_types` (
+  `record_id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `caption` VARCHAR(16) NOT NULL COMMENT '',
+  `port_goods` INT NULL DEFAULT 0 COMMENT '',
+  `deploy_solar_collectors` INT NULL DEFAULT 0 COMMENT '',
+  `deploy_bases` INT NULL DEFAULT 0 COMMENT '',
+  PRIMARY KEY (`record_id`)  COMMENT '',
+  UNIQUE INDEX `caption_UNIQUE` (`caption` ASC)  COMMENT '',
+  INDEX `place_deploy_ports` (`port_goods` ASC)  COMMENT '',
+  INDEX `place_deploy_solar` (`deploy_solar_collectors` ASC)  COMMENT '')
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `places`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `places` (
+  `record_id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `caption` VARCHAR(24) NOT NULL COMMENT '',
+  `system` INT NULL COMMENT '',
+  `x` INT NOT NULL DEFAULT 0 COMMENT '',
+  `y` INT NOT NULL DEFAULT 0 COMMENT '',
+  `type` INT NOT NULL DEFAULT 0 COMMENT '',
+  PRIMARY KEY (`record_id`)  COMMENT '',
+  INDEX `fk_location_places_idx` (`system` ASC)  COMMENT '',
+  INDEX `fk_place_type_idx` (`type` ASC)  COMMENT '',
+  INDEX `fk_places_xy` (`y` ASC, `x` ASC)  COMMENT '',
+  UNIQUE INDEX `fk_unique_place` (`type` ASC, `y` ASC, `x` ASC)  COMMENT '',
+  CONSTRAINT `fk_system_places`
+    FOREIGN KEY (`system`)
+    REFERENCES `systems` (`record_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_place_type`
+    FOREIGN KEY (`type`)
+    REFERENCES `place_types` (`record_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `users`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `users` (
+  `record_id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `username` VARCHAR(24) NOT NULL COMMENT '',
+  `password1` VARCHAR(256) NOT NULL COMMENT '',
+  `password2` VARCHAR(256) NOT NULL COMMENT '',
+  `session_id` VARCHAR(128) NULL COMMENT '',
+  `session_time` INT NULL DEFAULT 0 COMMENT '',
+  PRIMARY KEY (`record_id`)  COMMENT '',
+  UNIQUE INDEX `username_UNIQUE` (`username` ASC)  COMMENT '')
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `user_players`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `user_players` (
+  `record_id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `user` INT NULL COMMENT '',
+  `player` INT NULL COMMENT '',
+  `session_id` VARCHAR(128) NULL COMMENT '',
+  `session_time` INT NULL DEFAULT 0 COMMENT '',
+  PRIMARY KEY (`record_id`)  COMMENT '',
+  UNIQUE INDEX `idx_user_player` (`user` ASC, `player` ASC)  COMMENT '',
+  INDEX `fk_up_players_idx` (`player` ASC)  COMMENT '',
+  CONSTRAINT `fk_up_users`
+    FOREIGN KEY (`user`)
+    REFERENCES `users` (`record_id`)
+    ON DELETE RESTRICT
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_up_players`
+    FOREIGN KEY (`player`)
+    REFERENCES `players` (`record_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `goods`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `goods` (
+  `record_id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `caption` VARCHAR(24) NOT NULL COMMENT '',
+  `level` INT NOT NULL DEFAULT 1 COMMENT '',
+  `race` INT NULL DEFAULT NULL COMMENT '',
+  `tech` INT NULL DEFAULT 0 COMMENT '',
+  `type` INT NULL DEFAULT 0 COMMENT '',
+  PRIMARY KEY (`record_id`)  COMMENT '',
+  UNIQUE INDEX `caption_UNIQUE` (`caption` ASC)  COMMENT '',
+  INDEX `goods_level` (`level` ASC)  COMMENT '',
+  INDEX `fk_goods_race_idx` (`race` ASC)  COMMENT '',
+  CONSTRAINT `fk_goods_race`
+    FOREIGN KEY (`race`)
+    REFERENCES `races` (`record_id`)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `ordnance`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ordnance` (
+  `record_id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `system` INT NOT NULL COMMENT '',
+  `x` INT NULL DEFAULT 0 COMMENT '',
+  `y` INT NULL DEFAULT 0 COMMENT '',
+  `good` INT NOT NULL COMMENT '',
+  `amount` INT NULL DEFAULT 0 COMMENT '',
+  `owner` INT NOT NULL COMMENT '',
+  `alliance` INT NULL COMMENT '',
+  PRIMARY KEY (`record_id`)  COMMENT '',
+  INDEX `fk_ordnance_system_idx` (`system` ASC)  COMMENT '',
+  INDEX `fk_ordnance_owner_idx` (`owner` ASC)  COMMENT '',
+  INDEX `ordnance_xy` (`y` ASC, `x` ASC)  COMMENT '',
+  INDEX `fk_ordnance_alliance_idx` (`alliance` ASC)  COMMENT '',
+  INDEX `fk_ordnance_good_idx` (`good` ASC)  COMMENT '',
+  INDEX `fk_amount` (`amount` ASC)  COMMENT '',
+  CONSTRAINT `fk_ordnance_alliance`
+    FOREIGN KEY (`alliance`)
+    REFERENCES `alliances` (`record_id`)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_ordnance_good`
+    FOREIGN KEY (`good`)
+    REFERENCES `goods` (`record_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_ordnance_owner`
+    FOREIGN KEY (`owner`)
+    REFERENCES `players` (`record_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_ordnance_system`
+    FOREIGN KEY (`system`)
+    REFERENCES `systems` (`record_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `user_fields`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `user_fields` (
+  `record_id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `user` INT NULL COMMENT '',
+  `group` VARCHAR(16) NOT NULL COMMENT '',
+  `key` VARCHAR(16) NOT NULL COMMENT '',
+  `value` VARCHAR(64) NOT NULL COMMENT '',
+  PRIMARY KEY (`record_id`)  COMMENT '',
+  INDEX `fk_user_flags_idx` (`user` ASC)  COMMENT '',
+  UNIQUE INDEX `fk_group_key` USING BTREE (`group` ASC, `key` ASC, `user` ASC)  COMMENT '',
+  CONSTRAINT `fk_user_flags`
+    FOREIGN KEY (`user`)
+    REFERENCES `users` (`record_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `item_types`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `item_types` (
+  `record_id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `caption` VARCHAR(16) NOT NULL COMMENT '',
+  `max_stock` INT NOT NULL DEFAULT 15000 COMMENT '',
+  PRIMARY KEY (`record_id`)  COMMENT '',
+  UNIQUE INDEX `caption_UNIQUE` (`caption` ASC)  COMMENT '')
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `dealer_inventory`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `dealer_inventory` (
+  `record_id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `place` INT NOT NULL COMMENT '',
+  `item_type` INT NOT NULL COMMENT '',
+  `item` INT NULL COMMENT '',
+  `stock` INT NULL DEFAULT 0 COMMENT '',
+  `price` INT NULL DEFAULT 0 COMMENT '',
+  `last_update` INT NULL DEFAULT 0 COMMENT '',
+  PRIMARY KEY (`record_id`)  COMMENT '',
+  INDEX `fk_item_type_idx` (`item_type` ASC)  COMMENT '',
+  INDEX `fk_dealer_place_idx` (`place` ASC)  COMMENT '',
+  CONSTRAINT `fk_item_type`
+    FOREIGN KEY (`item_type`)
+    REFERENCES `item_types` (`record_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_dealer_place`
+    FOREIGN KEY (`place`)
+    REFERENCES `places` (`record_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `player_cargo`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `player_cargo` (
+  `record_id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `player` INT NULL COMMENT '',
+  `good` INT NULL COMMENT '',
+  `amount` INT NOT NULL DEFAULT 0 COMMENT '',
+  `bought` INT NULL DEFAULT 0 COMMENT '',
+  `sold` INT NULL DEFAULT 0 COMMENT '',
+  PRIMARY KEY (`record_id`)  COMMENT '',
+  INDEX `fk_player_cargo_id_idx` (`player` ASC)  COMMENT '',
+  INDEX `fk_player_cargo_goods_idx` (`good` ASC)  COMMENT '',
+  CONSTRAINT `fk_player_cargo_id`
+    FOREIGN KEY (`player`)
+    REFERENCES `players` (`record_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_player_cargo_goods`
+    FOREIGN KEY (`good`)
+    REFERENCES `goods` (`record_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `port_goods`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `port_goods` (
+  `record_id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `place` INT NULL COMMENT '',
+  `good` INT NULL COMMENT '',
+  `amount` INT NULL DEFAULT 0 COMMENT '',
+  `distance` INT NULL DEFAULT 0 COMMENT '',
+  `upgrade` INT NULL DEFAULT 0 COMMENT '',
+  `supply` TINYINT(1) NULL DEFAULT 0 COMMENT '',
+  `last_update` INT NULL DEFAULT 0 COMMENT '',
+  PRIMARY KEY (`record_id`)  COMMENT '',
+  INDEX `fk_port_good_idx` (`good` ASC)  COMMENT '',
+  INDEX `fk_port_place_idx` (`place` ASC)  COMMENT '',
+  CONSTRAINT `fk_port_good`
+    FOREIGN KEY (`good`)
+    REFERENCES `goods` (`record_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_port_place`
+    FOREIGN KEY (`place`)
+    REFERENCES `places` (`record_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `warps`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `warps` (
+  `record_id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `place` INT NOT NULL COMMENT '',
+  `x` INT NULL COMMENT 'Destination',
+  `y` INT NULL COMMENT 'Destination',
+  PRIMARY KEY (`record_id`)  COMMENT '',
+  INDEX `fkey_warp_place_idx` (`place` ASC)  COMMENT '',
+  CONSTRAINT `fkey_warp_place`
+    FOREIGN KEY (`place`)
+    REFERENCES `places` (`record_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `start_goods`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `start_goods` (
+  `record_id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `place_type` INT NOT NULL COMMENT '',
+  `good` INT NOT NULL COMMENT '',
+  `percent` INT NOT NULL DEFAULT 100 COMMENT '',
+  `supply` INT NOT NULL DEFAULT 0 COMMENT '',
+  PRIMARY KEY (`record_id`)  COMMENT '',
+  INDEX `fkey_start_goods_place_idx` (`place_type` ASC)  COMMENT '',
+  INDEX `fkey_start_goods_idx` (`good` ASC)  COMMENT '',
+  CONSTRAINT `fkey_start_goods_place`
+    FOREIGN KEY (`place_type`)
+    REFERENCES `place_types` (`record_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `fkey_start_goods`
+    FOREIGN KEY (`good`)
+    REFERENCES `goods` (`record_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `good_upgrades`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `good_upgrades` (
+  `record_id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `good` INT NOT NULL COMMENT '',
+  `target` INT NOT NULL COMMENT '',
+  PRIMARY KEY (`record_id`)  COMMENT '',
+  INDEX `fkey_good_upgrades_idx` (`good` ASC)  COMMENT '',
+  INDEX `fkey_good_upgrade_target_idx` (`target` ASC)  COMMENT '',
+  CONSTRAINT `fkey_good_upgrade_source`
+    FOREIGN KEY (`good`)
+    REFERENCES `goods` (`record_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `fkey_good_upgrade_target`
+    FOREIGN KEY (`target`)
+    REFERENCES `goods` (`record_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `player_log`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `player_log` (
+  `record_id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `player` INT NOT NULL COMMENT '',
+  `action` INT NOT NULL COMMENT '',
+  `target` INT NULL DEFAULT 0 COMMENT '',
+  `amount1` INT NULL DEFAULT 0 COMMENT '',
+  `amount2` INT NULL DEFAULT 0 COMMENT '',
+  `timestamp` INT NOT NULL COMMENT '',
+  `reconciled` INT NULL DEFAULT 0 COMMENT '',
+  PRIMARY KEY (`record_id`)  COMMENT '',
+  INDEX `fkey_player_log_players_idx` (`player` ASC)  COMMENT '',
+  INDEX `idx_player_log_reconciled` (`reconciled` ASC)  COMMENT '',
+  CONSTRAINT `fkey_player_log_players`
+    FOREIGN KEY (`player`)
+    REFERENCES `players` (`record_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `alliance_invitations`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `alliance_invitations` (
+  `record_id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `alliance` INT NOT NULL COMMENT '',
+  `player` INT NOT NULL COMMENT '',
+  `requested` INT NOT NULL DEFAULT 0 COMMENT '',
+  `rejected` INT NOT NULL DEFAULT 0 COMMENT '',
+  PRIMARY KEY (`record_id`)  COMMENT '',
+  INDEX `pk_alliance_invite_idx` (`alliance` ASC)  COMMENT '',
+  INDEX `pk_alliance_player_invite_idx` (`player` ASC)  COMMENT '',
+  CONSTRAINT `pk_alliance_invite`
+    FOREIGN KEY (`alliance`)
+    REFERENCES `alliances` (`record_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `pk_alliance_player_invite`
+    FOREIGN KEY (`player`)
+    REFERENCES `players` (`record_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `bases`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `bases` (
+  `record_id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `owner` INT NULL DEFAULT NULL COMMENT '',
+  `alliance` INT NULL DEFAULT NULL COMMENT '',
+  `seed` INT NOT NULL DEFAULT 0 COMMENT '',
+  `last_update` INT NOT NULL DEFAULT 0 COMMENT '',
+  `shields` INT NOT NULL DEFAULT 1000 COMMENT '',
+  `place` INT NOT NULL COMMENT '',
+  `max_shields` INT NOT NULL DEFAULT 1000 COMMENT '',
+  `shield_production` INT NOT NULL DEFAULT 1 COMMENT '',
+  `last_update` INT NOT NULL DEFAULT 0 COMMENT '',
+  `power` INT NOT NULL DEFAULT 1 COMMENT '',
+  PRIMARY KEY (`record_id`)  COMMENT '',
+  INDEX `fk_base_owner_idx` (`owner` ASC)  COMMENT '',
+  INDEX `fk_base_alliance_idx` (`alliance` ASC)  COMMENT '',
+  INDEX `fk_base_place_idx` (`place` ASC)  COMMENT '',
+  CONSTRAINT `fk_base_owner`
+    FOREIGN KEY (`owner`)
+    REFERENCES `players` (`record_id`)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_base_alliance`
+    FOREIGN KEY (`alliance`)
+    REFERENCES `alliances` (`record_id`)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_base_place`
+    FOREIGN KEY (`place`)
+    REFERENCES `places` (`record_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `room_types`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `room_types` (
+  `record_id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `caption` VARCHAR(24) NULL COMMENT '',
+  `width` INT NULL DEFAULT 3 COMMENT '',
+  `height` INT NULL DEFAULT 3 COMMENT '',
+  `floor_mask` BIGINT NULL DEFAULT 0 COMMENT '',
+  `wall_mask` BIGINT NULL DEFAULT 0 COMMENT '',
+  `can_rotate` TINYINT NULL DEFAULT 0 COMMENT '',
+  `hit_points` INT NULL DEFAULT 1000 COMMENT '',
+  `build_time` INT NULL DEFAULT 300 COMMENT '',
+  `build_cost` INT NULL DEFAULT 100000 COMMENT '',
+  `build_limit` INT NULL DEFAULT 1 COMMENT '',
+  `turn_cost` DECIMAL(6,1) NULL DEFAULT 1.0 COMMENT '',
+  `can_land` TINYINT NULL DEFAULT 0 COMMENT '',
+  `power` INT NULL DEFAULT 0 COMMENT '',
+  `good` INT NULL DEFAULT NULL COMMENT '',
+  `production` INT NULL DEFAULT 0 COMMENT '',
+  `shield_generators` INT NULL DEFAULT 0 COMMENT '',
+  `turrets` INT NULL DEFAULT 0 COMMENT '',
+  `turret_damage` INT NULL DEFAULT 0 COMMENT '',
+  `experience` INT NULL DEFAULT 0 COMMENT '',
+  PRIMARY KEY (`record_id`)  COMMENT '',
+  INDEX `fkey_room_good_idx` (`good` ASC)  COMMENT '',
+  CONSTRAINT `fkey_room_good`
+    FOREIGN KEY (`good`)
+    REFERENCES `goods` (`record_id`)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `base_rooms`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `base_rooms` (
+  `record_id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `base` INT NOT NULL COMMENT '',
+  `room` INT NOT NULL COMMENT '',
+  `x` INT NULL COMMENT '',
+  `y` INT NULL COMMENT '',
+  `theta` INT NULL DEFAULT 0 COMMENT '0, 1, 2, or 3 for 90 degree rotations',
+  `finish_time` INT NULL DEFAULT 0 COMMENT '',
+  `damage` INT NULL DEFAULT 0 COMMENT '',
+  `last_update` INT NULL DEFAULT 0 COMMENT '',
+  PRIMARY KEY (`record_id`)  COMMENT '',
+  INDEX `fkey_room_base_idx` (`base` ASC)  COMMENT '',
+  INDEX `fkey_room_type_idx` (`room` ASC)  COMMENT '',
+  CONSTRAINT `fkey_room_base`
+    FOREIGN KEY (`base`)
+    REFERENCES `bases` (`record_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `fkey_room_type`
+    FOREIGN KEY (`room`)
+    REFERENCES `room_types` (`record_id`)
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `research_items`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `research_items` (
+  `record_id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `caption` VARCHAR(24) NULL COMMENT '',
+  `cost` INT NULL DEFAULT 100000 COMMENT '',
+  `turn_cost` INT NULL DEFAULT 1 COMMENT '',
+  `time` INT NULL DEFAULT 300 COMMENT '',
+  `rank` INT NOT NULL DEFAULT 1 COMMENT '',
+  `experience` INT NULL DEFAULT 0 COMMENT '',
+  PRIMARY KEY (`record_id`)  COMMENT '',
+  INDEX `fkey_research_rank_idx` (`rank` ASC)  COMMENT '',
+  CONSTRAINT `fkey_research_rank`
+    FOREIGN KEY (`rank`)
+    REFERENCES `ranks` (`record_id`)
+    ON DELETE RESTRICT
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `gold_keys`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `gold_keys` (
+  `record_id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `type` INT NOT NULL DEFAULT 0 COMMENT '',
+  `key` VARCHAR(96) NOT NULL COMMENT '',
+  `time` INT NOT NULL DEFAULT 2678400 COMMENT '',
+  `used` INT NOT NULL DEFAULT 0 COMMENT '',
+  `user` INT NULL COMMENT '',
+  PRIMARY KEY (`record_id`)  COMMENT '',
+  UNIQUE INDEX `gk_UNIQUE` (`key` ASC)  COMMENT '',
+  INDEX `fkey_gold_user_idx` (`user` ASC)  COMMENT '',
+  INDEX `fkey_gold_type` (`type` ASC)  COMMENT '',
+  INDEX `fkey_gold_used` (`used` ASC)  COMMENT '',
+  CONSTRAINT `fkey_gold_user`
+    FOREIGN KEY (`user`)
+    REFERENCES `users` (`record_id`)
+    ON DELETE RESTRICT
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `messages`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `messages` (
+  `record_id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `posted` INT NOT NULL DEFAULT 0 COMMENT '',
+  `expiration` INT NOT NULL DEFAULT 0 COMMENT '',
+  `message` VARCHAR(512) NOT NULL COMMENT '',
+  `sender` INT NULL COMMENT '',
+  `type` INT NOT NULL DEFAULT 1 COMMENT '',
+  `id` INT NULL DEFAULT 0 COMMENT '',
+  PRIMARY KEY (`record_id`)  COMMENT '',
+  INDEX `i_message_timestamp` (`posted` ASC, `expiration` ASC)  COMMENT '',
+  INDEX `fk_message_sender_idx` (`sender` ASC)  COMMENT '',
+  CONSTRAINT `fk_message_sender`
+    FOREIGN KEY (`sender`)
+    REFERENCES `players` (`record_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `message_targets`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `message_targets` (
+  `record_id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `message` INT NOT NULL COMMENT '',
+  `target` INT NOT NULL COMMENT '',
+  `read` INT NOT NULL DEFAULT 0 COMMENT '',
+  `sender` INT NULL DEFAULT NULL COMMENT '',
+  PRIMARY KEY (`record_id`)  COMMENT '',
+  INDEX `fkey_target_sender_idx` (`sender` ASC)  COMMENT '',
+  INDEX `fkey_target_message_idx` (`message` ASC)  COMMENT '',
+  INDEX `fkey_target_player_idx` (`target` ASC)  COMMENT '',
+  CONSTRAINT `fkey_target_message`
+    FOREIGN KEY (`message`)
+    REFERENCES `messages` (`record_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `fkey_target_sender`
+    FOREIGN KEY (`sender`)
+    REFERENCES `players` (`record_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `fkey_target_player`
+    FOREIGN KEY (`target`)
+    REFERENCES `players` (`record_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `message_ignore`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `message_ignore` (
+  `record_id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `player` INT NOT NULL COMMENT '',
+  `ignore` INT NOT NULL COMMENT '',
+  `expiration` INT NULL COMMENT '',
+  PRIMARY KEY (`record_id`)  COMMENT '',
+  INDEX `fk_ignore_player_idx` (`player` ASC)  COMMENT '',
+  INDEX `fk_player_ignore_idx` (`ignore` ASC)  COMMENT '',
+  INDEX `fk_player_ignore_expiration` (`expiration` ASC)  COMMENT '',
+  CONSTRAINT `fk_ignore_player`
+    FOREIGN KEY (`player`)
+    REFERENCES `players` (`record_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_player_ignore`
+    FOREIGN KEY (`ignore`)
+    REFERENCES `players` (`record_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `news`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `news` (
+  `record_id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `headline` VARCHAR(48) NOT NULL COMMENT '',
+  `abstract` VARCHAR(128) NOT NULL COMMENT '',
+  `article` TEXT NOT NULL COMMENT '',
+  `author` INT NULL COMMENT '',
+  `live` INT NULL DEFAULT 0 COMMENT '',
+  `archive` INT NULL DEFAULT 0 COMMENT '',
+  `expiration` INT NULL DEFAULT 0 COMMENT '',
+  PRIMARY KEY (`record_id`)  COMMENT '')
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `base_research`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `base_research` (
+  `record_id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `base` INT NOT NULL COMMENT '',
+  `research` INT NOT NULL COMMENT '',
+  `finish_time` INT NULL DEFAULT 0 COMMENT '',
+  PRIMARY KEY (`record_id`)  COMMENT '',
+  INDEX `fkey_research_base_idx` (`base` ASC)  COMMENT '',
+  INDEX `fkey_research_item_idx` (`research` ASC)  COMMENT '',
+  CONSTRAINT `fkey_research_base`
+    FOREIGN KEY (`base`)
+    REFERENCES `bases` (`record_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `fkey_research_item`
+    FOREIGN KEY (`research`)
+    REFERENCES `research_items` (`record_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `research_requirements`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `research_requirements` (
+  `record_id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `goal` INT NOT NULL COMMENT '',
+  `research` INT NULL DEFAULT NULL COMMENT '',
+  `build` INT NULL DEFAULT NULL COMMENT '',
+  `good` INT NULL DEFAULT NULL COMMENT '',
+  `amount` INT NULL DEFAULT 0 COMMENT '',
+  PRIMARY KEY (`record_id`)  COMMENT '',
+  INDEX `fkey_required_goal_idx` (`goal` ASC)  COMMENT '',
+  INDEX `fkey_required_research_idx` (`research` ASC)  COMMENT '',
+  INDEX `fkey_required_build_idx` (`build` ASC)  COMMENT '',
+  INDEX `fkey_required_good_idx` (`good` ASC)  COMMENT '',
+  CONSTRAINT `fkey_required_goal`
+    FOREIGN KEY (`goal`)
+    REFERENCES `research_items` (`record_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `fkey_required_research`
+    FOREIGN KEY (`research`)
+    REFERENCES `research_items` (`record_id`)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE,
+  CONSTRAINT `fkey_required_build`
+    FOREIGN KEY (`build`)
+    REFERENCES `room_types` (`record_id`)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE,
+  CONSTRAINT `fkey_required_good`
+    FOREIGN KEY (`good`)
+    REFERENCES `goods` (`record_id`)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `room_requirements`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `room_requirements` (
+  `record_id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `room` INT NOT NULL COMMENT '',
+  `build` INT NULL DEFAULT NULL COMMENT '',
+  `research` INT NULL DEFAULT NULL COMMENT '',
+  `good` INT NULL DEFAULT NULL COMMENT '',
+  `amount` INT NULL DEFAULT 0 COMMENT '',
+  PRIMARY KEY (`record_id`)  COMMENT '',
+  INDEX `fk_room_upgrade_idx` (`room` ASC)  COMMENT '',
+  INDEX `fk_upgrade_room_idx` (`build` ASC)  COMMENT '',
+  INDEX `fk_room_research_idx` (`research` ASC)  COMMENT '',
+  INDEX `fk_room_good_idx` (`good` ASC)  COMMENT '',
+  CONSTRAINT `fk_room_upgrade`
+    FOREIGN KEY (`room`)
+    REFERENCES `room_types` (`record_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_upgrade_room`
+    FOREIGN KEY (`build`)
+    REFERENCES `room_types` (`record_id`)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_room_research`
+    FOREIGN KEY (`research`)
+    REFERENCES `base_research` (`record_id`)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_room_good`
+    FOREIGN KEY (`good`)
+    REFERENCES `goods` (`record_id`)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `weapons`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `weapons` (
+  `record_id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `caption` VARCHAR(24) NOT NULL COMMENT '',
+  `good` INT NOT NULL DEFAULT 0 COMMENT '',
+  `race` INT NULL DEFAULT NULL COMMENT '',
+  `racks` INT NULL DEFAULT 0 COMMENT '',
+  `stations` INT NULL DEFAULT 0 COMMENT '',
+  `accuracy` DECIMAL(3,2) NULL DEFAULT 1.00 COMMENT '',
+  `volley` INT NULL DEFAULT 1 COMMENT '',
+  `ammunition` INT NULL DEFAULT NULL COMMENT '',
+  `general_damage` INT NULL DEFAULT 0 COMMENT '',
+  `shield_damage` INT NULL DEFAULT 0 COMMENT '',
+  `armor_damage` INT NULL DEFAULT 0 COMMENT '',
+  PRIMARY KEY (`record_id`)  COMMENT '',
+  UNIQUE INDEX `caption_UNIQUE` (`caption` ASC)  COMMENT '',
+  INDEX `fkey_weapon_race_idx` (`race` ASC)  COMMENT '',
+  INDEX `fkey_weapon_ammo_idx` (`ammunition` ASC)  COMMENT '',
+  INDEX `fkey_weapon_good_idx` (`good` ASC)  COMMENT '',
+  CONSTRAINT `fkey_weapon_race`
+    FOREIGN KEY (`race`)
+    REFERENCES `races` (`record_id`)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE,
+  CONSTRAINT `fkey_weapon_ammo`
+    FOREIGN KEY (`ammunition`)
+    REFERENCES `goods` (`record_id`)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE,
+  CONSTRAINT `fkey_weapon_good`
+    FOREIGN KEY (`good`)
+    REFERENCES `goods` (`record_id`)
+    ON DELETE RESTRICT
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `solutions`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `solutions` (
+  `record_id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `player` INT NOT NULL COMMENT '',
+  `weapon` INT NOT NULL COMMENT '',
+  `ship` INT NOT NULL COMMENT '',
+  `group` INT NOT NULL DEFAULT 0 COMMENT '',
+  `sequence` INT NOT NULL DEFAULT 0 COMMENT '',
+  `fire_time` INT NOT NULL DEFAULT 0 COMMENT '',
+  PRIMARY KEY (`record_id`)  COMMENT '',
+  INDEX `fk_solution_player_idx` (`player` ASC)  COMMENT '',
+  INDEX `fk_solution_weapon_idx` (`weapon` ASC)  COMMENT '',
+  INDEX `fk_solution_ship_idx` (`ship` ASC)  COMMENT '',
+  CONSTRAINT `fk_solution_player`
+    FOREIGN KEY (`player`)
+    REFERENCES `players` (`record_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_solution_weapon`
+    FOREIGN KEY (`weapon`)
+    REFERENCES `weapons` (`record_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_solution_ship`
+    FOREIGN KEY (`ship`)
+    REFERENCES `ships` (`record_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
