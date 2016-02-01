@@ -44,7 +44,7 @@
 			}
 		
 			$player_id = PLAYER_ID;
-			$st->bind_param("iii", $turns_to_add, $turn_delta, $player_id);
+			$st->bind_param("dii", $turns_to_add, $turn_delta, $player_id);
 		
 			if (!$st->execute()) {
 				$return_codes[] = 1006;
