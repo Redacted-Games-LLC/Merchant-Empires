@@ -28,7 +28,7 @@
 		die();
 	}
 	
-	if (!get_user_field(USER_ID, 'admin', 'ports')) {
+	if (!get_user_field(USER_ID, 'admin', 'system')) {
 		header('Location: viewport.php?rc=1030');
 		die();
 	}
@@ -37,7 +37,7 @@
 	do { // Dummy loop
 	
 		$return_page = 'admin';
-		$return_vars['page'] = 'ports';
+		$return_vars['page'] = 'system';
 
 		$db = isset($db) ? $db : new DB;
 

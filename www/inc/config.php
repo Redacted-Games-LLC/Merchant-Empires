@@ -81,7 +81,7 @@
 
 	// This is only really used by the galaxy generator. Setting it to a favored
 	// seed saves some development time.
-	define('GALAXY_SEED', 1440469921);
+	define('GALAXY_SEED', 1454333427);
 
 	// Defines the size of the galaxy. Note that the game was coded with 720 in mind and 
 	// while the limit is 1000x1000 that is for stars; some planets might render outside.

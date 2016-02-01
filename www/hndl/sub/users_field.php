@@ -22,7 +22,7 @@
  */
 
 	include_once('hndl/common.php');
-	include_once('inc/game.php');
+	include_once('inc/page.php');
 	
 	$return_page = 'admin';
 	$return_vars['page'] = 'users';
