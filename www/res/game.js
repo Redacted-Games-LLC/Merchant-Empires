@@ -192,7 +192,7 @@ function validate_signup() {
 	}
 	
 	if (!validate_password(password1)) {
-		alert("Password is 6-32 characters.");
+		alert("Password is 6-128 characters.");
 		unlock_validation();
 		return false;
 	}
@@ -226,7 +226,7 @@ function validate_username(username) {
 
 
 function validate_password(password) {
-	return /^.{6,32}$/.test(password);
+	return (password.length >= 6 && password.length <= 128);
 }
 
 function validate_email(email) {
