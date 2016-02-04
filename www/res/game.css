@@ -106,7 +106,7 @@ div#game_menu {
 }
 
 a.game_menu {
-	color: #555511;
+	color: #FFFF00;
 	font-size: 80%;
 	text-shadow: 1px 1px #000000;
 }
@@ -905,9 +905,8 @@ div.login_form_upper_button {
 }
 
 div.login_form_lower_button {
-	position: absolute;
-	top: 300px;
-	left: 420px;
+	padding-left: 100px;
+	position:inherit;
 	width: 140px;
 	height: 70px;
 }
