@@ -1036,6 +1036,10 @@ div.sidebar_turns {
 	text-align: center;
 }
 
+div.sidebar_credits {
+	font-size: 11pt;
+	text-align: center;
+}
 
 div.sidebar_level {
 	position: relative;
