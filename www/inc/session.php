@@ -194,7 +194,8 @@
 	}
 
 	function validate_password($password) {
-		return preg_match('/^.{6,32}$/', $password) > 0;
+		$len = strlen($password);
+		return ($len >= 6 && $len <= 128);
 	}
 
 	function validate_email($email) {

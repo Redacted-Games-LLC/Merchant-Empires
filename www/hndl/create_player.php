@@ -1,6 +1,6 @@
 <?php
 /**
- * 
+ * Handles creating a new player for a user.
  *
  * @package [Redacted]Me
  * ---------------------------------------------------------------------------

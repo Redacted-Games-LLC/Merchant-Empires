@@ -585,7 +585,6 @@ CREATE TABLE IF NOT EXISTS `bases` (
   `place` INT NOT NULL COMMENT '',
   `max_shields` INT NOT NULL DEFAULT 1000 COMMENT '',
   `shield_production` INT NOT NULL DEFAULT 1 COMMENT '',
-  `last_update` INT NOT NULL DEFAULT 0 COMMENT '',
   `power` INT NOT NULL DEFAULT 1 COMMENT '',
   PRIMARY KEY (`record_id`)  COMMENT '',
   INDEX `fk_base_owner_idx` (`owner` ASC)  COMMENT '',

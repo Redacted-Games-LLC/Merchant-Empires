@@ -100,7 +100,7 @@
 					<label for="password1a">Password:</label>
 				</div>
 				<div class="right_column">
-					<input id="password1a" name="password1" type="password" maxlength="16" size="20" />
+					<input id="password1a" name="password1" type="password" maxlength="128" size="20" />
 				</div>
 			</div>
 			
@@ -135,7 +135,7 @@
 					<label for="password1b">Pass (6+ chrs):</label><br />
 				</div>
 				<div class="right_column">
-					<input id="password1b" name="password1" type="password" maxlength="16" size="20" />
+					<input id="password1b" name="password1" type="password" maxlength="128" size="20" />
 				</div>
 			</div>
 			
@@ -145,7 +145,7 @@
 					<label for="password2b">Confirm Password:</label>
 				</div>
 				<div class="right_column">
-					<input id="password2b" name="password2" type="password" maxlength="16" size="20" />
+					<input id="password2b" name="password2" type="password" maxlength="128" size="20" />
 				</div>
 			</div>
 			
