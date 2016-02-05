@@ -76,16 +76,18 @@
 
 		switch ($item['item_type']) {
 			case 1: // Ship
-				// Ship treatment of starters vis a vis escape pods
+				
 				if ($amount > 1) {
 					$return_codes[] = 1028;
-					break;
+					break 2;
 				}
 
+				// Ship treatment of starters vis a vis escape pods
+				
 				if ($spacegame['player']['ship_type'] > 0 || $item['details']['rank'] > 1) {
 					if ($credits > $spacegame['player']['credits']) {
 						$return_codes[] = 1025;
-						break;
+						break 2;
 					}
 
 					$alignment_adjust = 1.0;
@@ -150,7 +152,7 @@
 			
 				$db->get_db()->commit();
 				$db->get_db()->autocommit(true);
-
+				$return_codes[] = 1026;
 				break;
 
 			case 2: // Goods
@@ -279,7 +281,7 @@
 							
 				$db->get_db()->commit();
 				$db->get_db()->autocommit(true);
-
+				$return_codes[] = 1026;
 				break;
 
 			default:
@@ -289,7 +291,6 @@
 		
 
 		$return_page = 'viewport';
-		$return_codes[] = 1026;
 
 	} while (false);
 
