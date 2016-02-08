@@ -44,8 +44,8 @@
 	<div class="sidebar_turns">
 		<strong><?php echo str_replace('.50', '.5', str_replace('.00', '', (string)number_format($spacegame['player']['turns'], 2))); ?></strong> Turns Remaining
 	</div>
-	<div class="sidebar_turns">
-		<strong><?php echo number_format($spacegame['player']['credits']); ?></strong> Credits
+	<div class="sidebar_credits" title="Credits Remaining">
+		<strong><?php echo number_format($spacegame['player']['credits']); ?></strong> <img src="res/credits.png" width="13" alt="Credits" />
 	</div>
 	<br class="clear" />
 	<div class="sidebar_level" title="<?php echo 'Experience: ' . number_format($spacegame['player']['experience']) . " \nAlignment: " . $spacegame['player']['alignment']; ?>">
