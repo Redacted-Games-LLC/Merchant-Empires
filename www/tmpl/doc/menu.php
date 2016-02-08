@@ -28,8 +28,6 @@
 <hr noshade="noshade" size="1" />
 <ul class="docs_menu">
 	<li class="docs_menu"><a href="docs.php?page=quick">Quick Start</a></li>
-	<li class="docs_menu"><a href="docs.php?page=nav">Navigation</a></li>
-	<li class="docs_menu"><a href="docs.php?page=scanner">Scanner</a></li>
 	<li class="docs_menu">
 		<a href="docs.php?page=players">Players
 		<ul class="docs_menu">
@@ -50,8 +48,13 @@
 	<li class="docs_menu">
 		<a href="docs.php?page=ships">Ships</a>
 		<ul class="docs_menu">
-			<li class="docs_menu"><a href="docs.php?page=ship_rating">Attack/Defense Rating</a></li>
-			<li class="docs_menu"><a href="docs.php?page=tech">Ship Technology</a></li>
+			<li class="docs_menu">
+				<a href="docs.php?page=nav">Navigation</a>
+				<ul class="docs_menu">
+					<li class="docs_menu"><a href="docs.php?page=warps">Warps</a></li>
+				</ul>
+			</li>
+			<li class="docs_menu"><a href="docs.php?page=scanner">Scanner</a></li>
 			<li class="docs_menu">
 				<a href="docs.php?page=trade">Trade</a>
 				<ul class="docs_menu">
@@ -60,20 +63,21 @@
 				</ul>
 			</li>
 			<li class="docs_menu">
-				<a href="docs.php?page=combat">Combat</a>
+				<a href="docs.php?page=ordnance">Sector Ordnance</a>
 				<ul class="docs_menu">
-					<li class="docs_menu"><a href="docs.php?page=damage">Damage Types</a></li>
-					<li class="docs_menu"><a href="docs.php?page=weapons">Weapons</a></li>
-					<li class="docs_menu">
-						<a href="docs.php?page=ordnance">Sector Ordnance</a>
-						<ul class="docs_menu">
-							<li class="docs_menu"><a href="docs.php?page=mines">Mines</a></li>
-							<li class="docs_menu"><a href="docs.php?page=drones">Drones</a></li>
-						</ul>
-					</li>
+					<li class="docs_menu"><a href="docs.php?page=mines">Mines</a></li>
+					<li class="docs_menu"><a href="docs.php?page=drones">Drones</a></li>
 				</ul>
 			</li>
-
+			<li class="docs_menu">
+				<a href="docs.php?page=combat">Combat</a>
+				<ul class="docs_menu">
+					<li class="docs_menu"><a href="docs.php?page=ship_rating">Attack/Defense Rating</a></li>
+					<li class="docs_menu"><a href="docs.php?page=damage">Damage Types</a></li>
+					<li class="docs_menu"><a href="docs.php?page=weapons">Weapons</a></li>
+				</ul>
+			</li>
+			<li class="docs_menu"><a href="docs.php?page=tech">Ship Technology</a></li>
 		</ul>
 	</li>
 	<li class="docs_menu">

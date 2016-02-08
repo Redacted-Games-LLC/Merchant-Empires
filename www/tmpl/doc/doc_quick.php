@@ -189,12 +189,12 @@
 	<img src="res/doc/destination.png" alt="Destination" title="Location of a charcoal supplier" />
 </div>
 <div class="docs_text">
-	If you want you can fly around and find other high-credit demands in the system and note them
-	so next time you fly out you can bring the goods with you. Make note of them if you find them.
-	Head back to sell your charcoal when ready.
+	If you want you can fly around and find other high-credit demands in the system so next time
+	you come out here you can bring the goods with you. Make note of the location information when
+	you do find them. Head back to sell your charcoal when ready.
 </div>
 <div class="docs_text">
-	Remember when we passed the warp to Xollian Prime earler?
+	Remember when we passed the warp to Xollian Prime earlier?
 </div>
 <div class="docs_image">
 	<img src="res/doc/wrong_warp.png" alt="Right warp afterall" title="Apparently this was the warp we were looking for" />

@@ -26,6 +26,7 @@
 <div class="header2">
 	Welcome to Merchant Empires
 </div>
+<div class="header2">Synopsis</div>
 <div class="docs_text">
 	This is a space merchant game of war. The galaxy has been at war for a long time, so long that
 	our origins have been forgotten. Dozens of habitable planets filled with life, but no fossils,

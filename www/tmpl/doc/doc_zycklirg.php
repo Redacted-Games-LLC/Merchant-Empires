@@ -23,7 +23,7 @@
 
 	include_once('tmpl/common.php');
 ?>
-<div class="header2">Zyck'lirg Hordes</div>
+<div class="header2">The Infested Zyck'lirg</div>
 <div class="docs_text">
 	Every galaxy in the cluster was flipped upside down when the
 	Zyck'lirg hordes arrived. Legend has forgotten who opened
@@ -48,9 +48,7 @@
 </div>
 <div class="header3">Balance Notes</div>
 <div class="docs_text">
-	A Zyck'lirg player is one who
-	wants an early advantage in fighting. They don't end their
-	career nearly as powerful as Mawlor or Xollian and when past
-	their prime they are only good for support roles. Elderly
-	Zyck'lirg tend to be quite bitter about losing their edge.
+	A Zyck'lirg player is one who wants an early advantage in fighting. They don't end their
+	career nearly as powerful as Mawlor or Xollian and when past their prime they are only
+	good for support roles. Elderly Zyck'lirg tend to be quite bitter about losing their edge.
 </div>

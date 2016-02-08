@@ -23,7 +23,7 @@
 
 	include_once('tmpl/common.php');
 ?>
-<div class="header2">Mawlor Dominion</div>
+<div class="header2">The Mawlor Dominion</div>
 <div class="docs_text">
 	If you've been in a fight with a Mawlor you definitely understand
 	how these guys get their reputation. They can take lots of hits 

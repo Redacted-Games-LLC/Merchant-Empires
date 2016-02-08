@@ -23,7 +23,7 @@
 
 	include_once('tmpl/common.php');
 ?>
-<div class="header2">Xollian</div>
+<div class="header2">The Secretive Xollian</div>
 <div class="docs_text">
 	The Xollians might possibly have the most interesting history if 
 	anything was known about it. They are a secretive people with a culture

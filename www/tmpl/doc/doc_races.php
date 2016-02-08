@@ -32,7 +32,7 @@
 <div class="docs_text">
 	<ul>
 		<li><a href="docs.php?page=xollian">The Secretive Xollian</a></li>
-		<li><a href="docs.php?page=mawlor">The Warrior Mawlor</a></li>
+		<li><a href="docs.php?page=mawlor">The Mawlor Dominion</a></li>
 		<li><a href="docs.php?page=zycklirg">The Infested Zyck'lirg</a></li>
 	</ul>
 </div>

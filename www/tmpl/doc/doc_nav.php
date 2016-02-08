@@ -32,6 +32,10 @@
 	be severely limited. Please read through this page anyway for once inside a ship it
 	will become immediately useful.
 </div>
+<div class="docs_text">
+	The <a href="docs.php?page=quick">Quick Start Guide</a> contains a tutorial which
+	combines some features of trade, navigation and warps.
+</div>
 <div class="header3">Sector Numbers</div>
 <div class="docs_text">
 	This edition of Merchant Empires has a static galaxy spanning <strong>000 000</strong>
