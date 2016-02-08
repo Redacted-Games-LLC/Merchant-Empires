@@ -205,6 +205,9 @@
 					continue;
 				}
 
+				// The next few lines makes sure we don't create too long of a warp,
+				// which prevents warps connecting strangely.
+
 				$comp = 30000;
 
 				if ($stars[$i]['race'] == $stars[$j]['race']) {
@@ -249,8 +252,8 @@
 			$sy = 0;
 
 			do {
-				$sx = mt_rand(-1, 1);
-				$sy = mt_rand(-1, 1);
+				$sx = (mt_rand() % 3) - 1;
+				$sy = (mt_rand() % 3) - 1;
 			} while ($sx == 0 && $sy == 0);
 			
 			$stuff_grid[$sx][$sy] = array('type' => 'Star', 'details' => $star);
@@ -328,7 +331,7 @@
 
 
 
-	function find_empty_sector(&$x, &$y, $variance) {
+	function find_empty_sector(&$x, &$y, $variance, $no_centering = false) {
 
 		if ((!is_numeric($x)) || (!is_numeric($y))) {
 			error_log(__FILE__ . '::' . __LINE__ . " The x and y location must both be numeric.");
@@ -343,7 +346,21 @@
 		$attempts = $variance ** 5 + 1;
 
 		while ($attempts > 0) {
+
 			$attempts -= 1;
+
+			$test_x = mt_rand() % (($variance * 2) + 1);
+			$test_y = mt_rand() % (($variance * 2) + 1);
+
+			$test_x -= $variance;
+			$test_y -= $variance;
+
+			$test_x += $x;
+			$test_y += $y;
+
+			if ($no_centering && $x == $test_x && $y == $test_y) {
+				continue;
+			}
 
 			$rs = $db->get_db()->query("select record_id from places where x = '$test_x' and y = '$test_y' limit 1");
 	
@@ -359,9 +376,6 @@
 				$y = $test_y;
 				return true;
 			}
-
-			$test_x = $x + mt_rand(-$variance, $variance);
-			$test_y = $y + mt_rand(-$variance, $variance);
 		}
 
 		return false;

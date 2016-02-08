@@ -193,7 +193,7 @@
 			$place_candidates = array();
 			$place_candidate_count = 0;
 
-			$letters = 'ABCDEFGHJKLMNPQRSTUVWXYZßΓδµπσΩ';
+			$letters = 'ABCDEFGHJKLMNPQRSTUVWXYZßΓδµπσΩ23456789';
 			$star_pos = 0;
 			$planet_pos = 4;
 
@@ -428,7 +428,7 @@
 
 			// Find a spot for the warps with no other locations first.
 
-			if (!find_empty_sector($x1, $y1, WARP_LOCATION_VARIANCE)) {
+			if (!find_empty_sector($x1, $y1, WARP_LOCATION_VARIANCE, true)) {
 				error_log(__FILE__ . '::' . __LINE__ . " Could not find an empty sector for the source warp.");
 				$return_codes[] = 1050;
 				break 2;
