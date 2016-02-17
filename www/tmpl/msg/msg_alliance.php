@@ -65,6 +65,7 @@
 		</table>
 		<input type="hidden" name="task" value="message" />
 		<input type="hidden" name="subtask" value="alliance" />
+		<input type="hidden" name="form_id" value="<?php echo $_SESSION['form_id']; ?>" />
 	</form>
 </div>
 <div class="docs_text">

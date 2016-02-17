@@ -195,21 +195,22 @@
 
 					?>
 
-					<?php if ($item['race_locked']) { ?>
-						<div class="dealer_race_locked dealer_item_<?php echo $item['div_class']; ?>">&nbsp;</div>
-					<?php } else if ($item['level_locked']) { ?>
-						<div class="dealer_level_locked dealer_item_<?php echo $item['div_class']; ?>">&nbsp;</div>
-					<?php } else if ($item['rank_locked']) { ?>
-						<div class="dealer_rank_locked dealer_item_<?php echo $item['div_class']; ?>">&nbsp;</div>
-					<?php } else { ?>
-						<div class="dealer_buttons_<?php echo $item['div_class']; ?>">
-							<input class="dealer_form_text" id="amount<?php echo $member; ?>" name="amount" type="text" maxlength="4" size="5" value="<?php echo $amount_to_transfer; ?>" />
-							<script type="text/javascript">drawButton('sb<?php echo $member; ?>', 'buy', 'validate_dealer()', 'dealer_form_button');</script>
-						</div>
-						<input type="hidden" name="task" value="dealer" />
-						<input type="hidden" name="plid" value="<?php echo $place_id; ?>" />
-						<input type="hidden" name="item_id" value="<?php echo $item['id']; ?>" />
-					<?php } ?>
+						<?php if ($item['race_locked']) { ?>
+							<div class="dealer_race_locked dealer_item_<?php echo $item['div_class']; ?>">&nbsp;</div>
+						<?php } else if ($item['level_locked']) { ?>
+							<div class="dealer_level_locked dealer_item_<?php echo $item['div_class']; ?>">&nbsp;</div>
+						<?php } else if ($item['rank_locked']) { ?>
+							<div class="dealer_rank_locked dealer_item_<?php echo $item['div_class']; ?>">&nbsp;</div>
+						<?php } else { ?>
+							<div class="dealer_buttons_<?php echo $item['div_class']; ?>">
+								<input class="dealer_form_text" id="amount<?php echo $member; ?>" name="amount" type="text" maxlength="4" size="5" value="<?php echo $amount_to_transfer; ?>" />
+								<script type="text/javascript">drawButton('sb<?php echo $member; ?>', 'buy', 'validate_dealer()', 'dealer_form_button');</script>
+							</div>
+							<input type="hidden" name="task" value="dealer" />
+							<input type="hidden" name="plid" value="<?php echo $place_id; ?>" />
+							<input type="hidden" name="item_id" value="<?php echo $item['id']; ?>" />
+						<?php } ?>
+						<input type="hidden" name="form_id" value="<?php echo $_SESSION['form_id']; ?>" />
 					</form>
 				</div>
 			<?php } ?>

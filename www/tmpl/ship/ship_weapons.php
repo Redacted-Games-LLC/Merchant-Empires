@@ -33,14 +33,13 @@
 <hr />
 <div class="docs_text">
 	<form action="handler.php" method="post">
-	
+		
 
 		<script type="text/javascript">drawButton('add', 'add', 'validate_add()')</script>
 
 		<input type="hidden" name="task" value="weapon" />
 		<input type="hidden" name="subtask" value="add_solution" />
-		<input type="hidden" name="" value="" />
-
+		<input type="hidden" name="form_id" value="<?php echo $_SESSION['form_id']; ?>" />
 	</form>
 </div>
 

@@ -156,6 +156,7 @@
 					<input type="hidden" name="task" value="room" />
 					<input type="hidden" name="subtask" value="edit" />
 					<input type="hidden" name="room" value="<?php echo $spacegame['room']['safe_caption']; ?>" />
+					<input type="hidden" name="form_id" value="<?php echo $_SESSION['form_id']; ?>" />
 				</form>
 			</div>
 
@@ -173,7 +174,7 @@
 				}
 				else {
 					echo '<div class="docs_text">';
-					echo '<a href="handler.php?task=room&amp;subtask=delete_requirement&amp;room='. $spacegame['room']['safe_caption'] .'">Click here</a>';
+					echo '<a href="handler.php?task=room&amp;subtask=delete_requirement&amp;room='. $spacegame['room']['safe_caption'] .'&amp;form_id='. $_SESSION['form_id'] .'">Click here</a>';
 					echo ' to delete all requirements. This structure requires the following:';
 					echo '</div>';
 
@@ -270,6 +271,7 @@
 					<input type="hidden" name="task" value="room" />
 					<input type="hidden" name="subtask" value="add_requirement" />
 					<input type="hidden" name="room" value="<?php echo $spacegame['room']['safe_caption']; ?>" />
+					<input type="hidden" name="form_id" value="<?php echo $_SESSION['form_id']; ?>" />
 				</form>
 			</div>
 			<hr />
@@ -303,7 +305,7 @@
 			<?php } else { ?>
 
 				<div class="docs_text">
-					<a href="handler.php?task=room&amp;subtask=delete&amp;room=<?php echo $spacegame['room']['safe_caption']; ?>">Completely delete</a> this room.
+					<a href="handler.php?task=room&amp;subtask=delete&amp;room=<?php echo $spacegame['room']['safe_caption']; ?>&amp;form_id=<?php echo $_SESSION['form_id']; ?>">Completely delete</a> this room.
 				</div>
 
 			<?php } ?>

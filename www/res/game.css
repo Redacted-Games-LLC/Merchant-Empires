@@ -67,6 +67,14 @@ pre.dump {
 	border: solid 2px gray;
 }
 
+div.noscript {
+	background-color: #311;
+	border: solid 3px #ffffff;
+	margin: 20px;
+	padding: 20px 100px;
+
+}
+
 div#page_build {
 	position: absolute;
 	width: 192px;

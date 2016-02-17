@@ -24,6 +24,8 @@
 	include_once('inc/page.php');
 	include_once('inc/game.php');
 
+
+
 	$return_page = 'admin';
 	$return_vars['page'] = 'news';
 
@@ -32,7 +34,12 @@
 		die();
 	}
 
-
+	if (isset($_SESSION['form_id'])) {
+		if (!isset($_REQUEST['form_id']) || $_SESSION['form_id'] != $_REQUEST['form_id']) {
+			header('Location: viewport.php?rc=1181');
+			die();
+		}
+	}
 	
 
 	do { // Dummy loop

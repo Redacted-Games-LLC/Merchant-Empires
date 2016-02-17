@@ -104,6 +104,7 @@
 		<input type="hidden" name="task" value="good" />
 		<input type="hidden" name="subtask" value="update" />
 		<input type="hidden" name="id" value="<?php echo $adm_good['record_id']; ?>" />
+		<input type="hidden" name="form_id" value="<?php echo $_SESSION['form_id']; ?>" />
 	</form>
 </div>
 <hr />
@@ -119,7 +120,7 @@
 			foreach ($adm_requirements as $id => $requirement) {
 				
 				echo '&nbsp;&nbsp;&nbsp;&nbsp;';
-				echo '<a href="handler.php?task=good&amp;subtask=delete_requirement&amp;id=' . $adm_good['record_id'] . '&amp;requirement=' . $id . '">';
+				echo '<a href="handler.php?task=good&amp;subtask=delete_requirement&amp;id=' . $adm_good['record_id'] . '&amp;requirement=' . $id . '&amp;form_id='. $_SESSION['form_id'] .'">';
 				echo 'Delete';
 				echo '</a>';
 				echo '&nbsp;&nbsp;&nbsp;&nbsp;';
@@ -161,6 +162,7 @@
 		<input type="hidden" name="task" value="good" />
 		<input type="hidden" name="subtask" value="add_requirement" />
 		<input type="hidden" name="id" value="<?php echo $adm_good['record_id']; ?>" />
+		<input type="hidden" name="form_id" value="<?php echo $_SESSION['form_id']; ?>" />
 	</form>
 </div>
 <hr />
@@ -175,7 +177,7 @@
 			foreach ($adm_starts as $id => $start) {
 				
 				echo '&nbsp;&nbsp;&nbsp;&nbsp;';
-				echo '<a href="handler.php?task=good&amp;subtask=delete_start&amp;id=' . $adm_good['record_id'] . '&amp;start=' . $id . '">';
+				echo '<a href="handler.php?task=good&amp;subtask=delete_start&amp;id=' . $adm_good['record_id'] . '&amp;start=' . $id . '&amp;form_id='. $_SESSION['form_id'] .'">';
 				echo 'Delete';
 				echo '</a>';
 				echo '&nbsp;&nbsp;&nbsp;&nbsp;';
@@ -223,6 +225,7 @@
 		<input type="hidden" name="task" value="good" />
 		<input type="hidden" name="subtask" value="add_start" />
 		<input type="hidden" name="id" value="<?php echo $adm_good['record_id']; ?>" />
+		<input type="hidden" name="form_id" value="<?php echo $_SESSION['form_id']; ?>" />
 	</form>
 </div>
 <hr />
@@ -237,6 +240,7 @@
 		<input type="hidden" name="task" value="good" />
 		<input type="hidden" name="subtask" value="delete" />
 		<input type="hidden" name="id" value="<?php echo $adm_good['record_id']; ?>" />
+		<input type="hidden" name="form_id" value="<?php echo $_SESSION['form_id']; ?>" />
 	</form>
 </div>
 

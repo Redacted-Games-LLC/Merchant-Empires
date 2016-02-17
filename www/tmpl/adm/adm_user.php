@@ -102,7 +102,8 @@
 						echo '<input type="hidden" name="user" value="'. $spacegame['user_info']['username'] .'" />';
 						echo '<input type="hidden" name="task" value="users" />';
 						echo '<input type="hidden" name="subtask" value="field" />';
-
+						echo '<input type="hidden" name="form_id" value="'. $_SESSION['form_id'] . '" />';
+						
 						echo '</form>';
 						echo '</li>';
 					}
@@ -128,7 +129,7 @@
 				<input type="hidden" name="user" value="<?php echo $spacegame['user_info']['username']; ?>" />
 				<input type="hidden" name="task" value="users" />
 				<input type="hidden" name="subtask" value="field" />
-
+				<input type="hidden" name="form_id" value="<?php echo $_SESSION['form_id']; ?>" />
 			</form>
 		</div>
 

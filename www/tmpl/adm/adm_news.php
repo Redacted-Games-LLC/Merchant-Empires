@@ -140,6 +140,7 @@
 		</table>
 		<input type="hidden" name="task" value="news" />
 		<input type="hidden" name="subtask" value="submit" />
+		<input type="hidden" name="form_id" value="<?php echo $_SESSION['form_id']; ?>" />
 	</form>
 </div>
 

@@ -217,6 +217,7 @@
 		<script type="text/javascript">drawButton('create', 'create', 'validate_create_good()')</script>
 		<input type="hidden" name="task" value="good" />
 		<input type="hidden" name="subtask" value="create" />
+		<input type="hidden" name="form_id" value="<?php echo $_SESSION['form_id']; ?>" />
 	</form>
 </div>
 

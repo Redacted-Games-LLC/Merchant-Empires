@@ -114,7 +114,7 @@
 					echo '</div>';
 
 					echo '<div class="ship_links">';
-					echo '<a href="handler.php?task=attack&amp;player_id=' . $id . '">Attack</a>';
+					echo '<a href="handler.php?task=attack&amp;player_id=' . $id . '&amp;form_id='. $_SESSION['form_id'] .'">Attack</a>';
 					echo '</div>';
 
 					echo '<div class="ship_type">';

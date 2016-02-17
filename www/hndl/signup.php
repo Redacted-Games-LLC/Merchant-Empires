@@ -72,7 +72,7 @@
 		
 		$username = strtolower($username);
 		$session_id = session_id();
-		$salt = hash('sha256', microtime() . GLOBAL_SALT . $username);
+		$salt = hash('sha512', microtime() . GLOBAL_SALT . $username . $_SERVER["HTTP_USER_AGENT"]);
 		$hashed_password = hash('sha512', $salt . $password1);
 		$time = PAGE_START_TIME;
 		
@@ -105,7 +105,7 @@
 		if ($id > 0) {
 			// Successfully signed up a user.
 			$_SESSION['uid'] = $id;
-			$_SESSION['us'] = get_cookie_salt($id);
+			$_SESSION['form_id'] = substr(hash('sha256', microtime() . $id . $_SERVER["HTTP_USER_AGENT"]), 16, 32);
 		}
 		else {
 			$return_codes[] = '1006';

@@ -59,9 +59,7 @@
 		
 		if ($length < 10 || $length > 128 || preg_match('/^[-,a-zA-Z0-9]{1,128}$/', $supplied_session_id) < 1) {
 			$_SESSION['uid'] = 0;
-			$_SESSION['us'] = '';
 			$_SESSION['pid'] = 0;
-			$_SESSION['ps'] = '';
 			session_write_close();
 			error_log(__FILE__ . '::' . __LINE__ . " Someone at {$_SERVER['REMOTE_ADDR']} attempted to spoof a session using a bad or missing id.");
 			die('Session spoof attempt suspected and logged.');
@@ -84,20 +82,7 @@
 			
 			return;
 		}
-		
-		// Check the user salt to see if it matches
-		$supplied_user_salt = $_SESSION['us'];
-			
-		if ($supplied_user_salt != get_cookie_salt($supplied_user_id)) {
-			$_SESSION['uid'] = 0;
-			$_SESSION['us'] = '';
-			$_SESSION['pid'] = 0;
-			$_SESSION['ps'] = '';
-			session_write_close();
-			error_log(__FILE__ . '::' . __LINE__ . " Someone at {$_SERVER['REMOTE_ADDR']} attempted to spoof user #$supplied_user_id using a bad or missing salt.");
-			die('User spoof attempt suspected and logged 1');
-		}
-		
+
 		// Check player for validity
 		$supplied_player_id = 0;
 		
@@ -107,46 +92,25 @@
 		
 		if ($supplied_player_id <= 0) {
 			define('PLAYER_ID', 0);
-			
+
 			if ($close) {
 				session_write_close();
 			}
 		}
-		else {
-			// Check the player salt for validity.
-			$supplied_player_salt = $_SESSION['ps'];
-			
-			if ($supplied_player_salt != get_cookie_salt($supplied_player_id)) {
-				$_SESSION['uid'] = 0;
-				$_SESSION['us'] = '';
-				$_SESSION['pid'] = 0;
-				$_SESSION['ps'] = '';
-				
-				session_write_close();
-				error_log(__FILE__ . '::' . __LINE__ . " Someone at {$_SERVER['REMOTE_ADDR']} attempted to spoof player #$supplied_player_id using a bad or missing salt.");
-				die('Player spoof attempt suspected and logged');
-			}
-		}
 		
-		// Salt and session appear ok. Let's hit the database.
-		$db = isset($db) ? $db : new DB;
-		
-		$rs = $db->get_db()->query("select record_id as id from users where record_id = '{$supplied_user_id}' and session_id = '{$supplied_session_id}' limit 1");		
 		$user_id = 0;
-		$rs->data_seek(0);
-		while ($row = $rs->fetch_assoc()) {
-			$user_id = $row['id'];
-		}
 
-		if ($user_id > 0) {
-			// User ID is good.
-			define('USER_ID', $user_id);
+		$db = isset($db) ? $db : new DB;
+
+		$rs = $db->get_db()->query("select record_id from users where record_id = '{$supplied_user_id}' and session_id = '{$supplied_session_id}' limit 1");
+
+		$rs->data_seek(0);
+		if ($row = $rs->fetch_assoc()) {
+			define('USER_ID', $row['record_id']);
 		}
 		else {
 			$_SESSION['uid'] = 0;
-			$_SESSION['us'] = '';
 			$_SESSION['pid'] = 0;
-			$_SESSION['ps'] = '';
 			
 			session_write_close();
 			error_log(__FILE__ . '::' . __LINE__ . " Someone at {$_SERVER['REMOTE_ADDR']} attempted to spoof user #$supplied_user_id using session hijacking.");
@@ -168,25 +132,17 @@
 			}
 			else {
 				$_SESSION['uid'] = 0;
-				$_SESSION['us'] = '';
 				$_SESSION['pid'] = 0;
-				$_SESSION['ps'] = '';
 				
 				session_write_close();
 				error_log(__FILE__ . '::' . __LINE__ . " User {$user_id} at {$_SERVER['REMOTE_ADDR']} attempted to spoof player #$supplied_player_id using session hijacking.");
 				die('Player spoof attempt suspected and logged');
 			}
 		}
-		
+
 		if ($close) {
 			session_write_close();
 		}
-	}
-	
-	
-	// Gets an unsecure salt for session pre-validation
-	function get_cookie_salt($input) {
-		return md5($_SERVER['REMOTE_ADDR'] . $input . GLOBAL_SALT);
 	}
 	
 	function validate_username($username) {

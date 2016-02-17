@@ -53,6 +53,7 @@
 			<input type="hidden" name="task" value="alliance" />
 			<input type="hidden" name="subtask" value="create" />
 			<input type="hidden" name="return" value="alliance" />
+			<input type="hidden" name="form_id" value="<?php echo $_SESSION['form_id']; ?>" />
 		</form>
 	</div>
 

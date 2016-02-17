@@ -85,6 +85,7 @@
 
 			<input type="hidden" name="task" value="room" />
 			<input type="hidden" name="subtask" value="add" />
+			<input type="hidden" name="form_id" value="<?php echo $_SESSION['form_id']; ?>" />
 		</form>
 
 	</div>

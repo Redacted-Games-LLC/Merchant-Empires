@@ -84,7 +84,7 @@
 			$spacegame['player'] = $row;
 		}
 		else {
-			header('Location: handler.php?task=logout&rc=1014');
+			header('Location: handler.php?task=logout&rc=1014&form_id=' . $_SESSION['form_id']);
 		}
 
 		$spacegame['gold'] = $spacegame['player']['gold_expiration'] > PAGE_START_TIME;
