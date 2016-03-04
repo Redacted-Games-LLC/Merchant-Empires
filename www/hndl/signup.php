@@ -70,6 +70,35 @@
 			break;
 		}
 		
+		$try_x = $_REQUEST['try_x'];
+		$try_y = $_REQUEST['try_y'];
+		
+		if (!is_numeric($try_x) || $try_x <= 0 || !is_numeric($try_y) || $try_y <= 0) {
+			$return_codes[] = 1182;
+			break;
+		}
+
+		$test_x = $_REQUEST['test_x'];
+		$test_y = $_REQUEST['test_y'];
+				
+		if (!is_numeric($test_x) || $test_x <= 0 || !is_numeric($test_y) || $test_y <= 0) {
+			$return_codes[] = 1182;
+			break;
+		}
+
+		$test_dx = $_REQUEST['test_dx'];
+		$test_dy = $_REQUEST['test_dy'];
+
+		if (!is_numeric($test_dx) || !is_numeric($test_dy)) {
+			$return_codes[] = 1182;
+			break;
+		}
+
+		if ($test_x + $test_dx != $try_x || $test_y + $test_dy != $try_y) {
+			$return_codes[] = 1182;
+			break;
+		}
+
 		$username = strtolower($username);
 		$session_id = session_id();
 		$salt = hash('sha512', microtime() . GLOBAL_SALT . $username . $_SERVER["HTTP_USER_AGENT"]);

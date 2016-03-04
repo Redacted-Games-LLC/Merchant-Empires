@@ -187,7 +187,6 @@
 		$db->get_db()->autocommit(true);
 
 		$_SESSION['pid'] = $player_id;
-		$_SESSION['ps'] = get_cookie_salt($player_id);
 		
 		break;
 	} while (false);
