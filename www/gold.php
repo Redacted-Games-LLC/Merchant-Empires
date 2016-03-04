@@ -71,7 +71,7 @@
 					echo '<br /><br />';
 					echo '<big><strong>The round is over!</strong> You can obtain a Gold Key with '; 
 					echo 'your remaining membership time by ';
-					echo '<a href="handler.php?task=gold&amp;subtask=obtain">clicking here</a>.</big> ';
+					echo '<a href="handler.php?task=gold&amp;subtask=obtain&amp;form_id='. $_SESSION['form_id'] .'">clicking here</a>.</big> ';
 					echo ' The key will be stored with your user automatically.';
 				}
 				
@@ -97,6 +97,7 @@
 				<script type="text/javascript">drawButton('enable', 'enable', 'validate_enable()');</script>
 				<input type="hidden" name="task" value="gold" />
 				<input type="hidden" name="subtask" value="enable" />
+				<input type="hidden" name="form_id" value="<?php echo $_SESSION['form_id']; ?>" />
 			</form>
 		</div>
 	<?php } else { ?>
@@ -121,6 +122,7 @@
 			<script type="text/javascript">drawButton('add', 'add', 'validate_add()');</script>
 			<input type="hidden" name="task" value="gold" />
 			<input type="hidden" name="subtask" value="add" />
+			<input type="hidden" name="form_id" value="<?php echo $_SESSION['form_id']; ?>" />
 		</form>
 	</div>
 	<hr />
@@ -155,9 +157,9 @@
 				echo '<td class="gold_time">' . floor($key['time']/86400) . '</td>';
 				echo '<td class="gold_actions">';
 					if (!HAVOC_ROUND) {
-						echo '[<a href="handler.php?task=gold&amp;subtask=enable&amp;key=' . $key['key'] . '">Enable</a>]&nbsp;&nbsp;&nbsp;&nbsp;';
+						echo '[<a href="handler.php?task=gold&amp;subtask=enable&amp;key=' . $key['key'] . '&amp;form_id='. $_SESSION['form_id'] .'">Enable</a>]&nbsp;&nbsp;&nbsp;&nbsp;';
 					}
-					echo '[<a href="handler.php?task=gold&amp;subtask=remove&amp;key=' . $key['key'] . '">Remove</a>]';
+					echo '[<a href="handler.php?task=gold&amp;subtask=remove&amp;key=' . $key['key'] . '&amp;form_id='. $_SESSION['form_id'] .'">Remove</a>]';
 				echo '</td>';
 				echo '</tr>';
 			}
@@ -192,6 +194,7 @@
 			<script type="text/javascript">drawButton('transfer', 'transfer', 'validate_transfer()');</script>
 			<input type="hidden" name="task" value="gold" />
 			<input type="hidden" name="subtask" value="transfer" />
+			<input type="hidden" name="form_id" value="<?php echo $_SESSION['form_id']; ?>" />
 		</form>
 	</div>
 	

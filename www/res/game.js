@@ -757,7 +757,7 @@ function load_base_field() {
 				
 				if (base_x - x <= 1 && x - base_x <= 1 && base_y - y <= 1 && y - base_y <= 1) {
 					var grid_link = document.createElement('a');
-					grid_link.setAttribute('href', 'handler.php?task=base_move&plid='+ base_place +'&x=' + x + '&y=' + y);
+					grid_link.setAttribute('href', 'handler.php?task=base&subtask=move&plid='+ base_place +'&x=' + x + '&y=' + y);
 					grid_link.innerHTML = base_number_format(x) + '&nbsp;' + base_number_format(y);
 
 					grid_link_div.appendChild(grid_link);

@@ -26,6 +26,13 @@
 	include_once('inc/dealer.php');
 	include_once('inc/ships.php');
 
+	if (isset($_SESSION['form_id'])) {
+		if (!isset($_REQUEST['form_id']) || $_SESSION['form_id'] != $_REQUEST['form_id']) {
+			header('Location: viewport.php?rc=1181');
+			die();
+		}
+	}
+
 	$return_page = 'viewport';
 	$return_vars['plid'] = $place_id;
 

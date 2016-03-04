@@ -24,6 +24,13 @@
 	define('CLOSE_SESSION', false);
 	include_once('inc/page.php');
 
+	if (isset($_SESSION['form_id'])) {
+		if (!isset($_REQUEST['form_id']) || $_SESSION['form_id'] != $_REQUEST['form_id']) {
+			header('Location: viewport.php?rc=1181');
+			die();
+		}
+	}
+
 	$return_page = 'select_player';
 	
 		
@@ -72,7 +79,6 @@
 		}
 	
 		$_SESSION['pid'] = $id;
-		$_SESSION['ps'] = get_cookie_salt($id);
 		
 		break;
 	} while (false);

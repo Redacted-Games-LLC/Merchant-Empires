@@ -27,9 +27,7 @@
 	$return_page = 'login';
 		
 	$_SESSION['uid'] = 0;
-	$_SESSION['us'] = '';
 	$_SESSION['pid'] = 0;
-	$_SESSION['ps'] = '';
 	
 	session_write_close();
 	

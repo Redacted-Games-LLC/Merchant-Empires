@@ -109,8 +109,8 @@
 					}
 					else {
 						
-						echo ' [<a href="handler.php?task=alliance&amp;subtask=enroll&amp;player_id='. $invite['player'] .'">Enroll</a>]';
-						echo ' [<a href="handler.php?task=alliance&amp;subtask=reject&amp;player_id='. $invite['player'] .'">Reject</a>]';
+						echo ' [<a href="handler.php?task=alliance&amp;subtask=enroll&amp;player_id='. $invite['player'] .'&amp;form_id='. $_SESSION['form_id'] .'">Enroll</a>]';
+						echo ' [<a href="handler.php?task=alliance&amp;subtask=reject&amp;player_id='. $invite['player'] .'&amp;form_id='. $_SESSION['form_id'] .'">Reject</a>]';
 					}
 
 					echo '<br />';
@@ -129,6 +129,7 @@
 				<input type="hidden" name="task" value="alliance" />
 				<input type="hidden" name="subtask" value="recruit" />
 				<input type="hidden" name="return" value="alliance" />
+				<input type="hidden" name="form_id" value="<?php echo $_SESSION['form_id']; ?>" />
 			<?php
 
 			if ($spacegame['alliance']['recruiting'] > 0) { 
@@ -167,6 +168,7 @@
 				<input type="hidden" name="return" value="alliance" />
 				<script type="text/javascript">drawButton('leave', 'leave', 'validate_leave_alignment()');</script>
 				<input type="hidden" name="player_id" value="<?php echo $spacegame['player']['record_id'] ?>" />
+				<input type="hidden" name="form_id" value="<?php echo $_SESSION['form_id']; ?>" />
 			<?php
 			echo '</form>';
 			echo '</div>';

@@ -39,6 +39,7 @@
 					$nav_link = 'handler.php?task=move';
 					$nav_link .= '&amp;x=' . ($spacegame['player']['x'] + $dx);
 					$nav_link .= '&amp;y=' . ($spacegame['player']['y'] + $dy);
+					$nav_link .= '&amp;form_id='. $_SESSION['form_id'];
 
 					echo "<div class='ns_square ns_{$dir}' onclick='location.href = ". '"' . $nav_link . '"' . "' title='Move Here'>";
 					

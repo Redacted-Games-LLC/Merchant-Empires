@@ -69,6 +69,7 @@
 				<input type="hidden" name="subtask" value="request" />
 				<input type="hidden" name="alliance_id" value="<?php echo $alliance_id; ?>" />
 				<input type="hidden" name="return" value="alliance" />
+				<input type="hidden" name="form_id" value="<?php echo $_SESSION['form_id']; ?>" />
 			</form>
 		<?php } ?>
 	<?php } ?>
@@ -106,7 +107,7 @@
 			
 				if ($spacegame['alliances'][$alliance_id]['founder'] != $member['record_id']) {
 					echo '<div class="alliance_list_item_kick">';
-					echo '[<a href="handler.php?task=alliance&amp;subtask=leave&amp;player_id=' . $member['record_id'] . '">Kick</a>]';
+					echo '[<a href="handler.php?task=alliance&amp;subtask=leave&amp;player_id=' . $member['record_id'] . '&amp;form_id='. $_SESSION['form_id'] .'">Kick</a>]';
 					echo '</div>';
 				}
 			

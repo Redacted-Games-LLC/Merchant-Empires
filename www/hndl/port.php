@@ -27,6 +27,13 @@
 	include_once('inc/port.php');
 	include_once('inc/ships.php');
 
+	if (isset($_SESSION['form_id'])) {
+		if (!isset($_REQUEST['form_id']) || $_SESSION['form_id'] != $_REQUEST['form_id']) {
+			header('Location: viewport.php?rc=1181');
+			die();
+		}
+	}
+
 	define('ALL_CARGO', true);
 	include_once('inc/cargo.php');
 

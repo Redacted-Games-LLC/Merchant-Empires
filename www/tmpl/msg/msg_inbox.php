@@ -85,7 +85,7 @@
 
 			foreach ($spacegame['ignore_list'] as $record_id => $row) {
 				echo '<li class="ignore_list">';
-				echo '<a href="handler.php?task=message&amp;subtask=ignore&amp;player='. $row['caption'] .'&amp;p='. $spacegame['page_number'] .'&amp;pp='. $spacegame['per_page'] .'">';
+				echo '<a href="handler.php?task=message&amp;subtask=ignore&amp;player='. $row['caption'] .'&amp;p='. $spacegame['page_number'] .'&amp;pp='. $spacegame['per_page'] .'&amp;form_id='. $_SESSION['form_id'] .'">';
 				echo $row['caption'];
 				echo '</a>';
 				echo '</li>';

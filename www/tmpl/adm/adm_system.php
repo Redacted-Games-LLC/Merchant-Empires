@@ -56,6 +56,7 @@
 
 		<script type="text/javascript">drawButton('generate1', 'update', 'validate_generate()')</script>
 		<input type="hidden" name="task" value="generate_galaxy" />
+		<input type="hidden" name="form_id" value="<?php echo $_SESSION['form_id']; ?>" />
 	</form>
 </div>
 <div class="docs_text">
@@ -73,6 +74,7 @@
 	<form action="handler.php" method="post">
 		<script type="text/javascript">drawButton('reset_ports', 'reset', 'validate_reset()')</script>
 		<input type="hidden" name="task" value="reset_ports" />
+		<input type="hidden" name="form_id" value="<?php echo $_SESSION['form_id']; ?>" />
 	</form>
 </div>
 

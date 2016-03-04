@@ -45,6 +45,7 @@
 		<input type="hidden" name="task" value="ship" />
 		<input type="hidden" name="subtask" value="rename" />
 		<input type="hidden" name="return" value="ship" />
+		<input type="hidden" name="form_id" value="<?php echo $_SESSION['form_id']; ?>" />
 	</form>
 </div>
 <?php if (false) { ?>

@@ -23,7 +23,17 @@
 
 	if (!defined('SPACEGAME')) {
 		error_log('Files in the inc directory may be included by authorized scripts only. This check is in: hndl/common.php');
-		die('Unauthorized script access. An entry has been made in the error log file with more information.');
+		header('Location: viewport.php?rc=1000');
+		die();
 	}
+
+
+	if (isset($_SESSION['form_id'])) {
+		if (!isset($_REQUEST['form_id']) || $_SESSION['form_id'] != $_REQUEST['form_id']) {
+			header('Location: viewport.php?rc=1181');
+			die();
+		}
+	}
+
 	
 ?>

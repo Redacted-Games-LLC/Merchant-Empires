@@ -75,6 +75,40 @@
 
 		echo '</div>';
 	}
+
+
+	mt_srand(microtime(true));
+	$test_x = mt_rand(300,700);
+	$test_y = mt_rand(300,700);
+	$test_dx = mt_rand(0, 10) - 5;
+	$test_dy = mt_rand(0, 10) - 5;
+
+	$x_word = '';
+
+	if ($test_dx < 0) {
+		$x_word = ($test_dx * -1) . ' unit' . ($test_dx == -1 ? '' : 's') . ' left';
+	}
+	else if ($test_dx > 0) {
+		$x_word = $test_dx . ' unit' . ($test_dx == 1 ? '' : 's') . ' right';
+	}
+	else {
+		$x_word = 'on the same x position';
+	}
+
+	$y_word = '';
+
+	if ($test_dy < 0) {
+		$y_word = ($test_dy * -1) . ' unit' . ($test_dy == -1 ? '' : 's') . ' down';
+	}
+	else if ($test_dy > 0) {
+		$y_word = $test_dy . ' unit' . ($test_dy == 1 ? '' : 's') . ' up';
+	}
+	else {
+		$y_word = 'on the same y position';
+	}
+
+	$phrase = 'Which sector would be ' . $x_word . ' of and ' . $y_word . ' from the sector ' . $test_x . ', ' . $test_y . '?';
+
 ?>
 
 
@@ -158,20 +192,40 @@
 					<input id="emailb" name="email" type="text" maxlength="128" size="30" />
 				</div>
 			</div>
-			
-			<div class="login_form_item login_form_label">
+
+			<div class="login_form_item">
 				<input id="policyb" name="policy" type="checkbox" />
 				<label for="policyb">Check here to agree with <a href="docs.php?page=policy" target="_blank">our policies</a>.</label>
 			</div>
 			
+			<div class="login_form_item">
+				&nbsp;
+				<div class="left_long_column login_form_label">
+					<?php echo $phrase; ?>
+				</div>
+				<div class="right_short_column">
+					<input id="try_x" name="try_x" type="text" maxlength="4" size="6" />,
+					<input id="try_y" name="try_y" type="text" maxlength="4" size="6" />
+					<!-- 
+						This is not bot prevention. This is a filter for those who can't
+						handle coordinate systems.
+					-->
+					<input type="hidden" name="test_x" value="<?php echo $test_x; ?>" />
+					<input type="hidden" name="test_y" value="<?php echo $test_y; ?>" />
+					<input type="hidden" name="test_dx" value="<?php echo $test_dx; ?>" />
+					<input type="hidden" name="test_dy" value="<?php echo $test_dy; ?>" />
+				</div>
+			</div>
+			<div>&nbsp;<br />&nbsp;<br />&nbsp;</div>
 			<div class="login_form_lower_button">
 				<script type="text/javascript">drawButton('sb1', 'signup', 'validate_signup()');</script>
-				
 			</div>
 			
 			<input id="signup_task" name="task" type="hidden" value="1ogin" />
 		</form>
 	</div>
+
+
 
 
 	

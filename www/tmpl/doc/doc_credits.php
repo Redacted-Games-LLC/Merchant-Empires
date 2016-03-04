@@ -31,5 +31,6 @@
 		<li>Planetoid/Solar images from NASA.gov</li>
 		<li>Fauna good image from www.publicdomainpictures.net</li>
 		<li>Plastics good image from https://openclipart.org/detail/60451/recycle-can</li>
+		<li>Logo and captcha font use the font <a href="http://www.fontsquirrel.com/license/Orbitron">Orbitron</a></li>
 	</ul>
 </div>
