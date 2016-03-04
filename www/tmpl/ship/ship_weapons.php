@@ -146,7 +146,7 @@
 							<input type="hidden" name="subtask" value="add" />
 							<input type="hidden" name="group" value="0" />
 							<input type="hidden" name="return" value="ship" />
-
+							<input type="hidden" name="form_id" value="<?php echo $_SESSION['form_id']; ?>" />
 						</form>
 					<?php
 					echo '</td>';
@@ -246,7 +246,7 @@
 						<input type="hidden" name="subtask" value="remove" />
 						<input type="hidden" name="solution_group" value="<?php echo $solution_group; ?>" />
 						<input type="hidden" name="return" value="ship" />
-
+						<input type="hidden" name="form_id" value="<?php echo $_SESSION['form_id']; ?>" />
 					</form>
 				<?php
 				echo '</td>';

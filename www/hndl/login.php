@@ -48,30 +48,135 @@
 		// Get stuff from db
 		$db = isset($db) ? $db : new DB;
 
-		$rs = $db->get_db()->query("select password2 as salt from users where username = '" . strtolower($username) . "' limit 1");
-		
+		$ip = inet_ntop(inet_pton($_SERVER['REMOTE_ADDR']));
+		$id = 0;
 		$salt = '';
+
+		$rs = $db->get_db()->query("select record_id, password2 as salt from users where username = '" . strtolower($username) . "' limit 1");
+		
+		$rs->data_seek(0);
+		if ($row = $rs->fetch_assoc()) {
+			$salt = $row['salt'];
+			$id = $row['record_id'];
+		}
+
+		$time = PAGE_START_TIME;
+		$attempts = array();
+
+		$rs = $db->get_db()->query("select * from login_history where ip = '$ip' order by time desc limit 3");
 		
 		$rs->data_seek(0);
 		while ($row = $rs->fetch_assoc()) {
-			$salt = $row['salt'];
+			$attempts[$row['record_id']] = $row;
+		}
+
+		$attempt = 0;
+		$attempt_time = 0;
+		$tier = 0;
+
+		foreach ($attempts as $record_id => $row) {
+			$attempt_time = $row['time'];
+
+			if ($row['attempts'] >= LOGIN_ATTEMPTS) {
+				$tier += 1;
+			}
+
+			if ($tier > 0) {
+				continue;
+			}
+
+			if ($attempt_time < PAGE_START_TIME - LOGIN_ATTEMPT_TIME) {
+				break;
+			}
+
+			if ($attempt > 0) {
+				continue;
+			}
+
+			$attempt = $record_id;
+		}
+
+		if ($tier > 0) {
+			$timeout = LOGIN_BAN_TIER_1;
+
+			if ($tier == 2) {
+				$timeout = LOGIN_BAN_TIER_2;
+			}
+			else if ($tier >= 3) {
+				$timeout = LOGIN_BAN_TIER_3;
+			}
+
+			if ($attempt_time + $timeout > PAGE_START_TIME) {
+				$return_codes[] = 1180;
+				break;
+			}
+		}
+		
+		if ($attempt > 0) {
+			// Update existing login with new attempt.
+
+			if (!($st = $db->get_db()->prepare('update login_history set time = ?, attempts = attempts + 1 where record_id = ?'))) {
+				error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+				$return_codes[] = 1006;
+				break;
+			}
+
+			$st->bind_param('ii', $time, $attempts[$attempt]['record_id']);
+			
+			if (!$st->execute()) {
+				$return_codes[] = 1006;
+				error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
+				break;
+			}
+
+		}
+		else {
+			// Insert new login attempt
+			$st = null;
+
+			if ($id > 0) {
+				if (!($st = $db->get_db()->prepare('insert into login_history (user, time, ip, attempts) values (?, ?, ?, 1)'))) {
+					error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+					$return_codes[] = 1006;
+					break;
+				}
+
+				$st->bind_param('iis', $id, $time, $ip);
+			}
+			else {
+				if (!($st = $db->get_db()->prepare('insert into login_history (user, time, ip, attempts) values (NULL, ?, ?, 1)'))) {
+					error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+					$return_codes[] = 1006;
+					break;
+				}
+
+				$st->bind_param('is', $time, $ip);
+			}
+			
+			if (!$st->execute()) {
+				$return_codes[] = 1006;
+				error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
+				break;
+			}
+
 		}
 
 		if ($salt == '') {
 			$return_codes[] = '1007';
-			error_log('Failed to obtain a salt from the database. The user might not exist.');
 			break;
 		}
 		
 		$hashed_password = hash('sha512', $salt . $password1);
 
-		$rs = $db->get_db()->query("select record_id as id from users where username = '" . strtolower($username) . "' and password1 = '". $hashed_password ."' limit 1");
-		
-		$id = 0;
+		$rs = $db->get_db()->query("select record_id as id, ban_code, ban_timeout from users where username = '" . strtolower($username) . "' and password1 = '". $hashed_password ."' limit 1");
 		
 		$rs->data_seek(0);
-		while ($row = $rs->fetch_assoc()) {
+		if ($row = $rs->fetch_assoc()) {
 			$id = $row['id'];
+		}
+		else {
+			$return_codes[] = 1007;
+			break;
 		}
 
 		if ($id > 0) {
@@ -94,16 +199,28 @@
 				}
 			}
 
-
-			$db->get_db()->query("update users set session_id = '". session_id() ."', session_time = '". PAGE_START_TIME ."' where record_id = '{$id}'");
+			$session_id = session_id();
+			
+			if (!($st = $db->get_db()->prepare("update users set session_id = ?, session_time = ? where record_id = ?"))) {
+				error_log(__FILE__ . '::' . __LINE__ . "Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+				$return_codes[] = 1006;
+				break;
+			}
+			
+			$st->bind_param("sii", $session_id, $time, $id);
+			
+			if (!$st->execute()) {
+				$return_codes[] = 1006;
+				error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+				break;
+			}
 			
 			$_SESSION['uid'] = $id;
-			$_SESSION['us'] = get_cookie_salt($id);
+			$_SESSION['form_id'] = substr(hash('sha256', microtime() . $id . $_SERVER['REMOTE_ADDR']), 16, 32);
 		}
 		else {
 			
 			$return_codes[] = 1007;
-			error_log('Failed to log in a user with the given password.');
 			break;
 		}
 		

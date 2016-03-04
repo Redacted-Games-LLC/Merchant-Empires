@@ -121,6 +121,7 @@
 			echo '<input type="hidden" name="task" value="port" />';
 			echo '<input type="hidden" name="plid" value="' . $place_id . '" />';
 			echo '<input type="hidden" name="item_id" value="' . $item['record_id'] .'" />';
+			echo '<input type="hidden" name="form_id" value="' . $_SESSION['form_id'] . '" />';
 
 			echo '</form>';
 			echo '</div>';

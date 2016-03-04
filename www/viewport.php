@@ -302,7 +302,7 @@
 							break;
 
 						case 'Warp':
-							echo '<div class="sector_station warp" onclick="location.href=\'handler.php?task=warp&plid='. $id .'\'" title="'. $place['caption'] .'">&nbsp;</div>';
+							echo '<div class="sector_station warp" onclick="location.href=\'handler.php?task=warp&plid='. $id .'&form_id='. $_SESSION['form_id'] .'\'" title="'. $place['caption'] .'">&nbsp;</div>';
 							break;
 
 						case 'Base':

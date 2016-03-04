@@ -151,6 +151,7 @@
 					}
 				
 				?>
+				<input type="hidden" name="form_id" value="<?php echo $_SESSION['form_id']; ?>" />
 				</form>
 			</div>
 			<?php

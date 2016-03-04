@@ -47,6 +47,7 @@
 			<input class="form_input" type="text" name="search" id="search" maxlength="24" size="24" /> 
 			<script type="text/javascript">drawButton('search', 'search', 'validate_search()');</script>
 			<input type="hidden" name="page" value="users" />
+			<input type="hidden" name="form_id" value="<?php echo $_SESSION['form_id']; ?>" />
 		</form>
 	</div>
 	<?php

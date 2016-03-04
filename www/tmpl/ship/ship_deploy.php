@@ -123,7 +123,7 @@
 								echo 'You do not have enough cargo space to pick up all of the drones.';
 							}
 							else {
-								echo 'Click <a href="handler.php?task=ship&amp;subtask=pickup&amp;good=34&amp;return=ship">here</a> ';
+								echo 'Click <a href="handler.php?task=ship&amp;subtask=pickup&amp;good=34&amp;return=ship&amp;form_id='. $_SESSION['form_id'] .'">here</a> ';
 								echo 'to retrieve '. $own_count .' drone(s).';
 							}
 
@@ -236,6 +236,7 @@
 						<label for="base_caption">Base Name:</label>
 						<input type="text" id="base_caption" name="caption" maxlength="24" size="30" value="<?php echo DEFAULT_BASE_CAPTION; ?>" /><br />
 					<?php } ?>
+					<input type="hidden" name="form_id" value="<?php echo $_SESSION['form_id']; ?>" />
 				</form>
 			</div>
 			<?php } ?>
@@ -264,6 +265,7 @@
 		<input type="hidden" name="task" value="ship" />
 		<input type="hidden" name="subtask" value="empty_cargo" />
 		<input type="hidden" name="return" value="ship" />
+		<input type="hidden" name="form_id" value="<?php echo $_SESSION['form_id']; ?>" />
 	</form>
 </div>
 

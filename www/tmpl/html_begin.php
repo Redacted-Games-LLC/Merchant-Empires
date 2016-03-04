@@ -138,11 +138,11 @@
 					
 				if (USER_ID > 0) {
 					if (PLAYER_ID > 0) {
-						echo '<a class="game_menu" href="handler.php?task=deselect_player">Select Player</a>';
+						echo '<a class="game_menu" href="handler.php?task=deselect_player&amp;form_id='. $_SESSION['form_id'] .'">Select Player</a>';
 						echo '&nbsp;&nbsp;|&nbsp;&nbsp;';
 					}
 
-					echo '<a class="game_menu" href="handler.php?task=logout">Logout</a>';
+					echo '<a class="game_menu" href="handler.php?task=logout&amp;form_id='. $_SESSION['form_id'] .'">Logout</a>';
 				} else {
 					echo '<a class="game_menu" href="login.php">Login</a>';
 				}
@@ -152,5 +152,24 @@
 		
 	</div>
 	<?php } ?>
-
+	<noscript>
+	<div class="noscript">
+		<div class="header3">JavaScript Required</div>
+		<p>
+			This game requires JavaScript to offload some of the more CPU-intensive tasks of page
+			rendering to your browser. It appears your JavaScript is blocked or disabled. If you
+			are playing an official game of <a href="http://merchantempires.net">Merchant Empires</a>
+			then a recent version of the JavaScript file can be viewed
+			<a href="https://github.com/Redacted-Games-LLC/Merchant-Empires/blob/master/www/res/game.js">here</a>.
+			We believe this code complies with our <a href="docs.php?page=privacy">privacy policy</a>.
+		</p>
+		<p>
+			If you are playing on a custom or private server you will have to verify yourself if the
+			JavaScript code is safe for you to execute.
+		</p>
+		<p>
+			Please enable or unblock JavaScript and reload this page.
+		</p>
+	</div>
+	</noscript>
 

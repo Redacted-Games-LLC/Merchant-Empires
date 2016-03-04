@@ -1,0 +1,35 @@
+-- MySQL Workbench Synchronization
+-- Generated: 2016-02-13 19:42
+-- Model: New Model
+-- Version: 1.0
+-- Project: Name of the project
+-- Author: Zab
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+ALTER TABLE `spacegame`.`users` 
+ADD COLUMN `ban_timeout` INT(11) NULL DEFAULT 0 COMMENT '' AFTER `session_time`,
+ADD COLUMN `ban_code` INT(11) NULL DEFAULT 1000 COMMENT '' AFTER `ban_timeout`;
+
+CREATE TABLE IF NOT EXISTS `spacegame`.`login_history` (
+  `record_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '',
+  `user` INT(11) NULL DEFAULT NULL COMMENT '',
+  `ip` VARCHAR(45) NOT NULL COMMENT '',
+  `time` INT(11) NOT NULL COMMENT '',
+  `attempts` INT(11) NOT NULL DEFAULT 1 COMMENT '',
+  PRIMARY KEY (`record_id`)  COMMENT '',
+  INDEX `login_user_idx` (`user` ASC)  COMMENT '',
+  CONSTRAINT `login_user`
+   FOREIGN KEY (`user`)
+  REFERENCES `spacegame`.`users` (`record_id`)
+  ON DELETE SET NULL
+  ON UPDATE CASCADE;
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_general_ci;
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

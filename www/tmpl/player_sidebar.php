@@ -75,7 +75,7 @@
 	<div class="sidebar_experience">
 		<?php
 			if ($spacegame['player']['experience'] >= $next_experience) {
-				echo '<a href="handler.php?task=level">Level Up</a>';
+				echo '<a href="handler.php?task=level&amp;form_id='. $_SESSION['form_id'] .'">Level Up</a>';
 			}
 			else {
 				echo number_format($next_experience - $spacegame['player']['experience']);

@@ -67,6 +67,14 @@ pre.dump {
 	border: solid 2px gray;
 }
 
+div.noscript {
+	background-color: #311;
+	border: solid 3px #ffffff;
+	margin: 20px;
+	padding: 20px 100px;
+
+}
+
 div#page_build {
 	position: absolute;
 	width: 192px;
@@ -128,15 +136,14 @@ div#final_footer {
 	padding: 2px;
 }
 
-
-div.left_column {
+div.left_footer_column {
 	width: 44%;
 	float: left;
 	text-align: left;
 	padding-left: 8px;
 }
 
-div.right_column {
+div.right_footer_column {
 	width: 44%;
 	float: right;
 	text-align: right;
@@ -882,13 +889,14 @@ div.login_locked {
 
 div#login_form_box {
 	position: relative;
-	width: 640px;
+	width: 720px;
 	margin: 20px auto;
 	border: solid 2px #555511;
 }
 
 div.login_form_item {
-	width: 320px;
+	text-align: center;
+	width: 500px;
 	margin: 20px 20px;
 }
 
@@ -899,7 +907,7 @@ div.login_form_label {
 div.login_form_upper_button {
 	position: absolute;
 	top: 72px;
-	left: 420px;
+	left: 460px;
 	width: 140px;
 	height: 70px;
 }
@@ -915,6 +923,38 @@ div.login_intro {
 	font-size: 120%;
 	margin: 10px;
 }
+
+div.left_column {
+	width: 35%;
+	float: left;
+	text-align: right;
+	padding-left: 8px;
+}
+
+div.right_column {
+	margin-right: 100px;
+	width: 35%;
+	float: right;
+	text-align: left;
+	padding-right: 8px;
+}
+
+div.left_long_column {
+	width: 60%;
+	float: left;
+	text-align: left;
+	padding-left: 8px;
+}
+
+div.right_short_column {
+	width: 35%;
+	float: right;
+	text-align: right;
+	padding-right: 8px;
+	white-space: nowrap;
+}
+
+
 
 
 /* docs.php */

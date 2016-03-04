@@ -48,6 +48,7 @@
 			<input type="hidden" name="task" value="gold" />
 			<input type="hidden" name="subtask" value="insert" />
 			<input type="hidden" name="return" value="admin" />
+			<input type="hidden" name="form_id" value="<?php echo $_SESSION['form_id']; ?>" />
 		</form>
 	</div>
 

@@ -113,7 +113,7 @@
 								echo '&nbsp;&nbsp;&nbsp;&nbsp;';
 							}
 
-							echo '<a href="handler.php?task=message&amp;subtask=hide&amp;message='. $message['message_id'] .'&amp;p='. $spacegame['page_number'] .'&amp;pp='. $spacegame['per_page'] .'">';
+							echo '<a href="handler.php?task=message&amp;subtask=hide&amp;message='. $message['message_id'] .'&amp;p='. $spacegame['page_number'] .'&amp;pp='. $spacegame['per_page'] .'&amp;form_id='. $_SESSION['form_id'] .'">';
 
 							if ($message['read'] > 0) {
 								echo 'Unhide';
@@ -124,11 +124,11 @@
 
 							echo '</a>';
 							echo '&nbsp;&nbsp;&nbsp;&nbsp;';
-							echo '<a href="handler.php?task=message&amp;subtask=delete&amp;message='. $message['message_id'] .'&amp;p='. $spacegame['page_number'] .'&amp;pp='. $spacegame['per_page'] .'">Delete</a>';
+							echo '<a href="handler.php?task=message&amp;subtask=delete&amp;message='. $message['message_id'] .'&amp;p='. $spacegame['page_number'] .'&amp;pp='. $spacegame['per_page'] .'&amp;form_id='. $_SESSION['form_id'] .'">Delete</a>';
 
 							if ($message['sender'] > 0) {
 								echo '&nbsp;&nbsp;&nbsp;&nbsp;';
-								echo '<a href="handler.php?task=message&amp;subtask=ignore&amp;player='. $spacegame['message_senders'][$message['sender']] .'&amp;p='. $spacegame['page_number'] .'&amp;pp='. $spacegame['per_page'] .'">Ignore</a>';
+								echo '<a href="handler.php?task=message&amp;subtask=ignore&amp;player='. $spacegame['message_senders'][$message['sender']] .'&amp;p='. $spacegame['page_number'] .'&amp;pp='. $spacegame['per_page'] .'&amp;form_id='. $_SESSION['form_id'] .'">Ignore</a>';
 							}
 							
 						echo '</div>';

@@ -402,5 +402,20 @@
 	// How many weapon solutions a player can have active
 	define('WEAPON_SOLUTION_LIMIT', 3);
 
+	// How much time a user has to log in to the game starting with the first attempt.
+	define('LOGIN_ATTEMPT_TIME', 120);
+
+	// How many attempts a user has to successfully login before the account is locked.
+	define('LOGIN_ATTEMPTS', 5);
+
+	// First attempt time/attempt count failure ban time.
+	define('LOGIN_BAN_TIER_1', 180);
+
+	// Second attempt time/attempt count failure ban time.
+	define('LOGIN_BAN_TIER_2', 3600);
+
+	// Third attempt time/attempt count failure ban time.
+	define('LOGIN_BAN_TIER_3', 3600 * 24);
+
 
 ?>
