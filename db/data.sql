@@ -98,5 +98,3 @@ INSERT INTO `weapons` (`caption`, `good`, `racks`, `stations`, `accuracy`, `voll
 
 
 
-
-

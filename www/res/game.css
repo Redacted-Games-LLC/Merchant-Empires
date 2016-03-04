@@ -1461,6 +1461,43 @@ input.ship_form_input {
 	color: white;
 }
 
+table.add_weapon {
+	display: inline-block;
+	border: none;
+	border-collapse: collapse;
+	border: solid 1px #777;
+}
+
+tr.add_weapon {
+}
+
+tr.add_weapon_row {
+	border-bottom: solid 1px #777;
+}
+
+td.add_weapon {
+	padding: 8px 16px;
+	white-space: nowrap;
+}
+
+td.add_weapon_row {
+	padding: 8px 16px;
+	white-space: nowrap;
+}
+
+td.add_weapon_right {
+	padding: 8px 16px;
+	text-align:right;
+	white-space: nowrap;
+}
+
+td.add_weapon_center {
+	padding: 8px 16px;
+	text-align:center;
+	white-space: nowrap;
+}
+
+
 
 /* alliance.php */
 /* alliance_list.php */

@@ -155,6 +155,9 @@
 	// For computing attack/defence rating, each player level is worth 10% of an Attack Rating
 	define('ATTACK_RATING_PER_LEVEL', 0.1);
 
+	// How much ship potency contributes to attack rating.
+	define('ATTACK_RATING_PER_POTENCY', 0.1);
+
 	// Each armor on a ship is worth 5% of a defense rating
 	define('DEFENSE_RATING_PER_ARMOR', 0.05);
 
@@ -395,6 +398,9 @@
 
 	// How much experience to grant per damage point during assist time.
 	define('ASSIST_EXP_PER_DAMAGE', 3);
+
+	// How many weapon solutions a player can have active
+	define('WEAPON_SOLUTION_LIMIT', 3);
 
 
 ?>

@@ -87,8 +87,12 @@
 	}
 
 	function compute_ardr($player, &$ar, &$dr) {
+		
 		$ar = 0;
 		$ar += $player['level'] * ATTACK_RATING_PER_LEVEL;
+
+		
+
 
 		$ar = round(max($ar, 1));
 
