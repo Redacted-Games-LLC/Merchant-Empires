@@ -86,10 +86,10 @@
 	$x_word = '';
 
 	if ($test_dx < 0) {
-		$x_word = ($test_dx * -1) . ' unit' . ($test_dx == -1 ? '' : 's') . ' left';
+		$x_word = ($test_dx * -1) . ' unit' . ($test_dx == -1 ? '' : 's') . ' west';
 	}
 	else if ($test_dx > 0) {
-		$x_word = $test_dx . ' unit' . ($test_dx == 1 ? '' : 's') . ' right';
+		$x_word = $test_dx . ' unit' . ($test_dx == 1 ? '' : 's') . ' east';
 	}
 	else {
 		$x_word = 'on the same x position';
@@ -98,10 +98,10 @@
 	$y_word = '';
 
 	if ($test_dy < 0) {
-		$y_word = ($test_dy * -1) . ' unit' . ($test_dy == -1 ? '' : 's') . ' down';
+		$y_word = ($test_dy * -1) . ' unit' . ($test_dy == -1 ? '' : 's') . ' south';
 	}
 	else if ($test_dy > 0) {
-		$y_word = $test_dy . ' unit' . ($test_dy == 1 ? '' : 's') . ' up';
+		$y_word = $test_dy . ' unit' . ($test_dy == 1 ? '' : 's') . ' north';
 	}
 	else {
 		$y_word = 'on the same y position';
