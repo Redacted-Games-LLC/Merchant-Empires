@@ -43,30 +43,47 @@
 		echo 'Weapon solutions are not available at this time.';
 		echo '</div>';
 	}
+	elseif ($spacegame['player']['ship_type'] <= 0) {
+		echo '<div class="docs_text">';
+		echo 'You must be in a ship to manipulate weapon solutions.';
+		echo '</div>';
+	}
 	else {
 
 ?>
 <div class="header3">Current Status</div>
+<div class="docs_text">
+<?php
+	echo '<table class="ship_info">';
+
+	echo '<tr class="ship_info">';
+	echo '<td class="ship_info_key">Ship Type</td>';
+	echo '<td class="ship_info_value" colspan="2">' . $spacegame['ship']['caption'] . '</td>';
+	echo '</tr>';
+
+	echo '<tr class="ship_info">';
+	echo '<td class="ship_info_key">Stations</td>';
+	echo '<td class="ship_info_value">' . $spacegame['ship']['stations'] . ' <img src="res/station.png" alt="station" title="Racks Available" width="16" /></td>';
+	echo '<td class="ship_info_value"><em>' . ($spacegame['ship']['stations'] - $spacegame['solution_stations']) . ' available</em></td>';
+	echo '</tr>';
+
+	echo '<tr class="ship_info">';
+	echo '<td class="ship_info_key">Racks</td>';
+	echo '<td class="ship_info_value">' . $spacegame['ship']['racks'] . ' <img src="res/rack.png" alt="rack" title="Racks Available" width="16" /></td>';
+	echo '<td class="ship_info_value"><em>' . ($spacegame['ship']['racks'] - $spacegame['solution_racks']) . ' available</em></td>';
+	echo '</tr>';
+
+	echo '<tr class="ship_info">';
+	echo '<td class="ship_info_key">Recharge</td>';
+	echo '<td class="ship_info_value" colspan="2">' . $spacegame['ship']['recharge'] . ' <img src="res/clock.png" alt="recharge" title="Recharge Delay" width="16" /></td>';
+	echo '</tr>';
+
+
+	echo '</table>';
+
+?>
+</div>
 <?php 
-	
-	$general_damage = 0.0;
-	$shield_damage = 0.0;
-	$armor_damage = 0.0;
-
-	foreach ($spacegame['solutions'] as $solution) {
-		$weapon = $spacegame['weapons'][$solution['weapon']];
-
-		$accuracy = $weapon['volley'] * $weapon['accuracy'];
-
-		$general_damage += $weapon['general_damage'] * $weapon['volley'] * $accuracy;
-		$shield_damage += $weapon['shield_damage'] * $weapon['volley'] * $accuracy;
-		$armor_damage += $weapon['armor_damage'] * $weapon['volley'] * $accuracy;
-	}
-
-	$potency = $general_damage + $shield_damage + $armor_damage;
-
-
-
 
 	$carried_weapons = array();
 	$carried_count = 0;
@@ -79,7 +96,8 @@
 	}
 
 	
-	$solution_groups = array_reverse($spacegame['solution_groups']);
+	$solution_groups = array_reverse($spacegame['solution_groups'], true);
+	$solution_keys = array_keys($solution_groups);
 
 	for ($s = 0; $s < WEAPON_SOLUTION_LIMIT; $s++) {
 ?>		
@@ -91,113 +109,264 @@
 		$solution_group = array_pop($solution_groups);
 
 		if ($solution_group == null) {
-			if ($carried_count <= 0) {
-				echo '<p>You are not carrying any weapons to add.</p>';
-			}
-			else {
-				echo '<p>Add a weapon to this solution to create it.</p>';
-
-				
-				echo '<table class="add_weapon">';
-
-				foreach ($carried_weapons as $weapon) {
-					
-					echo '<tr class="add_weapon">';
-
-					echo '<td class="add_weapon" rowspan="2"><strong>';
-					echo $weapon['caption'];
-					echo '</strong></td>';
-
-					echo '<td class="add_weapon_center" colspan="2">';
-
-					if ($weapon['race'] <= 0) {
-						echo 'Neutral';
-					}
-					else {
-						echo $spacegame['races'][$weapon['race']]['caption'];
-					}
-
-					echo ' Race';
-					echo '</td>';
-
-					echo '<td class="add_weapon_right">';
-					echo $weapon['stations'] . '&nbsp;';
-					echo '<img src="res/station.png" alt="station" title="Stations Needed" width="16" />';
-					echo '</td>';
-
-					echo '<td class="add_weapon_right">';
-					echo $weapon['racks'] . '&nbsp;';
-					echo '<img src="res/rack.png" alt="rack" title="Racks Needed" width="16" />';
-					echo '</td>';
-
-					echo '<td class="add_weapon">';
-					echo '&nbsp;';
-					echo '</td>';
-					
-					echo '<td class="add_weapon" rowspan="2">';
-					?>
-
-						<form action="handler.php" method="post">
-						
-
-							<script type="text/javascript">drawButton('add', 'add', 'validate_add()')</script>
-
-							<input type="hidden" name="task" value="weapon" />
-							<input type="hidden" name="subtask" value="add" />
-							<input type="hidden" name="group" value="0" />
-							<input type="hidden" name="return" value="ship" />
-							<input type="hidden" name="form_id" value="<?php echo $_SESSION['form_id']; ?>" />
-						</form>
-					<?php
-					echo '</td>';
-
-
-					echo '</tr>';
-					echo '<tr class="add_weapon_row">';
-
-					echo '<td class="add_weapon">';
-					echo $weapon['volley'] . '&nbsp;';
-					echo '<img src="res/volley.png" alt="volley" title="Rounds per Volley" width="16" />';
-					echo '&nbsp;at&nbsp;';
-					echo $weapon['accuracy'] . '&nbsp;';
-					echo '<img src="res/accuracy.png" alt="accuracy" title="Accuracy per Round" width="16" />';
-					echo '</td>';
-
-					echo '<td class="add_weapon_right">';
-					echo $weapon['general_damage'] . '&nbsp;';
-					echo '<img src="res/shields.png" alt="shields" title="Shield Damage" width="16" />+';
-					echo '<img src="res/armor.png" alt="armor" title="Armor Damage" width="16" />';
-					echo '</td>';
-
-					echo '<td class="add_weapon_right">';
-					echo $weapon['shield_damage'] . '&nbsp;';
-					echo '<img src="res/shields.png" alt="shields" title="Shield Damage" width="16" />';
-					echo '</td>';
-
-					echo '<td class="add_weapon_right">';
-					echo $weapon['armor_damage'] . '&nbsp;';
-					echo '<img src="res/armor.png" alt="armor" title="Armor Damage" width="16" />';
-					echo '</td>';
-
-					echo '<td class="add_weapon" title="Ammunition Required">';
-					$good = $spacegame['goods'][$weapon['ammunition']];
-					echo '<img src="res/goods/'. $good['safe_caption'] .'.png" alt="' . $good['caption'] . '" title="Ammunition Required" width="16" />&nbsp;';
-					echo $good['caption'];
-					echo '</td>';
-
-
-					echo '</tr>';
-				}
-
-
-				echo '</table>';
-
-				
-			}
+			echo '<p>Add a weapon to this solution to create it.</p>';
 		}
 		else {
 
+			echo '<table class="solution">';
+			$general_damage = 0;
+			$shield_damage = 0;
+			$armor_damage = 0;
+			$rating = 0;
+			$count = 0;
 
+			foreach ($solution_group as $index => $solution_id) {
+				$count++;
+
+				echo '<tr class="solution">';
+
+				echo '<th class="solution">';
+					echo 'Actions';
+				echo '</th>';
+				
+				echo '<th class="solution">';
+					echo 'Seq#';
+				echo '</th>';
+
+				echo '<th class="solution">';
+					echo 'Weapon';
+				echo '</th>';
+
+				echo '<th class="solution">';
+					echo 'Ammo';
+				echo '</th>';
+
+				echo '<th class="solution" title="Rounds per Volley">';
+					echo 'Vol';
+				echo '</th>';
+
+				echo '<th class="solution">';
+					echo 'Acc%';
+				echo '</th>';
+
+				echo '</tr>';
+
+
+
+				echo '<tr class="solution">';
+
+				$solution = $spacegame['solutions'][$solution_id];
+
+				$weapon = $spacegame['weapons'][$solution['weapon']];
+				$accuracy = $weapon['volley'] * $weapon['accuracy'];
+
+				$general_damage += $weapon['general_damage'] * $weapon['volley'];
+				$shield_damage += $weapon['shield_damage'] * $weapon['volley'];
+				$armor_damage += $weapon['armor_damage'] * $weapon['volley'];
+
+				echo '<td class="solution" rowspan="3">';
+				?>
+					<form class="solution" action="handler.php" method="post">
+						<script type="text/javascript">drawButton('move_up', 'up', 'validate_move()')</script>
+
+						<input type="hidden" name="task" value="weapon" />
+						<input type="hidden" name="subtask" value="move_up" />
+						<input type="hidden" name="solution_id" value="<?php echo $solution_id; ?>" />
+						<input type="hidden" name="return" value="ship" />
+						<input type="hidden" name="form_id" value="<?php echo $_SESSION['form_id']; ?>" />
+					</form>
+
+					&nbsp;&nbsp;
+
+					<form class="solution" action="handler.php" method="post">
+						<script type="text/javascript">drawButton('move_down', 'down', 'validate_move()')</script>
+
+						<input type="hidden" name="task" value="weapon" />
+						<input type="hidden" name="subtask" value="move_down" />
+						<input type="hidden" name="solution_id" value="<?php echo $solution_id; ?>" />
+						<input type="hidden" name="return" value="ship" />
+						<input type="hidden" name="form_id" value="<?php echo $_SESSION['form_id']; ?>" />
+					</form>
+
+					<br />
+					<br />
+
+					<form class="solution" action="handler.php" method="post">
+						<script type="text/javascript">drawButton('remove', 'remove', 'validate_remove()')</script>
+
+						<input type="hidden" name="task" value="weapon" />
+						<input type="hidden" name="subtask" value="remove" />
+						<input type="hidden" name="solution_id" value="<?php echo $solution_id; ?>" />
+						<input type="hidden" name="return" value="ship" />
+						<input type="hidden" name="form_id" value="<?php echo $_SESSION['form_id']; ?>" />
+					</form>
+
+					
+
+
+
+				<?php
+				echo '</td>';
+
+				echo '<td class="solution">';
+				echo $index;
+				echo '</td>';
+
+				echo '<td class="solution">';
+				echo $weapon['caption'];
+				echo '</td>';
+
+				echo '<td class="solution">';
+				$good = $spacegame['goods'][$weapon['ammunition']];
+				echo '<img src="res/goods/'. $good['safe_caption'] .'.png" alt="' . $good['caption'] . '" title="Ammunition Required" width="16" />&nbsp;';
+				echo $good['caption'];
+				echo '</td>';
+
+				echo '<td class="solution">';
+				echo $weapon['volley'];
+				echo '&nbsp;<img src="res/volley.png" width="16" alt="" />';
+				echo '</td>';
+
+				echo '<td class="solution">';
+				echo $weapon['accuracy'];
+				echo '&nbsp;<img src="res/accuracy.png" width="16" alt="" />';
+				echo '</td>';
+
+				echo '</tr>';
+
+				echo '<tr class="solution">';
+
+				echo '<th class="solution">';
+					echo 'Rating';
+				echo '</th>';
+
+				echo '<th class="solution">';
+					echo 'Recharge';
+				echo '</th>';
+
+				echo '<th class="solution" title="General Damage">';
+					echo 'Gen';
+				echo '</th>';
+
+				echo '<th class="solution" title="Shield Damage">';
+					echo 'Shl';
+				echo '</th>';
+
+				echo '<th class="solution" title="Armor Damage">';
+					echo 'Arm';
+				echo '</th>';
+
+				echo '</tr>';
+
+				echo '<tr class="solution">';
+
+				echo '<td class="solution">';
+				$power = floor(10 * $weapon['volley'] * $weapon['accuracy'] * ($weapon['general_damage'] + $weapon['shield_damage'] + $weapon['armor_damage']));
+				echo $power;
+				$rating += $power;
+				echo '&nbsp;<img src="res/power.png" width="16" alt="Power" />';
+				echo '</td>';
+
+				echo '<td class="solution">';
+				echo RECHARGE_TIME_PER_DAMAGE * $weapon['volley'] * ($weapon['armor_damage'] + $weapon['shield_damage'] + $weapon['general_damage']);
+				echo '&nbsp;<img src="res/clock.png" width="16" alt="" />';
+				echo '</td>';
+
+				echo '<td class="solution">';
+				echo $weapon['general_damage'];
+				echo '&nbsp;<img src="res/shields.png" width="16" alt="" />+<img src="res/armor.png" width="16" alt="" />';
+				echo '</td>';
+
+				echo '<td class="solution">';
+				echo $weapon['shield_damage'];
+				echo '&nbsp;<img src="res/shields.png" width="16" alt="" />';
+				echo '</td>';
+
+				echo '<td class="solution">';
+				echo $weapon['armor_damage'];
+				echo '&nbsp;<img src="res/armor.png" width="16" alt="" />';
+				echo '</td>';
+
+				echo '</tr>';
+
+				echo '<tr class="solution">';
+				echo '<th class="solution" colspan="6">';
+				echo '<hr />';
+				echo '</th>';
+				echo '</tr>';
+
+			}
+
+			echo '<tr>';
+			
+			echo '<th class="solution" rowspan="2">';
+			echo 'Expected Results';
+			echo '</th>';
+
+			echo '<th class="solution">';
+				echo 'Rating';
+			echo '</th>';
+
+			echo '<th class="solution">';
+				echo 'Recharge';
+			echo '</th>';
+
+			echo '<th class="solution" title="General Damage">';
+				echo 'Gen';
+			echo '</th>';
+
+			echo '<th class="solution" title="Shield Damage">';
+				echo 'Shl';
+			echo '</th>';
+
+			echo '<th class="solution" title="Armor Damage">';
+				echo 'Arm';
+			echo '</th>';
+
+			echo '</tr>';
+
+			
+			echo '<td class="solution">';
+			echo $rating;
+			echo '<img src="res/power.png" width="16" alt="Power" />';
+			echo '</td>';
+
+			echo '<td class="solution">';
+			echo RECHARGE_TIME_PER_DAMAGE * ($general_damage + $shield_damage + $armor_damage) / $count;
+			echo '&nbsp;<img src="res/clock.png" width="16" alt="" />';
+			echo '</td>';
+
+			echo '<td class="solution">';
+			echo $general_damage;
+			echo '&nbsp;<img src="res/shields.png" width="16" alt="" />+<img src="res/armor.png" width="16" alt="" />';
+			echo '</td>';
+			
+			echo '<td class="solution">';
+			echo $shield_damage;
+			echo '&nbsp;<img src="res/shields.png" width="16" alt="" />';
+			echo '</td>';
+			
+			echo '<td class="solution">';
+			echo $armor_damage;
+			echo '&nbsp;<img src="res/armor.png" width="16" alt="" />';
+			echo '</td>';
+
+
+			echo '</tr>';
+
+			echo '</table>';
+		}
+
+		if ($carried_count <= 0) {
+			echo '<p>You are not carrying any weapons to add.</p>';
+		}
+		else {
+
+			echo '<div class="header5">';
+			echo 'Add Weapons from Cargo:';
+			echo '</div>';
+
+			
 			echo '<table class="add_weapon">';
 
 			foreach ($carried_weapons as $weapon) {
@@ -205,7 +374,7 @@
 				echo '<tr class="add_weapon">';
 
 				echo '<td class="add_weapon" rowspan="2"><strong>';
-				echo $weapon['caption'];
+				echo nl2br($weapon['caption']);
 				echo '</strong></td>';
 
 				echo '<td class="add_weapon_center" colspan="2">';
@@ -230,21 +399,21 @@
 				echo '<img src="res/rack.png" alt="rack" title="Racks Needed" width="16" />';
 				echo '</td>';
 
-				echo '<td class="add_weapon">';
-				echo '&nbsp;';
+				echo '<td class="add_weapon_center" title="Computed Power">';
+				echo floor(10 * $weapon['volley'] * $weapon['accuracy'] * ($weapon['general_damage'] + $weapon['shield_damage'] + $weapon['armor_damage']));
+				echo '<img src="res/power.png" width="16" alt="Power" />';
 				echo '</td>';
 				
 				echo '<td class="add_weapon" rowspan="2">';
 				?>
 
 					<form action="handler.php" method="post">
-					
-
-						<script type="text/javascript">drawButton('remove', 'remove', 'validate_remove()')</script>
+						<script type="text/javascript">drawButton('add', 'add', 'validate_add()')</script>
 
 						<input type="hidden" name="task" value="weapon" />
-						<input type="hidden" name="subtask" value="remove" />
-						<input type="hidden" name="solution_group" value="<?php echo $solution_group; ?>" />
+						<input type="hidden" name="subtask" value="add" />
+						<input type="hidden" name="solution_group" value="<?php echo $solution_group == null ? 0 : $solution_keys[$s]; ?>" />
+						<input type="hidden" name="weapon" value="<?php echo $weapon['record_id']; ?>" />
 						<input type="hidden" name="return" value="ship" />
 						<input type="hidden" name="form_id" value="<?php echo $_SESSION['form_id']; ?>" />
 					</form>
@@ -292,16 +461,6 @@
 
 			echo '</table>';
 
-
-
-
-
-			if ($carried_count <= 0) {
-				echo '<p>You are not carrying any weapons to add.</p>';
-			}
-			else {
-				echo '<p>You can add another weapon to this solution.</p>';
-			}
 		}
 		
 	?>

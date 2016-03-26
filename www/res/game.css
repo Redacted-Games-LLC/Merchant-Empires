@@ -1516,28 +1516,88 @@ tr.add_weapon_row {
 }
 
 td.add_weapon {
-	padding: 8px 16px;
+	padding: 4px 8px;
 	white-space: nowrap;
 }
 
 td.add_weapon_row {
-	padding: 8px 16px;
+	padding: 4px 8px;
 	white-space: nowrap;
 }
 
 td.add_weapon_right {
-	padding: 8px 16px;
+	padding: 4px 8px;
 	text-align:right;
 	white-space: nowrap;
 }
 
 td.add_weapon_center {
-	padding: 8px 16px;
+	padding: 4px 8px;
 	text-align:center;
 	white-space: nowrap;
 }
 
+table.ship_info {
+	width: 100%;
+}
 
+tr.ship_info {
+	margin: 4px 0px;
+	background-color: #000000;
+	padding: 1px;
+}
+
+td.ship_info_key {
+	margin: 0px 0px 0px 4px;
+	background-color: #002200;
+	text-align: left;
+	padding: 4px;
+	width: 30px;
+}
+
+td.ship_info_value {
+	margin: 0px 0px 0px 4px;
+	background-color: #002222;
+	text-align: left;
+	font-weight: bold;
+	padding: 4px;
+	width: 30px;
+}
+
+table.solution {
+	width: 100%;
+	margin: 16px;
+}
+
+tr.solution {
+	margin: 4px 0px;
+	background-color: #000000;
+	padding: 1px;
+}
+
+th.solution {
+	margin: 0px 0px 0px 4px;
+	background-color: #002200;
+	text-align: center;
+	font-weight: bold;
+	padding: 4px;
+	width: 30px;
+	white-space: nowrap;
+}
+
+td.solution {
+	margin: 0px 0px 0px 4px;
+	background-color: #002222;
+	text-align: center;
+	font-size: 90%;
+	padding: 4px;
+	width: 30px;
+	white-space: nowrap;
+}
+
+form.solution {
+	display: inline-block;
+}
 
 /* alliance.php */
 /* alliance_list.php */

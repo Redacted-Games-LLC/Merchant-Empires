@@ -271,7 +271,10 @@
 
 	// Turn cost to use a cloak device
 	define('CLOAK_TURN_COST', 20);
-	
+
+	// Turn cost to manipulate weapon solutions
+	define('SOLUTION_TURN_COST', 2);
+
 	// Total amount of mines or drones in a sector (so 1000 total)
 	define('MAX_ORDNANCE_PER_SECTOR', 500);
 
@@ -417,5 +420,6 @@
 	// Third attempt time/attempt count failure ban time.
 	define('LOGIN_BAN_TIER_3', 3600 * 24);
 
-
+	// How many seconds a weapon needs to recharge per damage point.
+	define('RECHARGE_TIME_PER_DAMAGE', 0.33);
 ?>
