@@ -42,6 +42,11 @@
 
 	do { // Dummy loop
 
+		if ($spacegame['player']['ship_type'] <= 0) {
+			$return_codes[] = 1183;
+			break;
+		}
+
 		if ($spacegame['player']['turns'] < TRADE_TURN_COST) {
 			$return_codes[] = 1018;
 			break;

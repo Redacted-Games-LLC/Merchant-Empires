@@ -320,19 +320,6 @@ function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-
-
-function target_link(x, y, player_x, player_y, type) {
-	
-	var dist = Math.max(Math.abs(x - player_x), Math.abs(y - player_y));
-
-	document.write('<a href="handler.php?task=target&amp;x=' + x + '&amp;y=' + y + '&amp;type=' + type + '"');
-	document.write('title="' + dist + ' Sector(s) away" target="_top">');
-	document.write(x + " " + y);
-	document.write('</a>');
-}
-
-
 function open_scan(x, y) {
 	
 	var frame = document.getElementById('main_iframe');

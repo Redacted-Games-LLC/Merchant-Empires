@@ -69,14 +69,19 @@
 			echo '</div>';
 
 			echo '<div class="places_to_locate">';
+			
 			foreach ($list as $id => $place) {
 				echo '<div class="place_to_locate">';
 				echo $place['caption'];
 				echo ' ('; 
-				echo '<script>';
-				echo 'target_link('.$place['x'].','.$place['y'].','.$spacegame['player']['x'].','.$spacegame['player']['y'].', 1);';
-				echo '</script>';
-				echo ') ';
+				$dist = max(abs($place['x'] - $spacegame['player']['y']), abs($place['y'] - $spacegame['player']['y']));
+
+				echo '<a href="handler.php?task=target&amp;x=' . $place['x'] . '&amp;y=' . $place['y'] . '&amp;type=1&amp;form_id='. $_SESSION['form_id'] .'"';
+				echo 'title="' . $dist . ' Sector(s) away" target="_top">';
+				echo $place['x'] . " " . $place['y'];
+				echo '</a>';
+			
+				echo ')';
 				echo '</div>';
 			}
 			
