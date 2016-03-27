@@ -167,10 +167,11 @@
 				echo '<td class="solution" rowspan="3">';
 				?>
 					<form class="solution" action="handler.php" method="post">
-						<script type="text/javascript">drawButton('move_up', 'up', 'validate_move()')</script>
+						<script type="text/javascript">drawButton('move_up<?php echo $solution_id; ?>', 'up', 'validate_move()')</script>
 
 						<input type="hidden" name="task" value="weapon" />
-						<input type="hidden" name="subtask" value="move_up" />
+						<input type="hidden" name="subtask" value="move" />
+						<input type="hidden" name="direction" value="up" />
 						<input type="hidden" name="solution_id" value="<?php echo $solution_id; ?>" />
 						<input type="hidden" name="return" value="ship" />
 						<input type="hidden" name="form_id" value="<?php echo $_SESSION['form_id']; ?>" />
@@ -179,10 +180,11 @@
 					&nbsp;&nbsp;
 
 					<form class="solution" action="handler.php" method="post">
-						<script type="text/javascript">drawButton('move_down', 'down', 'validate_move()')</script>
+						<script type="text/javascript">drawButton('move_down<?php echo $solution_id; ?>', 'down', 'validate_move()')</script>
 
 						<input type="hidden" name="task" value="weapon" />
-						<input type="hidden" name="subtask" value="move_down" />
+						<input type="hidden" name="subtask" value="move" />
+						<input type="hidden" name="direction" value="down" />
 						<input type="hidden" name="solution_id" value="<?php echo $solution_id; ?>" />
 						<input type="hidden" name="return" value="ship" />
 						<input type="hidden" name="form_id" value="<?php echo $_SESSION['form_id']; ?>" />
@@ -192,7 +194,7 @@
 					<br />
 
 					<form class="solution" action="handler.php" method="post">
-						<script type="text/javascript">drawButton('remove', 'remove', 'validate_remove()')</script>
+						<script type="text/javascript">drawButton('remove<?php echo $solution_id; ?>', 'remove', 'validate_remove()')</script>
 
 						<input type="hidden" name="task" value="weapon" />
 						<input type="hidden" name="subtask" value="remove" />
@@ -209,7 +211,7 @@
 				echo '</td>';
 
 				echo '<td class="solution">';
-				echo $index;
+				echo $index + 1;
 				echo '</td>';
 
 				echo '<td class="solution">';
@@ -408,7 +410,7 @@
 				?>
 
 					<form action="handler.php" method="post">
-						<script type="text/javascript">drawButton('add', 'add', 'validate_add()')</script>
+						<script type="text/javascript">drawButton('add<?php echo $s . $weapon['record_id']; ?>', 'add', 'validate_add()')</script>
 
 						<input type="hidden" name="task" value="weapon" />
 						<input type="hidden" name="subtask" value="add" />

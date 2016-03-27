@@ -38,6 +38,7 @@
 
 			case 'add':
 			case 'remove':
+			case 'move':
 			
 				$sub_page = $_REQUEST['subtask'];
 				

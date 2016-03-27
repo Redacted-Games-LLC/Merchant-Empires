@@ -144,6 +144,7 @@
 		}
 
 
+		$return_codes[] = 1192;
 	} while (false);
 
 

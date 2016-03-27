@@ -187,7 +187,7 @@
 			break;
 		}
 
-		$return_codes[] = 1000;
+		$return_codes[] = 1193;
 
 	} while (false);
 
