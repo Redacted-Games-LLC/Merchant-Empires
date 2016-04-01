@@ -23,7 +23,7 @@
 
  	include_once('inc/page.php');
 	include_once('inc/game.php');
-
+	include_once('inc/msg_functions.php');
 
 	/**
 	 * Performs an attack on a player
@@ -37,8 +37,9 @@
 			return false;
 		}
 
-		
+		global $spacegame;
 		global $db;
+
 		$db = isset($db) ? $db : new DB;
 
 		if (!$already_in_a_transaction) {
@@ -73,6 +74,24 @@
 
 		foreach ($hitters as $hitter) {
 
+			$shield_damage = 0;
+			$armor_damage = 0;
+
+			// Apply shield damage
+
+			if (isset($hitter['shield_damage'])) {
+				if ($player['shields'] > 0) {
+					if ($player['shields'] >= $hitter['shield_damage']) {
+						$player['shields'] -= $hitter['shield_damage'];
+						$shield_damage += $hitter['shield_damage'];
+					}
+					else {
+						$shield_damage += $player['shields'];
+						$player['shields'] = 0;
+					}
+				}
+			}
+
 			// Apply general damage
 
 			if (isset($hitter['damage'])) {
@@ -80,25 +99,26 @@
 				// Buffer for extra damage to armor when shields are depleted
 				$carryover = $hitter['damage'];
 
-				if ($player['shields'] > 0) {
+				if ($player['shields'] >= $hitter['damage']) {
 					$player['shields'] -= $hitter['damage'];
-
-					if ($player['shields'] < 0) {
-						$carryover -= $player['shields'];
-						$player['shields'] = 0;	
-					}
+					$shield_Damage += $hitter['damage'];
+					$carryover = 0;
+				}
+				else {
+					$shield_damage += $player['shields'];
+					$carryover = $hitter['damage'] - $player['shields'];
+					$player['shields'] = 0;
 				}
 
 				if ($player['shields'] <= 0) {
-					$player['armor'] -= $carryover;
-				}
-			}
-
-			// Apply shield damage
-
-			if (isset($hitter['shield_damage'])) {
-				if ($player['shields'] > 0) {
-					$player['shields'] -= $hitter['shield_damage'];
+					if ($player['armor'] >= $carryover) {
+						$player['armor'] -= $carryover;
+						$armor_damage += $carryover;
+					}
+					else {
+						$armor_damage += $player['armor'];
+						$player['armor'] = 0;
+					}
 				}
 			}
 
@@ -106,11 +126,18 @@
 
 			if (isset($hitter['armor_damage'])) {
 				if ($player['shields'] <= 0) {
-					$player['armor'] -= $hitter['armor_damage'];
+					if ($player['armor'] >= $hitter['armor_damage']) {
+						$player['armor'] -= $hitter['armor_damage'];
+						$armor_damage += $hitter['armor_damage'];
+					}
+					else {
+						$armor_damage += $player['armor'];
+						$player['armor'] = 0;
+					}
 				}
 			}
 
-			player_log($hitter['owner'], $spacegame['actions']['damage'], $hitter['damage'], $player_id);
+			player_log($hitter['hitter'], $spacegame['actions']['damage'], $shield_damage + $armor_damage, $player_id);
 			
 			if ($player['armor'] <= 0) {
 				// Dead player

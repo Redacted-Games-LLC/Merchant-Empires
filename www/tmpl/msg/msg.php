@@ -155,7 +155,12 @@
 
 				echo '</div>';
 				echo '<div class="message_text">';
-					echo htmlentities($message['message']);
+					if ($message['type'] != 4) {
+						echo htmlentities($message['message']);
+					}
+					else {
+						echo $message['message'];
+					}
 				echo '</div>';
 				echo '<div class="message_posted">';
 					echo 'Sent '. date(DATE_RFC850, $message['posted']);

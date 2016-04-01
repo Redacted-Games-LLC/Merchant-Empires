@@ -260,6 +260,11 @@ div.ship_links {
 	margin: 0px;
 	padding: 0px;
 	width: 70px;
+	cursor: pointer;
+	text-decoration: underline;
+	color: #ffff77;
+	font-variant: small-caps;
+	padding: 0px;
 }
 
 div.ship_type {
@@ -1597,6 +1602,51 @@ td.solution {
 
 form.solution {
 	display: inline-block;
+}
+
+
+span.race_war {
+	color: orange;
+}
+
+span.no_race_war {
+	color: cyan;
+}
+
+
+div.attack_buttons {
+	width: 640px;
+	text-align: center;
+	background-color: #100;
+}
+
+div.attack_button {
+	position: relative;
+	display: inline-block;
+	width: 180px;
+	height: 180px;
+	border: solid 3px red;
+	margin: 10px;
+	background-image: url(attack_button.png);
+	background-size: 180px 180px;
+	cursor: pointer;
+}
+
+svg.attack_recharge {
+	position: absolute;
+	top: 132px;
+	left: 36px;
+}
+
+div.attack_solution {
+	position: absolute;
+	font-size: 34px;
+	top: 64px;
+	left: 0px;
+	width: 100%;
+	margin-left: auto;
+	margin-top: auto;
+	text-align: center;
 }
 
 /* alliance.php */

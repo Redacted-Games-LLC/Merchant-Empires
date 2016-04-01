@@ -28,9 +28,9 @@
 	Ships are able to carry weapons to <a href="docs.php?page=damage">damage and destroy</a> other ships.
 </div>
 <div class="docs_text">
-	Weapons are purchased from tech dealers in the racial prime and hub systems as goods
-	and can be installed using the Ship Weapons page accessible from the viewport. They 
-	are installed in groups called Weapon Solutions. Further information below.
+	Weapons are purchased from tech dealers in the racial prime and hub systems as goods and can
+	be installed using the Ship Weapons page accessible from the viewport. They are installed in
+	groups called Weapon Solutions. Further information below.
 </div>
 <div class="docs_text">
 	Nearly all weapons require some form of ammunition which can be carried in the cargo
@@ -42,10 +42,10 @@
 	happens; each attack still will use more units from the cargo holds.
 </div>
 <div class="docs_text">
-	Finally, all weapons need to recharge after firing or they will be less effective. Even
-	perfectly accurate weapons such as lasers may not fire at all even though ammunition is
-	consumed. The time it takes to recharge is about 1 second for every 3 points of damage
-	the weapon is capable of. Ships have their own recharge delay which is added to this.
+	All weapons need to recharge after firing or they will be less effective. Even perfectly accurate
+	weapons such as lasers may not fire at all even though ammunition is consumed. The time it takes
+	to recharge is 1 second for every <?php echo round(1.0 / RECHARGE_TIME_PER_DAMAGE); ?> points of
+	damage the weapon is capable of. Ships have their own recharge delay which is added to this.
 	Sometimes firing at less than full charge is necessary.
 </div>
 <div class="header3">Racks and Stations</div>
@@ -75,11 +75,7 @@
 </div>
 <div class="docs_text">
 	Even though weapons in a solution fire as a group each weapon experiences its own
-	recharge time.
-</div>
-<div class="docs_text">
-	Weapon solutions take 30 seconds per weapon to install and configure and can have a
-	maximum of 6 weapons. Your <a href="docs.php?page=ship_rating">Attack Rating</a> is
+	recharge time. Your <a href="docs.php?page=ship_rating">Attack Rating</a> is
 	computed from all solutions and weapons active on the ship.
 </div>
 <div class="docs_text">

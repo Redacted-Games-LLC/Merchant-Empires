@@ -113,8 +113,8 @@
 					echo $player['ship_name'] == '' ? DEFAULT_SHIP_NAME : $player['ship_name'];
 					echo '</div>';
 
-					echo '<div class="ship_links">';
-					echo '<a href="handler.php?task=attack&amp;player_id=' . $id . '&amp;form_id='. $_SESSION['form_id'] .'">Attack</a>';
+					echo '<div class="ship_links" title="Show Attack Popup" onclick="return open_attack(' . $player['record_id'] . ');">';
+						echo 'Attack';
 					echo '</div>';
 
 					echo '<div class="ship_type">';

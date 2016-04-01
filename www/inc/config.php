@@ -216,7 +216,7 @@
 	define('WAR_UPGRADES_PER_ALIGNMENT_POINT', 50);
 
 	// The smallest player level which allows ship-to-ship combat.
-	define('MINIMUM_KILLABLE_LEVEL', 6);
+	define('MINIMUM_KILLABLE_LEVEL', 3);
 
 	// How much alignment you lose when killing someone of your race.
 	define('RACIAL_KILL_PENALTY', 100);
@@ -274,6 +274,9 @@
 
 	// Turn cost to manipulate weapon solutions
 	define('SOLUTION_TURN_COST', 2);
+
+	// Turn cost to attack players and forces
+	define('ATTACK_TURN_COST', 2);
 
 	// Total amount of mines or drones in a sector (so 1000 total)
 	define('MAX_ORDNANCE_PER_SECTOR', 500);
@@ -422,4 +425,9 @@
 
 	// How many seconds a weapon needs to recharge per damage point.
 	define('RECHARGE_TIME_PER_DAMAGE', 0.33);
+
+	// How much time must exist between each shot to prevent flooding
+	define('ATTACK_FLOOD_DELAY', 4);
+
+
 ?>

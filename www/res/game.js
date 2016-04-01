@@ -424,6 +424,22 @@ function open_base_learn() {
 	return false;
 }
 
+function open_attack(player_id) {
+	
+	var frame = document.getElementById('main_iframe');
+	frame.src = 'ship.php?page=attack&player_id=' + player_id;
+
+	show_div('main_popup');
+	return false;
+}
+
+function attack_player(solution_group, player_id) {
+	
+	top.location.href = 'handler.php?task=attack&solution_group=' + solution_group + '&player_id=' + player_id + '&form_id=' + form_id;
+	return false;
+}
+
+
 
 
 var _internal_seed = 0;

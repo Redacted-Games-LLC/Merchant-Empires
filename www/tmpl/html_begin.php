@@ -104,6 +104,8 @@
 				echo "var base_seed = 0;\n";
 			}
 
+
+			echo "var form_id = '" . $_SESSION['form_id'] . "';\n";
 		?>
 	</script>
 	<link rel="icon" type="image/png" href="res/redacted_icon.png" />

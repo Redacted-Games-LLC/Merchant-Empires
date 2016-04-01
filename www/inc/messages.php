@@ -56,7 +56,7 @@
 				$rs = $db->get_db()->query("select SQL_CALC_FOUND_ROWS messages.record_id as message_id, messages.posted, messages.message, messages.type, messages.id, messages.sender, message_targets.record_id, message_targets.`read` from messages, message_targets where messages.record_id = message_targets.message and message_targets.target = '". PLAYER_ID ."' order by messages.posted desc limit ". (($spacegame['page_number'] - 1) * $spacegame['per_page']) . "," . $spacegame['per_page']);
 			}
 			else {
-				$rs = $db->get_db()->query("select SQL_CALC_FOUND_ROWS messages.record_id as message_id, messages.posted, messages.message, messages.type, messages.id, messages.sender, message_targets.record_id, message_targets.`read` from messages, message_targets where message_targets.`read` <= 0 and messages.record_id = message_targets.message and message_targets.target = '". PLAYER_ID ."' order by messages.posted desc limit ". (($spacegame['page_number']) * $spacegame['per_page']) . "," . $spacegame['per_page']);	
+				$rs = $db->get_db()->query("select SQL_CALC_FOUND_ROWS messages.record_id as message_id, messages.posted, messages.message, messages.type, messages.id, messages.sender, message_targets.record_id, message_targets.`read` from messages, message_targets where message_targets.`read` <= 0 and messages.record_id = message_targets.message and message_targets.target = '". PLAYER_ID ."' order by messages.posted desc limit ". (($spacegame['page_number'] - 1) * $spacegame['per_page']) . "," . $spacegame['per_page']);
 			}
 		}
 
@@ -136,7 +136,7 @@
 		if ($spacegame['page_number'] > $spacegame['max_pages']) {
 			$spacegame['page_number'] = $spacegame['max_pages'];
 		}
-	} while (false);
 
+	} while (false);
 
 ?>
