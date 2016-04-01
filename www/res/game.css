@@ -491,7 +491,7 @@ div.floating_message_nofluff {
 
 div.floating_message {
 	display: inline-block;
-	width: 420px;
+	width: 80%;
 	margin: 4px 8px;
 	border: solid 1px #222200;
 }

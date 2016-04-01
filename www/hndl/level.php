@@ -1,6 +1,6 @@
 <?php
 /**
- * 
+ * Handles leveling up a player and possibly ranking them up as well.
  *
  * @package [Redacted]Me
  * ---------------------------------------------------------------------------

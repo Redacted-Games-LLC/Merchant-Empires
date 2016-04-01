@@ -78,7 +78,9 @@ function page_onload(no_fluff) {
     		var messageItem = document.createElement('div');
     		messageItem.classList.add('floating_message');
 
-    		var messageText = document.createTextNode(msgCodes[index] + ': ' + messages[index]);
+    		//var messageText = document.createTextNode(msgCodes[index] + ': ' + messages[index]);
+    		var messageText = document.createElement('span');
+    		messageText.innerHTML = msgCodes[index] + ': ' + messages[index];
     		
     		messageItem.appendChild(messageText);
     		messageDiv.appendChild(messageItem);

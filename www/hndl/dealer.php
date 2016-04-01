@@ -160,6 +160,7 @@
 				$db->get_db()->commit();
 				$db->get_db()->autocommit(true);
 				$return_codes[] = 1026;
+				$return_vars['amt'] = $credits;
 				break;
 
 			case 2: // Goods
@@ -289,6 +290,7 @@
 				$db->get_db()->commit();
 				$db->get_db()->autocommit(true);
 				$return_codes[] = 1026;
+				$return_vars['amt'] = $credits;
 				break;
 
 			default:

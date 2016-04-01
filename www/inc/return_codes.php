@@ -56,7 +56,7 @@ $RETURN_CODES = array(
 	1023 => 'Item out of stock at this dealer.',
 	1024 => 'This item is locked for you.',
 	1025 => 'You do not have the available credits for this item.',
-	1026 => 'Thank you for your transaction.',
+	1026 => 'Thank you for your transaction. ' . (isset($_REQUEST['amt']) ? number_format($_REQUEST['amt']) . ' <img src="res/credits.png" width="16" alt="credits" /> exchanged.' : ''),
 	1027 => 'You must specify how many of those you want.',
 	1028 => 'You cannot buy that many of those, sorry.',
 	1029 => 'You must be logged in to do that.',

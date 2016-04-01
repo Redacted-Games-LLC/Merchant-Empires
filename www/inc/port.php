@@ -1,6 +1,6 @@
 <?php
 /**
- * 
+ * Loads information about ports and goods to trade.
  *
  * @package [Redacted]Me
  * ---------------------------------------------------------------------------
@@ -72,6 +72,7 @@
 
 		$spacegame['port_trades']['sells'] = array();
 		$spacegame['port_trades']['sells_count'] = 0;
+		$spacegame['port_trades']['sells_index'] = array();
 
 		$spacegame['port_trades']['buys'] = array();
 		$spacegame['port_trades']['buys_count'] = 0;
@@ -88,7 +89,7 @@
 		
 		$db = isset($db) ? $db : new DB;
 
-		$rs = $db->get_db()->query("select * from port_goods where place = '". $place_id ."' order by upgrade, distance, amount, record_id");
+		$rs = $db->get_db()->query("select * from port_goods where place = '". $place_id ."' order by upgrade, distance desc, abs(amount) desc, record_id");
 		
 		$rs->data_seek(0);
 		while ($row = $rs->fetch_assoc()) {
@@ -110,11 +111,31 @@
 
 				if ($row['upgrade'] > 0) {
 					// Buy for an upgrade goal
-					$spacegame['port_upgrades']['buys'][$row['record_id']] = $row;
-					$spacegame['port_upgrades']['buys_count'] += 1;
+					
+					if (isset($spacegame['port_trades']['sells_index'][$row['upgrade']])) {
+						// Display in buy category
+
+						$spacegame['port_trades']['buys'][$row['record_id']] = $row;
+						$spacegame['port_trades']['buys_count'] += 1;
+						$spacegame['port_trades_count'] += 1;
+					}
+					else {
+						// Display in upgrade category 
+
+						$spacegame['port_upgrades']['buys'][$row['record_id']] = $row;
+						$spacegame['port_upgrades']['buys_count'] += 1;
+						$spacegame['port_upgrades_count'] += 1;
+					}
+
 					$spacegame['port_upgrades']['targets'][$row['upgrade']][] = $row['record_id'];
-					$spacegame['port_upgrades']['targets_count'][$row['upgrade']] = isset($spacegame['port_upgrades']['targets_count'][$row['upgrade']]) ? $spacegame['port_upgrades']['targets_count'][$row['upgrade']] + 1 : 1;
-					$spacegame['port_upgrades_count'] += 1;
+
+					if (isset($spacegame['port_upgrades']['targets_count'][$row['upgrade']])) {
+						$spacegame['port_upgrades']['targets_count'][$row['upgrade']]++;
+					}
+					else {
+						$spacegame['port_upgrades']['targets_count'][$row['upgrade']] = 1;
+					}
+					
 				}
 				else {
 					// Buy for a trade demand
@@ -149,10 +170,6 @@
 				}
 			}
 		}
-
-
-
-
 
 	} while (false);
 

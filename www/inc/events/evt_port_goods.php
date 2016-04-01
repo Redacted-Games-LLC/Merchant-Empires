@@ -62,7 +62,7 @@
 				if ($row['supply'] <= 0) {
 					$amount = max(-PORT_LIMIT, $row['amount'] - $goods_to_update);
 				}
-				else {
+				elseif ($row['supply'] > 0) {
 					$amount = min(PORT_LIMIT, $row['amount'] + $goods_to_update);
 
 					$rs = $db->get_db()->query("select count(*) as count from port_goods where place = '" . $row['place'] . "' and upgrade = '" . $row['good'] . "'");

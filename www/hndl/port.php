@@ -224,6 +224,7 @@
 
 			player_log($player_id, $action, $amount, $place_id);
 			$return_codes[] = 1026;
+			$return_vars['amt'] = $credits;
 		}
 		elseif ($good['amount'] > 0) {
 
@@ -402,6 +403,7 @@
 			$action = $spacegame['actions'][$action_prefix . 'buy'];
 			player_log($player_id, $action, $amount, $place_id);
 			$return_codes[] = 1026;
+			$return_vars['amt'] = $credits;
 		}
 		
 

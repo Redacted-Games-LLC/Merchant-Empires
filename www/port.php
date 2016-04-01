@@ -1,6 +1,6 @@
 <?php
 /**
- * 
+ * Displays a port to a player
  *
  * @package [Redacted]Me
  * ---------------------------------------------------------------------------
@@ -59,14 +59,14 @@
 	
 		if ($item['distance'] > 0) {
 			echo '<div class="port_goods_price" title="';
-			echo 'Distance ' . $item['distance'] . ' sector(s)';
+			echo 'Nearest trader is ' . $item['distance'] . ' sector(s)';
 			echo '">';
 			echo number_format($item['final_price']);
 			echo '<img src="res/credits.png" width="16" height="16" />';
 			echo '</div>';
 		}
 
-		echo '<div class="port_goods_stock">';
+		echo '<div class="port_goods_stock" title="Supply/Demand level">';
 		echo number_format($item['amount']);
 		echo '</div>';
 
@@ -91,20 +91,20 @@
 		}
 
 		if ($item['distance'] <= 0) {
-			echo '<div class="port_buttons">';
+			echo '<div class="port_buttons" title="Unable to deal in goods with no traders in range.">';
 			echo '<em>NO TRADERS</em>';
 			echo '</div>';
 		}
 		else {
 			echo '<div class="port_buttons">';
 			
-			if ($item['amount'] > 0) {
+			if ($item['supply'] > 0) {
 				echo '<form action="handler.php" method="post" target="_top">';
 
 				echo '<input class="port_form_input" id="amount'. $item['record_id'] . '" name="amount" type="text" maxlength="4" size="5" value="'. max(0, $holds_available) .'" />';
 				echo '<script type="text/javascript">drawButton(\'sb' . $item['record_id'] . "', 'buy', 'validate_buy()', 'port_form_button');</script>";
 			}
-			else if ($item['amount'] < 0) {
+			else if ($item['supply'] <= 0) {
 				echo '<form action="handler.php" method="post">';
 				
 				$amount = 0;
