@@ -160,6 +160,24 @@
 					return true;
 				}
 
+				if (!($st = $db->get_db()->prepare('update player_cargo set amount = 0 where player = ?'))) {
+					error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+					$return_codes[] = 1006;
+					$db->get_db()->rollback();
+					$db->get_db()->autocommit(true);
+					return true;
+				}
+				
+				$st->bind_param('i', $player_id);
+				
+				if (!$st->execute()) {
+					$return_codes[] = 1006;
+					error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
+					$db->get_db()->rollback();
+					$db->get_db()->autocommit(true);
+					return true;
+				}
+
 				if (!$already_in_a_transaction) {
 					if (!$db->get_db()->commit()) {
 						error_log(__FILE__ . '::' . __LINE__ . " Commit failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);

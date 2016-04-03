@@ -76,8 +76,10 @@
 			'player_cargo',
 			'player_log',
 			'alliances',
+			'bases',
 			'players',
-			'warps'
+			'warps',
+			'port_goods',
 		);
 
 		foreach ($tables as $table) {
