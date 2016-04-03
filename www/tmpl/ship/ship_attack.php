@@ -28,16 +28,56 @@
 		die();
 	}
 
-	if (!isset($_REQUEST['player_id']) || !is_numeric($_REQUEST['player_id']) || $_REQUEST['player_id'] <= 0) {
-		header('Location: ship.php?page=weapons&rc=1014');
+	$player_id = 0;
+	
+	if (isset($_REQUEST['player_id']) && is_numeric($_REQUEST['player_id']) && $_REQUEST['player_id'] > 0) {
+		$player_id = $_REQUEST['player_id'];
+	}
+
+	$force_id = 0;
+
+	if (isset($_REQUEST['force_id']) && is_numeric($_REQUEST['force_id']) && $_REQUEST['force_id'] > 0) {
+		$force_id = $_REQUEST['force_id'];
+	}
+	
+	if ($player_id <= 0 && $force_id <= 0) {
+		header('Location: ship.php?page=weapons&rc=1197');
 		die();
 	}
 
-	$player_id = $_REQUEST['player_id'];
+	if ($player_id > 0 && $force_id > 0) {
+		header('Location: ship.php?page=weapons&rc=1198');
+		die();
+	}
 
 	$db = isset($db) ? $db : new DB;
 
-	$rs = $db->get_db()->query("select * from players where record_id = '" . $player_id . "' and x = '" . $spacegame['player']['x'] . "' and y = '" . $spacegame['player']['y'] . "' and base_id = '" . $spacegame['player']['base_id'] . "'");
+	$force = array();
+
+	if ($force_id > 0) {
+
+		if ($spacegame['player']['base_id'] > 0) {
+			header('Location: ship.php?page=weapons&rc=1200');
+			die();
+		}
+
+		// Load force info
+
+		$rs = $db->get_db()->query("select * from ordnance where record_id = '" . $force_id . "' and x = '" . $spacegame['player']['x'] . "' and y = '" . $spacegame['player']['y'] . "'");
+
+		$rs->data_seek(0);
+
+		if (!($force = $rs->fetch_assoc())) {
+			header('Location: ship.php?page=weapons&rc=1200');
+			die();
+		}
+
+		$player_id = $force['owner'];
+	}
+
+	$player = array();
+
+	$rs = $db->get_db()->query("select * from players where record_id = '" . $player_id . "'");
 
 	$rs->data_seek(0);
 
@@ -46,23 +86,35 @@
 		die();
 	}
 
-	if ($player['ship_type'] <= 0) {
-		header('Location: ship.php?page=weapons&rc=1195');
-		die();
-	}
+	if ($force_id <= 0) {
+		if ($player['level'] < MINIMUM_KILLABLE_LEVEL) {
+			header('Location: ship.php?page=weapons&rc=1194');
+			die();
+		}
 
-	if ($player['level'] < MINIMUM_KILLABLE_LEVEL) {
-		//header('Location: ship.php?page=weapons&rc=1194');
-		//die();
-	}
+		if ($player['ship_type'] <= 0) {
+			header('Location: ship.php?page=weapons&rc=1195');
+			die();
+		}
 
-	$ship = $spacegame['ships'][$player['ship_type']];
+		if ($player['x'] != $spacegame['player']['x'] || $player['y'] != $spacegame['player']['y']) {
+			header('Location: ship.php?page=weapons&rc=1200');
+			die();
+		}
+
+		if ($player['base_id'] != $spacegame['player']['base_id']) {
+			header('Location: ship.php?page=weapons&rc=1200');
+			die();
+		}
+
+		$ship = $spacegame['ships'][$player['ship_type']];
+	}
 
 	include_once('inc/solutions.php');
 	include_once('inc/cargo.php');
 	include_once('inc/ranks.php');
 ?>
-<div class="header2">Attacking Player: <?php echo $player['caption']; ?></div>
+<div class="header2">Attacking <?php echo ($force_id > 0 ? 'Forces of ' : 'Player ') . $player['caption']; ?></div>
 <div class="docs_text">
 	<strong>Target Information</strong>
 </div>
@@ -80,13 +132,16 @@
 		echo '<br />';
 		echo 'Level: ' . $player['level'] . '<br />';
 		echo 'Rank: ' . $spacegame['ranks'][$player['rank']]['caption'] . '<br />';
-		echo 'Ship: ' . $spacegame['races'][$ship['race']]['caption'] . ' ' . $ship['caption'];
-		
-		if (strlen($player['ship_name']) > 0) {
-			echo ' "' . $player['ship_name'] . '"';
-		}
-		else {
-			echo ' "' . DEFAULT_SHIP_NAME . '"';
+
+		if ($force_id <= 0) {
+			echo 'Ship: ' . $spacegame['races'][$ship['race']]['caption'] . ' ' . $ship['caption'];
+
+			if (strlen($player['ship_name']) > 0) {
+				echo ' "' . $player['ship_name'] . '"';
+			}
+			else {
+				echo ' "' . DEFAULT_SHIP_NAME . '"';
+			}
 		}
 	?>
 </div>
@@ -136,7 +191,7 @@
 			$recharge_part = 0;
 			$recharge_whole = 0;
 
-			$total_damage = 0;
+			$max_damage = 0;
 			$count = 0;
 			$total_time = 0;
 
@@ -146,14 +201,19 @@
 				$solution = $spacegame['solutions'][$solution_id];
 				$weapon = $spacegame['weapons'][$solution['weapon']];
 				
+				$total_damage = 0;
 				$total_damage += $weapon['general_damage'] * $weapon['volley'];
 				$total_damage += $weapon['shield_damage'] * $weapon['volley'];
 				$total_damage += $weapon['armor_damage'] * $weapon['volley'];
 
+				if ($total_damage > $max_damage) {
+					$max_damage = $total_damage;
+				}
+
 				$total_time += (PAGE_START_TIME - $solution['fire_time']);
 			}
 
-			$recharge_whole = $total_damage * RECHARGE_TIME_PER_DAMAGE;
+			$recharge_whole = $max_damage * RECHARGE_TIME_PER_DAMAGE;
 
 			if ($recharge_whole < 1) {
 				$recharge_whole = 1;
@@ -165,7 +225,14 @@
 				$recharge_part = $recharge_whole;
 			}
 
-			echo '<div class="attack_button" onclick="return attack_player('. $solution_keys[$s] .',' . $player['record_id'] . ');">';
+			echo '<div class="attack_button" onclick="return ';
+
+			if ($force_id > 0) {
+				echo 'attack_player_forces('. $solution_keys[$s] .',' . $force['record_id'] . ');">';
+			}
+			else {
+				echo 'attack_player('. $solution_keys[$s] .',' . $player['record_id'] . ');">';
+			}
 			
 			echo '<div class="attack_solution">';
 			echo '#' . ($s + 1);
@@ -173,8 +240,13 @@
 
 			echo '<svg class="attack_recharge" width="107" height="12">';
 	  		echo '<rect width="105" height="10" style="fill:rgb(0,64,0);stroke-width:2;stroke:rgb(255,255,255)" />';
-  			echo '<rect width="' . (105 * $recharge_part / $recharge_whole) . '" height="10" style="fill:rgb(0,255,128);stroke-width:2;stroke:rgb(255,255,255)" />';
+  			echo '<rect id="recharge_rect_'. $s .'" width="' . (0 * 105 * $recharge_part / $recharge_whole) . '" height="10" style="fill:rgb(0,255,128);stroke-width:2;stroke:rgb(255,255,255)" />';
 			echo '</svg>';
+
+			echo '<script type="text/Javascript">';
+			echo 'start_recharge("recharge_rect_'. $s .'", 105.0, ' . $recharge_part . ', ' . $recharge_whole . ', '. (RECHARGE_TIME_PER_DAMAGE * 3.0) .');';
+			echo '</script>';
+
 
 			echo '</div>';
 

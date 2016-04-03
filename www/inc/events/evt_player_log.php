@@ -43,7 +43,7 @@
 
 			// Grab a batch of log entries sorted by time descending...
 
-			$rs = $db->get_db()->query("select * from player_log where reconciled <= 0 and `timestamp` < '". ($time - ASSIST_TIME) ."' and action >= 7 and action <= 10 order by timestamp desc");
+			$rs = $db->get_db()->query("select * from player_log where reconciled <= 0 and (action >= 7 and action <= 10) order by timestamp desc");
 
 			if (!$rs) {
 				error_log(__FILE__ . '::' . __LINE__ . " Query selection failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
@@ -55,6 +55,7 @@
 			}
 
 			$log_items = array();
+			$log_item_count = 0;
 
 			while ($row = $rs->fetch_assoc()) {
 				if (!isset($log_items[$row['player']])) {
@@ -62,36 +63,53 @@
 				}
 
 				$log_items[$row['player']][$row['record_id']] = $row;
+				$log_item_count++;
 			}
 
+			if ($log_item_count <= 0) {
+				return;
+			}
+
+			// List of players involved in any log, for retrieving names etc later
 			$players = array();
 
+			// List of log entries we will process for this time around.
 			$reconciled_log_items = array();
-			$deaths = array();
+
+			// Current death buffer for the player
 			$death = array();
 
-			// Build the death list
+			// All deaths we know of
+			$deaths = array();
+
+			// Build the list of deaths
 
 			foreach ($log_items as $player_id => $logs) {
 
 				foreach ($logs as $record_id => $row) {
 
+					if ($time - $row['timestamp'] < ASSIST_TIME) {
+						// Ignore this log so it can be processed later in case it is part of 
+						// a future death. ASSIST_TIME won't let it live long...
+						continue;
+					}
+
 					switch ($row['action']) {
 
 						case 7: // Death
 							if (isset($death[$row['player']])) {
-								$deaths[] = $death[$row['player']];
-								unset($death[$row['player']]);
+								// Add completed death to the buffer of deaths.
+								$deaths[] = $death;
 							}
 
-							$x = floor($row['target'] / 1000);
+							$y = floor($row['target'] / 1000);
 
 							$death[$row['player']] = array(
 								'record_id' => $row['record_id'],
 								'timestamp' => $row['timestamp'],
 								'player' => $row['player'],
-								'x' => $x,
-								'y' => $row['target'] - ($x * 1000),
+								'x' => $row['target'] - ($y * 1000),
+								'y' => $y,
 								'assists' => array(),
 								'friendly_assists' => array(),
 							);
@@ -101,25 +119,23 @@
 
 						case 8: // General damage
 						case 10: // War Damage
-							if (isset($death[$row['player']]) && $death[$row['target']]['timestamp'] >= $row['timestamp'] - ASSIST_TIME) {
-								$death[$row['player']]['assists'][$row['record_id']] = $row;
+							if (isset($death[$row['player']]) && $death[$row['player']]['timestamp'] - $row['timestamp'] <= ASSIST_TIME) {
+								$death[$row]['player']['assists'][] = $row;
 								$players[$row['player']] = null;
 							}
-
 							break;
 
 						case 9: // Friendly Damage
-							if (isset($death[$row['player']]) && $death[$row['target']]['timestamp'] >= $row['timestamp'] - (ASSIST_TIME * 4)) {
-								$death[$row['player']]['friendly_assists'][$row['record_id']] = $row;
+							if (isset($death[$row['player']]) && $death[$row['player']]['timestamp'] - $row['timestamp'] <= ASSIST_TIME) {
+								$death[$row]['player']['friendly_assists'][] = $row;
 								$players[$row['player']] = null;
 							}
-							break;
 
 						default:
-							// Do nothing
+							// Do nothing, not ours to reconcile.
 							continue;
 					}
-
+		
 					$reconciled_log_items[] = $record_id;
 				}
 				
@@ -148,6 +164,13 @@
 					error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 					return false;
 				}
+			}
+
+			// Check to see if we even have work to do.
+
+			if (count($players) <= 0) {
+				// Assume there is no death logs to process assists for.
+				return;
 			}
 
 			// Grab a list of player names for battle reports.

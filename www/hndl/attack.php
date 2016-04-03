@@ -61,74 +61,48 @@
 			break;
 		}
 
-
+		
+		// Some checks to make sure this is ok
 	
 		if ($spacegame['player']['level'] < MINIMUM_KILLABLE_LEVEL) {
 			$return_codes[] = 1194;
 			break;
 		}
 
-		if (!isset($_REQUEST['player_id']) || !is_numeric($_REQUEST['player_id']) || $_REQUEST['player_id'] <= 0) {
-			$return_codes[] = 1014;
+		$player_id = 0;
+
+		if (isset($_REQUEST['player_id']) && is_numeric($_REQUEST['player_id']) && $_REQUEST['player_id'] > 0) {
+			$player_id = $_REQUEST['player_id'];
+		}
+
+		$force_id = 0;
+
+		if (isset($_REQUEST['force_id']) && is_numeric($_REQUEST['force_id']) && $_REQUEST['force_id'] > 0) {
+			$force_id = $_REQUEST['force_id'];
+		}
+
+		if ($player_id <= 0 && $force_id <= 0) {
+			$return_codes[] = 1197;
 			break;
 		}
 
-		$player_id = $_REQUEST['player_id'];
+		if ($player_id > 0 && $force_id > 0) {
+			$return_codes[] = 1198;
+			break;
+		}
 
 		if (!isset($_REQUEST['solution_group']) || !is_numeric($_REQUEST['solution_group']) || $_REQUEST['solution_group'] <= 0) {
 			$return_codes[] = 1189;
 			break;
 		}
 
+
 		$solution_group = $_REQUEST['solution_group'];
 
-		$db = isset($db) ? $db : new DB;
-
-		$rs = $db->get_db()->query("select * from players where record_id = '" . $player_id . "' and x = '" . $spacegame['player']['x'] . "' and y = '" . $spacegame['player']['y'] . "' and base_id = '" . $spacegame['player']['base_id'] . "'");
-
-		$rs->data_seek(0);
-
-		if (!($player = $rs->fetch_assoc())) {
-			$return_codes[] = 1014;
-			break;
-		}
-
-		if ($player['ship_type'] <= 0) {
-			$return_codes[] = 1195;
-			break;
-		}
-
-		if ($player['level'] < MINIMUM_KILLABLE_LEVEL) {
-			$return_codes[] = 1194;
-			break;
-		}
-
-		include_once('inc/ships.php');
-
-		$ship = $spacegame['ships'][$player['ship_type']];
-
-		include_once('inc/solutions.php');
-		
-		if (!isset($spacegame['solution_groups'][$solution_group])) {
-			$return_codes[] = 1189;
-			break;
-		}
-
-		include_once('inc/cargo.php');
 		include_once('inc/ranks.php');
-
-		// Fire the weapons
-
-		$time = PAGE_START_TIME;
-
-		$total_damage = 0;
-
-		$player_shields = $player['shields'];
-		$player_armor = $player['armor'];
-
-		$hitters = array();
-
+		
 		$message = '';
+
 		$message .= $spacegame['races'][$spacegame['player']['race']]['caption'];
 		$message .= ' ' . $spacegame['ranks'][$spacegame['player']['rank']]['caption'];
 		$message .= ' ' . $spacegame['player']['caption'];
@@ -145,22 +119,129 @@
 
 		$message .= ' has attacked';
 
+		$force = array();
+
+		$db = isset($db) ? $db : new DB;
+
+		if ($force_id > 0) {
+			if ($spacegame['player']['base_id'] > 0) {
+				$return_codes[] = 1200;
+				break;
+			}
+
+			$message .= ' forces belonging to';
+
+			$rs = $db->get_db()->query("select * from ordnance where record_id = '" . $force_id . "' and x = '" . $spacegame['player']['x'] . "' and y = '" . $spacegame['player']['y'] . "'");
+
+			$rs->data_seek(0);
+
+			if (!($force = $rs->fetch_assoc())) {
+				$return_codes[] = 1200;
+				break;
+			}
+
+			$player_id = $force['owner'];
+
+		}
+
+		$ship = array();
+		$player = array();
+		$player_shields = 0;
+		$player_armor = 0;
+		$hitters = array();
+
+
+		$rs = $db->get_db()->query("select * from players where record_id = '" . $player_id . "'");	
+
+		$rs->data_seek(0);
+
+		if (!($player = $rs->fetch_assoc())) {
+			$return_codes[] = 1200;
+			break;
+		}
+
+		if ($force_id <= 0) {
+			if ($player['base_id'] != $spacegame['player']['base_id']) {
+				$return_codes[] = 1200;
+			}
+
+			if ($player['x'] != $spacegame['player']['x'] || $player['y'] != $spacegame['player']['y']) {
+
+				// If the target moved within the last second and in an adjacent
+				// sector still we will allow the attack.
+
+				if (PAGE_START_TIME - $player['last_move'] > 1) {
+					$return_codes[] = 1200;
+					break;
+				}
+
+				if (abs($spacegame['player']['x'] - $player['y']) > 1) {
+					$return_codes[] = 1200;
+					break;
+				}
+
+				if (abs($spacegame['player']['y'] - $player['y']) > 1) {
+					$return_codes[] = 1200;
+					break;
+				}
+			}
+
+			if ($player['ship_type'] <= 0) {
+				$return_codes[] = 1195;
+				break;
+			}
+
+			if ($player['level'] < MINIMUM_KILLABLE_LEVEL) {
+				$return_codes[] = 1194;
+				break;
+			}
+
+			$player_shields = $player['shields'];
+			$player_armor = $player['armor'];
+
+			include_once('inc/ships.php');
+
+			$ship = $spacegame['ships'][$player['ship_type']];
+
+		}
+
+		include_once('inc/solutions.php');
+		
+		if (!isset($spacegame['solution_groups'][$solution_group])) {
+			$return_codes[] = 1189;
+			break;
+		}
+
+		include_once('inc/cargo.php');
+		
+		// Fire the weapons
+
+		$time = PAGE_START_TIME;
+
+		$total_damage = 0;
+		
 		$message .= ' ' . $spacegame['races'][$player['race']]['caption'];
 		$message .= ' ' . $spacegame['ranks'][$player['rank']]['caption'];
 		$message .= ' ' . $player['caption'];
-		$message .= ' in a';
-		$message .= ' ' . $spacegame['races'][$spacegame['ships'][$player['ship_type']]['race']]['caption'];
-		$message .= ' ' . $spacegame['ships'][$player['ship_type']]['caption'];
 
-		if (strlen($player['ship_name']) <= 0) {
-			$message .= ' "' . DEFAULT_SHIP_NAME . '"';
-		}
-		else {
-			$message .= ' "' . $player['ship_name'] . '"';
+		if ($force_id <= 0) {
+			$message .= ' in a';
+			$message .= ' ' . $spacegame['races'][$spacegame['ships'][$player['ship_type']]['race']]['caption'];
+			$message .= ' ' . $spacegame['ships'][$player['ship_type']]['caption'];
+
+			if (strlen($player['ship_name']) <= 0) {
+				$message .= ' "' . DEFAULT_SHIP_NAME . '"';
+			}
+			else {
+				$message .= ' "' . $player['ship_name'] . '"';
+			}
+
 		}
 
-		$message .= ' in sector ' . $player['x'] . ',' . $player['y'] . ':<br />';
+		$message .= ' in sector ' . $spacegame['player']['x'] . ',' . $spacegame['player']['y'] . ':<br />';
 		$message .= '<br />';
+
+		$fire_count = 0;
 
 		foreach ($spacegame['solution_groups'][$solution_group] as $solution_id) {
 
@@ -230,53 +311,62 @@
 				$general_damage *= $accuracy;
 			}
 
-			if ($player_shields > 0) {
-				if ($shield_damage < $player_shields) {
-					$player_shields -= $shield_damage;
-					$damage_caused += $shield_damage;
-				}
-				else {
-					$shield_damage -= $player_shields;
-					$damage_caused += $player_shields;
-					$player_shields = 0;
+			if ($force_id > 0) {
+				$damage_caused = ceil($shield_damage + $armor_damage + $general_damage);
+
+				if ($damage_caused > 0) {
+					$fire_count++;
 				}
 			}
-
-			if ($player_shields > 0) {
-				if ($general_damage < $player_shields) {
-					$player_shields -= $general_damage;	
-					$damage_caused += $general_damage;
-				}
-				else {
-					$general_damage -= $player_shields;
-					$damage_caused += $player_shields;
-					$player_shields = 0;
-				}
-			}
-
-			if ($player_shields <= 0) {
-
-				if ($player_armor > 0) {
-					if ($general_damage < $player_armor) {
-						$player_armor -= $general_damage;
-						$damage_caused += $general_damage;	
+			else {
+				if ($player_shields > 0) {
+					if ($shield_damage < $player_shields) {
+						$player_shields -= $shield_damage;
+						$damage_caused += $shield_damage;
 					}
 					else {
-						$general_damage -= $player_armor;
-						$damage_caused += $player_armor;
-						$player_armor = 0;
+						$shield_damage -= $player_shields;
+						$damage_caused += $player_shields;
+						$player_shields = 0;
 					}
 				}
 
-				if ($player_armor > 0) {
-					if ($armor_damage < $player_armor) {
-						$player_armor -= $armor_damage;
-						$damage_caused += $armor_damage;	
+				if ($player_shields > 0) {
+					if ($general_damage < $player_shields) {
+						$player_shields -= $general_damage;	
+						$damage_caused += $general_damage;
 					}
 					else {
-						$armor_damage -= $player_armor;
-						$damage_caused += $player_armor;
-						$player_armor = 0;
+						$general_damage -= $player_shields;
+						$damage_caused += $player_shields;
+						$player_shields = 0;
+					}
+				}
+
+				if ($player_shields <= 0) {
+
+					if ($player_armor > 0) {
+						if ($general_damage < $player_armor) {
+							$player_armor -= $general_damage;
+							$damage_caused += $general_damage;	
+						}
+						else {
+							$general_damage -= $player_armor;
+							$damage_caused += $player_armor;
+							$player_armor = 0;
+						}
+					}
+
+					if ($player_armor > 0) {
+						if ($armor_damage < $player_armor) {
+							$player_armor -= $armor_damage;
+							$damage_caused += $armor_damage;	
+						}
+						else {
+							$armor_damage -= $player_armor;
+							$damage_caused += $player_armor;
+							$player_armor = 0;
+						}
 					}
 				}
 			}
@@ -287,11 +377,15 @@
 				$message .= ' <span class="miss">*MISS*</span>';
 			}
 			else {
-				$message .= ' causing ' . $damage_caused . ' damage';
-			}
-			
-			if ($player_armor <= 0) {
-				$message .= ' <span class="kill">*KILL*</span>';
+				if ($force_id > 0) {
+					$message .= ' hitting one force';
+				} else {
+					$message .= ' causing ' . $damage_caused . ' damage';
+
+					if ($player_armor <= 0) {
+						$message .= ' <span class="kill">*KILL*</span>';
+					}
+				}
 			}
 
 			$message .= '<br />';
@@ -302,23 +396,130 @@
 
 		include_once('inc/combat.php');
 
-		$hitters[] = array(
-			'hitter' => $spacegame['player']['record_id'],
-			'shield_damage' => $player['shields'] - $player_shields,
-			'armor_damage' => $player['armor'] - $player_armor,
-		);
+		if ($force_id > 0) {
 
-		if (players_attack_player($player_id, $hitters)) {
-			// Player is dead
-			$serial = ($spacegame['player']['y'] * 1000) + $spacegame['player']['x'];
-			player_log($player_id, $spacegame['actions']['death'], $complete_damage, $serial);
-			break;
+			// Delete forces
+			$remaining = $force['amount'] - $fire_count;
+
+			if ($remaining > 0) {
+				if (!($st = $db->get_db()->prepare("update ordnance set amount = amount - ? where record_id = ?"))) {
+					error_log(__FILE__ . '::' . __LINE__ . "Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+					$return_codes[] = 1006;
+					break;
+				}
+				
+				$st->bind_param("ii", $fire_count, $force_id);
+				
+				if (!$st->execute()) {
+					$return_codes[] = 1006;
+					error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+					break;
+				}
+			}
+			else {
+				if (!($st = $db->get_db()->prepare("delete from ordnance where record_id = ?"))) {
+					error_log(__FILE__ . '::' . __LINE__ . "Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+					$return_codes[] = 1006;
+					break;
+				}
+				
+				$st->bind_param("i", $force_id);
+				
+				if (!$st->execute()) {
+					$return_codes[] = 1006;
+					error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+					break;
+				}
+			}
+
+
+			if (!($st = $db->get_db()->prepare("delete from ordnance where amount <= 0"))) {
+				error_log(__FILE__ . '::' . __LINE__ . "Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+				$return_codes[] = 1006;
+				break;
+			}
+			
+			if (!$st->execute()) {
+				$return_codes[] = 1006;
+				error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+				break;
+			}
+			
+			if ($force['good'] == 33) {
+				// Get remaining combat drones in sector.
+				$remaining = 0;
+
+				$rs = $db->get_db()->query("select * from ordnance where good = '34' and x = '". $spacegame['player']['x'] ."' and y = '". $spacegame['player']['x'] ."' and (owner = '". $force['owner'] ."' or (alliance > 0 and alliance = '". $force['alliance']."'))");
+
+				$rs->data_seek(0);
+
+				while ($row = $rs->fetch_assoc()) {
+					$remaining += ceil($amount * DRONES_ATTACKING_PER_PLAYER);
+				}
+			}
+
+			if ($remaining > 0) {
+				
+				// Drones can shoot back. NOTE that even a single drone
+				// will shoot back if it is being fired upon.
+
+				$bonus = 1.0;
+
+				if ($spacegame['races'][$spacegame['player']['race']]['caption'] == "Zyck'lirg") {
+					$bonus -= ZYCK_ORDNANCE_BONUS;
+				}
+
+				$hit_amount = mt_rand(0, ceil($remaining * $bonus));
+				$total_damage = $hit_amount * DRONE_ATTACK_DAMAGE;
+
+				if ($total_damage > 0) {
+					$hitters[] = array(
+						'hitter' => $force['owner'],
+						'damage' => $total_damage
+					);
+
+					$return_vars['dmg'] = 'true';
+				}
+
+				$complete_count += $hit_amount;
+				$complete_damage += $total_damage;
+
+				// Message drone owners about potential damage to ship
+
+				$message = '';
+				$message .= 'Player ' . $spacegame['player']['caption'] . ' ';
+				$message .= 'detected and engaged by ' . $hit_amount;
+				$message .= ' drones in sector ' . $spacegame['player']['x'] . ',' . $spacegame['player']['y'];
+				$message .= ' causing ' . $total_damage . ' damage.';
+				
+				if (players_attack_player($spacegame['player']['record_id'], $hitters)) {
+					// Player is dead
+					$serial = ($spacegame['player']['y'] * 1000) + $spacegame['player']['x'];
+					player_log($spacegame['player']['record_id'], $spacegame['actions']['death'], $total_damage, $serial);
+				}
+
+				$targets = array($player['record_id'], $spacegame['player']['record_id']);
+				send_message($message, $targets, MESSAGE_EXPIRATION, 4);
+			}
+
 		}
-		
-		echo $message;
-		$targets = array($player['record_id'], $spacegame['player']['record_id']);
+		else {
+			$hitters[] = array(
+				'hitter' => $spacegame['player']['record_id'],
+				'shield_damage' => $player['shields'] - $player_shields,
+				'armor_damage' => $player['armor'] - $player_armor,
+			);
 
-		send_message($message, $targets, MESSAGE_EXPIRATION, 4);
+			if (players_attack_player($player_id, $hitters)) {
+				// Player is dead
+				$serial = ($spacegame['player']['y'] * 1000) + $spacegame['player']['x'];
+				player_log($player_id, $spacegame['actions']['death'], $total_damage, $serial);
+			}
+
+			$targets = array($player['record_id'], $spacegame['player']['record_id']);
+			send_message($message, $targets, MESSAGE_EXPIRATION, 4);
+		}
+
 		
 	} while (false);
 	

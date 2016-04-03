@@ -47,13 +47,14 @@
 						case 33: // Mines
 							$mines += $ordnance['amount'];
 							$success = true;
-							echo '<img src="res/hostile_mines.png" width="24" height="24" title="'. ($ordnance['alliance'] > 0 ? 'Alliance: ' . $spacegame['alliances'][$ordnance['alliance']]['caption'] . ' - ' : '') . $ordnance['amount'] .' Mine(s). Click to Attack." />';
+							echo '<img class="pointer" onclick="open_attack_force('. $ordnance['record_id'] .');" src="res/hostile_mines.png" width="24" height="24" title="'. ($ordnance['alliance'] > 0 ? 'Alliance: ' . $spacegame['alliances'][$ordnance['alliance']]['caption'] . ' - ' : '') . $ordnance['amount'] .' Mine(s). Click to Attack." />';
 							break;
 
 						case 34: // Drones
 							$drones += $ordnance['amount'];
 							$success = true;
-							echo '<img src="res/hostile_drones.png" width="24" height="24" title="'. ($ordnance['alliance'] > 0 ? 'Alliance: ' . $spacegame['alliances'][$ordnance['alliance']]['caption'] . ' - ' : '') . $ordnance['amount'] .' Mine(s). Click to Attack." />';
+
+							echo '<img class="pointer" onclick="open_attack_force('. $ordnance['record_id'] .');" src="res/hostile_drones.png" width="24" height="24" title="'. ($ordnance['alliance'] > 0 ? 'Alliance: ' . $spacegame['alliances'][$ordnance['alliance']]['caption'] . ' - ' : '') . $ordnance['amount'] .' Drone(s). Click to Attack." />';
 							break;
 					}
 				}

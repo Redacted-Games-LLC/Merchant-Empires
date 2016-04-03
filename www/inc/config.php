@@ -300,7 +300,7 @@
 	define('MINE_ATTACK_DAMAGE', 5);
 
 	// The amount of mines and drones attacking a zyck as opposed to a mawlor or xollian.
-	define('ZYCK_ORDNANCE_BONUS', 0.05);
+	define('ZYCK_ORDNANCE_BONUS', 0.5);
 
 	// Total number of bases that could be on a planet.
 	define('MAX_BASES_PER_PLANET', 4);

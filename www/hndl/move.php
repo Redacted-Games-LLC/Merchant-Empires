@@ -225,6 +225,8 @@
 				// Player is dead
 				$serial = ($spacegame['player']['y'] * 1000) + $spacegame['player']['x'];
 				player_log($player_id, $spacegame['actions']['death'], $complete_damage, $serial);
+
+				$spacegame['player']['ship_type'] = 0;
 				break;
 			}
 		}
@@ -329,7 +331,7 @@
 			}
 
 			if (players_attack_player($player_id, $hitters)) {
-				$serial = ($rx * 1000) + $ry;
+				$serial = ($ry * 1000) + $rx;
 				player_log($player_id, $spacegame['actions']['death'], $complete_damage, $serial);
 				break;
 			}

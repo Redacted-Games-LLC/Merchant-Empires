@@ -433,9 +433,25 @@ function open_attack(player_id) {
 	return false;
 }
 
+function open_attack_force(force_id) {
+	
+	var frame = document.getElementById('main_iframe');
+	frame.src = 'ship.php?page=attack&force_id=' + force_id;
+
+	show_div('main_popup');
+	return false;
+}
+
+
 function attack_player(solution_group, player_id) {
 	
 	top.location.href = 'handler.php?task=attack&solution_group=' + solution_group + '&player_id=' + player_id + '&form_id=' + form_id;
+	return false;
+}
+
+function attack_player_forces(solution_group, force_id) {
+	
+	top.location.href = 'handler.php?task=attack&solution_group=' + solution_group + '&force_id=' + force_id + '&form_id=' + form_id;
 	return false;
 }
 
@@ -995,7 +1011,7 @@ function load_pagination(current_page, total_pages, base_url) {
 
 	if (current_page > 2) {
 		a = document.createElement('a');
-		a.setAttribute('href', base_url + 'p=1');
+		a.setAttribute('href', base_url + '&p=1');
 	}
 	else {
 		a = document.createElement('span');
@@ -1007,7 +1023,7 @@ function load_pagination(current_page, total_pages, base_url) {
 
 	if (current_page > 1) {
 		a = document.createElement('a');
-		a.setAttribute('href', base_url + 'p=' + (current_page - 1));
+		a.setAttribute('href', base_url + '&p=' + (current_page - 1));
 	}
 	else {
 		a = document.createElement('span');
@@ -1023,7 +1039,7 @@ function load_pagination(current_page, total_pages, base_url) {
 	for (var i = 0; i <= 10; i++) {
 		if (i > 0 && i <= total_pages) {
 			a = document.createElement('a');
-			a.setAttribute('href', base_url + 'p=' + (start + i));
+			a.setAttribute('href', base_url + '&p=' + (start + i));
 
 			if (start + i == current_page) {
 				a.className = 'pagination_current_link';
@@ -1039,7 +1055,7 @@ function load_pagination(current_page, total_pages, base_url) {
 
 	if (current_page < total_pages) {
 		a = document.createElement('a');
-		a.setAttribute('href', base_url + 'p=' + (current_page + 1));
+		a.setAttribute('href', base_url + '&p=' + (current_page + 1));
 	}
 	else {
 		a = document.createElement('span');
@@ -1052,7 +1068,7 @@ function load_pagination(current_page, total_pages, base_url) {
 
 	if (current_page < total_pages - 1) {
 		a = document.createElement('a');
-		a.setAttribute('href', base_url + 'p=' + total_pages);
+		a.setAttribute('href', base_url + '&p=' + total_pages);
 	}
 	else {
 		a = document.createElement('span');
@@ -1104,4 +1120,27 @@ function register_textarea_length_handlers(input_id, output_id, limit) {
 
 	update_textarea_length(input_id, output_id, limit);
 }
+
+
+function start_recharge(id, width, part, whole, increment) {
+	
+	var rect = document.getElementById(id);
+	rect.setAttribute('width', width * part / whole);
+
+	setTimeout(function(){
+		if (part >= whole) {
+			return;
+		}
+
+		part += (increment / 5);
+		start_recharge(id, width, part, whole, increment);
+
+		return;
+	}, 200);
+}
+
+
+
+
+
 
