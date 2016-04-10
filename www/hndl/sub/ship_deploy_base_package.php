@@ -24,6 +24,7 @@
 	include_once('hndl/common.php');
 
 	do { // Dummy Loop
+		$return_vars['page'] = 'deploy';
 
 		// $db, $tech, and $good should be set by ship_deploy.php which calls this file.
 
@@ -82,6 +83,11 @@
 		// Make sure we aren't in a protected system
 
 		include_once('inc/systems.php');
+
+		if ($spacegame['player']['base_id'] > 0) {
+			$return_codes[] = 1101;
+			break;
+		}
 
 		if (!isset($spacegame['system'])) {
 			$return_codes[] = 1101;

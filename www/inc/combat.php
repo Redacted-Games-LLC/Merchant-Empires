@@ -101,7 +101,7 @@
 
 				if ($player['shields'] >= $hitter['damage']) {
 					$player['shields'] -= $hitter['damage'];
-					$shield_Damage += $hitter['damage'];
+					$shield_damage += $hitter['damage'];
 					$carryover = 0;
 				}
 				else {
@@ -142,7 +142,7 @@
 			if ($player['armor'] <= 0) {
 				// Dead player
 
-				if (!($st = $db->get_db()->prepare('update players set ship_type = null, shields = 0, armor = 0 where record_id = ?'))) {
+				if (!($st = $db->get_db()->prepare('update players set ship_type = null, shields = 0, armor = 0, attack_rating = 1, shield_bonus = 0, armor_bonus = 0 where record_id = ?'))) {
 					error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 					$return_codes[] = 1006;
 					$db->get_db()->rollback();
@@ -178,10 +178,29 @@
 					return true;
 				}
 
+				if (!$spacegame['gold']) {
+					if (!($st = $db->get_db()->prepare("delete from solutions where player = ?"))) {
+						$db->get_db()->rollback();
+						$db->get_db()->autocommit(true);
+						error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+						$return_codes[] = 1006;
+						break 2;
+					}
+					
+					$st->bind_param("i", $player_id);
+					
+					if (!$st->execute()) {
+						$db->get_db()->rollback();
+						$db->get_db()->autocommit(true);
+						$return_codes[] = 1006;
+						error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+						break 2;
+					}
+				}
+
 				if (!$already_in_a_transaction) {
 					if (!$db->get_db()->commit()) {
 						error_log(__FILE__ . '::' . __LINE__ . " Commit failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
-
 					}
 					$db->get_db()->autocommit(true);
 				}
@@ -216,7 +235,9 @@
 
 
 		if (!$already_in_a_transaction) {
-			$db->get_db()->commit();
+			if (!$db->get_db()->commit()) {
+				error_log(__FILE__ . '::' . __LINE__ . " Commit failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			}
 			$db->get_db()->autocommit(true);
 		}
 

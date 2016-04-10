@@ -819,7 +819,7 @@
 				return 0;
 			}
 
-			$st->bind_param("iii", $owner, $seed, $shields, $place_id);
+			$st->bind_param("iiii", $owner, $seed, $shields, $place_id);
 			
 			if (!$st->execute()) {
 				error_log(__FILE__ . '::' . __LINE__ . " Execution failed: (" . $st->errno . ") " . $st->error);

@@ -492,7 +492,8 @@ function base_number_format(n) {
 /**
  * Generates the base field in the browser
  *
- * WARNING: This code was written over multiple sessions over lots of beer.
+ * WARNING: This code was written over multiple sessions with lots of beer.
+ * I am truly sorry for this function.
  */
 function load_base_field() {
 
@@ -517,7 +518,16 @@ function load_base_field() {
 
 	// 0 north, 1 above equator, 2 below equator, 3 south
 	var lattitude = random(4);
-		
+
+
+	var can_land = false;
+
+	if (player_id == base_owner || (alliance > 0 && alliance == base_alliance)) {
+		can_land = true;
+	}
+
+
+
 	for (x = 0; x <= 99; x++) {
 		for (y = 0; y <= 99; y++) {
 
@@ -778,7 +788,7 @@ function load_base_field() {
 				
 				if (base_x - x <= 1 && x - base_x <= 1 && base_y - y <= 1 && y - base_y <= 1) {
 					var grid_link = document.createElement('a');
-					grid_link.setAttribute('href', 'handler.php?task=base&subtask=move&plid='+ base_place +'&x=' + x + '&y=' + y);
+					grid_link.setAttribute('href', 'handler.php?task=base&subtask=move&plid='+ base_place +'&x=' + x + '&y=' + y  + '&form_id=' + form_id);
 					grid_link.innerHTML = base_number_format(x) + '&nbsp;' + base_number_format(y);
 
 					grid_link_div.appendChild(grid_link);
@@ -796,18 +806,13 @@ function load_base_field() {
 
 
 
-
+	// Prepare a list of action links for rooms we might be flying over like "land" or "build"
 	var over_links = [];
 
 	var ds = Math.floor(display_size / 2);
 
 	var bx = base_x;
 	var by = base_y;
-
-	if (base_id > 0) {
-		//bx = bx * 2;
-		//by = by * 2;
-	}
 
 	var i;
 	for (i = 0; i < base_rooms.length; i++) {
@@ -860,7 +865,12 @@ function load_base_field() {
 							over_links.push('<a href="#" onclick="open_base_learn()">Learn Something</a>');
 						}
 						else {
-							over_links.push('<a href="handler.php?task=base&amp;subtask=land&amp;plid='+ base_place +'">Land Here</a>');
+							if (can_land) {
+								over_links.push('<a href="handler.php?task=base&amp;subtask=land&amp;plid='+ base_place +'&amp;form_id=' + form_id + '">Land Here</a>');
+							}
+							else {
+								over_links.push('Unable to Land');
+							}
 						}
 
 						break;
@@ -901,8 +911,29 @@ function load_base_field() {
 		grid.appendChild(room_div);
 	}
 
+	// Show the room action links 
+
+	if (over_links.length > 0) {
+
+		var over_link_div = document.createElement('div');
+		over_link_div.className = 'over_links';
+
+		for (i = 0; i < over_links.length; i++) {
+
+			var link_wrapper = document.createElement('p');
+			link_wrapper.className = 'over_link';
+			link_wrapper.innerHTML = over_links[i];
+
+			over_link_div.appendChild(link_wrapper);
+
+		}
+
+		document.body.appendChild(over_link_div);
+	}
 
 
+
+	// Put down the rectangular grid over the base field
 
 	for (x = 0; x < 7; x++) {
 		for (y = 0; y < 7; y++) {
@@ -916,6 +947,7 @@ function load_base_field() {
 
 			var tx;
 			var ty;
+
 			var nx;
 			var ny;
 
@@ -945,13 +977,15 @@ function load_base_field() {
 				}
 			}
 
+			// Links for the grid items
+
 			var grid_link_div = document.createElement('div');
 			grid_link_div.className = 'base_grid_link';
 
 			if (tx - x <= 1 && ty - y <= 1 && x - tx <= 1 && y - ty <= 1) {
 				
 				var grid_link = document.createElement('a');
-				var nav_link = 'handler.php?task=base&subtask=move&plid='+ base_place +'&x=' + nx + '&y=' + ny;
+				var nav_link = 'handler.php?task=base&subtask=move&plid='+ base_place +'&x=' + nx + '&y=' + ny + '&form_id=' + form_id;
 
 				grid_link.setAttribute('href', nav_link);
 				grid_link.innerHTML = base_number_format(nx) + '&nbsp;' + base_number_format(ny);
@@ -965,9 +999,49 @@ function load_base_field() {
 			}
 			else {
 				grid_link_div.innerHTML = '&nbsp;';
+				// Uncomment to show sector numbers in sectors outside of the 3x3 area around the
+				// player, reserved for when building is ready.
 				//grid_link_div.innerHTML = base_number_format(nx) + '&nbsp;' + base_number_format(ny);
 			}
 
+
+			// Enable player icon and add names to the list.
+			var show_icon = false;			
+
+			for (i = 0; i < players.length; i++) {
+				player = players[i];
+
+				if (base_id > 0) {
+					if (player.base_x != nx || player.base_y != ny) {
+						continue;
+					}
+				}
+				else {
+					if (Math.floor(player.base_x / 2) != nx || Math.floor(player.base_y / 2) != ny) {
+						continue;
+					}
+				}
+
+				var player_icon;
+
+				if (show_icon) {
+					player_icon = document.getElementById('player_icon_' + x + '_' + y);
+					player_icon.setAttribute('title', player_icon.getAttribute('title') + ', ' + player['caption']);
+					break;
+				}
+
+				show_icon = true;
+
+				player_icon = document.createElement('img');
+				player_icon.setAttribute('src', 'res/unknown_ship.png');
+				player_icon.setAttribute('id', 'player_icon_' + x + '_' + y);
+				player_icon.setAttribute('title', 'Players: ' + player['caption']);
+				player_icon.className = 'base_player_icon';
+
+				grid_item.appendChild(player_icon);
+
+				break;
+			}
 
 			grid_item.appendChild(grid_link_div);
 			grid.appendChild(grid_item);
@@ -976,24 +1050,6 @@ function load_base_field() {
 
 	field.appendChild(grid);
 
-
-	if (over_links.length > 0) {
-
-		var over_link_div = document.createElement('div');
-		over_link_div.className = 'over_links';
-
-		for (i = 0; i < over_links.length; i++) {
-
-			var link_wrapper = document.createElement('p');
-			link_wrapper.className = 'over_link';
-			link_wrapper.innerHTML = over_links[i];
-
-			over_link_div.appendChild(link_wrapper);
-
-		}
-
-		document.body.appendChild(over_link_div);
-	}
 
 }
 

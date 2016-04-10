@@ -117,6 +117,14 @@
 				$armor = $item['details']['armor'];
 				$shields = $item['details']['shields'];
 
+				define('OVERRIDE_SHIP_TYPE', $ship_type);
+				include_once('inc/solutions.php');
+
+				$attack_rating = $spacegame['solution_damage'] * ATTACK_RATING_PER_DAMAGE;
+				$attack_rating += $spacegame['player']['level'] * ATTACK_RATING_PER_LEVEL;
+				$attack_rating = round(max($attack_rating, 1));
+				
+				
 				$db = isset($db) ? $db : new DB;
 
 				$db->get_db()->autocommit(false);
@@ -139,7 +147,45 @@
 					break 2;
 				}
 
-				if (!($st = $db->get_db()->prepare("update players set credits = credits - ?, ship_type = ?, ship_name = '', armor = ?, shields = ? where record_id = ? and credits >= ?"))) {
+				if (!($st = $db->get_db()->prepare("update player_cargo set amount = 0 where player = ?"))) {
+					$db->get_db()->rollback();
+					$db->get_db()->autocommit(true);
+					error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+					$return_codes[] = 1006;
+					break 2;
+				}
+
+				$st->bind_param("i", $player_id);
+				
+				if (!$st->execute()) {
+					$db->get_db()->rollback();
+					$db->get_db()->autocommit(true);
+					$return_codes[] = 1006;
+					error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+					break 2;
+				}
+
+				if (!$spacegame['gold']) {
+					if (!($st = $db->get_db()->prepare("delete from solutions where player = ?"))) {
+						$db->get_db()->rollback();
+						$db->get_db()->autocommit(true);
+						error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+						$return_codes[] = 1006;
+						break 2;
+					}
+					
+					$st->bind_param("i", $player_id);
+					
+					if (!$st->execute()) {
+						$db->get_db()->rollback();
+						$db->get_db()->autocommit(true);
+						$return_codes[] = 1006;
+						error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+						break 2;
+					}
+				}
+
+				if (!($st = $db->get_db()->prepare("update players set credits = credits - ?, ship_type = ?, ship_name = '', armor = ?, shields = ?, attack_rating = ? where record_id = ? and credits >= ?"))) {
 					$db->get_db()->rollback();
 					$db->get_db()->autocommit(true);
 					error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
@@ -147,7 +193,7 @@
 					break 2;
 				}
 				
-				$st->bind_param("iiiiii", $credits, $ship_type, $armor, $shields, $player_id, $credits);
+				$st->bind_param("iiiiiii", $credits, $ship_type, $armor, $shields, $attack_rating, $player_id, $credits);
 				
 				if (!$st->execute()) {
 					$db->get_db()->rollback();

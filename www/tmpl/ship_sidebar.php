@@ -29,11 +29,7 @@
 	<div class="sidebar_ship_type">
 		<?php echo $spacegame['ship']['caption']; ?>
 		<?php
-			$ar = 1;
-			$dr = 1;
-			compute_ardr($spacegame['player'], $ar, $dr);
-
-			echo "$ar:$dr";
+			echo $spacegame['player']['attack_rating'] . ':' . compute_dr($spacegame['player']);
 		?>
 
 	</div>

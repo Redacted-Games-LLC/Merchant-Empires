@@ -99,6 +99,7 @@
 
 		$solution_group = $_REQUEST['solution_group'];
 
+		include_once('inc/ships.php');
 		include_once('inc/ranks.php');
 		
 		$message = '';
@@ -165,24 +166,48 @@
 				$return_codes[] = 1200;
 			}
 
-			if ($player['x'] != $spacegame['player']['x'] || $player['y'] != $spacegame['player']['y']) {
+			if ($player['base_id'] > 0) {
+				if ($player['base_x'] != $spacegame['player']['base_x'] || $player['base_y'] != $spacegame['player']['base_y']) {
 
-				// If the target moved within the last second and in an adjacent
-				// sector still we will allow the attack.
+					// If the target moved within the last second and in an adjacent
+					// sector still we will allow the attack.
 
-				if (PAGE_START_TIME - $player['last_move'] > 1) {
-					$return_codes[] = 1200;
-					break;
+					if (PAGE_START_TIME - $player['last_move'] > 1) {
+						$return_codes[] = 1200;
+						break;
+					}
+
+					if (abs($spacegame['player']['base_x'] - $player['base_y']) > 1) {
+						$return_codes[] = 1200;
+						break;
+					}
+
+					if (abs($spacegame['player']['base_y'] - $player['base_y']) > 1) {
+						$return_codes[] = 1200;
+						break;
+					}
 				}
+			}
+			else {
+				if ($player['x'] != $spacegame['player']['x'] || $player['y'] != $spacegame['player']['y']) {
 
-				if (abs($spacegame['player']['x'] - $player['y']) > 1) {
-					$return_codes[] = 1200;
-					break;
-				}
+					// If the target moved within the last second and in an adjacent
+					// sector still we will allow the attack.
 
-				if (abs($spacegame['player']['y'] - $player['y']) > 1) {
-					$return_codes[] = 1200;
-					break;
+					if (PAGE_START_TIME - $player['last_move'] > 1) {
+						$return_codes[] = 1200;
+						break;
+					}
+
+					if (abs($spacegame['player']['x'] - $player['y']) > 1) {
+						$return_codes[] = 1200;
+						break;
+					}
+
+					if (abs($spacegame['player']['y'] - $player['y']) > 1) {
+						$return_codes[] = 1200;
+						break;
+					}
 				}
 			}
 
@@ -198,8 +223,6 @@
 
 			$player_shields = $player['shields'];
 			$player_armor = $player['armor'];
-
-			include_once('inc/ships.php');
 
 			$ship = $spacegame['ships'][$player['ship_type']];
 
@@ -238,8 +261,11 @@
 
 		}
 
-		$message .= ' in sector ' . $spacegame['player']['x'] . ',' . $spacegame['player']['y'] . ':<br />';
-		$message .= '<br />';
+		if ($player['base_id'] > 0) {
+			$message .= ' on a base';
+		}
+		
+		$message .= ' in sector ' . $spacegame['player']['x'] . ',' . $spacegame['player']['y'] . ':<br /><br />';
 
 		$fire_count = 0;
 

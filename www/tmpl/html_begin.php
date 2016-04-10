@@ -72,12 +72,48 @@
 			}
 
 			if (isset($spacegame['player'])) {
+				echo "var player_id = " . $spacegame['player']['record_id'] . ";\n";
+				echo "var alliance = " . ($spacegame['player']['alliance'] > 0 ? $spacegame['player']['alliance'] : 0) . ";\n";
 				echo "var base_id = " . $spacegame['player']['base_id'] . ";\n";
-				echo 'var base_x = ' . $spacegame['player']['base_x'] . "\n;";
-				echo 'var base_y = ' . $spacegame['player']['base_y'] . "\n;";
+				echo 'var base_x = ' . $spacegame['player']['base_x'] . ";\n";
+				echo 'var base_y = ' . $spacegame['player']['base_y'] . ";\n";
+			}
+
+
+			if (isset($players)) {
+				echo "var players = [\n";
+
+				foreach ($players as $record_id => $player) {
+
+					if ($record_id == $spacegame['player']['record_id']) {
+						continue;
+					}
+
+					if ($player['base_id'] <= 0) {
+						continue;
+					}
+
+					echo "{";
+					echo "id: '{$record_id}', ";
+					echo "caption: '". $player['caption'] ."', ";
+					echo "x: ". $player['x'] .", ";
+					echo "y: ". $player['y'] .", ";
+					echo "base_x: ". $player['base_x'] .", ";
+					echo "base_y: ". $player['base_y'] .", ";
+					echo "ar: ". $player['attack_rating'] .", ";
+					echo "ship: ". $player['ship_type'] .", ";
+					echo "alliance:" . ($player['alliance'] > 0 ? $player['alliance'] : 0) . ",";
+					echo "acl: {},";
+					echo "}, \n";
+				}
+
+				echo "];\n";
+
 			}
 
 			if (isset($spacegame['base'])) {
+				echo "var base_owner = " . $spacegame['base']['owner'] . ";\n";
+				echo "var base_alliance = " . ($spacegame['base']['alliance'] > 0 ? $spacegame['base']['alliance'] : 0) . ";\n";
 				echo "var base_place = " . $spacegame['base']['place'] . ";\n";
 				echo "var base_seed = ". $spacegame['base']['seed'] .";\n";
 
@@ -96,6 +132,8 @@
 					echo "}, \n";
 				}
 
+
+
 				echo "];\n";
 
 			}
@@ -104,8 +142,9 @@
 				echo "var base_seed = 0;\n";
 			}
 
-
-			echo "var form_id = '" . $_SESSION['form_id'] . "';\n";
+			if (isset($_SESSION['form_id'])) {
+				echo "var form_id = '" . $_SESSION['form_id'] . "';\n";
+			}
 		?>
 	</script>
 	<link rel="icon" type="image/png" href="res/redacted_icon.png" />

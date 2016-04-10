@@ -37,13 +37,17 @@
 				$scanner_players = array();
 
 				foreach ($players as $id => $player) {
+					if ($player['base_id'] > 0) {
+						continue;
+					}
+
 					if ($id == $spacegame['player']['record_id']) {
+						// Uncomment to show self, really just debug
 						//echo '<image class="o9" x="'. (88 + $player['x'] - $spacegame['player']['x']) .'" y="'. (38 + $spacegame['player']['y'] - $player['y']) .'" width="15" height="15" xlink:href="res/bdot.png" />';
 						continue;
 					}
 
-					if (
-						$player['x'] - $spacegame['player']['x'] >= -1 &&
+					if ($player['x'] - $spacegame['player']['x'] >= -1 &&
 						$player['x'] - $spacegame['player']['x'] <= 1 &&
 						$player['y'] - $spacegame['player']['y'] >= -1 &&
 						$player['y'] - $spacegame['player']['y'] <= 1) {

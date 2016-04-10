@@ -33,12 +33,20 @@
 		$spacegame['solution_racks'] = 0;
 		$spacegame['solution_stations'] = 0;
 
+		$spacegame['solution_damage'] = 0;
+
 		$spacegame['solution_groups'] = array();
 		$spacegame['solution_group_count'] = 0;
 
+		$ship_type = $spacegame['player']['ship_type'];
+
+		if (defined('OVERRIDE_SHIP_TYPE')) {
+			$ship_type = OVERRIDE_SHIP_TYPE;
+		}
+
 		$db = isset($db) ? $db : new DB;
 
-		$rs = $db->get_db()->query("select * from solutions where player = '". PLAYER_ID ."' and ship = '". $spacegame['player']['ship_type'] ."' order by sequence limit " . WEAPON_SOLUTION_LIMIT);
+		$rs = $db->get_db()->query("select * from solutions where player = '". PLAYER_ID ."' and ship = '". $ship_type ."' order by sequence limit " . WEAPON_SOLUTION_LIMIT);
 
 		$rs->data_seek(0);
 
@@ -46,8 +54,11 @@
 			$spacegame['solutions'][$row['record_id']] = $row;
 			$spacegame['solution_count']++;
 
-			$spacegame['solution_racks'] += $spacegame['weapons'][$row['weapon']]['racks'];
-			$spacegame['solution_stations'] += $spacegame['weapons'][$row['weapon']]['stations'];
+			$weapon = $spacegame['weapons'][$row['weapon']];
+			$spacegame['solution_racks'] += $weapon['racks'];
+			$spacegame['solution_stations'] += $weapon['stations'];
+
+			$spacegame['solution_damage'] += $weapon['volley'] * ($weapon['shield_damage'] + $weapon['armor_damage'] + $weapon['general_damage']);
 
 			if (!isset($spacegame['solution_groups'][$row['group']])) {
 				$spacegame['solution_groups'][$row['group']] = array();

@@ -40,6 +40,8 @@
 		$selectable_amount = false;
 		$selectable_caption = false;
 
+		// >0 tech amount with type=0 is deployable
+		// type=1 is for weapons/solutions
 		if ($spacegame['goods'][$tech['good']]['type'] > 0) {
 			continue;
 		}
@@ -60,7 +62,23 @@
 						a new port is created. Random start goods will be added and it will be
 						ready for trade.
 						<?php
-						$deploy_amount = 1;
+						
+						if ($spacegame['player']['base_id'] > 0) {
+							$deploy_amount = 0;
+							echo 'You must be in space to deploy a port package.';
+						}
+						elseif (!isset($spacegame['system'])) {
+							$deploy_amount = 0;
+							echo 'You must be in a solar system to deploy a port package.';
+						}
+						elseif ($spacegame['system']['protected']) {
+							$deploy_amount = 0;
+							echo 'You cannot build a port in protected systems.';
+						}
+						else {
+							$deploy_amount = 1;
+						}
+
 						break;
 
 					case 'shields':
@@ -91,7 +109,22 @@
 						echo 'will increase its output. A maximum of ' . SOLAR_COLLECTORS_PER_SECTOR . ' ';
 						echo 'collectors can be installed on any star.';
 						
-						$deploy_amount = 1;
+						if ($spacegame['player']['base_id'] > 0) {
+							$deploy_amount = 0;
+							echo 'You must be in space to deploy a solar collector.';
+						}
+						elseif (!isset($spacegame['system'])) {
+							$deploy_amount = 0;
+							echo 'You must be in a solar system to deploy a solar collector.';
+						}
+						elseif ($spacegame['system']['protected']) {
+							$deploy_amount = 0;
+							echo 'You cannot build a solar collector in protected systems.';
+						}
+						else {
+							$deploy_amount = 1;
+						}
+
 						break;
 
 					case 'drones':
@@ -135,7 +168,15 @@
 
 							echo 'This sector is at its limit for drones.';
 						}
-						elseif (isset($spacegame['system']) && $spacegame['system']['protected']) {
+						elseif ($spacegame['player']['base_id'] > 0) {
+							$deploy_amount = 0;
+							echo 'You must be in space to deploy ordnance.';
+						}
+						elseif (!isset($spacegame['system'])) {
+							$deploy_amount = 0;
+							echo 'You must be in a solar system to deploy ordnance.';
+						}
+						elseif ($spacegame['system']['protected']) {
 							$deploy_amount = 0;
 
 							echo 'You cannot deploy drones in a protected sector.';
@@ -182,9 +223,16 @@
 
 							echo 'This sector is at its limit for mines.';
 						}
-						elseif (isset($spacegame['system']) && $spacegame['system']['protected']) {
+						elseif ($spacegame['player']['base_id'] > 0) {
 							$deploy_amount = 0;
-
+							echo 'You must be in space to deploy ordnance.';
+						}
+						elseif (!isset($spacegame['system'])) {
+							$deploy_amount = 0;
+							echo 'You must be in a solar system to deploy ordnance';
+						}
+						elseif ($spacegame['system']['protected']) {
+							$deploy_amount = 0;
 							echo 'You cannot deploy mines in a protected sector.';
 						}
 						else {
@@ -203,8 +251,24 @@
 						echo 'A base provides a place for players to remain safe from ';
 						echo 'attack, as long as the defenses hold out...';
 
-						$deploy_amount = 1;
-						$selectable_caption = true;
+						if ($spacegame['player']['base_id'] > 0) {
+							$deploy_amount = 0;
+							echo 'You must be in space to deploy a base package.';
+						}
+						elseif (!isset($spacegame['system'])) {
+							$deploy_amount = 0;
+							echo 'You must be in a solar system to deploy a base package.';
+						}
+						elseif ($spacegame['system']['protected']) {
+							$deploy_amount = 0;
+							echo 'You cannot build a base in protected systems.';
+						}
+						else {
+							$deploy_amount = 1;
+							$selectable_caption = true;
+						}
+
+						
 						break;
 
 

@@ -102,10 +102,10 @@
 
 	function get_players($player) {
 
+		global $spacegame;
 		global $db;
 		$db = isset($db) ? $db : new DB;
 
-		$players = array();
 		$rs = null;
 
 		if ($player['base_id'] > 0) {
@@ -113,17 +113,30 @@
 			$x = $player['base_x'];
 			$y = $player['base_y'];
 
-			$rs = $db->get_db()->query("select * from players where death = 0 and ship_type > 0 and base_id = '". $player['base_id'] ."' and x >= $x - ". BASE_DISTANCE ." and x <= $x + ". BASE_DISTANCE ." and y >= $y - ". BASE_DISTANCE ." and y <= $y + ". BASE_DISTANCE ." order by rank desc, level desc, experience desc, caption");
+			$rs = $db->get_db()->query("select * from players where death = 0 and ship_type > 0 and base_id = '". $player['base_id'] ."' and base_x >= $x - ". BASE_DISTANCE ." and base_x <= $x + ". BASE_DISTANCE ." and base_y >= $y - ". BASE_DISTANCE ." and base_y <= $y + ". BASE_DISTANCE ." order by rank desc, level desc, experience desc, caption");
 		}
 		else {
 
-			$x = $player['x'];
-			$y = $player['y'];
+			if (isset($spacegame['base'])) {
+				$x = $player['x'];
+				$y = $player['y'];
+				$base_x = $player['base_x'];
+				$base_y = $player['base_y'];
 
-			$rs = $db->get_db()->query("select * from players where death = 0 and ship_type > 0 and base_id <= 0 and x >= $x - ". DOT_DISTANCE ." and x <= $x + ". DOT_DISTANCE ." and y >= $y - ". DOT_DISTANCE ." and y <= $y + ". DOT_DISTANCE ." order by rank desc, level desc, experience desc, caption");
+				$rs = $db->get_db()->query("select * from players where death = 0 and ship_type > 0 and (base_id <= 0 and x >= $x - ". DOT_DISTANCE ." and x <= $x + ". DOT_DISTANCE ." and y >= $y - ". DOT_DISTANCE ." and y <= $y + ". DOT_DISTANCE .") or (base_id = '". $spacegame['base']['record_id'] ."' and base_x >= $base_x - ". BASE_DISTANCE ." and base_x <= $base_x + ". BASE_DISTANCE ." and base_y >= $base_y - ". BASE_DISTANCE ." and base_y <= $base_y + ". BASE_DISTANCE .") order by rank desc, level desc, experience desc, caption");
+			}
+			else {
+				$x = $player['x'];
+				$y = $player['y'];
+
+				$rs = $db->get_db()->query("select * from players where death = 0 and ship_type > 0 and base_id <= 0 and x >= $x - ". DOT_DISTANCE ." and x <= $x + ". DOT_DISTANCE ." and y >= $y - ". DOT_DISTANCE ." and y <= $y + ". DOT_DISTANCE ." order by rank desc, level desc, experience desc, caption");
+			}
 		}
 
 		$rs->data_seek(0);
+
+		$players = array();
+
 		while ($row = $rs->fetch_assoc()) {
 			$players[$row['record_id']] = $row;
 		}
@@ -352,17 +365,11 @@
 
 
 
-
-		if (isset($spacegame['base'])) {
-			include_once('tmpl/viewport_base.php');	
-		}
-
-
-
-
-
-
-
+	if (isset($spacegame['base'])) {
+		include_once('tmpl/viewport_base.php');	
+	}
+	
+	
 
 
 		// All this is to make sure the viewport background isn't cut too short

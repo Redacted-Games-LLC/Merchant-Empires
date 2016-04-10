@@ -97,14 +97,22 @@
 			die();
 		}
 
-		if ($player['x'] != $spacegame['player']['x'] || $player['y'] != $spacegame['player']['y']) {
+		if ($player['base_id'] != $spacegame['player']['base_id']) {
 			header('Location: ship.php?page=weapons&rc=1200');
 			die();
 		}
 
-		if ($player['base_id'] != $spacegame['player']['base_id']) {
-			header('Location: ship.php?page=weapons&rc=1200');
-			die();
+		if ($player['base_id'] > 0) {
+			if ($player['base_x'] != $spacegame['player']['base_x'] || $player['base_y'] != $spacegame['player']['base_y']) {
+				header('Location: ship.php?page=weapons&rc=1200');
+				die();
+			}
+		}
+		else {
+			if ($player['x'] != $spacegame['player']['x'] || $player['y'] != $spacegame['player']['y']) {
+				header('Location: ship.php?page=weapons&rc=1200');
+				die();
+			}
 		}
 
 		$ship = $spacegame['ships'][$player['ship_type']];

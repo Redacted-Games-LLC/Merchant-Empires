@@ -152,8 +152,11 @@
 	// How far can a dot be seen on Deep Space Scanner
 	define('DOT_DISTANCE', 35);
 
-	// For computing attack/defence rating, each player level is worth 10% of an Attack Rating
-	define('ATTACK_RATING_PER_LEVEL', 0.1);
+	// For computing the part of attack rating based on player level
+	define('ATTACK_RATING_PER_LEVEL', 0.333);
+
+	// For computing the part of attack rating based on solution damage
+	define('ATTACK_RATING_PER_DAMAGE', 0.05);
 
 	// How much ship potency contributes to attack rating.
 	define('ATTACK_RATING_PER_POTENCY', 0.1);

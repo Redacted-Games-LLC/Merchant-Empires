@@ -27,7 +27,7 @@
 
 	<div class="viewport_hostile_ships">
 		<div class="viewport_hostile_ships_head">
-		Hostile Ships &amp; Ordnance
+			Hostile Ships &amp; Ordnance
 		</div>
 		<?php
 			$success = false;
@@ -37,8 +37,6 @@
 				$mines = 0;
 				$drones = 0;
 			
-				echo '&nbsp;<br />';
-
 
 				foreach($spacegame['sector']['m']['hostile_ordnance'] as $ordnance_id => $ordnance) {
 
@@ -71,61 +69,71 @@
 				else if ($player['alliance'] > 0 && $player['alliance'] == $spacegame['player']['alliance']) {
 					continue;
 				}
-				else if ($player['x'] == $spacegame['player']['x'] && $player['y'] == $spacegame['player']['y']) {
-					echo '<div class="hostile_ship">';
-
-					$ar = 1;
-					$dr = 1;
-					compute_ardr($player, $ar, $dr);
-
-					echo '<div class="ship_level">';
-					echo 'L' . $player['level'] . ' ';
-					echo $spacegame['races'][$player['race']]['caption'];
-					echo '</div>';
-
-					echo '<div class="ship_alliance">';
-					if ($player['alliance'] > 0) {
-						echo $spacegame['alliances'][$player['alliance']]['caption'];
-					}
-					else {
-						echo '<em>No Alliance</em>';
-					}
-					echo '</div>';
-
-					echo '<div class="ship_player_name">';
-
-					$weight = '';
-
-					if ($player['gold_expiration'] > PAGE_START_TIME) {
-						echo '<img src="res/gold.png" alt="gold" title="Gold Member" height="12" />';
-						$weight = '_bold';
-					}
-
-					echo '<a href="#" onclick="open_player(' . $id . ');">';
-					echo "<span class='normal{$weight}'>";
-					echo $player['caption'];
-					echo '</span>';
-					echo '</a>';
-
-					echo '</div>';
-
-					echo '<div class="ship_name">';
-					echo '<img class="bottom" src="res/unknown_ship.png" width="16" height="16" />';
-					echo $player['ship_name'] == '' ? DEFAULT_SHIP_NAME : $player['ship_name'];
-					echo '</div>';
-
-					echo '<div class="ship_links" title="Show Attack Popup" onclick="return open_attack(' . $player['record_id'] . ');">';
-						echo 'Attack';
-					echo '</div>';
-
-					echo '<div class="ship_type">';
-					echo "$ar:$dr " . $spacegame['ships'][$player['ship_type']]['caption'];
-					echo '</div>';
-
-					echo '&nbsp;';
-					echo '</div>';
-					$success = true;
+				else if ($player['x'] != $spacegame['player']['x'] || $player['y'] != $spacegame['player']['y']) {
+					continue;
 				}
+				else if ($player['base_id'] > 0) {
+					if ($spacegame['player']['base_id'] != $player['base_id']) {
+						continue;
+					}
+
+					if ($player['base_x'] != $spacegame['player']['base_x'] || $player['base_y'] != $spacegame['player']['base_y']) {
+						continue;
+					}	
+				}
+				
+
+				echo '<div class="hostile_ship">';
+
+				echo '<div class="ship_level">';
+				echo 'L' . $player['level'] . ' ';
+				echo $spacegame['races'][$player['race']]['caption'];
+				echo '</div>';
+
+				echo '<div class="ship_alliance">';
+				if ($player['alliance'] > 0) {
+					echo $spacegame['alliances'][$player['alliance']]['caption'];
+				}
+				else {
+					echo '<em>No Alliance</em>';
+				}
+				echo '</div>';
+
+				echo '<div class="ship_player_name">';
+
+				$weight = '';
+
+				if ($player['gold_expiration'] > PAGE_START_TIME) {
+					echo '<img src="res/gold.png" alt="gold" title="Gold Member" height="12" />';
+					$weight = '_bold';
+				}
+
+				echo '<a href="#" onclick="open_player(' . $id . ');">';
+				echo "<span class='normal{$weight}'>";
+				echo $player['caption'];
+				echo '</span>';
+				echo '</a>';
+
+				echo '</div>';
+
+				echo '<div class="ship_name">';
+				echo '<img class="bottom" src="res/unknown_ship.png" width="16" height="16" />';
+				echo $player['ship_name'] == '' ? DEFAULT_SHIP_NAME : $player['ship_name'];
+				echo '</div>';
+
+				echo '<div class="ship_links" title="Show Attack Popup" onclick="return open_attack(' . $player['record_id'] . ');">';
+					echo 'Attack';
+				echo '</div>';
+
+				echo '<div class="ship_type">';
+				echo $player['attack_rating'] . ':' . compute_dr($player);
+				echo ' ' . $spacegame['ships'][$player['ship_type']]['caption'];
+				echo '</div>';
+
+				echo '&nbsp;';
+				echo '</div>';
+				$success = true;
+			
 			}
 
 			if (!$success) {
@@ -149,8 +157,6 @@
 
 				$mines = 0;
 				$drones = 0;
-
-				echo '&nbsp;<br />';
 
 				foreach($spacegame['sector']['m']['allied_ordnance'] as $ordnance_id => $ordnance) {
 
@@ -178,62 +184,67 @@
 				if ($id == $spacegame['player']['record_id']) {
 					continue;
 				}
-
-				if ($player['alliance'] > 0 && $player['alliance'] == $spacegame['player']['alliance']) {
-					if ($player['x'] == $spacegame['player']['x'] && $player['y'] == $spacegame['player']['y']) {
-						echo '<div class="allied_ship">';
-
-						$ar = 1;
-						$dr = 1;
-						compute_ardr($player, $ar, $dr);
-
-						echo '<div class="ship_level">';
-						echo 'L' . $player['level'] . ' ';
-						echo $spacegame['races'][$player['race']]['caption'];
-						echo '</div>';
-
-						echo '<div class="ship_alliance">';
-						if ($player['alliance'] > 0) {
-							echo $spacegame['alliances'][$player['alliance']]['caption'];
-						}
-						else {
-							echo '<em>No Alliance</em>';
-						}
-						echo '</div>';
-
-						echo '<div class="ship_player_name">';
-						
-						if ($player['gold_expiration'] > PAGE_START_TIME) {
-							echo '<img src="res/gold.png" alt="gold" title="Gold Member" height="12" />';
-						}
-
-						echo '<a href="#" onclick="open_player(' . $id . ');">';
-						echo $player['caption'];
-						echo '</a>';
-						
-						echo '</div>';
-
-						echo '<div class="ship_name">';
-						echo '<img class="bottom" src="res/unknown_ship.png" width="16" height="16" />';
-						echo $player['ship_name'] == '' ? DEFAULT_SHIP_NAME : $player['ship_name'];
-						echo '</div>';
-						
-						echo '<div class="ship_links">';
-						echo '&nbsp;';
-						echo '</div>';
-
-						echo '<div class="ship_type">';
-						echo "$ar:$dr " . $spacegame['ships'][$player['ship_type']]['caption'];
-						echo '</div>';
-
-						echo '&nbsp;';
-						echo '</div>';
-						$success = true;
-					}
-				}
-				else {
+				else if ($player['alliance'] <= 0 || $player['alliance'] != $spacegame['player']['alliance']) {
 					continue;
 				}
+				else if ($player['x'] != $spacegame['player']['x'] || $player['y'] != $spacegame['player']['y']) {
+					continue;
+				}
+				else if ($player['base_id'] > 0) {
+					if ($spacegame['player']['base_id'] != $player['base_id']) {
+						continue;
+					}
+
+					if ($player['base_x'] != $spacegame['player']['base_x'] || $player['base_y'] != $spacegame['player']['base_y']) {
+						continue;
+					}	
+				}
+
+				echo '<div class="allied_ship">';
+
+				echo '<div class="ship_level">';
+				echo 'L' . $player['level'] . ' ';
+				echo $spacegame['races'][$player['race']]['caption'];
+				echo '</div>';
+
+				echo '<div class="ship_alliance">';
+				if ($player['alliance'] > 0) {
+					echo $spacegame['alliances'][$player['alliance']]['caption'];
+				}
+				else {
+					echo '<em>No Alliance</em>';
+				}
+				echo '</div>';
+
+				echo '<div class="ship_player_name">';
+				
+				if ($player['gold_expiration'] > PAGE_START_TIME) {
+					echo '<img src="res/gold.png" alt="gold" title="Gold Member" height="12" />';
+				}
+
+				echo '<a href="#" onclick="open_player(' . $id . ');">';
+				echo $player['caption'];
+				echo '</a>';
+				
+				echo '</div>';
+
+				echo '<div class="ship_name">';
+				echo '<img class="bottom" src="res/unknown_ship.png" width="16" height="16" />';
+				echo $player['ship_name'] == '' ? DEFAULT_SHIP_NAME : $player['ship_name'];
+				echo '</div>';
+				
+				echo '<div class="ship_links">';
+				echo '&nbsp;';
+				echo '</div>';
+
+				echo '<div class="ship_type">';
+				echo $player['attack_rating'] . ':' . compute_dr($player);
+				echo ' ' . $spacegame['ships'][$player['ship_type']]['caption'];
+				echo '</div>';
+
+				echo '&nbsp;';
+				echo '</div>';
+				$success = true;
 			}
 
 			if (!$success) {
@@ -242,3 +253,4 @@
 			}
 		?>
 	</div>
+	<br class="clear" />

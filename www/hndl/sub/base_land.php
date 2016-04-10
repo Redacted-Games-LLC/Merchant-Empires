@@ -29,7 +29,19 @@
 	do { // dummy loop
 
 		// This sub page should have common stuff loaded by its parent.
-		
+		if ($spacegame['base']['owner'] != $spacegame['player']['record_id']) {
+			if ($spacegame['base']['alliance'] > 0) {
+				if ($spacegame['base']['alliance'] != $spacegame['player']['alliance']) {
+					$return_codes[] = 1201;
+					break;
+				}
+			}
+			else {
+				$return_codes[] = 1201;
+				break;
+			}
+		}
+
 		if ($spacegame['player']['base_id'] > 0) {
 			$return_codes[] = 1113;
 			break;

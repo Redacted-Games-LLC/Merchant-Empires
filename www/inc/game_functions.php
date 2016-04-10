@@ -86,25 +86,15 @@
 		return true;
 	}
 
-	function compute_ardr($player, &$ar, &$dr) {
+
+	function compute_dr($player) {
 		
-		$ar = 0;
-		$ar += $player['level'] * ATTACK_RATING_PER_LEVEL;
-
-		
-
-
-		$ar = round(max($ar, 1));
-
 		$dr = 0;
 		$dr += $player['armor'] * DEFENSE_RATING_PER_ARMOR;
 		$dr += $player['shields'] * DEFENSE_RATING_PER_SHIELD;
 
-		$dr = round(max($dr, 1));
+		return round(max($dr, 1));
 	}
-
-
-
 
 
 ?>

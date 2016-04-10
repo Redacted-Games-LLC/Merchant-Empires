@@ -65,17 +65,22 @@
 			$new_rank = $spacegame['player']['rank'];
 		}
 
+		include_once('inc/solutions.php');
+
+		$ar = $spacegame['solution_damage'] * ATTACK_RATING_PER_DAMAGE;
+		$ar += $spacegame['player']['level'] * ATTACK_RATING_PER_LEVEL;
+		$ar = round(max($ar, 1));
 
 		$db = isset($db) ? $db : new DB;
 		
-		if (!($st = $db->get_db()->prepare('update players set level = ?, rank = ? where record_id = ? and level = ? and rank = ?'))) {
+		if (!($st = $db->get_db()->prepare('update players set level = ?, rank = ?, attack_rating = ? where record_id = ? and level = ? and rank = ?'))) {
 			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			$return_codes[] = 1006;
 			break;
 		}
 		
 		$player_id = PLAYER_ID;
-		$st->bind_param("iiiii", $requested_level, $new_rank, $player_id, $spacegame['player']['level'], $spacegame['player']['rank']);
+		$st->bind_param("iiiiii", $requested_level, $new_rank, $ar, $player_id, $spacegame['player']['level'], $spacegame['player']['rank']);
 		
 		if (!$st->execute()) {
 			$return_codes[] = 1006;

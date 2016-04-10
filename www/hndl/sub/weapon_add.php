@@ -187,6 +187,26 @@
 			break;
 		}
 
+		$weapon = $spacegame['weapons'][$weapon_add];
+		$ar = $spacegame['solution_damage'] + ($weapon['volley'] * ($weapon['shield_damage'] + $weapon['armor_damage'] + $weapon['general_damage']));
+		$ar *= ATTACK_RATING_PER_DAMAGE;
+		$ar += $spacegame['player']['level'] * ATTACK_RATING_PER_LEVEL;
+		$ar = round(max($ar, 1));
+
+		if (!($st = $db->get_db()->prepare("update players set attack_rating = ? where record_id = ?"))) {
+			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			$return_codes[] = 1006;
+			break;
+		}
+		
+		$st->bind_param("ii", $ar, $player_id);
+		
+		if (!$st->execute()) {
+			$return_codes[] = 1006;
+			error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			break;
+		}
+
 		$return_codes[] = 1193;
 
 	} while (false);
