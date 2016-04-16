@@ -46,13 +46,13 @@
 		$password1 = $_POST['password1'];
 	
 		// Get stuff from db
-		$db = isset($db) ? $db : new DB;
+		$db_user = isset($db_user) ? $db_user : new DB(true);
 
 		$ip = inet_ntop(inet_pton($_SERVER['REMOTE_ADDR']));
 		$id = 0;
 		$salt = '';
 
-		$rs = $db->get_db()->query("select record_id, password2 as salt from users where username = '" . strtolower($username) . "' limit 1");
+		$rs = $db_user->get_db()->query("select record_id, password2 as salt from users where username = '" . strtolower($username) . "' limit 1");
 		
 		$rs->data_seek(0);
 		if ($row = $rs->fetch_assoc()) {
@@ -63,7 +63,7 @@
 		$time = PAGE_START_TIME;
 		$attempts = array();
 
-		$rs = $db->get_db()->query("select * from login_history where ip = '$ip' order by time desc limit 3");
+		$rs = $db_user->get_db()->query("select * from login_history where ip = '$ip' order by time desc limit 3");
 		
 		$rs->data_seek(0);
 		while ($row = $rs->fetch_assoc()) {
@@ -115,8 +115,8 @@
 		if ($attempt > 0) {
 			// Update existing login with new attempt.
 
-			if (!($st = $db->get_db()->prepare('update login_history set time = ?, attempts = attempts + 1 where record_id = ?'))) {
-				error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			if (!($st = $db_user->get_db()->prepare('update login_history set time = ?, attempts = attempts + 1 where record_id = ?'))) {
+				error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db_user->get_db()->errno . ") " . $db_user->get_db()->error);
 				$return_codes[] = 1006;
 				break;
 			}
@@ -135,8 +135,8 @@
 			$st = null;
 
 			if ($id > 0) {
-				if (!($st = $db->get_db()->prepare('insert into login_history (user, time, ip, attempts) values (?, ?, ?, 1)'))) {
-					error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+				if (!($st = $db_user->get_db()->prepare('insert into login_history (user, time, ip, attempts) values (?, ?, ?, 1)'))) {
+					error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db_user->get_db()->errno . ") " . $db_user->get_db()->error);
 					$return_codes[] = 1006;
 					break;
 				}
@@ -144,8 +144,8 @@
 				$st->bind_param('iis', $id, $time, $ip);
 			}
 			else {
-				if (!($st = $db->get_db()->prepare('insert into login_history (user, time, ip, attempts) values (NULL, ?, ?, 1)'))) {
-					error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+				if (!($st = $db_user->get_db()->prepare('insert into login_history (user, time, ip, attempts) values (NULL, ?, ?, 1)'))) {
+					error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db_user->get_db()->errno . ") " . $db_user->get_db()->error);
 					$return_codes[] = 1006;
 					break;
 				}
@@ -168,7 +168,7 @@
 		
 		$hashed_password = hash('sha512', $salt . $password1);
 
-		$rs = $db->get_db()->query("select record_id as id, ban_code, ban_timeout from users where username = '" . strtolower($username) . "' and password1 = '". $hashed_password ."' limit 1");
+		$rs = $db_user->get_db()->query("select record_id as id, ban_code, ban_timeout from users where username = '" . strtolower($username) . "' and password1 = '". $hashed_password ."' limit 1");
 		
 		$rs->data_seek(0);
 		if ($row = $rs->fetch_assoc()) {
@@ -183,7 +183,7 @@
 
 			if (LOGIN_LOCKED || START_OF_ROUND - PAGE_START_TIME > 0) {
 
-				$rs = $db->get_db()->query("select count(*) as count from users, user_fields where user_fields.`group` = 'admin' and users.username = '" . $username . "' and users.record_id = user_fields.user");
+				$rs = $db_user->get_db()->query("select count(*) as count from users, user_fields where user_fields.`group` = 'admin' and users.username = '" . $username . "' and users.record_id = user_fields.user");
 
 				$rs->data_seek(0);
 				
@@ -201,8 +201,8 @@
 
 			$session_id = session_id();
 			
-			if (!($st = $db->get_db()->prepare("update users set session_id = ?, session_time = ? where record_id = ?"))) {
-				error_log(__FILE__ . '::' . __LINE__ . "Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			if (!($st = $db_user->get_db()->prepare("update users set session_id = ?, session_time = ? where record_id = ?"))) {
+				error_log(__FILE__ . '::' . __LINE__ . "Prepare failed: (" . $db_user->get_db()->errno . ") " . $db_user->get_db()->error);
 				$return_codes[] = 1006;
 				break;
 			}
@@ -211,7 +211,7 @@
 			
 			if (!$st->execute()) {
 				$return_codes[] = 1006;
-				error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+				error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db_user->get_db()->errno . ") " . $db_user->get_db()->error);
 				break;
 			}
 			

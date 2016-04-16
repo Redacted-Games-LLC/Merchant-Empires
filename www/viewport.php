@@ -123,7 +123,7 @@
 				$base_x = $player['base_x'];
 				$base_y = $player['base_y'];
 
-				$rs = $db->get_db()->query("select * from players where death = 0 and ship_type > 0 and (base_id <= 0 and x >= $x - ". DOT_DISTANCE ." and x <= $x + ". DOT_DISTANCE ." and y >= $y - ". DOT_DISTANCE ." and y <= $y + ". DOT_DISTANCE .") or (base_id = '". $spacegame['base']['record_id'] ."' and base_x >= $base_x - ". BASE_DISTANCE ." and base_x <= $base_x + ". BASE_DISTANCE ." and base_y >= $base_y - ". BASE_DISTANCE ." and base_y <= $base_y + ". BASE_DISTANCE .") order by rank desc, level desc, experience desc, caption");
+				$rs = $db->get_db()->query("select * from players where death = 0 and ship_type > 0 and ((base_id <= 0 and x >= $x - ". DOT_DISTANCE ." and x <= $x + ". DOT_DISTANCE ." and y >= $y - ". DOT_DISTANCE ." and y <= $y + ". DOT_DISTANCE .") or (base_id = '". $spacegame['base']['record_id'] ."' and base_x >= $base_x - ". BASE_DISTANCE ." and base_x <= $base_x + ". BASE_DISTANCE ." and base_y >= $base_y - ". BASE_DISTANCE ." and base_y <= $base_y + ". BASE_DISTANCE .")) order by rank desc, level desc, experience desc, caption");
 			}
 			else {
 				$x = $player['x'];
@@ -140,7 +140,7 @@
 		while ($row = $rs->fetch_assoc()) {
 			$players[$row['record_id']] = $row;
 		}
-
+	
 		return $players;
 	}	
 

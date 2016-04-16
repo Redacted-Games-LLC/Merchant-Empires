@@ -42,9 +42,9 @@
 		$user = 0;
 		$time = 0;
 
-		$db = isset($db) ? $db : new DB;
+		$db_user = isset($db_user) ? $db_user : new DB(true);
 
-		$rs = $db->get_db()->query("select `user`, `time` from gold_keys where `key` = '". $key ."' and `used` <= 0 limit 1");
+		$rs = $db_user->get_db()->query("select `user`, `time` from gold_keys where `key` = '". $key ."' and `used` <= 0 limit 1");
 		$rs->data_seek(0);
 		
 		if ($row = $rs->fetch_assoc()) {
@@ -64,8 +64,8 @@
 		$user_id = USER_ID;
 		$time_now = PAGE_START_TIME;
 		
-		if (!($st = $db->get_db()->prepare('update gold_keys set `user` = ?, `used` = ? where `key` = ? and used <= 0 and (`user` is null or `user` = ?)'))) {
-			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+		if (!($st = $db_user->get_db()->prepare('update gold_keys set `user` = ?, `used` = ? where `key` = ? and used <= 0 and (`user` is null or `user` = ?)'))) {
+			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db_user->get_db()->errno . ") " . $db_user->get_db()->error);
 			$return_codes[] = 1006;
 			break;
 		}
@@ -78,7 +78,7 @@
 			break;
 		}
 
-		if ($db->get_db()->affected_rows <= 0) {
+		if ($db_user->get_db()->affected_rows <= 0) {
 			$return_codes[] = 1126;
 			break;
 		}
@@ -88,6 +88,8 @@
 		if ($exp < PAGE_START_TIME) {
 			$exp = PAGE_START_TIME;
 		}
+
+		$db = isset($db) ? $db : new DB;
 
 		$exp += $time;
 

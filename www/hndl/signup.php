@@ -105,9 +105,9 @@
 		$hashed_password = hash('sha512', $salt . $password1);
 		$time = PAGE_START_TIME;
 		
-		$db = isset($db) ? $db : new DB;
+		$db_user = isset($db_user) ? $db_user : new DB(true);
 		
-		$rs = $db->get_db()->query("select record_id from users where username = '$username' limit 1");
+		$rs = $db_user->get_db()->query("select record_id from users where username = '$username' limit 1");
 		
 		$rs->data_seek(0);
 		if ($row = $rs->fetch_assoc()) {
@@ -115,8 +115,8 @@
 			break;
 		}
 
-		if (!($st = $db->get_db()->prepare('INSERT INTO users (username, password1, password2, session_id, session_time) VALUES (?,?,?,?,?)'))) {
-			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+		if (!($st = $db_user->get_db()->prepare('INSERT INTO users (username, password1, password2, session_id, session_time) VALUES (?,?,?,?,?)'))) {
+			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db_user->get_db()->errno . ") " . $db_user->get_db()->error);
 			$return_codes[] = 1006;
 			break;
 		}
@@ -129,7 +129,7 @@
 			break;
 		}
 		
-		$id = $db->last_insert_id('users');
+		$id = $db_user->last_insert_id('users');
 		
 		if ($id > 0) {
 			// Successfully signed up a user.
@@ -138,7 +138,7 @@
 		}
 		else {
 			$return_codes[] = '1006';
-			error_log(__FILE__ . '::' . __LINE__ . " Failed to get last insert id after successful insertion. (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			error_log(__FILE__ . '::' . __LINE__ . " Failed to get last insert id after successful insertion. (" . $db_user->get_db()->errno . ") " . $db_user->get_db()->error);
 			// TODO: Better way to deal with this situation.
 			break;
 		}

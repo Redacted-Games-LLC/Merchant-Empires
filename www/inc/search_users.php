@@ -36,7 +36,7 @@
 			$spacegame['page_number'] = 1;
 		}
 
-		$db = isset($db) ? $db : new DB;
+		$db = isset($db) ? $db : new DB(true);
 
 		if (isset($_REQUEST['search']) && validate_username($_REQUEST['search'])) {
 			$spacegame['search_results'] = array();

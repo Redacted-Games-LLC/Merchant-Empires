@@ -39,9 +39,16 @@
 		
 		private $db = null;
 		
-		function __construct() {
+		function __construct($user = false) {
 
-			$db = @(new MySQLi(DB_HOST, DB_USER, DB_PASS, DB_NAME));
+			$db = null;
+
+			if ($user) {
+				$db = @(new MySQLi(USER_DB_HOST, USER_DB_USER, USER_DB_PASS, USER_DB_NAME));
+			}
+			else {
+				$db = @(new MySQLi(DB_HOST, DB_USER, DB_PASS, DB_NAME));
+			}
 			
 			if ($db->connect_errno) {
 				error_log(__FILE__ . '::' . __LINE__ . 'Database connect error: ' . $db->connect_error);

@@ -65,7 +65,7 @@
 		}
 
 		
-		$db = isset($db) ? $db : new DB;
+		$db = isset($db) ? $db : new DB(true);
 
 
 		$user_id = 0;

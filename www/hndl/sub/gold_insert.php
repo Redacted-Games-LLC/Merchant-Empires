@@ -28,7 +28,13 @@
 	$return_vars['page'] = 'gold';
 	
 	do { // Dummy Loop
-		
+
+		if (!get_user_field(USER_ID, 'admin', 'gold')) {
+			$return_page = 'viewport';
+			$return_codes[] = 1121;
+			break;
+		}
+
 		if (!isset($_REQUEST['keys']) || strlen($_REQUEST['keys']) < MINIMUM_KEY_LENGTH) {
 			$return_codes[] = 1121;
 			break;
@@ -37,13 +43,17 @@
 		$keys = explode("\n", $_REQUEST['keys']);
 
 
-		$db = isset($db) ? $db : new DB;
+		$db_user = isset($db_user) ? $db_user : new DB(true);
 
-		if (!($st = $db->get_db()->prepare('insert into gold_keys (`type`, `key`, `time`) values (?, ?, ?)'))) {
-			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+		if (!($st = $db_user->get_db()->prepare('insert into gold_keys (`type`, `key`, `time`) values (?, ?, ?)'))) {
+			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db_user->get_db()->errno . ") " . $db_user->get_db()->error);
 			$return_codes[] = 1006;
 			break;
 		}
+
+		$type = 0;
+		$key = '';
+		$time = PAGE_START_TIME;
 			
 		$st->bind_param("isi", $type, $key, $time);
 		

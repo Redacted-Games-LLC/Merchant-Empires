@@ -70,9 +70,7 @@
 	define('GLOBAL_SALT', '0005de6b8ebb34f3119d268c634557bc');
 
 	// Enter a username here to bypass login and signup restrictions. This name will
-	// be granted admin status when it signs up. You should use this when setting
-	// up a game server then blank it out.
-
+	// be granted admin status when it signs up.
 	define('SIGNUP_ADMIN', '');
 
 

@@ -35,9 +35,9 @@
 		}
 
 		
-		$db = isset($db) ? $db : new DB;
+		$db_user = isset($db_user) ? $db_user : new DB(true);
 
-		$rs = $db->get_db()->query("select record_id, username, session_time from users where lower(username) = lower('". $_REQUEST['user'] ."')");
+		$rs = $db_user->get_db()->query("select record_id, username, session_time from users where lower(username) = lower('". $_REQUEST['user'] ."')");
 
 		$rs->data_seek(0);
 
@@ -50,6 +50,8 @@
 
 		$spacegame['user_info']['players'] = array();
 		$spacegame['user_info']['player_count'] = 0;
+
+		$db = isset($db) ? $db : new DB();
 
 		$rs = $db->get_db()->query("select players.caption, user_players.session_time from players, user_players where user_players.player = players.record_id and user_players.user = '". $spacegame['user_info']['record_id'] ."'");
 

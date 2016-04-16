@@ -42,26 +42,28 @@
 
 		$player_name = $_REQUEST['player'];
 
+		$user_id = 0;
 		$user = 0;
 
-		$db = isset($db) ? $db : new DB;
+		$db_user = isset($db_user) ? $db_user : new DB(true);
 
-		$rs = $db->get_db()->query("select `user` from gold_keys where `key` = '". $key ."' and `used` <= 0 limit 1");
+		$rs = $db_user->get_db()->query("select `user` from gold_keys where `key` = '". $key ."' and `used` <= 0 limit 1");
 		$rs->data_seek(0);
 		
 		if ($row = $rs->fetch_assoc()) {
-			$user = $row['user'];
+			$user_id = $row['user'];
 		}
 		else {
 			$return_codes[] = 1123;
 			break;
 		}
 
-		if ($user > 0 && $user != USER_ID) {
+		if ($user_id != USER_ID) {
 			$return_codes[] = 1123;
 			break;
 		}
 
+		$db = isset($db) ? $db : new DB;
 
 		$rs = $db->get_db()->query("select user_players.user as user_id from user_players, players where user_players.player = players.record_id and lower(players.caption) = '". strtolower($player_name) ."'");
 		$rs->data_seek(0);
@@ -73,12 +75,9 @@
 			$return_codes[] = 1130;
 			break;
 		}
-
-
-		$user_id = USER_ID;
 		
-		if (!($st = $db->get_db()->prepare('update gold_keys set `user` = ? where `key` = ? and `used` <= 0 and (`user` is null or `user` = ?)'))) {
-			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+		if (!($st = $db_user->get_db()->prepare('update gold_keys set `user` = ? where `key` = ? and `used` <= 0 and (`user` is null or `user` = ?)'))) {
+			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db_user->get_db()->errno . ") " . $db_user->get_db()->error);
 			$return_codes[] = 1006;
 			break;
 		}
@@ -91,7 +90,7 @@
 			break;
 		}
 
-		if ($db->get_db()->affected_rows <= 0) {
+		if ($db_user->get_db()->affected_rows <= 0) {
 			$return_codes[] = 1126;
 			break;
 		}

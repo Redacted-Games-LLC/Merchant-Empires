@@ -42,6 +42,9 @@
 
 		$player_id = PLAYER_ID;
 
+		$db_user = isset($db_user) ? $db_user : new DB(true);
+		$db = isset($db) ? $db : new DB;
+
 		if (!($st = $db->get_db()->prepare('update players set gold_expiration = 0 where record_id = ?'))) {
 			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			$return_codes[] = 1006;
@@ -67,12 +70,17 @@
 		$exp = $days * 86400;
 		$user_id = USER_ID;
 
+		/*
+		 * This is not meant to be cryptographically secure. The key is bound to the user and as long as it remains
+		 * so it will be as secure as anything else.
+		 */
+
 		mt_srand(PAGE_START_TIME * PLAYER_ID);
 		$key = 'REDACTED-TIME-' . sprintf('%03d', $days) . '-' . dechex($user_id) . '-' . dechex(END_OF_ROUND) . '-' . dechex(mt_rand());
 		$type = 2;
 		
-		if (!($st = $db->get_db()->prepare('insert into gold_keys (`key`, `time`, `type`, `user`) values (?, ?, ?, ?)'))) {
-			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+		if (!($st = $db_user->get_db()->prepare('insert into gold_keys (`key`, `time`, `type`, `user`) values (?, ?, ?, ?)'))) {
+			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db_user->get_db()->errno . ") " . $db_user->get_db()->error);
 			$return_codes[] = 1006;
 			break;
 		}
@@ -85,7 +93,7 @@
 			break;
 		}
 
-		if ($db->get_db()->affected_rows <= 0) {
+		if ($db_user->get_db()->affected_rows <= 0) {
 			$return_codes[] = 1126;
 			break;
 		}

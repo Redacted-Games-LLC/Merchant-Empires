@@ -100,9 +100,10 @@
 		
 		$user_id = 0;
 
-		$db = isset($db) ? $db : new DB;
+		$db_user = isset($db_user) ? $db_user : new DB(true);
+		$db = isset($db) ? $db : new DB();
 
-		$rs = $db->get_db()->query("select record_id from users where record_id = '{$supplied_user_id}' and session_id = '{$supplied_session_id}' limit 1");
+		$rs = $db_user->get_db()->query("select record_id from users where record_id = '{$supplied_user_id}' and session_id = '{$supplied_session_id}' limit 1");
 
 		$rs->data_seek(0);
 		if ($row = $rs->fetch_assoc()) {
@@ -202,10 +203,11 @@
 		}
 
 		if (!isset($user_fields[$user])) {
-			global $db;
-			$db = $db == null ? new DB : $db;
+			
+			global $db_user;
+			$db_user = isset($db_user) ? $db_user : new DB(true);
 
-			$rs = $db->get_db()->query("select * from user_fields where user = '". $user ."'");
+			$rs = $db_user->get_db()->query("select * from user_fields where user = '". $user ."'");
 
 			$rs->data_seek(0);
 			while ($row = $rs->fetch_assoc()) {
@@ -239,8 +241,8 @@
 	
 	function set_user_field($user, $group, $key, $value = null) {
 
-		global $db;
-		$db = $db == null ? new DB : $db;
+		global $db_user;
+		$db_user = isset($db_user) ? $db_user : new DB(true);
 
 		if (preg_match('/^[a-zA-Z0-9]{1,16}$/', $group) <= 0) {
 			return false;
@@ -252,8 +254,8 @@
 	
 		if ($value == null) {
 
-			if (!($st = $db->get_db()->prepare("delete from user_fields where `user` = ? and `group` = ? and `key` = ?"))) {
-				error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			if (!($st = $db_user->get_db()->prepare("delete from user_fields where `user` = ? and `group` = ? and `key` = ?"))) {
+				error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db_user->get_db()->errno . ") " . $db_user->get_db()->error);
 				return false;
 			}
 
@@ -266,8 +268,8 @@
 		}
 		else {
 
-			if (!($st = $db->get_db()->prepare("insert into user_fields (`user`, `group`, `key`, `value`) values (?, ?,?,?)"))) {
-				error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			if (!($st = $db_user->get_db()->prepare("insert into user_fields (`user`, `group`, `key`, `value`) values (?, ?,?,?)"))) {
+				error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db_user->get_db()->errno . ") " . $db_user->get_db()->error);
 				return false;
 			}
 
@@ -279,7 +281,7 @@
 			}
 		}
 
-		return $db->get_db()->affected_rows > 0;
+		return $db_user->get_db()->affected_rows > 0;
 	}
 
 

@@ -29,9 +29,9 @@
 		$spacegame['gold_keys'] = array();
 		$spacegame['gold_key_count'] = 0;
 		
-		$db = isset($db) ? $db : new DB;
+		$db_user = isset($db_user) ? $db_user : new DB(true);
 
-		$rs = $db->get_db()->query("select * from gold_keys where user = '". USER_ID ."' and used <= 0 order by record_id");
+		$rs = $db_user->get_db()->query("select * from gold_keys where user = '". USER_ID ."' and used <= 0 order by record_id");
 		
 		$rs->data_seek(0);
 		while ($row = $rs->fetch_assoc()) {
