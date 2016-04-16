@@ -27,25 +27,8 @@
  *
  * ---------------------------------------------------------------------------
  *
- *
  * Copy this file to DBCONFIG.php and edit the following fields.
  */
-
-
-	// DELETE THE FOLLOWING LINE WHEN YOU HAVE FINISHED MAKING CHANGES.
-	die('I did not delete the line I was supposed to in DBCONFIG.php when done.');
-
-	// This information is for the database server which holds all game tables
-	define('DB_HOST', 'localhost');
-	define('DB_USER', 'spacegame');
-	define('DB_PASS', 'db password here');
-	define('DB_NAME', 'spacegame');
-
-	// This information is for the database server which holds user tables
-	define('USER_DB_HOST', 'localhost');
-	define('USER_DB_USER', 'spacegame');
-	define('USER_DB_PASS', 'db password here');
-	define('USER_DB_NAME', 'spacegame');
 
 	// Email for support
 	define('EMAIL', 'email_here');
@@ -63,16 +46,28 @@
 	// If you set this to about 15 or 20 hexadecimal bytes you can remove the
 	// spaces and dump the output into this define.
 	//
-	// CHANGING THIS INVALIDATES ALL PASSWORDS FOR ALL USERS. You should change
-	// this when you first setup the user tables above and after that only if
-	// compromised or the user db changes.
-
-	define('GLOBAL_SALT', '0005de6b8ebb34f3119d268c634557bc');
+	// Changing this should not affect existing users, only new signups. It should
+	// be safe to occasionally update this, and maybe you should do just that.
+	define('GLOBAL_SALT', 'c3c2526615fb94a6b32681b5c11403e3');
 
 	// Enter a username here to bypass login and signup restrictions. This name will
-	// be granted admin status when it signs up.
+	// be granted admin status when it signs up. This only needs to be used once 
+	// when setting up the round or if no admin accounts are accessible.
 	define('SIGNUP_ADMIN', '');
 
+	// This information is for the database server which holds all game tables
+	define('DB_HOST', 'localhost');
+	define('DB_USER', 'spacegame');
+	define('DB_PASS', 'db password here');
+	define('DB_NAME', 'spacegame');
 
+	// This information is for the database server which holds user tables
+	define('USER_DB_HOST', 'localhost');
+	define('USER_DB_USER', 'spacegame');
+	define('USER_DB_PASS', 'db password here');
+	define('USER_DB_NAME', 'spacegame');
+
+	// DELETE THE FOLLOWING LINE WHEN YOU HAVE FINISHED MAKING CHANGES.
+	die('I did not delete the line I was supposed to in DBCONFIG.php when done.');
 
 ?>

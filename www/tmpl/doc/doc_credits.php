@@ -28,6 +28,7 @@
 	<ul>
 		<li>Bryan Brunton, original developer of Merchant Empires</li>
 		<li>Danny Froberg and the AdvancedPowers Merchant Empires team and players</li>
+		<li>Starfield background image from www.publicdomainpictures.net</li>
 		<li>Planetoid/Solar images from NASA.gov</li>
 		<li>Fauna good image from www.publicdomainpictures.net</li>
 		<li>Plastics good image from https://openclipart.org/detail/60451/recycle-can</li>

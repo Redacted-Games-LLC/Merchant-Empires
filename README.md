@@ -1,93 +1,101 @@
 
-NOTICE: Before you can start this game you need to set it up.
+NOTICE: Before you can start this game you will need to set it up.
 
 WARNING: Game will not be ready to play until these steps are completed,
 so don't just unzip the source into the web root, put it somewhere outside
 of the web root and protect web access to it until you are ready to go.
 
-0) Install Apache, PHP, and MySQL.
+0) Install Apache, PHP, and MySQL, enable php mods gd2 and mysqli. Make
+sure to allow for script/execution time of up to 2 minutes during setup
+which you can reduce to 30s for production.
 
-1) Enable php mods gd2 and mysqli.
+1) Create TWO schemas on MySQL, one for the user logins and another for
+the game; grant privs to access them.
 
-2) Ensure that everything from step 1 and 2 is working, perhaps by 
-using <?php phpinfo(); ?> through a served up page.
+2) Insert the db/structure_users.sql, db/structure_game.sql, and db/data.sql, 
+followed by the files in db/patches in order. There are usually no patches
+in a release version. Note db/data.sql goes into the game schema. There is
+no data to insert into the user schema.
 
-3) Create a schema on MySQL for the game and grant privs to a user
-so it can access it.
+3) Copy www/DBCONFIG.TEMPLATE.php to www/DBCONFIG.php and then edit the new
+DBCONFIG.php file using the instructions inside of it. Make sure to change
+GLOBAL_SALT and enter a name into SIGNUP_ADMIN to prepare for your first
+admin.
 
-4) Insert the db/structure.sql, db/data.sql, and the files in db/patches
-in order.
+4) Open up www/inc/config.php and make sure to edit the following items:
 
-5) Copy www/DBCONFIG.TEMPLATE.php to www/DBCONFIG.php and then edit the
-new DBCONFIG.php file using the instructions inside of it.
-
-6) Open up www/inc/config.php and make sure to edit the following items:
-
-      LOGIN_LOCKED    Set this to "true" and only admins can log in and
-                      signups are blocked. A user has to be created before
-                      it can be made an admin, though.
+      LOGIN_LOCKED    Set this to "true" to block signups and prevent
+                      logging in. Admins will bypass the block.
 
       DEV_ROUND       This dramatically reduces build and research times
                       for development.
 
       START_OF_ROUND  A timestamp for when the round is considered to have
-                      started. Inflation is calculated from this.
+                      started. Inflation is calculated from this. A future
+                      startup time is the same as a login lock above.
+
+                      You can generate a timestamp at various websites.
 
       END_OF_ROUND    End of round timestamp sets when players can recover
                       unused Gold key time for the next round and signals
-                      the beginning of HAVOC round.
+                      the beginning of HAVOC round where costs are reduced.
 
-      EMAIL           Email address to use for in-game support.
+      * Remaining configs should be checked over. Beware making early
+        adjustments as the balance can be thrown radically off.
 
-      GOLD_EMAIL      Email address to use for GOLD MEMBER support.
-
-  Remaining configs should be checked over but beware making early adjustments
-  as the balance can be thrown radically off.
-
-7) Start the event system using something like:
-      
+5) Start the event system using something like:
+  
+  # Linux
 	nohup php events.php > /var/log/spacegame/events.log 2>&1&
-	
-8) THE GAME IS NOT READY TO PLAY but now is the time for you to access it from
-a browser to complete setup.
 
+  # Windows
+  php events.php > events.log
+
+This should run in the background whenever the game server is running.
+	
+6) THE GAME IS NOT READY TO PLAY but now is the time for you to access it from
+a browser to complete setup. Point to the "www" directory.
 
 CREATING A GALAXY AND STARTING THE GAME.
 
-0) Create a user but don't create or select a player.
+7) Signup a user to be an admin. Use the name you entered into www/DBCONFIG.php
+earlier. DO NOT create a player just yet; any player created at this point will
+appear in an empty galaxy and be unable to move.
 
-1) From the command prompt, elevate this user to a superadmin.
+8) Change the link in your browser to "admin.php" - note there is no link to
+this area from the game pages. You just have to type it out.
 
-2) Load admin.php in your browser by manually typing the link, select the
-System Editor tool. If a galaxy already exists the map will present it,
-otherwise each load of this page will produce a random galaxy.
+9) Select the System Editor tool. If a galaxy already exists the map will present
+it, otherwise each time you reload this page it will produce a random galaxy.
 
-The image generator "map.php" can be loaded in a separate frame and
-refreshed until the numbers are acceptable. Across the top, the numbers
-are the total star count, the seed, non-racial sectors (should be zero),
-followed by Xollian, Mawlor, and Zyck'lirg system count. Ideally the
-number of racial sectors should be even, so refresh a few times until
-they are no more than one off or so and copy the seed.
+If you were to hit the update button now, the image you see would become the 
+galaxy in the game. You should probably wait on that.
 
-3) Update inc/CONFIG.php with the GALAXY_SEED you are going to want to use,
-then go back and reload the system edit. Your selected galaxy should show
-up each refresh now.
+You'll want to refresh the page a few times. The numbers at the top of the galaxy
+represent the total star count, followed by the seed used. After that the numbers
+are non-racial, Xollian, Mawlor, and Zyck'lirg count. The non-racial count should
+always be zero. You'll want the remaining three racial counts to be as equal as
+possible. It takes a few moments but won't be long to get a galaxy with
+numbers like 114 114 113 or so.
 
-4) Hit the Update button. After a few moments the new galaxy will be created.
-Warning: any logged in player will be logged out forcefully in a way which
-tells them a spoof is detected. Be ready to explain what you did.
+Once you find a galaxy you like NOTE THE SEED from the image, the second number.
 
-5) Right click on the generated galaxy image and save it as "galaxy.png" in
-the www/res folder. This is used by DSS, docs, and other places.
+10) Update www/inc/config.php with the GALAXY_SEED you are going to want to use,
+then go back and reload the System Editor. Your selected galaxy should appear
+each time you refresh. 
 
-6) The game expects a "goods" folder in the "www/res" folder. You must add
-this or link to another goods folder. If you add it you can use admin.php to
-create goods and upgrades.
+11) Right click on the generated galaxy image and save it as "galaxy.png" in
+the www/res folder. This is used by DSS and game docs. 
 
-7) In the admin.php page select Port Editor. Hit Reset Ports to build up the
-ports in the protected sectors.
+12) Now go ahead and hit the Update button. After a few moments the new galaxy
+will be created. Warning: any logged in player will be logged out forcefully
+in a way which tells them a spoof is detected.
 
-8) TODO .. add ships
+13) The game expects a "goods" folder in the "www/res" folder. You must add
+this or link to another goods folder. Without it your goods will have no
+images. The default image pack should be made available for download as a 
+separate package by the source maintainer.
 
-9) You should be ready to make the game public and play!
+14) You should be ready to make the game public and play. Remember to disable
+LOGIN_LOCKED if you enabled it earler.
 
