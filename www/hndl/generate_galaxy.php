@@ -120,6 +120,61 @@
 			$race_count++;
 		}
 
+		$place_types = array();
+
+		$rs = $db->get_db()->query('select * from place_types');
+	
+		$rs->data_seek(0);
+		while ($row = $rs->fetch_assoc()) {
+			$place_types[$row['caption']] = $row['record_id'];
+		}
+
+		$item_types = array();
+
+		$rs = $db->get_db()->query('select * from item_types');
+	
+		$rs->data_seek(0);
+		while ($row = $rs->fetch_assoc()) {
+			$item_types[$row['caption']] = $row;
+		}
+
+		$goods = array();
+
+		$rs = $db->get_db()->query('select * from goods where level <= 1');
+	
+		$rs->data_seek(0);
+		while ($row = $rs->fetch_assoc()) {
+			$goods[$row['caption']] = $row;
+		}
+
+		$ships = array();
+		$ship_count = 0;
+
+		$rs = $db->get_db()->query('select * from ships order by caption, rank');
+
+		$rs->data_seek(0);
+		while ($row = $rs->fetch_assoc()) {
+			$ships[$row['race']][$row['record_id']] = $row;
+			$ship_count++;
+		}
+
+		if ($ship_count <= 0) {
+			$return_codes[] = 1209;
+			break;
+		}
+
+		$tech_goods = array();
+
+		$rs = $db->get_db()->query('select * from goods where tech > 0');
+	
+		$rs->data_seek(0);
+		while ($row = $rs->fetch_assoc()) {
+			$tech_goods[$row['record_id']] = $row;
+		}
+
+
+
+
 		$time = PAGE_START_TIME;
 
 		$number = 100;
@@ -160,43 +215,6 @@
 			$system_id = $db->last_insert_id('systems');
 
 			$stars[$star_i]['system_id'] = $system_id;
-
-			$place_types = array();
-
-			$rs = $db->get_db()->query('select * from place_types');
-		
-			$rs->data_seek(0);
-			while ($row = $rs->fetch_assoc()) {
-				$place_types[$row['caption']] = $row['record_id'];
-			}
-
-			$item_types = array();
-
-			$rs = $db->get_db()->query('select * from item_types');
-		
-			$rs->data_seek(0);
-			while ($row = $rs->fetch_assoc()) {
-				$item_types[$row['caption']] = $row;
-			}
-
-			$goods = array();
-
-			$rs = $db->get_db()->query('select * from goods where level <= 1');
-		
-			$rs->data_seek(0);
-			while ($row = $rs->fetch_assoc()) {
-				$goods[$row['caption']] = $row;
-			}
-
-			$ships = array();
-
-			$rs = $db->get_db()->query('select * from ships order by caption, rank');
-
-			$rs->data_seek(0);
-			while ($row = $rs->fetch_assoc()) {
-				$ships[$row['race']][$row['record_id']] = $row;
-			}
-
 
 
 			$place_candidates = array();
@@ -370,16 +388,6 @@
 
 			// Done with ships, now tech dealers
 
-			$tech_goods = array();
-
-			$rs = $db->get_db()->query('select * from goods where tech > 0');
-		
-			$rs->data_seek(0);
-			while ($row = $rs->fetch_assoc()) {
-				$tech_goods[$row['record_id']] = $row;
-			}
-
-
 
 			$dealer_name = $name . ' Tech';
 
@@ -439,7 +447,7 @@
 
 			if (!find_empty_sector($x1, $y1, WARP_LOCATION_VARIANCE, true)) {
 				error_log(__FILE__ . '::' . __LINE__ . " Could not find an empty sector for the source warp.");
-				$return_codes[] = 1050;
+				$return_codes[] = 1210;
 				break 2;
 			}
 
@@ -457,7 +465,7 @@
 
 			if ($place_id <= 0) {
 				error_log(__FILE__ . '::' . __LINE__ . " Failed to insert place.");
-				$return_codes[] = 1050;
+				$return_codes[] = 1210;
 				break 2;
 			}
 
@@ -465,7 +473,7 @@
 
 			if ($warp_id <= 0) {
 				error_log(__FILE__ . '::' . __LINE__ . " Failed to insert warp.");
-				$return_codes[] = 1050;
+				$return_codes[] = 1210;
 				break 2;
 			}
 
@@ -489,9 +497,9 @@
 		}
 
 		
-		
+		$return_codes[] = 1211;		
 	} while (false);
 
 
-	$return_codes[] = 1000;
+	
 ?>

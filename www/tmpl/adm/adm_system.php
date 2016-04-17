@@ -46,8 +46,9 @@
 	Regenerate Galaxy
 </div>
 <div class="docs_text">
-	Enter a seed to regenerate the galaxy. Note that the existing galaxy will
-	be erased. Sorry!
+	Enter a seed to regenerate the galaxy. Note that the existing galaxy will be erased. Sorry!
+	<a href="admin.php?page=system&seed=<?php echo mt_rand(); ?>">Click here</a> if you just want
+	to refresh to see a new galaxy choice.
 </div>
 <div class="docs_text">
 	<form action="handler.php" method="post">

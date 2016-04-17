@@ -51,8 +51,8 @@
 
 			$star = array();
 			
-			$star['x'] = $r * cos($theta) + mt_rand(-$star_variance, $star_variance);
-			$star['y'] = $r * sin($theta) + mt_rand(-$star_variance, $star_variance);
+			$star['x'] = floor($r * cos($theta) + mt_rand(-$star_variance, $star_variance));
+			$star['y'] = floor($r * sin($theta) + mt_rand(-$star_variance, $star_variance));
 
 			$angle = M_PI + atan2($star['y'], $star['x']);
 
@@ -232,7 +232,6 @@
 				);
 			}
 		}
-
 
 		return $warps;
 

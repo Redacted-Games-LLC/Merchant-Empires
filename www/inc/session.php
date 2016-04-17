@@ -61,8 +61,8 @@
 			$_SESSION['uid'] = 0;
 			$_SESSION['pid'] = 0;
 			session_write_close();
-			error_log(__FILE__ . '::' . __LINE__ . " Someone at {$_SERVER['REMOTE_ADDR']} attempted to spoof a session using a bad or missing id.");
-			die('Session spoof attempt suspected and logged.');
+			header('Location: login.php');
+			die('');
 		}
 		
 		// Check user for validity
@@ -114,8 +114,8 @@
 			$_SESSION['pid'] = 0;
 			
 			session_write_close();
-			error_log(__FILE__ . '::' . __LINE__ . " Someone at {$_SERVER['REMOTE_ADDR']} attempted to spoof user #$supplied_user_id using session hijacking.");
-			die('User spoof attempt suspected and logged 2');
+			header('Location: login.php');
+			die();
 		}
 		
 		if ($supplied_player_id > 0) {
@@ -132,12 +132,10 @@
 				define('PLAYER_ID', $supplied_player_id);
 			}
 			else {
-				$_SESSION['uid'] = 0;
 				$_SESSION['pid'] = 0;
-				
 				session_write_close();
-				error_log(__FILE__ . '::' . __LINE__ . " User {$user_id} at {$_SERVER['REMOTE_ADDR']} attempted to spoof player #$supplied_player_id using session hijacking.");
-				die('Player spoof attempt suspected and logged');
+				header('Location: select_player.php');
+				die();
 			}
 		}
 
