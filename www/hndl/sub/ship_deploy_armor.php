@@ -26,6 +26,8 @@
 
 	do { // Dummy Loop
 
+		$return_vars['page'] = 'deploy';
+
 		// $db, $tech, and $good should be set by ship_deploy.php which calls this file.
 
 		if ($spacegame['player']['turns'] < DEPLOY_TURN_COST) {
@@ -36,7 +38,12 @@
 		include_once('inc/ships.php');
 
 		$current_amount = $spacegame['player'][$good['safe_caption']];
+		$bonus_level = $spacegame['player'][$good['safe_caption'] . '_bonus'];
+
 		$max_amount = $spacegame['ships'][$spacegame['player']['ship_type']][$good['safe_caption']];
+		$bonus_amount = $max_amount * $bonus_level * constant(strtoupper($good['safe_caption']) . '_BONUS');
+
+		$max_amount += $bonus_amount;
 
 		if ($current_amount >= $max_amount) {
 			$return_codes[] = 1100;
@@ -84,7 +91,7 @@
 			break;
 		}
 		
-
+		$return_codes[] = 1206;
 
 	} while (false);
 

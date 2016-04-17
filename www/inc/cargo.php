@@ -37,10 +37,20 @@
 		$db = isset($db) ? $db : new DB;
 
 		if (defined('ALL_CARGO') && ALL_CARGO) {
-			$rs = $db->get_db()->query("select * from player_cargo where player = '". PLAYER_ID ."' order by record_id");
+			if (defined('GOODS_LIST') && strlen(GOODS_LIST) > 0) {
+				$rs = $db->get_db()->query("select * from player_cargo where player = '". PLAYER_ID ."' and good in (" . GOODS_LIST . ") order by record_id");
+			}
+			else {
+				$rs = $db->get_db()->query("select * from player_cargo where player = '". PLAYER_ID ."' order by record_id");
+			}
 		}
 		else {
-			$rs = $db->get_db()->query("select * from player_cargo where player = '". PLAYER_ID ."' and amount > 0 order by record_id");
+			if (defined('GOODS_LIST') && strlen(GOODS_LIST) > 0) {
+				$rs = $db->get_db()->query("select * from player_cargo where player = '". PLAYER_ID ."' and amount > 0 and good in (" . GOODS_LIST . ") order by record_id");
+			}
+			else {
+				$rs = $db->get_db()->query("select * from player_cargo where player = '". PLAYER_ID ."' and amount > 0 order by record_id");
+			}
 		}
 		
 		$rs->data_seek(0);

@@ -287,80 +287,48 @@
 
 
 
-	if ($spacegame['player']['base_id'] <= 0 && $spacegame['place_count'] > 0) {
-	?>
-
-		<div id="sector_stations">
-			<?php
-				foreach ($spacegame['places'] as $id => $place) {
-					switch ($place['type']) {
-						case 'Port':
-							if ($spacegame['player']['ship_type'] > 0) {
-								echo '<div class="sector_station port" onclick="return open_port(' . $id . ');" title="' . $place['caption'] . '">&nbsp;</div>';
-							}
-							break;
-
-						case 'Tech Dealer':
-							echo '<div class="sector_station tech_dealer" onclick="return open_dealer('. $id .')" title="'. $place['caption'] .'">&nbsp;</div>';
-							break;
-
-						case 'Ship Dealer':
-							echo '<div class="sector_station ship_dealer" onclick="return open_dealer('. $id .')" title="'. $place['caption'] .'">&nbsp;</div>';
-							break;
-
-						case 'Solar Collector':
-							if ($spacegame['player']['ship_type'] > 0) {
-								echo '<div class="sector_station solar_collector" onclick="return open_dealer('. $id .')" title="'. $place['caption'] .'">&nbsp;</div>';
-							}
-							break;
-
-						case 'Warp':
-							echo '<div class="sector_station warp" onclick="location.href=\'handler.php?task=warp&plid='. $id .'&form_id='. $_SESSION['form_id'] .'\'" title="'. $place['caption'] .'">&nbsp;</div>';
-							break;
-
-						case 'Base':
-							echo '<div class="sector_station base" onclick="return open_base('. $id .')" title="'. $place['caption'] .'">&nbsp;</div>';
-							break;
-
-						default:
-							break;
-					}
-				}
-			?>
-			
-		</div>
-	
-	<?php
+	if ($spacegame['player']['base_id'] <= 0 && $spacegame['place_count'] > 6) {
+		include_once('tmpl/viewport_stations.php');
 	}
 
 
 	if ($spacegame['player']['ship_type'] > 0) {
-	?>
-		
+
+		?>
 		<div class="viewport_split">
-			<div class="viewport_split_panel">
-				<?php
-					include_once('tmpl/ship_sidebar.php');
 
-					if ($spacegame['player']['base_id'] > 0) {
-						echo '</div><div class="viewport_split_panel">';
-					}
-					else {
-						include_once('tmpl/viewport_ships.php');
-					}
+			<table width="100%">
+				<tr>
+					<td width="200" valign="top"><?php include_once('tmpl/ship_sidebar.php'); ?></td>
+					<td valign="top"><?php
 
-					include_once('tmpl/player_sidebar.php'); 
-				?>
-				<br class="clear" />
-			</div>
-			<br class="clear" />
-			<?php if (isset($_REQUEST['dmg'])) { ?>
+						if ($spacegame['player']['base_id'] > 0) {
+							echo '&nbsp;';
+						}
+						else {
+							if ($spacegame['place_count'] > 0 && $spacegame['place_count'] <= 6) {
+								include_once('tmpl/viewport_stations.php');
+							}
+
+							include_once('tmpl/viewport_ships.php');
+						}
+
+					?>
+					</td>
+					<td width="200" valign="top"><?php include_once('tmpl/player_sidebar.php'); ?></td>
+				</tr>
+			</table>
+			
+			<div class="clear">&nbsp;</div>
+		</div>
+		<?php
+		
+			if (isset($_REQUEST['dmg'])) { ?>
 				<div class="taking_damage">
 					TAKING DAMAGE
 				</div>
-			<?php } ?>
-		</div>
-	<?php
+		<?php }
+
 	}
 
 
@@ -376,25 +344,7 @@
 		// in empty sectors.
 	?>
 
-		&nbsp;<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-	
+		<div class="clear">&nbsp;</div>
 	</div>
 
 

@@ -40,7 +40,7 @@
 			$doc_page = 'main';
 			$doc_file = "tmpl/doc/doc_{$doc_page}.php";
 			
-			if (isset($_REQUEST['page']) && preg_match('/^[_a-zA-Z0-9]{1,12}$/i', $_REQUEST['page']) > 0) {
+			if (isset($_REQUEST['page']) && preg_match('/^[_a-zA-Z0-9]{1,18}$/i', $_REQUEST['page']) > 0) {
 				
 				$doc_page = $_REQUEST['page'];
 				$file = "tmpl/doc/doc_{$doc_page}.php";

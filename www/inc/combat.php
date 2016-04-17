@@ -142,7 +142,7 @@
 			if ($player['armor'] <= 0) {
 				// Dead player
 
-				if (!($st = $db->get_db()->prepare('update players set ship_type = null, shields = 0, armor = 0, attack_rating = 1, shield_bonus = 0, armor_bonus = 0 where record_id = ?'))) {
+				if (!($st = $db->get_db()->prepare('update players set ship_type = null, shields = 0, armor = 0, attack_rating = 1, shields_bonus = 0, armor_bonus = 0 where record_id = ?'))) {
 					error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 					$return_codes[] = 1006;
 					$db->get_db()->rollback();

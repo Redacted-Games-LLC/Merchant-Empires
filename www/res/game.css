@@ -151,21 +151,6 @@ div.right_footer_column {
 	padding-right: 8px;
 }
 
-div.viewport_split {
-	position: relative;
-	width: 99%;
-	margin: 4px auto;
-	text-align: center;
-}
-
-div.viewport_split_panel {
-	display: inline-block;
-	float: left;
-	position: relative;
-	margin: 2px;
-	width: 49%;
-}
-
 div.taking_damage {
 	position: absolute;
 	left: 50%;
@@ -179,24 +164,52 @@ div.taking_damage {
 	text-align: center;
 }
 
+div.viewport_split {
+	position: relative;
+	text-align: center;
+	width: 100%;
+}
+
 div.viewport_ship_info {
-	position: absolute;
-	left: 0px;
-	top: 0px;
 	width: 200px;
-	background-color: black;
+    background-color: black;
 	border: solid 1px #551100;
 	overflow: hidden;
 	text-align: center;
 }
 
+div.viewport_player_info {
+	width: 200px;
+    background-color: black;
+	border: solid 1px #001155;
+	overflow: hidden;
+	text-align: center;
+}
+
+div.viewport_ships {
+	position: relative;
+	width: 100%;
+	min-width: 580px;
+	text-align: center;
+	vertical-align: top;
+}
+
 div.viewport_hostile_ships {
-	position: absolute;
-	top: 0px;
-	left: 210px;
-	right: 0px;
+	position: relative;
+	display: inline-block;
+	width: 47%;
 	border: solid 2px #882200;
 	background-color: black;
+	vertical-align: top
+}
+
+div.viewport_safe_ships {
+	position: relative;
+	display: inline-block;
+	width: 47%;
+	border: solid 2px #002288;
+	background-color: black;
+	vertical-align: top
 }
 
 div.viewport_hostile_ships_head {
@@ -206,24 +219,6 @@ div.viewport_hostile_ships_head {
 	text-align: left;
 	padding: 10px;
 	font-weight: bold;
-}
-
-div.viewport_player_info {
-	position: absolute;
-	right: 0px;
-	width: 200px;
-	background-color: black;
-	border: solid 1px #001155;
-	overflow: hidden;
-	text-align: center;
-}
-
-div.viewport_safe_ships {
-	position: absolute;
-	right: 210px;
-	left: 0px;
-	background-color: black;
-	border: solid 2px #002288;
 }
 
 div.viewport_safe_ships_head {
@@ -532,7 +527,7 @@ div.place_to_locate {
 
 div#viewport_main_spread {
 	position: relative;
-	background-color: #000011;
+	background-color: #001;
 	background: url("starfield_ugly.png") repeat;
 	width: 98%;
 	margin-left: auto;
@@ -540,9 +535,10 @@ div#viewport_main_spread {
 	margin-top: 6px;
 	margin-bottom: 6px;
 	border: solid 2px #9cbead;
+	overflow: hidden;
 	min-width: 1024px;
-	overflow:hidden;
 }
+
 
 div.viewport_big_planetoid {
 	position: absolute;
@@ -828,7 +824,7 @@ div.ns_arrow_dr {
 
 div#sector_stations {
 	position: relative;
-	width: 80%;
+	width: 96%;
 	margin: 8px auto;
 	border: solid 1px #555511;
 	padding: 8px;

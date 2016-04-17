@@ -48,7 +48,7 @@
 		// In case there are gaps in the db sequence
 		for ($i = 1; $i < 10; $i++) {
 			if (isset($spacegame['ranks'][$new_rank + $i])) {
-				$new_rank += $i;
+				$new_rank = $new_rank + $i;
 				break;
 			}
 		}
@@ -63,6 +63,9 @@
 		else if ($spacegame['player']['alignment'] < $spacegame['ranks'][$new_rank]['alignment']) {
 			$return_codes[] = 1063;
 			$new_rank = $spacegame['player']['rank'];
+		}
+		else {
+			$return_codes[] = 1202;
 		}
 
 		include_once('inc/solutions.php');

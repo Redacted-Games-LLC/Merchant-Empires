@@ -95,13 +95,13 @@ LOCK TABLES `ranks` WRITE;
 /*!40000 ALTER TABLE `ranks` DISABLE KEYS */;
 INSERT INTO `ranks` VALUES
 	(1,'Civilian',0,0),
-	(2,'Cadet',5,1),
-	(3,'Ensign',10,10),
-	(4,'Lieutenant',20,50),
-	(5,'Commander',30,100),
-	(6,'Captain',40,200),
-	(7,'Commodore',60,300),
-	(8,'Admiral',80,400),
+	(2,'Cadet',1,1),
+	(3,'Ensign',5,10),
+	(4,'Lieutenant',10,50),
+	(5,'Commander',20,100),
+	(6,'Captain',35,200),
+	(7,'Commodore',50,300),
+	(8,'Admiral',70,400),
 	(9,'Grand Admiral',100,500);
 /*!40000 ALTER TABLE `ranks` ENABLE KEYS */;
 UNLOCK TABLES;

@@ -46,7 +46,7 @@
 
 		$db = isset($db) ? $db : new DB;
 
-		$rs = $db->get_db()->query("select * from solutions where player = '". PLAYER_ID ."' and ship = '". $ship_type ."' order by sequence limit " . WEAPON_SOLUTION_LIMIT);
+		$rs = $db->get_db()->query("select * from solutions where player = '". PLAYER_ID ."' and ship = '". $ship_type ."' order by sequence");
 
 		$rs->data_seek(0);
 

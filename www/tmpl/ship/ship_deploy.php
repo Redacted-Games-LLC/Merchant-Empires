@@ -88,7 +88,12 @@
 						echo $tech['amount'] . ' ' . $spacegame['goods'][$tech['good']]['caption'] . '. ';
 
 						$current_amount = $spacegame['player'][$spacegame['goods'][$tech['good']]['safe_caption']];
+						$bonus_level = $spacegame['player'][$spacegame['goods'][$tech['good']]['safe_caption'] . '_bonus'];
+
 						$max_amount = $spacegame['ships'][$spacegame['player']['ship_type']][$spacegame['goods'][$tech['good']]['safe_caption']];
+						$bonus_amount = $max_amount * $bonus_level * constant(strtoupper($spacegame['goods'][$tech['good']]['safe_caption']) . '_BONUS');
+
+						$max_amount += $bonus_amount;
 
 						if ($current_amount < $max_amount) {
 							$deploy_amount = min($tech['amount'], $max_amount - $current_amount);

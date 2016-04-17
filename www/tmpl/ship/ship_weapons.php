@@ -239,7 +239,7 @@
 				echo '<tr class="solution">';
 
 				echo '<th class="solution">';
-					echo 'Rating';
+					echo 'Score';
 				echo '</th>';
 
 				echo '<th class="solution">';
@@ -306,7 +306,7 @@
 			echo '</th>';
 
 			echo '<th class="solution">';
-				echo 'Rating';
+				echo 'Score';
 			echo '</th>';
 
 			echo '<th class="solution">';
@@ -414,7 +414,7 @@
 
 						<input type="hidden" name="task" value="weapon" />
 						<input type="hidden" name="subtask" value="add" />
-						<input type="hidden" name="solution_group" value="<?php echo $solution_group == null ? 0 : $solution_keys[$s]; ?>" />
+						<input type="hidden" name="solution_group" value="<?php echo $solution_group == null ? 0 : $s + 1; ?>" />
 						<input type="hidden" name="weapon" value="<?php echo $weapon['record_id']; ?>" />
 						<input type="hidden" name="return" value="ship" />
 						<input type="hidden" name="form_id" value="<?php echo $_SESSION['form_id']; ?>" />

@@ -23,7 +23,7 @@
 
 	include_once('inc/page.php');
 	include_once('inc/game.php');
-	
+
 	if (isset($_SESSION['form_id'])) {
 		if (!isset($_REQUEST['form_id']) || $_SESSION['form_id'] != $_REQUEST['form_id']) {
 			header('Location: viewport.php?rc=1181');
@@ -121,6 +121,13 @@
 		$message .= ' has attacked';
 
 		$force = array();
+		$ship = array();
+		$player = array();
+		$player_shields = 0;
+		$player_armor = 0;
+		$hitters = array();
+
+
 
 		$db = isset($db) ? $db : new DB;
 
@@ -142,15 +149,7 @@
 			}
 
 			$player_id = $force['owner'];
-
 		}
-
-		$ship = array();
-		$player = array();
-		$player_shields = 0;
-		$player_armor = 0;
-		$hitters = array();
-
 
 		$rs = $db->get_db()->query("select * from players where record_id = '" . $player_id . "'");	
 
@@ -209,16 +208,32 @@
 						break;
 					}
 				}
-			}
 
-			if ($player['ship_type'] <= 0) {
-				$return_codes[] = 1195;
-				break;
-			}
+				if ($player['ship_type'] <= 0) {
+					$return_codes[] = 1195;
+					break;
+				}
 
-			if ($player['level'] < MINIMUM_KILLABLE_LEVEL) {
-				$return_codes[] = 1194;
-				break;
+				if ($player['level'] < MINIMUM_KILLABLE_LEVEL) {
+					$return_codes[] = 1194;
+					break;
+				}
+
+				include_once('inc/systems.php');
+
+				if ($player['alignment'] > SAFE_ALIGNMENT_MINIMUM) {
+					if (isset($spacegame['system']) && $spacegame['system']['protected']) {
+						if ($player['attack_rating'] < SAFE_ATTACK_RATING_LIMIT) {
+							$return_codes[] = 1207;
+							break;	
+						}
+
+						if ($spacegame['player']['attack_rating'] < SAFE_ATTACK_RATING_LIMIT) {
+							$return_codes[] = 1208;
+							break;	
+						}
+					}
+				}
 			}
 
 			$player_shields = $player['shields'];
@@ -236,6 +251,8 @@
 		}
 
 		include_once('inc/cargo.php');
+
+		$goods_to_reduce = array();
 		
 		// Fire the weapons
 
@@ -301,6 +318,30 @@
 
 			$message .= '<span class="weapon_caption">' . $weapon['caption'] . '</span>';
 
+			if ($weapon['ammunition'] > 0) {
+				if (!isset($spacegame['cargo_index'][$weapon['ammunition']])) {
+					$message .= ' <span class="ammo">*EMPTY*</span><br />';
+					continue;
+				}
+
+				$cargo = $spacegame['cargo'][$spacegame['cargo_index'][$weapon['ammunition']]];
+
+				if ($cargo['amount'] < $weapon['volley']) {
+					$message .= ' <span class="ammo">*EMPTY*</span><br />';
+					continue;
+				}
+				else {
+					$spacegame['cargo'][$spacegame['cargo_index'][$weapon['ammunition']]]['amount'] -= $weapon['volley'];
+
+					if (!isset($goods_to_reduce[$weapon['ammunition']])) {
+						$goods_to_reduce[$weapon['ammunition']] = 0;
+					}
+
+					$goods_to_reduce[$weapon['ammunition']] += $weapon['volley'];
+				}
+			}
+
+
 			$recharge = RECHARGE_TIME_PER_DAMAGE * $weapon['volley'] * ($weapon['shield_damage'] + $weapon['general_damage'] + $weapon['armor_damage']);
 			$recharge += $spacegame['ship']['recharge'];
 
@@ -338,11 +379,7 @@
 			}
 
 			if ($force_id > 0) {
-				$damage_caused = ceil($shield_damage + $armor_damage + $general_damage);
-
-				if ($damage_caused > 0) {
-					$fire_count++;
-				}
+				$damage_caused = $shield_damage + $armor_damage + $general_damage;
 			}
 			else {
 				if ($player_shields > 0) {
@@ -403,8 +440,10 @@
 				$message .= ' <span class="miss">*MISS*</span>';
 			}
 			else {
+				$fire_count++;
+
 				if ($force_id > 0) {
-					$message .= ' hitting one force';
+					$message .= ' hit 1 ordnance';
 				} else {
 					$message .= ' causing ' . $damage_caused . ' damage';
 
@@ -419,6 +458,38 @@
 			$total_damage += $damage_caused;
 		}
 
+		if ($fire_count <= 0) {
+			$return_codes[] = 1203;
+			break;
+		}
+
+		// Remove ammo
+
+		foreach ($goods_to_reduce as $good_id => $amount) {
+
+			if (!($st = $db->get_db()->prepare("update player_cargo set amount = amount - ? where player = ? and good = ? and amount >= ?"))) {
+				error_log(__FILE__ . '::' . __LINE__ . "Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+				$return_codes[] = 1006;
+				break;
+			}
+			
+			$st->bind_param("iiii", $amount, $spacegame['player']['record_id'], $good_id, $amount);
+			
+			if (!$st->execute()) {
+				$return_codes[] = 1006;
+				error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+				break;
+			}
+
+			if ($db->get_db()->affected_rows <= 0) {
+				$return_codes[] = 1203;
+				break 2;
+			}
+		}
+
+
+
+		// Hand out damage
 
 		include_once('inc/combat.php');
 
@@ -528,6 +599,8 @@
 				send_message($message, $targets, MESSAGE_EXPIRATION, 4);
 			}
 
+			$return_codes[] = 1205;
+			$return_vars['amt'] = $total_damage;
 		}
 		else {
 			$hitters[] = array(
@@ -544,6 +617,9 @@
 
 			$targets = array($player['record_id'], $spacegame['player']['record_id']);
 			send_message($message, $targets, MESSAGE_EXPIRATION, 4);
+
+			$return_codes[] = 1204;
+			$return_vars['amt'] = $total_damage;
 		}
 
 		

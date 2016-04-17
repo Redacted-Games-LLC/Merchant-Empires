@@ -473,7 +473,7 @@ CREATE TABLE `players` (
   `gold_expiration` int(11) DEFAULT '0',
   `messages_read` int(11) DEFAULT '0',
   `attack_rating` int(11) DEFAULT '1',
-  `shield_bonus` int(11) DEFAULT '0',
+  `shields_bonus` int(11) DEFAULT '0',
   `armor_bonus` int(11) DEFAULT '0',
   PRIMARY KEY (`record_id`),
   UNIQUE KEY `caption_UNIQUE` (`caption`),

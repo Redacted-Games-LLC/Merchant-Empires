@@ -49,7 +49,7 @@
 	  				<rect width="60" height="10" style="fill:rgb(64,0,0);stroke-width:2;stroke:rgb(255,255,255)" />
 	  				<rect width="<?php echo (60 * $spacegame['player']['armor'] / $spacegame['ship']['armor']); ?>" height="10" style="fill:rgb(0,255,128);stroke-width:2;stroke:rgb(255,255,255)" />
 				</svg>
-				<img src="res/armor.png" width="16" height="16" alt="Armor" title="Armor" /> +0
+				<img src="res/armor.png" width="16" height="16" alt="Armor" title="Armor" /> +<?php echo $spacegame['player']['armor_bonus']; ?>
 			</div>
 
 			<div class="sidebar_ship_shields">
@@ -58,7 +58,7 @@
 	  				<rect width="60" height="10" style="fill:rgb(64,0,0);stroke-width:2;stroke:rgb(255,255,255)" />
 	  				<rect width="<?php echo (60 * $spacegame['player']['shields'] / $spacegame['ship']['shields']); ?>" height="10" style="fill:rgb(0,255,128);stroke-width:2;stroke:rgb(255,255,255)" />
 				</svg>
-				<img src="res/shields.png" width="16" height="16" alt="Shields" title="Shields" /> +0
+				<img src="res/shields.png" width="16" height="16" alt="Shields" title="Shields" /> +<?php echo $spacegame['player']['shields_bonus']; ?>
 			</div>
 		</div>
 

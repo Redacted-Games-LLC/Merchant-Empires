@@ -167,6 +167,12 @@
 	// Each shield on a ship is worth 4% of a shield rating
 	define('DEFENSE_RATING_PER_SHIELD', 0.04);
 
+	// Extra armor per bonus level
+	define('ARMOR_BONUS', 0.10);
+
+	// Extra armor per bonus level
+	define('SHIELDS_BONUS', 0.10);
+
 	// Ship TPS multiplied by this for warp turn cost
 	define('WARP_TURN_MULTIPLIER', 4);
 
@@ -226,6 +232,9 @@
 
 	// Minimum amount of alignment needed to ensure safety in government systems.
 	define('SAFE_ALIGNMENT_MINIMUM', -50);
+
+	// Which attack rating makes a player subject to attack in protected systems.
+	define('SAFE_ATTACK_RATING_LIMIT', 4);
 
 	// How much negative alignment before adjusting the price of a ship
 	define('NEG_ALIGN_PER_PERCENT', -5);
