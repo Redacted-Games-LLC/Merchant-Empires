@@ -30,6 +30,11 @@
  * Copy this file to DBCONFIG.php and edit the following fields.
  */
 
+	// This prevents anyone from logging into a game unless they have been
+	// granted admin or dev status. If you need to log everyone out at once
+	// then use admin tools in game
+	define('LOGIN_LOCKED', true);
+
 	// Email for support
 	define('EMAIL', 'email_here');
 

@@ -37,9 +37,6 @@
 
 	include_once('tmpl/html_begin.php');
 
-
-
-
 	if (LOGIN_LOCKED) {
 		echo '<div class="login_locked">';
 
@@ -48,32 +45,34 @@
 
 		echo '</div>';
 	}
+	else {
+		
+		$round_start = START_OF_ROUND - PAGE_START_TIME;
 
-	$round_start = START_OF_ROUND - PAGE_START_TIME;
+		if ($round_start > 0 && !DEV_ROUND) {
+			echo '<div class="login_locked">';
 
-	if ($round_start > 0) {
-		echo '<div class="login_locked">';
+			echo '<strong>Notice!</strong> Logins are currently disabled because the round has not ';
+			echo 'started yet. The round will start in ';
 
-		echo '<strong>Notice!</strong> Logins are currently disabled because the round has not ';
-		echo 'started yet. The round will start in ';
+			if ($round_start > 86400 * 2) {
+				$round_start /= 86400;
+				echo ceil($round_start) . ' day' . ($round_start == 1 ? '' : 's') . '.';
+			}
+			else if ($round_start > 3600 * 2) {
+				$round_start /= 3600;
+				echo ceil($round_start) . ' hour' . ($round_start == 1 ? '' : 's') . '.';
+			}
+			else if ($round_start > 60 * 2) {
+				$round_start /= 60;
+				echo ceil($round_start) . ' minute' . ($round_start == 1 ? '' : 's') . '.';
+			}
+			else {
+				echo ceil($round_start) . ' second' . ($round_start == 1 ? '' : 's') . '.';
+			}
 
-		if ($round_start > 86400 * 2) {
-			$round_start /= 86400;
-			echo ceil($round_start) . ' day' . ($round_start == 1 ? '' : 's') . '.';
+			echo '</div>';
 		}
-		else if ($round_start > 3600 * 2) {
-			$round_start /= 3600;
-			echo ceil($round_start) . ' hour' . ($round_start == 1 ? '' : 's') . '.';
-		}
-		else if ($round_start > 60 * 2) {
-			$round_start /= 60;
-			echo ceil($round_start) . ' minute' . ($round_start == 1 ? '' : 's') . '.';
-		}
-		else {
-			echo ceil($round_start) . ' second' . ($round_start == 1 ? '' : 's') . '.';
-		}
-
-		echo '</div>';
 	}
 
 

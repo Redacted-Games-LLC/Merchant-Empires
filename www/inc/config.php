@@ -21,28 +21,24 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-	// This prevents anyone from logging into a game unless they have been
-	// granted admin or dev status. If you need to log everyone out at once
-	// then use admin tools in game
-	define('LOGIN_LOCKED', false);
-
-	// Whether or not we are in development. This will reduce upgrades, build,
-	// and research times to make it easier to test the game.
-	define('DEV_ROUND', true);
-
-	// Set this to a time to start the round. Inflation begins here, so be sure
-	// to have a good policy of when the flood gates are opened.
-	define('START_OF_ROUND', 1460318400);
-
-	// Set this to a time bigger than start of round to end the game. This allows
-	// players to create replacement gold keys for their remaining time.
-	define('END_OF_ROUND', START_OF_ROUND + 16070400);
-
 	// ----------------------------------------------------------------------------
 	// The rest of this file should be edited with care.
 
 	// The title of the game to display at the top of all pages. Can be html...
 	define('GAME_TITLE', 'Merchant Empires');
+	
+	// Whether or not we are in development. This will reduce upgrades, build,
+	// and research times to make it easier to test the game.
+	define('DEV_ROUND', false);
+
+	// Set this to a time to start the round. Inflation begins here, so be sure
+	// to have a good policy of when the flood gates are opened.
+	define('START_OF_ROUND', 1462104000);
+
+	// Set this to a time bigger than start of round to end the game. This allows
+	// players to create replacement gold keys for their remaining time.
+	define('END_OF_ROUND', START_OF_ROUND + 16070400);
+
 
 	// Defines inflation to be about 3% per day from start of round
 	define('INFLATION', (PAGE_START_TIME - START_OF_ROUND) * 3 / 86400);
