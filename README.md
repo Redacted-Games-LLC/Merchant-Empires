@@ -17,12 +17,24 @@ followed by the files in db/patches in order. There are usually no patches
 in a release version. Note db/data.sql goes into the game schema. There is
 no data to insert into the user schema.
 
-3) Copy www/DBCONFIG.TEMPLATE.php to www/DBCONFIG.php and then edit the new
+3) Get ahold of game package containing ships, goods, and weapons. You can
+get one from the official Merchant Empires by [Redacted] Games LLC at the
+following link:
+
+    http://merchantempires.net/host.php
+
+Insert the data.sql file into your game database and set up links from your
+source tree:
+
+      www/res/goods goods
+      www/res/base/rooms rooms
+
+4) Copy www/DBCONFIG.TEMPLATE.php to www/DBCONFIG.php and then edit the new
 DBCONFIG.php file using the instructions inside of it. Make sure to change
 GLOBAL_SALT and enter a name into SIGNUP_ADMIN to prepare for your first
 admin.
 
-4) Open up www/inc/config.php and make sure to edit the following items:
+5) Open up www/inc/config.php and make sure to edit the following items:
 
       LOGIN_LOCKED    Set this to "true" to block signups and prevent
                       logging in. Admins will bypass the block.
@@ -43,7 +55,7 @@ admin.
       * Remaining configs should be checked over. Beware making early
         adjustments as the balance can be thrown radically off.
 
-5) Start the event system using something like:
+6) Start the event system using something like:
   
   # Linux
 	nohup php events.php > /var/log/spacegame/events.log 2>&1&
@@ -51,12 +63,7 @@ admin.
   # Windows
   php events.php > events.log
 
-This should run in the background whenever the game server is running.
-	
-6) THE GAME IS NOT READY TO PLAY but now is the time for you to access it from
-a browser to complete setup. Point to the "www" directory.
-
-CREATING A GALAXY AND STARTING THE GAME.
+This should run in the background whenever the game server is running. 
 
 7) Signup a user to be an admin. Use the name you entered into www/DBCONFIG.php
 earlier. DO NOT create a player just yet; any player created at this point will

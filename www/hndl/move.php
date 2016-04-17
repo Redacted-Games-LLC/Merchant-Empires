@@ -63,7 +63,7 @@
 			
 			include_once('inc/systems.php');
 
-			if ($spacegame['sector_grid'][$x][$y]['protected'] && !$spacegame['sector_grid'][$rx][$ry]['protected']) {
+			if ((@$spacegame['sector_grid'][$x][$y]['protected']) && !(@$spacegame['sector_grid'][$rx][$ry]['protected'])) {
 				$return_codes[] = 1070;
 				break;
 			}
