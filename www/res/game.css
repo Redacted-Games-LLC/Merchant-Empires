@@ -537,6 +537,7 @@ div#viewport_main_spread {
 	border: solid 2px #9cbead;
 	overflow: hidden;
 	min-width: 1024px;
+	min-height: 380px;
 }
 
 

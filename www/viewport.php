@@ -287,12 +287,10 @@
 
 
 
-	if ($spacegame['player']['base_id'] <= 0 && $spacegame['place_count'] > 6) {
-		include_once('tmpl/viewport_stations.php');
-	}
-
-
 	if ($spacegame['player']['ship_type'] > 0) {
+		if ($spacegame['player']['base_id'] <= 0 && $spacegame['place_count'] > 6) {
+			include_once('tmpl/viewport_stations.php');
+		}
 
 		?>
 		<div class="viewport_split">
@@ -323,12 +321,12 @@
 		</div>
 		<?php
 		
-			if (isset($_REQUEST['dmg'])) { ?>
-				<div class="taking_damage">
-					TAKING DAMAGE
-				</div>
-		<?php }
 
+	}
+	else {
+		if ($spacegame['place_count'] > 0 && $spacegame['player']['base_id'] <= 0) {
+			include_once('tmpl/viewport_stations.php');
+		}
 	}
 
 
@@ -338,13 +336,15 @@
 	}
 	
 	
-
-
-		// All this is to make sure the viewport background isn't cut too short
-		// in empty sectors.
 	?>
 
 		<div class="clear">&nbsp;</div>
+		<?php if (isset($_REQUEST['dmg'])) { ?>
+			<div class="taking_damage">
+				TAKING taking_damage
+			</div>
+		<?php } ?>
+
 	</div>
 
 
