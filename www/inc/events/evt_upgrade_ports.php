@@ -74,11 +74,8 @@
 			$this->reverse_upgrade_paths = $reverse_upgrade_paths;
 		}
 
-
-		
 		public function getRunTime() {
-			return 5;
-			//return PORT_EVENT_CYCLE + 3;
+			return PORT_EVENT_CYCLE + 3;
 		}
 
 		public function run() {
@@ -319,6 +316,11 @@
 
 			if ($good_count > 0) {
 				update_distances($good_list);
+			}
+			else {
+				if (mt_rand(0, 1000) < 100) {
+					update_distances();
+				}
 			}
 		}
 

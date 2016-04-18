@@ -564,6 +564,16 @@
 			$distance_index[$row['supply']][$row['good']] = true;
 		}
 
+		if (!($st = $db->get_db()->prepare("update port_goods set distance = ? where record_id = ?"))) {
+			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			break 2;
+		}
+
+		$distance = 0;
+		$distance_item = array();
+
+		$st->bind_param("ii", $distance, $distance_item);
+
 		foreach ($distance_items as $good => $item) {
 
 			for ($i = 0; $i < $item['count']; $i++) {
@@ -602,13 +612,8 @@
 					$distance = 0;
 				}
 
-				if (!($st = $db->get_db()->prepare("update port_goods set distance = ? where record_id = ?"))) {
-					error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
-					break 2;
-				}
-				
-				$st->bind_param("ii", $distance, $item['records'][$i]['record_id']);
-				
+				$distance_item = $item['records'][$i]['record_id'];
+
 				if (!$st->execute()) {
 					error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
 					break 2;
