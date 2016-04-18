@@ -29,7 +29,7 @@
 	
 	// Whether or not we are in development. This will reduce upgrades, build,
 	// and research times to make it easier to test the game.
-	define('DEV_ROUND', false);
+	define('DEV_ROUND', true);
 
 	// Set this to a time to start the round. Inflation begins here, so be sure
 	// to have a good policy of when the flood gates are opened.
@@ -118,7 +118,7 @@
 	define('GOODS_PER_UPDATE', 5);
 
 	// The maximum amount of goods of one type a port can carry.
-	define('PORT_LIMIT', 10000);
+	define('PORT_LIMIT', 5000);
 
 	// How many goods needed for upgrade triggers.
 	if (DEV_ROUND) {

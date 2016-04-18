@@ -287,6 +287,13 @@
 			$good_count = 0;
 			$demand_start_amount = UPGRADE_START_MULTIPLIER;
 
+			if (!($st = $db->get_db()->prepare("insert into port_goods (place, good, amount, supply, upgrade, last_update) values (?,?,?,0,?,?)"))) {
+				$return_codes[] = 1006;
+				return;
+			}
+			
+			$st->bind_param("iiiii", $place_id, $good, $upgrade_start_amount, $target, $time);
+
 			foreach ($upgrades as $target => $list) {
 
 				$good_list[] = $target;
@@ -296,13 +303,6 @@
 
 					$upgrade_start_amount = $demand_start_amount * $spacegame['goods'][$target]['level'];
 
-					if (!($st = $db->get_db()->prepare("insert into port_goods (place, good, amount, supply, upgrade, last_update) values (?,?,?,0,?,?)"))) {
-						$return_codes[] = 1006;
-						return;
-					}
-					
-					$st->bind_param("iiiii", $place_id, $good,  $upgrade_start_amount, $target, $time);
-					
 					if (!$st->execute()) {
 						error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
 						return;
