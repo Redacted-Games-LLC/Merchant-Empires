@@ -28,14 +28,17 @@
 	$doc_good = array();
 
 	if (isset($_REQUEST['id']) && isset($spacegame['goods'][$_REQUEST['id']])) {
-		$doc_good = $spacegame['goods'][$_REQUEST['id']];
+
+		$good_id = $_REQUEST['id'];
+
+		$doc_good = $spacegame['goods'][$good_id];
 
 		$db = isset($db) ? $db : new DB;
 
 		$doc_starts = array();
 		$doc_starts_count = 0;
 
-		$rs = $db->get_db()->query("select * from start_goods where good = '". $_REQUEST['id'] ."' order by place_type, supply, record_id");
+		$rs = $db->get_db()->query("select * from start_goods where good = '$good_id' order by place_type, supply, record_id");
 		
 		$rs->data_seek(0);
 				
@@ -47,13 +50,22 @@
 		$doc_requirements = array();
 		$doc_requirements_count = 0;
 
-		$rs = $db->get_db()->query("select * from good_upgrades where target = '". $_REQUEST['id'] ."' order by good, record_id");
+		$doc_upgrades = array();
+		$doc_upgrades_count = 0;
+
+		$rs = $db->get_db()->query("select * from good_upgrades where good = '$good_id' or target = '$good_id' order by good, record_id");
 		
 		$rs->data_seek(0);
 				
 		while ($row = $rs->fetch_assoc()) {
-			$doc_requirements[$row['good']] = $row;
-			$doc_requirements_count++;
+			if ($row['good'] == $good_id) {
+				$doc_upgrades[$row['target']] = $row;
+				$doc_upgrades_count++;
+			}
+			elseif ($row['target'] == $good_id) {
+				$doc_requirements[$row['good']] = $row;
+				$doc_requirements_count++;
+			}
 		}
 		
 	}
@@ -67,12 +79,9 @@
 <?php } else { ?>
 <div class="docs_goods">
 	<img src="res/goods/<?php echo $doc_good['safe_caption']; ?>.png" width="12" height="12" />
-	<img src="res/goods/<?php echo $doc_good['safe_caption']; ?>.png" width="16" height="16" />
 	<img src="res/goods/<?php echo $doc_good['safe_caption']; ?>.png" width="20" height="20" />
-	<img src="res/goods/<?php echo $doc_good['safe_caption']; ?>.png" width="24" height="24" />
 	<img src="res/goods/<?php echo $doc_good['safe_caption']; ?>.png" width="32" height="32" />
 	<img src="res/goods/<?php echo $doc_good['safe_caption']; ?>.png" width="48" height="48" />
-	<img src="res/goods/<?php echo $doc_good['safe_caption']; ?>.png" width="64" height="64" />
 </div>
 <div class="docs_text">
 	<?php echo $doc_good['caption']; ?> is a level <?php echo $doc_good['level']; ?> good.
@@ -95,6 +104,29 @@
 		}
 		else {
 			echo '<li><em>No Requirements</em></li>';
+		}
+	?>
+	</ul>
+</div>
+<div class="docs_text">
+	Goods which may use this in an upgrade are:
+</div>
+<div class="docs_text">
+	<ul>
+	<?php
+		if ($doc_upgrades_count > 0) {
+			foreach ($doc_upgrades as $id => $upgrade) {
+				
+				echo '<li>';
+				echo '<a href="docs.php?page=good&amp;id=' . $spacegame['goods'][$upgrade['target']]['record_id'] . '">';
+				echo '<img src="res/goods/'. $spacegame['goods'][$upgrade['target']]['safe_caption'] .'.png" width="20" height="20" />';
+				echo $spacegame['goods'][$upgrade['target']]['caption'];
+				echo '</a>';
+				echo '</li>';
+			}
+		}
+		else {
+			echo '<li><em>No Upgrades</em></li>';
 		}
 	?>
 	</ul>

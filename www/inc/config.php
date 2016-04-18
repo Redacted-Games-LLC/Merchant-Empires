@@ -55,10 +55,13 @@
 	define('HAVOC_SHIP_COST', 0.10);
 	
 	// Maximum number of turns 
-	define('MAX_TURNS', 3000);
+	define('MAX_TURNS', 2000);
+
+	// Maximum number of turns for gold members
+	define('GOLD_MAX_TURNS', 2500);
 
 	// Start turns should be less than MAX_TURNS above so the game triggers an update.
-	define('START_TURNS', 2500);
+	define('START_TURNS', 1500);
 
 	// How often to give turns to a player. Other stuff is triggered this way as well.
 	define('TURN_UPDATE_TIME', 600);
@@ -96,7 +99,7 @@
 	define('SOLAR_COLLECTORS_PER_SECTOR', 4);
 	
 	// The furthest distance index for port trade goods.
-	define('MAX_DISTANCE', 100);
+	define('MAX_DISTANCE', 200);
 
 	// How often the event processor runs the process to update ports. The process will
 	// look for ports which have not been updated in a certain time (defined below) and
