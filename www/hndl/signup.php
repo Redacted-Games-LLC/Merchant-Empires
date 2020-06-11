@@ -146,7 +146,17 @@
 		$return_page = 'viewport';
 
 		if (strtolower(SIGNUP_ADMIN) == $username) {
-			if (set_user_field($id, 'admin', 'admin', '1') && set_user_field($id, 'admin', 'users', '1')) {
+			if (
+					set_user_field($id, 'admin', 'admin', '1') &&
+					set_user_field($id, 'admin', 'users', '1') &&
+					set_user_field($id, 'admin', 'system', '1') &&
+					set_user_field($id, 'admin', 'ports', '1') &&
+					set_user_field($id, 'admin', 'goods', '1') &&					
+					set_user_field($id, 'admin', 'build', '1') &&
+					set_user_field($id, 'admin', 'research', '1') &&
+					set_user_field($id, 'admin', 'gold', '1') &&
+					set_user_field($id, 'admin', 'news', '1')
+				) {
 				$return_page = 'admin';
 			}
 			else {

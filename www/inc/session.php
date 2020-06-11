@@ -110,12 +110,14 @@
 			define('USER_ID', $row['record_id']);
 		}
 		else {
-			$_SESSION['uid'] = 0;
-			$_SESSION['pid'] = 0;
-			
+			$_SESSION = array();
 			session_write_close();
-			header('Location: login.php');
-			die();
+			
+			if (!defined('USER_ID')) {
+				define('USER_ID', 0);
+			}
+			
+			return;
 		}
 		
 		if ($supplied_player_id > 0) {
