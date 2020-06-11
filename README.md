@@ -5,23 +5,25 @@ WARNING: Game will not be ready to play until these steps are completed,
 so don't just unzip the source into the web root, put it somewhere outside
 of the web root and protect web access to it until you are ready to go.
 
-0) Install Apache, PHP, and MySQL, enable php mods gd2 and mysqli. Make
-sure to allow for script/execution time of up to 2 minutes during setup
-which you can reduce to 30s for production.
+0) Install a common web server (APACHE, IIS, whatever), PHP, and MySQL.
 
-1) Create TWO schemas on MySQL, one for the user logins and another for
+
+1) Enable php mods gd2 and mysqli. Edit PHP.INI to allow for script/execution
+time of up to 2 minutes during setup which you can reduce to 30s for production.
+
+2) Create TWO schemas on MySQL, one for the user logins and another for
 the game; grant privs to access them.
 
-2) Insert the db/structure_users.sql, db/structure_game.sql, and db/data.sql, 
+3) Insert the db/structure_users.sql, db/structure_game.sql, and db/data.sql, 
 followed by the files in db/patches in order. There are usually no patches
 in a release version. Note db/data.sql goes into the game schema. There is
 no data to insert into the user schema.
 
-3) Get ahold of game package containing ships, goods, and weapons. You can
+4) Get ahold of game package containing ships, goods, and weapons. You can
 get one from the official Merchant Empires by [Redacted] Games LLC at the
 following link:
 
-    http://merchantempires.net/host.php
+    https://www.dropbox.com/s/yaa6ffjbssu9279/round1_rel1.zip?dl=0
 
 Insert the data.sql file into your game database and set up links from your
 source tree:
@@ -29,12 +31,12 @@ source tree:
       www/res/goods goods
       www/res/base/rooms rooms
 
-4) Copy www/DBCONFIG.TEMPLATE.php to www/DBCONFIG.php and then edit the new
+5) Copy www/DBCONFIG.TEMPLATE.php to www/DBCONFIG.php and then edit the new
 DBCONFIG.php file using the instructions inside of it. Make sure to change
 GLOBAL_SALT and enter a name into SIGNUP_ADMIN to prepare for your first
 admin.
 
-5) Open up www/inc/config.php and make sure to edit the following items:
+6) Open up www/inc/config.php and make sure to edit the following items:
 
       LOGIN_LOCKED    Set this to "true" to block signups and prevent
                       logging in. Admins will bypass the block.
@@ -55,7 +57,7 @@ admin.
       * Remaining configs should be checked over. Beware making early
         adjustments as the balance can be thrown radically off.
 
-6) Start the event system using something like:
+7) Start the event system using something like:
   
   # Linux
 	nohup php events.php > /var/log/spacegame/events.log 2>&1&
@@ -65,12 +67,9 @@ admin.
 
 This should run in the background whenever the game server is running. 
 
-7) Signup a user to be an admin. Use the name you entered into www/DBCONFIG.php
+8) Signup a user to be an admin. Use the name you entered into www/DBCONFIG.php
 earlier. DO NOT create a player just yet; any player created at this point will
 appear in an empty galaxy and be unable to move.
-
-8) Change the link in your browser to "admin.php" - note there is no link to
-this area from the game pages. You just have to type it out.
 
 9) Select the System Editor tool. If a galaxy already exists the map will present
 it, otherwise each time you reload this page it will produce a random galaxy.
