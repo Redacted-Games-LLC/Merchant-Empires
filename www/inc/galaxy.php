@@ -86,9 +86,9 @@
 			for ($j = $i - 1; $j >= 0; $j--) {
 				$that_star = $stars[$j];
 				
-				$dist2 = (($that_star['x'] - $this_star['x']) ** 2) + (($that_star['y'] - $this_star['y']) ** 2);
+				$dist2 = pow($that_star['x'] - $this_star['x'], 2) + pow($that_star['y'] - $this_star['y'], 2);
 				
-				if ($dist2 < $distance_between_stars ** 2) {
+				if ($dist2 < pow($distance_between_stars, 2)) {
 					continue 2;
 				}	
 			}
@@ -144,7 +144,7 @@
 				for ($j = 1; $j <= 3; $j++) {
 					$target = $race_prot[$j];
 
-					$dist = ($target['x'] - $star['x']) ** 2 + ($target['y'] - $star['y']) ** 2;
+					$dist = pow($target['x'] - $star['x'], 2) + pow($target['y'] - $star['y'], 2);
 
 					if ($dist < $target['d']) {
 						$prot[$r][$j]['d'] = $dist;
@@ -214,7 +214,7 @@
 					$comp = 100000;
 				}
 
-				$dist = ($stars[$i]['x'] - $stars[$j]['x']) ** 2 + ($stars[$i]['y'] - $stars[$j]['y']) ** 2;
+				$dist = pow($stars[$i]['x'] - $stars[$j]['x'], 2) + pow($stars[$i]['y'] - $stars[$j]['y'], 2);
 				
 				if ($dist > $comp) {
 					continue;
@@ -342,7 +342,7 @@
 
 		$test_x = (int)$x;
 		$test_y = (int)$y;
-		$attempts = $variance ** 5 + 1;
+		$attempts = pow($variance, 5) + 1;
 
 		while ($attempts > 0) {
 
