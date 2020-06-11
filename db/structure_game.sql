@@ -768,7 +768,6 @@ CREATE TABLE `user_players` (
   PRIMARY KEY (`record_id`),
   UNIQUE KEY `idx_user_player` (`user`,`player`),
   KEY `fk_up_players_idx` (`player`),
-  CONSTRAINT `fk_player_user` FOREIGN KEY (`user`) REFERENCES `spacegame_users`.`users` (`record_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_up_players` FOREIGN KEY (`player`) REFERENCES `players` (`record_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;

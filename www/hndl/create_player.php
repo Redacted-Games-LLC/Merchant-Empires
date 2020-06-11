@@ -130,7 +130,13 @@
 			break;
 		}
 		
-		$st->bind_param("siiiii", $player_name, $player_race, $start_turns, $start_credits, $start_x, $start_y);
+		if (!$st->bind_param("siidii", $player_name, $player_race, $start_turns, $start_credits, $start_x, $start_y)) {
+			$db->get_db()->rollback();
+			$db->get_db()->autocommit(true);
+			$return_codes[] = 1006;
+			error_log(__FILE__ . '::' . __LINE__ . " Binding of player fields failed: (" . $st->errno . ") " . $st->error);
+			break;
+		}
 
 		if (!$st->execute()) {
 			$db->get_db()->rollback();
@@ -139,9 +145,9 @@
 			error_log(__FILE__ . '::' . __LINE__ . " Insert player query execution failed: (" . $st->errno . ") " . $st->error);
 			break;
 		}
-		
+
 		$player_id = $db->last_insert_id('players');
-		
+
 		if ($player_id <= 0) {
 			$db->get_db()->rollback();
 			$db->get_db()->autocommit(true);
@@ -162,8 +168,14 @@
 		$session_id = session_id();
 		$time = PAGE_START_TIME;
 		
-		$st->bind_param("iisi", $user_id, $player_id, $session_id, $time);
-		
+		if (!$st->bind_param("iisi", $user_id, $player_id, $session_id, $time)) {
+			$db->get_db()->rollback();
+			$db->get_db()->autocommit(true);
+			$return_codes[] = 1006;
+			error_log(__FILE__ . '::' . __LINE__ . " Binding of USER/PLAYER data failed (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+			break;
+		}
+
 		if (!$st->execute()) {
 			$db->get_db()->rollback();
 			$db->get_db()->autocommit(true);
