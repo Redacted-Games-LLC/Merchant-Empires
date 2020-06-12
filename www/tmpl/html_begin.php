@@ -34,19 +34,21 @@
 
 			if (isset($spacegame['player'])) {
 
-				$x = $spacegame['player']['x'] - 500;
-				$y = $spacegame['player']['y'] - 500;
+				// The size of the galaxy is 1000x1000 so get the player
+				// pos relative to center of true galaxy.
+				$px = $spacegame['player']['x'] - 500;
+				$py = $spacegame['player']['y'] - 500;
 
-				$x += 360;
-				$y += 360;
+				// The size of the galaxy.png image file is equal to the
+				// galaxy size squared so get offset from player to center
+				// of the galaxy image.
+				$cx = (GALAXY_SIZE / 2) + $px;
+				$cy = (GALAXY_SIZE / 2) - $py;
 
-				$y = 720 - $y;
-
-				$x *= -1;
-				$y *= -1;
-
-				$x += 96;
-				$y += 48;
+				// Offset the results by one-half the size of the actual
+				// DSS viewport in the browser window.
+				$x = -$cx + 96;
+				$y = -$cy + 48;
 
 				echo 'background-position: ' . $x . 'px ' . $y . 'px;';
 			}

@@ -348,10 +348,10 @@
 				break;
 			}
 
-			$cargo_id = $spacegame['cargo_index'][$good_id];
-
 			if (isset($spacegame['cargo_index'][$good_id])) {
 				// Update
+
+				$cargo_id = $spacegame['cargo_index'][$good_id];
 				
 				if (!($st = $db->get_db()->prepare("update player_cargo set bought = bought + ?, amount = amount + ? where record_id = ?"))) {
 					$db->get_db()->rollback();
