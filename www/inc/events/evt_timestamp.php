@@ -29,6 +29,13 @@
 	
 	register_event(new Event_Timestamp());
 
+	/**
+	 * The only purpose of this event is to drop a timestamp in the log.
+	 *
+	 * This could be done by the event processor without having a separate
+	 * event but this provides us another indicator that the events are 
+	 * being processed at all; a heartbeat.
+	 */
 	class Event_Timestamp extends Event {
 		
 		public function getRunTime() {

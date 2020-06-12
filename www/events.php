@@ -32,15 +32,38 @@
 	}
 
 	define('CLI', true);
-	echo "Starting event processor. Welcome!\n";
+	echo "\n\n";
+	echo date("Y-mM-d") . " Starting event processor. Welcome!\n";
 
 	// Load the events.
 	include_once('inc/events.php');
-		
-	$running = true;
-	$current_time = PAGE_START_TIME;
 
-	do { // depends on ($running)
+	echo "\n";
+	echo "The following events are being monitored:\n\n";
+
+	foreach ($spacegame['events'] as $event) {
+
+		$event_name = get_class($event);
+
+		if (substr_compare($event_name, "Event_", 0, 6) >= 0) {
+			
+			$event_name = substr($event_name, 6);
+			$len = strlen($event_name);
+
+			echo "    " . $event_name . str_repeat(" ", 20 - $len) . $event->getRunTime() . " seconds\n";
+		}
+
+		
+	}	
+
+	echo "\n";
+	echo "The event queue is starting now.\n\n";
+
+
+	$current_time = PAGE_START_TIME;
+	$running = true;
+
+	while ($running) { // depends on ($running)
 
 		$elapsed = time() - $current_time;
 		$current_time += $elapsed;
@@ -57,8 +80,9 @@
 			sleep(1);
 		}
 
-		sleep(mt_rand(1,7));
-	} while ($running);
+		sleep(2);
+
+	}; // while $running
 
 	echo "Terminating Event Processor. Goodbye!\n";
 
