@@ -26,7 +26,7 @@
 <div class="header2">Gold Membership</div>
 <div class="docs_text">
 	Players who have donated to the game are granted Gold Membership status for a period
-	of time conferring some some cosmetic and convenience perks, but nothing which gives
+	of time conferring some cosmetic and convenience perks, but nothing which would give
 	significant advantage against other players. 
 </div>
 <div class="header3">Benefits</div>

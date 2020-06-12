@@ -34,7 +34,7 @@
 </div>
 <div class="docs_text">
 	There are three powerful races of intelligent species in the galaxy called Mawlor, Xollian, and
-	Zyck’lirg, and they have been fighting each other hundreds of years. The Imperial Government
+	Zyck'lirg, and they have been fighting each other hundreds of years. The Imperial Government
 	does nothing to intervene. Space flight is restricted to military ships only in all three zones.
 	Interplanetary trade is non-existent. People are quickly running out of stuff and getting desperate. 
 </div>

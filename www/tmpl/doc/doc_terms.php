@@ -24,12 +24,6 @@
 	include_once('tmpl/common.php');
 ?>
 <div class="header2">Terms of Use</div>
-<div class="docs_text">
-	Global terms of use for [Redacted] Games LLC and products
-	<a href="https://civcraft.github.io/civcraftsite/termsofservice.html" target="_blank">can be found here</a>.
-	The following are specific terms to the Merchant Empires game. By joining
-	this server as a user and/or player you agree to the following terms of use.
-</div>
 <div class="header3">Basic Stuff</div>
 <div class="docs_text">
 	We make no warranties for this product; it is provided as-is. If you don't

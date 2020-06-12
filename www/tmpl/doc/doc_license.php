@@ -36,5 +36,5 @@
 	The following is the full text of the GNU GPLv3 License as it applies to this software:
 </div>
 <pre>
-	<?php include_once('../LICENSE'); ?>
+	<?php include_once('./LICENSE'); ?>
 </pre>

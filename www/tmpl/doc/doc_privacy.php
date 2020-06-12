@@ -24,12 +24,6 @@
 	include_once('tmpl/common.php');
 ?>
 <div class="header2">Privacy Practices</div>
-<div class="docs_text">
-	The privacy policy for products in the [Redacted] Games LLC family 
-	<a href="https://civcraft.github.io/civcraftsite/privacypolicy.html" target="_blank">can be found here</a>.
-	The rest of this page discusses specific information collected by
-	the Merchant Empires game.
-</div>
 <div class="header3">Personal Information</div>
 <div class="docs_text">
 	We don't share anything we collect, but whether or not anything we do collect is personally
