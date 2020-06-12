@@ -36,26 +36,22 @@ DBCONFIG.php file using the instructions inside of it. Make sure to change
 GLOBAL_SALT and enter a name into SIGNUP_ADMIN to prepare for your first
 admin.
 
-6) Open up www/inc/config.php and make sure to edit the following items:
+6) Copy www/ROUNDCONFIG.TEMPLATE.php to www/ROUNDCONFIG.php and then edit the
+new ROUNDCONFIG.php file using the instructions inside of it. Make sure to
+pay attention to these settings:
 
-      LOGIN_LOCKED    Set this to "true" to block signups and prevent
-                      logging in. Admins will bypass the block.
+      DEV_ROUND         This dramatically reduces build and research times
+                        for development.
 
-      DEV_ROUND       This dramatically reduces build and research times
-                      for development.
+      START_OF_ROUND    A timestamp for when the round is considered to have
+                        started. Inflation is calculated from this. A future
+                        startup time is the same as a login lock above.
 
-      START_OF_ROUND  A timestamp for when the round is considered to have
-                      started. Inflation is calculated from this. A future
-                      startup time is the same as a login lock above.
+                        You can generate a timestamp at various websites.
 
-                      You can generate a timestamp at various websites.
-
-      END_OF_ROUND    End of round timestamp sets when players can recover
-                      unused Gold key time for the next round and signals
-                      the beginning of HAVOC round where costs are reduced.
-
-      * Remaining configs should be checked over. Beware making early
-        adjustments as the balance can be thrown radically off.
+      LENGTH_OF_ROUND   How long the round should last. Unused gold key time
+                        can be recovered from this point and a HAVOC round
+                        begins, where ships and weapons are cheaper.
 
 7) Start the event system using something like:
   
@@ -65,7 +61,10 @@ admin.
   # Windows
   php events.php > events.log
 
-This should run in the background whenever the game server is running. 
+There is an example events.cmd in the root folder of this package.
+
+The event processor should run in the background whenever the game server is
+running. It handles giving turns and upgrading ports, amongst other chores.
 
 8) Signup a user to be an admin. Use the name you entered into www/DBCONFIG.php
 earlier. DO NOT create a player just yet; any player created at this point will
@@ -86,7 +85,7 @@ numbers like 114 114 113 or so.
 
 Once you find a galaxy you like NOTE THE SEED from the image, the second number.
 
-10) Update www/inc/config.php with the GALAXY_SEED you are going to want to use,
+10) Update www/ROUNDCONFIG.php with the GALAXY_SEED you are going to want to use,
 then go back and reload the System Editor. Your selected galaxy should appear
 each time you refresh. 
 
@@ -102,6 +101,11 @@ this or link to another goods folder. Without it your goods will have no
 images. The default image pack should be made available for download as a 
 separate package by the source maintainer.
 
-14) You should be ready to make the game public and play. Remember to disable
-LOGIN_LOCKED if you enabled it earler.
+14) Once goods are added, go back to the Admin tool "System Editor" and scroll
+to the bottom. Hit the "Update Ports" button to generate the initial ports inside
+the imperial zones. The event processor should then add the upgrades within a few
+minutes.
+
+15) You should be ready to make the game public and play. Open up DBCONFIG.php and
+set LOGIN_LOCKED to false.
 

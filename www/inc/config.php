@@ -21,30 +21,26 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+	// For current round related stuff, edit this file in the parent directory.
+	if (!include_once('./ROUNDCONFIG.php')) {
+		die('You need to create ROUNDCONFIG.php following the directions in README.');
+	}
+
 	// ----------------------------------------------------------------------------
 	// The rest of this file should be edited with care.
 
 	// The title of the game to display at the top of all pages. Can be html...
 	define('GAME_TITLE', 'Merchant Empires');
 	
-	// Whether or not we are in development. This will reduce upgrades, build,
-	// and research times to make it easier to test the game.
-	define('DEV_ROUND', true);
-
-	// Set this to a time to start the round. Inflation begins here, so be sure
-	// to have a good policy of when the flood gates are opened.
-	define('START_OF_ROUND', 1462104000);
-
-	// Set this to a time bigger than start of round to end the game. This allows
-	// players to create replacement gold keys for their remaining time.
-	define('END_OF_ROUND', START_OF_ROUND + 16070400);
-
-
 	// Defines inflation to be about 3% per day from start of round
 	define('INFLATION', (PAGE_START_TIME - START_OF_ROUND) * 3 / 86400);
 
 	// Multiplier to make some computations faster
 	define('INFLATION_MULTIPLIER', 1 + (INFLATION / 100));
+
+	// Set this to a time bigger than start of round to end the game. This allows
+	// players to create replacement gold keys for their remaining time.
+	define('END_OF_ROUND', START_OF_ROUND + LENGTH_OF_ROUND);
 
 	// Whether or not we are in havoc round, enabling havoc reduces the cost of
 	// ships and weapons and eliminates most alignment restrictions. Currently
@@ -77,10 +73,6 @@
 
 	// Players can have this many players but check interface code before changing it.
 	define('MAX_PLAYERS_PER_USER', 4);
-
-	// This is only really used by the galaxy generator. Setting it to a favored
-	// seed saves some development time.
-	define('GALAXY_SEED', 1825426107);
 
 	// Defines the size of the galaxy. Note that the game was coded with 720 in mind and 
 	// while the limit is 1000x1000 that is for stars; some planets might render outside.

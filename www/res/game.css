@@ -1061,6 +1061,10 @@ div.player_select_title {
 	margin: 8px auto;
 }
 
+input.select_player_name {
+	width: 140px;
+}
+
 
 /* player_sidebar.php */
 

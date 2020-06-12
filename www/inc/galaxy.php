@@ -483,6 +483,9 @@
 			}
 		}
 
+		// NOTICE: Starter upgrades for ports is handled by the event processor, so check
+		// out inc/events/evt_upgrade_ports.php if you have any concerns about that.
+
 		$time = PAGE_START_TIME;
 		// Add our supplies and demands to the database
 		$goods_array = null;

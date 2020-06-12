@@ -109,7 +109,7 @@
 					else {
 					?>
 						<label for="player_name<?php echo $i; ?>"><small>Player <?php echo $i; ?> Name</small></label><br />
-						<input type="text" id="player_name<?php echo $i; ?>" name="player_name" maxlength="12" /><br />
+						<input type="text" class="select_player_name" id="player_name<?php echo $i; ?>" name="player_name" maxlength="12" /><br />
 						<br />
 						<label for="player_race<?php echo $i; ?>"><small>Racial Origin</small></label><br />
 						<select id="player_race<?php echo $i; ?>" name="player_race">
