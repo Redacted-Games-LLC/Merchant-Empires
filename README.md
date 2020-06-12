@@ -14,10 +14,10 @@ time of up to 2 minutes during setup which you can reduce to 30s for production.
 2) Create TWO schemas on MySQL, one for the user logins and another for
 the game; grant privs to access them.
 
-3) Insert the db/structure_users.sql, db/structure_game.sql, and db/data.sql, 
-followed by the files in db/patches in order. There are usually no patches
-in a release version. Note db/data.sql goes into the game schema. There is
-no data to insert into the user schema.
+3) Insert the db/structure_users.sql, db/structure_game.sql, and then
+db/data_game.sql, followed by the files in db/patches in order. There are
+usually no patches in a release version. Note db/data_game.sql goes into
+the game schema. There is no data to insert into the user schema.
 
 4) Get ahold of game package containing ships, goods, and weapons. You can
 get one from the official Merchant Empires by [Redacted] Games LLC at the
