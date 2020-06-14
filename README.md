@@ -136,7 +136,7 @@ Without it, your goods will have no images.<br>
 The default image pack should be made available for download as a separate package by the source maintainer.
 
 15. Once goods are added, go back to the Admin tool "System Editor" and scroll to the bottom.<br>
-Hit the "Update Ports" button to generate the initial ports inside the Imperial zones.<br>
+Hit the "Reset" button to generate the initial ports inside the Imperial zones.<br>
 The event processor should then add the upgrades within a few minutes.
 
 16. You should be ready to make the game public and play.<br>
