@@ -23,7 +23,7 @@
 
 	include_once('inc/page.php');
 
-	$tmpl['page_title'] = ' :: Unsupported Browser';
+	$tmpl['page_title'] = 'Unsupported Browser';
 	$tmpl['no_fluff'] = true;
 
 	include_once('tmpl/html_begin.php');

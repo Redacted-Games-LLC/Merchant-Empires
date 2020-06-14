@@ -25,7 +25,7 @@
 ?><!DOCTYPE html>
 <html>
 <head>
-	<title>ME <?php echo $tmpl['page_title']; ?></title>
+	<title>ME :: <?php echo $tmpl['page_title']; ?></title>
 	<link rel="stylesheet" type="text/css" href="res/game.css" />
 	<style type="text/css">
 	
