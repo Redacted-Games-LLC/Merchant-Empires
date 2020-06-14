@@ -140,5 +140,5 @@ Hit the "Update Ports" button to generate the initial ports inside the Imperial 
 The event processor should then add the upgrades within a few minutes.
 
 16. You should be ready to make the game public and play.<br>
-Reduce PHP.ini script execution time to 30 seconds.
+Reduce PHP.ini script execution time to 30 seconds.<br>
 Open up DBCONFIG.php and set `LOGIN_LOCKED` to false.
