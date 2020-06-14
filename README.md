@@ -8,7 +8,7 @@ Do **NOT** unzip this source into your web root.<br>
 Place the unzipped files somewhere in-accessible by others, and protect web access to it until you are ready to go.
 
 ## Pre-reqs:
- - MySQL 5.6.24
+ - MySQL 5.7.30
  - PHP 5.6.40
 
 > Software versions listed are old with some already out of support as of CY2020.<br>
