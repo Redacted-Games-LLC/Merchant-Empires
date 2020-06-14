@@ -23,6 +23,10 @@
 
 	include_once('inc/page.php');
 
+	if (detect_iexplore11()) {
+		header('Location: unsupported_browser.php');
+	}
+	
 	if (USER_ID > 0) {
 		if (PLAYER_ID > 0) {
 			header('Location: viewport.php');

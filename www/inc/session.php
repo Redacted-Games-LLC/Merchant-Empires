@@ -46,7 +46,15 @@
 		}
 	}
 
-
+	// Detect Internet Explorer 11 - flagged for known compatibility issues.
+	// Not detecting older IE browsers as Microsoft has already ended support for them.
+	// Ref: https://docs.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge
+	function detect_iexplore11() {
+		if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], 'Trident/7.0') !== false))
+			return true;
+		else
+			return false;
+	}
 
 	function prepare_session($close = true) {
 		
