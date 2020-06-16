@@ -25,14 +25,14 @@
 ?>
 <div class="header2">Turns</div>
 <div class="docs_text">
-	Just about every game action you will perform uses up <em>Turns</em>. These represent
+	Just about every game action you perform uses up <em>Turns</em>. These represent
 	units of time which smooth the playing field between players with little real time to
 	play and those who have nothing but time. 
 </div>
 <div class="docs_text">
-	Players may store a maximum of <?php echo MAX_TURNS; ?> turns given at a rate of
+	Players may store a maximum of <?php echo MAX_TURNS; ?> turns, given at a rate of
 	<?php echo TURNS_PER_UPDATE; ?> every <?php echo TURN_UPDATE_TIME; ?> seconds. When a
-	player runs out of turns they will be unable to move, trade, or attack.
+	player runs out of turns, they will be unable to move, trade, or attack.
 </div>
 <div class="header3">Turn Consumers</div>
 <div class="docs_text">
@@ -48,7 +48,7 @@
 		</li>
 		<li>
 			<strong>Targetting</strong> -
-			<?php echo TARGET_TURN_COST; ?> turn(s) every sector search but doesn't
+			<?php echo TARGET_TURN_COST; ?> turn(s) every sector search, but doesn't
 			include natural ship dealer search from an escape pod.
 		</li>
 		<li>
@@ -57,14 +57,14 @@
 		</li>
 		<li>
 			<strong>Deployment</strong> -
-			<?php echo DEPLOY_TURN_COST; ?> turn(s) for every deployment including
+			<?php echo DEPLOY_TURN_COST; ?> turn(s) for every deployment, including
 			mines/drones, shields/armor, solar collectors, port packages, etc. Also
 			includes picking up drones.
 		</li>
 		<li>
 			<strong>Warping</strong> -
 			Ship TPS multiplied by <?php echo WARP_TURN_MULTIPLIER; ?> turn(s) for
-			click of a warp.
+			each click of a warp.
 		</li>
 		<li>
 			<strong>Cargo Jettison</strong> -
@@ -76,8 +76,6 @@
 <div class="docs_text">
 	<strong>Warning</strong>: Many actions take turns away first before checking to
 	see if the action is valid. This is by design and turns won't be given back. If
-	there is a place where this may be happening deceptively report it so we can
-	clarify but a good player should know when they are performing an invalid action.
+	there is a place where this may be happening deceptively, report it so that the admins can
+	clarify, but a good player should know when they are performing an invalid action.
 </div>
-
-

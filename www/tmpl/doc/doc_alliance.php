@@ -36,15 +36,15 @@
 </div>
 <div class="header3">Imperial Tax and Member Limits</div>
 <div class="docs_text">
-	There is no limit to the number of players which can join a single alliance.
-	However there is a tax. The rate is 1% plus 0.2% per alliance member, rounded
+	There is no limit to the number of players who can join an alliance.
+	However, there is a tax. The rate is 1% plus 0.2% per alliance member, rounded
 	up. Eight people will pay 3%, 15 will pay 4% while 16-20 members will pay 5%,
 	and so forth.
 </div>
 <div class="header3">Treaties and Politics</div>
 <div class="docs_text">
 	There are <strong>no treaties</strong> allowed between alliances.
-	Alliances are not considered racial, each player is still responsible
+	Alliances are not considered racial. Each player is still responsible
 	for their own alignment.
 </div>
 <div class="header3">Creating an Alliance</div>
@@ -63,27 +63,27 @@
 	<strong>TEAM</strong> button in the main viewport, then select 'Alliance List.'
 </div>
 <div class="docs_text">
-	Alliances which are recruiting will have a green circle while alliances not
+	Alliances that are recruiting will have a green circle, while alliances not
 	recruiting will have a red X. Click on a recruiting alliance to get a 'Join'
-	button. Hitting this sends a request which will remain active for 
+	button. Hitting this sends a request that will remain active for 
 	<?php echo OPEN_REQUEST_DAYS; ?> days or until rejected.
 </div>
 <div class="docs_text">
 	<strong>DO NOT</strong> send a message to the alliance telling them you have
-	an open join request, they can see open requests on their Alliance Member List
+	an open join request. They can see open requests on their Alliance Member List
 	page and the lead was already messaged for you.
 </div>
 <div class="header3">Leaving an Alliance</div>
 <div class="docs_text">
 	Players can leave an alliance at any time in the Alliance Status page, or they
 	can be kicked out from the member page. Alliance leaders must demote themselves
-	or elect a new founder unless they are the last remaining member.
+	or elect a new Founder unless they are the last remaining member.
 </div>
 <div class="docs_text">
 	Alliances with no remaining members are dissolved.
 </div>
 <div class="docs_text">
 	WARNING: Leaving an alliance renders your forces hostile to all other remaining
-	alliance members. If you are leaving peacefully you should clean up your forces
+	alliance members. If you are leaving peacefully, you should clean up your forces
 	first.
 </div>

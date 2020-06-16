@@ -34,22 +34,25 @@
 </div>
 <div class="docs_text">
 	There are three powerful races of intelligent species in the galaxy called Mawlor, Xollian, and
-	Zyck'lirg, and they have been fighting each other hundreds of years. The Imperial Government
+	Zyck'lirg, and they have been fighting each other for hundreds of years. The Imperial Government
 	does nothing to intervene. Space flight is restricted to military ships only in all three zones.
 	Interplanetary trade is non-existent. People are quickly running out of stuff and getting desperate. 
 </div>
 <div class="docs_text">
-	Now restrictions on trade have been relaxed. Military ships have been authorized to establish
+	Now, restrictions on trade have been relaxed. Military ships have been authorized to establish
 	ports on any planet in the galaxy. Recruitment has skyrocketed. Some see it as a ruse to expand
 	the war, others wonder who is pulling the strings. 
 </div>
 <div class="docs_text">
-	Each of the racial militaries were quick to claim their share of the hundreds of empty but 
+	Each of the racial militaries was quick to claim their share of the hundreds of empty but 
 	habitable planets remaining in the galaxy. Any enlisted pilot may improve their racial planets,
 	establish bases, and even attempt to subvert control over enemy planets. It is not known if the
 	war will stop, or if one race will dominate the galaxy.
 </div>
 <div class="docs_text">
-	New players to [Redacted]ME head over to the <a href="docs.php?page=quick">Quick Start</a>
-	guide. Then enjoy!
+	New players to [Redacted]ME, head over to the <a href="docs.php?page=quick">Quick Start</a>
+	guide.
+</div>
+<div class="docs_text">
+	To Fortune and Glory!
 </div>

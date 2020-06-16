@@ -25,20 +25,20 @@
 ?>
 <div class="header2">The Mawlor Dominion</div>
 <div class="docs_text">
-	If you've been in a fight with a Mawlor you definitely understand
-	how these guys get their reputation. They can take lots of hits 
-	and stand a very long battle. They also somehow retain the monopoly
-	over jump drive units so tend to disappear quick in battle.
+	If you've been in a fight with a Mawlor, you definitely understand
+	how these guys earn their reputation. They can take lots of hits 
+	and withstand a very long battle. They somehow also retained the monopoly
+	over jump drive units, and tend to disappear quick in battle.
 </div>
 <div class="docs_text">
-	A lone Mawlor is vulnerable, their low-speed weapons leave time
-	for enemy reinforcements to arrive and overwhelm. Mawlors tend
+	A lone Mawlor is vulnerable; their low-speed weapons leave time
+	for enemy reinforcements to arrive and overwhelm them. Mawlors tend
 	to use more escape pods than others, usually because they tried
 	to hunt by themselves.
 </div>
 <div class="docs_text">
-	Mawlors can learn to operate Xollian ships but consider it dishonorable when they
-	do so. They will gain no experience or alignment (but could still lose alignment)
+	Mawlors can learn to operate Xollian ships, but consider it dishonorable when they
+	do so. They will gain no experience nor alignment (but could still lose alignment)
 	while operating a Xollian ship.
 </div>
 <div class="header3">Jump Technology</div>
@@ -51,9 +51,6 @@
 <div class="header3">Balance Notes</div>
 <div class="docs_text">
     Mawlors are balanced to be the late round war boss. This race is best for
-    players who like to build up a powerful character slowly, but at great reward.
+    players who like to build up a powerful character slowly, but with great reward.
     Early Mawlors will grumble about their weaker-levelled ships.
 </div>
-
-
-
