@@ -23,7 +23,7 @@
 
 	include_once('tmpl/common.php');
 ?>
-<div class="header2">Attack/Defense Rating</div>
+<div class="header2">Attack / Defense Rating</div>
 <div class="docs_text">	
 	Ships are rated as to their attack and defense capabilities. A high-level
 	ship with strong weapons will have a higher attack capability than an
@@ -55,5 +55,3 @@
 	Every armor adds <?php echo DEFENSE_RATING_PER_ARMOR; ?> and every shield adds
 	<?php echo DEFENSE_RATING_PER_SHIELD; ?> to the defense rating.
 </div>
-
-

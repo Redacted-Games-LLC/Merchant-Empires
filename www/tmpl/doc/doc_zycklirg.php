@@ -27,17 +27,17 @@
 <div class="docs_text">
 	Every galaxy in the cluster was flipped upside down when the
 	Zyck'lirg hordes arrived. Legend has forgotten who opened
-	the wormhole to their space but will never forgive the crime.
+	the wormhole to their space, but will never forgive the crime.
 </div>
 <div class="docs_text">
-	Zyck'lirgs have the fastest ships and weapons and are dangerous
+	Zyck'lirgs have the fastest ships and weapons, and are dangerous
 	to both Xollians and Mawlors. Their organic ships are not as
 	easy to detect by sector forces either, letting them scout
 	deep in hostile space.
 </div>
 <div class="docs_text">
 	Zyck'lirgs require a biological connection with the ships
-	they operate and therefore cannot learn to fly Xollian or
+	they operate, and therefore cannot learn to fly Xollian or
 	Mawlor craft.
 </div>
 <div class="header3">Swarm Technology (Upcoming)</div>
@@ -49,6 +49,6 @@
 <div class="header3">Balance Notes</div>
 <div class="docs_text">
 	A Zyck'lirg player is one who wants an early advantage in fighting. They don't end their
-	career nearly as powerful as Mawlor or Xollian and when past their prime they are only
-	good for support roles. Elderly Zyck'lirg tend to be quite bitter about losing their edge.
+	career nearly as powerful as Mawlor or Xollian, and when past their prime, they are only
+	good for support roles. Elderly Zyck'lirgs tend to be quite bitter about losing their edge.
 </div>

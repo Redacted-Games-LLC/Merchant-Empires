@@ -30,10 +30,10 @@
 	during game play.
 </div>
 <div class="docs_text">
-	In this version of Merchant Empires you may have multiple
+	In this version of Merchant Empires, you may have multiple
 	players but we ask that you only have one active at a time.
-	To make it easier to manage your players up to four can be
-	linked to a user account. When you log in you will see a
+	To make it easier to manage your players, up to four can be
+	linked to a user account. When you log in, you will see a
 	list of your players or be able to create them.
 </div>
 <div class="docs_text">
@@ -44,14 +44,13 @@
 <div class="docs_text">
 	New users should probably read the
 	<a href="docs.php?page=races">racial descriptions</a> 
-	before selecting a player. Note that in the early game it
+	before selecting a player. Do note that early in the game, it
 	will be difficult for you to notice the advantages and
-	disadvantages given to each of them so don't just make
+	dis-advantages given to each of them, so don't just create
 	players wastefully.
 </div>
 <div class="docs_text">
-	When creating a player, your name is not case sensitive
+	When creating a player, your name is not case-sensitive
 	and must be between 2 and 12 characters. You can only
 	use letters and numbers.
 </div>
-

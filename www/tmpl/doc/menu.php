@@ -72,7 +72,7 @@
 			<li class="docs_menu">
 				<a href="docs.php?page=combat">Combat</a>
 				<ul class="docs_menu">
-					<li class="docs_menu"><a href="docs.php?page=ship_rating">Attack/Defense Rating</a></li>
+					<li class="docs_menu"><a href="docs.php?page=ship_rating">Attack / Defense Rating</a></li>
 					<li class="docs_menu"><a href="docs.php?page=damage">Damage Types</a></li>
 					<li class="docs_menu"><a href="docs.php?page=weapons">Weapons</a></li>
 				</ul>
@@ -128,7 +128,3 @@
 	<li class="docs_menu"><a href="docs.php?page=credits">Credits</a></li>
 	
 </ul>
-
-
-
-
