@@ -27,11 +27,12 @@
 <div class="docs_text">
 	<ul>
 		<li>Bryan Brunton, original developer of Merchant Empires</li>
-		<li>Danny Froberg and the AdvancedPowers Merchant Empires team and players</li>
+		<li>Danny Froberg, AdvancedPowers Merchant Empires team, and players</li>
 		<li>Starfield background image from www.publicdomainpictures.net</li>
 		<li>Planetoid/Solar images from NASA.gov</li>
 		<li>Fauna good image from www.publicdomainpictures.net</li>
 		<li>Plastics good image from https://openclipart.org/detail/60451/recycle-can</li>
-		<li>Logo and captcha font use the font <a href="http://www.fontsquirrel.com/license/Orbitron">Orbitron</a></li>
+		<li>Logo and captcha created with <a href="http://www.fontsquirrel.com/license/Orbitron" target="_blank">Orbitron</a> font</li>
+		<li>Monospace text displays with <a href="https://github.com/microsoft/cascadia-code" target="_blank">Cascadia Mono</a> font</li>
 	</ul>
 </div>
