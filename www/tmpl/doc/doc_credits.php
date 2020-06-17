@@ -32,7 +32,7 @@
 		<li>Planetoid/Solar images from NASA.gov</li>
 		<li>Fauna good image from www.publicdomainpictures.net</li>
 		<li>Plastics good image from https://openclipart.org/detail/60451/recycle-can</li>
-		<li>Logo and captcha created with <a href="http://www.fontsquirrel.com/license/Orbitron" target="_blank">Orbitron</a> font</li>
-		<li>Monospace text displays with <a href="https://github.com/microsoft/cascadia-code" target="_blank">Cascadia Mono</a> font</li>
+		<li>Logo and captcha created with <a href="http://www.fontsquirrel.com/license/Orbitron" target="_blank" rel="noopener noreferrer">Orbitron</a> font</li>
+		<li>Monospace text displays with <a href="https://github.com/microsoft/cascadia-code" target="_blank" rel="noopener noreferrer">Cascadia Mono</a> font</li>
 	</ul>
 </div>
