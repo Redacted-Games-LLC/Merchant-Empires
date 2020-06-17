@@ -57,7 +57,7 @@
 	
 				$sub_page = $_REQUEST['subtask'];
 				
-				if (in_array($subtask_page, $hndl_sub_alliance_array)) {
+				if (in_array($sub_page, $hndl_sub_alliance_array)) {
 					$sub_file = "hndl/sub/base_{$sub_page}.php";
 
 					if (!file_exists($sub_file)) {
