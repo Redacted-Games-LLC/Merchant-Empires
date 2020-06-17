@@ -43,10 +43,12 @@
 			if (isset($_REQUEST['page']) && preg_match('/^[_a-zA-Z0-9]{1,18}$/i', $_REQUEST['page']) > 0) {
 				
 				$doc_page = $_REQUEST['page'];
-				$file = "tmpl/doc/doc_{$doc_page}.php";
+				if (in_array($doc_page, $tmpl_doc_array)) {
+					$file = "tmpl/doc/doc_{$doc_page}.php";
 					
-				if (file_exists($file)) {
-					$doc_file = $file;
+					if (file_exists($file)) {
+						$doc_file = $file;
+					}
 				}
 				else {
 					$doc_file = "tmpl/doc/missing.php";

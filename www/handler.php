@@ -41,8 +41,8 @@
 	if (preg_match('/^[_a-zA-Z0-9]{1,15}$/', $_REQUEST['task'])) {
 
 		$task = $_REQUEST['task'];
-	
-		if (!include_once("hndl/{$task}.php")) {
+		
+		if ((in_array($task, $hndl_array)) && (!include_once("hndl/{$task}.php"))) {
 			error_log(__FILE__ . '::' . __LINE__ . " Someone at {$_SERVER['REMOTE_ADDR']} attempted to access an invalid form handler.");
 			$return_codes[] = 1010;
 		}
