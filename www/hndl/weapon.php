@@ -42,22 +42,27 @@
 			
 				$sub_page = $_REQUEST['subtask'];
 				
-				$sub_file = "hndl/sub/weapon_{$sub_page}.php";
+				if (in_array($sub_page, $hndl_sub_weapon_array)) {
+					$sub_file = "hndl/sub/weapon_{$sub_page}.php";
 
-				if (!file_exists($sub_file)) {
-					$return_codes[] = 1041;
-					error_log(__FILE__ . '::' . __LINE__ . ' Valid subtask does not have an include.');
+					if (!file_exists($sub_file)) {
+						$return_codes[] = 1041;
+						error_log(__FILE__ . '::' . __LINE__ . ' Valid subtask does not have an include.');
+						break;
+					}
+				
+					include_once($sub_file);
 					break;
 				}
-				
-				include_once($sub_file);
-				break;
+				else {
+					$return_codes[] = 1041;
+					break;
+				}
 
 			default:
 				$return_codes[] = 1041;
 				break;
  		}
 	} while (false);
-
 
 ?>

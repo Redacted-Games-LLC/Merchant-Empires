@@ -46,22 +46,28 @@
 			case 'reject':
 
 				$subtask_page = $_REQUEST['subtask'];
-				$subtask_file = "hndl/sub/alliance_{$subtask_page}.php";
+				
+				if (in_array($subtask_page, $hndl_sub_alliance_array)) {
+					$subtask_file = "hndl/sub/alliance_{$subtask_page}.php";
 
-				if (!file_exists($subtask_file)) {
-					$return_codes[] = 1041;
-					error_log(__FILE__ . '::' . __LINE__ . ' Valid subtask does not have an include.');
+					if (!file_exists($subtask_file)) {
+						$return_codes[] = 1041;
+						error_log(__FILE__ . '::' . __LINE__ . ' Valid subtask does not have an include.');
+						break;
+					}
+				
+					include_once($subtask_file);
 					break;
 				}
-				
-				include_once($subtask_file);
-				break;
+				else {
+					$return_codes[] = 1041;
+					break;
+				}
 
 			default:
 				$return_codes[] = 1041;
 				break;
  		}
 	} while (false);
-
 
 ?>
