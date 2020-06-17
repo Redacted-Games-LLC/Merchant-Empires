@@ -32,7 +32,7 @@
 </div>
 <div class="docs_text">
 	You can get ahold of the source at our
-	<a href="https://github.com/Redacted-Games-LLC/Merchant-Empires">GitHub repository</a>.
+	<a href="https://github.com/Redacted-Games-LLC/Merchant-Empires" target="_blank" rel="noopener noreferrer">GitHub repository</a>.
 	The game does not come with any goods or ships, those must be added by you before
 	the game is playable. There is a starter pack which contains some early goods and
 	upgrades available.

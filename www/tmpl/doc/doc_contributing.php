@@ -39,12 +39,12 @@
 <div class="docs_text">
 	If your contribution is open source, then it should be submitted in the form of a
 	pull request to the public
-	<a href="https://github.com/Redacted-Games-LLC/Merchant-Empires">GitHub repository</a>.
+	<a href="https://github.com/Redacted-Games-LLC/Merchant-Empires" target="_blank" rel="noopener noreferrer">GitHub repository</a>.
 </div>
 <div class="docs_text">
 	If your contribution is towards the commercial hosting variant of Merchant Empires, that is
 	you have an idea for a new ship, weapon, or good you can submit this via our
-	<a href="https://www.reddit.com/r/merchantempires" target="_blank">subreddit</a> for
+	<a href="https://www.reddit.com/r/merchantempires" target="_blank" rel="noopener noreferrer">subreddit</a> for
 	community feedback.
 </div>
 <div class="header3">Images and Art</div>
@@ -64,6 +64,6 @@
 <div class="header3">Suggestions without Contributions</div>
 <div class="docs_text">
 	If you are unable to create art or code you can try pitching your idea on the
-	<a href="http://reddit.com/r/MerchantEmpires">subreddit</a> with the [Suggestion] tag to
+	<a href="http://reddit.com/r/MerchantEmpires" target="_blank" rel="noopener noreferrer">subreddit</a> with the [Suggestion] tag to
 	see if someone is willing to implement it for you.
 </div>
