@@ -66,10 +66,12 @@
 			if (isset($_REQUEST['page']) && preg_match('/^[a-zA-Z0-9]{1,10}$/i', $_REQUEST['page']) > 0) {
 				
 				$adm_page = $_REQUEST['page'];
-				$file = "tmpl/adm/adm_{$adm_page}.php";
-					
-				if (file_exists($file)) {
-					$adm_file = $file;
+				if (in_array($adm_page, $tmpl_adm_array)) {
+					$file = "tmpl/adm/adm_{$adm_page}.php";
+				
+					if (file_exists($file)) {
+						$adm_file = $file;
+					}
 				}
 			}
 			
