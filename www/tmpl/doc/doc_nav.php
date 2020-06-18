@@ -79,7 +79,7 @@
 	<img src="res/galaxy.png" width="600" />
 </div>
 <div class="docs_text">
-	Each race has a <em>Prime System</em> and two <em>Hub Systems</em> which serve as
+	Each race has one <em>Prime System</em> and two <em>Hub Systems</em> which serve as
 	neutral embassies for the other two remaining races. These systems are connected
 	smartly through a warp network established by an old race called the Paragon. The
 	remaining systems surround these prime systems and provide places for the players
@@ -139,7 +139,7 @@
 	Shortly after the original warp network was completed the Paragon announced plans
 	for a ring network circling the galaxy. Due to heavier than normal hostilities between
 	Mawlor and Zyck'lirg it was decided to start the network in Xollian space. The Mawlor,
-	claiming spying then treason massacred every last Paragon. 
+	claiming spying then treason massacred every last Paragon they could find.
 </div>
 <div class="docs_text">
 	The technology used to create new artificial wormholes was never fully recovered but
