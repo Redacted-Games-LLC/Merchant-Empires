@@ -26,7 +26,7 @@
 <div class="header2">License Information</div>
 <div class="docs_text">
 	This edition of Merchant Empires is released under the GNU GPL version 3 software license.
-	Information on this license may be found <a href="https://www.gnu.org/licenses/gpl.html">here</a>.
+	Information on this license may be found <a href="https://www.gnu.org/licenses/gpl.html" target="_blank" rel="noopener noreferrer">here</a>.
 	This license is one of only two allowed because of the original license of Bryan Brunton's
 	Merchant Empires, which was GPLv2 with the "later version" option.
 </div>

@@ -40,22 +40,27 @@
 			case 'delete':
 
 				$page = $_REQUEST['subtask'];
-				$file = "hndl/sub/msg_{$page}.php";
+				if (in_array($page, $hndl_sub_msg_array)) {
+					$file = "hndl/sub/msg_{$page}.php";
 
-				if (!file_exists($file)) {
+					if (!file_exists($file)) {
+						$return_codes[] = 1041;
+						error_log(__FILE__ . '::' . __LINE__ . ' Valid subtask does not have an include.');
+						break;
+					}
+				
+					include_once($file);
+					break;
+				}
+				else {
 					$return_codes[] = 1041;
-					error_log(__FILE__ . '::' . __LINE__ . ' Valid subtask does not have an include.');
 					break;
 				}
 				
-				include_once($file);
-				break;
-
 			default:
 				$return_codes[] = 1041;
 				break;
  		}
 	} while (false);
-
 
 ?>

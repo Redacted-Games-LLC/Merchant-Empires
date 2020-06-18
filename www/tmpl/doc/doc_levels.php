@@ -29,20 +29,20 @@
 </div>
 <div class="docs_text">
 	<ul>
-		<li>1 point for every 5 goods sold to a port trade demand multiplied by the good level, rounded down. That is 100 L2 goods is 40 xp.</li>
-		<li>1 point for every 4 goods sold to a port upgrade demand multiplied by the good level, rounded down. That is 100 L2 goods is 50 xp.</li>
+		<li>1 point for every 5 goods sold to a port trade demand multiplied by the good level, rounded down. That is 100 L2 goods = 40 xp.</li>
+		<li>1 point for every 4 goods sold to a port upgrade demand multiplied by the good level, rounded down. That is 100 L2 goods = 50 xp.</li>
 		<li><?php echo ASSIST_EXP_PER_DAMAGE; ?> points per damage when assisting in any part of a war kill.</li>
 	</ul>
 </div>
 <div class="docs_text">
-	You cannot lose experience.
+	You will not lose experience.
 </div>
 <div class="header3">Levels</div>
 <div class="docs_text">
-	You start the game at level 0. After certain amounts of experience (listed in the table below)
+	You start the game at level 0. After certain amount of experience (listed in the table below)
 	you will have the option of leveling up your player. There is no immediate requirement to level
-	up, experience will continue to collect. When you finally do click the <strong>Level</strong>
-	Up link you will only gain one level at a time.
+	up, and experience will continue to collect. When you finally do click the <strong>Level
+	Up</strong> link you will only gain one level at a time.
 </div>
 <div class="docs_text">
 	Levels are computed using the following formulae:

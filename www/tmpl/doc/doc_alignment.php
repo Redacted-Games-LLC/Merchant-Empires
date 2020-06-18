@@ -90,7 +90,7 @@
 </div>
 <div class="docs_text">
 	The list of ranks, including the minimum level and alignment
-	for each are listed below. 
+	for each, are listed below. 
 </div>
 <div class="docs_text">
 	<?php
@@ -125,8 +125,8 @@
 </div>
 <div class="docs_text">
 	Ranks do not have any effect on your combat or trade ability. You cannot lose ranks
-	once you earn them, however if your alignment is in the negative you will not be able
+	once you earn them. However, if your alignment is in the negative, you will not be able
 	to purchase ranked ships you have earned. Make sure you stock up on the ships you want
-	before starting your life of crime or you may just find yourself making a few thousand
+	before starting your life of crime, or you may just find yourself making a few thousand
 	trades in a starter ship to get back to +0.
 </div>

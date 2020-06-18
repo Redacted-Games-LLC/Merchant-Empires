@@ -38,6 +38,7 @@
 	include_once('inc/config.php');
 	include_once('inc/db.php');
 	include_once('inc/return_codes.php');
+	include_once('inc/whitelist.php');
 
 	function dump_r($dump = array()) {
 		echo '<pre class="dump">';

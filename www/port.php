@@ -62,7 +62,7 @@
 			echo 'Nearest trader is ' . $item['distance'] . ' sector(s)';
 			echo '">';
 			echo number_format($item['final_price']);
-			echo '<img src="res/credits.png" width="16" height="16" />';
+			echo '&nbsp;<img src="res/credits.png" width="16" height="16" />';
 			echo '</div>';
 		}
 

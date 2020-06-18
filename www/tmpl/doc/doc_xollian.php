@@ -32,11 +32,11 @@
 <div class="docs_text">
 	Xollians pay a lower trade tax than Mawlors and Zyck'lirgs, but it
 	is unclear which treaty permits this. They also remain the only
-	race in the galaxy capable of utilizing cloak technology.
+	race in the galaxy capable of utilizing Cloak technology.
 </div>
 <div class="docs_text">
-	Xollians can learn to operate Mawlor ships but lacking the war-like
-	culture (and the arm-length to reach all the controls quickly) they
+	Xollians can learn to operate Mawlor ships, but lacking the war-like
+	culture (and the arm-length to reach all the controls quickly), they
 	face a 10% decline in weapon accuracy.
 </div>
 <div class="header3">Cloak Technology</div>
@@ -51,4 +51,3 @@
 	instead taking advantage of the economy to best their enemies. A Xollian might
 	not win a fight but he'll most easily afford a replacement ship.
 </div>
-

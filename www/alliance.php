@@ -66,10 +66,12 @@
 			if (isset($_REQUEST['page']) && preg_match('/^[_a-zA-Z0-9]{1,12}$/i', $_REQUEST['page']) > 0) {
 				
 				$alliance_page = $_REQUEST['page'];
-				$file = "tmpl/alliance/alliance_{$alliance_page}.php";
+				if (in_array($alliance_page, $tmpl_alliance_array)) {
+					$file = "tmpl/alliance/alliance_{$alliance_page}.php";
 					
-				if (file_exists($file)) {
-					$alliance_file = $file;
+					if (file_exists($file)) {
+						$alliance_file = $file;
+					}
 				}
 			}
 			
