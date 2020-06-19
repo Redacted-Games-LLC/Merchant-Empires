@@ -352,6 +352,7 @@
 	  width: 192px;
 	  height: 96px;
 	  overflow: hidden;
+	  background-color: black;
   }
   
   div.viewport_dss_background {
