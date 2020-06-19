@@ -194,10 +194,6 @@
 			}
 
 			$cargo_id = $spacegame['cargo_index'][$good_id];
-
-			if ($amount < $cargo['amount']) {
-				$amount = $cargo['amount'];
-			}
 			
 			// Update
 

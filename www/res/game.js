@@ -36,15 +36,40 @@ function page_onload(no_fluff) {
 
 
 	if (!no_fluff) {
+		
 		var popupDiv = document.createElement('div');
 		popupDiv.id = 'main_popup';
+
 		popupDiv.addEventListener("click", function () { hide_div('main_popup'); location.href = 'viewport.php'; });
+		window.addEventListener("keydown", function(keydown_event) {
+
+			// Thanks to Tim Down https://stackoverflow.com/a/3369743/6785475
+
+		    keydown_event = keydown_event || window.event;
+
+		    var is_escape_pressed = false;
+
+		    if ("key" in keydown_event) {
+
+		        is_escape_pressed = (keydown_event.key === "Escape" || keydown_event.key === "Esc");
+
+		    } else {
+
+		        is_escape_pressed = (keydown_event.keyCode === 27);
+
+		    }
+
+		    if (is_escape_pressed) {
+		    	hide_div('main_popup');
+		        location.href = 'viewport.php';
+		    }
+		});
 
 		var popupFrame = document.createElement('iframe');
 		popupFrame.id = 'main_iframe';
 		popupDiv.appendChild(popupFrame);
-
 		document.body.appendChild(popupDiv);
+
 	}
 
 
