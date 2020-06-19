@@ -262,7 +262,7 @@
 									<div class="viewport_console_item" onclick="return open_alliance()">
 										TEAM
 									</div>
-									<div class="viewport_console_item" onclick="return open_message()">
+									<div class="viewport_console_item" onclick="return open_message(0)">
 										COM
 									</div>
 								</div>

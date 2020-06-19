@@ -25,6 +25,16 @@
 ?>
 <div class="viewport_player_info">
 	<br />
+	<?php
+		if ($spacegame['player']['unread_messages'] > 0) {
+			?>
+			<div class="sidebar_messages" onclick="return open_message(1)">
+				UNREAD MESSAGES
+			</div>
+			<?php
+		}
+	?>
+	<br />
 	<div class="sidebar_race">
 		<?php echo $spacegame['races'][$spacegame['player']['race']]['caption']; ?>
 	</div>

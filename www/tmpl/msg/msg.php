@@ -113,9 +113,9 @@
 								echo '&nbsp;&nbsp;&nbsp;&nbsp;';
 							}
 
-							echo '<a href="handler.php?task=message&amp;subtask=hide&amp;message='. $message['message_id'] .'&amp;p='. $spacegame['page_number'] .'&amp;pp='. $spacegame['per_page'] .'&amp;form_id='. $_SESSION['form_id'] .'">';
+							echo '<a href="handler.php?task=message&amp;subtask=hide&amp;message='. $message['message_id'] .'&amp;p='. $spacegame['page_number'] .'&amp;pp='. $spacegame['per_page'] .'&amp;form_id='. $_SESSION['form_id'] . (defined('HIDDEN_MESSAGES') ? '&amp;all=1' : '')  .'">';
 
-							if ($message['read'] > 0) {
+							if ($message['hidden'] > 0) {
 								echo 'Unhide';
 							}
 							else {

@@ -1,7 +1,7 @@
 <?php
 /**
- * Performs housekeeping queries on a schedule.
- * 
+ * Handles notifying players of a new message.
+ *
  * @package [Redacted]Me
  * ---------------------------------------------------------------------------
  *
@@ -23,41 +23,27 @@
 
 	include_once('inc/events.php');
 	
-	register_event(new Event_Housekeeping());
+	register_event(new Event_Messaging());
 
-	class Event_Housekeeping extends Event {
+	/**
+	 * 
+	 */
+	class Event_Messaging extends Event {
 		
 		public function getRunTime() {
-			return EVENT_HOUSEKEEPING_TIME;
+			return EVENT_MESSAGING_TIME;
 		}
 
 		public function run() {
-		
+			
 			global $db;
 			$db = isset($db) ? $db : new DB;
 
 			$time = time();
 
-			// Expired alliance requests
+			// Delete expired messages first
 
-			$request_time = $time - (OPEN_REQUEST_DAYS * 3600 * 24);
-			$reject_time = $time - (REJECTED_REQUEST_DAYS * 3600 * 24);
-
-			if (!($st = $db->get_db()->prepare('delete from alliance_invitations where requested <= ? or (rejected > 0 and rejected <= ?)'))) {
-				echo (__FILE__ . '::' . __LINE__ . "Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
-				return;
-			}
-		
-			$st->bind_param("ii", $request_time, $reject_time);
-				
-			if (!$st->execute()) {
-				echo ("Query execution failed: (" . $st->errno . ") " . $st->error);
-				return;
-			}
-
-			// Expired news
-
-			if (!($st = $db->get_db()->prepare('delete from news where expiration <= ?'))) {
+			if (!($st = $db->get_db()->prepare('delete from messages where expiration <= ?'))) {
 				echo (__FILE__ . '::' . __LINE__ . "Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 				return;
 			}
@@ -69,6 +55,35 @@
 				return;
 			}
 
+			// Now find out if there are any unread messages for a player.
+
+			$unread_targets = array();
+			$unread_targets_count = 0;
+
+			$rs = $db->get_db()->query("select distinct target from message_targets where `read` = 0");
+			
+			$rs->data_seek(0);
+			while ($row = $rs->fetch_assoc()) {
+				$unread_targets[] = $row['target'];
+				$unread_targets_count += 1;
+			}
+
+			// Now update the player records to show they have an unread message.
+
+			if (!($st = $db->get_db()->prepare('update players set unread_messages = 1 where record_id = ?'))) {
+				echo (__FILE__ . '::' . __LINE__ . "Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+				return;
+			}
+		
+			foreach ($unread_targets as $target_id) {
+				
+				$st->bind_param("i", $target_id);
+				
+				if (!$st->execute()) {
+					echo ("Query execution failed: (" . $st->errno . ") " . $st->error);
+					return;
+				}
+			}
 
 		}
 

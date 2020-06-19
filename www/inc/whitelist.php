@@ -45,7 +45,7 @@ $hndl_sub_base_array = ["build", "land", "learn", "move"];
 
 $hndl_sub_gold_array = ["add", "enable", "insert", "obtain", "remove", "transfer"];
 
-$hndl_sub_msg_array = ["alliance", "delete", "hide", "ignore", "player", "subspace"];
+$hndl_sub_msg_array = ["alliance", "delete", "hide", "ignore", "player", "subspace", "read"];
 
 $hndl_sub_room_array = ["add", "add_requirement", "delete", "delete_requirement", "edit"];
 

@@ -396,10 +396,16 @@ function open_alliance() {
 
 }
 
-function open_message() {
+function open_message(go_to_inbox) {
 	
 	var frame = document.getElementById('main_iframe');
-	frame.src = 'message.php';
+
+	if (go_to_inbox) {
+		frame.src = 'message.php?page=inbox';
+	}
+	else {
+		frame.src = 'message.php';
+	}
 
 	show_div('main_popup');
 	return false;

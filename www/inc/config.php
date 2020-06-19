@@ -189,13 +189,16 @@
 	}
 
 	// One of the events spits a timestamp on the console at this interval.
-	define('TIMESTAMP_TIME', 600);
+	define('EVENT_TIMESTAMP_TIME', 600);
 
 	// How often to check damage and death reports to produce battle reports.
-	define('PLAYER_LOG_TIME', 10);
+	define('EVENT_PLAYER_LOG_TIME', 10);
 
 	// One of the events performs housekeeping tasks at this interval.
-	define('HOUSEKEEPING_TIME', 41);
+	define('EVENT_HOUSEKEEPING_TIME', 41);
+
+	// One of the events spits a timestamp on the console at this interval.
+	define('EVENT_MESSAGING_TIME', 9);
 
 	// Minimum and maximum alignment
 	define('ALIGNMENT_LIMIT', 500);

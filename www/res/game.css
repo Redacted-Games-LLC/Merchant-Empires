@@ -1086,6 +1086,16 @@
   
   /* player_sidebar.php */
   
+  div.sidebar_messages {
+  	width: 90%;
+  	margin: 2px auto;
+  	border: solid 1px cyan;
+  	background-color: #114455;
+  	cursor: pointer;
+  	font-size: 90%;
+  }
+
+
   div.sidebar_name {
 	  font-size: 20pt;
 	  text-align: center;

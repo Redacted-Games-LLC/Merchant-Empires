@@ -38,6 +38,7 @@
 			case 'ignore':
 			case 'hide':
 			case 'delete':
+			case 'read':
 
 				$page = $_REQUEST['subtask'];
 				if (in_array($page, $hndl_sub_msg_array)) {
