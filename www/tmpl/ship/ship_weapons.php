@@ -64,13 +64,13 @@
 	echo '<tr class="ship_info">';
 	echo '<td class="ship_info_key">Stations</td>';
 	echo '<td class="ship_info_value">' . $spacegame['ship']['stations'] . ' <img src="res/station.png" alt="station" title="Stations Available" width="16" /></td>';
-	echo '<td class="ship_info_value"><em>' . ($spacegame['ship']['stations'] - $spacegame['solution_stations']) . ' available</em></td>';
+	echo '<td class="ship_info_value"><em>' . ($spacegame['ship']['stations'] - $spacegame['solution_stations']) . ' remaining</em></td>';
 	echo '</tr>';
 
 	echo '<tr class="ship_info">';
 	echo '<td class="ship_info_key">Racks</td>';
 	echo '<td class="ship_info_value">' . $spacegame['ship']['racks'] . ' <img src="res/rack.png" alt="rack" title="Racks Available" width="16" /></td>';
-	echo '<td class="ship_info_value"><em>' . ($spacegame['ship']['racks'] - $spacegame['solution_racks']) . ' available</em></td>';
+	echo '<td class="ship_info_value"><em>' . ($spacegame['ship']['racks'] - $spacegame['solution_racks']) . ' remaining</em></td>';
 	echo '</tr>';
 
 	echo '<tr class="ship_info">';
