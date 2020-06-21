@@ -179,7 +179,7 @@
 									}
 									elseif ($cargo_record['good'] == 34) {
 										$drone_cargo = $cargo_id;
-										$drone_count = $drone_count + 1;
+										$drone_count += $cargo_record['amount'];
 									}
 								}
 
@@ -197,7 +197,7 @@
 							// -->
 							</script>
 						</div>
-						
+
 					</div>	
 
 					<div class="sector_name">
