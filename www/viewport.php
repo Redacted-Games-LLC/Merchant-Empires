@@ -171,10 +171,8 @@
 								$mine_cargo = 0;
 								$drone_count = 0;
 								$drone_cargo = 0;
-								$holds_count = 0;
+								$holds_count = isset($spacegame['ship']['holds']) ? $spacegame['ship']['holds'] : 0;
 								$cargo_count = 0;
-
-								$holds_count = $spacegame['ship']['holds'];
 
 								if (isset($spacegame['cargo'])) {
 									foreach ($spacegame['cargo'] as $cargo_id => $cargo_record) {
