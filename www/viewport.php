@@ -171,20 +171,24 @@
 								$mine_cargo = 0;
 								$drone_count = 0;
 								$drone_cargo = 0;
+								$holds_count = 0;
+								$cargo_count = 0;
 
-								foreach ($spacegame['cargo'] as $cargo_id => $cargo_record) {
-									if ($cargo_record['good'] == 33) {
-										$mine_cargo = $cargo_id;
-										$mine_count += $cargo_record['amount'];
+								if (isset($spacegange['cargo'])) {
+									foreach ($spacegame['cargo'] as $cargo_id => $cargo_record) {
+										if ($cargo_record['good'] == 33) {
+											$mine_cargo = $cargo_id;
+											$mine_count += $cargo_record['amount'];
+										}
+										elseif ($cargo_record['good'] == 34) {
+											$drone_cargo = $cargo_id;
+											$drone_count += $cargo_record['amount'];
+										}
 									}
-									elseif ($cargo_record['good'] == 34) {
-										$drone_cargo = $cargo_id;
-										$drone_count += $cargo_record['amount'];
-									}
+
+									$holds_count = $spacegame['ship']['holds'];
+									$cargo_count = $spacegame['cargo_volume'];
 								}
-
-								$holds_count = $spacegame['ship']['holds'];
-								$cargo_count = $spacegame['cargo_volume'];
 
 						?>
 							
