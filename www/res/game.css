@@ -623,7 +623,7 @@
   	width: 72px;
   	height: 256px
   	margin: 0px;
-  	padding: 0px;
+  	padding-top: 4px;
   }
   
   div#nav_control_outer {

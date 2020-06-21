@@ -164,7 +164,7 @@
 			<div id="viewport_header_left">
 
 				<div id="hud_controls">
-					<div style="position: fixed;">
+					<div>
 
 						<?php 
 								$mine_count = 0;
