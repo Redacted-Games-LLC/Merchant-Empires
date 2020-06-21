@@ -577,6 +577,7 @@
 	  word-wrap: break-word;
 	  margin-left: 304px;
 	  margin-right: 304px;
+	  min-width: 454px;
   }
   
   div#viewport_header_left {
@@ -613,6 +614,16 @@
 	  font-size: 150%;
 	  text-align: center;
 	  width: 34px;
+  }
+
+  div#force_panel {
+  	position: absolute;
+  	left: 0px;
+  	top: 0px;
+  	width: 72px;
+  	height: 256px
+  	margin: 0px;
+  	padding: 0px;
   }
   
   div#nav_control_outer {

@@ -44,6 +44,7 @@
 		$spacegame['target_dir'] = '';
 		
 		if ($spacegame['player']['ship_type'] > 0) {
+			include_once('inc/ships.php');
 			include_once('inc/cargo.php');
 			include_once('inc/alliances.php');
 
@@ -164,10 +165,8 @@
 
 				<div id="hud_controls">
 					<div style="position: fixed;">
-						<div style="position: absolute; left: 0px; top: 0px;">
-							<img src="res/force_panel.png" usemap="#force_map" alt="Force Panel" title="Deploy and Retrieve Forces" width="72" height="256" />
 
-							<?php 
+						<?php 
 								$mine_count = 0;
 								$mine_cargo = 0;
 								$drone_count = 0;
@@ -184,22 +183,21 @@
 									}
 								}
 
-								?>
+								$holds_count = $spacegame['ship']['holds'];
+								$cargo_count = $spacegame['cargo_volume'];
 
-								<map id="force_map" name="force_map">	
-									<area shape="rect" coords="0,4,72,27" alt="Pickup Drones" title="Pickup Drones" href="handler.php?task=ship&amp;subtask=pickup&amp;good=34&amp;return=viewport&amp;form_id=<?php echo $_SESSION['form_id']; ?>" />
-									<?php if ($drone_count > 0) {  ?>
-										<area shape="rect" coords="0,31,72,107" alt="Drop Drones" title="Drop Drones" href="handler.php?task=ship&amp;subtask=deploy&amp;cargo_id=<?php echo $drone_cargo; ?>&amp;amount=1&amp;return=viewport&amp;form_id=<?php echo $_SESSION['form_id']; ?>" />
-									<?php }	?>
-									<?php if ($mine_count > 0) {  ?>
-										<area shape="rect" coords="0,112,72,154" alt="Drop 1 Mine" title="Drop 1 Mine" href="handler.php?task=ship&amp;subtask=deploy&amp;cargo_id=<?php echo $mine_cargo; ?>&amp;amount=1&amp;return=viewport&amp;form_id=<?php echo $_SESSION['form_id']; ?>" />
-										<area shape="rect" coords="0,161,72,203" alt="Drop 10 Mines" title="Drop 10 Mines" href="handler.php?task=ship&amp;subtask=deploy&amp;cargo_id=<?php echo $mine_cargo; ?>&amp;amount=10&amp;return=viewport&amp;form_id=<?php echo $_SESSION['form_id']; ?>" />
-										<area shape="rect" coords="0,210,72,252" alt="Drop Full Stack" title="Drop Full Stack" href="handler.php?task=ship&amp;subtask=deploy&amp;cargo_id=<?php echo $mine_cargo; ?>&amp;amount=50&amp;return=viewport&amp;form_id=<?php echo $_SESSION['form_id']; ?>" />
-									<?php }	?>
-								</map>
-
+						?>
 							
+
+						<div id="force_panel">
+							<script language="javascript" type="text/javascript"><!--
+
+								<?php echo "draw_force_panel({$drone_count},{$drone_cargo},{$mine_count},{$mine_cargo},{$holds_count},{$cargo_count},'{$_SESSION['form_id']}');"; ?>
+
+							// -->
+							</script>
 						</div>
+						
 					</div>	
 
 					<div class="sector_name">
