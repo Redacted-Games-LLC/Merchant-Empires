@@ -44,8 +44,8 @@
 		$spacegame['target_dir'] = '';
 		
 		if ($spacegame['player']['ship_type'] > 0) {
-			include_once('inc/ships.php');
 			include_once('inc/cargo.php');
+			include_once('inc/ships.php');
 			include_once('inc/alliances.php');
 
 			if ($spacegame['player']['base_id'] <= 0) {
@@ -174,7 +174,9 @@
 								$holds_count = 0;
 								$cargo_count = 0;
 
-								if (isset($spacegange['cargo'])) {
+								$holds_count = $spacegame['ship']['holds'];
+
+								if (isset($spacegame['cargo'])) {
 									foreach ($spacegame['cargo'] as $cargo_id => $cargo_record) {
 										if ($cargo_record['good'] == 33) {
 											$mine_cargo = $cargo_id;
@@ -186,7 +188,6 @@
 										}
 									}
 
-									$holds_count = $spacegame['ship']['holds'];
 									$cargo_count = $spacegame['cargo_volume'];
 								}
 
@@ -196,7 +197,7 @@
 						<div id="force_panel">
 							<script language="javascript" type="text/javascript"><!--
 
-								<?php echo "draw_force_panel({$drone_count},{$drone_cargo},{$mine_count},{$mine_cargo},{$holds_count},{$cargo_count},'{$_SESSION['form_id']}');"; ?>
+								<?php echo "draw_force_panel('{$drone_count}','{$drone_cargo}','{$mine_count}','{$mine_cargo}','{$holds_count}','{$cargo_count}','" . $_SESSION['form_id'] . "');" ?>
 
 							// -->
 							</script>
