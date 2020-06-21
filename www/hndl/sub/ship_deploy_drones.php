@@ -24,8 +24,14 @@
 	include_once('hndl/common.php');
 
 	do { // Dummy Loop
-		$return_vars['page'] = 'deploy';
 
+		if ($_REQUEST['return'] == 'viewport') {
+			$return_page = 'viewport';
+		}
+		else {
+			$return_vars['page'] = 'deploy';
+		}
+		
 		// $db, $tech, and $good should be set by ship_deploy.php which calls this file.
 
 		if ($spacegame['player']['turns'] < DEPLOY_TURN_COST) {
