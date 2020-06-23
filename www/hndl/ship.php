@@ -37,24 +37,17 @@
 			case 'pickup':
 
 				$ship_page = $_REQUEST['subtask'];
-				
-				if (in_array($ship_page, $hndl_sub_ship_array)) {
-					$ship_file = "hndl/sub/ship_{$ship_page}.php";
+				$ship_file = "hndl/sub/ship_{$ship_page}.php";
 
-					if (!file_exists($ship_file)) {
-						$return_codes[] = 1041;
-						error_log(__FILE__ . '::' . __LINE__ . ' Valid subtask does not have an include.');
-						break;
-					}
-				
-					include_once($ship_file);
-					break;
-				}
-				else {
+				if (!file_exists($ship_file)) {
 					$return_codes[] = 1041;
+					error_log(__FILE__ . '::' . __LINE__ . ' Valid subtask does not have an include.');
 					break;
 				}
-
+				
+				include_once($ship_file);
+				break;
+				
 			default:
 				$return_codes[] = 1041;
 				break;
