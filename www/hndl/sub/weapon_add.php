@@ -81,20 +81,6 @@
 		include_once('inc/solutions.php');
 		include_once('inc/ships.php');
 
-		if ($spacegame['solution_racks'] > 0 && $spacegame['solution_racks'] >= $spacegame['ship']['racks']) {
-			$return_codes[] = 1187;
-			break;
-		}
-
-		if ($spacegame['solution_stations'] > 0 && $spacegame['solution_stations'] >= $spacegame['ship']['stations']) {
-			$return_codes[] = 1187;
-			break;
-		}
-
-		if ($solution_group <= 0 && $spacegame['solution_group_count'] >= WEAPON_SOLUTION_LIMIT) {
-			$return_codes[] = 1184;
-			break;
-		}
 
 		if (!isset($spacegame['weapons'][$weapon_add])) {
 			$return_codes[] = 1186;
@@ -103,6 +89,21 @@
 
 		if ($spacegame['weapons'][$weapon_add]['race'] > 0 && $spacegame['weapons'][$weapon_add]['race'] != $spacegame['ship']['race']) {
 			$return_codes[] = 1188;
+			break;
+		}
+
+		if ($spacegame['weapons'][$weapon_add]['racks'] > $spacegame['ship']['racks'] - $spacegame['solution_racks']) {
+			$return_codes[] = 1187;
+			break;
+		}
+
+		if ($spacegame['weapons'][$weapon_add]['stations'] > $spacegame['ship']['stations'] - $spacegame['solution_stations']) {
+			$return_codes[] = 1187;
+			break;
+		}
+
+		if ($solution_group <= 0 && $spacegame['solution_group_count'] >= WEAPON_SOLUTION_LIMIT) {
+			$return_codes[] = 1184;
 			break;
 		}
 

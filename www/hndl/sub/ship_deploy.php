@@ -30,6 +30,7 @@
 		$db = isset($db) ? $db : new DB;
 		$player_id = PLAYER_ID;
 
+		// NOTE that cargo id is not the good id but the record id of the specific cargo table record.
 		if (!isset($_REQUEST['cargo_id']) || !is_numeric($_REQUEST['cargo_id']) || !isset($spacegame['tech'][$_REQUEST['cargo_id']])) {
 			$return_codes[] = 1021;
 			break;

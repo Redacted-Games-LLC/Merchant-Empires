@@ -36,15 +36,40 @@ function page_onload(no_fluff) {
 
 
 	if (!no_fluff) {
+		
 		var popupDiv = document.createElement('div');
 		popupDiv.id = 'main_popup';
+
 		popupDiv.addEventListener("click", function () { hide_div('main_popup'); location.href = 'viewport.php'; });
+		window.addEventListener("keydown", function(keydown_event) {
+
+			// Thanks to Tim Down https://stackoverflow.com/a/3369743/6785475
+
+		    keydown_event = keydown_event || window.event;
+
+		    var is_escape_pressed = false;
+
+		    if ("key" in keydown_event) {
+
+		        is_escape_pressed = (keydown_event.key === "Escape" || keydown_event.key === "Esc");
+
+		    } else {
+
+		        is_escape_pressed = (keydown_event.keyCode === 27);
+
+		    }
+
+		    if (is_escape_pressed) {
+		    	hide_div('main_popup');
+		        location.href = 'viewport.php';
+		    }
+		});
 
 		var popupFrame = document.createElement('iframe');
 		popupFrame.id = 'main_iframe';
 		popupDiv.appendChild(popupFrame);
-
 		document.body.appendChild(popupDiv);
+
 	}
 
 
@@ -315,6 +340,126 @@ function draw_level_table() {
 
 	document.write('</table>');
 }
+
+
+function get_image_link(src, alt, title) {
+
+	var im = document.createElement('img');
+	im.src = src;
+	im.alt = alt;
+	im.title = title;
+
+	return im;
+}
+
+
+function draw_force_panel(drone_count, drone_id, mine_count, mine_id, holds_count, cargo_count, form_id) {
+
+	var fp = document.getElementById('force_panel');
+	
+	if (holds_count - cargo_count > 0) {
+		var link = document.createElement('a');
+		link.href = 'handler.php?task=ship&subtask=pickup&good=34&return=viewport&form_id=' + form_id;
+		var im = get_image_link('./res/fp/pu.png', 'Pickup Drones', 'Pickup Drones')
+
+		im.addEventListener('mousedown', function(){ this.src='./res/fp/pu_p.png'; });
+		im.addEventListener('mouseout', function(){ this.src='./res/fp/pu.png'; });
+		im.addEventListener('click', function(){ this.src='./res/fp/pu_p.png'; });
+
+		link.appendChild(im);
+		fp.appendChild(link);
+	}
+	else {
+		fp.appendChild(get_image_link('./res/fp/pu_d.png', 'Pickup Drones', 'No Cargo Space'));
+	}
+
+	if (drone_count > 0) {
+		var link = document.createElement('a');
+		link.href = 'handler.php?task=ship&subtask=deploy&cargo_id='+ drone_id +'&amount=1&return=viewport&form_id=' + form_id;
+		var im = get_image_link('./res/fp/dd1.png', 'Drop 1 Drone', 'Drop 1 Drone');
+
+		im.addEventListener('mousedown', function(){ this.src='./res/fp/dd1_p.png'; });
+		im.addEventListener('mouseout', function(){ this.src='./res/fp/dd1.png'; });
+		im.addEventListener('click', function(){ this.src='./res/fp/dd1_p.png'; });
+
+		link.appendChild(im);
+		fp.appendChild(link);
+	}
+	else {
+		fp.appendChild(get_image_link('./res/fp/dd1_d.png', 'Drop 1 Drone', 'No Drones'));
+	}
+
+	if (drone_count >= 10) {
+		var link = document.createElement('a');
+		link.href = 'handler.php?task=ship&subtask=deploy&cargo_id='+ drone_id +'&amount=10&return=viewport&form_id=' + form_id;
+		var im = get_image_link('./res/fp/dd10.png', 'Drop 10 Drones', 'Drop 10 Drones');
+
+		im.addEventListener('mousedown', function(){ this.src='./res/fp/dd10_p.png'; });
+		im.addEventListener('mouseout', function(){ this.src='./res/fp/dd10.png'; });
+		im.addEventListener('click', function(){ this.src='./res/fp/dd10_p.png'; });
+
+		link.appendChild(im);
+		fp.appendChild(link);
+	}
+	else {
+		fp.appendChild(get_image_link('./res/fp/dd10_d.png', 'Drop 10 Drones', 'No Drones'));
+	}
+
+	if (mine_count > 0) {
+		var link = document.createElement('a');
+		link.href = 'handler.php?task=ship&subtask=deploy&cargo_id='+ mine_id +'&amount=1&return=viewport&form_id=' + form_id;
+		var im = get_image_link('./res/fp/dm1.png', 'Drop 1 Mine', 'Drop 1 Mine');
+
+		im.addEventListener('mousedown', function(){ this.src='./res/fp/dm1_p.png'; });
+		im.addEventListener('mouseout', function(){ this.src='./res/fp/dm1.png'; });
+		im.addEventListener('click', function(){ this.src='./res/fp/dm1_p.png'; });
+
+		link.appendChild(im);
+		fp.appendChild(link);
+	}
+	else {
+		fp.appendChild(get_image_link('./res/fp/dm1_d.png', 'Drop 1 Mine', 'No Mines'));
+	}
+
+	if (mine_count >= 10) {
+		var link = document.createElement('a');
+		link.href = 'handler.php?task=ship&subtask=deploy&cargo_id='+ mine_id +'&amount=10&return=viewport&form_id=' + form_id;
+		var im = get_image_link('./res/fp/dm10.png', 'Drop 10 Mines', 'Drop 10 Mines');
+
+		im.addEventListener('mousedown', function(){ this.src='./res/fp/dm10_p.png'; });
+		im.addEventListener('mouseout', function(){ this.src='./res/fp/dm10.png'; });
+		im.addEventListener('click', function(){ this.src='./res/fp/dm10_p.png'; });
+
+		link.appendChild(im);
+		
+		fp.appendChild(link);
+	}
+	else {
+		fp.appendChild(get_image_link('./res/fp/dm10_d.png', 'Drop 10 Mines', 'No Mines'));
+	}
+
+	if (mine_count >= 50) {
+		var link = document.createElement('a');
+		link.href = 'handler.php?task=ship&subtask=deploy&cargo_id='+ mine_id +'&amount=50&return=viewport&form_id=' + form_id;
+		var im = get_image_link('./res/fp/dm50.png', 'Drop 50 Mines', 'Drop 50 Mines');
+
+		im.addEventListener('mousedown', function(){ this.src='./res/fp/dm50_p.png'; });
+		im.addEventListener('mouseout', function(){ this.src='./res/fp/dm50.png'; });
+		im.addEventListener('click', function(){ this.src='./res/fp/dm50_p.png'; });
+
+		link.appendChild(im);
+		fp.appendChild(link);
+	}
+	else {
+		fp.appendChild(get_image_link('./res/fp/dm50_d.png', 'Drop 50 Mines', 'No Mines'));
+	}
+
+
+}
+
+
+
+
 
 
 // Thanks to http://stackoverflow.com/a/2901298

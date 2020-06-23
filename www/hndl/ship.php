@@ -29,6 +29,10 @@
 
 	do { // Dummy loop
 
+		if (!isset($_REQUEST['subtask'])) {
+			$return_codes[] = 1041;
+		}
+
 		switch ($_REQUEST['subtask']) {
 
 			case 'empty_cargo':

@@ -42,7 +42,7 @@
 
 <div class="port_update_button">
 	<a href="viewport.php" target="_top">
-		<script type="text/javascript">drawButton('close', 'close', 'return true;');</script>
+		<script type="text/javascript">drawButton('close', 'close', 'true');</script>
 	</a>
 </div>
 <div class="header2">
