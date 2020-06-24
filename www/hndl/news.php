@@ -24,8 +24,6 @@
 	include_once('inc/page.php');
 	include_once('inc/game.php');
 
-
-
 	$return_page = 'admin';
 	$return_vars['page'] = 'news';
 
@@ -83,8 +81,6 @@
 			break;
  		}
 
-
 	} while (false);
-
 
 ?>

@@ -33,14 +33,20 @@
 	do { // Dummy loop
 
 		$return_vars['page'] = 'weapons';	
+		
+		$request_subtask = $_REQUEST['subtask'];
 
-		switch ($_REQUEST['subtask']) {
+		if (!isset($request_subtask)) {
+			$return_codes[] = 1041;
+		}
+
+		switch ($request_subtask) {
 
 			case 'add':
 			case 'remove':
 			case 'move':
 			
-				$sub_page = $_REQUEST['subtask'];
+				$sub_page = $request_subtask;
 				$sub_file = "hndl/sub/weapon_{$sub_page}.php";
 
 				if (!file_exists($sub_file)) {

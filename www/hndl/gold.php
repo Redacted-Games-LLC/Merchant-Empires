@@ -24,8 +24,14 @@
 	include_once('inc/page.php');
 	
 	do { // Dummy loop
+	
+		$request_subtask = $_REQUEST['subtask'];
 
-		switch ($_REQUEST['subtask']) {
+		if (!isset($request_subtask)) {
+			$return_codes[] = 1041;
+		}
+
+		switch ($request_subtask) {
 
 			case 'enable':
 			case 'add':
@@ -34,7 +40,7 @@
 			case 'insert':
 			case 'obtain':
 
-				$sub_page = $_REQUEST['subtask'];
+				$sub_page = $request_subtask;
 				$return_vars['page'] = $sub_page;
 				$sub_file = "hndl/sub/gold_{$sub_page}.php";
 

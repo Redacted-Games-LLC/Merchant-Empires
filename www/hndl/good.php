@@ -49,6 +49,15 @@
 		$good = array();
 		$good_id = 0;
 		
+		$request_name = $_REQUEST['name'];
+		$request_level = $_REQUEST['level'];
+		$request_tech = $_REQUEST['tech'];
+		$request_requirement = $_REQUEST['requirement'];
+		$request_target = $_REQUEST['target'];
+		$request_percent = $_REQUEST['percent'];
+		$request_supply = $_REQUEST['supply'];
+		$request_start = $_REQUEST['start'];
+		
 		include_once('inc/goods.php');
 
 		if (isset($spacegame['goods'][$_REQUEST['id']])) {
@@ -58,6 +67,9 @@
 			$return_vars['id'] = $good_id;
 		}
 		
+		if (!isset($_REQUEST['subtask'])) {
+			$return_codes[] = 1041;
+		}		
 
 		switch ($_REQUEST['subtask']) {
 
@@ -65,19 +77,19 @@
 				
 				$return_vars['page'] = 'goods';
 
-				if (!isset($_REQUEST['name']) || preg_match('/^[ a-zA-Z0-9]{1,24}$/', $_REQUEST['name']) <= 0) {
+				if (!isset($request_name) || preg_match('/^[ a-zA-Z0-9]{1,24}$/', $request_name) <= 0) {
 					$return_codes[] = 1042;
 					break 2;
 				}
 
-				if (!isset($_REQUEST['level']) || !is_numeric($_REQUEST['level']) || $_REQUEST['level'] < 1 || $_REQUEST['level'] > 15) {
+				if (!isset($request_level) || !is_numeric($request_level) || $request_level < 1 || $request_level > 15) {
 					$return_codes[] = 1043;
 					break 2;
 				}
 
 				$db = isset($db) ? $db : new DB;
 
-				$rs = $db->get_db()->query("select * from goods where lower(caption) = '" . strtolower($_REQUEST['name']) . "' limit 1");
+				$rs = $db->get_db()->query("select * from goods where lower(caption) = '" . strtolower($request_name) . "' limit 1");
 		
 				$rs->data_seek(0);
 				
@@ -92,7 +104,7 @@
 					break;
 				}
 				
-				$st->bind_param("si", $_REQUEST['name'], $_REQUEST['level']);
+				$st->bind_param("si", $request_name, $request_level);
 				
 				if (!$st->execute()) {
 					$return_codes[] = 1006;
@@ -112,29 +124,29 @@
 					break 2;
 				}
 
-				if (!isset($_REQUEST['name']) || preg_match('/^[ a-zA-Z0-9]{1,24}$/', $_REQUEST['name']) <= 0) {
+				if (!isset($request_name) || preg_match('/^[ a-zA-Z0-9]{1,24}$/', $request_name) <= 0) {
 					$return_codes[] = 1042;
 					break 2;
 				}
 
-				if (!isset($_REQUEST['level']) || !is_numeric($_REQUEST['level']) || $_REQUEST['level'] < 1 || $_REQUEST['level'] > 15) {
+				if (!isset($request_level) || !is_numeric($request_level) || $request_level < 1 || $request_level > 15) {
 					$return_codes[] = 1043;
 					break 2;
 				}
 
-				if (!isset($_REQUEST['tech']) || !is_numeric($_REQUEST['tech']) || $_REQUEST['tech'] < 0) {
+				if (!isset($request_tech) || !is_numeric($request_tech) || $request_tech < 0) {
 					$return_codes[] = 1069;
 					break 2;
 				}
 
-				if (strtolower($good['caption']) == strtolower($_REQUEST['name']) && $good['level'] == $_REQUEST['level'] && $good['tech'] == $_REQUEST['tech']) {
+				if (strtolower($good['caption']) == strtolower($request_name) && $good['level'] == $request_level && $good['tech'] == $request_tech) {
 					$return_codes[] = 1046;
 					break 2;
 				}
 
 				$db = isset($db) ? $db : new DB;
 
-				$rs = $db->get_db()->query("select * from goods where lower(caption) = '" . strtolower($_REQUEST['name']) . "' and record_id <> '". $good_id ."' limit 1");
+				$rs = $db->get_db()->query("select * from goods where lower(caption) = '" . strtolower($request_name) . "' and record_id <> '". $good_id ."' limit 1");
 		
 				$rs->data_seek(0);
 				
@@ -149,7 +161,7 @@
 					break;
 				}
 				
-				$st->bind_param("siii", $_REQUEST['name'], $_REQUEST['level'], $_REQUEST['tech'], $good_id);
+				$st->bind_param("siii", $request_name, $request_level, $request_tech, $good_id);
 				
 				if (!$st->execute()) {
 					$return_codes[] = 1006;
@@ -170,7 +182,7 @@
 					break 2;
 				}
 
-				if (!isset($_REQUEST['requirement']) || !is_numeric($_REQUEST['requirement'])) {
+				if (!isset($request_requirement) || !is_numeric($request_requirement)) {
 					$return_codes[] = 1021;
 					break 2;
 				}
@@ -178,7 +190,7 @@
 
 				$db = isset($db) ? $db : new DB;
 
-				$rs = $db->get_db()->query("select * from good_upgrades where good = '".$_REQUEST['requirement']."' and target='".$good_id."'");
+				$rs = $db->get_db()->query("select * from good_upgrades where good = '".$request_requirement."' and target='".$good_id."'");
 		
 				$rs->data_seek(0);
 				
@@ -193,7 +205,7 @@
 					break;
 				}
 				
-				$st->bind_param("ii", $_REQUEST['requirement'], $good_id);
+				$st->bind_param("ii", $request_requirement, $good_id);
 				
 				if (!$st->execute()) {
 					$return_codes[] = 1006;
@@ -214,7 +226,7 @@
 					break 2;
 				}
 
-				if (!isset($_REQUEST['requirement']) || !is_numeric($_REQUEST['requirement'])) {
+				if (!isset($request_requirement) || !is_numeric($request_requirement)) {
 					$return_codes[] = 1021;
 					break 2;
 				}
@@ -222,7 +234,7 @@
 
 				$db = isset($db) ? $db : new DB;
 
-				$rs = $db->get_db()->query("select * from good_upgrades where good = '".$_REQUEST['requirement']."' and target='".$good_id."'");
+				$rs = $db->get_db()->query("select * from good_upgrades where good = '".$request_requirement."' and target='".$good_id."'");
 		
 				$rs->data_seek(0);
 				
@@ -237,7 +249,7 @@
 					break;
 				}
 				
-				$st->bind_param("ii", $_REQUEST['requirement'], $good_id);
+				$st->bind_param("ii", $request_requirement, $good_id);
 				
 				if (!$st->execute()) {
 					$return_codes[] = 1006;
@@ -258,24 +270,24 @@
 					break 2;
 				}
 
-				if (!isset($_REQUEST['target']) || !is_numeric($_REQUEST['target'])) {
+				if (!isset($request_target) || !is_numeric($request_target)) {
 					$return_codes[] = 1021;
 					break 2;
 				}
 
-				if (!isset($_REQUEST['percent']) || !is_numeric($_REQUEST['percent']) || $_REQUEST['percent'] < 0 || $_REQUEST['percent'] > 100) {
+				if (!isset($request_percent) || !is_numeric($request_percent) || $request_percent < 0 || $request_percent > 100) {
 					$return_codes[] = 1053;
 					break 2;
 				}
 
-				if (!isset($_REQUEST['supply']) || !is_numeric($_REQUEST['supply']) || $_REQUEST['supply'] < 0 || $_REQUEST['supply'] > 1) {
+				if (!isset($request_supply) || !is_numeric($request_supply) || $request_supply < 0 || $request_supply > 1) {
 					$return_codes[] = 1054;
 					break 2;
 				}
 
 				$db = isset($db) ? $db : new DB;
 
-				$rs = $db->get_db()->query("select * from start_goods where good = '". $good_id ."' and place_type = '".$_REQUEST['target']."' and supply = '".$_REQUEST['supply']."'");
+				$rs = $db->get_db()->query("select * from start_goods where good = '". $good_id ."' and place_type = '".$request_target."' and supply = '".$request_supply."'");
 		
 				$rs->data_seek(0);
 				
@@ -290,7 +302,7 @@
 					break;
 				}
 				
-				$st->bind_param("iiii", $good_id, $_REQUEST['target'], $_REQUEST['percent'], $_REQUEST['supply']);
+				$st->bind_param("iiii", $good_id, $request_target, $request_percent, $request_supply);
 				
 				if (!$st->execute()) {
 					$return_codes[] = 1006;
@@ -310,7 +322,7 @@
 					break 2;
 				}
 
-				if (!isset($_REQUEST['start']) || !is_numeric($_REQUEST['start'])) {
+				if (!isset($request_start) || !is_numeric($request_start)) {
 					$return_codes[] = 1021;
 					break 2;
 				}
@@ -323,7 +335,7 @@
 					break;
 				}
 				
-				$st->bind_param("i", $_REQUEST['start']);
+				$st->bind_param("i", $request_start);
 				
 				if (!$st->execute()) {
 					$return_codes[] = 1006;
@@ -435,7 +447,6 @@
 				}
 
 
-
 				$return_codes[] = 1055;
 				break;
 
@@ -445,6 +456,5 @@
 		}
 
 	} while (false);
-
 
 ?>
