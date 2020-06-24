@@ -31,7 +31,7 @@
 	class Event_Player_Log extends Event {
 		
 		public function getRunTime() {
-			return PLAYER_LOG_TIME;
+			return EVENT_PLAYER_LOG_TIME;
 		}
 
 		public function run() {

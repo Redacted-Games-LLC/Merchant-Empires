@@ -25,9 +25,14 @@
 ?>
 <div class="header2">Alien Races of the Game</div>
 <div class="docs_text">
-	All planets in the galaxy have long been made habitable and
-	are populated by Imperially-governed members of one of three
-	races:
+	People of the Galactic races have been at war with each other for almost
+	a thousand years, possibly even more. The cause is long forgotten, and very
+	few treaties remain. The Imperial Government somehow retains control, but
+	it's not sure how.
+</div>
+<div class="docs_text">
+	All planets in the galaxy have long been made habitable and populated by
+	Imperially-governed members of one or more of three dominant races:
 </div>
 <div class="docs_text">
 	<ul>
@@ -37,22 +42,19 @@
 	</ul>
 </div>
 <div class="docs_text">
-	Members of opposing races are <strong>at war</strong> with
-	other races. There are <a href="docs.php?page=alignment">alignment</a>
-	changes if you kill any allied or enemy player.
+	Members of opposing races are <strong>at war</strong> with each other.
+	Every attempt at formally ending the war seems to fail. The Imperial
+	Government continuously, and mysteriously, refuses to discuss this issue.
+</div>
+<div class="header3">Racial Notes</div>
+<div class="docs_text">
+	There are <a href="docs.php?page=alignment">alignment</a> changes if you
+	kill any allied or enemy player.
 </div>
 <div class="docs_text">
 	With the exception of Xollians, players pay taxes on their own racial 
 	ports when trading. If trading in an enemy port, they also pay the
 	enemy tax rate, including Xollians.
-</div>
-<div class="header3">Lore</div>
-<div class="docs_text">
-	The people of these races have been at war with each other
-	for thousand years and more. The cause had long been forgotten, and
-	only a few treaties remain untouched. Neighbor to
-	crippling combats, the Imperial Government somehow manages
-	to persist.
 </div>
 <div class="docs_text">
 	Planetary non-combatants are protected but forbidden to 
@@ -63,9 +65,9 @@
 </div>
 <div class="docs_text">
 	There were other races that once inhabited the galaxy cluster,
-	but had since disappeared. What little is known has 
-	been convoluted by propaganda. It is believed amongst some
-	conspiracy circles that remaining members of those races
-	are in control of the Imperial Government, but none
-	of them has been identified in public in centuries.
+	but had since disappeared. What little is known has been
+	convoluted by propaganda. It is believed amongst some conspiracy
+	circles that remaining members of those races are truly in
+	control of the Imperial Government, but none have been
+	identified in public in centuries.
 </div>

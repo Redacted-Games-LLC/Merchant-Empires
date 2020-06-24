@@ -174,10 +174,10 @@
 
 	// How much a level 1 player pays to dump cargo before inflation.
 	if (DEV_ROUND) {
-		define('CARGO_DUMP_COST', 1000);
+		define('CARGO_DUMP_COST', 10);
 	}
 	else {
-		define('CARGO_DUMP_COST', 5000);
+		define('CARGO_DUMP_COST', 1000);
 	}
 
 	// How many turns a player must use to dump cargo
@@ -189,13 +189,16 @@
 	}
 
 	// One of the events spits a timestamp on the console at this interval.
-	define('TIMESTAMP_TIME', 600);
+	define('EVENT_TIMESTAMP_TIME', 600);
 
 	// How often to check damage and death reports to produce battle reports.
-	define('PLAYER_LOG_TIME', 10);
+	define('EVENT_PLAYER_LOG_TIME', 10);
 
 	// One of the events performs housekeeping tasks at this interval.
-	define('HOUSEKEEPING_TIME', 41);
+	define('EVENT_HOUSEKEEPING_TIME', 41);
+
+	// One of the events spits a timestamp on the console at this interval.
+	define('EVENT_MESSAGING_TIME', 9);
 
 	// Minimum and maximum alignment
 	define('ALIGNMENT_LIMIT', 500);
@@ -204,25 +207,25 @@
 	define('ALIGNMENT_UPDATE_TIME', 600);
 
 	// How many traded goods is needed to earn an alignment point
-	define('TRADES_PER_ALIGNMENT_POINT', 2000);
+	define('TRADES_PER_ALIGNMENT_POINT', 20000);
 
 	// How many upgraded goods is needed to earn an alignment point
-	define('UPGRADES_PER_ALIGNMENT_POINT', 1000);
+	define('UPGRADES_PER_ALIGNMENT_POINT', 10000);
 
 	// How many trades in an enemy port will lose an alignment point.
-	define('WAR_TRADES_PER_ALIGNMENT_POINT', 200);
+	define('WAR_TRADES_PER_ALIGNMENT_POINT', 5000);
 
 	// How many upgrades in an enemy port will lose an alignment point.
-	define('WAR_UPGRADES_PER_ALIGNMENT_POINT', 50);
+	define('WAR_UPGRADES_PER_ALIGNMENT_POINT', 1000);
 
 	// The smallest player level which allows ship-to-ship combat.
 	define('MINIMUM_KILLABLE_LEVEL', 3);
 
 	// How much alignment you lose when killing someone of your race.
-	define('RACIAL_KILL_PENALTY', 100);
+	define('RACIAL_KILL_PENALTY', 20);
 
 	// Minimum amount of alignment needed to ensure safety in government systems.
-	define('SAFE_ALIGNMENT_MINIMUM', -50);
+	define('SAFE_ALIGNMENT_MINIMUM', -200);
 
 	// Which attack rating makes a player subject to attack in protected systems.
 	define('SAFE_ATTACK_RATING_LIMIT', 4);

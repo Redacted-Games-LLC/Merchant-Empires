@@ -24,8 +24,14 @@
 	include_once('hndl/common.php');
 
 	do { // Dummy Loop
-		$return_vars['page'] = 'deploy';
 
+		if ($_REQUEST['return'] == 'viewport') {
+			$return_page = 'viewport';
+		}
+		else {
+			$return_vars['page'] = 'deploy';
+		}
+		
 		// $db, $tech, and $good should be set by ship_deploy.php which calls this file.
 
 		if ($spacegame['player']['turns'] < DEPLOY_TURN_COST) {
@@ -90,21 +96,23 @@
 		$current_count = 0;
 		$player_count = 0;
 
-		foreach ($spacegame['sector']['m']['ordnance'] as $ordnance_id => $ordnance) {
+		if (isset($spacegame['sector']['m']['ordnance'])) {
+			foreach ($spacegame['sector']['m']['ordnance'] as $ordnance_id => $ordnance) {
 
-			// Each ordnance type is counted separately.
-			if ($ordnance['good'] != $good['record_id']) {
-				continue;
-			}
+				// Each ordnance type is counted separately.
+				if ($ordnance['good'] != $good['record_id']) {
+					continue;
+				}
 
-			$current_count += $ordnance['amount'];
+				$current_count += $ordnance['amount'];
 
-			if ($spacegame['player']['record_id'] == $ordnance['owner']) {
-				// This will only run once but let the loop finish
-				// for the total count.
+				if ($spacegame['player']['record_id'] == $ordnance['owner']) {
+					// This will only run once but let the loop finish
+					// for the total count.
 
-				$owner_id = $ordnance_id;
-				$player_count += $ordnance['amount'];
+					$owner_id = $ordnance_id;
+					$player_count += $ordnance['amount'];
+				}
 			}
 		}
 

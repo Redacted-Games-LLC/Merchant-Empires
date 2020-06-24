@@ -41,7 +41,7 @@
 	}
 
 
-	function make_goods_div($item = array(), $place_id = 0, $holds_available = 1) {
+	function make_goods_div($item = array(), $place_id = 0, $holds_available = 1, $upgrading = false) {
 
 		global $spacegame;
 
@@ -90,9 +90,15 @@
 				
 		}
 
-		if ($item['distance'] <= 0) {
+
+		if ($upgrading) {
+			echo '<div class="port_buttons" title="Port has obtained enough resources to start new production.">';
+			echo '<em>PORT&nbsp;UPGRADING!&nbsp;</em>';
+			echo '</div>';
+		}
+		elseif ($item['distance'] <= 0) {
 			echo '<div class="port_buttons" title="Unable to deal in goods with no traders in range.">';
-			echo '<em>NO TRADERS</em>';
+			echo '<em>NO&nbsp;NEAR&nbsp;TRADERS&nbsp;</em>';
 			echo '</div>';
 		}
 		else {
@@ -114,7 +120,7 @@
 					$amount = $cargo['amount'];
 				}
 
-				echo '<input class="port_form_input" id="amount'. $item['record_id'] . '" name="amount" type="text" maxlength="4" size="5" value="'. max(0, $amount) .'" />';
+				echo '<input class="port_form_input" id="amount'. $item['record_id'] . '" name="amount" type="text" maxlength="4" size="5" value="'. max(0, min($amount, abs($item['amount']))) .'" />';
 				echo '<script type="text/javascript">drawButton(\'sb' . $item['record_id'] . "', 'sell', 'validate_sell()', 'port_form_button');</script>";
 			}
 
@@ -182,7 +188,7 @@
 			echo '<div class="port_item">';
 			
 			foreach ($spacegame['port_upgrades']['buys'] as $id => $item) {
-				make_goods_div($item, $place_id, $empty_holds_available);
+				make_goods_div($item, $place_id, $empty_holds_available, $item['amount'] == 0);
 			}
 
 			echo '</div>';
@@ -220,7 +226,7 @@
 
 	<div class="port_update_button">
 		<a href="viewport.php" target="_top">
-			<script type="text/javascript">drawButton('close', 'close', 'return true;');</script>
+			<script type="text/javascript">drawButton('close', 'close', 'true');</script>
 		</a>
 	</div>
 	<div  class="header2">

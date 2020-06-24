@@ -34,26 +34,18 @@
 			case 'insert':
 			case 'obtain':
 
-			
 				$sub_page = $_REQUEST['subtask'];
 				$return_vars['page'] = $sub_page;
-				
-				if (in_array($sub_page, $hndl_sub_gold_array)) {
-					$sub_file = "hndl/sub/gold_{$sub_page}.php";
+				$sub_file = "hndl/sub/gold_{$sub_page}.php";
 
-					if (!file_exists($sub_file)) {
-						$return_codes[] = 1041;
-						error_log(__FILE__ . '::' . __LINE__ . ' Valid subtask does not have an include.');
-						break;
-					}
-				
-					include_once($sub_file);
-					break;
-				}
-				else {
+				if (!file_exists($sub_file)) {
 					$return_codes[] = 1041;
+					error_log(__FILE__ . '::' . __LINE__ . ' Valid subtask does not have an include.');
 					break;
 				}
+				
+				include_once($sub_file);
+				break;
 
 			default:
 				$return_codes[] = 1041;

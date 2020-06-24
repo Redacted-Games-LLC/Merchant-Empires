@@ -25,6 +25,13 @@
 	
 	do { // Dummy Loop
 
+		if ($_REQUEST['return'] == 'viewport') {
+			$return_page = 'viewport';
+		}
+		else {
+			$return_vars['page'] = 'deploy';
+		}
+
 		if ($spacegame['player']['turns'] < DEPLOY_TURN_COST) {
 			$return_codes[] = 1018;
 			break;

@@ -39,7 +39,7 @@
 	class Event_Timestamp extends Event {
 		
 		public function getRunTime() {
-			return TIMESTAMP_TIME;
+			return EVENT_TIMESTAMP_TIME;
 		}
 
 		public function run() {

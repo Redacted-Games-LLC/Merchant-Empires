@@ -45,6 +45,7 @@
 		
 		if ($spacegame['player']['ship_type'] > 0) {
 			include_once('inc/cargo.php');
+			include_once('inc/ships.php');
 			include_once('inc/alliances.php');
 
 			if ($spacegame['player']['base_id'] <= 0) {
@@ -159,13 +160,52 @@
 		?>
 
 		<div id="viewport_header">
+				
 			<div id="viewport_header_left">
 
 				<div id="hud_controls">
+					<div>
+
+						<?php 
+								$mine_count = 0;
+								$mine_cargo = 0;
+								$drone_count = 0;
+								$drone_cargo = 0;
+								$holds_count = isset($spacegame['ship']['holds']) ? $spacegame['ship']['holds'] : 0;
+								$cargo_count = 0;
+
+								if (isset($spacegame['cargo'])) {
+									foreach ($spacegame['cargo'] as $cargo_id => $cargo_record) {
+										if ($cargo_record['good'] == 33) {
+											$mine_cargo = $cargo_id;
+											$mine_count += $cargo_record['amount'];
+										}
+										elseif ($cargo_record['good'] == 34) {
+											$drone_cargo = $cargo_id;
+											$drone_count += $cargo_record['amount'];
+										}
+									}
+
+									$cargo_count = $spacegame['cargo_volume'];
+								}
+
+						?>
+							
+
+						<div id="force_panel">
+							<script language="javascript" type="text/javascript"><!--
+
+								<?php echo "draw_force_panel('{$drone_count}','{$drone_cargo}','{$mine_count}','{$mine_cargo}','{$holds_count}','{$cargo_count}','" . $_SESSION['form_id'] . "');" ?>
+
+							// -->
+							</script>
+						</div>
+
+					</div>	
+
 					<div class="sector_name">
 					<?php
 						if ($spacegame['player']['ship_type'] > 0) {
-
 							
 							if (isset($spacegame['system'])) {
 								echo '<div class="header5">';
@@ -195,7 +235,6 @@
 								echo '</div>';
 							}
 
-							
 
 							if (isset($spacegame['places'])) {
 								$success = false;
@@ -248,10 +287,11 @@
 						if ($spacegame['player']['ship_type'] > 0) {
 
 							if ($spacegame['player']['base_id'] <= 0) {
-								include_once('tmpl/viewport_dss.php');
+								?>
+								
+								<?php include_once('tmpl/viewport_dss.php'); ?>
 							
-					?>
-						
+							
 								<div class="viewport_console">
 									<div class="viewport_console_item" onclick="return open_locator()">
 										NAV
@@ -262,7 +302,7 @@
 									<div class="viewport_console_item" onclick="return open_alliance()">
 										TEAM
 									</div>
-									<div class="viewport_console_item" onclick="return open_message()">
+									<div class="viewport_console_item" onclick="return open_message(0)">
 										COM
 									</div>
 								</div>

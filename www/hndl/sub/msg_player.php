@@ -39,12 +39,15 @@
 			break;
 		}
 
+		$player_name = strtolower($_REQUEST['player']);
+
 		if (!isset($_REQUEST['message'])) {
 			$return_codes[] = 1136;
 			break;
 		}
 
-		$len = strlen($_REQUEST['message']);
+		$message = $_REQUEST['message'];
+		$len = strlen($message);
 
 		if ($len <= 0) {
 			$return_codes[] = 1136;
@@ -58,26 +61,11 @@
 
 		$db = isset($db) ? $db : new DB;
 
-		$player = 0;
-
-		$rs = $db->get_db()->query("select record_id from players where lower(`caption`) = '". strtolower($_REQUEST['player']) ."'");
-		
-		$rs->data_seek(0);
-		if ($row = $rs->fetch_assoc()) {
-			$player = $row['record_id'];
-		}
-		else {
-			$return_codes[] = 1135;
-			break;
-		}
-
-		$targets = array();
-		$targets[] = $player;
+		// Remove turns first
 
 		$turn_cost = MESSAGE_TURN_COST;
 		$player_id = PLAYER_ID;
 
-		// Remove some turns
 		if (!($st = $db->get_db()->prepare('update players set turns = turns - ? where record_id = ?'))) {
 			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			$return_codes[] = 1006;
@@ -97,7 +85,25 @@
 			break;
 		}
 
-		send_message($_REQUEST['message'], $targets, MESSAGE_EXPIRATION, 1);
+		// Now send the message
+
+		$player = 0;
+
+		$rs = $db->get_db()->query("select record_id from players where lower(`caption`) = '{$player_name}'");
+		
+		$rs->data_seek(0);
+		if ($row = $rs->fetch_assoc()) {
+			$player = $row['record_id'];
+		}
+		else {
+			$return_codes[] = 1135;
+			break;
+		}
+
+		$targets = array();
+		$targets[] = $player;
+
+		send_message($message, $targets, MESSAGE_EXPIRATION, 1);
 
 		$return_codes[] = 1137;
 

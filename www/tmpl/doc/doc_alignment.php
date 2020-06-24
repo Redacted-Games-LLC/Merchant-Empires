@@ -51,14 +51,14 @@
 </div>
 <div class="header3">Trade</div>
 <div class="docs_text">
-	Every single good you trade at a port is counted. Trading <?php echo TRADES_PER_ALIGNMENT_POINT; ?>
+	Every single good you trade at a port is counted. Trading <?php echo number_format(TRADES_PER_ALIGNMENT_POINT); ?>
 	goods in your own racial ports will give you one (1) point, while trading
-	<?php echo WAR_TRADES_PER_ALIGNMENT_POINT; ?> goods in enemy ports will remove
+	<?php echo number_format(WAR_TRADES_PER_ALIGNMENT_POINT); ?> goods in enemy ports will remove
 	one (1) alignment point.
 </div>
 <div class="docs_text">
-	Upgrading <?php echo UPGRADES_PER_ALIGNMENT_POINT; ?> goods in racial ports
-	will give 1 point, but only <?php echo WAR_UPGRADES_PER_ALIGNMENT_POINT; ?>
+	Upgrading <?php echo number_format(UPGRADES_PER_ALIGNMENT_POINT); ?> goods in racial ports
+	will give 1 point, but only <?php echo number_format(WAR_UPGRADES_PER_ALIGNMENT_POINT); ?>
 	goods are needed in enemy ports to cost you 1 point.
 </div> 
 <div class="header3">Combat</div>

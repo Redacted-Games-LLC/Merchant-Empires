@@ -39,20 +39,4 @@ $tmpl_ship_array = ["attack", "deploy", "main", "weapons"];
 
 $hndl_array = ["alliance", "attack", "base", "common", "create_player", "dealer", "deselect_player", "generate_galaxy", "gold", "good", "index", "level", "login", "logout", "message", "move", "news", "port", "reset_ports", "room", "scan", "select_player", "ship", "signup", "target", "users", "warp", "weapon"];
 
-$hndl_sub_alliance_array = ["create", "enroll", "leave", "recruit", "reject", "request"];
-
-$hndl_sub_base_array = ["build", "land", "learn", "move"];
-
-$hndl_sub_gold_array = ["add", "enable", "insert", "obtain", "remove", "transfer"];
-
-$hndl_sub_msg_array = ["alliance", "delete", "hide", "ignore", "player", "subspace"];
-
-$hndl_sub_room_array = ["add", "add_requirement", "delete", "delete_requirement", "edit"];
-
-$hndl_sub_ship_array = ["deploy", "deploy_armor", "deploy_base_package", "deploy_drones", "deploy_mines", "deploy_port_package", "deploy_shields", "deploy_solar_collectors", "empty_cargo", "pickup", "rename"];
-
-$hndl_sub_users_array = ["field"];
-
-$hndl_sub_weapon_array = ["add", "move", "remove"];
-
 ?>

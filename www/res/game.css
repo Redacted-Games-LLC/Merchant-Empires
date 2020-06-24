@@ -352,6 +352,7 @@
 	  width: 192px;
 	  height: 96px;
 	  overflow: hidden;
+	  background-color: black;
   }
   
   div.viewport_dss_background {
@@ -576,6 +577,7 @@
 	  word-wrap: break-word;
 	  margin-left: 304px;
 	  margin-right: 304px;
+	  min-width: 454px;
   }
   
   div#viewport_header_left {
@@ -597,7 +599,7 @@
   div.sector_name {
 	  position:relative;
 	  top: 0px;
-	  width: 90%;
+	  width: 70%;
 	  margin: 3px auto;
 	  text-align: center;
 	  font-size: 150%;
@@ -612,6 +614,16 @@
 	  font-size: 150%;
 	  text-align: center;
 	  width: 34px;
+  }
+
+  div#force_panel {
+  	position: absolute;
+  	left: 0px;
+  	top: 0px;
+  	width: 72px;
+  	height: 256px
+  	margin: 0px;
+  	padding-top: 4px;
   }
   
   div#nav_control_outer {
@@ -1085,6 +1097,16 @@
   
   /* player_sidebar.php */
   
+  div.sidebar_messages {
+  	width: 90%;
+  	margin: 2px auto;
+  	border: solid 1px cyan;
+  	background-color: #114455;
+  	cursor: pointer;
+  	font-size: 90%;
+  }
+
+
   div.sidebar_name {
 	  font-size: 20pt;
 	  text-align: center;
@@ -1303,9 +1325,10 @@
 	  position: relative;
 	  top: 0px;
 	  left: 0px;
-	  width: 140px;
+	  width: 160px;
 	  float: right;
 	  margin: 8px auto;
+	  font-size: 90%;
   }
   
   

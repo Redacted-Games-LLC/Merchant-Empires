@@ -25,14 +25,15 @@
 ?>
 <div class="header2">The Secretive Xollian</div>
 <div class="docs_text">
-	The Xollians might possibly have the most interesting history if 
-	anything was known about it. They are a secretive people with a culture
-	of privacy.
+	The Xollians might possibly have the most interesting history if anything were
+	known about it. They are a secretive people with a culture of privacy.
 </div>
 <div class="docs_text">
 	Xollians pay a lower trade tax than Mawlors and Zyck'lirgs, but it
 	is unclear which treaty permits this. They also remain the only
-	race in the galaxy capable of utilizing Cloak technology.
+	race in the galaxy capable of producing Cloak technology. Other races
+	have attempted to reverse-engineer Cloak from stolen ships but are 
+	never successful.
 </div>
 <div class="docs_text">
 	Xollians can learn to operate Mawlor ships, but lacking the war-like
@@ -51,3 +52,4 @@
 	instead taking advantage of the economy to best their enemies. A Xollian might
 	not win a fight but he'll most easily afford a replacement ship.
 </div>
+

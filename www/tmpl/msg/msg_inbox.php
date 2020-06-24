@@ -37,26 +37,31 @@
 <div class="header2">Inbox</div>
 <div class="docs_text">
 	<?php
-		if ($spacegame['message_count'] <= 0) {
-			echo 'You have no messages in your inbox.';
+		echo '<p>';
+
+		if (defined('HIDDEN_MESSAGES')) {
+			echo 'Showing all messages. ';
+			echo '<a href="message.php?page=inbox">Click here</a>';
+			echo ' to conceal hidden messages.';
 		}
 		else {
-			echo 'This page shows you the messages you have received. You can hide or ';
+			echo '<p>Concealing hidden messages. ';
+			echo '<a href="message.php?page=inbox&amp;all=1">Click here</a>';
+			echo ' to show all messages.';
+		}
+
+		echo ' <a href="handler.php?task=message&amp;subtask=read&amp;message=0&amp;p=1&amp;pp=9&amp;form_id='. $_SESSION['form_id'] . (defined('HIDDEN_MESSAGES') ? '&amp;all=1' : '') .'">Click Here</a> to mark all unread messages as read.';
+		echo '</p>';
+
+		if ($spacegame['message_count'] <= 0) {
+			echo '<p>You have no messages in your inbox.</p>';
+		}
+		else {
+			echo '<p>This page shows you the messages you have received. You can hide or ';
 			echo 'delete individual messages for ' . MSG_HIDE_DELETE_TURN_COST . ' turn';
 			echo (MSG_HIDE_DELETE_TURN_COST == 1 ? ', ' : 's, ');
 			echo 'or you can ignore all messages from a player for ' . PLAYER_MESSAGE_IGNORE_COST;
-			echo ' turn' . (PLAYER_MESSAGE_IGNORE_COST == 1 ? '.' : 's.');
-
-			if (defined('HIDDEN_MESSAGES')) {
-				echo '<p>Showing all messages. ';
-				echo '<a href="message.php?page=inbox">Click here</a>';
-				echo ' to conceal hidden messages.</p>';
-			}
-			else {
-				echo '<p>Concealing hidden messages. ';
-				echo '<a href="message.php?page=inbox&amp;all=1">Click here</a>';
-				echo ' to show all messages.</p>';
-			}
+			echo ' turn' . (PLAYER_MESSAGE_IGNORE_COST == 1 ? '.' : 's.') . '</p>';
 
 			include_once('tmpl/msg/msg.php');
 		}

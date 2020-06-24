@@ -38,25 +38,20 @@
 			case 'ignore':
 			case 'hide':
 			case 'delete':
+			case 'read':
 
 				$page = $_REQUEST['subtask'];
-				if (in_array($page, $hndl_sub_msg_array)) {
-					$file = "hndl/sub/msg_{$page}.php";
+				$file = "hndl/sub/msg_{$page}.php";
 
-					if (!file_exists($file)) {
-						$return_codes[] = 1041;
-						error_log(__FILE__ . '::' . __LINE__ . ' Valid subtask does not have an include.');
-						break;
-					}
-				
-					include_once($file);
-					break;
-				}
-				else {
+				if (!file_exists($file)) {
 					$return_codes[] = 1041;
+					error_log(__FILE__ . '::' . __LINE__ . ' Valid subtask does not have an include.');
 					break;
 				}
 				
+				include_once($file);
+				break;
+
 			default:
 				$return_codes[] = 1041;
 				break;

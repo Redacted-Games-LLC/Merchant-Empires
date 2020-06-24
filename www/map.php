@@ -61,9 +61,9 @@
 	$i_hnd = imagecreatetruecolor($galaxy_size, $galaxy_size) or die('Cannot Initialize new GD image stream');
 	
 	$races[0]['color'] = imagecolorallocate($i_hnd, 255, 255, 255);
-	$races[1]['color'] = imagecolorallocate($i_hnd, 128, 255, 128);
+	$races[1]['color'] = imagecolorallocate($i_hnd, 128, 128, 255);
 	$races[2]['color'] = imagecolorallocate($i_hnd, 255, 128, 128);
-	$races[3]['color'] = imagecolorallocate($i_hnd, 128, 128, 255);
+	$races[3]['color'] = imagecolorallocate($i_hnd, 128, 255, 128);
 
 	$warp_color = imagecolorallocate($i_hnd, 128, 128, 128);
 	
