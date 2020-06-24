@@ -54,23 +54,21 @@
 
 		$turn_cost = TRADE_TURN_COST;
 
-
 		$time = PAGE_START_TIME;
 		$player_id = PLAYER_ID;
+		
+		$amount = $_REQUEST['amount'];
+		$item_id = $_REQUEST['item_id'];
 
-		if ((!isset($_REQUEST['amount'])) || (!is_numeric($_REQUEST['amount']))) {
+		if ((!isset($amount)) || (!is_numeric($amount))) {
 			$return_codes[] = 1027;
 			break;
 		}
 
-		$amount = $_REQUEST['amount'];
-
-		if ((!isset($_REQUEST['item_id'])) || (!is_numeric($_REQUEST['item_id'])) || $_REQUEST['item_id'] <= 0) {
+		if ((!isset($item_id)) || (!is_numeric($item_id)) || $item_id <= 0) {
 			$return_codes[] = 1021;
 			break;
 		}
-
-		$item_id = $_REQUEST['item_id'];
 
 		if (!isset($spacegame['port_goods'][$item_id])) {
 			$return_codes[] = 1022;
@@ -402,8 +400,6 @@
 			$return_vars['amt'] = $credits;
 		}
 		
-
 	} while (false);
-
 
 ?>

@@ -25,7 +25,6 @@
 	include_once('inc/page.php');
 
 	$return_page = 'login';
-	
 		
 	do { /* Dummy loop for "break" support. */
 
@@ -165,14 +164,7 @@
 		}
 		
 	} while (false);
-
 	
 	session_write_close();
-	
-	
 
-	
-	
-	
-	
 ?>

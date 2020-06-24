@@ -33,7 +33,6 @@
 
 	$return_page = 'select_player';
 	
-		
 	do { /* Dummy loop for "break" support. */
 		
 		$id = $_POST['player_id'];
@@ -83,6 +82,5 @@
 		break;
 	} while (false);
 	
-
 	session_write_close();	
 ?>

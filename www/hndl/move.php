@@ -37,9 +37,11 @@
 
 		$rx = 0;
 		$ry = 0;
+		$request_x = $_REQUEST['x'];
+		$request_y = $_REQUEST['y'];
 	
-		if (isset($_REQUEST['x']) && is_numeric($_REQUEST['x'])) {
-			$rx = $_REQUEST['x'];
+		if (isset($request_x) && is_numeric($request_x)) {
+			$rx = $request_x;
 			
 			if ($rx < 0 || $rx > 999) {
 				$return_codes[] = 1016;
@@ -47,8 +49,8 @@
 			}
 		}
 
-		if (isset($_REQUEST['y']) && is_numeric($_REQUEST['y'])) {
-			$ry = $_REQUEST['y'];
+		if (isset($request_y) && is_numeric($request_y)) {
+			$ry = $request_y;
 			
 			if ($ry < 0 || $ry > 999) {
 				$return_codes[] = 1016;
@@ -147,7 +149,6 @@
 			$complete_count = 0;
 			$complete_damage = 0;
 
-			
 			foreach ($mines as $record_id => $row) {
 
 				$hit_amount = mt_rand(0, ceil($row['amount'] * $bonus));
@@ -206,7 +207,6 @@
 				$targets = array($row['owner']);
 
 				send_message($message, $targets, MESSAGE_EXPIRATION, 4);
-
 			}
 
 			if ($complete_damage > 0) {
@@ -232,8 +232,6 @@
 		}
 
 
-
-
 		// Remove some turns and move the player
 				
 		if (!($st = $db->get_db()->prepare('update players set x = x + ?, y = y + ?, turns = turns - ?, target_type = ?, last_move = ?, base_id = 0, base_x = 50, base_y = 50 where record_id = ? and x = ? and y = ? and turns = ?'))) {
@@ -249,10 +247,6 @@
 			error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
 			break;
 		}
-	
-
-
-
 
 
 		// Drones attack when entering a sector
@@ -316,8 +310,7 @@
 				$message .= ' causing ' . $total_damage . ' damage.';
 				
 				$targets = array($row['owner']);
-				send_message($message, $targets, MESSAGE_EXPIRATION, 4);				
-
+				send_message($message, $targets, MESSAGE_EXPIRATION, 4);
 			}
 
 			// Message player about getting hit.
@@ -337,15 +330,6 @@
 			}
 		}
 
-
-
-
-
-
-
-				
 	} while (false);
-	
-	
-	
+
 ?>

@@ -29,7 +29,13 @@
 
 	do { // Dummy loop
 
-		switch ($_REQUEST['subtask']) {
+		$request_subtask = $_REQUEST['subtask'];
+		
+		if (!isset($request_subtask)) {
+			$return_codes[] = 1041;
+		}
+
+		switch ($request_subtask) {
 
 			case 'add':
 			case 'edit':
@@ -47,8 +53,8 @@
 
 				include_once('inc/rooms.php');
 			
-				$subtask_page = $_REQUEST['subtask'];
-				$subtask_file = "hndl/sub/room_{$subtask_page}.php";
+				$sub_page = $request_subtask;
+				$subtask_file = "hndl/sub/room_{$sub_page}.php";
 
 				if (!file_exists($subtask_file)) {
 					$return_codes[] = 1041;

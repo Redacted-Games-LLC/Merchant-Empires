@@ -29,7 +29,13 @@
 
 	do { // Dummy loop
 
-		switch ($_REQUEST['subtask']) {
+		$request_subtask = $_REQUEST['subtask'];
+		
+		if (!isset($request_subtask)) {
+			$return_codes[] = 1041;
+		}
+
+		switch ($request_subtask) {
 
 			case 'admin':
 			case 'player':
@@ -40,7 +46,7 @@
 			case 'delete':
 			case 'read':
 
-				$page = $_REQUEST['subtask'];
+				$page = $request_subtask;
 				$file = "hndl/sub/msg_{$page}.php";
 
 				if (!file_exists($file)) {

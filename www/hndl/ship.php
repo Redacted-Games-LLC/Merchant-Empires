@@ -29,27 +29,29 @@
 
 	do { // Dummy loop
 
-		if (!isset($_REQUEST['subtask'])) {
+		$request_subtask = $_REQUEST['subtask'];
+
+		if (!isset($request_subtask)) {
 			$return_codes[] = 1041;
 		}
 
-		switch ($_REQUEST['subtask']) {
+		switch ($request_subtask) {
 
 			case 'empty_cargo':
 			case 'rename':
 			case 'deploy':
 			case 'pickup':
 
-				$ship_page = $_REQUEST['subtask'];
-				$ship_file = "hndl/sub/ship_{$ship_page}.php";
+				$sub_page = $request_subtask;
+				$subtask_file = "hndl/sub/ship_{$sub_page}.php";
 
-				if (!file_exists($ship_file)) {
+				if (!file_exists($subtask_file)) {
 					$return_codes[] = 1041;
 					error_log(__FILE__ . '::' . __LINE__ . ' Valid subtask does not have an include.');
 					break;
 				}
 				
-				include_once($ship_file);
+				include_once($subtask_file);
 				break;
 				
 			default:
