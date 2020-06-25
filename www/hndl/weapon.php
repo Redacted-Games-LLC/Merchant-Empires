@@ -33,31 +33,30 @@
 	do { // Dummy loop
 
 		$return_vars['page'] = 'weapons';	
+		
+		$request_subtask = $_REQUEST['subtask'];
 
-		switch ($_REQUEST['subtask']) {
+		if (!isset($request_subtask)) {
+			$return_codes[] = 1041;
+		}
+
+		switch ($request_subtask) {
 
 			case 'add':
 			case 'remove':
 			case 'move':
 			
-				$sub_page = $_REQUEST['subtask'];
-				
-				if (in_array($sub_page, $hndl_sub_weapon_array)) {
-					$sub_file = "hndl/sub/weapon_{$sub_page}.php";
+				$sub_page = $request_subtask;
+				$sub_file = "hndl/sub/weapon_{$sub_page}.php";
 
-					if (!file_exists($sub_file)) {
-						$return_codes[] = 1041;
-						error_log(__FILE__ . '::' . __LINE__ . ' Valid subtask does not have an include.');
-						break;
-					}
-				
-					include_once($sub_file);
-					break;
-				}
-				else {
+				if (!file_exists($sub_file)) {
 					$return_codes[] = 1041;
+					error_log(__FILE__ . '::' . __LINE__ . ' Valid subtask does not have an include.');
 					break;
 				}
+				
+				include_once($sub_file);
+				break;
 
 			default:
 				$return_codes[] = 1041;

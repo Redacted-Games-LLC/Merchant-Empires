@@ -43,11 +43,10 @@
 			break;
 		}
 		
-
 		$rx = 0;
 		$ry = 0;
 		$rtype = 0;
-	
+		
 		if (!isset($_REQUEST['x']) || !is_numeric($_REQUEST['x'])) {
 			$return_codes[] = 1052;
 			break;
@@ -101,10 +100,7 @@
 			error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
 			break;
 		}
-	
-		
+
 	} while (false);
-	
-	
-	
+
 ?>
