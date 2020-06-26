@@ -78,8 +78,7 @@
 		}
 	
 		$_SESSION['pid'] = $id;
-		
-		break;
+
 	} while (false);
 	
 	session_write_close();	

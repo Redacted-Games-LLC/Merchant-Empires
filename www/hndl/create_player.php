@@ -199,10 +199,8 @@
 		$db->get_db()->autocommit(true);
 
 		$_SESSION['pid'] = $player_id;
-		
-		break;
-	} while (false);
-	
 
-	session_write_close();	
+	} while (false);
+
+	session_write_close();
 ?>

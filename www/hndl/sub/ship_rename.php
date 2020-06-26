@@ -92,10 +92,7 @@
 		}
 
 		$return_codes[] = 1065;
-		break;
-
 
 	} while (false);
-
 
 ?>

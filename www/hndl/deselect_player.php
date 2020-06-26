@@ -38,9 +38,7 @@
 	
 		$_SESSION['pid'] = 0;
 		$_SESSION['ps'] = '';
-		
-		
-		break;
+
 	} while (false);
 	
 	session_write_close();	
