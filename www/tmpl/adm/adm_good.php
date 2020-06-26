@@ -72,13 +72,13 @@
 	</div>
 <?php } else { ?>
 <div class="docs_goods">
-	<img src="res/goods/<?php echo $adm_good['safe_caption']; ?>.png" width="12" height="12" />
-	<img src="res/goods/<?php echo $adm_good['safe_caption']; ?>.png" width="16" height="16" />
-	<img src="res/goods/<?php echo $adm_good['safe_caption']; ?>.png" width="20" height="20" />
-	<img src="res/goods/<?php echo $adm_good['safe_caption']; ?>.png" width="24" height="24" />
-	<img src="res/goods/<?php echo $adm_good['safe_caption']; ?>.png" width="32" height="32" />
-	<img src="res/goods/<?php echo $adm_good['safe_caption']; ?>.png" width="48" height="48" />
-	<img src="res/goods/<?php echo $adm_good['safe_caption']; ?>.png" width="64" height="64" />
+	<img src="res/goods/<?php echo $adm_good['safe_caption']; ?>.png" width="12" height="12" alt="admin good" />
+	<img src="res/goods/<?php echo $adm_good['safe_caption']; ?>.png" width="16" height="16" alt="admin good" />
+	<img src="res/goods/<?php echo $adm_good['safe_caption']; ?>.png" width="20" height="20" alt="admin good" />
+	<img src="res/goods/<?php echo $adm_good['safe_caption']; ?>.png" width="24" height="24" alt="admin good" />
+	<img src="res/goods/<?php echo $adm_good['safe_caption']; ?>.png" width="32" height="32" alt="admin good" />
+	<img src="res/goods/<?php echo $adm_good['safe_caption']; ?>.png" width="48" height="48" alt="admin good" />
+	<img src="res/goods/<?php echo $adm_good['safe_caption']; ?>.png" width="64" height="64" alt="admin good" />
 </div>
 <div class="docs_text">
 	You can make changes to the selected good below:

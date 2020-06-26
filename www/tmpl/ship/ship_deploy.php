@@ -49,7 +49,7 @@
 		?>
 
 		<div class="header3">
-			<img src="res/goods/<?php echo $spacegame['goods'][$tech['good']]['safe_caption']; ?>.png" width="24" height="24"  />
+			<img src="res/goods/<?php echo $spacegame['goods'][$tech['good']]['safe_caption']; ?>.png" width="24" height="24" alt="tech good" />
 			<?php echo $spacegame['goods'][$tech['good']]['caption']; ?>
 		</div>
 		
@@ -325,7 +325,7 @@
 <div class="header2">Jettison Cargo</div>
 <div class="docs_text">
 	You can dump your cargo for a fee of <?php echo number_format(($spacegame['player']['level'] + 1) * CARGO_DUMP_COST * INFLATION_MULTIPLIER); ?>
-	<img src="res/credits.png" width="20" height="20" /> credits and <?php echo CARGO_DUMP_TURNS; ?>
+	<img src="res/credits.png" width="20" height="20" alt="credits" /> credits and <?php echo CARGO_DUMP_TURNS; ?>
 	turns. We do not advise planning trade routes with the jettisoning of cargo in mind.
 </div>
 <div class="docs_text">
@@ -337,4 +337,3 @@
 		<input type="hidden" name="form_id" value="<?php echo $_SESSION['form_id']; ?>" />
 	</form>
 </div>
-

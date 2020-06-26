@@ -60,7 +60,7 @@
 			?>
 			<div class="docs_text">
 				<div class="float_right">
-					<img src="res/base/rooms/<?php echo $spacegame['room']['safe_caption']; ?>.png" width="260px" />
+					<img src="res/base/rooms/<?php echo $spacegame['room']['safe_caption']; ?>.png" width="260px" alt="base room" />
 				</div>
 				<form action="handler.php" method="post">
 
@@ -95,7 +95,7 @@
 						&nbsp;&nbsp;
 						<label for="build_cost">Cost:</label>
 						<input type="text" id="build_cost" name="build_cost" maxlength="8" size="9" value="<?php echo $spacegame['room']['build_cost']; ?>" />
-						<img src="res/credits.png" width="16" />
+						<img src="res/credits.png" width="16" alt="credits" />
 					</p>
 
 					<p>
@@ -310,12 +310,6 @@
 
 			<?php } ?>
 
-			
-
-
 		<?php
 		}
 	?>
-
-
-
