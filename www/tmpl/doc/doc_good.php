@@ -78,10 +78,10 @@
 	</div>
 <?php } else { ?>
 <div class="docs_goods">
-	<img src="res/goods/<?php echo $doc_good['safe_caption']; ?>.png" width="12" height="12" />
-	<img src="res/goods/<?php echo $doc_good['safe_caption']; ?>.png" width="20" height="20" />
-	<img src="res/goods/<?php echo $doc_good['safe_caption']; ?>.png" width="32" height="32" />
-	<img src="res/goods/<?php echo $doc_good['safe_caption']; ?>.png" width="48" height="48" />
+	<img src="res/goods/<?php echo $doc_good['safe_caption']; ?>.png" width="12" height="12" alt="doc good" />
+	<img src="res/goods/<?php echo $doc_good['safe_caption']; ?>.png" width="20" height="20" alt="doc good" />
+	<img src="res/goods/<?php echo $doc_good['safe_caption']; ?>.png" width="32" height="32" alt="doc good" />
+	<img src="res/goods/<?php echo $doc_good['safe_caption']; ?>.png" width="48" height="48" alt="doc good" />
 </div>
 <div class="docs_text">
 	<?php echo $doc_good['caption']; ?> is a level <?php echo $doc_good['level']; ?> good.

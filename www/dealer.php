@@ -85,9 +85,9 @@
 		
 			<?php if ($spacegame['player']['ship_type'] <= 0) { ?>
 				<div class="dealer_text">
-					<big>You are in an escape pod. You can select one of the level 1 ships
+					<span class="bigger">You are in an escape pod. You can select one of the level 1 ships
 					below and ignore the price - it will be subsidized for you by the
-					Imperial Government.</big>
+					Imperial Government.</span>
 				</div>
 			<?php } else { 
 				
@@ -178,13 +178,13 @@
 
 								?>
 								<div class="dealer_goods_image">
-									<img src="res/goods/<?php echo $item['details']['safe_caption']; ?>.png" width="32" height="32" />
+									<img src="res/goods/<?php echo $item['details']['safe_caption']; ?>.png" width="32" height="32" alt="dealer good" />
 								</div>
 								<div class="dealer_goods_text">
 									<?php echo $item['details']['caption']; ?>
 								</div>
 								<div class="dealer_goods_price">
-									<?php echo number_format($item['final_price']); ?><img src="res/credits.png" width="16" height="16" />
+									<?php echo number_format($item['final_price']); ?><img src="res/credits.png" width="16" height="16" alt="credits" />
 								</div>
 								<div class="dealer_goods_stock">
 									<?php echo number_format($item['stock']); ?> Left

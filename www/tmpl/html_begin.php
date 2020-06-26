@@ -23,7 +23,7 @@
 
 	include_once('tmpl/common.php');
 ?><!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<title>ME :: <?php echo $tmpl['page_title']; ?></title>
 	<link rel="stylesheet" type="text/css" href="res/game.css" />
@@ -155,7 +155,7 @@
 	<?php if (!isset($tmpl['no_fluff'])) { ?>
 	<div id="first_header">
 		<div id="game_logo">
-			<img src="res/me_logo.png" width="320" />
+			<img src="res/me_logo.png" width="320" alt="Merchant Empires logo" />
 		</div>
 		<div id="game_title">
 			<?php echo ':: ' . $tmpl['page_title']; ?>
@@ -215,4 +215,3 @@
 		</p>
 	</div>
 	</noscript>
-

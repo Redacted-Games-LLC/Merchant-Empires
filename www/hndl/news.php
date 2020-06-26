@@ -50,8 +50,6 @@
 			$_REQUEST['task'] = 'preview';
 
 			include_once('admin.php');
-			break;
-
 		}
 		elseif (isset($_REQUEST['btn_send_x'])) {
 
@@ -68,17 +66,13 @@
 
 			if (insert_article($headline, $abstract, $article, $author, $live, $archive, $expiration, $return_codes)) {
 				$return_codes[] = 1163;
-				break;
 			}
 			else {
 				$return_codes[] = 1164;
-				break;
 			}
-
 		}
 		else {
 			$return_codes[] = 1041;
-			break;
  		}
 
 	} while (false);
