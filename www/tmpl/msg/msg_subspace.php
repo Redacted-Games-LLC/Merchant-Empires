@@ -27,6 +27,12 @@
 	include_once('inc/messages.php');
 
 ?>
+
+<!--
+Need to remove bolding for <th>.
+Need to align table headers.
+-->
+
 <div class="header2">Subspace Broadcast</div>
 <div class="docs_text">
 	A subspace broadcast will be sent to all online players using the Imperial
@@ -34,7 +40,7 @@
 </div>
 <div class="docs_text">
 	<form action="handler.php" method="post">
-		<table class="message">
+		<table class="message" role="presentation">
 			<tr class="message">
 				<td class="message align_right" colspan="2">
 					<span class="characters_left" id="characters_left">&nbsp;</span>
@@ -78,4 +84,3 @@
 		}
 	?>
 </div>
-
