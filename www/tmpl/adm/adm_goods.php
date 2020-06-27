@@ -31,8 +31,8 @@
 	include_once('inc/goods.php');
 	include_once('inc/good_upgrades.php');
 
-	define("TableHeader_Lvl", '<th scope="col" width="35"><strong>Lvl</strong></th>');
-	define("TableHeader_GoodCaption", '<th scope="col" width="195"><strong>Good Caption</strong></th>');
+	define("TABLEHEADER_LVL", '<th scope="col" width="35"><strong>Lvl</strong></th>');
+	define("TABLEHEADER_GOODCAPTION", '<th scope="col" width="195"><strong>Good Caption</strong></th>');
 
 ?>
 
@@ -54,8 +54,8 @@
 		echo '<tr>';
 
 		for ($i = 0; $i < $columns; $i++) {
-			echo TableHeader_Lvl;
-			echo TableHeader_GoodCaption;
+			echo TABLEHEADER_LVL;
+			echo TABLEHEADER_GOODCAPTION;
 		}
 
 		foreach ($spacegame['goods'] as $good_id => $good) {
@@ -108,8 +108,8 @@
 		echo '<tr>';
 
 		for ($i = 0; $i < $columns; $i++) {
-			echo TableHeader_Lvl;
-			echo TableHeader_GoodCaption;
+			echo TABLEHEADER_LVL;
+			echo TABLEHEADER_GOODCAPTION;
 		}
 
 		foreach ($spacegame['goods'] as $good_id => $good) {
@@ -167,8 +167,8 @@
 		echo '<tr>';
 
 		for ($i = 0; $i < $columns; $i++) {
-			echo TableHeader_Lvl;
-			echo TableHeader_GoodCaption;
+			echo TABLEHEADER_LVL;
+			echo TABLEHEADER_GOODCAPTION;
 		}
 
 		foreach ($spacegame['goods'] as $good_id => $good) {
