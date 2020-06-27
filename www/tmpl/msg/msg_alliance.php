@@ -46,7 +46,7 @@ Need to align table headers.
 </div>
 <div class="docs_text">
 	<form action="handler.php" method="post">
-		<table class="message">
+		<table class="message" role="presentation">
 			<tr class="message">
 				<td class="message">Alliance:</td>
 				<td class="message"><input class="msg_form_input" type="text" name="alliance" value="<?php echo $name ?>" maxlength="24" size="24" /></td>
