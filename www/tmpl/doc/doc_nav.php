@@ -107,7 +107,7 @@
 	The red dot on the DSS is someone who <em>could</em> be hostile, but also might
 	not be. <strong>Stay in protected sectors until you can handle an encounter with
 	a potentially hostile player.</strong> Protected sectors have a little green star
-	in the corner which looks like this: <img src="res/government_scan.png" width="14" height="14" />
+	in the corner which looks like this: <img src="res/government_scan.png" width="14" height="14" alt="government scan" />
 </div>
 <div class="docs_text">
 	The DSS will also show you allied players in cyan. You can also see protected

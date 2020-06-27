@@ -50,6 +50,12 @@
 	}
 
 ?>
+
+<!--
+Need to surface remaining char counter for headline.
+Need to define which fields allow HTML tags and which are plain-text only, either as notice above warning text or bracketed as part of <th> text.
+-->
+
 <div class="header2">News Desk</div>
 <?php if ($preview) { ?>
 	<div class="docs_text">
@@ -61,13 +67,13 @@
 	<hr />
 <?php } ?>
 <div class="docs_text">
-	<strong>Warning:</strong> previewing will preserve your article but <em>not</em> sending it.
-	If there is an error your article will be lost. Please write it up using a separate tool and
-	paste it in.
+	<strong>Warning:</strong> "Previewing" will preserve your article but <em><u>not</u></em> publish it.
+	If there is an error, your article will be lost. Please write it up using a separate tool and
+	paste the content in.
 </div>
 <div class="docs_text">
 	<form action="handler.php" method="post">
-		<table class="message">
+		<table class="message" role="presentation">
 			<tr class="message">
 				<td class="message">Headline:</td>
 				<td class="message"><input class="msg_form_input" type="text" name="headline" maxlength="<?php echo NEWS_HEADLINE_LIMIT; ?>" value="<?php echo $article['headline']; ?>" size="50" /></td>
@@ -143,4 +149,3 @@
 		<input type="hidden" name="form_id" value="<?php echo $_SESSION['form_id']; ?>" />
 	</form>
 </div>
-

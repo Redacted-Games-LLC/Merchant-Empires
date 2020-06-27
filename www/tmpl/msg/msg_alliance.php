@@ -33,6 +33,12 @@
 	}
 
 ?>
+
+<!--
+Need to remove bolding for <th>.
+Need to align table headers.
+-->
+
 <div class="header2">Message Alliance</div>
 <div class="docs_text">
 	Sends a message to an <a href="alliance.php?page=list">alliance</a> by name. All
@@ -84,5 +90,3 @@
 		}
 	?>
 </div>
-
-

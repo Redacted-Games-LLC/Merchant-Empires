@@ -31,7 +31,13 @@
 	include_once('inc/goods.php');
 	include_once('inc/good_upgrades.php');
 
+	define("TABLEHEADER_LVL", '<th scope="col" width="35"><strong>Lvl</strong></th>');
+	define("TABLEHEADER_GOODCAPTION", '<th scope="col" width="195"><strong>Good Caption</strong></th>');
+
 ?>
+
+<!-- To work on sorting goods into tables vertically instead of horizontally --> 
+
 <div class="header2">Goods Administration</div>
 <div class="docs_text">
 	You can manipulate existing goods or create new ones using this tool.
@@ -40,6 +46,7 @@
 <div class="header3">List of Goods</div>
 <div class="docs_text">
 	<table width="100%">
+	<caption hidden>List of Goods</caption>
 	<?php
 		$columns = 3;
 		$column = 0;
@@ -47,8 +54,8 @@
 		echo '<tr>';
 
 		for ($i = 0; $i < $columns; $i++) {
-			echo '<td width="35"><strong>Lvl</strong></td>';
-			echo '<td width="195"><strong>Good Caption</strong></td>';
+			echo TABLEHEADER_LVL;
+			echo TABLEHEADER_GOODCAPTION;
 		}
 
 		foreach ($spacegame['goods'] as $good_id => $good) {
@@ -71,11 +78,13 @@
 
 			echo '<a href="admin.php?page=good&amp;id='. $good_id .'">';
 
-			if (strlen($good['caption']) > 15) {
-				echo substr($good['caption'], 0, 12) . '...';
+			$good_caption = $good['caption'];
+
+			if (strlen($good_caption) >= 15) {
+				echo substr($good_caption, 0, 12) . '...';
 			}
 			else {
-				echo $good['caption'];
+				echo $good_caption;
 			}
 			echo '</a>';
 
@@ -89,17 +98,18 @@
 	</table>
 </div>
 <hr />
-<div class="header3">Goods Which Do not Upgrade</div>
+<div class="header3">Goods That Do Not Upgrade</div>
 <div class="docs_text">
 	<table width="100%">
+	<caption hidden>Goods That Do Not Upgrade</caption>
 	<?php
 		$column = 0;
 		
 		echo '<tr>';
 
 		for ($i = 0; $i < $columns; $i++) {
-			echo '<td width="35"><strong>Lvl</strong></td>';
-			echo '<td width="195"><strong>Good Caption</strong></td>';
+			echo TABLEHEADER_LVL;
+			echo TABLEHEADER_GOODCAPTION;
 		}
 
 		foreach ($spacegame['goods'] as $good_id => $good) {
@@ -126,11 +136,13 @@
 
 			echo '<a href="admin.php?page=good&amp;id='. $good_id .'">';
 
-			if (strlen($good['caption']) > 15) {
-				echo substr($good['caption'], 0, 12) . '...';
+			$good_caption = $good['caption'];
+
+			if (strlen($good_caption) >= 15) {
+				echo substr($good_caption, 0, 12) . '...';
 			}
 			else {
-				echo $good['caption'];
+				echo $good_caption;
 			}
 			echo '</a>';
 
@@ -145,17 +157,18 @@
 
 </div>
 <hr />
-<div class="header3">Goods With No Sources</div>
+<div class="header3">Basic Goods</div>
 <div class="docs_text">
 	<table width="100%">
+	<caption hidden>Basic Goods</caption>
 	<?php
 		$column = 0;
 		
 		echo '<tr>';
 
 		for ($i = 0; $i < $columns; $i++) {
-			echo '<td width="35"><strong>Lvl</strong></td>';
-			echo '<td width="195"><strong>Good Caption</strong></td>';
+			echo TABLEHEADER_LVL;
+			echo TABLEHEADER_GOODCAPTION;
 		}
 
 		foreach ($spacegame['goods'] as $good_id => $good) {
@@ -182,11 +195,13 @@
 
 			echo '<a href="admin.php?page=good&amp;id='. $good_id .'">';
 
-			if (strlen($good['caption']) > 15) {
-				echo substr($good['caption'], 0, 12) . '...';
+			$good_caption = $good['caption'];
+
+			if (strlen($good_caption) >= 15) {
+				echo substr($good_caption, 0, 12) . '...';
 			}
 			else {
-				echo $good['caption'];
+				echo $good_caption;
 			}
 			echo '</a>';
 
@@ -220,4 +235,3 @@
 		<input type="hidden" name="form_id" value="<?php echo $_SESSION['form_id']; ?>" />
 	</form>
 </div>
-

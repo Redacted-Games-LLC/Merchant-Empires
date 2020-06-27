@@ -335,7 +335,7 @@
 		?>
 		<div class="viewport_split">
 
-			<table width="100%">
+			<table width="100%" role="presentation">
 				<tr>
 					<td width="200" valign="top"><?php include_once('tmpl/ship_sidebar.php'); ?></td>
 					<td valign="top"><?php

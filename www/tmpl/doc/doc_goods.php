@@ -27,6 +27,9 @@
 	include_once('inc/good_upgrades.php');
 
 ?>
+
+<!-- Need to sort goods into tables vertically instead of horizontally --> 
+
 <div class="header2">Trade Goods</div>
 <div class="docs_text">
 	There are many goods available to trade. All ports spawn with a random
@@ -37,6 +40,8 @@
 <div class="header3">List of Goods</div>
 <div class="docs_text">
 	<table width="100%">
+	<caption hidden>List of Goods</caption>
+
 	<?php
 		$columns = 3;
 		$column = 0;
@@ -44,8 +49,8 @@
 		echo '<tr>';
 
 		for ($i = 0; $i < $columns; $i++) {
-			echo '<td width="35"><strong>Lvl</strong></td>';
-			echo '<td width="195"><strong>Good Caption</strong></td>';
+			echo '<th scope="col" width="35"><strong>Lvl</strong></th>';
+			echo '<th scope="col" width="195"><strong>Good Caption</strong></th>';
 		}
 
 		foreach ($spacegame['goods'] as $good_id => $good) {
@@ -68,11 +73,13 @@
 
 			echo '<a href="docs.php?page=good&amp;id='. $good_id .'">';
 
-			if (strlen($good['caption']) > 15) {
-				echo substr($good['caption'], 0, 12) . '...';
+			$good_caption = $good['caption'];
+
+			if (strlen($good_caption) >= 15) {
+				echo substr($good_caption, 0, 12) . '...';
 			}
 			else {
-				echo $good['caption'];
+				echo $good_caption;
 			}
 			echo '</a>';
 
@@ -85,4 +92,3 @@
 	?>
 	</table>
 </div>
-
