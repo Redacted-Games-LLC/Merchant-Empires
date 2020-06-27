@@ -73,11 +73,13 @@
 
 			echo '<a href="docs.php?page=good&amp;id='. $good_id .'">';
 
-			if (strlen($good['caption']) >= 15) {
-				echo substr($good['caption'], 0, 12) . '...';
+			$good_caption = $good['caption'];
+
+			if (strlen($good_caption) >= 15) {
+				echo substr($good_caption, 0, 12) . '...';
 			}
 			else {
-				echo $good['caption'];
+				echo $good_caption;
 			}
 			echo '</a>';
 
