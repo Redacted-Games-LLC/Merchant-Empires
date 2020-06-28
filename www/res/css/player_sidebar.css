@@ -1,0 +1,54 @@
+/* player_sidebar.php */
+
+div.sidebar_messages {
+    width: 90%;
+    margin: 2px auto;
+    border: solid 1px cyan;
+    background-color: #114455;
+    cursor: pointer;
+    font-size: 90%;
+}
+
+div.sidebar_name {
+    font-size: 20pt;
+    text-align: center;
+}
+
+div.sidebar_race {
+    font-size: 10pt;
+    text-align: center;
+}
+
+div.sidebar_turns {
+    font-size: 10pt;
+    text-align: center;
+}
+
+div.sidebar_credits {
+    font-size: 11pt;
+    text-align: center;
+}
+
+div.sidebar_level {
+    position: relative;
+    width: 95%;
+    margin: 8px auto;
+    text-align: center;
+}
+
+div.sidebar_level_item {
+    display: inline-block;
+    margin: 0px 3px;
+    vertical-align: top;
+}
+
+div.sidebar_experience {
+    position: relative;
+    width: 95%;
+    margin: -20px auto 8px auto;
+    text-align: center;
+    vertical-align: top;
+    font-size: 90%;
+    font-style: italic;
+    color: cyan;
+}

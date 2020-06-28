@@ -1,0 +1,124 @@
+/* base.php */
+
+div#base_field {
+    position: absolute;
+    top: 80px;
+    left: 0px;
+    right: 0px;
+    width: 564px;
+    height: 564px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: black;
+    border: solid 2px yellow;
+    overflow: hidden;
+}
+
+div.base_grid {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 560px;
+    height: 560px;
+    margin: 2px;
+}
+
+div.base_grid_item {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border: solid 1px white;
+    background-color: black;
+}
+
+div.base_grid_image {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    top: 0px;
+    left: 0px;
+}
+
+div.base_grid_link {
+    position: absolute;
+    width: 80px;
+    height: 40px;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    top: 0px;
+    left: 0px;
+    text-align: center;
+}
+
+div.base_small_grid_item {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: black;
+    /*border: solid 1px black;*/
+}
+
+.base_small_grid_image {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    top: 0px;
+    left: 0px;
+}
+
+div.base_overgrid_item {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border: solid 1px white;
+    background: none;
+}
+
+img.base_player_icon {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    left: 44px;
+    top: 44px;
+}
+
+div.grid_room {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+}
+
+div.under_construction {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-image: url(construction.png);
+}
+
+div.over_links {
+    position: absolute;
+    top: 600px;
+    left: 785px;
+    right: 0px;
+    width: 180px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: navy;
+    border: dashed 4px yellow;
+    text-align: center;
+}
+
+/*
+p.over_link {}
+
+a.over_link {}
+*/

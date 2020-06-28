@@ -1,0 +1,59 @@
+/* adm_news.php, msg_main.php */
+
+.news {
+    width: 100%;
+    margin: 10px;
+    padding: 26px;
+    color: black;
+    border: solid 2px white;
+    background-color: #b09070;
+}
+
+.news_author0 {
+    background-color: #bbbb66;
+}
+
+.news_author-1 {
+    background-color: #60dd60;
+}
+
+.news_author-2 {
+    background-color: #ff4444;
+}
+
+.news_date {
+    padding: 3px 6px 3px 0px;
+    border: solid 1px black;
+    font-size: 75%;
+    float: right;
+    width: 240px;
+    text-align: right;
+}
+
+.news_headline {
+    font-size: 150%;
+    font-weight: bold;
+}
+
+.news_abstract {
+    font-size: 120%;
+    margin: 0px 20px;
+}
+
+.news_article {
+    font-family: serif;
+    visibility: hidden;
+    display: none;
+    font-size: 110%;
+}
+
+.news_readme {
+    margin: 12px 4px;
+    text-decoration: underline;
+    font-style: italic;
+    color: #004400;
+    font-size: 90%;
+    font-variant: small-caps;
+    font-family: sans-serif;
+    cursor: pointer;
+}

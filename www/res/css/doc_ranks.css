@@ -1,0 +1,27 @@
+/* doc_ranks.php */
+
+table.levels {
+    width: 100%;
+}
+
+tr.levels {
+    margin: 4px 0px;
+    background-color: #000000;
+    padding: 1px;
+}
+
+td.level {
+    margin: 0px 0px 0px 4px;
+    background-color: #002200;
+    text-align: right;
+    padding: 4px;
+    font-weight: bold;
+    width: 30px;
+}
+
+td.experience {
+    margin: 0px 0px 0px 1px;
+    background-color: #222222;
+    text-align:right;
+    padding: 4px;
+}

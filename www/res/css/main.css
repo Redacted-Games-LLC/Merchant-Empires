@@ -1,0 +1,489 @@
+/* Global */
+
+html {
+	height: 100%;
+}
+  
+body {
+	font-family: sans-serif;
+	font-size: 12pt;
+	background-color: #05050a;
+	margin: 0px;
+	padding: 0px;
+	color: white;
+}
+
+pre {
+    font-family: CascadiaMono, monospace;
+}
+
+a {
+	color: #ffff77;
+	font-weight: bold;
+	text-decoration: none;
+	font-variant: small-caps;
+	font-size: 110%;
+}
+
+.bigger {
+	font-size: larger;
+}
+
+.normal {
+	font-variant: normal;
+	font-weight: normal;
+}
+
+.normal_bold {
+	font-variant: normal;
+	font-weight: bold;
+}
+
+input.form_button {
+	position: relative;
+	height: 24px;
+	vertical-align: bottom;
+}
+
+input.form_input {
+	background-color: black;
+	color: white;
+}
+
+pre.dump {
+	background-color: white;
+	color: black;
+	font-family: fixed;
+	margin: 10px;
+	padding: 10px;
+	border: solid 2px gray;
+	text-align: left;
+}
+
+div.noscript {
+	background-color: #311;
+	border: solid 3px #ffffff;
+	margin: 20px;
+	padding: 20px 100px;
+}
+
+div#page_build {
+	position: absolute;
+	width: 192px;
+	text-align: center;
+	background: url('teal_dither.png') repeat;
+	border: solid 1px #ffffff;
+	top: 8px;
+	right: 8px;
+}
+
+.bottom {
+	vertical-align: bottom;
+}
+
+div#game_logo {
+	position: absolute;
+	top: 16px;
+	left: 32px;
+	width: 600px;
+	text-align: left;
+}
+
+div#game_title {
+	position: absolute;
+	top: 24px;
+	left: 350px;
+	width: 600px;
+	text-align: left;
+}
+
+div#game_menu {
+	position: absolute;
+	top: 64px;
+	left: 32px;
+	width: 640px;
+	text-align: left;
+}
+
+a.game_menu {
+	color: #FFFF00;
+	font-size: 80%;
+	text-shadow: 1px 1px #000000;
+}
+
+div#first_header {
+	background: url("head_piece.png") repeat-x;
+	height: 96px;
+	width: 100%;
+	font-size: 120%;
+	font-weight: bold;
+	padding: 2px;
+}
+
+div#final_footer {
+	background-color: #110011;
+	width: 100%;
+	font-size: 80%;
+	padding: 2px;
+}
+
+div.left_footer_column {
+	width: 44%;
+	float: left;
+	text-align: left;
+	padding-left: 8px;
+}
+
+div.right_footer_column {
+	width: 44%;
+	float: right;
+	text-align: right;
+	padding-right: 8px;
+}
+
+div.taking_damage {
+	position: absolute;
+	left: 50%;
+	margin-left: -74px;
+	top: 10px;
+	width: 128px;
+	border: dotted 6px #ff0000;
+	background: #330000;
+	font-weight: bold;
+	font-size: 110%;
+	text-align: center;
+}
+
+div.viewport_split {
+	position: relative;
+	text-align: center;
+	width: 100%;
+}
+
+div.viewport_ship_info {
+	width: 200px;
+	background-color: black;
+	border: solid 1px #551100;
+	overflow: hidden;
+	text-align: center;
+}
+
+div.viewport_player_info {
+	width: 200px;
+	background-color: black;
+	border: solid 1px #001155;
+	overflow: hidden;
+	text-align: center;
+}
+
+div.viewport_ships {
+	position: relative;
+	width: 100%;
+	min-width: 580px;
+	text-align: center;
+	vertical-align: top;
+}
+
+div.viewport_hostile_ships {
+	position: relative;
+	display: inline-block;
+	width: 47%;
+	border: solid 2px #882200;
+	background-color: black;
+	vertical-align: top
+}
+
+div.viewport_safe_ships {
+	position: relative;
+	display: inline-block;
+	width: 47%;
+	border: solid 2px #002288;
+	background-color: black;
+	vertical-align: top
+}
+
+div.viewport_hostile_ships_head {
+	font-size: 12pt;
+	color: white;
+	background-color: #330000;
+	text-align: left;
+	padding: 10px;
+	font-weight: bold;
+}
+
+div.viewport_safe_ships_head {
+	font-size: 12pt;
+	color: white;
+	background-color: #000033;
+	text-align: left;
+	padding: 10px;
+	font-weight: bold;
+}
+
+div.ship_level {
+	float: right;
+	text-align:right;
+	position: relative;
+	font-size: 70%;
+	margin: 0px;
+	padding: 0px;
+}
+
+div.ship_alliance {
+	text-align:left;
+	position: relative;
+	font-size: 70%;
+	margin: 0px;
+	padding: 0px;
+	width: 120px;
+}
+
+div.ship_links {
+	float: right;
+	text-align:right;
+	position: relative;
+	font-size: 70%;
+	margin: 0px;
+	padding: 0px;
+	width: 70px;
+	cursor: pointer;
+	text-decoration: underline;
+	color: #ffff77;
+	font-variant: small-caps;
+	 padding: 0px;
+}
+
+div.ship_type {
+	text-align:left;
+	position: relative;
+	font-size: 70%;
+	margin: 0px;
+	padding: 0px;
+	width: 120px;
+}
+
+div.ship_name {
+	text-align:center;
+	position: relative;
+	font-size: 85%;
+	margin: 0px;
+	padding: 0px;
+}
+
+div.ship_player_name {
+	text-align:center;
+	position: relative;
+	font-size: 90%;
+	margin: 0px;
+	padding: 0px;
+	font-weight: bold;
+}
+
+div.hostile_ship {
+	position: relative;
+	display: inline-block;
+	width: 200px;
+	height: 64px;
+	background: #110000;
+	border: solid 1px #ffff00;
+	margin: 8px;
+	padding: 2px;
+}
+
+div.allied_ship {
+	position: relative;
+	display: inline-block;
+	width: 200px;
+	height: 64px;
+	background: #000011;
+	border: solid 1px #00ffff;
+	margin: 8px;
+	padding: 2px;
+}
+
+div.viewport_console {
+	position: relative;
+	top: 0px;
+	left: 0px;
+	margin: 0px auto;
+	width: 300px;
+	text-align: center;
+	background: url('black_dither.png') repeat;
+	padding: 0px;
+}
+
+div.viewport_console_item {
+	display: inline-block;
+	width: 64px;
+	height: 32px;
+	background: url('console_back.png') no-repeat;
+	text-align: center;
+	padding: 6px 0px;
+	margin: 8px 0px 0px 0px;
+	cursor: pointer;
+}
+
+div.viewport_dss {
+	position: relative;
+	top: 8px;
+	left: 0px;
+	margin: 0px auto;
+	width: 192px;
+	height: 96px;
+	overflow: hidden;
+	background-color: black;
+}
+
+div.viewport_dss_background {
+	background: url('galaxy.png') no-repeat;
+	width: 192px;
+	height: 96px;
+	background-size: 720px 720px;
+}
+
+.o9 { opacity: 0.9; }
+.o8 { opacity: 0.8; }
+.o7 { opacity: 0.7; }
+.o6 { opacity: 0.6; }
+.o5 { opacity: 0.5; }
+.o4 { opacity: 0.4; }
+.o3 { opacity: 0.3; }
+.o2 { opacity: 0.2; }
+.o1 { opacity: 0.1; }
+
+.float_left {
+	float: left;
+}
+
+.float_right {
+	float: right;
+}
+
+.align_left {
+	text-align: left;
+}
+
+.align_right {
+	text-align: right;
+}
+
+.clear {
+	clear: both;
+}
+
+.margin {
+	margin: 10px;
+}
+
+div.center_spread {
+	position: relative;
+	width: 99%;
+}
+
+div.center_spread_middle {
+	position: relative;
+	margin: 0px 210px;
+	padding:10px;
+	min-height: 420px;
+}
+
+div.full_spread {
+	position: relative;
+	width: 95%;
+	padding: 20px;
+	margin: 4px auto;
+	min-width: 940px;
+	min-height: 256px;
+	border: solid 2px white;
+	background-color: #001111;
+}
+
+div#main_popup {
+	visibility: hidden;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+	background: url('teal_dither.png') repeat;
+}
+
+div.popup_text {
+	position: relative;
+	width: 95%;
+	margin: 8px 1px;
+}
+
+div.popup_spread {
+	position: relative;
+	width: 90%;
+	padding: 20px;
+	margin: 4px auto;
+	min-width: 600px;
+	min-height: 256px;
+	border: solid 2px white;
+	background-color: #001111;
+}
+
+ul.popup_list {
+	list-style-type: none;
+	margin: 0;
+	padding: 0px;
+	display: inline;
+}
+
+li.popup_list {
+	display: inline-block;
+	border: solid 1px #cccccc;
+	padding: 3px 16px;
+	margin: 4px;
+	white-space: nowrap;
+}
+
+iframe#main_iframe {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 72%;
+	height: 82%;
+	margin: 5% 13%;
+	padding: 10px;
+	background: #000011;
+}
+
+div#floating_message_box {
+	position: absolute;
+	left: 0px;
+	background-color: #111100;
+	border: dotted 5px #444411;
+	text-align: center;
+	font-size: 110%;
+}
+
+div.floating_message_fluff {
+	top: 190px;
+	width: 48%;
+	margin: 0 25%;
+	padding: 20px;
+}
+
+div.floating_message_nofluff {
+	top: 60px;
+	width: 75%;
+	margin: 0 12%;
+	padding: 10px;
+}
+
+div.floating_message {
+	display: inline-block;
+	width: 80%;
+	margin: 4px 8px;
+	border: solid 1px #222200;
+}
+
+input#floating_message_close {
+	width: 128px;
+	margin: 8px 35%;
+}

@@ -1,0 +1,28 @@
+/* select_player.php */
+
+div.player_select_outer {
+    position: relative;
+    width: 800px;
+    margin: 4px auto;
+    height: 420px;
+}
+
+div.player_select {
+    float: left;
+    width: 150px;
+    height: 300px;
+    border: solid 1px #00ffff;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+}
+
+div.player_select_title {
+    font-size: 400%;
+    width: 400px;
+    margin: 8px auto;
+}
+
+input.select_player_name {
+    width: 140px;
+}

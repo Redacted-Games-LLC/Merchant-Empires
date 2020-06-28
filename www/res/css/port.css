@@ -1,0 +1,110 @@
+/* port.php */
+
+div.port_spread {
+    border: solid 2px #111188;
+    background-color: #000011;
+}
+
+div.port_text {
+    color: white;
+    margin: 16px 0px;
+}
+
+div.port_update_button {
+    margin: 0px;
+    width: 150px;
+    height: 24px;
+    float: right;
+}
+
+div.port_item {
+    position: relative;
+    width: 99%;
+    margin: 1px;
+    text-align:center;
+}
+
+div.port_goods {
+    display:inline-block;
+    width: 550px;
+    height: 40px;
+    border: solid 2px #999999;
+    background-color: #000000;
+    margin: 8px;
+    padding: 3px;
+}
+
+div.port_empty {
+    position: relative;
+    width: 550px;
+    height: 40px;
+    float: left;
+    border: solid 2px #000011;
+    background-color: #000011;
+    margin: 8px;
+    padding: 3px;
+}
+
+div.port_goods_image {
+    float: left;
+    height: 32px;
+    margin-top: 3px;
+}
+
+div.port_goods_text {
+    float: left;
+    height: 16px;
+    text-align: center;
+    margin-left: 5px;
+    margin-top: 10px;
+}
+
+div.port_goods_price {
+    float: left;
+    height: 16px;
+    text-align: center;
+    margin-left: 15px;
+    margin-top: 10px;
+}
+
+div.port_goods_stock {
+    float: left;
+    height: 16px;
+    text-align: center;
+    margin-left: 15px;
+    margin-top: 11px;
+    font-size: 80%;
+}
+
+div.port_goods_target {
+    float: left;
+    height: 16px;
+    text-align: center;
+    margin-left: 15px;
+    margin-top: 4px;
+    font-size: 80%;
+}
+
+div.port_buttons {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    width: 160px;
+    float: right;
+    margin: 8px auto;
+    font-size: 90%;
+}
+
+input.port_form_button {
+    position: absolute;
+    top: 0px;
+    left: 60px;
+}
+
+input.port_form_input {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: black;
+    color: white;
+}

@@ -1,0 +1,15 @@
+/* locate.php */
+
+div.places_to_locate {
+    width: 95%;
+    text-align: center;
+}
+
+div.place_to_locate {
+    display: inline-block;
+    width: 250px;
+    border: solid 1px #111111;
+    margin: 4px 8px;
+    text-align: center;
+    font-size: 90%;
+}
