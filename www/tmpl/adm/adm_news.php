@@ -67,7 +67,7 @@ Need to define which fields allow HTML tags and which are plain-text only, eithe
 	<hr />
 <?php } ?>
 <div class="docs_text">
-	<strong>Warning:</strong> "Previewing" will preserve your article but <em><u>not</u></em> publish it.
+	<strong>Warning:</strong> "Preview" will preserve your article but <em><u>not</u></em> publish it.
 	If there is an error, your article will be lost. Please write it up using a separate tool and
 	paste the content in.
 </div>
@@ -115,7 +115,7 @@ Need to define which fields allow HTML tags and which are plain-text only, eithe
 				</td>
 			</tr>
 			<tr class="message">
-				<td class="message">Live&nbsp;Timestamp:</td>
+				<td class="message">Publish&nbsp;Timestamp:</td>
 				<td class="message" colspan="2"><input class="msg_form_input" type="text" name="live_date" maxlength="10" size="12" value="<?php echo $article['live']; ?>" /></td>
 			</tr>
 			<tr class="message">
@@ -123,7 +123,7 @@ Need to define which fields allow HTML tags and which are plain-text only, eithe
 				<td class="message" colspan="2"><input class="msg_form_input" type="text" name="archive_date" maxlength="10" size="12" value="<?php echo $article['archive']; ?>" /></td>
 			</tr>
 			<tr class="message">
-				<td class="message">Expiry&nbsp;Timestamp:</td>
+				<td class="message">Purge&nbsp;Timestamp:</td>
 				<td class="message" colspan="2"><input class="msg_form_input" type="text" name="expiration_date" maxlength="10" size="12" value="<?php echo $article['expiration']; ?>" /></td>
 			</tr>
 			<tr class="message">
