@@ -31,12 +31,40 @@
 	include_once('inc/goods.php');
 	include_once('inc/good_upgrades.php');
 
-	define("TABLEHEADER_LVL", '<th scope="col" width="35"><strong>Lvl</strong></th>');
-	define("TABLEHEADER_GOODCAPTION", '<th scope="col" width="195"><strong>Good Caption</strong></th>');
+	define("TABLEHEADER_LVL", '<th style="width:20px;"><strong>Lvl</strong></th>');
+	define("TABLEHEADER_GOODCAPTION", '<th style="width:200px"><strong>Good Caption</strong></th>');
 
 ?>
 
 <!-- To work on sorting goods into tables vertically instead of horizontally --> 
+
+<style>
+	.container {
+		display: flex;
+		flex-flow: column wrap;
+		height: 500px;
+	}
+	
+	.container2 {
+		display: flex;
+		flex-flow: column wrap;
+		height: 150px;
+	}
+	
+	.container3 {
+		display: flex;
+		flex-flow: column wrap;
+		height: 150px;
+	}
+	
+	.tab {
+		padding-left: 1em;
+	}
+	
+	.tab2 {
+		padding-left: 2em;
+	}
+</style>
 
 <div class="header2">Goods Administration</div>
 <div class="docs_text">
@@ -45,41 +73,34 @@
 <hr />
 <div class="header3">List of Goods</div>
 <div class="docs_text">
-	<table width="100%">
-	<caption hidden>List of Goods</caption>
+	
+	
 	<?php
 		$columns = 3;
 		$column = 0;
-		
-		echo '<tr>';
-
+		echo '<table style="">';
+		echo '<caption hidden>List of Goods</caption>';
 		for ($i = 0; $i < $columns; $i++) {
 			echo TABLEHEADER_LVL;
 			echo TABLEHEADER_GOODCAPTION;
 		}
+		echo '</table>';
+
+		echo '<div class="container">';
 
 		foreach ($spacegame['goods'] as $good_id => $good) {
-
-			if ($column <= 0) {
-				echo '</tr>';
-				echo '<tr>';
-				$column = $columns;
-			}
 			
-			$column -= 1;
-
-			echo '<td><em>' . $good['level'] . '</em></td>';
-
-			echo '<td>';
-
-			echo '<img src="res/goods/' . $good['safe_caption'] . '.png" width="20" height="20" />';
-
+			echo '<div>';
+			
+			echo '<div style="width:20px; float: left; text-align: right;">';
+			echo '<em class="">' . $good['level'] . '</em>';
+			echo '</div>';
+			
+			echo '<div style="width:160px; float: left; padding-left: 35px;">';
+			echo '<img class="" src="res/goods/' . $good['safe_caption'] . '.png" width="20" height="20" />';
 			echo '&nbsp;&nbsp;';
-
 			echo '<a href="admin.php?page=good&amp;id='. $good_id .'">';
-
 			$good_caption = $good['caption'];
-
 			if (strlen($good_caption) >= 15) {
 				echo substr($good_caption, 0, 12) . '...';
 			}
@@ -87,30 +108,32 @@
 				echo $good_caption;
 			}
 			echo '</a>';
-
-			echo '</td>';
+			echo '</div>';
 			
-			
+			echo '</div>';
 		}
-
-		echo '</tr>';
+		
+		echo '</div>';
+		
 	?>
-	</table>
+	
 </div>
 <hr />
 <div class="header3">Goods That Do Not Upgrade</div>
 <div class="docs_text">
-	<table width="100%">
-	<caption hidden>Goods That Do Not Upgrade</caption>
+	
 	<?php
+		$columns = 3;
 		$column = 0;
-		
-		echo '<tr>';
-
+		echo '<table style="">';
+		echo '<caption hidden>Goods That Do Not Upgrade</caption>';
 		for ($i = 0; $i < $columns; $i++) {
 			echo TABLEHEADER_LVL;
 			echo TABLEHEADER_GOODCAPTION;
 		}
+		echo '</table>';
+		
+		echo '<div class="container2">';
 
 		foreach ($spacegame['goods'] as $good_id => $good) {
 
@@ -118,26 +141,17 @@
 				continue;
 			}
 
-			if ($column <= 0) {
-				echo '</tr>';
-				echo '<tr>';
-				$column = $columns;
-			}
+			echo '<div>';
 			
-			$column -= 1;
-
-			echo '<td><em>' . $good['level'] . '</em></td>';
-
-			echo '<td>';
-
-			echo '<img src="res/goods/' . $good['safe_caption'] . '.png" width="20" height="20" />';
-
+			echo '<div style="width:20px; float: left; text-align: right;">';
+			echo '<em class="">' . $good['level'] . '</em>';
+			echo '</div>';
+			
+			echo '<div style="width:160px; float: left; padding-left: 35px;">';
+			echo '<img class="" src="res/goods/' . $good['safe_caption'] . '.png" width="20" height="20" />';
 			echo '&nbsp;&nbsp;';
-
 			echo '<a href="admin.php?page=good&amp;id='. $good_id .'">';
-
 			$good_caption = $good['caption'];
-
 			if (strlen($good_caption) >= 15) {
 				echo substr($good_caption, 0, 12) . '...';
 			}
@@ -145,31 +159,32 @@
 				echo $good_caption;
 			}
 			echo '</a>';
-
-			echo '</td>';
+			echo '</div>';
 			
-			
+			echo '</div>';
 		}
+		
+		echo '</div>';
 
-		echo '</tr>';
 	?>
-	</table>
 
 </div>
 <hr />
 <div class="header3">Basic Goods</div>
 <div class="docs_text">
-	<table width="100%">
-	<caption hidden>Basic Goods</caption>
+	
 	<?php
+		$columns = 3;
 		$column = 0;
-		
-		echo '<tr>';
-
+		echo '<table style="">';
+		echo '<caption hidden>Basic Goods</caption>';
 		for ($i = 0; $i < $columns; $i++) {
 			echo TABLEHEADER_LVL;
 			echo TABLEHEADER_GOODCAPTION;
 		}
+		echo '</table>';
+		
+		echo '<div class="container3">';
 
 		foreach ($spacegame['goods'] as $good_id => $good) {
 
@@ -177,26 +192,17 @@
 				continue;
 			}
 
-			if ($column <= 0) {
-				echo '</tr>';
-				echo '<tr>';
-				$column = $columns;
-			}
+			echo '<div>';
 			
-			$column -= 1;
-
-			echo '<td><em>' . $good['level'] . '</em></td>';
-
-			echo '<td>';
-
-			echo '<img src="res/goods/' . $good['safe_caption'] . '.png" width="20" height="20" />';
-
+			echo '<div style="width:20px; float: left; text-align: right;">';
+			echo '<em class="">' . $good['level'] . '</em>';
+			echo '</div>';
+			
+			echo '<div style="width:160px; float: left; padding-left: 35px;">';
+			echo '<img class="" src="res/goods/' . $good['safe_caption'] . '.png" width="20" height="20" />';
 			echo '&nbsp;&nbsp;';
-
 			echo '<a href="admin.php?page=good&amp;id='. $good_id .'">';
-
 			$good_caption = $good['caption'];
-
 			if (strlen($good_caption) >= 15) {
 				echo substr($good_caption, 0, 12) . '...';
 			}
@@ -204,16 +210,14 @@
 				echo $good_caption;
 			}
 			echo '</a>';
-
-			echo '</td>';
+			echo '</div>';
 			
-			
+			echo '</div>';
 		}
 
-		echo '</tr>';
+		echo '</div>';
 
 	?>
-	</table>
 
 </div>
 <hr />
