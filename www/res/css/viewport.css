@@ -3,7 +3,7 @@
 div#viewport_main_spread {
     position: relative;
     background-color: #001;
-    background: url("starfield_ugly.png") repeat;
+    background: url("../starfield_ugly.png") repeat;
     width: 98%;
     margin-left: auto;
     margin-right: auto;
@@ -103,7 +103,7 @@ div#nav_controls {
     width: 256px;
     height: 256px;
     border: solid 1px #007700;
-    background: url("navigation.png") no-repeat;
+    background: url("../navigation.png") no-repeat;
 }
 
 div#scan_control_outer {
@@ -120,7 +120,7 @@ div#scan_controls {
     width: 256px;
     height: 256px;
     border: solid 1px #007700;
-    background: url("radar.gif") no-repeat;
+    background: url("../radar.gif") no-repeat;
 }
 
 div#disabled_scan_controls {
@@ -128,7 +128,7 @@ div#disabled_scan_controls {
     width: 256px;
     height: 256px;
     border: solid 1px #007700;
-    background: url("no_radar.png") no-repeat;
+    background: url("../no_radar.png") no-repeat;
 }
 
 div.ns_square {
@@ -181,11 +181,11 @@ div.ns_middle {
 }
 
 div.ns_planetoid {
-    background: url("planetoid_scan.png") no-repeat;
+    background: url("../planetoid_scan.png") no-repeat;
 }
 
 div.ns_solar {
-    background: url("solar_scan.png") no-repeat;
+    background: url("../solar_scan.png") no-repeat;
 }
 
 div.ns_force_top {
@@ -194,7 +194,7 @@ div.ns_force_top {
     left: 10px;
     width: 60px;
     height: 12px;
-    background: url("hostile_scan_force.png") repeat-x;
+    background: url("../hostile_scan_force.png") repeat-x;
     background-size: 12px 12px;
 }
 
@@ -204,7 +204,7 @@ div.ns_force_bottom {
     left: 10px;
     width: 60px;
     height: 12px;
-    background: url("safe_scan_force.png") repeat-x;
+    background: url("../safe_scan_force.png") repeat-x;
     background-size: 12px 12px;
 }
 
@@ -214,7 +214,7 @@ div.ns_force_left {
     left: 20px;
     width: 20px;
     height: 20px;
-    background: url("hostile_scan_force.png") no-repeat;
+    background: url("../hostile_scan_force.png") no-repeat;
     background-size: 20px 20px;
 }
 
@@ -224,7 +224,7 @@ div.ns_force_right {
     left: 40px;
     width: 20px;
     height: 20px;
-    background: url("safe_scan_force.png") no-repeat;
+    background: url("../safe_scan_force.png") no-repeat;
     background-size: 20px 20px;
 }
 
@@ -234,7 +234,7 @@ div.ns_government {
     left: 52px;
     width: 20px;
     height: 20px;
-    background: url("government_scan.png") no-repeat;
+    background: url("../government_scan.png") no-repeat;
     background-size: 20px 20px;
 }
 
@@ -244,7 +244,7 @@ div.ns_system {
     left: 54px;
     width: 16px;
     height: 16px;
-    background: url("system_scan.png") no-repeat;
+    background: url("../system_scan.png") no-repeat;
     background-size: 16px 16px;
 }
 
@@ -254,7 +254,7 @@ div.ns_warp {
     left: 52px;
     width: 20px;
     height: 20px;
-    background: url("warp.png") no-repeat;
+    background: url("../warp.png") no-repeat;
     background-size: 20px 20px;
 }
 
@@ -264,7 +264,7 @@ div.ns_location {
     left: 4px;
     width: 32px;
     height: 32px;
-    background: url("unknown_station.png") no-repeat;
+    background: url("../unknown_station.png") no-repeat;
     background-size: 32px 32px;
 }
 
@@ -277,35 +277,35 @@ div.ns_arrow {
 }
 
 div.ns_arrow_ul {
-    background: url("arrows/up_left.png") no-repeat;
+    background: url("../arrows/up_left.png") no-repeat;
 }
 
 div.ns_arrow_u {
-    background: url("arrows/up.png") no-repeat;
+    background: url("../arrows/up.png") no-repeat;
 }
 
 div.ns_arrow_ur {
-    background: url("arrows/up_right.png") no-repeat;
+    background: url("../arrows/up_right.png") no-repeat;
 }
 
 div.ns_arrow_l {
-    background: url("arrows/left.png") no-repeat;
+    background: url("../arrows/left.png") no-repeat;
 }
 
 div.ns_arrow_r {
-    background: url("arrows/right.png") no-repeat;
+    background: url("../arrows/right.png") no-repeat;
 }
 
 div.ns_arrow_dl {
-    background: url("arrows/down_left.png") no-repeat;
+    background: url("../arrows/down_left.png") no-repeat;
 }
 
 div.ns_arrow_d {
-    background: url("arrows/down.png") no-repeat;
+    background: url("../arrows/down.png") no-repeat;
 }
 
 div.ns_arrow_dr {
-    background: url("arrows/down_right.png") no-repeat;
+    background: url("../arrows/down_right.png") no-repeat;
 }
 
 div#sector_stations {
@@ -327,39 +327,39 @@ div.sector_station {
 }
 
 div.unknown_station {
-    background: url('unknown_station.png') no-repeat;
+    background: url('../unknown_station.png') no-repeat;
     background-size: 64px 64px;
 }
 
 div.port {
-    background: url('port.png') no-repeat;
+    background: url('../port.png') no-repeat;
     background-size: 96px 64px;
     width: 96px;
 }
 
 div.warp {
-    background: url('warp.png') no-repeat;
+    background: url('../warp.png') no-repeat;
     background-size: 64px 64px;
     width: 64px;
 }
 
 div.base {
-    background: url('base.png') no-repeat;
+    background: url('../base.png') no-repeat;
     background-size: 64px 64px;
     width: 64px;
 }
 
 div.ship_dealer {
-    background: url('ship_dealer.png') no-repeat;
+    background: url('../ship_dealer.png') no-repeat;
     background-size: 64px 64px;
 }
 
 div.tech_dealer {
-    background: url('tech_dealer.png') no-repeat;
+    background: url('../tech_dealer.png') no-repeat;
     background-size: 64px 64px;
 }
 
 div.solar_collector {
-    background: url('solar_collector.png') no-repeat;
+    background: url('../solar_collector.png') no-repeat;
     background-size: 64px 64px;
 }

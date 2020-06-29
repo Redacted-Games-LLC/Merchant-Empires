@@ -129,7 +129,7 @@ div.attack_button {
     height: 180px;
     border: solid 3px red;
     margin: 10px;
-    background-image: url(attack_button.png);
+    background-image: url(../attack_button.png);
     background-size: 180px 180px;
     cursor: pointer;
 }

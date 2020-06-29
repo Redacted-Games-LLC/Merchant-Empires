@@ -73,7 +73,7 @@ input.dealer_form_button {
 
 div.dealer_ship_icon {
     float: left;
-    background: url('unknown_ship.png') no-repeat;
+    background: url('../unknown_ship.png') no-repeat;
     background-size: 48px 48px;
     width: 48px;
     height: 48px;
@@ -102,7 +102,7 @@ div.dealer_race_locked {
     top: 0px;
     left: 0px;
     width: 100%;
-    background: url('race_locked.png') repeat;
+    background: url('../race_locked.png') repeat;
     background-size: 50%;
 }
 
@@ -111,7 +111,7 @@ div.dealer_rank_locked {
     top: 0px;
     left: 0px;
     width: 100%;
-    background: url('rank_locked.png') repeat;
+    background: url('../rank_locked.png') repeat;
     background-size: 50%;
 }
 
@@ -120,7 +120,7 @@ div.dealer_level_locked {
     top: 0px;
     left: 0px;
     width: 100%;
-    background: url('level_locked.png') repeat;
+    background: url('../level_locked.png') repeat;
     background-size: 50%;
 }
 

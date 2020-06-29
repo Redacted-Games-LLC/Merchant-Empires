@@ -101,7 +101,7 @@ div.under_construction {
     left: 0px;
     width: 100%;
     height: 100%;
-    background-image: url(construction.png);
+    background-image: url(../construction.png);
 }
 
 div.over_links {
