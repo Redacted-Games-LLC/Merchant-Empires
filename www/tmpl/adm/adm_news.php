@@ -52,7 +52,6 @@
 ?>
 
 <!--
-Need to surface remaining char counter for headline.
 Need to define which fields allow HTML tags and which are plain-text only, either as notice above warning text or bracketed as part of <th> text.
 -->
 
@@ -75,8 +74,14 @@ Need to define which fields allow HTML tags and which are plain-text only, eithe
 	<form action="handler.php" method="post">
 		<table class="message" role="presentation">
 			<tr class="message">
+				<td class="message">&nbsp;</td>
+				<td class="message align_right">
+					<span class="characters_left" id="headline_characters_left">&nbsp;</span>
+				</td>
+			</tr>
+			<tr class="message">
 				<td class="message">Headline:</td>
-				<td class="message"><input class="msg_form_input" type="text" name="headline" maxlength="<?php echo NEWS_HEADLINE_LIMIT; ?>" value="<?php echo $article['headline']; ?>" size="50" /></td>
+				<td class="message"><input class="msg_form_input" id="msg_headline" type="text" name="headline" maxlength="<?php echo NEWS_HEADLINE_LIMIT; ?>" value="<?php echo $article['headline']; ?>" size="58" /></td>
 				<td class="message align_right">
 					<span class="characters_left" id="abstract_characters_left">&nbsp;</span>
 				</td>
@@ -131,9 +136,9 @@ Need to define which fields allow HTML tags and which are plain-text only, eithe
 				<td class="message" colspan="2">
 					<script type="text/javascript">
 						drawButton('preview', 'preview', 'validate_preview()');
-						register_textarea_length_handlers('msg_article', 'article_characters_left', <?php echo NEWS_ARTICLE_LIMIT; ?>);
+						register_textarea_length_handlers('msg_headline', 'headline_characters_left', <?php echo NEWS_HEADLINE_LIMIT; ?>);
 						register_textarea_length_handlers('msg_abstract', 'abstract_characters_left', <?php echo NEWS_ABSTRACT_LIMIT; ?>);
-						
+						register_textarea_length_handlers('msg_article', 'article_characters_left', <?php echo NEWS_ARTICLE_LIMIT; ?>);
 					</script>
 					&nbsp;
 					<script type="text/javascript">
@@ -141,8 +146,6 @@ Need to define which fields allow HTML tags and which are plain-text only, eithe
 					</script>
 				</td>
 			</tr>
-
-			
 		</table>
 		<input type="hidden" name="task" value="news" />
 		<input type="hidden" name="subtask" value="submit" />
