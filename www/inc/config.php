@@ -394,10 +394,10 @@
 	define('NEWS_ARTICLE_LIMIT', 65536);
 
 	// Allowed news abstract tags to use in strip_tags
-	define('ALLOWED_ABSTRACT_TAGS', '<font><img><a><span><s><big><strong><em><u>');
+	define('ALLOWED_ABSTRACT_TAGS', '<a><em><font><img><s><span><strong><u>');
 
 	// Allowed news article tags to use in strip_tags
-	define('ALLOWED_ARTICLE_TAGS', '<h1><h2><h3><h4><h5><h6><font><img><li><ul><ol><br><a><td><tr><table><span><s><big><strong><em><u><p>');
+	define('ALLOWED_ARTICLE_TAGS', '<a><br><em><font><h1><h2><h3><h4><h5><h6><img><li><ol><p><s><span><strong><table><td><th><tr><u><ul>');
 	
 	// When to archive news articles by default
 	define('DEFAULT_NEWS_ARCHIVE_TIME', 86400 * 7);

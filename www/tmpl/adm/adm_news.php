@@ -31,9 +31,9 @@
 	include_once('inc/news.php');
 
 	$preview = isset($_REQUEST['task']) && $_REQUEST['task'] == 'preview';
-	$article['headline'] = '';
-	$article['abstract'] = '';
-	$article['article'] = '';
+	$article['headline'] = 'Alphanumeric and space only';
+	$article['abstract'] = 'Allowed HTML tags: a, em, font, img, s, span, strong, u';
+	$article['article'] = 'Allowed HTML tags: a, br, em, font, h1 to h6, img, li, ol, p, s, span, strong, table, td, th, tr, u, ul';
 	$article['author'] = 0;
 	$article['live'] = PAGE_START_TIME;
 	$article['archive'] = PAGE_START_TIME + DEFAULT_NEWS_ARCHIVE_TIME;
@@ -50,10 +50,6 @@
 	}
 
 ?>
-
-<!--
-Need to define which fields allow HTML tags and which are plain-text only, either as notice above warning text or bracketed as part of <th> text.
--->
 
 <div class="header2">News Desk</div>
 <?php if ($preview) { ?>
