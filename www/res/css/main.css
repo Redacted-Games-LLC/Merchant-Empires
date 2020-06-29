@@ -71,7 +71,7 @@ div#page_build {
 	position: absolute;
 	width: 192px;
 	text-align: center;
-	background: url('teal_dither.png') repeat;
+	background: url('../teal_dither.png') repeat;
 	border: solid 1px #ffffff;
 	top: 8px;
 	right: 8px;
@@ -112,7 +112,7 @@ a.game_menu {
 }
 
 div#first_header {
-	background: url("head_piece.png") repeat-x;
+	background: url("../head_piece.png") repeat-x;
 	height: 96px;
 	width: 100%;
 	font-size: 120%;
@@ -308,7 +308,7 @@ div.viewport_console {
 	margin: 0px auto;
 	width: 300px;
 	text-align: center;
-	background: url('black_dither.png') repeat;
+	background: url('../black_dither.png') repeat;
 	padding: 0px;
 }
 
@@ -316,7 +316,7 @@ div.viewport_console_item {
 	display: inline-block;
 	width: 64px;
 	height: 32px;
-	background: url('console_back.png') no-repeat;
+	background: url('../console_back.png') no-repeat;
 	text-align: center;
 	padding: 6px 0px;
 	margin: 8px 0px 0px 0px;
@@ -335,7 +335,7 @@ div.viewport_dss {
 }
 
 div.viewport_dss_background {
-	background: url('galaxy.png') no-repeat;
+	background: url('../galaxy.png') no-repeat;
 	width: 192px;
 	height: 96px;
 	background-size: 720px 720px;
@@ -407,7 +407,7 @@ div#main_popup {
 	height: 100%;
 	margin: 0px;
 	padding: 0px;
-	background: url('teal_dither.png') repeat;
+	background: url('../teal_dither.png') repeat;
 }
 
 div.popup_text {
