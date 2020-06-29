@@ -43,15 +43,15 @@
 	sector numbers in the nav window:
 </div>
 <div class="docs_text">
-	<img src="res/doc/nav_buttons.png" width="300" />
+	<img src="res/doc/nav_buttons.png" width="300" alt="nav button" />
 </div>
 <div class="docs_text">
 	Things you see in this image are:
 	<ul>
-		<li><img src="res/solar_scan.png" width="16" />Sun</li>
-		<li><img src="res/planetoid_scan.png" width="20" />Planetoid</li>
-		<li><img src="res/warp.png" width="20" />Warp</li>
-		<li><img src="res/government_scan.png" width="20" />Imperial Government Protected Sector</li>
+		<li><img src="res/solar_scan.png" width="16" alt="solar scan" />Sun</li>
+		<li><img src="res/planetoid_scan.png" width="20" alt="planetoid scan" />Planetoid</li>
+		<li><img src="res/warp.png" width="20" alt="warp" />Warp</li>
+		<li><img src="res/government_scan.png" width="20" alt="government scan" />Imperial Government Protected Sector</li>
 	</ul>
 </div>
 <div class="docs_text">
@@ -76,7 +76,7 @@
 	Mawlor to the East, and Xollian to Southwest. Currently it looks as follows:
 </div>
 <div class="docs_text">
-	<img src="res/galaxy.png" width="600" />
+	<img src="res/galaxy.png" width="600" alt="galaxy" />
 </div>
 <div class="docs_text">
 	Each race has one <em>Prime System</em> and two <em>Hub Systems</em> which serve as
@@ -101,13 +101,13 @@
 	Note the DSS is not related to the regular Scanner. The DSS looks like this:
 </div>
 <div class="docs_text">
-	<img src="res/doc/dss.png" width="300" />
+	<img src="res/doc/dss.png" width="300" alt="dss" />
 </div>
 <div class="docs_text">
 	The red dot on the DSS is someone who <em>could</em> be hostile, but also might
 	not be. <strong>Stay in protected sectors until you can handle an encounter with
 	a potentially hostile player.</strong> Protected sectors have a little green star
-	in the corner which looks like this: <img src="res/government_scan.png" width="14" height="14" />
+	in the corner which looks like this: <img src="res/government_scan.png" width="14" height="14" alt="government scan" />
 </div>
 <div class="docs_text">
 	The DSS will also show you allied players in cyan. You can also see protected
@@ -116,7 +116,7 @@
 </div>
 <div class="header3">Warps</div>
 <div class="docs_text">
-	<img src="res/doc/warp.png" width="300" />
+	<img src="res/doc/warp.png" width="300" alt="warp" />
 </div>
 <div class="docs_text">
 	Long ago a race of scientists known as the Paragon discovered the secret to
@@ -178,10 +178,9 @@
 	so look around 25,25 in hover.
 </div>
 <div class="docs_text">
-	<img src="res/doc/base_land.png" width="300" />
+	<img src="res/doc/base_land.png" width="300" alt="base landing" />
 </div>
 <div class="docs_text">
 	Once centered over the landing pad a link will appear to the right of the base navigation
 	grid which allows you to land. You should appear near the center of the pad.
 </div>
-

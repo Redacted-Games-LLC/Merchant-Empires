@@ -78,9 +78,9 @@
 		$rs = $db->get_db()->query("select record_id as id from players where lower(caption) = '". strtolower($player_name) ."' limit 1");
 		
 		$rs->data_seek(0);
-		while ($row = $rs->fetch_assoc()) {
+		if ($row = $rs->fetch_assoc()) {
 			$return_codes[] = 1012;
-			break 2;
+			break;
 		}
 		
 		$rs = $db->get_db()->query("select count(*) as player_count from user_players where user = '". (USER_ID * 1) ."'");
@@ -199,10 +199,8 @@
 		$db->get_db()->autocommit(true);
 
 		$_SESSION['pid'] = $player_id;
-		
-		break;
-	} while (false);
-	
 
-	session_write_close();	
+	} while (false);
+
+	session_write_close();
 ?>

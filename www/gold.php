@@ -32,7 +32,7 @@
 ?>
 
 <div class="full_spread">
-	<div class="header2"><img src="res/gold.png" width="16" />&nbsp;Gold Membership Information</div>
+	<div class="header2"><img src="res/gold.png" width="16" alt="gold ribbon" />&nbsp;Gold Membership Information</div>
 
 	<div class="docs_text">
 		<?php 

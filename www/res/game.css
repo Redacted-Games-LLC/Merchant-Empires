@@ -45,6 +45,10 @@
 	  font-variant: small-caps;
 	  font-size: 110%;
   }
+
+  .bigger {
+	  font-size: larger;
+  }
   
   .normal {
 	  font-variant: normal;
@@ -2216,5 +2220,3 @@
 	  padding: 2px;
 	  border: solid 1px #777777;
   }
-  
-  

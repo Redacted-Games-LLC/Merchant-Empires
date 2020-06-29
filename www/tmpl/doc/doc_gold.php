@@ -36,7 +36,7 @@
 <div class="docs_text">
 	<ul>
 		<li>
-			You get a <img src="res/gold.png" height="20" /> Gold Membership ribbon next to your name in various places, and your name is bolded.
+			You get a <img src="res/gold.png" height="20" alt="gold ribbon" /> Gold Membership ribbon next to your name in various places, and your name is bolded.
 		</li>
 	</ul>
 </div>
@@ -68,4 +68,3 @@
 	You can contact <a href="mailto:<?php echo GOLD_EMAIL; ?>">Gold Support</a> if you have
 	any issues with your membership.
 </div>
-

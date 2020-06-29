@@ -109,7 +109,6 @@
 				break;
 			}
 
-			break;
 		}
 		elseif (isset($_REQUEST['btn_add_x'])) {
 				

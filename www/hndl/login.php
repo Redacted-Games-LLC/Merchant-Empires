@@ -224,11 +224,7 @@
 			break;
 		}
 		
-		break;
 	} while (false);
 
-	
 	session_write_close();
-	
-	
 ?>

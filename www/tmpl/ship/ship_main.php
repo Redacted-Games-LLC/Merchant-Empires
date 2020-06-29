@@ -35,12 +35,13 @@
 		<label for="ship_name"><small>Ship Name</small></label><br />
 		<input class="ship_form_input" type="text" id="ship_name" name="ship_name" maxlength="12" value="<?php echo $spacegame['player']['ship_name']; ?>" /><br />
 		<br />
-		<?php if (false) { ?>
+
+<!-- Non-working code. Keep as gold benefit.
 		<label for="ship_style"><small>Ship Style</small></label><br />
 		<input class="ship_form_input" type="text" id="ship_style" name="ship_style" maxlength="80" size="40" /><br />
 		
 		<br />
-		<?php } ?>
+-->
 		<script type="text/javascript">drawButton('rename_ship', 'update', 'validate_rename_ship()');</script>
 		<input type="hidden" name="task" value="ship" />
 		<input type="hidden" name="subtask" value="rename" />
@@ -48,7 +49,8 @@
 		<input type="hidden" name="form_id" value="<?php echo $_SESSION['form_id']; ?>" />
 	</form>
 </div>
-<?php if (false) { ?>
+
+<!-- Non-working code. Keep as gold benefit.
 	<div class="docs_text">
 		Style strings are made up of decoration tags which are used to decorate the ship name.
 		Each tag performs the operation for the specified number of characters. If the rules run
@@ -71,5 +73,4 @@
 		The maximum length of a style string is 80 characters which is enough to style the 
 		gaudiest ship name in the galaxy.
 	</div>
-<?php } ?>
-
+-->

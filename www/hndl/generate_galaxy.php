@@ -43,7 +43,7 @@
 
 		$seed = PAGE_START_TIME;
 
-		if (isset($_REQUEST['seed']) && is_numeric($_REQUEST['seed'])) {
+		if (isset($_REQUEST['seed']) && ctype_digit((string)$_REQUEST['seed'])) {
 			$seed = $_REQUEST['seed'];
 		}
 

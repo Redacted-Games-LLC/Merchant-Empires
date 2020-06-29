@@ -33,6 +33,12 @@
 	}
 
 ?>
+
+<!--
+Need to remove bolding for <th>.
+Need to align table headers.
+-->
+
 <div class="header2">Message Alliance</div>
 <div class="docs_text">
 	Sends a message to an <a href="alliance.php?page=list">alliance</a> by name. All
@@ -40,7 +46,7 @@
 </div>
 <div class="docs_text">
 	<form action="handler.php" method="post">
-		<table class="message">
+		<table class="message" role="presentation">
 			<tr class="message">
 				<td class="message">Alliance:</td>
 				<td class="message"><input class="msg_form_input" type="text" name="alliance" value="<?php echo $name ?>" maxlength="24" size="24" /></td>
@@ -84,5 +90,3 @@
 		}
 	?>
 </div>
-
-

@@ -77,7 +77,7 @@
 	to look at the scanner for hostile (red) forces right? 
 </div>
 <div class="docs_text">
-	<img src="res/government_scan.png" />Green stars mean safety! When you
+	<img src="res/government_scan.png" alt="government scan" />Green stars mean safety! When you
 	move, make sure the sector has a green star in it and you can't be
 	attacked. Some players make a great living never leaving these zones!
 </div>
@@ -181,7 +181,7 @@
 </div>
 <div class="docs_text">
 	The price is cheap as well, so there must be a nearby demand. We have room for 86 units so
-	let's buy what we can for a total 1,548&nbsp;<img src="res/credits.png" width="15" />.
+	let's buy what we can for a total 1,548&nbsp;<img src="res/credits.png" width="15" alt="credits" />.
 	Don't forget to note the location of the supplier, and remember, this is not the same round
 	you are playing so it won't match the live game:
 </div>
@@ -212,9 +212,9 @@
 	<img src="res/doc/inflation_effects.png" alt="Inflation effects" title="Inflation increases fairly quickly." />
 </div>
 <div class="docs_text">
-	We can expect 65,876&nbsp;<img src="res/credits.png" width="15" /> for this transaction, with
-	a cost basis of 1,548&nbsp;<img src="res/credits.png" width="15" />, leaving a net of
-	64,328&nbsp;<img src="res/credits.png" width="15" /> before taxes.
+	We can expect 65,876&nbsp;<img src="res/credits.png" width="15" alt="credits" /> for this transaction, with
+	a cost basis of 1,548&nbsp;<img src="res/credits.png" width="15" alt="credits" />, leaving a net of
+	64,328&nbsp;<img src="res/credits.png" width="15" alt="credits" /> before taxes.
 </div>
 <div class="docs_text">
 	This trade route is going to run out quickly, though. Before we made the sale, there was
@@ -224,14 +224,14 @@
 	<img src="res/doc/upgrade_demand.png" alt="Upgrade Demand" title="Demand levels for port upgrades work a bit differently." />
 </div>
 <div class="docs_text">
-	The demand went from -400 to -314, and the price dropped 4&nbsp;<img src="res/credits.png" width="15" />
+	The demand went from -400 to -314, and the price dropped 4&nbsp;<img src="res/credits.png" width="15" alt="credits" />
 	per unit.
 </div>
 <div class="docs_text">
 	Port local demands, that is for goods that go for sale to the planetary population, will
 	regularly crawl back up but Port <em>upgrade</em> demands are tied to port trade only. Our
-	port wants to sell <img src="res/goods/explosives.png" width="14" /> Explosives, but needs
-	<img src="res/goods/niter.png" width="14" /> Niter and <img src="res/goods/charcoal.png" width="14" />
+	port wants to sell <img src="res/goods/explosives.png" width="14" alt="explosives" /> Explosives, but needs
+	<img src="res/goods/niter.png" width="14" alt="niter" /> Niter and <img src="res/goods/charcoal.png" width="14" alt="charcoal" />
 	Charcoal. We can provide Charcoal, but we don't know of any Niter suppliers. Until we also
 	supply this port with Niter <strong>and</strong> find a buyer for Explosives, this trade
 	route won't provide us credits for very long.
