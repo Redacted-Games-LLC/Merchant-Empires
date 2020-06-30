@@ -39,30 +39,29 @@
 <!-- To work on sorting goods into tables vertically instead of horizontally --> 
 
 <style>
-	.container {
+	.good {
 		display: flex;
 		flex-flow: column wrap;
+	}
+	
+	.goodContainer1 {
 		height: 500px;
 	}
 	
-	.container2 {
-		display: flex;
-		flex-flow: column wrap;
+	.goodContainer2 {
 		height: 150px;
 	}
 	
-	.container3 {
-		display: flex;
-		flex-flow: column wrap;
-		height: 150px;
+	.goodLevel {
+		width: 20px; 
+		float: left; 
+		text-align: right;
 	}
 	
-	.tab {
-		padding-left: 1em;
-	}
-	
-	.tab2 {
-		padding-left: 2em;
+	.goodCaption {
+		width: 160px; 
+		float: left; 
+		padding-left: 35px;
 	}
 </style>
 
@@ -77,8 +76,7 @@
 	
 	<?php
 		$columns = 3;
-		$column = 0;
-		echo '<table style="">';
+		echo '<table>';
 		echo '<caption hidden>List of Goods</caption>';
 		for ($i = 0; $i < $columns; $i++) {
 			echo TABLEHEADER_LVL;
@@ -86,18 +84,18 @@
 		}
 		echo '</table>';
 
-		echo '<div class="container">';
+		echo '<div class="good goodContainer1">';
 
 		foreach ($spacegame['goods'] as $good_id => $good) {
 			
 			echo '<div>';
 			
-			echo '<div style="width:20px; float: left; text-align: right;">';
-			echo '<em class="">' . $good['level'] . '</em>';
+			echo '<div class="goodLevel">';
+			echo '<em>' . $good['level'] . '</em>';
 			echo '</div>';
 			
-			echo '<div style="width:160px; float: left; padding-left: 35px;">';
-			echo '<img class="" src="res/goods/' . $good['safe_caption'] . '.png" width="20" height="20" />';
+			echo '<div class="goodCaption">';
+			echo '<img src="res/goods/' . $good['safe_caption'] . '.png" width="20" height="20" />';
 			echo '&nbsp;&nbsp;';
 			echo '<a href="admin.php?page=good&amp;id='. $good_id .'">';
 			$good_caption = $good['caption'];
@@ -124,8 +122,7 @@
 	
 	<?php
 		$columns = 3;
-		$column = 0;
-		echo '<table style="">';
+		echo '<table>';
 		echo '<caption hidden>Goods That Do Not Upgrade</caption>';
 		for ($i = 0; $i < $columns; $i++) {
 			echo TABLEHEADER_LVL;
@@ -133,7 +130,7 @@
 		}
 		echo '</table>';
 		
-		echo '<div class="container2">';
+		echo '<div class="good goodContainer2">';
 
 		foreach ($spacegame['goods'] as $good_id => $good) {
 
@@ -143,12 +140,12 @@
 
 			echo '<div>';
 			
-			echo '<div style="width:20px; float: left; text-align: right;">';
-			echo '<em class="">' . $good['level'] . '</em>';
+			echo '<div class="goodLevel">';
+			echo '<em>' . $good['level'] . '</em>';
 			echo '</div>';
 			
-			echo '<div style="width:160px; float: left; padding-left: 35px;">';
-			echo '<img class="" src="res/goods/' . $good['safe_caption'] . '.png" width="20" height="20" />';
+			echo '<div class="goodCaption">';
+			echo '<img src="res/goods/' . $good['safe_caption'] . '.png" width="20" height="20" />';
 			echo '&nbsp;&nbsp;';
 			echo '<a href="admin.php?page=good&amp;id='. $good_id .'">';
 			$good_caption = $good['caption'];
@@ -175,8 +172,7 @@
 	
 	<?php
 		$columns = 3;
-		$column = 0;
-		echo '<table style="">';
+		echo '<table>';
 		echo '<caption hidden>Basic Goods</caption>';
 		for ($i = 0; $i < $columns; $i++) {
 			echo TABLEHEADER_LVL;
@@ -184,7 +180,7 @@
 		}
 		echo '</table>';
 		
-		echo '<div class="container3">';
+		echo '<div class="good goodContainer2">';
 
 		foreach ($spacegame['goods'] as $good_id => $good) {
 
@@ -194,12 +190,12 @@
 
 			echo '<div>';
 			
-			echo '<div style="width:20px; float: left; text-align: right;">';
-			echo '<em class="">' . $good['level'] . '</em>';
+			echo '<div class="goodLevel">';
+			echo '<em>' . $good['level'] . '</em>';
 			echo '</div>';
 			
-			echo '<div style="width:160px; float: left; padding-left: 35px;">';
-			echo '<img class="" src="res/goods/' . $good['safe_caption'] . '.png" width="20" height="20" />';
+			echo '<div class="goodCaption">';
+			echo '<img src="res/goods/' . $good['safe_caption'] . '.png" width="20" height="20" />';
 			echo '&nbsp;&nbsp;';
 			echo '<a href="admin.php?page=good&amp;id='. $good_id .'">';
 			$good_caption = $good['caption'];
