@@ -33,6 +33,8 @@
 
 	define("TABLEHEADER_LVL", '<th style="width:20px;"><strong>Lvl</strong></th>');
 	define("TABLEHEADER_GOODCAPTION", '<th style="width:200px"><strong>Good Caption</strong></th>');
+	define("DIV_GOODLEVEL", '<div class="goodLevel">');
+	define("DIV_GOODCAPTION", '<div class="goodCaption">');
 
 ?>
 
@@ -90,11 +92,11 @@
 			
 			echo '<div>';
 			
-			echo '<div class="goodLevel">';
+			echo DIV_GOODLEVEL;
 			echo '<em>' . $good['level'] . '</em>';
 			echo '</div>';
 			
-			echo '<div class="goodCaption">';
+			echo DIV_GOODCAPTION;
 			echo '<img src="res/goods/' . $good['safe_caption'] . '.png" width="20" height="20" />';
 			echo '&nbsp;&nbsp;';
 			echo '<a href="admin.php?page=good&amp;id='. $good_id .'">';
@@ -140,11 +142,11 @@
 
 			echo '<div>';
 			
-			echo '<div class="goodLevel">';
+			echo DIV_GOODLEVEL;
 			echo '<em>' . $good['level'] . '</em>';
 			echo '</div>';
 			
-			echo '<div class="goodCaption">';
+			echo DIV_GOODCAPTION;
 			echo '<img src="res/goods/' . $good['safe_caption'] . '.png" width="20" height="20" />';
 			echo '&nbsp;&nbsp;';
 			echo '<a href="admin.php?page=good&amp;id='. $good_id .'">';
@@ -190,11 +192,11 @@
 
 			echo '<div>';
 			
-			echo '<div class="goodLevel">';
+			echo DIV_GOODLEVEL;
 			echo '<em>' . $good['level'] . '</em>';
 			echo '</div>';
 			
-			echo '<div class="goodCaption">';
+			echo DIV_GOODCAPTION;
 			echo '<img src="res/goods/' . $good['safe_caption'] . '.png" width="20" height="20" />';
 			echo '&nbsp;&nbsp;';
 			echo '<a href="admin.php?page=good&amp;id='. $good_id .'">';
