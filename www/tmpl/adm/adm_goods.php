@@ -33,8 +33,12 @@
 
 	define("TABLEHEADER_LVL", '<th style="width:20px;"><strong>Lvl</strong></th>');
 	define("TABLEHEADER_GOODCAPTION", '<th style="width:200px"><strong>Good Caption</strong></th>');
-	define("DIV_GOODLEVEL", '<div class="goodLevel">');
-	define("DIV_GOODCAPTION", '<div class="goodCaption">');
+	define("DIV_OPEN", '<div>');
+	define("DIV_CLOSE", '</div>');
+	define("TBL_OPEN", '<table>');
+	define("TBL_CLOSE", '</table>');
+	define("DIV_GOODLEVEL_OPEN", '<div class="goodLevel">');
+	define("DIV_GOODCAPTION_OPEN", '<div class="goodCaption">');
 
 ?>
 
@@ -78,25 +82,25 @@
 	
 	<?php
 		$columns = 3;
-		echo '<table>';
+		echo TBL_OPEN;
 		echo '<caption hidden>List of Goods</caption>';
 		for ($i = 0; $i < $columns; $i++) {
 			echo TABLEHEADER_LVL;
 			echo TABLEHEADER_GOODCAPTION;
 		}
-		echo '</table>';
+		echo TBL_CLOSE;
 
 		echo '<div class="good goodContainer1">';
 
 		foreach ($spacegame['goods'] as $good_id => $good) {
 			
-			echo '<div>';
+			echo DIV_OPEN;
 			
-			echo DIV_GOODLEVEL;
+			echo DIV_GOODLEVEL_OPEN;
 			echo '<em>' . $good['level'] . '</em>';
-			echo '</div>';
+			echo DIV_CLOSE;
 			
-			echo DIV_GOODCAPTION;
+			echo DIV_GOODCAPTION_OPEN;
 			echo '<img src="res/goods/' . $good['safe_caption'] . '.png" width="20" height="20" />';
 			echo '&nbsp;&nbsp;';
 			echo '<a href="admin.php?page=good&amp;id='. $good_id .'">';
@@ -108,12 +112,12 @@
 				echo $good_caption;
 			}
 			echo '</a>';
-			echo '</div>';
+			echo DIV_CLOSE;
 			
-			echo '</div>';
+			echo DIV_CLOSE;
 		}
 		
-		echo '</div>';
+		echo DIV_CLOSE;
 		
 	?>
 	
@@ -124,13 +128,13 @@
 	
 	<?php
 		$columns = 3;
-		echo '<table>';
+		echo TBL_OPEN;
 		echo '<caption hidden>Goods That Do Not Upgrade</caption>';
 		for ($i = 0; $i < $columns; $i++) {
 			echo TABLEHEADER_LVL;
 			echo TABLEHEADER_GOODCAPTION;
 		}
-		echo '</table>';
+		echo TBL_CLOSE;
 		
 		echo '<div class="good goodContainer2">';
 
@@ -140,13 +144,13 @@
 				continue;
 			}
 
-			echo '<div>';
+			echo DIV_OPEN;
 			
-			echo DIV_GOODLEVEL;
+			echo DIV_GOODLEVEL_OPEN;
 			echo '<em>' . $good['level'] . '</em>';
-			echo '</div>';
+			echo DIV_CLOSE;
 			
-			echo DIV_GOODCAPTION;
+			echo DIV_GOODCAPTION_OPEN;
 			echo '<img src="res/goods/' . $good['safe_caption'] . '.png" width="20" height="20" />';
 			echo '&nbsp;&nbsp;';
 			echo '<a href="admin.php?page=good&amp;id='. $good_id .'">';
@@ -158,12 +162,12 @@
 				echo $good_caption;
 			}
 			echo '</a>';
-			echo '</div>';
+			echo DIV_CLOSE;
 			
-			echo '</div>';
+			echo DIV_CLOSE;
 		}
 		
-		echo '</div>';
+		echo DIV_CLOSE;
 
 	?>
 
@@ -174,13 +178,13 @@
 	
 	<?php
 		$columns = 3;
-		echo '<table>';
+		echo TBL_OPEN;
 		echo '<caption hidden>Basic Goods</caption>';
 		for ($i = 0; $i < $columns; $i++) {
 			echo TABLEHEADER_LVL;
 			echo TABLEHEADER_GOODCAPTION;
 		}
-		echo '</table>';
+		echo TBL_CLOSE;
 		
 		echo '<div class="good goodContainer2">';
 
@@ -190,13 +194,13 @@
 				continue;
 			}
 
-			echo '<div>';
+			echo DIV_OPEN;
 			
-			echo DIV_GOODLEVEL;
+			echo DIV_GOODLEVEL_OPEN;
 			echo '<em>' . $good['level'] . '</em>';
-			echo '</div>';
+			echo DIV_CLOSE;
 			
-			echo DIV_GOODCAPTION;
+			echo DIV_GOODCAPTION_OPEN;
 			echo '<img src="res/goods/' . $good['safe_caption'] . '.png" width="20" height="20" />';
 			echo '&nbsp;&nbsp;';
 			echo '<a href="admin.php?page=good&amp;id='. $good_id .'">';
@@ -208,12 +212,12 @@
 				echo $good_caption;
 			}
 			echo '</a>';
-			echo '</div>';
+			echo DIV_CLOSE;
 			
-			echo '</div>';
+			echo DIV_CLOSE;
 		}
 
-		echo '</div>';
+		echo DIV_CLOSE;
 
 	?>
 
