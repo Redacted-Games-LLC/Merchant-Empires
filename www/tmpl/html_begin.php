@@ -152,6 +152,7 @@
 	<link rel="icon" type="image/png" href="res/redacted_icon.png" />
 </head>
 <body onload="page_onload(<?php echo isset($tmpl['no_fluff']) ? 'true' : 'false'; ?>);">
+<div id="wrapper">
 	<?php if (!isset($tmpl['no_fluff'])) { ?>
 	<div id="first_header">
 		<div id="game_logo">
