@@ -22,7 +22,11 @@
 
  @charset "utf-8";
 
+ /* currently working on these files */
  @import url("css/main.css");
+ @import url("css/footer.css");
+
+ /* to be worked on later */
  @import url("css/adm_build_build.css");
  @import url("css/adm_news_msg_main.css");
  @import url("css/adm_users.css");

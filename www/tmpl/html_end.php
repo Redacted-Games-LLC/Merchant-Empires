@@ -36,20 +36,17 @@
 			
 			echo '</div>';
 		}
+	} ?>
+		<footer>
+			<!-- use <span> instead of <div> as we want license text on logo right, not logo bottom -->
+			<span id="footer_left_column"><img src="res/redacted_logo.png" width="280" alt="branding logo" /></span>
+			<span id="footer_right_column">Released under the Open Source <a href="docs.php?page=license" target="_blank">GNU GPLv3</a> License</span>
 
-		?>
-		<div id="final_footer">
-			<div class="left_footer_column"><img src="res/redacted_logo.png" width="280" alt="branding logo" /></div>
-			<div class="right_footer_column">
-				Released under the Open Source <a href="docs.php?page=license" target="_blank">GNU GPLv3</a> License
-			</div>
+			<!-- required for purple backgound -->
 			&nbsp;<br />
 			&nbsp;<br />
 			&nbsp;<br />
-			&nbsp;
-		</div>
-	<?php } ?>
-	&nbsp;<br />
-	&nbsp;<br />
-</body>
+			&nbsp;<br />
+		</footer>
+	</body>
 </html>

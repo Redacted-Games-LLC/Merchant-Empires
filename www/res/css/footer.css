@@ -1,0 +1,31 @@
+/* /www/tmpl/html_end.php */
+
+footer {
+	background-color: #110011;
+	width: 100%;
+	font-size: 80%;
+	position: relative;
+	left: 0;
+	bottom: 0;
+}
+
+#footer_left_column {
+	width: 50%;
+	float: left;
+	text-align: left;
+	padding-left: 8px;
+}
+
+#footer_right_column {
+	width: 48%;
+	float: right;
+	text-align: right;
+	padding-right: 8px;
+}
+
+/*
+- better option to change footer position to fixed but Credits link in docs will be covered,
+unless branding logo is removed or moved elsewhere, and the 4 line breaks are removed (required for the purple background).
+
+- footer right column width cannot be larger than 48%, else license text will drop below purple background.
+*/

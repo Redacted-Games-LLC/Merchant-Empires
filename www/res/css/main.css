@@ -120,27 +120,6 @@ div#first_header {
 	padding: 2px;
 }
 
-div#final_footer {
-	background-color: #110011;
-	width: 100%;
-	font-size: 80%;
-	padding: 2px;
-}
-
-div.left_footer_column {
-	width: 44%;
-	float: left;
-	text-align: left;
-	padding-left: 8px;
-}
-
-div.right_footer_column {
-	width: 44%;
-	float: right;
-	text-align: right;
-	padding-right: 8px;
-}
-
 div.taking_damage {
 	position: absolute;
 	left: 50%;
