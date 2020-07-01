@@ -1,0 +1,17 @@
+/* Main input */
+
+input#floating_message_close {
+	width: 128px;
+	margin: 8px 35%;
+}
+
+input.form_button {
+	position: relative;
+	height: 24px;
+	vertical-align: bottom;
+}
+
+input.form_input {
+	background-color: black;
+	color: white;
+}

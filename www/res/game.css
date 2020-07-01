@@ -24,6 +24,13 @@
 
  /* currently working on these files */
  @import url("css/main.css");
+ @import url("css/input.css");
+ @import url("css/id.css");
+ @import url("css/classes_div.css");
+ @import url("css/classes_generic.css");
+
+/* completed */
+ @import url("css/header.css");
  @import url("css/footer.css");
 
  /* to be worked on later */

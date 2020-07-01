@@ -154,13 +154,9 @@
 <body onload="page_onload(<?php echo isset($tmpl['no_fluff']) ? 'true' : 'false'; ?>);">
 <div id="wrapper">
 	<?php if (!isset($tmpl['no_fluff'])) { ?>
-	<div id="first_header">
-		<div id="game_logo">
-			<img src="res/me_logo.png" width="320" alt="Merchant Empires logo" />
-		</div>
-		<div id="game_title">
-			<?php echo ':: ' . $tmpl['page_title']; ?>
-		</div>
+	<header>
+		<span id="game_logo"><img src="res/me_logo.png" width="320" alt="Merchant Empires logo" /></span>
+		<span id="game_title"><?php echo ':: ' . $tmpl['page_title']; ?></span>
 		<div id="game_menu">
 			<?php
 				if (USER_ID > 0) {
@@ -190,11 +186,9 @@
 				} else {
 					echo '<a class="game_menu" href="login.php">Login</a>';
 				}
-			?>
-			
-		</div>
-		
-	</div>
+			?>			
+		</div>	
+	</header>
 	<?php } ?>
 	<noscript>
 	<div class="noscript">

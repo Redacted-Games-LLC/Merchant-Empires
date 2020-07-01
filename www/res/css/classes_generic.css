@@ -1,0 +1,35 @@
+/* Main generic classes */
+
+.align_left {text-align: left;}
+.align_right {text-align: right;}
+
+.bigger {font-size: larger;}
+
+.bottom {vertical-align: bottom;}
+
+.clear {clear: both;}
+
+.float_left {float: left;}
+.float_right {float: right;}
+
+.margin {margin: 10px;}
+
+.normal {
+	font-variant: normal;
+	font-weight: normal;
+}
+
+.normal_bold {
+	font-variant: normal;
+	font-weight: bold;
+}
+
+.o1 {opacity: 0.1;}
+.o2 {opacity: 0.2;}
+.o3 {opacity: 0.3;}
+.o4 {opacity: 0.4;}
+.o5 {opacity: 0.5;}
+.o6 {opacity: 0.6;}
+.o7 {opacity: 0.7;}
+.o8 {opacity: 0.8;}
+.o9 {opacity: 0.9;}

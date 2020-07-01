@@ -1,0 +1,268 @@
+/* Main div classes */
+
+div.allied_ship {
+	position: relative;
+	display: inline-block;
+	width: 200px;
+	height: 64px;
+	background: #000011;
+	border: solid 1px #00ffff;
+	margin: 8px;
+	padding: 2px;
+}
+
+div.center_spread {
+	position: relative;
+	width: 99%;
+}
+
+div.center_spread_middle {
+	position: relative;
+	margin: 0px 210px;
+	padding:10px;
+	min-height: 420px;
+}
+
+div.floating_message {
+	display: inline-block;
+	width: 80%;
+	margin: 4px 8px;
+	border: solid 1px #222200;
+}
+
+div.floating_message_fluff {
+	top: 190px;
+	width: 48%;
+	margin: 0 25%;
+	padding: 20px;
+}
+
+div.floating_message_nofluff {
+	top: 60px;
+	width: 75%;
+	margin: 0 12%;
+	padding: 10px;
+}
+
+div.full_spread {
+	position: relative;
+	width: 95%;
+	padding: 20px;
+	margin: 4px auto;
+	min-width: 940px;
+	min-height: 256px;
+	border: solid 2px white;
+	background-color: #001111;
+}
+
+div.hostile_ship {
+	position: relative;
+	display: inline-block;
+	width: 200px;
+	height: 64px;
+	background: #110000;
+	border: solid 1px #ffff00;
+	margin: 8px;
+	padding: 2px;
+}
+
+div.noscript {
+	background-color: #311;
+	border: solid 3px #ffffff;
+	margin: 20px;
+	padding: 20px 100px;
+}
+
+div.popup_spread {
+	position: relative;
+	width: 90%;
+	padding: 20px;
+	margin: 4px auto;
+	min-width: 600px;
+	min-height: 256px;
+	border: solid 2px white;
+	background-color: #001111;
+}
+
+div.popup_text {
+	position: relative;
+	width: 95%;
+	margin: 8px 1px;
+}
+
+div.ship_alliance {
+	text-align:left;
+	position: relative;
+	font-size: 70%;
+	margin: 0px;
+	padding: 0px;
+	width: 120px;
+}
+
+div.ship_level {
+	float: right;
+	text-align:right;
+	position: relative;
+	font-size: 70%;
+	margin: 0px;
+	padding: 0px;
+}
+
+div.ship_links {
+	float: right;
+	text-align:right;
+	position: relative;
+	font-size: 70%;
+	margin: 0px;
+	padding: 0px;
+	width: 70px;
+	cursor: pointer;
+	text-decoration: underline;
+	color: #ffff77;
+	font-variant: small-caps;
+}
+
+div.ship_name {
+	text-align:center;
+	position: relative;
+	font-size: 85%;
+	margin: 0px;
+	padding: 0px;
+}
+
+div.ship_player_name {
+	text-align:center;
+	position: relative;
+	font-size: 90%;
+	margin: 0px;
+	padding: 0px;
+	font-weight: bold;
+}
+
+div.ship_type {
+	text-align:left;
+	position: relative;
+	font-size: 70%;
+	margin: 0px;
+	padding: 0px;
+	width: 120px;
+}
+
+div.taking_damage {
+	position: absolute;
+	left: 50%;
+	margin-left: -74px;
+	top: 10px;
+	width: 128px;
+	border: dotted 6px #ff0000;
+	background: #330000;
+	font-weight: bold;
+	font-size: 110%;
+	text-align: center;
+}
+
+div.viewport_console {
+	position: relative;
+	top: 0px;
+	left: 0px;
+	margin: 0px auto;
+	width: 300px;
+	text-align: center;
+	background: url('../black_dither.png') repeat;
+	padding: 0px;
+}
+
+div.viewport_console_item {
+	display: inline-block;
+	width: 64px;
+	height: 32px;
+	background: url('../console_back.png') no-repeat;
+	text-align: center;
+	padding: 6px 0px;
+	margin: 8px 0px 0px 0px;
+	cursor: pointer;
+}
+
+div.viewport_dss {
+	position: relative;
+	top: 8px;
+	left: 0px;
+	margin: 0px auto;
+	width: 192px;
+	height: 96px;
+	overflow: hidden;
+	background-color: black;
+}
+
+div.viewport_dss_background {
+	background: url('../galaxy.png') no-repeat;
+	width: 192px;
+	height: 96px;
+	background-size: 720px 720px;
+}
+
+div.viewport_hostile_ships {
+	position: relative;
+	display: inline-block;
+	width: 47%;
+	border: solid 2px #882200;
+	background-color: black;
+	vertical-align: top
+}
+
+div.viewport_hostile_ships_head {
+	font-size: 12pt;
+	color: white;
+	background-color: #330000;
+	text-align: left;
+	padding: 10px;
+	font-weight: bold;
+}
+
+div.viewport_player_info {
+	width: 200px;
+	background-color: black;
+	border: solid 1px #001155;
+	overflow: hidden;
+	text-align: center;
+}
+
+div.viewport_safe_ships {
+	position: relative;
+	display: inline-block;
+	width: 47%;
+	border: solid 2px #002288;
+	background-color: black;
+	vertical-align: top
+}
+
+div.viewport_safe_ships_head {
+	font-size: 12pt;
+	color: white;
+	background-color: #000033;
+	text-align: left;
+	padding: 10px;
+	font-weight: bold;
+}
+
+div.viewport_ships {
+	position: relative;
+	width: 100%;
+	min-width: 580px;
+	text-align: center;
+	vertical-align: top;
+}
+
+div.viewport_ship_info {
+	width: 200px;
+	background-color: black;
+	border: solid 1px #551100;
+	overflow: hidden;
+	text-align: center;
+}
+
+div.viewport_split {
+	position: relative;
+	text-align: center;
+	width: 100%;
+}

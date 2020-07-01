@@ -5,14 +5,14 @@ footer {
 	font-size: 80%;
 }
 
-#footer_left_column {
+span#footer_left_column {
 	width: 49%;
 	float: left;
 	text-align: left;
 	padding-left: 8px;
 }
 
-#footer_right_column {
+span#footer_right_column {
 	width: 49%;
 	float: right;
 	text-align: right;

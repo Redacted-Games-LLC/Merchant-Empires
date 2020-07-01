@@ -37,7 +37,7 @@
 		die();
 	}
 	
-	$tmpl['page_title'] = 'Login User';
+	$tmpl['page_title'] = 'Log In';
 
 	include_once('tmpl/html_begin.php');
 
