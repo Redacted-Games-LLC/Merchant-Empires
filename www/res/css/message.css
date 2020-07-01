@@ -29,8 +29,6 @@ td.message {
 div.message_ignored {
     width: 100%;
     border: solid 1px #888;
-    padding: 0px;
-    margin: 4px;
     background-color: #444;
     padding: 4px 8px;
     margin: 0px;

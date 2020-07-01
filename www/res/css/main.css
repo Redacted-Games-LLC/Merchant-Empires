@@ -13,12 +13,18 @@ body {
 }
 
 /* header and body reside in this wrapper, except footer */
-#wrapper {
+div#wrapper {
 	min-height: calc(100vh - 65px);  /* 65px is height of footer */
 }
 
-pre {
-    font-family: CascadiaMono, monospace;
+pre {font-family: CascadiaMono, monospace;}
+pre.dump {
+	background-color: white;
+	color: black;
+	margin: 10px;
+	padding: 10px;
+	border: solid 2px gray;
+	text-align: left;
 }
 
 a {
@@ -52,16 +58,6 @@ input.form_button {
 input.form_input {
 	background-color: black;
 	color: white;
-}
-
-pre.dump {
-	background-color: white;
-	color: black;
-	font-family: fixed;
-	margin: 10px;
-	padding: 10px;
-	border: solid 2px gray;
-	text-align: left;
 }
 
 div.noscript {
@@ -232,7 +228,6 @@ div.ship_links {
 	text-decoration: underline;
 	color: #ffff77;
 	font-variant: small-caps;
-	 padding: 0px;
 }
 
 div.ship_type {

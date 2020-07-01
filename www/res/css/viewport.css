@@ -2,8 +2,7 @@
 
 div#viewport_main_spread {
     position: relative;
-    background-color: #001;
-    background: url("../starfield_ugly.png") repeat;
+    background: #001 url("../starfield_ugly.png") repeat;
     width: 98%;
     margin-left: auto;
     margin-right: auto;
