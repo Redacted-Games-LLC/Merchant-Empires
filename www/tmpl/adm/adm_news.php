@@ -31,9 +31,9 @@
 	include_once('inc/news.php');
 
 	$preview = isset($_REQUEST['task']) && $_REQUEST['task'] == 'preview';
-	$article['headline'] = '';
-	$article['abstract'] = '';
-	$article['article'] = '';
+	$article['headline'] = 'Alphanumeric and space only';
+	$article['abstract'] = 'Allowed HTML tags: a, em, font, img, s, span, strong, u';
+	$article['article'] = 'Allowed HTML tags: a, br, em, font, h1 to h6, img, li, ol, p, s, span, strong, table, td, th, tr, u, ul';
 	$article['author'] = 0;
 	$article['live'] = PAGE_START_TIME;
 	$article['archive'] = PAGE_START_TIME + DEFAULT_NEWS_ARCHIVE_TIME;
@@ -51,11 +51,6 @@
 
 ?>
 
-<!--
-Need to surface remaining char counter for headline.
-Need to define which fields allow HTML tags and which are plain-text only, either as notice above warning text or bracketed as part of <th> text.
--->
-
 <div class="header2">News Desk</div>
 <?php if ($preview) { ?>
 	<div class="docs_text">
@@ -67,7 +62,7 @@ Need to define which fields allow HTML tags and which are plain-text only, eithe
 	<hr />
 <?php } ?>
 <div class="docs_text">
-	<strong>Warning:</strong> "Previewing" will preserve your article but <em><u>not</u></em> publish it.
+	<strong>Warning:</strong> "Preview" will preserve your article but <em><u>not</u></em> publish it.
 	If there is an error, your article will be lost. Please write it up using a separate tool and
 	paste the content in.
 </div>
@@ -75,8 +70,14 @@ Need to define which fields allow HTML tags and which are plain-text only, eithe
 	<form action="handler.php" method="post">
 		<table class="message" role="presentation">
 			<tr class="message">
+				<td class="message">&nbsp;</td>
+				<td class="message align_right">
+					<span class="characters_left" id="headline_characters_left">&nbsp;</span>
+				</td>
+			</tr>
+			<tr class="message">
 				<td class="message">Headline:</td>
-				<td class="message"><input class="msg_form_input" type="text" name="headline" maxlength="<?php echo NEWS_HEADLINE_LIMIT; ?>" value="<?php echo $article['headline']; ?>" size="50" /></td>
+				<td class="message"><input class="msg_form_input" id="msg_headline" type="text" name="headline" maxlength="<?php echo NEWS_HEADLINE_LIMIT; ?>" value="<?php echo $article['headline']; ?>" size="58" /></td>
 				<td class="message align_right">
 					<span class="characters_left" id="abstract_characters_left">&nbsp;</span>
 				</td>
@@ -115,7 +116,7 @@ Need to define which fields allow HTML tags and which are plain-text only, eithe
 				</td>
 			</tr>
 			<tr class="message">
-				<td class="message">Live&nbsp;Timestamp:</td>
+				<td class="message">Publish&nbsp;Timestamp:</td>
 				<td class="message" colspan="2"><input class="msg_form_input" type="text" name="live_date" maxlength="10" size="12" value="<?php echo $article['live']; ?>" /></td>
 			</tr>
 			<tr class="message">
@@ -123,7 +124,7 @@ Need to define which fields allow HTML tags and which are plain-text only, eithe
 				<td class="message" colspan="2"><input class="msg_form_input" type="text" name="archive_date" maxlength="10" size="12" value="<?php echo $article['archive']; ?>" /></td>
 			</tr>
 			<tr class="message">
-				<td class="message">Expiry&nbsp;Timestamp:</td>
+				<td class="message">Purge&nbsp;Timestamp:</td>
 				<td class="message" colspan="2"><input class="msg_form_input" type="text" name="expiration_date" maxlength="10" size="12" value="<?php echo $article['expiration']; ?>" /></td>
 			</tr>
 			<tr class="message">
@@ -131,9 +132,9 @@ Need to define which fields allow HTML tags and which are plain-text only, eithe
 				<td class="message" colspan="2">
 					<script type="text/javascript">
 						drawButton('preview', 'preview', 'validate_preview()');
-						register_textarea_length_handlers('msg_article', 'article_characters_left', <?php echo NEWS_ARTICLE_LIMIT; ?>);
+						register_textarea_length_handlers('msg_headline', 'headline_characters_left', <?php echo NEWS_HEADLINE_LIMIT; ?>);
 						register_textarea_length_handlers('msg_abstract', 'abstract_characters_left', <?php echo NEWS_ABSTRACT_LIMIT; ?>);
-						
+						register_textarea_length_handlers('msg_article', 'article_characters_left', <?php echo NEWS_ARTICLE_LIMIT; ?>);
 					</script>
 					&nbsp;
 					<script type="text/javascript">
@@ -141,8 +142,6 @@ Need to define which fields allow HTML tags and which are plain-text only, eithe
 					</script>
 				</td>
 			</tr>
-
-			
 		</table>
 		<input type="hidden" name="task" value="news" />
 		<input type="hidden" name="subtask" value="submit" />
