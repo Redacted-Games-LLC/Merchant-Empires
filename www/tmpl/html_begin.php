@@ -22,7 +22,8 @@
  */
 
 	include_once('tmpl/common.php');
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<title>ME :: <?php echo $tmpl['page_title']; ?></title>
@@ -155,6 +156,7 @@
 <div id="wrapper">
 	<?php if (!isset($tmpl['no_fluff'])) { ?>
 	<header>
+		<!-- use <span> instead of <div> as we want title text on logo right, not logo bottom -->
 		<span id="game_logo"><img src="res/me_logo.png" width="320" alt="Merchant Empires logo" /></span>
 		<span id="game_title"><?php echo ':: ' . $tmpl['page_title']; ?></span>
 		<div id="game_menu">

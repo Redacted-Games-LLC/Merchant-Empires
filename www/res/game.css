@@ -24,14 +24,15 @@
 
  /* currently working on these files */
  @import url("css/main.css");
- @import url("css/input.css");
- @import url("css/id.css");
  @import url("css/classes_div.css");
- @import url("css/classes_generic.css");
 
 /* completed */
  @import url("css/header.css");
  @import url("css/footer.css");
+ @import url("css/doc_ranks.css");
+ @import url("css/id.css");
+ @import url("css/input.css");
+ @import url("css/classes_generic.css");
 
  /* to be worked on later */
  @import url("css/adm_build_build.css");
@@ -41,7 +42,6 @@
  @import url("css/alliance_players_msg_inbox_php_msg_sent.css");
  @import url("css/base.css");
  @import url("css/dealer.css");
- @import url("css/doc_ranks.css");
  @import url("css/docs.css");
  @import url("css/gold.css");
  @import url("css/locate.css");

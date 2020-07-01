@@ -28,16 +28,16 @@ div#page_build {
 
 span#game_logo {
 	position: absolute;
-	top: 16px;
-	left: 32px;
+	top: 10px;
+	left: 22px;
 	width: 600px;
 	text-align: left;
 }
 
 span#game_title {
 	position: absolute;
-	top: 24px;
-	left: 350px;
+	top: 18px;
+	left: 340px;
 	width: 600px;
 	text-align: left;
 }
