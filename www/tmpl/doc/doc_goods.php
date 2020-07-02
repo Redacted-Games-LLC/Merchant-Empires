@@ -25,10 +25,81 @@
 
 	include_once('inc/goods.php');
 	include_once('inc/good_upgrades.php');
+	
+	define("TABLEHEADER_LVL", '<th class="lvlHeader"><strong>Lvl</strong></th>');
+	define("TABLEHEADER_GOODCAPTION", '<th class="captionHeader"><strong>Good Caption</strong></th>');
+	define("DIV_OPEN", '<div>');
+	define("DIV_CLOSE", '</div>');
+	define("TBL_OPEN", '<table>');
+	define("TBL_CLOSE", '</table>');
+	define("DIV_GOODLEVEL_OPEN", '<div class="goodLevel">');
+	define("DIV_GOODCAPTION_OPEN", '<div class="goodCaption">');
+	
+	function print_goods($goods_list) {
+		
+		foreach ($goods_list as $good_id => $good) {
+			
+			echo DIV_OPEN;
+			
+			echo DIV_GOODLEVEL_OPEN;
+			echo '<em>' . $good['level'] . '</em>';
+			echo DIV_CLOSE;
+			
+			echo DIV_GOODCAPTION_OPEN;
+			echo '<img src="res/goods/' . $good['safe_caption'] . '.png" width="20" height="20" />';
+			echo '&nbsp;&nbsp;';
+			echo '<a href="admin.php?page=good&amp;id='. $good_id .'">';
+			$good_caption = $good['caption'];
+			if (strlen($good_caption) >= 20) {
+				echo substr($good_caption, 0, 17) . '...';
+			}
+			else {
+				echo $good_caption;
+			}
+			echo '</a>';
+			echo DIV_CLOSE;
+			
+			echo DIV_CLOSE;
+		}
+	}
 
 ?>
 
 <!-- Need to sort goods into tables vertically instead of horizontally --> 
+
+<style>
+	.good {
+		display: flex;
+		flex-flow: column wrap;
+	}
+	
+	.goodContainer1 {
+		height: 470px;
+	}
+	
+	.goodLevel {
+		width: 20px; 
+		float: left; 
+		text-align: right;
+	}
+	
+	.goodCaption {
+		width: 200px; 
+		float: left; 
+		padding-left: 35px;
+	}
+	
+	.lvlHeader {
+		width: 20px;
+		text-align: left;
+	}
+	
+	.captionHeader {
+		width: 250px;
+		text-align: left;
+		padding-left: 20px;
+	}
+</style>
 
 <div class="header2">Trade Goods</div>
 <div class="docs_text">
@@ -38,57 +109,25 @@
 </div>
 <hr />
 <div class="header3">List of Goods</div>
-<div class="docs_text">
-	<table width="100%">
-	<caption hidden>List of Goods</caption>
+<br />
+<div>
 
 	<?php
-		$columns = 3;
-		$column = 0;
 		
-		echo '<tr>';
-
+		$columns = 3;
+		echo TBL_OPEN;
+		echo '<caption hidden>List of Goods</caption>';
 		for ($i = 0; $i < $columns; $i++) {
-			echo '<th scope="col" width="35"><strong>Lvl</strong></th>';
-			echo '<th scope="col" width="195"><strong>Good Caption</strong></th>';
+			echo TABLEHEADER_LVL;
+			echo TABLEHEADER_GOODCAPTION;
 		}
+		echo TBL_CLOSE;
 
-		foreach ($spacegame['goods'] as $good_id => $good) {
-
-			if ($column <= 0) {
-				echo '</tr>';
-				echo '<tr>';
-				$column = $columns;
-			}
-			
-			$column -= 1;
-
-			echo '<td><em>' . $good['level'] . '</em></td>';
-
-			echo '<td>';
-
-			echo '<img src="res/goods/' . $good['safe_caption'] . '.png" width="20" height="20" />';
-
-			echo '&nbsp;&nbsp;';
-
-			echo '<a href="docs.php?page=good&amp;id='. $good_id .'">';
-
-			$good_caption = $good['caption'];
-
-			if (strlen($good_caption) >= 15) {
-				echo substr($good_caption, 0, 12) . '...';
-			}
-			else {
-				echo $good_caption;
-			}
-			echo '</a>';
-
-			echo '</td>';
-			
-			
-		}
-
-		echo '</tr>';
+		echo '<div class="good goodContainer1">';
+		
+		print_goods($spacegame['goods']);
+		
+		echo DIV_CLOSE;
+		
 	?>
-	</table>
 </div>
