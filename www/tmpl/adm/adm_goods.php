@@ -121,33 +121,6 @@
 		echo '<div class="good goodContainer1">';
 		
 		print_goods($spacegame['goods']);
-
-		//foreach ($spacegame['goods'] as $good_id => $good) {
-			
-			//print_goods
-			
-			// echo DIV_OPEN;
-			
-			// echo DIV_GOODLEVEL_OPEN;
-			// echo '<em>' . $good['level'] . '</em>';
-			// echo DIV_CLOSE;
-			
-			// echo DIV_GOODCAPTION_OPEN;
-			// echo '<img src="res/goods/' . $good['safe_caption'] . '.png" width="20" height="20" />';
-			// echo '&nbsp;&nbsp;';
-			// echo '<a href="admin.php?page=good&amp;id='. $good_id .'">';
-			// $good_caption = $good['caption'];
-			// if (strlen($good_caption) >= 15) {
-				// echo substr($good_caption, 0, 12) . '...';
-			// }
-			// else {
-				// echo $good_caption;
-			// }
-			// echo '</a>';
-			// echo DIV_CLOSE;
-			
-			// echo DIV_CLOSE;
-		//}
 		
 		echo DIV_CLOSE;
 		
