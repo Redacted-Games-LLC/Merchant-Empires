@@ -31,8 +31,8 @@
 	include_once('inc/goods.php');
 	include_once('inc/good_upgrades.php');
 
-	define("TABLEHEADER_LVL", '<th style="width:20px;"><strong>Lvl</strong></th>');
-	define("TABLEHEADER_GOODCAPTION", '<th style="width:200px"><strong>Good Caption</strong></th>');
+	define("TABLEHEADER_LVL", '<th class="lvlHeader"><strong>Lvl</strong></th>');
+	define("TABLEHEADER_GOODCAPTION", '<th class="captionHeader"><strong>Good Caption</strong></th>');
 	define("DIV_OPEN", '<div>');
 	define("DIV_CLOSE", '</div>');
 	define("TBL_OPEN", '<table>');
@@ -55,8 +55,8 @@
 			echo '&nbsp;&nbsp;';
 			echo '<a href="admin.php?page=good&amp;id='. $good_id .'">';
 			$good_caption = $good['caption'];
-			if (strlen($good_caption) >= 15) {
-				echo substr($good_caption, 0, 12) . '...';
+			if (strlen($good_caption) >= 20) {
+				echo substr($good_caption, 0, 17) . '...';
 			}
 			else {
 				echo $good_caption;
@@ -83,7 +83,7 @@
 	}
 	
 	.goodContainer2 {
-		height: 150px;
+		height: 125px;
 	}
 	
 	.goodLevel {
@@ -93,9 +93,20 @@
 	}
 	
 	.goodCaption {
-		width: 160px; 
+		width: 200px; 
 		float: left; 
 		padding-left: 35px;
+	}
+	
+	.lvlHeader {
+		width: 20px;
+		text-align: left;
+	}
+	
+	.captionHeader {
+		width: 250px;
+		text-align: left;
+		padding-left: 20px;
 	}
 </style>
 
@@ -103,10 +114,11 @@
 <div class="docs_text">
 	You can manipulate existing goods or create new ones using this tool.
 </div>
+<br />
 <hr />
 <div class="header3">List of Goods</div>
-<div class="docs_text">
-	
+<br />
+<div>	
 	
 	<?php
 		$columns = 3;
@@ -127,9 +139,11 @@
 	?>
 	
 </div>
+<br />
 <hr />
 <div class="header3">Goods That Do Not Upgrade</div>
-<div class="docs_text">
+<br />
+<div>
 	
 	<?php
 		$columns = 3;
@@ -162,9 +176,11 @@
 	?>
 
 </div>
+<br />
 <hr />
 <div class="header3">Basic Goods</div>
-<div class="docs_text">
+<br />
+<div>
 	
 	<?php
 		$columns = 3;
@@ -195,6 +211,7 @@
 	?>
 
 </div>
+<br />
 <hr />
 <div class="header3">Create New Good</div>
 <div class="docs_text">
