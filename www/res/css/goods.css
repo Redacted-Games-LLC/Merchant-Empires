@@ -1,0 +1,35 @@
+.captionHeader {
+    width: 250px;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.good {
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.goodCaption {
+    width: 200px; 
+    float: left; 
+    padding-left: 35px;
+}
+
+.goodContainer1 {
+    height: 500px;
+}
+
+.goodContainer2 {
+    height: 125px;
+}
+
+.goodLevel {
+    width: 20px; 
+    float: left; 
+    text-align: right;
+}
+
+.lvlHeader {
+    width: 20px;
+    text-align: left;
+}

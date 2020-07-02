@@ -5,29 +5,17 @@ div.allied_ship {
 	display: inline-block;
 	width: 200px;
 	height: 64px;
-	background: #000011;
 	border: solid 1px #00ffff;
 	margin: 8px;
 	padding: 2px;
-}
-
-div.center_spread {
-	position: relative;
-	width: 99%;
-}
-
-div.center_spread_middle {
-	position: relative;
-	margin: 0px 210px;
-	padding:10px;
-	min-height: 420px;
+	background: #000011;
 }
 
 div.floating_message {
 	display: inline-block;
 	width: 80%;
-	margin: 4px 8px;
 	border: solid 1px #222200;
+	margin: 4px 8px;
 }
 
 div.floating_message_fluff {
@@ -47,11 +35,11 @@ div.floating_message_nofluff {
 div.full_spread {
 	position: relative;
 	width: 95%;
-	padding: 20px;
+	border: solid 2px white;
 	margin: 4px auto;
+	padding: 20px;
 	min-width: 940px;
 	min-height: 256px;
-	border: solid 2px white;
 	background-color: #001111;
 }
 
@@ -60,27 +48,27 @@ div.hostile_ship {
 	display: inline-block;
 	width: 200px;
 	height: 64px;
-	background: #110000;
 	border: solid 1px #ffff00;
 	margin: 8px;
 	padding: 2px;
+	background: #110000;
 }
 
 div.noscript {
-	background-color: #311;
 	border: solid 3px #ffffff;
 	margin: 20px;
 	padding: 20px 100px;
+	background-color: #311;
 }
 
 div.popup_spread {
 	position: relative;
 	width: 90%;
-	padding: 20px;
+	border: solid 2px white;
 	margin: 4px auto;
+	padding: 20px;
 	min-width: 600px;
 	min-height: 256px;
-	border: solid 2px white;
 	background-color: #001111;
 }
 
@@ -91,31 +79,31 @@ div.popup_text {
 }
 
 div.ship_alliance {
-	text-align:left;
+	text-align: left;
 	position: relative;
 	font-size: 70%;
-	margin: 0px;
-	padding: 0px;
 	width: 120px;
+	margin: 0;
+	padding: 0;
 }
 
 div.ship_level {
 	float: right;
-	text-align:right;
+	text-align: right;
 	position: relative;
 	font-size: 70%;
-	margin: 0px;
-	padding: 0px;
+	margin: 0;
+	padding: 0;
 }
 
 div.ship_links {
 	float: right;
-	text-align:right;
+	text-align: right;
 	position: relative;
 	font-size: 70%;
-	margin: 0px;
-	padding: 0px;
 	width: 70px;
+	margin: 0;
+	padding: 0;
 	cursor: pointer;
 	text-decoration: underline;
 	color: #ffff77;
@@ -123,38 +111,38 @@ div.ship_links {
 }
 
 div.ship_name {
-	text-align:center;
+	text-align: center;
 	position: relative;
 	font-size: 85%;
-	margin: 0px;
-	padding: 0px;
+	margin: 0;
+	padding: 0;
 }
 
 div.ship_player_name {
-	text-align:center;
+	text-align: center;
 	position: relative;
 	font-size: 90%;
-	margin: 0px;
-	padding: 0px;
+	margin: 0;
+	padding: 0;
 	font-weight: bold;
 }
 
 div.ship_type {
-	text-align:left;
+	text-align: left;
 	position: relative;
 	font-size: 70%;
-	margin: 0px;
-	padding: 0px;
 	width: 120px;
+	margin: 0;
+	padding: 0;
 }
 
 div.taking_damage {
 	position: absolute;
-	left: 50%;
-	margin-left: -74px;
 	top: 10px;
+	left: 50%;
 	width: 128px;
 	border: dotted 6px #ff0000;
+	margin-left: -74px;
 	background: #330000;
 	font-weight: bold;
 	font-size: 110%;
@@ -163,41 +151,41 @@ div.taking_damage {
 
 div.viewport_console {
 	position: relative;
-	top: 0px;
-	left: 0px;
-	margin: 0px auto;
+	top: 0;
+	left: 0;
 	width: 300px;
+	margin: 0 auto;
+	padding: 0;
 	text-align: center;
 	background: url('../black_dither.png') repeat;
-	padding: 0px;
 }
 
 div.viewport_console_item {
 	display: inline-block;
 	width: 64px;
 	height: 32px;
+	margin: 8px 0 0 0;
+	padding: 6px 0;
 	background: url('../console_back.png') no-repeat;
 	text-align: center;
-	padding: 6px 0px;
-	margin: 8px 0px 0px 0px;
 	cursor: pointer;
 }
 
 div.viewport_dss {
 	position: relative;
 	top: 8px;
-	left: 0px;
-	margin: 0px auto;
+	left: 0;
 	width: 192px;
 	height: 96px;
+	margin: 0 auto;
 	overflow: hidden;
 	background-color: black;
 }
 
 div.viewport_dss_background {
-	background: url('../galaxy.png') no-repeat;
 	width: 192px;
 	height: 96px;
+	background: url('../galaxy.png') no-repeat;
 	background-size: 720px 720px;
 }
 
@@ -255,8 +243,8 @@ div.viewport_ships {
 
 div.viewport_ship_info {
 	width: 200px;
-	background-color: black;
 	border: solid 1px #551100;
+	background-color: black;
 	overflow: hidden;
 	text-align: center;
 }

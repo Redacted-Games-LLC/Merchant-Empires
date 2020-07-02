@@ -1,0 +1,31 @@
+/* Not used */
+
+.align_left {text-align: left;}
+
+.float_left {float: left;}
+
+.normal_bold {
+	font-variant: normal;
+	font-weight: bold;
+}
+
+.o1 {opacity: 0.1;}
+.o2 {opacity: 0.2;}
+.o3 {opacity: 0.3;}
+.o4 {opacity: 0.4;}
+.o5 {opacity: 0.5;}
+.o6 {opacity: 0.6;}
+.o7 {opacity: 0.7;}
+.o8 {opacity: 0.8;}
+
+div.center_spread {
+	position: relative;
+	width: 99%;
+}
+
+div.center_spread_middle {
+	position: relative;
+	margin: 0px 210px;
+	padding:10px;
+	min-height: 420px;
+}
