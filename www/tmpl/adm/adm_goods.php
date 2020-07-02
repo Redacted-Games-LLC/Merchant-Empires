@@ -39,6 +39,34 @@
 	define("TBL_CLOSE", '</table>');
 	define("DIV_GOODLEVEL_OPEN", '<div class="goodLevel">');
 	define("DIV_GOODCAPTION_OPEN", '<div class="goodCaption">');
+	
+	function print_goods($goods_list) {
+		
+		foreach ($goods_list as $good_id => $good) {
+			
+			echo DIV_OPEN;
+			
+			echo DIV_GOODLEVEL_OPEN;
+			echo '<em>' . $good['level'] . '</em>';
+			echo DIV_CLOSE;
+			
+			echo DIV_GOODCAPTION_OPEN;
+			echo '<img src="res/goods/' . $good['safe_caption'] . '.png" width="20" height="20" />';
+			echo '&nbsp;&nbsp;';
+			echo '<a href="admin.php?page=good&amp;id='. $good_id .'">';
+			$good_caption = $good['caption'];
+			if (strlen($good_caption) >= 15) {
+				echo substr($good_caption, 0, 12) . '...';
+			}
+			else {
+				echo $good_caption;
+			}
+			echo '</a>';
+			echo DIV_CLOSE;
+			
+			echo DIV_CLOSE;
+		}
+	}
 
 ?>
 
@@ -91,31 +119,35 @@
 		echo TBL_CLOSE;
 
 		echo '<div class="good goodContainer1">';
+		
+		print_goods($spacegame['goods']);
 
-		foreach ($spacegame['goods'] as $good_id => $good) {
+		//foreach ($spacegame['goods'] as $good_id => $good) {
 			
-			echo DIV_OPEN;
+			//print_goods
 			
-			echo DIV_GOODLEVEL_OPEN;
-			echo '<em>' . $good['level'] . '</em>';
-			echo DIV_CLOSE;
+			// echo DIV_OPEN;
 			
-			echo DIV_GOODCAPTION_OPEN;
-			echo '<img src="res/goods/' . $good['safe_caption'] . '.png" width="20" height="20" />';
-			echo '&nbsp;&nbsp;';
-			echo '<a href="admin.php?page=good&amp;id='. $good_id .'">';
-			$good_caption = $good['caption'];
-			if (strlen($good_caption) >= 15) {
-				echo substr($good_caption, 0, 12) . '...';
-			}
-			else {
-				echo $good_caption;
-			}
-			echo '</a>';
-			echo DIV_CLOSE;
+			// echo DIV_GOODLEVEL_OPEN;
+			// echo '<em>' . $good['level'] . '</em>';
+			// echo DIV_CLOSE;
 			
-			echo DIV_CLOSE;
-		}
+			// echo DIV_GOODCAPTION_OPEN;
+			// echo '<img src="res/goods/' . $good['safe_caption'] . '.png" width="20" height="20" />';
+			// echo '&nbsp;&nbsp;';
+			// echo '<a href="admin.php?page=good&amp;id='. $good_id .'">';
+			// $good_caption = $good['caption'];
+			// if (strlen($good_caption) >= 15) {
+				// echo substr($good_caption, 0, 12) . '...';
+			// }
+			// else {
+				// echo $good_caption;
+			// }
+			// echo '</a>';
+			// echo DIV_CLOSE;
+			
+			// echo DIV_CLOSE;
+		//}
 		
 		echo DIV_CLOSE;
 		
@@ -137,35 +169,20 @@
 		echo TBL_CLOSE;
 		
 		echo '<div class="good goodContainer2">';
+		
+		$goods_list = array();
 
 		foreach ($spacegame['goods'] as $good_id => $good) {
 
 			if ($good['target_count'] > 0) {
 				continue;
 			}
-
-			echo DIV_OPEN;
 			
-			echo DIV_GOODLEVEL_OPEN;
-			echo '<em>' . $good['level'] . '</em>';
-			echo DIV_CLOSE;
+			$goods_list[$good_id] = $good;
 			
-			echo DIV_GOODCAPTION_OPEN;
-			echo '<img src="res/goods/' . $good['safe_caption'] . '.png" width="20" height="20" />';
-			echo '&nbsp;&nbsp;';
-			echo '<a href="admin.php?page=good&amp;id='. $good_id .'">';
-			$good_caption = $good['caption'];
-			if (strlen($good_caption) >= 15) {
-				echo substr($good_caption, 0, 12) . '...';
-			}
-			else {
-				echo $good_caption;
-			}
-			echo '</a>';
-			echo DIV_CLOSE;
-			
-			echo DIV_CLOSE;
 		}
+		
+		print_goods($goods_list);
 		
 		echo DIV_CLOSE;
 
@@ -187,6 +204,8 @@
 		echo TBL_CLOSE;
 		
 		echo '<div class="good goodContainer2">';
+		
+		$goods_list = array();
 
 		foreach ($spacegame['goods'] as $good_id => $good) {
 
@@ -194,28 +213,9 @@
 				continue;
 			}
 
-			echo DIV_OPEN;
-			
-			echo DIV_GOODLEVEL_OPEN;
-			echo '<em>' . $good['level'] . '</em>';
-			echo DIV_CLOSE;
-			
-			echo DIV_GOODCAPTION_OPEN;
-			echo '<img src="res/goods/' . $good['safe_caption'] . '.png" width="20" height="20" />';
-			echo '&nbsp;&nbsp;';
-			echo '<a href="admin.php?page=good&amp;id='. $good_id .'">';
-			$good_caption = $good['caption'];
-			if (strlen($good_caption) >= 15) {
-				echo substr($good_caption, 0, 12) . '...';
-			}
-			else {
-				echo $good_caption;
-			}
-			echo '</a>';
-			echo DIV_CLOSE;
-			
-			echo DIV_CLOSE;
+			$goods_list[$good_id] = $good;
 		}
+		print_goods($goods_list);
 
 		echo DIV_CLOSE;
 
