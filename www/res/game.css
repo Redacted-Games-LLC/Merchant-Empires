@@ -24,7 +24,6 @@
 
  /* currently working on these files */
  @import url("css/main.css");
- @import url("css/goods.css");
 
  /* unused selectors are moved here */
  /* not_used.css */
@@ -37,6 +36,7 @@
  @import url("css/input.css");
  @import url("css/classes_generic.css");
  @import url("css/classes_div.css");
+ @import url("css/goods.css");
 
  /* to be worked on later */
  @import url("css/adm_build_build.css");

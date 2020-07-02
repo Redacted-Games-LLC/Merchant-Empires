@@ -65,42 +65,6 @@
 
 ?>
 
-<!-- Need to sort goods into tables vertically instead of horizontally --> 
-
-<style>
-	.good {
-		display: flex;
-		flex-flow: column wrap;
-	}
-	
-	.goodContainer1 {
-		height: 470px;
-	}
-	
-	.goodLevel {
-		width: 20px; 
-		float: left; 
-		text-align: right;
-	}
-	
-	.goodCaption {
-		width: 200px; 
-		float: left; 
-		padding-left: 35px;
-	}
-	
-	.lvlHeader {
-		width: 20px;
-		text-align: left;
-	}
-	
-	.captionHeader {
-		width: 250px;
-		text-align: left;
-		padding-left: 20px;
-	}
-</style>
-
 <div class="header2">Trade Goods</div>
 <div class="docs_text">
 	There are many goods available to trade. All ports spawn with a random
@@ -128,6 +92,6 @@
 		print_goods($spacegame['goods']);
 		
 		echo DIV_CLOSE;
-		
+
 	?>
 </div>

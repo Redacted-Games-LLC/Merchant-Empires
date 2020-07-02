@@ -70,46 +70,6 @@
 
 ?>
 
-<!-- To work on sorting goods into tables vertically instead of horizontally --> 
-
-<style>
-	.good {
-		display: flex;
-		flex-flow: column wrap;
-	}
-	
-	.goodContainer1 {
-		height: 500px;
-	}
-	
-	.goodContainer2 {
-		height: 125px;
-	}
-	
-	.goodLevel {
-		width: 20px; 
-		float: left; 
-		text-align: right;
-	}
-	
-	.goodCaption {
-		width: 200px; 
-		float: left; 
-		padding-left: 35px;
-	}
-	
-	.lvlHeader {
-		width: 20px;
-		text-align: left;
-	}
-	
-	.captionHeader {
-		width: 250px;
-		text-align: left;
-		padding-left: 20px;
-	}
-</style>
-
 <div class="header2">Goods Administration</div>
 <div class="docs_text">
 	You can manipulate existing goods or create new ones using this tool.
