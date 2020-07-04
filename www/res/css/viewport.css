@@ -1,37 +1,82 @@
 /* viewport.php */
 
-div#viewport_main_spread {
+.move_scan_text {
+    font-size: 150%;
+    text-align: center;
+    width: 34px;
+}
+
+.pointer {cursor: pointer;}
+
+div#disabled_scan_controls {
     position: relative;
-    background: #001 url("../starfield_ugly.png") repeat;
-    width: 98%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 6px;
-    margin-bottom: 6px;
-    border: solid 2px #9cbead;
-    overflow: hidden;
-    min-width: 1024px;
-    min-height: 380px;
+    width: 256px;
+    height: 256px;
+    border: solid 1px #007700;
+    background: url("../no_radar.png") no-repeat;
 }
 
-div.viewport_big_planetoid {
+div#force_panel {
     position: absolute;
-    width: 512px;
-    height: 512px;
-    top: 100px;
-    left: 0px;
-    right: 0px;
-    margin: 0px auto;
+    top: 0;
+    left: 0;
+    width: 72px;
+    height: 256px;
+    margin: 0;
+    padding-top: 4px;
 }
 
-div.viewport_big_star {
-    position: absolute;
-    width: 100vw;
-    height: 100vw;
-    top: 20px;
-    left: 0px;
-    right: 0px;
-    margin: 0px auto;
+div#hud_controls {
+    position: relative;
+    float:right;
+    width: 99%;
+    height: 256px;
+    margin-left: -1px;
+    margin-right: 2px;
+}
+
+div#nav_control_outer {
+    float: left;
+    position: relative;
+    width: 290px;
+    height: 256px;
+    margin-left: -291px;
+    margin-right: 2px;
+    background-color: #551100;
+}
+
+div#nav_controls {
+    position: relative;
+    width: 256px;
+    height: 256px;
+    border: solid 1px #007700;
+    background: url("../navigation.png") no-repeat;
+}
+
+div#scan_control_outer {
+    float: right;
+    position: relative;
+    width: 290px;
+    margin-right: -291px;
+    margin-left: 2px;
+    background-color: #551100;
+}
+
+div#scan_controls {
+    position: relative;
+    width: 256px;
+    height: 256px;
+    border: solid 1px #007700;
+    background: url("../radar.gif") no-repeat;
+}
+
+div#sector_stations {
+    position: relative;
+    width: 96%;
+    margin: 8px auto;
+    border: solid 1px #555511;
+    padding: 8px;
+    text-align: center;
 }
 
 div#viewport_header {
@@ -48,154 +93,42 @@ div#viewport_header_left {
     margin-right: -1px;
 }
 
-div#hud_controls {
+div#viewport_main_spread {
     position: relative;
-    float:right;
-    width: 99%;
-    height: 256px;
-    margin-left: -1px;
-    margin-right: 2px;
+    width: 98%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    border: solid 2px #9cbead;
+    overflow: hidden;
+    min-width: 1024px;
+    min-height: 380px;
+    background: #001 url("../starfield_ugly.png") repeat;
 }
 
-div.sector_name {
-    position:relative;
-    top: 0px;
-    width: 70%;
-    margin: 3px auto;
-    text-align: center;
-    font-size: 150%;
-    font-weight: bold;
-    text-shadow: -1px 1px 2px #000,
-                    1px 1px 2px #000,
-                    1px -1px 0 #000,
-                    -1px -1px 0 #000;
+div.base {
+    width: 64px;
+    background: url('../base.png') no-repeat;
+    background-size: 64px 64px;
 }
 
-.move_scan_text {
-    font-size: 150%;
-    text-align: center;
-    width: 34px;
-}
-
-div#force_panel {
+div.ns_arrow {
     position: absolute;
-    left: 0px;
-    top: 0px;
-    width: 72px;
-    height: 256px;
-    margin: 0px;
-    padding-top: 4px;
+    top: 35px;
+    left: 25px;
+    width: 30px;
+    height: 30px;
 }
 
-div#nav_control_outer {
-    float: left;
-    position: relative;
-    margin-left: -291px;
-    margin-right: 2px;
-    background-color: #551100;
-    width: 290px;
-    height: 256px;
-}
-
-div#nav_controls {
-    position: relative;
-    width: 256px;
-    height: 256px;
-    border: solid 1px #007700;
-    background: url("../navigation.png") no-repeat;
-}
-
-div#scan_control_outer {
-    float: right;
-    position: relative;
-    margin-right: -291px;
-    margin-left: 2px;
-    background-color: #551100;
-    width: 290px;
-}
-
-div#scan_controls {
-    position: relative;
-    width: 256px;
-    height: 256px;
-    border: solid 1px #007700;
-    background: url("../radar.gif") no-repeat;
-}
-
-div#disabled_scan_controls {
-    position: relative;
-    width: 256px;
-    height: 256px;
-    border: solid 1px #007700;
-    background: url("../no_radar.png") no-repeat;
-}
-
-div.ns_square {
-    position: absolute;
-    width: 80px;
-    height: 80px;
-    border: solid 1px #227722;
-    cursor: pointer;
-}
-
-.pointer {
-    cursor: pointer;
-}
-
-div.takeoff {
-    text-align: center;
-    position: absolute;
-    width: 80px;
-    height: 40px;
-    top: 45px;
-    left: 0px;
-    font-size: 70%;
-    color: cyan;
-}
-
-div.ns_ul { top: 2px; left: 2px; }
-div.ns_u { top: 2px; left: 87px; }
-div.ns_ur { top: 2px; left: 172px; }
-div.ns_l { top: 87px; left: 2px; }
-div.ns_m { top: 87px; left: 87px; }
-div.ns_r { top: 87px; left: 172px; }
-div.ns_dl { top: 172px; left: 2px; }
-div.ns_d { top: 172px; left: 87px; }
-div.ns_dr { top: 172px; left: 172px; }
-
-div.ns_sector {
-    position: absolute;
-    top: 10px;
-    width: 80px;
-    font-size: 90%;
-    text-align: center;
-}
-
-div.ns_middle {
-    position: absolute;
-    top: 30px;
-    left: 20px;
-    width: 40px;
-    height: 40px;
-}
-
-div.ns_planetoid {
-    background: url("../planetoid_scan.png") no-repeat;
-}
-
-div.ns_solar {
-    background: url("../solar_scan.png") no-repeat;
-}
-
-div.ns_force_top {
-    position: absolute;
-    top: 32px;
-    left: 10px;
-    width: 60px;
-    height: 12px;
-    background: url("../hostile_scan_force.png") repeat-x;
-    background-size: 12px 12px;
-}
+div.ns_arrow_d {background: url("../arrows/down.png") no-repeat;}
+div.ns_arrow_dl {background: url("../arrows/down_left.png") no-repeat;}
+div.ns_arrow_dr {background: url("../arrows/down_right.png") no-repeat;}
+div.ns_arrow_l {background: url("../arrows/left.png") no-repeat;}
+div.ns_arrow_r {background: url("../arrows/right.png") no-repeat;}
+div.ns_arrow_u {background: url("../arrows/up.png") no-repeat;}
+div.ns_arrow_ul {background: url("../arrows/up_left.png") no-repeat;}
+div.ns_arrow_ur {background: url("../arrows/up_right.png") no-repeat;}
 
 div.ns_force_bottom {
     position: absolute;
@@ -227,6 +160,16 @@ div.ns_force_right {
     background-size: 20px 20px;
 }
 
+div.ns_force_top {
+    position: absolute;
+    top: 32px;
+    left: 10px;
+    width: 60px;
+    height: 12px;
+    background: url("../hostile_scan_force.png") repeat-x;
+    background-size: 12px 12px;
+}
+
 div.ns_government {
     position: absolute;
     top: 52px;
@@ -235,6 +178,44 @@ div.ns_government {
     height: 20px;
     background: url("../government_scan.png") no-repeat;
     background-size: 20px 20px;
+}
+
+div.ns_location {
+    position: absolute;
+    top: 40px;
+    left: 4px;
+    width: 32px;
+    height: 32px;
+    background: url("../unknown_station.png") no-repeat;
+    background-size: 32px 32px;
+}
+
+div.ns_middle {
+    position: absolute;
+    top: 30px;
+    left: 20px;
+    width: 40px;
+    height: 40px;
+}
+
+div.ns_planetoid {background: url("../planetoid_scan.png") no-repeat;}
+
+div.ns_sector {
+    position: absolute;
+    top: 10px;
+    width: 80px;
+    font-size: 90%;
+    text-align: center;
+}
+
+div.ns_solar {background: url("../solar_scan.png") no-repeat;}
+
+div.ns_square {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border: solid 1px #227722;
+    cursor: pointer;
 }
 
 div.ns_system {
@@ -257,95 +238,33 @@ div.ns_warp {
     background-size: 20px 20px;
 }
 
-div.ns_location {
-    position: absolute;
-    top: 40px;
-    left: 4px;
-    width: 32px;
-    height: 32px;
-    background: url("../unknown_station.png") no-repeat;
-    background-size: 32px 32px;
+div.port {
+    width: 96px;
+    background: url('../port.png') no-repeat;
+    background-size: 96px 64px;
 }
 
-div.ns_arrow {
-    position: absolute;
-    top: 35px;
-    left: 25px;
-    width: 30px;
-    height: 30px;
-}
-
-div.ns_arrow_ul {
-    background: url("../arrows/up_left.png") no-repeat;
-}
-
-div.ns_arrow_u {
-    background: url("../arrows/up.png") no-repeat;
-}
-
-div.ns_arrow_ur {
-    background: url("../arrows/up_right.png") no-repeat;
-}
-
-div.ns_arrow_l {
-    background: url("../arrows/left.png") no-repeat;
-}
-
-div.ns_arrow_r {
-    background: url("../arrows/right.png") no-repeat;
-}
-
-div.ns_arrow_dl {
-    background: url("../arrows/down_left.png") no-repeat;
-}
-
-div.ns_arrow_d {
-    background: url("../arrows/down.png") no-repeat;
-}
-
-div.ns_arrow_dr {
-    background: url("../arrows/down_right.png") no-repeat;
-}
-
-div#sector_stations {
-    position: relative;
-    width: 96%;
-    margin: 8px auto;
-    border: solid 1px #555511;
-    padding: 8px;
+div.sector_name {
+    position:relative;
+    top: 0;
+    width: 70%;
+    margin: 3px auto;
     text-align: center;
+    font-size: 150%;
+    font-weight: bold;
+    text-shadow: -1px 1px 2px #000,
+                    1px 1px 2px #000,
+                    1px -1px 0 #000,
+                    -1px -1px 0 #000;
 }
 
 div.sector_station {
     width: 64px;
     height: 64px;
     display: inline-block;
+    margin: 0 3px;
     border: solid 1px #115511;
-    margin: 0px 3px;
     cursor: pointer;
-}
-
-div.unknown_station {
-    background: url('../unknown_station.png') no-repeat;
-    background-size: 64px 64px;
-}
-
-div.port {
-    background: url('../port.png') no-repeat;
-    background-size: 96px 64px;
-    width: 96px;
-}
-
-div.warp {
-    background: url('../warp.png') no-repeat;
-    background-size: 64px 64px;
-    width: 64px;
-}
-
-div.base {
-    background: url('../base.png') no-repeat;
-    background-size: 64px 64px;
-    width: 64px;
 }
 
 div.ship_dealer {
@@ -353,12 +272,49 @@ div.ship_dealer {
     background-size: 64px 64px;
 }
 
+div.solar_collector {
+    background: url('../solar_collector.png') no-repeat;
+    background-size: 64px 64px;
+}
+
+div.takeoff {
+    position: absolute;
+    top: 45px;
+    left: 0px;
+    width: 80px;
+    height: 40px;
+    text-align: center;
+    font-size: 70%;
+    color: cyan;
+}
+
 div.tech_dealer {
     background: url('../tech_dealer.png') no-repeat;
     background-size: 64px 64px;
 }
 
-div.solar_collector {
-    background: url('../solar_collector.png') no-repeat;
+div.viewport_big_planetoid {
+    position: absolute;
+    top: 100px;
+    left: 0;
+    right: 0;
+    width: 512px;
+    height: 512px;
+    margin: 0 auto;
+}
+
+div.viewport_big_star {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vw;
+    margin: 0 auto;
+}
+
+div.warp {
+    width: 64px;
+    background: url('../warp.png') no-repeat;
     background-size: 64px 64px;
 }

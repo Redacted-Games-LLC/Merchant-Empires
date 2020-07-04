@@ -1,17 +1,6 @@
 /* ship_sidebar.php */
 
-div.sidebar_ship_name {
-    font-size: 20pt;
-    text-align: center;
-}
-
-div.sidebar_ship_type {
-    font-size: 10pt;
-    text-align: center;
-}
-
-div.sidebar_ship_turns {
-    font-size: 10pt;
+div.sidebar_ship_armor {
     text-align: center;
 }
 
@@ -21,7 +10,55 @@ div.sidebar_ship_combat {
     padding: 2px;
 }
 
-div.sidebar_ship_armor {
+div.sidebar_ship_good_amount {
+    position: absolute;
+    top: 3px;
+    right: 0;
+    width: 15%;
+    margin: 1px;
+    float: right;
+    text-align: right;
+}
+
+div.sidebar_ship_good_caption {
+    position: absolute;
+    top: 3px;
+    left: 24px;
+    width: 80%;
+    margin: 1px;
+    text-align: left;
+}
+
+div.sidebar_ship_good_image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    margin: 1px 1px 4px 1px;
+    text-align: left;
+}
+
+div.sidebar_ship_good_row {
+    position: relative;
+    width: 99%;
+    height: 24px;
+    margin: 2px;
+}
+
+div.sidebar_ship_goods {
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+    text-align: left;
+    font-size: 10pt;
+}
+
+div.sidebar_ship_holds {
+    text-align: center;
+}
+
+div.sidebar_ship_name {
+    font-size: 20pt;
     text-align: center;
 }
 
@@ -29,49 +66,12 @@ div.sidebar_ship_shields {
     text-align: center;
 }
 
-div.sidebar_ship_holds {
+div.sidebar_ship_turns {
+    font-size: 10pt;
     text-align: center;
 }
 
-div.sidebar_ship_goods {
-    position: relative;
-    width: 80%;
-    text-align: left;
-    margin: 0px auto;
+div.sidebar_ship_type {
     font-size: 10pt;
-}
-
-div.sidebar_ship_good_row {
-    position: relative;
-    width: 99%;
-    margin: 2px;
-    height: 24px;
-}
-
-div.sidebar_ship_good_image {
-    text-align: left;
-    width: 20px;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    margin: 1px 1px 4px 1px;
-}
-
-div.sidebar_ship_good_caption {
-    text-align: left;
-    width: 80%;
-    position: absolute;
-    top: 3px;
-    left: 24px;
-    margin: 1px;
-}
-
-div.sidebar_ship_good_amount {
-    position: absolute;
-    top: 3px;
-    right: 0px;
-    text-align: right;
-    width: 15%;
-    margin: 1px;
-    float: right;
+    text-align: center;
 }

@@ -1,12 +1,5 @@
 /* select_player.php */
 
-div.player_select_outer {
-    position: relative;
-    width: 800px;
-    margin: 4px auto;
-    height: 420px;
-}
-
 div.player_select {
     float: left;
     width: 150px;
@@ -15,6 +8,13 @@ div.player_select {
     padding: 10px;
     margin: 10px;
     text-align: center;
+}
+
+div.player_select_outer {
+    position: relative;
+    width: 800px;
+    margin: 4px auto;
+    height: 420px;
 }
 
 div.player_select_title {

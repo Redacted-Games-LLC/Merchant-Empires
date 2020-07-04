@@ -24,6 +24,13 @@
 
  /* currently working on these files */
  @import url("css/main.css");
+ @import url("css/docs.css"); /* li.docs_menu in tmpl/doc/menu.php but not defined here */
+ @import url("css/gold.css"); /* multiple identical paddings */
+ @import url("css/message.css"); /* table.message & tr.message in multiple docs, but not defined here */
+ @import url("css/player_sidebar.css"); /* identical settings */
+ @import url("css/ship.css"); /* label.ship_form_label & tr.add_weapon in multiple docs but not defined here, multiple identical margins */
+ @import url("css/ship_sidebar.css"); /* multiple identical text-aligns */
+ @import url("css/base.css"); /* p.over_link & a.over_link in game.js, but not defined here */
 
  /* unused selectors are moved here */
  /* not_used.css */
@@ -37,27 +44,20 @@
  @import url("css/classes_generic.css");
  @import url("css/classes_div.css");
  @import url("css/goods.css");
-
- /* to be worked on later */
+ @import url("css/adm_users.css");
  @import url("css/adm_build_build.css");
  @import url("css/adm_news_msg_main.css");
- @import url("css/adm_users.css");
  @import url("css/alliance_alliance_list.css");
  @import url("css/alliance_players_msg_inbox_php_msg_sent.css");
- @import url("css/base.css");
  @import url("css/dealer.css");
- @import url("css/docs.css");
- @import url("css/gold.css");
  @import url("css/locate.css");
  @import url("css/login.css");
- @import url("css/message.css");
- @import url("css/player_sidebar.css");
  @import url("css/port.css");
- @import url("css/scan.css");
  @import url("css/select_player.css");
- @import url("css/ship.css");
- @import url("css/ship_sidebar.css");
  @import url("css/viewport.css");
+
+ /* to be worked on later */
+
 
  @font-face {
 	font-family: CascadiaMono;

@@ -1,22 +1,10 @@
 /* gold.php */
 
-.gold_key {
-    text-align: left;
-}
+table.gold_key {border: none;}
 
-table.gold_key {
-    border: none;
-}
-
-tr.gold_key {
-    border: solid 1px #888;
-}
-
-th.gold_key {
-    padding: 6px 12px;
-    font-size: 120%;
-    font-weight: bold;
-    background-color: #333;
+td.gold_actions {
+    padding: 2px 8px;
+    text-align: center;
 }
 
 td.gold_key {
@@ -32,7 +20,11 @@ td.gold_time {
     font-size: 110%;
 }
 
-td.gold_actions {
-    padding: 2px 8px;
-    text-align: center;
+th.gold_key {
+    padding: 6px 12px;
+    font-size: 120%;
+    font-weight: bold;
+    background-color: #333;
 }
+
+tr.gold_key {border: solid 1px #888;}

@@ -3,8 +3,8 @@
 div#base_field {
     position: absolute;
     top: 80px;
-    left: 0px;
-    right: 0px;
+    left: 0;
+    right: 0;
     width: 564px;
     height: 564px;
     margin-left: auto;
@@ -16,11 +16,22 @@ div#base_field {
 
 div.base_grid {
     position: absolute;
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
     width: 560px;
     height: 560px;
     margin: 2px;
+}
+
+div.base_grid_image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80px;
+    height: 80px;
+    margin: 0;
+    padding: 0;
+    border: none;
 }
 
 div.base_grid_item {
@@ -31,46 +42,16 @@ div.base_grid_item {
     background-color: black;
 }
 
-div.base_grid_image {
-    position: absolute;
-    width: 80px;
-    height: 80px;
-    margin: 0px;
-    padding: 0px;
-    border: none;
-    top: 0px;
-    left: 0px;
-}
-
 div.base_grid_link {
     position: absolute;
+    top: 0;
+    left: 0;
     width: 80px;
     height: 40px;
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     border: none;
-    top: 0px;
-    left: 0px;
     text-align: center;
-}
-
-div.base_small_grid_item {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    background-color: black;
-    /*border: solid 1px black;*/
-}
-
-.base_small_grid_image {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    margin: 0px;
-    padding: 0px;
-    border: none;
-    top: 0px;
-    left: 0px;
 }
 
 div.base_overgrid_item {
@@ -81,12 +62,11 @@ div.base_overgrid_item {
     background: none;
 }
 
-img.base_player_icon {
+div.base_small_grid_item {
     position: absolute;
-    width: 32px;
-    height: 32px;
-    left: 44px;
-    top: 44px;
+    width: 40px;
+    height: 40px;
+    background-color: black;
 }
 
 div.grid_room {
@@ -95,30 +75,43 @@ div.grid_room {
     left: 1px;
 }
 
+div.over_links {
+    position: absolute;
+    top: 600px;
+    left: 785px;
+    right: 0;
+    width: 180px;
+    margin-left: auto;
+    margin-right: auto;
+    border: dashed 4px yellow;
+    background-color: navy;
+    text-align: center;
+}
+
 div.under_construction {
     position: absolute;
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     background-image: url(../construction.png);
 }
 
-div.over_links {
+img.base_player_icon {
     position: absolute;
-    top: 600px;
-    left: 785px;
-    right: 0px;
-    width: 180px;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: navy;
-    border: dashed 4px yellow;
-    text-align: center;
+    top: 44px;
+    left: 44px;
+    width: 32px;
+    height: 32px;
 }
 
-/*
-p.over_link {}
-
-a.over_link {}
-*/
+img.base_small_grid_image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    border: none;
+}

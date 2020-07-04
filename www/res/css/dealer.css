@@ -1,25 +1,34 @@
 /* dealer.php */
 
-div.dealer_spread {
-    border: solid 2px #118811;
-    background-color: #001100;
+div.dealer_goods_image {
+    float: left;
+    height: 32px;
+    margin-top: 3px;
 }
 
-div.dealer_text {
-    color: white;
-    margin: 16px 0px;
+div.dealer_goods_price {
+    float: left;
+    height: 16px;
+    text-align: center;
+    margin-left: 15px;
+    margin-top: 10px;
 }
 
-div.dealer_shelf {
-    border: solid 1px #777777;
-    background-color: #111111;
-    margin: 16px 0px;
-    padding: 3px;
+div.dealer_goods_stock {
+    float: left;
+    height: 16px;
+    text-align: center;
+    margin-left: 15px;
+    margin-top: 10px;
 }
 
-div.dealer_items {
-    position: relative;
-    width: 97%;
+div.dealer_goods_text {
+    float: left;
+    height: 16px;
+    text-align: center;
+    margin-left: 5px;
+    margin-top: 9px;
+    font-weight: bold;
 }
 
 div.dealer_item {
@@ -32,51 +41,33 @@ div.dealer_item {
     padding: 3px;
 }
 
-div.dealer_item_ships {
-    width: 240px;
-    height: 100px;
-}
-
-div.dealer_item_goods {
-    width: 530px;
-    height: 40px;
-}
-
-div.dealer_buttons_ships {
+div.dealer_items {
     position: relative;
-    margin-top: 8px;
-    margin-left: 110px;
+    width: 97%;
 }
 
-div.dealer_buttons_goods {
-    position: relative;
-    top: 0px;
-    left: 0px;
-    width: 140px;
-    float: right;
-    margin: 8px auto;
-}
-
-input.dealer_form_text {
+div.dealer_level_locked {
     position: absolute;
-    top: 0px;
-    left: 0px;
-    background-color: black;
-    color: white;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: url('../level_locked.png') repeat;
+    background-size: 50%;
 }
 
-input.dealer_form_button {
-    position: absolute;
-    top: 0px;
-    left: 60px;
+div.dealer_shelf {
+    border: solid 1px #777777;
+    background-color: #111111;
+    margin: 16px 0;
+    padding: 3px;
 }
 
 div.dealer_ship_icon {
     float: left;
-    background: url('../unknown_ship.png') no-repeat;
-    background-size: 48px 48px;
     width: 48px;
     height: 48px;
+    background: url('../unknown_ship.png') no-repeat;
+    background-size: 48px 48px;
 }
 
 div.dealer_ship_level {
@@ -99,8 +90,8 @@ div.dealer_ship_text {
 
 div.dealer_race_locked {
     position: absolute;
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
     width: 100%;
     background: url('../race_locked.png') repeat;
     background-size: 50%;
@@ -108,49 +99,28 @@ div.dealer_race_locked {
 
 div.dealer_rank_locked {
     position: absolute;
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
     width: 100%;
     background: url('../rank_locked.png') repeat;
     background-size: 50%;
 }
 
-div.dealer_level_locked {
+div.dealer_text {
+    color: white;
+    margin: 16px 0;
+}
+
+input.dealer_form_button {
     position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    background: url('../level_locked.png') repeat;
-    background-size: 50%;
+    top: 0;
+    left: 60px;
 }
 
-div.dealer_goods_image {
-    float: left;
-    height: 32px;
-    margin-top: 3px;
-}
-
-div.dealer_goods_text {
-    float: left;
-    height: 16px;
-    text-align: center;
-    margin-left: 5px;
-    margin-top: 9px;
-    font-weight: bold;
-}
-
-div.dealer_goods_price {
-    float: left;
-    height: 16px;
-    text-align: center;
-    margin-left: 15px;
-    margin-top: 10px;
-}
-
-div.dealer_goods_stock {
-    float: left;
-    height: 16px;
-    text-align: center;
-    margin-left: 15px;
-    margin-top: 10px;
+input.dealer_form_text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: black;
+    color: white;
 }

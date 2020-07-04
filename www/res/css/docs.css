@@ -1,22 +1,5 @@
 /* docs.php */
 
-div.docs_menu {
-    padding: 10px;
-    min-width: 240px;
-    float: left;
-    border: solid 2px #111111;
-    font-size: 80%;
-}
-
-ul.docs_menu {
-    margin: 8px;
-    padding: 0px;
-}
-
-/*
-li.docs_menu {}
-*/
-
 div.docs_content {
     position: relative;
     padding: 10px;
@@ -26,11 +9,28 @@ div.docs_content {
     border: solid 2px #111111;
 }
 
+div.docs_goods {
+    width: 630px;
+    padding: 12px;
+    margin: 20px 0;
+    word-wrap: break-word;
+    background-color: #000000;
+    text-align: center;
+}
+
+div.docs_menu {
+    padding: 10px;
+    min-width: 240px;
+    float: left;
+    border: solid 2px #111111;
+    font-size: 80%;
+}
+
 div.docs_text {
     font-family: Calibri, sans-serif;
     font-size: 1.2em;
     width: 630px;
-    margin: 20px 0px;
+    margin: 20px 0;
     word-wrap: break-word;
 }
 
@@ -38,18 +38,9 @@ div.docs_warning {
     font-family: Calibri, sans-serif;
     font-size: 1.2em;
     width: 630px;
-    margin: 20px 0px;
+    margin: 20px 0;
     word-wrap: break-word;
     color: #f80;
-}
-
-div.docs_goods {
-    width: 630px;
-    margin: 20px 0px;
-    word-wrap: break-word;
-    background-color: #000000;
-    padding: 12px;
-    text-align: center;
 }
 
 div.header1 {
@@ -75,4 +66,9 @@ div.header4 {
 div.header5 {
     font-size: 110%;
     font-weight: bold;
+}
+
+ul.docs_menu {
+    padding: 0;
+    margin: 8px;
 }
