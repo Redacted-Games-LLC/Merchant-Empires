@@ -64,16 +64,6 @@ div.dealer_spread {
     background-color: #001100;
 }
 
-div.ns_d {top: 172px; left: 87px;}
-div.ns_dl {top: 172px; left: 2px;}
-div.ns_dr {top: 172px; left: 172px;}
-div.ns_l {top: 87px; left: 2px;}
-div.ns_m {top: 87px; left: 87px;}
-div.ns_r {top: 87px; left: 172px;}
-div.ns_u {top: 2px; left: 87px;}
-div.ns_ul {top: 2px; left: 2px;}
-div.ns_ur {top: 2px; left: 172px;}
-
 div.port_empty {
     position: relative;
     width: 550px;
