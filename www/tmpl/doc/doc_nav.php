@@ -116,7 +116,7 @@
 </div>
 <div class="header3">Warps</div>
 <div class="docs_text">
-	<img src="res/doc/warp.png" width="300" alt="warp" />
+	<img src="res/doc/warp.png" width="150" alt="warp" />
 </div>
 <div class="docs_text">
 	Long ago a race of scientists known as the Paragon discovered the secret to
