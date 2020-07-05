@@ -238,12 +238,6 @@ div.ns_warp {
     background-size: 20px 20px;
 }
 
-div.port {
-    width: 96px;
-    background: url('../port.png') no-repeat;
-    background-size: 96px 64px;
-}
-
 div.sector_name {
     position:relative;
     top: 0;
@@ -291,6 +285,12 @@ div.takeoff {
 div.tech_dealer {
     background: url('../tech_dealer.png') no-repeat;
     background-size: 64px 64px;
+}
+
+div.trade_port {
+    width: 96px;
+    background: url('../port.png') no-repeat;
+    background-size: 96px 64px;
 }
 
 div.viewport_big_planetoid {
