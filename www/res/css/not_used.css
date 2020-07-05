@@ -34,31 +34,6 @@ div.center_spread_middle {
 	min-height: 420px;
 }
 
-div.dealer_buttons_goods {
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 140px;
-    float: right;
-    margin: 8px auto;
-}
-
-div.dealer_buttons_ships {
-    position: relative;
-    margin-top: 8px;
-    margin-left: 110px;
-}
-
-div.dealer_item_goods {
-    width: 530px;
-    height: 40px;
-}
-
-div.dealer_item_ships {
-    width: 240px;
-    height: 100px;
-}
-
 div.dealer_spread {
     border: solid 2px #118811;
     background-color: #001100;
