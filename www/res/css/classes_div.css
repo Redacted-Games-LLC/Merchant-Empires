@@ -112,6 +112,43 @@ div.ns_u {top: 2px; left: 87px;}
 div.ns_ul {top: 2px; left: 2px;}
 div.ns_ur {top: 2px; left: 172px;}
 
+div.place_to_locate {
+    display: inline-block;
+    width: 250px;
+    margin: 4px 8px;
+    border: solid 1px #111111;
+    text-align: center;
+    font-size: 90%;
+}
+
+div.places_to_locate {
+    width: 95%;
+    text-align: center;
+}
+
+div.player_select {
+    float: left;
+    width: 150px;
+    height: 300px;
+    border: solid 1px #00ffff;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+}
+
+div.player_select_outer {
+    position: relative;
+    width: 800px;
+    margin: 4px auto;
+    height: 420px;
+}
+
+div.player_select_title {
+    font-size: 400%;
+    width: 400px;
+    margin: 8px auto;
+}
+
 div.popup_spread {
 	position: relative;
 	width: 90%;
@@ -127,6 +164,22 @@ div.popup_text {
 	position: relative;
 	width: 95%;
 	margin: 8px 1px;
+}
+
+div.room_list {
+    width: 99%;
+    margin: 2px auto;
+    text-align: left;
+}
+
+div.room_list_item {
+    font-size: 90%;
+    display: inline-block;
+    width: 190px;
+    margin: 2px;
+    padding: 2px;
+    text-align: left;
+    border: solid 1px #777777;
 }
 
 div.ship_alliance {
@@ -198,6 +251,27 @@ div.taking_damage {
 	font-weight: bold;
 	font-size: 110%;
 	text-align: center;
+}
+
+div.user_list {
+    width: 99%;
+    margin: 2px auto;
+    text-align: left;
+}
+
+div.user_list_item {
+    display: inline-block;
+    width: 190px;
+    margin: 2px;
+    padding: 2px;
+    text-align: left;
+    border: solid 1px #777777;
+}
+
+div.user_list_item_caption {
+    float: left;
+    width: 45%;
+    margin-bottom: 4px;
 }
 
 div.viewport_console {

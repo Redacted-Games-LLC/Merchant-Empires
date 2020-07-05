@@ -26,6 +26,17 @@ a.game_menu {
 	text-shadow: 1px 1px #000000;
 }
 
+input.form_button {
+	position: relative;
+	height: 24px;
+	vertical-align: bottom;
+}
+
+input.form_input {
+	background-color: black;
+	color: lightgray;
+}
+
 li.popup_list {
 	display: inline-block;
 	border: solid 1px #cccccc;

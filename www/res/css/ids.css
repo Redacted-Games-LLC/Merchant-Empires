@@ -2,7 +2,7 @@
 
 div#floating_message_box {
 	position: absolute;
-	left: 0px;
+	left: 0;
 	background-color: #111100;
 	border: dotted 5px #444411;
 	text-align: center;
@@ -16,23 +16,26 @@ div#main_popup {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	margin: 0px;
-	padding: 0px;
+	margin: 0;
+	padding: 0;
 	background: url('../teal_dither.png') repeat;
 }
 
 /* to keep footer at bottom of page, header and body reside in this wrapper */
-div#wrapper {
-	min-height: calc(100vh - 65px);  /* 65px is height of footer */
-}
+div#wrapper {min-height: calc(100vh - 65px);}  /* 65px is height of footer */
 
 iframe#main_iframe {
 	position: absolute;
-	top: 0px;
-	left: 0px;
+	top: 0;
+	left: 0;
 	width: 72%;
 	height: 76%;  /* maintain at 76% to prevent vertical scroll for webkit on main pages of 14" screen & above */
 	margin: 5% 13%;
 	padding: 10px;
 	background: #000011;
+}
+
+input#floating_message_close {
+	width: 128px;
+	margin: 8px 35%;
 }
