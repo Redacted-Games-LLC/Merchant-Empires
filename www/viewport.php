@@ -85,19 +85,13 @@
 					$spacegame['target_dist'] = $dist2;
 					$spacegame['target_dir'] = get_dir($dx, $dy);
 				}
-
 			}
-
 		} // if ship_type <= 0
-		
 		
 		$spacegame['players']['safe'] = array();
 		$spacegame['players']['hostile'] = array();
 
 		$players = get_players($spacegame['player']);
-
-
-
 
 	} while (false);
 
@@ -145,8 +139,6 @@
 		return $players;
 	}	
 
-
-	
 	$tmpl['page_title'] = 'Viewport';
 
 	include_once('tmpl/html_begin.php');
@@ -160,12 +152,9 @@
 		?>
 
 		<div id="viewport_header">
-				
 			<div id="viewport_header_left">
-
 				<div id="hud_controls">
 					<div>
-
 						<?php 
 								$mine_count = 0;
 								$mine_cargo = 0;
@@ -185,13 +174,9 @@
 											$drone_count += $cargo_record['amount'];
 										}
 									}
-
 									$cargo_count = $spacegame['cargo_volume'];
 								}
-
 						?>
-							
-
 						<div id="force_panel">
 							<script language="javascript" type="text/javascript"><!--
 
@@ -200,7 +185,6 @@
 							// -->
 							</script>
 						</div>
-
 					</div>	
 
 					<div class="sector_name">
@@ -235,7 +219,6 @@
 								echo '</div>';
 							}
 
-
 							if (isset($spacegame['places'])) {
 								$success = false;
 
@@ -245,6 +228,11 @@
 											echo '<div class="header5">Star '. $place['caption'] .'</div>';
 											$success = true;
 											break;
+
+										case '9': // Warp
+											echo '<div class="header5">'. $place['caption'] .'</div>';
+											$success = true;
+											break;											
 
 										case '3': // Earth Planet
 										case '5': // Rocky Planet
@@ -290,8 +278,7 @@
 								?>
 								
 								<?php include_once('tmpl/viewport_dss.php'); ?>
-							
-							
+
 								<div class="viewport_console">
 									<div class="viewport_console_item" onclick="return open_locator()">
 										NAV
@@ -319,19 +306,12 @@
 			<?php include_once('tmpl/viewport_scan.php'); ?>
 			<br class="clear" />
 		</div>
-		
-
 
 	<?php
-		
-
-
-
 	if ($spacegame['player']['ship_type'] > 0) {
 		if ($spacegame['player']['base_id'] <= 0 && $spacegame['place_count'] > 6) {
 			include_once('tmpl/viewport_stations.php');
 		}
-
 		?>
 		<div class="viewport_split">
 
@@ -355,13 +335,10 @@
 					</td>
 					<td width="200" valign="top"><?php include_once('tmpl/player_sidebar.php'); ?></td>
 				</tr>
-			</table>
-			
+			</table>			
 			<div class="clear">&nbsp;</div>
 		</div>
 		<?php
-		
-
 	}
 	else {
 		if ($spacegame['place_count'] > 0 && $spacegame['player']['base_id'] <= 0) {
@@ -369,26 +346,18 @@
 		}
 	}
 
-
-
 	if (isset($spacegame['base'])) {
 		include_once('tmpl/viewport_base.php');	
 	}
-	
-	
+		
 	?>
-
 		<div class="clear">&nbsp;</div>
 		<?php if (isset($_REQUEST['dmg'])) { ?>
 			<div class="taking_damage">
 				TAKING taking_damage
 			</div>
 		<?php } ?>
-
 	</div>
-
-
-	
 <?php	
 	include_once('tmpl/html_end.php');
 ?>
