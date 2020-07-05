@@ -48,10 +48,10 @@
 <div class="docs_text">
 	Things you see in this image are:
 	<ul>
-		<li><img src="res/solar_scan.png" width="16" alt="solar scan" />Sun</li>
-		<li><img src="res/planetoid_scan.png" width="20" alt="planetoid scan" />Planetoid</li>
-		<li><img src="res/warp.png" width="20" alt="warp" />Warp</li>
-		<li><img src="res/government_scan.png" width="20" alt="government scan" />Imperial Government Protected Sector</li>
+		<li><img src="res/solar_scan.png" width="20" alt="solar scan" />&nbsp;Sun</li>
+		<li><img src="res/planetoid_scan.png" width="20" alt="planetoid scan" />&nbsp;Planetoid</li>
+		<li><img src="res/warp_scan.png" width="20" alt="warp" />&nbsp;Warp</li>
+		<li><img src="res/government_scan.png" width="20" alt="government scan" />&nbsp;Imperial Government Protected Sector</li>
 	</ul>
 </div>
 <div class="docs_text">
