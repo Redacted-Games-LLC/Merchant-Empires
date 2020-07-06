@@ -1,5 +1,50 @@
 /* Main div classes */
 
+div.alliance_list {
+    width: 99%;
+    margin: 2px auto;
+    text-align: left;
+}
+
+div.alliance_list_item {
+    display: inline-block;
+    width: 310px;
+    text-align: left;
+    margin: 2px;
+    padding: 2px;
+    border: solid 1px #777777;
+}
+
+div.alliance_list_item_alliance {
+    text-align: right;
+    float: right;
+    width: 45%;
+    white-space: nowrap;
+}
+
+div.alliance_list_item_caption {
+    float: left;
+    margin-bottom: 4px;
+    width: 45%;
+}
+
+div.alliance_list_item_gold {
+    float: left;
+    width: 20px;
+}
+
+div.alliance_list_item_kick {
+    float: right;
+    width: 72px;
+    text-align: right;
+}
+
+div.alliance_recruit {
+    width: 85%;
+    margin: 4px auto;
+    text-align: center;
+}
+
 div.allied_ship {
 	position: relative;
 	display: inline-block;
@@ -320,7 +365,7 @@ div.viewport_hostile_ships {
 	width: 47%;
 	border: solid 2px #882200;
 	background-color: black;
-	vertical-align: top
+	vertical-align: top;
 }
 
 div.viewport_hostile_ships_head {
@@ -346,7 +391,7 @@ div.viewport_safe_ships {
 	width: 47%;
 	border: solid 2px #002288;
 	background-color: black;
-	vertical-align: top
+	vertical-align: top;
 }
 
 div.viewport_safe_ships_head {

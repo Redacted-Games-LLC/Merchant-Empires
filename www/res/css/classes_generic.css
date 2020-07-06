@@ -12,6 +12,11 @@
     padding-left: 20px;
 }
 
+.characters_left {
+    font-size: 85%;
+    color: cyan;
+}
+
 .clear {clear: both;}
 
 .float_right {float: right;}
@@ -99,3 +104,8 @@
 }
 
 .o9 {opacity: 0.9;}
+
+.pagination_link {
+    margin: 2px 8px;
+    padding: 4px;
+}

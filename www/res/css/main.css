@@ -26,6 +26,19 @@ a.game_menu {
 	text-shadow: 1px 1px #000000;
 }
 
+a.pagination_current_link {
+    margin: 2px 12px;
+    border: dotted 2px white;
+    font-size: 120%;
+    padding: 3px 8px;
+}
+
+img.alliance_list_recruit_image {
+    float: right;
+    width: 20px;
+    height: 20px;
+}
+
 input.form_button {
 	position: relative;
 	height: 24px;
@@ -36,6 +49,8 @@ input.form_input {
 	background-color: black;
 	color: lightgray;
 }
+
+input.select_player_name {width: 140px;}
 
 li.popup_list {
 	display: inline-block;

@@ -21,6 +21,8 @@ div#main_popup {
 	background: url('../teal_dither.png') repeat;
 }
 
+div#pagination {text-align: center;}
+
 /* to keep footer at bottom of page, header and body reside in this wrapper */
 div#wrapper {min-height: calc(100vh - 65px);}  /* 65px is height of footer */
 
