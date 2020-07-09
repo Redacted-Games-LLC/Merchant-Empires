@@ -48,6 +48,12 @@
 
 .margin {margin: 10px;}
 
+.move_scan_text {
+    font-size: 150%;
+    text-align: center;
+    width: 34px;
+}
+
 .news {
     width: 100%;
     margin: 10px;
@@ -109,3 +115,5 @@
     margin: 2px 8px;
     padding: 4px;
 }
+
+.pointer {cursor: pointer;}

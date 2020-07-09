@@ -56,6 +56,12 @@ div.allied_ship {
 	background: #000011;
 }
 
+div.base {
+    width: 64px;
+    background: url('../base.png') no-repeat;
+    background-size: 64px 64px;
+}
+
 div.dealer_buttons_goods {
     position: relative;
     top: 0;
@@ -69,6 +75,37 @@ div.dealer_buttons_ships {
     position: relative;
     margin-top: 8px;
     margin-left: 110px;
+}
+
+div.dealer_goods_image {
+    float: left;
+    height: 32px;
+    margin-top: 3px;
+}
+
+div.dealer_goods_price {
+    float: left;
+    height: 16px;
+    text-align: center;
+    margin-left: 15px;
+    margin-top: 10px;
+}
+
+div.dealer_goods_stock {
+    float: left;
+    height: 16px;
+    text-align: center;
+    margin-left: 15px;
+    margin-top: 10px;
+}
+
+div.dealer_goods_text {
+    float: left;
+    height: 16px;
+    text-align: center;
+    margin-left: 5px;
+    margin-top: 9px;
+    font-weight: bold;
 }
 
 div.dealer_item {
@@ -94,6 +131,71 @@ div.dealer_item_ships {
 div.dealer_items {
 	position: relative;
     width: 97%;
+}
+
+div.dealer_level_locked {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: url('../level_locked.png') repeat;
+    background-size: 50%;
+}
+
+div.dealer_race_locked {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: url('../race_locked.png') repeat;
+    background-size: 50%;
+}
+
+div.dealer_rank_locked {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: url('../rank_locked.png') repeat;
+    background-size: 50%;
+}
+
+div.dealer_shelf {
+    border: solid 1px #777777;
+    background-color: #111111;
+    margin: 16px 0;
+    padding: 3px;
+}
+
+div.dealer_ship_icon {
+    float: left;
+    width: 48px;
+    height: 48px;
+    background: url('../unknown_ship.png') no-repeat;
+    background-size: 48px 48px;
+}
+
+div.dealer_ship_level {
+    position: absolute;
+    top: 45px;
+    width: 48px;
+    text-align: center;
+    font-size: 90%;
+    font-style: italic;
+}
+
+div.dealer_ship_stats {
+    height: 64px;
+    margin-left: 60px;
+}
+
+div.dealer_ship_text {
+    font-size: 16px;
+}
+
+div.dealer_text {
+    color: white;
+    margin: 16px 0;
 }
 
 div.floating_message {
@@ -139,6 +241,58 @@ div.hostile_ship {
 	background: #110000;
 }
 
+div.left_column {
+    width: 35%;
+    float: left;
+    text-align: right;
+    padding-left: 8px;
+}
+
+div.left_long_column {
+    width: 60%;
+    float: left;
+    text-align: left;
+    padding-left: 8px;
+}
+
+div.login_form_item {
+    text-align: center;
+    width: 500px;
+    margin: 20px 20px;
+}
+
+div.login_form_label {
+    text-align: right;
+}
+
+div.login_form_lower_button {
+    position:inherit;
+    width: 140px;
+    height: 70px;
+    padding-left: 100px;
+}
+
+div.login_form_upper_button {
+    position: absolute;
+    top: 72px;
+    left: 460px;
+    width: 140px;
+    height: 70px;
+}
+
+div.login_intro {
+    font-size: 120%;
+    margin: 10px;
+}
+
+div.login_locked {
+    border: solid 2px white;
+    background-color: #333300;
+    margin: 32px 64px;
+    padding: 24px;
+    color: white;
+}
+
 div.noscript {
 	border: solid 3px #ffffff;
 	margin: 20px;
@@ -156,6 +310,131 @@ div.ns_r {top: 87px; left: 172px;}
 div.ns_u {top: 2px; left: 87px;}
 div.ns_ul {top: 2px; left: 2px;}
 div.ns_ur {top: 2px; left: 172px;}
+
+div.ns_arrow {
+    position: absolute;
+    top: 35px;
+    left: 25px;
+    width: 30px;
+    height: 30px;
+}
+
+div.ns_arrow_d {background: url("../arrows/down.png") no-repeat;}
+div.ns_arrow_dl {background: url("../arrows/down_left.png") no-repeat;}
+div.ns_arrow_dr {background: url("../arrows/down_right.png") no-repeat;}
+div.ns_arrow_l {background: url("../arrows/left.png") no-repeat;}
+div.ns_arrow_r {background: url("../arrows/right.png") no-repeat;}
+div.ns_arrow_u {background: url("../arrows/up.png") no-repeat;}
+div.ns_arrow_ul {background: url("../arrows/up_left.png") no-repeat;}
+div.ns_arrow_ur {background: url("../arrows/up_right.png") no-repeat;}
+
+div.ns_force_bottom {
+    position: absolute;
+    top: 65px;
+    left: 10px;
+    width: 60px;
+    height: 12px;
+    background: url("../safe_scan_force.png") repeat-x;
+    background-size: 12px 12px;
+}
+
+div.ns_force_left {
+    position: absolute;
+    top: 45px;
+    left: 20px;
+    width: 20px;
+    height: 20px;
+    background: url("../hostile_scan_force.png") no-repeat;
+    background-size: 20px 20px;
+}
+
+div.ns_force_right {
+    position: absolute;
+    top: 45px;
+    left: 40px;
+    width: 20px;
+    height: 20px;
+    background: url("../safe_scan_force.png") no-repeat;
+    background-size: 20px 20px;
+}
+
+div.ns_force_top {
+    position: absolute;
+    top: 32px;
+    left: 10px;
+    width: 60px;
+    height: 12px;
+    background: url("../hostile_scan_force.png") repeat-x;
+    background-size: 12px 12px;
+}
+
+div.ns_government {
+    position: absolute;
+    top: 52px;
+    left: 52px;
+    width: 20px;
+    height: 20px;
+    background: url("../government_scan.png") no-repeat;
+    background-size: 20px 20px;
+}
+
+div.ns_location {
+    position: absolute;
+    top: 40px;
+    left: 4px;
+    width: 32px;
+    height: 32px;
+    background: url("../unknown_station.png") no-repeat;
+    background-size: 32px 32px;
+}
+
+div.ns_middle {
+    position: absolute;
+    top: 30px;
+    left: 20px;
+    width: 40px;
+    height: 40px;
+}
+
+div.ns_planetoid {background: url("../planetoid_scan.png") no-repeat;}
+
+div.ns_sector {
+    position: absolute;
+    top: 10px;
+    width: 80px;
+    font-size: 90%;
+    text-align: center;
+}
+
+div.ns_solar {background: url("../solar_scan.png") no-repeat;}
+
+div.ns_square {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border: solid 1px #227722;
+    cursor: pointer;
+}
+
+div.ns_system {
+    position: absolute;
+    top: 54px;
+    left: 54px;
+    width: 16px;
+    height: 16px;
+    background: url("../system_scan.png") no-repeat;
+    background-size: 16px 16px;
+}
+
+div.ns_warp {
+    position: absolute;
+    top: 30px;
+    left: 52px;
+    width: 20px;
+    height: 20px;
+    background: url("../warp_scan.png") no-repeat;
+    background-size: 20px 20px;
+}
 
 div.place_to_locate {
     display: inline-block;
@@ -211,6 +490,96 @@ div.popup_text {
 	margin: 8px 1px;
 }
 
+div.port_buttons {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 160px;
+    float: right;
+    margin: 8px auto;
+    font-size: 90%;
+}
+
+div.port_goods {
+    display:inline-block;
+    width: 550px;
+    height: 40px;
+    border: solid 2px #999999;
+    background-color: #000000;
+    margin: 8px;
+    padding: 3px;
+}
+
+div.port_goods_image {
+    float: left;
+    height: 32px;
+    margin-top: 3px;
+}
+
+div.port_goods_price {
+    float: left;
+    height: 16px;
+    text-align: center;
+    margin-left: 15px;
+    margin-top: 10px;
+}
+
+div.port_goods_stock {
+    float: left;
+    height: 16px;
+    text-align: center;
+    margin-left: 15px;
+    margin-top: 11px;
+    font-size: 80%;
+}
+
+div.port_goods_target {
+    float: left;
+    height: 16px;
+    text-align: center;
+    margin-left: 15px;
+    margin-top: 4px;
+    font-size: 80%;
+}
+
+div.port_goods_text {
+    float: left;
+    height: 16px;
+    text-align: center;
+    margin-left: 5px;
+    margin-top: 10px;
+}
+
+div.port_item {
+    position: relative;
+    width: 99%;
+    margin: 1px;
+    text-align:center;
+}
+
+div.port_update_button {
+    margin: 0;
+    width: 150px;
+    height: 24px;
+    float: right;
+}
+
+div.right_column {
+    margin-right: 100px;
+    width: 35%;
+    float: right;
+    text-align: left;
+    padding-right: 8px;
+}
+
+div.right_short_column {
+    width: 35%;
+    float: right;
+    text-align: right;
+    padding-right: 8px;
+    white-space: nowrap;
+}
+
 div.room_list {
     width: 99%;
     margin: 2px auto;
@@ -227,6 +596,29 @@ div.room_list_item {
     border: solid 1px #777777;
 }
 
+div.sector_name {
+    position:relative;
+    top: 0;
+    width: 70%;
+    margin: 3px auto;
+    text-align: center;
+    font-size: 150%;
+    font-weight: bold;
+    text-shadow: -1px 1px 2px #000,
+                    1px 1px 2px #000,
+                    1px -1px 0 #000,
+                    -1px -1px 0 #000;
+}
+
+div.sector_station {
+    width: 64px;
+    height: 64px;
+    display: inline-block;
+    margin: 0 3px;
+    border: solid 1px #115511;
+    cursor: pointer;
+}
+
 div.ship_alliance {
 	text-align: left;
 	position: relative;
@@ -234,6 +626,11 @@ div.ship_alliance {
 	width: 120px;
 	margin: 0;
 	padding: 0;
+}
+
+div.ship_dealer {
+    background: url('../ship_dealer.png') no-repeat;
+    background-size: 64px 64px;
 }
 
 div.ship_level {
@@ -285,6 +682,22 @@ div.ship_type {
 	padding: 0;
 }
 
+div.solar_collector {
+    background: url('../solar_collector.png') no-repeat;
+    background-size: 64px 64px;
+}
+
+div.takeoff {
+    position: absolute;
+    top: 45px;
+    left: 0;
+    width: 80px;
+    height: 40px;
+    text-align: center;
+    font-size: 70%;
+    color: cyan;
+}
+
 div.taking_damage {
 	position: absolute;
 	top: 10px;
@@ -296,6 +709,17 @@ div.taking_damage {
 	font-weight: bold;
 	font-size: 110%;
 	text-align: center;
+}
+
+div.tech_dealer {
+    background: url('../tech_dealer.png') no-repeat;
+    background-size: 64px 64px;
+}
+
+div.trade_port {
+    width: 96px;
+    background: url('../port.png') no-repeat;
+    background-size: 96px 64px;
 }
 
 div.user_list {
@@ -317,6 +741,36 @@ div.user_list_item_caption {
     float: left;
     width: 45%;
     margin-bottom: 4px;
+}
+
+div.viewport_big_planetoid {
+    position: absolute;
+    top: 100px;
+    left: 0;
+    right: 0;
+    width: 512px;
+    height: 512px;
+    margin: 0 auto;
+}
+
+div.viewport_big_star {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vw;
+    margin: 0 auto;
+}
+
+div.viewport_big_warp {
+    position: absolute;
+    top: -50px;
+    left: 0;
+    right: 0;
+    width: 768px;
+    height: 768px;
+    margin: 0 auto;
 }
 
 div.viewport_console {
@@ -423,4 +877,10 @@ div.viewport_split {
 	position: relative;
 	text-align: center;
 	width: 100%;
+}
+
+div.warp {
+    width: 64px;
+    background: url('../warp_wireframe.png') no-repeat;
+    background-size: 64px 64px;
 }

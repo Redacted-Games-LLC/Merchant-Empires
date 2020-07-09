@@ -39,6 +39,20 @@ img.alliance_list_recruit_image {
     height: 20px;
 }
 
+input.dealer_form_button {
+    position: absolute;
+    top: 0;
+    left: 60px;
+}
+
+input.dealer_form_text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: black;
+    color: white;
+}
+
 input.form_button {
 	position: relative;
 	height: 24px;
@@ -48,6 +62,20 @@ input.form_button {
 input.form_input {
 	background-color: black;
 	color: lightgray;
+}
+
+input.port_form_button {
+    position: absolute;
+    top: 0;
+    left: 60px;
+}
+
+input.port_form_input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: black;
+    color: white;
 }
 
 input.select_player_name {width: 140px;}
@@ -68,6 +96,30 @@ pre.dump {
 	padding: 10px;
 	border: solid 2px gray;
 	text-align: left;
+}
+
+table.levels {width: 100%;}
+
+td.experience {
+    margin: 0 0 0 1px;
+    background-color: #222222;
+    text-align:right;
+    padding: 4px;
+}
+
+td.level {
+    margin: 0 0 0 4px;
+    background-color: #002200;
+    text-align: right;
+    padding: 4px;
+    font-weight: bold;
+    width: 30px;
+}
+
+tr.levels {
+    margin: 4px 0;
+    background-color: #000000;
+    padding: 1px;
 }
 
 ul.popup_list {
