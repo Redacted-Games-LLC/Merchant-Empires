@@ -23,11 +23,11 @@
 
 	include_once('tmpl/common.php');
 ?>
-<div class="header2">Base Defense</div>
+<div class="header2 header_bold">Base Defense</div>
 <div class="docs_text">
 	Bases are defended by shields, turrets, drones, and finally players.
 </div>
-<div class="header3">Shields</div>
+<div class="header3 header_bold">Shields</div>
 <div class="docs_text">
 	Shields are the first line of defense on a base. When a base is constructed it will
 	have only <?php echo START_BASE_SHIELDS; ?> shields maintained by the Control Pad.
@@ -36,4 +36,3 @@
 <div class="docs_text">
 
 </div>
-

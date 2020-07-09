@@ -143,7 +143,7 @@
 		global $empty_holds_available;
 
 		if ($spacegame['port_trades']['buys_count'] > 0) {
-			echo '<div class="header4">We need the following goods if you carry them:</div>';
+			echo '<div class="header4 header_bold">We need the following goods if you carry them:</div>';
 
 			echo '<div class="port_item">';
 			
@@ -163,7 +163,7 @@
 
 
 		if ($spacegame['port_trades']['sells_count'] > 0) {
-			echo '<div class="header4">We have the following goods for your purchase if you want them:</div>';
+			echo '<div class="header4 header_bold">We have the following goods for your purchase if you want them:</div>';
 
 			echo '<div class="port_item">';
 			
@@ -183,7 +183,7 @@
 		global $empty_holds_available;
 		
 		if ($spacegame['port_upgrades']['buys_count'] > 0) {
-			echo '<div class="header4">We want to start new production but need the following goods:</div>';
+			echo '<div class="header4 header_bold">We want to start new production but need the following goods:</div>';
 
 			echo '<div class="port_item">';
 			
@@ -202,7 +202,7 @@
 		global $empty_holds_available;
 
 		if ($spacegame['port_upgrades']['sells_count'] > 0) {
-			echo '<div class="header4">We have the following &quot;waste&quot; from new production we will sell undeclared:</div>';
+			echo '<div class="header4 header_bold">We have the following &quot;waste&quot; from new production we will sell undeclared:</div>';
 
 			echo '<div class="port_item">';
 			
@@ -215,9 +215,6 @@
 		}
 	}
 
-
-	
-
 	$tmpl['no_fluff'] = true;
 	$tmpl['page_title'] = 'Port';
 
@@ -229,7 +226,7 @@
 			<script type="text/javascript">drawButton('close', 'close', 'true');</script>
 		</a>
 	</div>
-	<div  class="header2">
+	<div  class="header2 header_bold">
 		Port of <?php echo $spacegame['places'][$place_id]['caption']; ?>
 	</div>
 	<div class="docs_text">

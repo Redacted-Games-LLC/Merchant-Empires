@@ -34,12 +34,7 @@
 
 ?>
 
-<!--
-Need to remove bolding for <th>.
-Need to align table headers.
--->
-
-<div class="header2">Message Alliance</div>
+<div class="header2 header_bold">Message Alliance</div>
 <div class="docs_text">
 	Sends a message to an <a href="alliance.php?page=list">alliance</a> by name. All
 	members of the alliance will receive the message.
@@ -79,7 +74,7 @@ Need to align table headers.
 	days.
 </div>
 <hr />
-<div class="header3">Sent Messages</div>
+<div class="header3 header_bold">Sent Messages</div>
 <div class="docs_text">
 	<?php 
 		if ($spacegame['message_count'] <= 0) {

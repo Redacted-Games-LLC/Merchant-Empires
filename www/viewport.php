@@ -192,29 +192,29 @@
 						if ($spacegame['player']['ship_type'] > 0) {
 							
 							if (isset($spacegame['system'])) {
-								echo '<div class="header5">';
+								echo '<div class="header5 header_bold">';
 								echo $spacegame['system']['caption'] . ' System';
 								echo '</div>';
 
-								echo '<div class="header3">';
+								echo '<div class="header3 header_bold">';
 								echo $spacegame['player']['x'] . ', ' . $spacegame['player']['y'];
 								echo '</div>';
 							}
 							elseif ($spacegame['player']['base_id'] > 0) {
-								echo '<div class="header5">';
+								echo '<div class="header5 header_bold">';
 								echo $base_caption;
 								echo '</div>';
 
-								echo '<div class="header3">';
+								echo '<div class="header3 header_bold">';
 								echo $spacegame['player']['base_x'] . ', ' . $spacegame['player']['base_y'];
 								echo '</div>';
 							}
 							else {
-								echo '<div class="header5">';
+								echo '<div class="header5 header_bold">';
 								echo '&nbsp;';
 								echo '</div>';
 
-								echo '<div class="header3">';
+								echo '<div class="header3 header_bold">';
 								echo '&nbsp;';
 								echo '</div>';
 							}
@@ -225,30 +225,30 @@
 								foreach ($spacegame['places'] as $place) {
 									switch ($place['place_type']) {
 										case '2':
-											echo '<div class="header5">Star '. $place['caption'] .'</div>';
+											echo '<div class="header5 header_bold">Star '. $place['caption'] .'</div>';
 											$success = true;
 											break;
 
 										case '9': // Warp
-											echo '<div class="header5">'. $place['caption'] .'</div>';
+											echo '<div class="header5 header_bold">'. $place['caption'] .'</div>';
 											$success = true;
 											break;											
 
 										case '3': // Earth Planet
 										case '5': // Rocky Planet
 										case '12': // Ice Giant
-											echo '<div class="header5">Planetoid '. $place['caption'] .'</div>';
+											echo '<div class="header5 header_bold">Planetoid '. $place['caption'] .'</div>';
 											$success = true;
 											break;
 									}
 								}
 
 								if (!$success) {
-									echo '<div class="header5">&nbsp;</div>';
+									echo '<div class="header5 header_bold">&nbsp;</div>';
 								}
 							}
 							else {
-								echo '<div class="header5">&nbsp;</div>';
+								echo '<div class="header5 header_bold">&nbsp;</div>';
 							}
 						}
 						else {

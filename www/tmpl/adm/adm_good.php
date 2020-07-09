@@ -65,7 +65,7 @@
 	}
 
 ?>
-<div class="header2"><a href="admin.php?page=goods">Goods Administration</a> :: <?php echo isset($adm_good['caption']) ? $adm_good['caption'] : 'No Good Selected'; ?></div>
+<div class="header2 header_bold"><a href="admin.php?page=goods">Goods Administration</a> :: <?php echo isset($adm_good['caption']) ? $adm_good['caption'] : 'No Good Selected'; ?></div>
 <?php if (!isset($adm_good['caption'])) { ?>
 	<div class="docs_text">
 		You must select a good first. <a href="admin.php?page=goods">Click here</a> to go back.
@@ -84,7 +84,7 @@
 	You can make changes to the selected good below:
 </div>
 <hr />
-<div class="header3">General Configuration</div>
+<div class="header3 header_bold">General Configuration</div>
 <div class="docs_text">
 	You can change the name and/or level here but make sure to update the image
 	file stored on the servers.
@@ -108,7 +108,7 @@
 	</form>
 </div>
 <hr />
-<div class="header3">Upgrade Requirements</div>
+<div class="header3 header_bold">Upgrade Requirements</div>
 <div class="docs_text">
 	Add or remove upgrade requirements for this good. This will break existing upgrades
 	in progress so unless this is a new good be sure to reset all ports to fix things.
@@ -137,7 +137,7 @@
 		}
 	?>
 </div>
-<div class="header4">Add New Requirement</div>
+<div class="header4 header_bold">Add New Requirement</div>
 <div class="docs_text">
 	<form action="handler.php" method="post">
 		<label>Required Good:</label>
@@ -166,7 +166,7 @@
 	</form>
 </div>
 <hr />
-<div class="header3">Port Starts</div>
+<div class="header3 header_bold">Port Starts</div>
 <div class="docs_text">
 	Add or remove supply/demand starts for different place types where ports can be
 	deployed.
@@ -198,7 +198,7 @@
 		}
 	?>
 </div>
-<div class="header4">Add New Start</div>
+<div class="header4 header_bold">Add New Start</div>
 <div class="docs_text">
 	<form action="handler.php" method="post">
 		<label>Place Type:</label>
@@ -229,7 +229,7 @@
 	</form>
 </div>
 <hr />
-<div class="header3">Completely Delete Good</div>
+<div class="header3 header_bold">Completely Delete Good</div>
 <div class="docs_text">
 	Click the following button to delete all traces of the good from the galaxy. This
 	cannot be undone!

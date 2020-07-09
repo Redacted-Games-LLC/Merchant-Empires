@@ -23,7 +23,7 @@
 
 	include_once('tmpl/common.php');
 ?>
-<div class="header2">Ships</div>
+<div class="header2 header_bold">Ships</div>
 <div class="docs_text">	
 	Ships allow players to carry goods and engage in combat.
 </div>

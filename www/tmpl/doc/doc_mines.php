@@ -23,7 +23,7 @@
 
 	include_once('tmpl/common.php');
 ?>
-<div class="header2">
+<div class="header2 header_bold">
 	Mines
 </div>
 <div class="docs_text">
@@ -49,7 +49,7 @@
 	their own to be destroyed easily by any sort of weapon blast. Since targetting is 100%
 	efficient you can destroy as many in one shot as weapons installed on your ship.
 </div>
-<div class="header3">
+<div class="header3 header_bold">
 </div>
 <div class="docs_text">
 </div>

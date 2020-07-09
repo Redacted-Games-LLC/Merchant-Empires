@@ -23,7 +23,7 @@
 
 	include_once('tmpl/common.php');
 ?>
-<div class="header2">Experience and Levels</div>
+<div class="header2 header_bold">Experience and Levels</div>
 <div class="docs_text">
 	You gain experience for the following activities:
 </div>
@@ -37,7 +37,7 @@
 <div class="docs_text">
 	You will not lose experience.
 </div>
-<div class="header3">Levels</div>
+<div class="header3 header_bold">Levels</div>
 <div class="docs_text">
 	You start the game at level 0. After certain amount of experience (listed in the table below)
 	you will have the option of leveling up your player. There is no immediate requirement to level
@@ -55,7 +55,7 @@
 	Here is a table of the levels:
 	<script type="text/javascript">draw_level_table();</script>
 </div>
-<div class="header4">Levels and Protection</div>
+<div class="header4 header_bold">Levels and Protection</div>
 <div class="docs_text">
 	When inside protected sectors designated with the icon <img src="res/government_scan.png" width="20" height="20" alt="Green Government Star" title="Government Star" />
 	a player with low <a href="docs.php?page=ship_rating">ship attack rating</a> is protected

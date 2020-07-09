@@ -26,7 +26,7 @@
 	include_once('inc/players.php');
 
 ?>
-<div class="header2"><?php 
+<div class="header2 header_bold"><?php 
 	if ($spacegame['page_number'] > 0) {
 		echo 'Players Active over the Last ' . floor(ACTIVE_PLAYER_TIME / (3600 * 24)) . ' Days';
 	}
@@ -43,7 +43,7 @@
 	}
 ?></div>
 <hr />
-<div class="header4">Showing <?php echo $spacegame['player_count'] . ' Player' . ($spacegame['player_count'] == 1 ? '' : 's'); ?>:</div>
+<div class="header4 header_bold">Showing <?php echo $spacegame['player_count'] . ' Player' . ($spacegame['player_count'] == 1 ? '' : 's'); ?>:</div>
 <div class="alliance_list">
 	<?php
 		foreach ($spacegame['players'] as $player) {
@@ -78,7 +78,6 @@
 
 			echo '</div>';
 		}
-
 
 	?>
 </div>

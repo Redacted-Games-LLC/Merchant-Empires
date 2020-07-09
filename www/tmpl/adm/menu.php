@@ -24,7 +24,7 @@
 	include_once('tmpl/common.php');
 ?>
 	
-	<div class="header4"><a href="admin.php?page=main">Game Administration</a></div>
+	<div class="header4 header_bold"><a href="admin.php?page=main">Game Administration</a></div>
 	<hr noshade="noshade" size="1" />
 	<ul class="docs_menu">
 		<li class="docs_menu"><?php echo get_admin_link('users', 'User Editor', 'users'); ?></li>

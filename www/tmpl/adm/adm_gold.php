@@ -30,12 +30,12 @@
 	}
 
 ?>
-	<div class="header2">Gold Key Administration</div>
+	<div class="header2 header_bold">Gold Key Administration</div>
 	<div class="docs_text">
 		You can manipulate gold keys in the game using this page.
 	</div>
 	<hr />
-	<div class="header3">Insert Membership Keys</div>
+	<div class="header3 header_bold">Insert Membership Keys</div>
 	<div class="docs_text">
 		Use this box to bulk insert membership keys to the database. WARNING: make
 		sure the keys you insert are securely generated. The limit is 1000 keys per
@@ -51,4 +51,3 @@
 			<input type="hidden" name="form_id" value="<?php echo $_SESSION['form_id']; ?>" />
 		</form>
 	</div>
-

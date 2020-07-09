@@ -122,6 +122,11 @@ tr.levels {
     padding: 1px;
 }
 
+ul.docs_menu {
+    padding: 0;
+    margin: 8px;
+}
+
 ul.popup_list {
 	list-style-type: none;
 	margin: 0;

@@ -42,7 +42,7 @@
 	}
 
 ?>
-	<div class="header2">Base Room Administration</div>
+	<div class="header2 header_bold">Base Room Administration</div>
 	<?php
 		if (!isset($spacegame['room'])) {
 			echo '<div class="docs_text">';
@@ -56,7 +56,7 @@
 
 			echo '<hr />';
 		
-			echo '<div class="header3">Room Details</div>';
+			echo '<div class="header3 header_bold">Room Details</div>';
 			?>
 			<div class="docs_text">
 				<div class="float_right">
@@ -161,7 +161,7 @@
 			</div>
 
 			<hr />
-			<div class="header3">Room Requirements</div>
+			<div class="header3 header_bold">Room Requirements</div>
 			<div class="docs_text">
 				This section was rushed through. Right now there is no checking for duplicates and
 				deletions take everything out. This will be fixed in a later version.
@@ -179,7 +179,7 @@
 					echo '</div>';
 
 					if ($spacegame['room']['goods_count'] > 0) {
-						echo '<div class="header4">Goods</div>';
+						echo '<div class="header4 header_bold">Goods</div>';
 						echo '<div class="docs_text">';
 					
 						foreach ($spacegame['room']['goods_needed'] as $good_id) {
@@ -190,7 +190,7 @@
 					}
 
 					if ($spacegame['room']['researches_count'] > 0) {
-						echo '<div class="header4">Researches</div>';
+						echo '<div class="header4 header_bold">Researches</div>';
 						echo '<div class="docs_text">';
 					
 						foreach ($spacegame['room']['researches_needed'] as $research_id) {
@@ -201,7 +201,7 @@
 					}
 
 					if ($spacegame['room']['builds_count'] > 0) {
-						echo '<div class="header4">Builds</div>';
+						echo '<div class="header4 header_bold">Builds</div>';
 						echo '<div class="docs_text">';
 					
 						foreach ($spacegame['room']['builds_needed'] as $build_id) {
@@ -214,7 +214,7 @@
 
 			?>
 		
-			<div class="header4">Add Requirement</div>
+			<div class="header4 header_bold">Add Requirement</div>
 			<div class="docs_text">
 				<form action="handler.php" method="post">
 
@@ -275,7 +275,7 @@
 				</form>
 			</div>
 			<hr />
-			<div class="header3">Delete This Room</div>
+			<div class="header3 header_bold">Delete This Room</div>
 			<?php 
 				if ($spacegame['room']['upgrade_count'] > 0) { ?>
 

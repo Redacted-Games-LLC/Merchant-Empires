@@ -122,7 +122,7 @@
 	include_once('inc/cargo.php');
 	include_once('inc/ranks.php');
 ?>
-<div class="header2">Attacking <?php echo ($force_id > 0 ? 'Forces of ' : 'Player ') . $player['caption']; ?></div>
+<div class="header2 header_bold">Attacking <?php echo ($force_id > 0 ? 'Forces of ' : 'Player ') . $player['caption']; ?></div>
 <div class="docs_text">
 	<strong>Target Information</strong>
 </div>
@@ -255,17 +255,10 @@
 			echo 'start_recharge("recharge_rect_'. $s .'", 105.0, ' . $recharge_part . ', ' . $recharge_whole . ', '. (RECHARGE_TIME_PER_DAMAGE * 3.0) .');';
 			echo '</script>';
 
-
 			echo '</div>';
-
-
-
 
 		}
 
 		echo '</div>';
 	}
 ?>
-
-
-

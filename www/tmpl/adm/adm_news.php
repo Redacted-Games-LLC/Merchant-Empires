@@ -51,7 +51,7 @@
 
 ?>
 
-<div class="header2">News Desk</div>
+<div class="header2 header_bold">News Desk</div>
 <?php if ($preview) { ?>
 	<div class="docs_text">
 		Here is your preview:

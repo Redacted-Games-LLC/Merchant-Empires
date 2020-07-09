@@ -65,14 +65,14 @@
 
 ?>
 
-<div class="header2">Trade Goods</div>
+<div class="header2 header_bold">Trade Goods</div>
 <div class="docs_text">
 	There are many goods available to trade. All ports spawn with a random
 	selection of level 1 goods. Each planet may also demand just about
 	anything.
 </div>
 <hr />
-<div class="header3">List of Goods</div>
+<div class="header3 header_bold">List of Goods</div>
 <br />
 <div>
 

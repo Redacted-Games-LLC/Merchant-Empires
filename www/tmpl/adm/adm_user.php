@@ -33,7 +33,7 @@
 
 
 ?>
-	<div class="header2">User Administration: <em><?php echo $spacegame['user_info']['username']; ?></em></div>
+	<div class="header2 header_bold">User Administration: <em><?php echo $spacegame['user_info']['username']; ?></em></div>
 	<?php if (!isset($spacegame['user_info'])) { ?>
 
 		<div class="docs_text">
@@ -46,7 +46,7 @@
 		<div class="docs_text">
 			Last Activity: <strong><?php echo date(DATE_RFC850, $spacegame['user_info']['session_time']); ?></strong>
 		</div>
-		<div class="header3">Players</div>
+		<div class="header3 header_bold">Players</div>
 
 		<?php if ($spacegame['user_info']['player_count'] <= 0) { ?>
 
@@ -76,7 +76,7 @@
 		<?php } ?>
 
 
-		<div class="header3">User Fields</div>
+		<div class="header3 header_bold">User Fields</div>
 		<div class="docs_text">
 			<?php
 				echo '<ul>';
@@ -134,10 +134,7 @@
 		</div>
 
 	<?php } ?>
-
-
 	
 <?php
-
 
 ?>

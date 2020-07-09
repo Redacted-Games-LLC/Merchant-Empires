@@ -23,7 +23,7 @@
 
 	include_once('tmpl/common.php');
 ?>
-<div class="header2">The Mawlor Dominion</div>
+<div class="header2 header_bold">The Mawlor Dominion</div>
 <div class="docs_text">
 	If you've been in a fight with a Mawlor, you definitely understand how these guys earn their reputation. They can take lots of hits and withstand a very long battle. They somehow also retained the monopoly over research and deployment of jump drive units, and tend to disappear quickly when the battle turns against them. This is not considered a cowardly move amongst the Mawlors, as their war-like culture respects how many battles they survive more than they win.
 </div>
@@ -33,11 +33,11 @@
 <div class="docs_text">
 	Mawlors can learn to operate Xollian ships, but consider it dishonorable when they do so. They will gain no experience nor alignment (but could still lose alignment) while operating a Xollian ship.
 </div>
-<div class="header3">Jump Technology</div>
+<div class="header3 header_bold">Jump Technology</div>
 <div class="docs_text">
 	Mawlor ships are equipped with Jump Technology. Loosely based on Paragon Warps, a Mawlor "sets" his Jump at any star in the galaxy. Activating jump returns the Mawlor ship to that star. It is a one-way journey costing <?php echo JUMP_TURN_COST; ?> turns.
 </div>
-<div class="header3">Balance Notes</div>
+<div class="header3 header_bold">Balance Notes</div>
 <div class="docs_text">
     Mawlors are balanced to be the late round war boss. This race is best for players who like to build up a powerful character slowly, but with great reward. Early Mawlors will grumble about their weaker-leveled ships.
 </div>

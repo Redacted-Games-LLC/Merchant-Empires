@@ -23,7 +23,7 @@
 
 	include_once('tmpl/common.php');
 ?>
-<div class="header2">The Secretive Xollian</div>
+<div class="header2 header_bold">The Secretive Xollian</div>
 <div class="docs_text">
 	The Xollians might possibly have the most interesting history if anything were
 	known about it. They are a secretive people with a culture of privacy.
@@ -40,13 +40,13 @@
 	culture (and the arm-length to reach all the controls quickly), they
 	face a 10% decline in weapon accuracy.
 </div>
-<div class="header3">Cloak Technology</div>
+<div class="header3 header_bold">Cloak Technology</div>
 <div class="docs_text">
 	Xollian ships are equipped with Cloak technology. They are effectively invisible
 	to all players of lower level (rank is not considered). Cloak is disabled when a
 	player fires their weapons and costs <?php echo CLOAK_TURN_COST; ?> turns to re-enable it.
 </div>
-<div class="header3">Balance Notes</div>
+<div class="header3 header_bold">Balance Notes</div>
 <div class="docs_text">
 	Xollians are the best traders of the galaxy. They should be avoiding combat,
 	instead taking advantage of the economy to best their enemies. A Xollian might

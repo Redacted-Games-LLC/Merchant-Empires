@@ -28,12 +28,7 @@
 
 ?>
 
-<!--
-Need to remove bolding for <th>.
-Need to align table headers.
--->
-
-<div class="header2">Subspace Broadcast</div>
+<div class="header2 header_bold">Subspace Broadcast</div>
 <div class="docs_text">
 	A subspace broadcast will be sent to all online players using the Imperial
 	Frequency. Some players may have this frequency disabled.
@@ -73,7 +68,7 @@ Need to align table headers.
 	minutes.
 </div>
 <hr />
-<div class="header3">Sent Messages</div>
+<div class="header3 header_bold">Sent Messages</div>
 <div class="docs_text">
 	<?php 
 		if ($spacegame['message_count'] <= 0) {

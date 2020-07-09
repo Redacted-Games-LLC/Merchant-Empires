@@ -26,7 +26,7 @@
 	include_once('inc/systems.php');
 	
 ?>
-<div class="header2">Deploy Technology</div>
+<div class="header2 header_bold">Deploy Technology</div>
 <?php if ($spacegame['tech_count'] > 0) { ?>
 	<div class="docs_text">
 		Select a technology to deploy.
@@ -48,7 +48,7 @@
 
 		?>
 
-		<div class="header3">
+		<div class="header3 header_bold">
 			<img src="res/goods/<?php echo $spacegame['goods'][$tech['good']]['safe_caption']; ?>.png" width="24" height="24" alt="tech good" />
 			<?php echo $spacegame['goods'][$tech['good']]['caption']; ?>
 		</div>
@@ -322,7 +322,7 @@
 	</div>
 <?php } ?>
 <hr />
-<div class="header2">Jettison Cargo</div>
+<div class="header2 header_bold">Jettison Cargo</div>
 <div class="docs_text">
 	You can dump your cargo for a fee of <?php echo number_format(($spacegame['player']['level'] + 1) * CARGO_DUMP_COST * INFLATION_MULTIPLIER); ?>
 	<img src="res/credits.png" width="20" height="20" alt="credits" /> credits and <?php echo CARGO_DUMP_TURNS; ?>

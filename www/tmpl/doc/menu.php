@@ -24,7 +24,7 @@
 	include_once('tmpl/common.php');
 ?>
 
-<div class="header4"><a href="docs.php?page=main">Game Documentation</a></div>
+<div class="header4 header_bold"><a href="docs.php?page=main">Game Documentation</a></div>
 <hr noshade="noshade" size="1" />
 <ul class="docs_menu">
 	<li class="docs_menu"><a href="docs.php?page=quick">Quick Start</a></li>

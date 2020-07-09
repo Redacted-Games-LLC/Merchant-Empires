@@ -41,7 +41,7 @@
 			<script type="text/javascript">drawButton('close', 'close', 'return true;');</script>
 		</a>
 	</div>
-	<div class="header1">Communications Terminal</div>
+	<div class="header1 header_bold">Communications Terminal</div>
 	<div class="docs_text">
 		
 	</div>

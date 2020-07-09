@@ -46,7 +46,7 @@
 
 
 ?>
-<div class="header2">Alliance Members : <?php echo $spacegame['alliances'][$alliance_id]['caption']; ?></div>
+<div class="header2 header_bold">Alliance Members : <?php echo $spacegame['alliances'][$alliance_id]['caption']; ?></div>
 <hr />
 <div class="alliance_recruit">
 <?php if ($spacegame['alliances'][$alliance_id]['recruiting'] > 0) { ?>
@@ -78,7 +78,7 @@
 <?php } ?>
 </div>
 <hr />
-<div class="header4">This alliance has <?php echo $member_count . ' Member' . ($member_count == 1 ? '' : 's'); ?>:</div>
+<div class="header4 header_bold">This alliance has <?php echo $member_count . ' Member' . ($member_count == 1 ? '' : 's'); ?>:</div>
 <div class="alliance_list">
 	<?php
 		foreach ($members as $member) {

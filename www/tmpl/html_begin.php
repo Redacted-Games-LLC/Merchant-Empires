@@ -135,8 +135,6 @@
 					echo "}, \n";
 				}
 
-
-
 				echo "];\n";
 
 			}
@@ -194,7 +192,7 @@
 	<?php } ?>
 	<noscript>
 	<div class="noscript">
-		<div class="header3">JavaScript Required</div>
+		<div class="header3 header_bold">JavaScript Required</div>
 		<p>
 			This game requires JavaScript to offload some of the more CPU-intensive tasks of page
 			rendering to your browser. It appears your JavaScript is blocked or disabled. If you

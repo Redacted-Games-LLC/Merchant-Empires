@@ -28,9 +28,7 @@
 		die();
 	}
 ?>
-<div class="header2">Port Administration</div>
+<div class="header2 header_bold">Port Administration</div>
 <div class="docs_text">
 	You can manipulate existing ports or create new ones using this tool.
 </div>
-
-

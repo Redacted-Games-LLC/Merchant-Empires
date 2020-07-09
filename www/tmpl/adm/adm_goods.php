@@ -70,13 +70,13 @@
 
 ?>
 
-<div class="header2">Goods Administration</div>
+<div class="header2 header_bold">Goods Administration</div>
 <div class="docs_text">
 	You can manipulate existing goods or create new ones using this tool.
 </div>
 <br />
 <hr />
-<div class="header3">List of Goods</div>
+<div class="header3 header_bold">List of Goods</div>
 <br />
 <div>	
 	
@@ -101,7 +101,7 @@
 </div>
 <br />
 <hr />
-<div class="header3">Goods That Do Not Upgrade</div>
+<div class="header3 header_bold">Goods That Do Not Upgrade</div>
 <br />
 <div>
 	
@@ -138,7 +138,7 @@
 </div>
 <br />
 <hr />
-<div class="header3">Basic Goods</div>
+<div class="header3 header_bold">Basic Goods</div>
 <br />
 <div>
 	
@@ -173,7 +173,7 @@
 </div>
 <br />
 <hr />
-<div class="header3">Create New Good</div>
+<div class="header3 header_bold">Create New Good</div>
 <div class="docs_text">
 	Enter the information below to create a new good.
 </div>

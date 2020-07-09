@@ -25,7 +25,7 @@
 	include_once('inc/ranks.php');
 
 ?>
-<div class="header2">Alignment</div>
+<div class="header2 header_bold">Alignment</div>
 <div class="docs_text">
 	The three <a href="docs.php?page=races">races</a> of the galaxy are at
 	war with each other. Your trading and combat actions will adjust your
@@ -49,7 +49,7 @@
 	you will still lose alignment for killing unallied players of your race and so
 	forth.
 </div>
-<div class="header3">Trade</div>
+<div class="header3 header_bold">Trade</div>
 <div class="docs_text">
 	Every single good you trade at a port is counted. Trading <?php echo number_format(TRADES_PER_ALIGNMENT_POINT); ?>
 	goods in your own racial ports will give you one (1) point, while trading
@@ -61,18 +61,18 @@
 	will give 1 point, but only <?php echo number_format(WAR_UPGRADES_PER_ALIGNMENT_POINT); ?>
 	goods are needed in enemy ports to cost you 1 point.
 </div> 
-<div class="header3">Combat</div>
+<div class="header3 header_bold">Combat</div>
 <div class="docs_text">
 	If you kill someone of another race you gain alignment equal to the level of
 	the opponent minus <?php echo MINIMUM_KILLABLE_LEVEL; ?>. Killing members of
 	your own race will take <?php echo RACIAL_KILL_PENALTY; ?> points each.
 </div>
-<div class="header3">Benefits of Alignment</div>
+<div class="header3 header_bold">Benefits of Alignment</div>
 <div class="docs_text">
 	You get a discount on the final price of ships of your own race. Every 10 points
 	is a 1% discount.
 </div>
-<div class="header3">Malefits of Alignment</div>
+<div class="header3 header_bold">Malefits of Alignment</div>
 <div class="docs_text">
 	You will pay more for ships of your own race. Every 5 points is an extra 1%.
 </div>
@@ -81,7 +81,7 @@
 	alignment drops below <?php echo SAFE_ALIGNMENT_MINIMUM; ?> you will lose safety
 	in protected systems regardless of <a href="docs.php?page=ship_rating">ship rating</a>.
 </div>
-<div class="header3">Ranks</div>
+<div class="header3 header_bold">Ranks</div>
 <div class="docs_text">
 	Alignment and <a href="docs.php?page=levels">level</a> goals must be met in order
 	for a player to gain new ranks, which will be necessary to purchase higher level

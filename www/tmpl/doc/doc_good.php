@@ -71,7 +71,7 @@
 	}
 
 ?>
-<div class="header2"><a href="docs.php?page=goods">Good Information</a> :: <?php echo isset($doc_good['caption']) ? $doc_good['caption'] : 'No Good Selected'; ?></div>
+<div class="header2 header_bold"><a href="docs.php?page=goods">Good Information</a> :: <?php echo isset($doc_good['caption']) ? $doc_good['caption'] : 'No Good Selected'; ?></div>
 <?php if (!isset($doc_good['caption'])) { ?>
 	<div class="docs_text">
 		You must select a good first. <a href="docs.php?page=goods">Click here</a> to go back.
@@ -132,7 +132,7 @@
 	</ul>
 </div>
 <hr />
-<div class="header3">Planetoid Availability</div>
+<div class="header3 header_bold">Planetoid Availability</div>
 <div class="docs_text">
 	The following are the <em>weighted</em> chances a good will be in supply
 	or demand. 

@@ -24,7 +24,7 @@
 	include_once('tmpl/common.php');
 ?>
 
-<div class="header2">Missing Page</div>
+<div class="header2 header_bold">Missing Page</div>
 <div class="docs_text">
 	The documentation page you clicked on is missing. Sometimes pages
 	are removed for maintenance so if the link does not work after 

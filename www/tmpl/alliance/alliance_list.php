@@ -23,7 +23,7 @@
 
 	include_once('tmpl/common.php');
 ?>
-<div class="header2">Alliance List</div>
+<div class="header2 header_bold">Alliance List</div>
 <?php 
 
 	if ($spacegame['alliances_count'] <= 0) {
@@ -51,6 +51,4 @@
 <?php
 		}
 	}
-?>
-
- 	
+?>	

@@ -196,6 +196,49 @@ div.dealer_text {
     margin: 16px 0;
 }
 
+div.docs_content {
+    position: relative;
+    padding: 10px;
+    margin-left: 4px;
+    min-width: 640px;
+    float: left;
+    border: solid 2px #111111;
+}
+
+div.docs_goods {
+    width: 630px;
+    padding: 12px;
+    margin: 20px 0;
+    word-wrap: break-word;
+    background-color: #000000;
+    text-align: center;
+}
+
+div.docs_menu {
+    padding: 10px;
+    min-width: 240px;
+    float: left;
+    border: solid 2px #111111;
+    font-size: 80%;
+}
+
+div.docs_text {
+    font-family: Calibri, sans-serif;
+    font-size: 1.2em;
+    width: 630px;
+    margin: 20px 0;
+    word-wrap: break-word;
+}
+
+div.docs_warning {
+    font-family: Calibri, sans-serif;
+    font-size: 1.2em;
+    width: 630px;
+    margin: 20px 0;
+    word-wrap: break-word;
+    color: #f80;
+}
+
 div.floating_message {
 	display: inline-block;
 	width: 80%;

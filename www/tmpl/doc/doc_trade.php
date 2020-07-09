@@ -23,7 +23,7 @@
 
 	include_once('tmpl/common.php');
 ?>
-<div class="header2">
+<div class="header2 header_bold">
 	Trade
 </div>
 <div class="docs_text">
@@ -35,7 +35,7 @@
 	The <a href="docs.php?page=quick">Quick Start Guide</a> contains a tutorial which
 	combines some features of trade, navigation and warps.
 </div>
-<div class="header3">Currency</div>
+<div class="header3 header_bold">Currency</div>
 <div class="docs_text">
 	The common currency of the galaxy is the <em>credit</em> using the symbol
 	<strong>¢</strong> (alt code 0162) and the icon
@@ -43,7 +43,7 @@
 	This is a digital currency, no physical credits exist and all transactions
 	are controlled. Private trading is done with <a href="docs.php?page=goods">goods</a>.
 </div>
-<div class="header3">Inflation</div>
+<div class="header3 header_bold">Inflation</div>
 <div class="docs_text">
 	The top-right corner of every page has an inflation indicator along
 	with a page build. It looks like the following:
@@ -61,7 +61,7 @@
 	You must plan for residual inflation when using Dealers, carry a bit of extra credits
 	in case the inflation shifts the price a bit while you are browsing the stock.
 </div>
-<div class="header3">
+<div class="header3 header_bold">
 	Taxes
 </div>
 <div class="docs_text">

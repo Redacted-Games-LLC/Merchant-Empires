@@ -25,7 +25,7 @@
 	include_once('inc/solutions.php');
 	include_once('inc/cargo.php');
 ?>
-<div class="header2">Weapon Solutions</div>
+<div class="header2 header_bold">Weapon Solutions</div>
 <div class="docs_text">
 	Weapon solutions allow for the installation of weapons on your ship. When you create a
 	solution, weapons are installed and consumed from your cargo. For further info view the
@@ -51,7 +51,7 @@
 	else {
 
 ?>
-<div class="header3">Current Status</div>
+<div class="header3 header_bold">Current Status</div>
 <div class="docs_text">
 <?php
 	echo '<table class="ship_info">';
@@ -78,7 +78,6 @@
 	echo '<td class="ship_info_value" colspan="2">' . $spacegame['ship']['recharge'] . ' <img src="res/clock.png" alt="recharge" title="Recharge Delay" width="16" /></td>';
 	echo '</tr>';
 
-
 	echo '</table>';
 
 ?>
@@ -95,14 +94,13 @@
 		}
 	}
 
-	
 	$solution_groups = array_reverse($spacegame['solution_groups'], true);
 	$solution_keys = array_keys($solution_groups);
 
 	for ($s = 0; $s < WEAPON_SOLUTION_LIMIT; $s++) {
 ?>		
 <hr />
-<div class="header4">Solution #<?php echo $s + 1; ?></div>
+<div class="header4 header_bold">Solution #<?php echo $s + 1; ?></div>
 <div class="docs_text">
 	<?php
 
@@ -150,8 +148,6 @@
 				echo '</th>';
 
 				echo '</tr>';
-
-
 
 				echo '<tr class="solution">';
 
@@ -202,10 +198,6 @@
 						<input type="hidden" name="return" value="ship" />
 						<input type="hidden" name="form_id" value="<?php echo $_SESSION['form_id']; ?>" />
 					</form>
-
-					
-
-
 
 				<?php
 				echo '</td>';
@@ -364,7 +356,7 @@
 		}
 		else {
 
-			echo '<div class="header5">';
+			echo '<div class="header5 header_bold">';
 			echo 'Add Weapons from Cargo:';
 			echo '</div>';
 
@@ -460,19 +452,13 @@
 				echo '</tr>';
 			}
 
-
 			echo '</table>';
 
 		}
-		
 	?>
-
 </div>
 
 <?php
 	}
 }
 ?>
-
-
-

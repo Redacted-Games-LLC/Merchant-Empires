@@ -23,7 +23,7 @@
 
 	include_once('tmpl/common.php');
 ?>
-<div class="header2">Create Alliance</div>
+<div class="header2 header_bold">Create Alliance</div>
 
 <?php if ($spacegame['player']['alliance'] > 0) { ?>
 
