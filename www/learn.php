@@ -42,10 +42,10 @@
 		<script type="text/javascript">drawButton('close', 'close', 'true');</script>
 	</a>
 </div>
-<div class="header2  header_bold">
+<div class="header2 header_bold">
 	<?php echo $tmpl['page_title']; ?>
 </div>
-<div class="header3  header_bold">
+<div class="header3 header_bold">
 	<?php echo $base_caption; ?>
 </div>
 <div class="dealer_text">
