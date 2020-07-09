@@ -271,6 +271,13 @@ div.full_spread {
 	background-color: #001111;
 }
 
+div.header1 {font-size: 300%;}
+div.header2 {font-size: 200%;}
+div.header3 {font-size: 150%;}
+div.header4 {font-size: 125%;}
+div.header5 {font-size: 110%;}
+div.header_bold {font-weight: bold;}
+
 div.hostile_ship {
 	position: relative;
 	display: inline-block;
