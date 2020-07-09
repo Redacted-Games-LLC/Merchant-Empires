@@ -189,9 +189,7 @@ div.dealer_ship_stats {
     margin-left: 60px;
 }
 
-div.dealer_ship_text {
-    font-size: 16px;
-}
+div.dealer_ship_text {font-size: 16px;}
 
 div.dealer_text {
     color: white;
@@ -261,9 +259,7 @@ div.login_form_item {
     margin: 20px 20px;
 }
 
-div.login_form_label {
-    text-align: right;
-}
+div.login_form_label {text-align: right;}
 
 div.login_form_lower_button {
     position:inherit;
