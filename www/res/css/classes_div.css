@@ -691,6 +691,92 @@ div.ship_type {
 	padding: 0;
 }
 
+div.sidebar_credits {font-size: 11pt;}
+
+div.sidebar_experience {
+    position: relative;
+    width: 95%;
+    margin: -20px auto 8px auto;
+    vertical-align: top;
+    font-size: 90%;
+    font-style: italic;
+    color: cyan;
+}
+
+div.sidebar_level {
+    position: relative;
+    width: 95%;
+    margin: 8px auto;
+}
+
+div.sidebar_level_item {
+    display: inline-block;
+    margin: 0 3px;
+    vertical-align: top;
+}
+
+div.sidebar_messages {
+    width: 90%;
+    margin: 2px auto;
+    border: solid 1px cyan;
+    background-color: #114455;
+    cursor: pointer;
+    font-size: 90%;
+}
+
+div.sidebar_name {font-size: 20pt;}
+div.sidebar_race {font-size: 10pt;}
+
+div.sidebar_ship_combat {
+    border: solid 1px #ff0000;
+    margin: 2px 10px;
+    padding: 2px;
+}
+
+div.sidebar_ship_good_amount {
+    position: absolute;
+    top: 3px;
+    right: 0;
+    width: 15%;
+    margin: 1px;
+    float: right;
+}
+
+div.sidebar_ship_good_caption {
+    position: absolute;
+    top: 3px;
+    left: 24px;
+    width: 80%;
+    margin: 1px;
+}
+
+div.sidebar_ship_good_image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    margin: 1px 1px 4px 1px;
+}
+
+div.sidebar_ship_good_row {
+    position: relative;
+    width: 99%;
+    height: 24px;
+    margin: 2px;
+}
+
+div.sidebar_ship_goods {
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+    font-size: 10pt;
+}
+
+div.sidebar_ship_name {font-size: 20pt;}
+div.sidebar_ship_turns {font-size: 10pt;}
+div.sidebar_ship_type {font-size: 10pt;}
+div.sidebar_turns {font-size: 10pt;}
+
 div.solar_collector {
     background: url('../solar_collector.png') no-repeat;
     background-size: 64px 64px;
