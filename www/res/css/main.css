@@ -89,6 +89,7 @@ li.popup_list {
 }
 
 pre {font-family: CascadiaMono, monospace;}
+
 pre.dump {
 	background-color: white;
 	color: black;
@@ -97,6 +98,8 @@ pre.dump {
 	border: solid 2px gray;
 	text-align: left;
 }
+
+table.gold_key {border: none;}
 
 table.levels {width: 100%;}
 
@@ -107,6 +110,26 @@ td.experience {
     padding: 4px;
 }
 
+td.gold_actions {text-align: center;}
+
+td.gold_key {
+    width: 400px;
+    font-size: 110%;
+    font-weight: bold;
+    color: #2c6;
+}
+
+td.gold_padding {padding: 2px 8px;}
+
+td.gold_time {font-size: 110%;}
+
+th.gold_key {
+    padding: 6px 12px;
+    font-size: 120%;
+    font-weight: bold;
+    background-color: #333;
+}
+
 td.level {
     margin: 0 0 0 4px;
     background-color: #002200;
@@ -115,6 +138,8 @@ td.level {
     font-weight: bold;
     width: 30px;
 }
+
+tr.gold_key {border: solid 1px #888;}
 
 tr.levels {
     margin: 4px 0;

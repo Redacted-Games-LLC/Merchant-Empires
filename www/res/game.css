@@ -29,7 +29,7 @@
  @import url("css/ids.css");
 
  /* selectors being used but not defined */
-/* li.docs_menu in tmpl/doc/menu.php & tmpl/adm/menu.php */
+ /* li.docs_menu in tmpl/doc/menu.php & tmpl/adm/menu.php */
 
  /* unused selectors are moved here */
  /* not_used.css */
@@ -39,7 +39,6 @@
  @import url("css/footer.css");
 
  /* to be worked on later */
- @import url("css/gold.css"); /* multiple identical paddings */
  @import url("css/message.css"); /* table.message & tr.message in multiple docs, but not defined here */
  @import url("css/player_sidebar.css"); /* identical settings */
  @import url("css/ship.css"); /* label.ship_form_label & tr.add_weapon in multiple docs but not defined here, multiple identical margins */
