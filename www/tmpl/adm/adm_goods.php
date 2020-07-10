@@ -21,84 +21,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-	include_once('tmpl/common.php');
-
 	if (!get_user_field(USER_ID, 'admin', 'goods')) {
 		header('Location: viewport.php?rc=1030');
 		die();
 	}
-
-	include_once('inc/goods.php');
-	include_once('inc/good_upgrades.php');
-
-	define("TABLEHEADER_LVL", '<th class="lvlHeader"><strong>Lvl</strong></th>');
-	define("TABLEHEADER_GOODCAPTION", '<th class="captionHeader"><strong>Good Caption</strong></th>');
-	define("DIV_OPEN", '<div>');
-	define("DIV_CLOSE", '</div>');
-	define("TBL_OPEN", '<table>');
-	define("TBL_CLOSE", '</table>');
-	define("DIV_GOODLEVEL_OPEN", '<div class="goodLevel">');
-	define("DIV_GOODCAPTION_OPEN", '<div class="goodCaption">');
 	
-	function print_goods($goods_list) {
-		
-		foreach ($goods_list as $good_id => $good) {
-			
-			echo DIV_OPEN;
-			
-			echo DIV_GOODLEVEL_OPEN;
-			echo '<em>' . $good['level'] . '</em>';
-			echo DIV_CLOSE;
-			
-			echo DIV_GOODCAPTION_OPEN;
-			echo '<img src="res/goods/' . $good['safe_caption'] . '.png" width="20" height="20" />';
-			echo '&nbsp;&nbsp;';
-			echo '<a href="admin.php?page=good&amp;id='. $good_id .'">';
-			$good_caption = $good['caption'];
-			if (strlen($good_caption) >= 20) {
-				echo substr($good_caption, 0, 17) . '...';
-			}
-			else {
-				echo $good_caption;
-			}
-			echo '</a>';
-			echo DIV_CLOSE;
-			
-			echo DIV_CLOSE;
-		}
-	}
+	include_once('tmpl/goods_list.php');
 
 ?>
-
-<div class="header2 header_bold">Goods Administration</div>
-<div class="docs_text">
-	You can manipulate existing goods or create new ones using this tool.
-</div>
-<br />
-<hr />
-<div class="header3 header_bold">List of Goods</div>
-<br />
-<div>	
-	
-	<?php
-		$columns = 3;
-		echo TBL_OPEN;
-		echo '<caption hidden>List of Goods</caption>';
-		for ($i = 0; $i < $columns; $i++) {
-			echo TABLEHEADER_LVL;
-			echo TABLEHEADER_GOODCAPTION;
-		}
-		echo TBL_CLOSE;
-
-		echo '<div class="good goodContainer1">';
-		
-		print_goods($spacegame['goods']);
-		
-		echo DIV_CLOSE;
-		
-	?>
-	
-</div>
 <br />
 <hr />
 <div class="header3 header_bold">Goods That Do Not Upgrade</div>
