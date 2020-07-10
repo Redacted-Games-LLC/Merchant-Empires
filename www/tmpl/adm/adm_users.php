@@ -61,10 +61,10 @@
 				echo 'No results found. Please try again!';
 			}
 			else {
-				echo '<div class="user_list">';
+				echo '<div class="user_list align_left">';
 
 				foreach ($spacegame['search_results'] as $result) {
-					echo '<div class="user_list_item">';
+					echo '<div class="user_list_item align_left">';
 					
 						echo '<div class="user_list_caption">';
 							echo '<a href="admin.php?page=user&amp;user=';
@@ -89,11 +89,11 @@
 			echo '<hr />';
 			echo '<div class="header3 header_bold">User List</div>';
 			echo '<div class="docs_text">';
-				echo '<div class="user_list">';
+				echo '<div class="user_list align_left">';
 
 				foreach ($spacegame['users'] as $user) {
 
-					echo '<div class="user_list_item">';
+					echo '<div class="user_list_item align_left">';
 
 						echo '<div class="user_list_caption">';
 						echo '<a href="admin.php?page=user&amp;user=';

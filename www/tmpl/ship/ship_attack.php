@@ -172,7 +172,7 @@
 	}
 	else {
 
-		echo '<div class="attack_buttons">';
+		echo '<div class="attack_buttons align_center">';
 
 
 		$carried_weapons = array();
@@ -242,7 +242,7 @@
 				echo 'attack_player('. $solution_keys[$s] .',' . $player['record_id'] . ');">';
 			}
 			
-			echo '<div class="attack_solution">';
+			echo '<div class="attack_solution align_center">';
 			echo '#' . ($s + 1);
 			echo '</div>';
 

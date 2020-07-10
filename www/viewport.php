@@ -191,7 +191,7 @@
 						</div>
 					</div>	
 
-					<div class="sector_name">
+					<div class="sector_name align_center">
 					<?php
 						if ($spacegame['player']['ship_type'] > 0) {
 							
@@ -287,17 +287,17 @@
 								
 								<?php include_once('tmpl/viewport_dss.php'); ?>
 
-								<div class="viewport_console">
-									<div class="viewport_console_item" onclick="return open_locator()">
+								<div class="viewport_console align_center">
+									<div class="viewport_console_item align_center" onclick="return open_locator()">
 										NAV
 									</div>
-									<div class="viewport_console_item" onclick="return open_ship()">
+									<div class="viewport_console_item align_center" onclick="return open_ship()">
 										SHIP
 									</div>
-									<div class="viewport_console_item" onclick="return open_alliance()">
+									<div class="viewport_console_item align_center" onclick="return open_alliance()">
 										TEAM
 									</div>
-									<div class="viewport_console_item" onclick="return open_message(0)">
+									<div class="viewport_console_item align_center" onclick="return open_message(0)">
 										COM
 									</div>
 								</div>
@@ -321,7 +321,7 @@
 			include_once('tmpl/viewport_stations.php');
 		}
 		?>
-		<div class="viewport_split">
+		<div class="viewport_split align_center">
 
 			<table width="100%" role="presentation">
 				<tr>
@@ -361,7 +361,7 @@
 	?>
 		<div class="clear">&nbsp;</div>
 		<?php if (isset($_REQUEST['dmg'])) { ?>
-			<div class="taking_damage">
+			<div class="taking_damage align_center">
 				TAKING taking_damage
 			</div>
 		<?php } ?>

@@ -331,8 +331,8 @@ function draw_level_table() {
 			var level = (column * 20) + row;
 			var experience = 2000 * level * level * level;
 
-			document.write('<td class="level">' + level + '</td>');
-			document.write('<td class="experience">' + numberWithCommas(experience) + '</td>');
+			document.write('<td class="level align_right">' + level + '</td>');
+			document.write('<td class="experience align_right">' + numberWithCommas(experience) + '</td>');
 		}
 		
 		document.write('</tr>');

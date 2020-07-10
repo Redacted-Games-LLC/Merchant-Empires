@@ -155,7 +155,7 @@
 				echo '<tr class="gold_key">';
 				echo '<td class="gold_key gold_padding">' . $key['key'] . '</td>';
 				echo '<td class="gold_time gold_padding">' . floor($key['time']/86400) . '</td>';
-				echo '<td class="gold_actions gold_padding">';
+				echo '<td class="align_center gold_padding">';
 					if (!HAVOC_ROUND) {
 						echo '[<a href="handler.php?task=gold&amp;subtask=enable&amp;key=' . $key['key'] . '&amp;form_id='. $_SESSION['form_id'] .'">Enable</a>]&nbsp;&nbsp;&nbsp;&nbsp;';
 					}

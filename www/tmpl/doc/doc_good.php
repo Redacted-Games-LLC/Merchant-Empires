@@ -77,7 +77,7 @@
 		You must select a good first. <a href="docs.php?page=goods">Click here</a> to go back.
 	</div>
 <?php } else { ?>
-<div class="docs_goods">
+<div class="docs_goods align_center">
 	<img src="res/goods/<?php echo $doc_good['safe_caption']; ?>.png" width="12" height="12" alt="doc good" />
 	<img src="res/goods/<?php echo $doc_good['safe_caption']; ?>.png" width="20" height="20" alt="doc good" />
 	<img src="res/goods/<?php echo $doc_good['safe_caption']; ?>.png" width="32" height="32" alt="doc good" />

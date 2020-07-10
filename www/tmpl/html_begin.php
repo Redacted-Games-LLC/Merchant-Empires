@@ -155,9 +155,9 @@
 	<?php if (!isset($tmpl['no_fluff'])) { ?>
 	<header>
 		<!-- use <span> instead of <div> as we want title text on logo right, not logo bottom -->
-		<span id="game_logo"><img src="res/me_logo.png" width="320" alt="Merchant Empires logo" /></span>
-		<span id="game_title"><?php echo ':: ' . $tmpl['page_title']; ?></span>
-		<div id="game_menu">
+		<span id="game_logo" class="align_left"><img src="res/me_logo.png" width="320" alt="Merchant Empires logo" /></span>
+		<span id="game_title" class="align_left"><?php echo ':: ' . $tmpl['page_title']; ?></span>
+		<div id="game_menu" class="align_left">
 			<?php
 				if (USER_ID > 0) {
 					if (PLAYER_ID > 0) {

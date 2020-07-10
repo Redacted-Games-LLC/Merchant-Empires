@@ -24,7 +24,7 @@
 	include_once('tmpl/common.php');
 ?>
 	
-	<div id="sector_stations">
+	<div id="sector_stations" class="align_center">
 		<?php
 			foreach ($spacegame['places'] as $id => $place) {
 				switch ($place['type']) {

@@ -3,20 +3,17 @@
 div.alliance_list {
     width: 99%;
     margin: 2px auto;
-    text-align: left;
 }
 
 div.alliance_list_item {
     display: inline-block;
     width: 310px;
-    text-align: left;
     margin: 2px;
     padding: 2px;
     border: solid 1px #777777;
 }
 
 div.alliance_list_item_alliance {
-    text-align: right;
     float: right;
     width: 45%;
     white-space: nowrap;
@@ -36,13 +33,11 @@ div.alliance_list_item_gold {
 div.alliance_list_item_kick {
     float: right;
     width: 72px;
-    text-align: right;
 }
 
 div.alliance_recruit {
     width: 85%;
     margin: 4px auto;
-    text-align: center;
 }
 
 div.allied_ship {
@@ -86,7 +81,6 @@ div.dealer_goods_image {
 div.dealer_goods_price {
     float: left;
     height: 16px;
-    text-align: center;
     margin-left: 15px;
     margin-top: 10px;
 }
@@ -94,7 +88,6 @@ div.dealer_goods_price {
 div.dealer_goods_stock {
     float: left;
     height: 16px;
-    text-align: center;
     margin-left: 15px;
     margin-top: 10px;
 }
@@ -102,7 +95,6 @@ div.dealer_goods_stock {
 div.dealer_goods_text {
     float: left;
     height: 16px;
-    text-align: center;
     margin-left: 5px;
     margin-top: 9px;
     font-weight: bold;
@@ -179,7 +171,6 @@ div.dealer_ship_level {
     position: absolute;
     top: 45px;
     width: 48px;
-    text-align: center;
     font-size: 90%;
     font-style: italic;
 }
@@ -211,7 +202,6 @@ div.docs_goods {
     margin: 20px 0;
     word-wrap: break-word;
     background-color: #000000;
-    text-align: center;
 }
 
 div.docs_menu {
@@ -292,24 +282,19 @@ div.hostile_ship {
 div.left_column {
     width: 35%;
     float: left;
-    text-align: right;
     padding-left: 8px;
 }
 
 div.left_long_column {
     width: 60%;
     float: left;
-    text-align: left;
     padding-left: 8px;
 }
 
 div.login_form_item {
-    text-align: center;
     width: 500px;
     margin: 20px 20px;
 }
-
-div.login_form_label {text-align: right;}
 
 div.login_form_lower_button {
     position:inherit;
@@ -449,7 +434,6 @@ div.ns_sector {
     top: 10px;
     width: 80px;
     font-size: 90%;
-    text-align: center;
 }
 
 div.ns_solar {background: url("../solar_scan.png") no-repeat;}
@@ -487,14 +471,10 @@ div.place_to_locate {
     width: 250px;
     margin: 4px 8px;
     border: solid 1px #111111;
-    text-align: center;
     font-size: 90%;
 }
 
-div.places_to_locate {
-    width: 95%;
-    text-align: center;
-}
+div.places_to_locate {width: 95%;}
 
 div.player_select {
     float: left;
@@ -503,7 +483,6 @@ div.player_select {
     border: solid 1px #00ffff;
     padding: 10px;
     margin: 10px;
-    text-align: center;
 }
 
 div.player_select_outer {
@@ -565,7 +544,6 @@ div.port_goods_image {
 div.port_goods_price {
     float: left;
     height: 16px;
-    text-align: center;
     margin-left: 15px;
     margin-top: 10px;
 }
@@ -573,7 +551,6 @@ div.port_goods_price {
 div.port_goods_stock {
     float: left;
     height: 16px;
-    text-align: center;
     margin-left: 15px;
     margin-top: 11px;
     font-size: 80%;
@@ -582,7 +559,6 @@ div.port_goods_stock {
 div.port_goods_target {
     float: left;
     height: 16px;
-    text-align: center;
     margin-left: 15px;
     margin-top: 4px;
     font-size: 80%;
@@ -591,7 +567,6 @@ div.port_goods_target {
 div.port_goods_text {
     float: left;
     height: 16px;
-    text-align: center;
     margin-left: 5px;
     margin-top: 10px;
 }
@@ -600,7 +575,6 @@ div.port_item {
     position: relative;
     width: 99%;
     margin: 1px;
-    text-align:center;
 }
 
 div.port_update_button {
@@ -614,14 +588,12 @@ div.right_column {
     margin-right: 100px;
     width: 35%;
     float: right;
-    text-align: left;
     padding-right: 8px;
 }
 
 div.right_short_column {
     width: 35%;
     float: right;
-    text-align: right;
     padding-right: 8px;
     white-space: nowrap;
 }
@@ -629,7 +601,6 @@ div.right_short_column {
 div.room_list {
     width: 99%;
     margin: 2px auto;
-    text-align: left;
 }
 
 div.room_list_item {
@@ -638,16 +609,14 @@ div.room_list_item {
     width: 190px;
     margin: 2px;
     padding: 2px;
-    text-align: left;
     border: solid 1px #777777;
 }
 
 div.sector_name {
-    position:relative;
+    position: relative;
     top: 0;
     width: 70%;
     margin: 3px auto;
-    text-align: center;
     font-size: 150%;
     font-weight: bold;
     text-shadow: -1px 1px 2px #000,
@@ -666,7 +635,6 @@ div.sector_station {
 }
 
 div.ship_alliance {
-	text-align: left;
 	position: relative;
 	font-size: 70%;
 	width: 120px;
@@ -681,7 +649,6 @@ div.ship_dealer {
 
 div.ship_level {
 	float: right;
-	text-align: right;
 	position: relative;
 	font-size: 70%;
 	margin: 0;
@@ -690,7 +657,6 @@ div.ship_level {
 
 div.ship_links {
 	float: right;
-	text-align: right;
 	position: relative;
 	font-size: 70%;
 	width: 70px;
@@ -703,7 +669,6 @@ div.ship_links {
 }
 
 div.ship_name {
-	text-align: center;
 	position: relative;
 	font-size: 85%;
 	margin: 0;
@@ -711,7 +676,6 @@ div.ship_name {
 }
 
 div.ship_player_name {
-	text-align: center;
 	position: relative;
 	font-size: 90%;
 	margin: 0;
@@ -720,7 +684,6 @@ div.ship_player_name {
 }
 
 div.ship_type {
-	text-align: left;
 	position: relative;
 	font-size: 70%;
 	width: 120px;
@@ -739,7 +702,6 @@ div.takeoff {
     left: 0;
     width: 80px;
     height: 40px;
-    text-align: center;
     font-size: 70%;
     color: cyan;
 }
@@ -754,7 +716,6 @@ div.taking_damage {
 	background: #330000;
 	font-weight: bold;
 	font-size: 110%;
-	text-align: center;
 }
 
 div.tech_dealer {
@@ -771,7 +732,6 @@ div.trade_port {
 div.user_list {
     width: 99%;
     margin: 2px auto;
-    text-align: left;
 }
 
 div.user_list_item {
@@ -779,7 +739,6 @@ div.user_list_item {
     width: 190px;
     margin: 2px;
     padding: 2px;
-    text-align: left;
     border: solid 1px #777777;
 }
 
@@ -826,7 +785,6 @@ div.viewport_console {
 	width: 300px;
 	margin: 0 auto;
 	padding: 0;
-	text-align: center;
 	background: url('../black_dither.png') repeat;
 }
 
@@ -837,7 +795,6 @@ div.viewport_console_item {
 	margin: 8px 0 0 0;
 	padding: 6px 0;
 	background: url('../console_back.png') no-repeat;
-	text-align: center;
 	cursor: pointer;
 }
 
@@ -872,7 +829,6 @@ div.viewport_hostile_ships_head {
 	font-size: 12pt;
 	color: white;
 	background-color: #330000;
-	text-align: left;
 	padding: 10px;
 	font-weight: bold;
 }
@@ -882,7 +838,6 @@ div.viewport_player_info {
 	background-color: black;
 	border: solid 1px #001155;
 	overflow: hidden;
-	text-align: center;
 }
 
 div.viewport_safe_ships {
@@ -898,7 +853,6 @@ div.viewport_safe_ships_head {
 	font-size: 12pt;
 	color: white;
 	background-color: #000033;
-	text-align: left;
 	padding: 10px;
 	font-weight: bold;
 }
@@ -907,7 +861,6 @@ div.viewport_ships {
 	position: relative;
 	width: 100%;
 	min-width: 580px;
-	text-align: center;
 	vertical-align: top;
 }
 
@@ -916,12 +869,10 @@ div.viewport_ship_info {
 	border: solid 1px #551100;
 	background-color: black;
 	overflow: hidden;
-	text-align: center;
 }
 
 div.viewport_split {
 	position: relative;
-	text-align: center;
 	width: 100%;
 }
 

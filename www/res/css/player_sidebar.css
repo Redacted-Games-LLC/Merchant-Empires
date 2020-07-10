@@ -1,15 +1,11 @@
 /* player_sidebar.php */
 
-div.sidebar_credits {
-    font-size: 11pt;
-    text-align: center;
-}
+div.sidebar_credits {font-size: 11pt;}
 
 div.sidebar_experience {
     position: relative;
     width: 95%;
     margin: -20px auto 8px auto;
-    text-align: center;
     vertical-align: top;
     font-size: 90%;
     font-style: italic;
@@ -20,7 +16,6 @@ div.sidebar_level {
     position: relative;
     width: 95%;
     margin: 8px auto;
-    text-align: center;
 }
 
 div.sidebar_level_item {
@@ -38,17 +33,6 @@ div.sidebar_messages {
     font-size: 90%;
 }
 
-div.sidebar_name {
-    font-size: 20pt;
-    text-align: center;
-}
-
-div.sidebar_race {
-    font-size: 10pt;
-    text-align: center;
-}
-
-div.sidebar_turns {
-    font-size: 10pt;
-    text-align: center;
-}
+div.sidebar_name {font-size: 20pt;}
+div.sidebar_race {font-size: 10pt;}
+div.sidebar_turns {font-size: 10pt;}

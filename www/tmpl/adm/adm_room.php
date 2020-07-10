@@ -285,11 +285,11 @@
 
 				<div class="docs_text">
 				<?php
-					echo '<div class="room_list">';
+					echo '<div class="room_list align_left">';
 
 					foreach ($spacegame['room']['upgrades'] as $room_type_id) {
 
-						echo '<div class="room_list_item">';
+						echo '<div class="room_list_item align_left">';
 
 						echo '<a href="admin.php?page=room&amp;room='. $spacegame['room_types'][$room_type_id]['safe_caption'] .'">';
 						echo $spacegame['room_types'][$room_type_id]['caption'];

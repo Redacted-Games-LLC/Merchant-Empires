@@ -77,7 +77,6 @@ div.message_ignored {
 div.message_posted {
     background-color: #000;
     width: 100%;
-    text-align:right;
     font-size: 80%;
     color: green;
 }

@@ -1,5 +1,7 @@
 /* Main generic classes */
 
+.align_center {text-align: center;}
+.align_left {text-align: left;}
 .align_right {text-align: right;}
 
 .bigger {font-size: larger;}
@@ -8,7 +10,6 @@
 
 .captionHeader {
     width: 250px;
-    text-align: left;
     padding-left: 20px;
 }
 
@@ -38,19 +39,14 @@
 .goodLevel {
     width: 20px; 
     float: left; 
-    text-align: right;
 }
 
-.lvlHeader {
-    width: 20px;
-    text-align: left;
-}
+.lvlHeader {width: 20px;}
 
 .margin {margin: 10px;}
 
 .move_scan_text {
     font-size: 150%;
-    text-align: center;
     width: 34px;
 }
 
@@ -85,7 +81,6 @@
     border: solid 1px black;
     font-size: 75%;
     float: right;
-    text-align: right;
 }
 
 .news_headline {

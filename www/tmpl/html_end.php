@@ -24,7 +24,7 @@
 	include_once('tmpl/common.php');
 	
 	if ((!isset($tmpl['no_fluff'])) && (defined('PAGE_START_OFFSET') && USER_ID > 0)) {
-			echo '<div id="page_build">';
+			echo '<div id="page_build" class="align_center">';
 			echo 'Inflation <strong>';
 			echo round(INFLATION, 1);
 			echo '%</strong><br />';
@@ -38,8 +38,8 @@
 		</div>
 		<footer>
 			<!-- use <span> instead of <div> as we want license text on logo right, not logo bottom -->
-			<span id="footer_left_column"><img src="res/redacted_logo.png" width="280" alt="branding logo" /></span>
-			<span id="footer_right_column">Released under the Open Source <a href="docs.php?page=license" target="_blank">GNU GPLv3</a> License</span>
+			<span id="footer_left_column align_left"><img src="res/redacted_logo.png" width="280" alt="branding logo" /></span>
+			<span id="footer_right_column align_right">Released under the Open Source <a href="docs.php?page=license" target="_blank">GNU GPLv3</a> License</span>
 
 			<!-- required for footer background color -->
 			&nbsp;<br />

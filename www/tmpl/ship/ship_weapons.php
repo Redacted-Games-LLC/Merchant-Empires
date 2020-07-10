@@ -57,25 +57,25 @@
 	echo '<table class="ship_info">';
 
 	echo '<tr class="ship_info">';
-	echo '<td class="ship_info_key">Ship Type</td>';
-	echo '<td class="ship_info_value" colspan="2">' . $spacegame['ship']['caption'] . '</td>';
+	echo '<td class="ship_info_key align_left">Ship Type</td>';
+	echo '<td class="ship_info_value align_left" colspan="2">' . $spacegame['ship']['caption'] . '</td>';
 	echo '</tr>';
 
 	echo '<tr class="ship_info">';
-	echo '<td class="ship_info_key">Stations</td>';
-	echo '<td class="ship_info_value">' . $spacegame['ship']['stations'] . ' <img src="res/station.png" alt="station" title="Stations Available" width="16" /></td>';
-	echo '<td class="ship_info_value"><em>' . ($spacegame['ship']['stations'] - $spacegame['solution_stations']) . ' remaining</em></td>';
+	echo '<td class="ship_info_key align_left">Stations</td>';
+	echo '<td class="ship_info_value align_left">' . $spacegame['ship']['stations'] . ' <img src="res/station.png" alt="station" title="Stations Available" width="16" /></td>';
+	echo '<td class="ship_info_value align_left"><em>' . ($spacegame['ship']['stations'] - $spacegame['solution_stations']) . ' remaining</em></td>';
 	echo '</tr>';
 
 	echo '<tr class="ship_info">';
-	echo '<td class="ship_info_key">Racks</td>';
-	echo '<td class="ship_info_value">' . $spacegame['ship']['racks'] . ' <img src="res/rack.png" alt="rack" title="Racks Available" width="16" /></td>';
-	echo '<td class="ship_info_value"><em>' . ($spacegame['ship']['racks'] - $spacegame['solution_racks']) . ' remaining</em></td>';
+	echo '<td class="ship_info_key align_left">Racks</td>';
+	echo '<td class="ship_info_value align_left">' . $spacegame['ship']['racks'] . ' <img src="res/rack.png" alt="rack" title="Racks Available" width="16" /></td>';
+	echo '<td class="ship_info_value align_left"><em>' . ($spacegame['ship']['racks'] - $spacegame['solution_racks']) . ' remaining</em></td>';
 	echo '</tr>';
 
 	echo '<tr class="ship_info">';
-	echo '<td class="ship_info_key">Recharge</td>';
-	echo '<td class="ship_info_value" colspan="2">' . $spacegame['ship']['recharge'] . ' <img src="res/clock.png" alt="recharge" title="Recharge Delay" width="16" /></td>';
+	echo '<td class="ship_info_key align_left">Recharge</td>';
+	echo '<td class="ship_info_value align_left" colspan="2">' . $spacegame['ship']['recharge'] . ' <img src="res/clock.png" alt="recharge" title="Recharge Delay" width="16" /></td>';
 	echo '</tr>';
 
 	echo '</table>';
@@ -123,27 +123,27 @@
 
 				echo '<tr class="solution">';
 
-				echo '<th class="solution">';
+				echo '<th class="solution align_center">';
 					echo 'Actions';
 				echo '</th>';
 				
-				echo '<th class="solution">';
+				echo '<th class="solution align_center">';
 					echo 'Seq#';
 				echo '</th>';
 
-				echo '<th class="solution">';
+				echo '<th class="solution align_center">';
 					echo 'Weapon';
 				echo '</th>';
 
-				echo '<th class="solution">';
+				echo '<th class="solution align_center">';
 					echo 'Ammo';
 				echo '</th>';
 
-				echo '<th class="solution" title="Rounds per Volley">';
+				echo '<th class="solution align_center" title="Rounds per Volley">';
 					echo 'Vol';
 				echo '</th>';
 
-				echo '<th class="solution">';
+				echo '<th class="solution align_center">';
 					echo 'Acc%';
 				echo '</th>';
 
@@ -160,7 +160,7 @@
 				$shield_damage += $weapon['shield_damage'] * $weapon['volley'];
 				$armor_damage += $weapon['armor_damage'] * $weapon['volley'];
 
-				echo '<td class="solution" rowspan="3">';
+				echo '<td class="solution align_center" rowspan="3">';
 				?>
 					<form class="solution" action="handler.php" method="post">
 						<script type="text/javascript">drawButton('move_up<?php echo $solution_id; ?>', 'up', 'validate_move()')</script>
@@ -202,26 +202,26 @@
 				<?php
 				echo '</td>';
 
-				echo '<td class="solution">';
+				echo '<td class="solution align_center">';
 				echo $index + 1;
 				echo '</td>';
 
-				echo '<td class="solution">';
+				echo '<td class="solution align_center">';
 				echo $weapon['caption'];
 				echo '</td>';
 
-				echo '<td class="solution">';
+				echo '<td class="solution align_center">';
 				$good = $spacegame['goods'][$weapon['ammunition']];
 				echo '<img src="res/goods/'. $good['safe_caption'] .'.png" alt="' . $good['caption'] . '" title="Ammunition Required" width="16" />&nbsp;';
 				echo $good['caption'];
 				echo '</td>';
 
-				echo '<td class="solution">';
+				echo '<td class="solution align_center">';
 				echo $weapon['volley'];
 				echo '&nbsp;<img src="res/volley.png" width="16" alt="" />';
 				echo '</td>';
 
-				echo '<td class="solution">';
+				echo '<td class="solution align_center">';
 				echo $weapon['accuracy'];
 				echo '&nbsp;<img src="res/accuracy.png" width="16" alt="" />';
 				echo '</td>';
@@ -230,23 +230,23 @@
 
 				echo '<tr class="solution">';
 
-				echo '<th class="solution">';
+				echo '<th class="solution align_center">';
 					echo 'Score';
 				echo '</th>';
 
-				echo '<th class="solution">';
+				echo '<th class="solution align_center">';
 					echo 'Recharge';
 				echo '</th>';
 
-				echo '<th class="solution" title="General Damage">';
+				echo '<th class="solution align_center" title="General Damage">';
 					echo 'Gen';
 				echo '</th>';
 
-				echo '<th class="solution" title="Shield Damage">';
+				echo '<th class="solution align_center" title="Shield Damage">';
 					echo 'Shl';
 				echo '</th>';
 
-				echo '<th class="solution" title="Armor Damage">';
+				echo '<th class="solution align_center" title="Armor Damage">';
 					echo 'Arm';
 				echo '</th>';
 
@@ -254,29 +254,29 @@
 
 				echo '<tr class="solution">';
 
-				echo '<td class="solution">';
+				echo '<td class="solution align_center">';
 				$power = floor(10 * $weapon['volley'] * $weapon['accuracy'] * ($weapon['general_damage'] + $weapon['shield_damage'] + $weapon['armor_damage']));
 				echo $power;
 				$rating += $power;
 				echo '&nbsp;<img src="res/power.png" width="16" alt="Power" />';
 				echo '</td>';
 
-				echo '<td class="solution">';
+				echo '<td class="solution align_center">';
 				echo RECHARGE_TIME_PER_DAMAGE * $weapon['volley'] * ($weapon['armor_damage'] + $weapon['shield_damage'] + $weapon['general_damage']);
 				echo '&nbsp;<img src="res/clock.png" width="16" alt="" />';
 				echo '</td>';
 
-				echo '<td class="solution">';
+				echo '<td class="solution align_center">';
 				echo $weapon['general_damage'];
 				echo '&nbsp;<img src="res/shields.png" width="16" alt="" />+<img src="res/armor.png" width="16" alt="" />';
 				echo '</td>';
 
-				echo '<td class="solution">';
+				echo '<td class="solution align_center">';
 				echo $weapon['shield_damage'];
 				echo '&nbsp;<img src="res/shields.png" width="16" alt="" />';
 				echo '</td>';
 
-				echo '<td class="solution">';
+				echo '<td class="solution align_center">';
 				echo $weapon['armor_damage'];
 				echo '&nbsp;<img src="res/armor.png" width="16" alt="" />';
 				echo '</td>';
@@ -284,7 +284,7 @@
 				echo '</tr>';
 
 				echo '<tr class="solution">';
-				echo '<th class="solution" colspan="6">';
+				echo '<th class="solution align_center" colspan="6">';
 				echo '<hr />';
 				echo '</th>';
 				echo '</tr>';
@@ -293,54 +293,54 @@
 
 			echo '<tr>';
 			
-			echo '<th class="solution" rowspan="2">';
+			echo '<th class="solution align_center" rowspan="2">';
 			echo 'Expected Results';
 			echo '</th>';
 
-			echo '<th class="solution">';
+			echo '<th class="solution align_center">';
 				echo 'Score';
 			echo '</th>';
 
-			echo '<th class="solution">';
+			echo '<th class="solution align_center">';
 				echo 'Recharge';
 			echo '</th>';
 
-			echo '<th class="solution" title="General Damage">';
+			echo '<th class="solution align_center" title="General Damage">';
 				echo 'Gen';
 			echo '</th>';
 
-			echo '<th class="solution" title="Shield Damage">';
+			echo '<th class="solution align_center" title="Shield Damage">';
 				echo 'Shl';
 			echo '</th>';
 
-			echo '<th class="solution" title="Armor Damage">';
+			echo '<th class="solution align_center" title="Armor Damage">';
 				echo 'Arm';
 			echo '</th>';
 
 			echo '</tr>';
 
 			
-			echo '<td class="solution">';
+			echo '<td class="solution align_center">';
 			echo $rating;
 			echo '<img src="res/power.png" width="16" alt="Power" />';
 			echo '</td>';
 
-			echo '<td class="solution">';
+			echo '<td class="solution align_center">';
 			echo RECHARGE_TIME_PER_DAMAGE * ($general_damage + $shield_damage + $armor_damage) / $count;
 			echo '&nbsp;<img src="res/clock.png" width="16" alt="" />';
 			echo '</td>';
 
-			echo '<td class="solution">';
+			echo '<td class="solution align_center">';
 			echo $general_damage;
 			echo '&nbsp;<img src="res/shields.png" width="16" alt="" />+<img src="res/armor.png" width="16" alt="" />';
 			echo '</td>';
 			
-			echo '<td class="solution">';
+			echo '<td class="solution align_center">';
 			echo $shield_damage;
 			echo '&nbsp;<img src="res/shields.png" width="16" alt="" />';
 			echo '</td>';
 			
-			echo '<td class="solution">';
+			echo '<td class="solution align_center">';
 			echo $armor_damage;
 			echo '&nbsp;<img src="res/armor.png" width="16" alt="" />';
 			echo '</td>';
@@ -371,7 +371,7 @@
 				echo nl2br($weapon['caption']);
 				echo '</strong></td>';
 
-				echo '<td class="add_weapon_center" colspan="2">';
+				echo '<td class="add_weapon_center align_center" colspan="2">';
 
 				if ($weapon['race'] <= 0) {
 					echo 'Neutral';
@@ -383,17 +383,17 @@
 				echo ' Race';
 				echo '</td>';
 
-				echo '<td class="add_weapon_right">';
+				echo '<td class="add_weapon_right align_right">';
 				echo $weapon['stations'] . '&nbsp;';
 				echo '<img src="res/station.png" alt="station" title="Stations Needed" width="16" />';
 				echo '</td>';
 
-				echo '<td class="add_weapon_right">';
+				echo '<td class="add_weapon_right align_right">';
 				echo $weapon['racks'] . '&nbsp;';
 				echo '<img src="res/rack.png" alt="rack" title="Racks Needed" width="16" />';
 				echo '</td>';
 
-				echo '<td class="add_weapon_center" title="Computed Power">';
+				echo '<td class="add_weapon_center align_center" title="Computed Power">';
 				echo floor(10 * $weapon['volley'] * $weapon['accuracy'] * ($weapon['general_damage'] + $weapon['shield_damage'] + $weapon['armor_damage']));
 				echo '<img src="res/power.png" width="16" alt="Power" />';
 				echo '</td>';
@@ -426,18 +426,18 @@
 				echo '<img src="res/accuracy.png" alt="accuracy" title="Accuracy per Round" width="16" />';
 				echo '</td>';
 
-				echo '<td class="add_weapon_right">';
+				echo '<td class="add_weapon_right align_right">';
 				echo $weapon['general_damage'] . '&nbsp;';
 				echo '<img src="res/shields.png" alt="shields" title="Shield Damage" width="16" />+';
 				echo '<img src="res/armor.png" alt="armor" title="Armor Damage" width="16" />';
 				echo '</td>';
 
-				echo '<td class="add_weapon_right">';
+				echo '<td class="add_weapon_right align_right">';
 				echo $weapon['shield_damage'] . '&nbsp;';
 				echo '<img src="res/shields.png" alt="shields" title="Shield Damage" width="16" />';
 				echo '</td>';
 
-				echo '<td class="add_weapon_right">';
+				echo '<td class="add_weapon_right align_right">';
 				echo $weapon['armor_damage'] . '&nbsp;';
 				echo '<img src="res/armor.png" alt="armor" title="Armor Damage" width="16" />';
 				echo '</td>';
@@ -448,12 +448,9 @@
 				echo $good['caption'];
 				echo '</td>';
 
-
 				echo '</tr>';
 			}
-
 			echo '</table>';
-
 		}
 	?>
 </div>

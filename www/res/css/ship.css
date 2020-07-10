@@ -16,7 +16,6 @@ div.attack_button {
 
 div.attack_buttons {
     width: 640px;
-    text-align: center;
     background-color: #100;
 }
 
@@ -28,7 +27,6 @@ div.attack_solution {
     width: 100%;
     margin-left: auto;
     margin-top: auto;
-    text-align: center;
 }
 
 input.ship_form_input {
@@ -56,13 +54,11 @@ td.add_weapon {
 
 td.add_weapon_center {
     padding: 4px 8px;
-    text-align:center;
     white-space: nowrap;
 }
 
 td.add_weapon_right {
     padding: 4px 8px;
-    text-align:right;
     white-space: nowrap;
 }
 
@@ -71,7 +67,6 @@ td.ship_info_key {
     margin: 0 0 0 4px;
     padding: 4px;
     background-color: #002200;
-    text-align: left;
 }
 
 td.ship_info_value {
@@ -79,7 +74,6 @@ td.ship_info_value {
     margin: 0 0 0 4px;
     padding: 4px;
     background-color: #002222;
-    text-align: left;
     font-weight: bold;
 }
 
@@ -88,7 +82,6 @@ td.solution {
     margin: 0 0 0 4px;
     padding: 4px;
     background-color: #002222;
-    text-align: center;
     font-size: 90%;
     white-space: nowrap;
 }
@@ -98,7 +91,6 @@ th.solution {
     margin: 0 0 0 4px;
     padding: 4px;
     background-color: #002200;
-    text-align: center;
     font-weight: bold;
     white-space: nowrap;
 }

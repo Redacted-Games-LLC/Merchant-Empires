@@ -138,7 +138,7 @@
 
 								?>
 								<div class="dealer_ship_icon">&nbsp;</div>
-								<div class="dealer_ship_level">
+								<div class="dealer_ship_level align_center">
 									Rank <?php echo $item['details']['rank']; ?>
 								</div>
 								<div class="dealer_ship_stats">
@@ -179,13 +179,13 @@
 								<div class="dealer_goods_image">
 									<img src="res/goods/<?php echo $item['details']['safe_caption']; ?>.png" width="32" height="32" alt="dealer good" />
 								</div>
-								<div class="dealer_goods_text">
+								<div class="dealer_goods_text align_center">
 									<?php echo $item['details']['caption']; ?>
 								</div>
-								<div class="dealer_goods_price">
+								<div class="dealer_goods_price align_center">
 									<?php echo number_format($item['final_price']); ?><img src="res/credits.png" width="16" height="16" alt="credits" />
 								</div>
-								<div class="dealer_goods_stock">
+								<div class="dealer_goods_stock align_center">
 									<?php echo number_format($item['stock']); ?> Left
 								</div>
 								

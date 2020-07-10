@@ -8,14 +8,12 @@ footer {
 span#footer_left_column {
 	width: 49%;
 	float: left;
-	text-align: left;
 	padding-left: 8px;
 }
 
 span#footer_right_column {
 	width: 49%;
 	float: right;
-	text-align: right;
 	padding-right: 8px;
 }
 

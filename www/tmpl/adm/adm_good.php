@@ -71,7 +71,7 @@
 		You must select a good first. <a href="admin.php?page=goods">Click here</a> to go back.
 	</div>
 <?php } else { ?>
-<div class="docs_goods">
+<div class="docs_goods align_center">
 	<img src="res/goods/<?php echo $adm_good['safe_caption']; ?>.png" width="12" height="12" alt="admin good" />
 	<img src="res/goods/<?php echo $adm_good['safe_caption']; ?>.png" width="16" height="16" alt="admin good" />
 	<img src="res/goods/<?php echo $adm_good['safe_caption']; ?>.png" width="20" height="20" alt="admin good" />

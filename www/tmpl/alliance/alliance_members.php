@@ -48,7 +48,7 @@
 ?>
 <div class="header2 header_bold">Alliance Members : <?php echo $spacegame['alliances'][$alliance_id]['caption']; ?></div>
 <hr />
-<div class="alliance_recruit">
+<div class="alliance_recruit align_center">
 <?php if ($spacegame['alliances'][$alliance_id]['recruiting'] > 0) { ?>
 	This alliance is currently recruiting.
 	<?php if ($spacegame['player']['alliance'] <= 0) { ?>
@@ -79,10 +79,10 @@
 </div>
 <hr />
 <div class="header4 header_bold">This alliance has <?php echo $member_count . ' Member' . ($member_count == 1 ? '' : 's'); ?>:</div>
-<div class="alliance_list">
+<div class="alliance_list align_left">
 	<?php
 		foreach ($members as $member) {
-			echo '<div class="alliance_list_item" title="Level '. $member['level'] .'">';
+			echo '<div class="alliance_list_item align_left" title="Level '. $member['level'] .'">';
 
 			if ($member['gold_expiration'] > PAGE_START_TIME) {
 				echo '<div class="alliance_list_item_gold">';
@@ -106,7 +106,7 @@
 			if ($spacegame['player']['alliance'] == $alliance_id && $spacegame['player']['record_id'] == $spacegame['alliances'][$alliance_id]['founder']) {
 			
 				if ($spacegame['alliances'][$alliance_id]['founder'] != $member['record_id']) {
-					echo '<div class="alliance_list_item_kick">';
+					echo '<div class="alliance_list_item_kick align_right">';
 					echo '[<a href="handler.php?task=alliance&amp;subtask=leave&amp;player_id=' . $member['record_id'] . '&amp;form_id='. $_SESSION['form_id'] .'">Kick</a>]';
 					echo '</div>';
 				}

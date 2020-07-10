@@ -47,11 +47,11 @@
 		}
 		else {
 			echo '<div class="docs_text">';
-			echo '<div class="room_list">';
+			echo '<div class="room_list align_left">';
 
 			foreach ($spacegame['room_types'] as $room_type_id => $room_type) {
 
-				echo '<div class="room_list_item">';
+				echo '<div class="room_list_item align_left">';
 
 				echo '<a href="admin.php?page=room&amp;room='. $room_type['safe_caption'] .'">';
 				echo $room_type['caption'];

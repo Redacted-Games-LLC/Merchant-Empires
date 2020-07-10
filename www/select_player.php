@@ -76,7 +76,7 @@
 		
 		for ($i = 1; $i <= MAX_PLAYERS_PER_USER; $i++) {
 			?>
-			<div class="player_select">
+			<div class="player_select align_center">
 				<form id="select_player_form<?php echo $i; ?>" action="handler.php" method="post">
 				<?php 
 					if ($player_number < $player_count) {

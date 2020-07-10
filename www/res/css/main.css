@@ -96,7 +96,6 @@ pre.dump {
 	margin: 10px;
 	padding: 10px;
 	border: solid 2px gray;
-	text-align: left;
 }
 
 table.gold_key {border: none;}
@@ -106,11 +105,8 @@ table.levels {width: 100%;}
 td.experience {
     margin: 0 0 0 1px;
     background-color: #222222;
-    text-align:right;
     padding: 4px;
 }
-
-td.gold_actions {text-align: center;}
 
 td.gold_key {
     width: 400px;
@@ -133,7 +129,6 @@ th.gold_key {
 td.level {
     margin: 0 0 0 4px;
     background-color: #002200;
-    text-align: right;
     padding: 4px;
     font-weight: bold;
     width: 30px;

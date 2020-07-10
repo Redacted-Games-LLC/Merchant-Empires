@@ -13,7 +13,6 @@ div#game_menu {
 	top: 64px;
 	left: 32px;
 	width: 640px;
-	text-align: left;
 }
 
 div#page_build {
@@ -21,7 +20,6 @@ div#page_build {
 	top: 8px;
 	right: 8px;
 	width: 192px;
-	text-align: center;
 	background: url('../teal_dither.png') repeat;
 	border: solid 1px darkgray;
 }
@@ -31,7 +29,6 @@ span#game_logo {
 	top: 10px;
 	left: 22px;
 	width: 600px;
-	text-align: left;
 }
 
 span#game_title {
@@ -39,5 +36,4 @@ span#game_title {
 	top: 18px;
 	left: 340px;
 	width: 600px;
-	text-align: left;
 }

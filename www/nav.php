@@ -68,10 +68,10 @@
 			echo $caption;
 			echo '</div>';
 
-			echo '<div class="places_to_locate">';
+			echo '<div class="places_to_locate align_center">';
 			
 			foreach ($list as $id => $place) {
-				echo '<div class="place_to_locate">';
+				echo '<div class="place_to_locate align_center">';
 				echo $place['caption'];
 				echo ' ('; 
 				$dist = max(abs($place['x'] - $spacegame['player']['y']), abs($place['y'] - $spacegame['player']['y']));

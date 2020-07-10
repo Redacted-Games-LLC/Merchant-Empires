@@ -25,13 +25,13 @@
 	include_once('inc/goods.php');
 	include_once('inc/good_upgrades.php');
 	
-	define("TABLEHEADER_LVL", '<th class="lvlHeader"><strong>Lvl</strong></th>');
-	define("TABLEHEADER_GOODCAPTION", '<th class="captionHeader"><strong>Good Caption</strong></th>');
+	define("TABLEHEADER_LVL", '<th class="lvlHeader align_left"><strong>Lvl</strong></th>');
+	define("TABLEHEADER_GOODCAPTION", '<th class="captionHeader align_left"><strong>Good Caption</strong></th>');
 	define("DIV_OPEN", '<div>');
 	define("DIV_CLOSE", '</div>');
 	define("TBL_OPEN", '<table>');
 	define("TBL_CLOSE", '</table>');
-	define("DIV_GOODLEVEL_OPEN", '<div class="goodLevel">');
+	define("DIV_GOODLEVEL_OPEN", '<div class="goodLevel align_right">');
 	define("DIV_GOODCAPTION_OPEN", '<div class="goodCaption">');
 	
 	function print_goods($goods_list) {

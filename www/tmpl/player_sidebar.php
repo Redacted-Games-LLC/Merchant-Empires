@@ -23,7 +23,7 @@
 
 	include_once('tmpl/common.php');
 ?>
-<div class="viewport_player_info">
+<div class="viewport_player_info align_center">
 	<br />
 	<?php
 		if ($spacegame['player']['unread_messages'] > 0) {
@@ -35,10 +35,10 @@
 		}
 	?>
 	<br />
-	<div class="sidebar_race">
+	<div class="sidebar_race align_center">
 		<?php echo $spacegame['races'][$spacegame['player']['race']]['caption']; ?>
 	</div>
-	<div class="sidebar_name">
+	<div class="sidebar_name align_center">
 		<?php
 			if ($spacegame['gold']) {
 				echo '<img src="res/gold.png" alt="Gold" title="Gold Member" height="20" />&nbsp;';
@@ -51,14 +51,14 @@
 			echo '</a>';
 		?>
 	</div>
-	<div class="sidebar_turns">
+	<div class="sidebar_turns align_center">
 		<strong><?php echo str_replace('.50', '.5', str_replace('.00', '', (string)number_format($spacegame['player']['turns'], 2))); ?></strong> Turns Remaining
 	</div>
-	<div class="sidebar_credits" title="Credits Remaining">
+	<div class="sidebar_credits align_center" title="Credits Remaining">
 		<strong><?php echo number_format($spacegame['player']['credits']); ?></strong> <img src="res/credits.png" width="13" alt="Credits" />
 	</div>
 	<br class="clear" />
-	<div class="sidebar_level" title="<?php echo 'Experience: ' . number_format($spacegame['player']['experience']) . " \nAlignment: " . $spacegame['player']['alignment']; ?>">
+	<div class="sidebar_level align_center" title="<?php echo 'Experience: ' . number_format($spacegame['player']['experience']) . " \nAlignment: " . $spacegame['player']['alignment']; ?>">
 		<div class="sidebar_level_item">
 			<?php
 				echo $spacegame['player']['level'];
@@ -82,7 +82,7 @@
 			<?php echo $spacegame['player']['level'] + 1; ?>
 		</div>
 	</div>
-	<div class="sidebar_experience">
+	<div class="sidebar_experience align_center">
 		<?php
 			if ($spacegame['player']['experience'] >= $next_experience) {
 				echo '<a href="handler.php?task=level&amp;form_id='. $_SESSION['form_id'] .'">Level Up</a>';
@@ -94,4 +94,3 @@
 		?>
 	</div>
 </div>
-
