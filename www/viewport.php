@@ -24,6 +24,10 @@
 	include_once('inc/page.php');
 	include_once('inc/game.php');
 
+	define("HEADER3_BOLD", '<div class="header3 header_bold">');
+	define("HEADER5_BOLD", '<div class="header5 header_bold">');
+	define("DIV_CLOSE", '</div>');
+
 	do { // Dummy loop
 		
 		$db = isset($db) ? $db : new DB;
@@ -192,31 +196,31 @@
 						if ($spacegame['player']['ship_type'] > 0) {
 							
 							if (isset($spacegame['system'])) {
-								echo '<div class="header5 header_bold">';
+								echo HEADER5_BOLD;
 								echo $spacegame['system']['caption'] . ' System';
-								echo '</div>';
+								echo DIV_CLOSE;
 
-								echo '<div class="header3 header_bold">';
+								echo HEADER3_BOLD;
 								echo $spacegame['player']['x'] . ', ' . $spacegame['player']['y'];
-								echo '</div>';
+								echo DIV_CLOSE;
 							}
 							elseif ($spacegame['player']['base_id'] > 0) {
-								echo '<div class="header5 header_bold">';
+								echo HEADER5_BOLD;
 								echo $base_caption;
-								echo '</div>';
+								echo DIV_CLOSE;
 
-								echo '<div class="header3 header_bold">';
+								echo HEADER3_BOLD;
 								echo $spacegame['player']['base_x'] . ', ' . $spacegame['player']['base_y'];
-								echo '</div>';
+								echo DIV_CLOSE;
 							}
 							else {
-								echo '<div class="header5 header_bold">';
+								echo HEADER5_BOLD;
 								echo '&nbsp;';
-								echo '</div>';
+								echo DIV_CLOSE;
 
-								echo '<div class="header3 header_bold">';
+								echo HEADER3_BOLD;
 								echo '&nbsp;';
-								echo '</div>';
+								echo DIV_CLOSE;
 							}
 
 							if (isset($spacegame['places'])) {
@@ -225,30 +229,34 @@
 								foreach ($spacegame['places'] as $place) {
 									switch ($place['place_type']) {
 										case '2':
-											echo '<div class="header5 header_bold">Star '. $place['caption'] .'</div>';
+											echo HEADER5_BOLD;
+											echo 'Star '. $place['caption'] .DIV_CLOSE;
 											$success = true;
 											break;
 
 										case '9': // Warp
-											echo '<div class="header5 header_bold">'. $place['caption'] .'</div>';
+											echo HEADER5_BOLD. $place['caption'] .DIV_CLOSE;
 											$success = true;
 											break;											
 
 										case '3': // Earth Planet
 										case '5': // Rocky Planet
 										case '12': // Ice Giant
-											echo '<div class="header5 header_bold">Planetoid '. $place['caption'] .'</div>';
+											echo HEADER5_BOLD;
+											echo 'Planetoid '. $place['caption'] .DIV_CLOSE;
 											$success = true;
 											break;
 									}
 								}
 
 								if (!$success) {
-									echo '<div class="header5 header_bold">&nbsp;</div>';
+									echo HEADER5_BOLD;
+									echo '&nbsp;</div>';
 								}
 							}
 							else {
-								echo '<div class="header5 header_bold">&nbsp;</div>';
+								echo HEADER5_BOLD;
+								echo '&nbsp;</div>';
 							}
 						}
 						else {
