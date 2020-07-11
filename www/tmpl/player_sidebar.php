@@ -82,6 +82,8 @@
 			<?php echo $spacegame['player']['level'] + 1; ?>
 		</div>
 	</div>
+	<!-- push to separate line for readability -->
+	&nbsp;
 	<div class="sidebar_experience align_center">
 		<?php
 			if ($spacegame['player']['experience'] >= $next_experience) {
