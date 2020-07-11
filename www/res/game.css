@@ -39,7 +39,7 @@
  @import url("css/footer.css");
 
  /* to be worked on later */
- @import url("css/base.css"); /* p.over_link & a.over_link in game.js, but not defined here */
+
 
  @font-face {
 	font-family: CascadiaMono;

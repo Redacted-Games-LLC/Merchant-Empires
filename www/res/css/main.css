@@ -41,6 +41,25 @@ img.alliance_list_recruit_image {
 	height: 20px;
 }
 
+img.base_player_icon {
+    position: absolute;
+    top: 44px;
+    left: 44px;
+    width: 32px;
+    height: 32px;
+}
+
+img.base_small_grid_image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
 input.dealer_form_button {
 	position: absolute;
 	top: 0;

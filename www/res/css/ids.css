@@ -1,5 +1,19 @@
 /* Main id */
 
+div#base_field {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
+    width: 564px;
+    height: 564px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: black;
+    border: solid 2px yellow;
+    overflow: hidden;
+}
+
 div#disabled_scan_controls {
     position: relative;
     width: 256px;

@@ -84,6 +84,60 @@ div.base {
     background-size: 64px 64px;
 }
 
+div.base_grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 560px;
+    height: 560px;
+    margin: 2px;
+}
+
+div.base_grid_image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80px;
+    height: 80px;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+div.base_grid_item {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border: solid 1px lightgray;
+    background-color: black;
+}
+
+div.base_grid_link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80px;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+div.base_overgrid_item {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border: solid 1px white;
+    background: none;
+}
+
+div.base_small_grid_item {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: black;
+}
+
 div.battle_message {
     background-color: #330;
     width: 100%;
@@ -314,6 +368,12 @@ div.full_spread {
 	min-width: 940px;
 	min-height: 256px;
 	background-color: #001111;
+}
+
+div.grid_room {
+    position: absolute;
+    top: 1px;
+    left: 1px;
 }
 
 div.header1 {font-size: 300%;}
@@ -587,6 +647,18 @@ div.official_message_head {
     background-color: #404;
     padding: 4px 8px;
     margin: 0;
+}
+
+div.over_links {
+    position: absolute;
+    top: 600px;
+    left: 785px;
+    right: 0;
+    width: 180px;
+    margin-left: auto;
+    margin-right: auto;
+    border: dashed 4px yellow;
+    background-color: navy;
 }
 
 div.place_to_locate {
@@ -950,6 +1022,15 @@ div.trade_port {
     width: 96px;
     background: url('../port.png') no-repeat;
     background-size: 96px 64px;
+}
+
+div.under_construction {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(../construction.png);
 }
 
 div.user_list {
