@@ -28,7 +28,7 @@ a.game_menu {
 
 a.pagination_current_link {
     margin: 2px 12px;
-    border: dotted 2px white;
+    border: dotted 2px lightgray;
     font-size: 120%;
     padding: 3px 8px;
 }
@@ -50,7 +50,7 @@ input.dealer_form_text {
     top: 0;
     left: 0;
     background-color: black;
-    color: white;
+    color: lightgray;
 }
 
 input.form_button {
@@ -75,7 +75,7 @@ input.port_form_input {
     top: 0;
     left: 0;
     background-color: black;
-    color: white;
+    color: lightgray;
 }
 
 input.select_player_name {width: 140px;}
@@ -91,7 +91,7 @@ li.popup_list {
 pre {font-family: CascadiaMono, monospace;}
 
 pre.dump {
-	background-color: white;
+	background-color: lightgray;
 	color: black;
 	margin: 10px;
 	padding: 10px;

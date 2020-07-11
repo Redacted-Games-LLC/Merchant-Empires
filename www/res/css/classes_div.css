@@ -183,7 +183,7 @@ div.dealer_ship_stats {
 div.dealer_ship_text {font-size: 16px;}
 
 div.dealer_text {
-    color: white;
+    color: lightgray;
     margin: 16px 0;
 }
 
@@ -253,7 +253,7 @@ div.floating_message_nofluff {
 div.full_spread {
 	position: relative;
 	width: 95%;
-	border: solid 2px white;
+	border: solid 2px lightgray;
 	margin: 4px auto;
 	padding: 20px;
 	min-width: 940px;
@@ -317,15 +317,15 @@ div.login_intro {
 }
 
 div.login_locked {
-    border: solid 2px white;
+    border: solid 2px lightgray;
     background-color: #333300;
     margin: 32px 64px;
     padding: 24px;
-    color: white;
+    color: lightgray;
 }
 
 div.noscript {
-	border: solid 3px #ffffff;
+	border: solid 3px lightgray;
 	margin: 20px;
 	padding: 20px 100px;
 	background-color: #311;
@@ -501,7 +501,7 @@ div.player_select_title {
 div.popup_spread {
 	position: relative;
 	width: 90%;
-	border: solid 2px white;
+	border: solid 2px lightgray;
 	margin: 4px auto;
 	padding: 20px;
 	min-width: 600px;
@@ -913,7 +913,7 @@ div.viewport_hostile_ships {
 
 div.viewport_hostile_ships_head {
 	font-size: 12pt;
-	color: white;
+	color: lightgray;
 	background-color: #330000;
 	padding: 10px;
 	font-weight: bold;
@@ -937,7 +937,7 @@ div.viewport_safe_ships {
 
 div.viewport_safe_ships_head {
 	font-size: 12pt;
-	color: white;
+	color: lightgray;
 	background-color: #000033;
 	padding: 10px;
 	font-weight: bold;
