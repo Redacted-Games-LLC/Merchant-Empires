@@ -200,9 +200,7 @@
 			
 			<div class="login_form_item align_center">
 				&nbsp;
-
-				<!-- to check on this alignment later -->
-				<div class="left_long_column align_left align_right">
+				<div class="left_long_column">
 					<?php echo $phrase; ?>
 				</div>
 				<div class="right_short_column align_right">
