@@ -27,12 +27,7 @@
  @import url("css/classes_generic.css");
  @import url("css/classes_div.css");
  @import url("css/element_ids.css");
-
- /* selectors being used but not defined */
- /* li.docs_menu in tmpl/doc/menu.php & tmpl/adm/menu.php */
-
- /* un-used selectors from original css have been moved here */
- /* not_used.css */
+ /* un-used selectors from original css have been moved to "css/not_used.txt" */
 
  @font-face {
 	font-family: CascadiaMono;
