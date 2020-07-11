@@ -51,7 +51,6 @@ div.base_grid_link {
     margin: 0;
     padding: 0;
     border: none;
-    text-align: center;
 }
 
 div.base_overgrid_item {
@@ -85,7 +84,6 @@ div.over_links {
     margin-right: auto;
     border: dashed 4px yellow;
     background-color: navy;
-    text-align: center;
 }
 
 div.under_construction {

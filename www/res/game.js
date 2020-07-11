@@ -25,15 +25,9 @@
  * I am very, very sorry for this file. --Celdecea
  */
 
-
-
-
 var form_validate_lock = false;
 
-
-
 function page_onload(no_fluff) {
-
 
 	if (!no_fluff) {
 		
@@ -71,7 +65,6 @@ function page_onload(no_fluff) {
 		document.body.appendChild(popupDiv);
 
 	}
-
 
 	if (messages) {
 
@@ -111,10 +104,8 @@ function page_onload(no_fluff) {
     		messageDiv.appendChild(messageItem);
 		}
 
-
 		document.body.appendChild(messageDiv);
 	}
-	
 }
 
 function hide_div(object) {
@@ -141,8 +132,6 @@ function show_article_div(show_div_label, hide_div_label, div, id) {
 	show_div(div + id);
 }
 
-
-
 function validate_login() {
 	if (!lock_validation()) {
 		return false;
@@ -168,10 +157,6 @@ function validate_login() {
 	return true;
 }
 
-
-
-
-
 function validate_create_player(number) {
 	if (!lock_validation()) {
 		return false;
@@ -191,9 +176,6 @@ function validate_create_player(number) {
 	document.getElementById('select_player_form' + number).submit();
 	return true;
 }
-
-
-
 
 function validate_signup() {
 	if (!lock_validation()) {
@@ -241,8 +223,6 @@ function validate_signup() {
 	return true;
 }
 
-
-
 function validate_playername(playname) {
 	return /^[a-zA-Z0-9]{2,12}$/.test(playname);
 }
@@ -250,7 +230,6 @@ function validate_playername(playname) {
 function validate_username(username) {
 	return /^[a-zA-Z0-9]{2,16}$/.test(username);
 }
-
 
 function validate_password(password) {
 	return (password.length >= 6 && password.length <= 128);
@@ -269,7 +248,6 @@ function validate_email(email) {
 	return /^([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22))*\x40([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d))*$/.test(email);
 }
 
-
 function lock_validation() {
 	if (form_validate_lock == true) {
 		return false;
@@ -282,7 +260,6 @@ function lock_validation() {
 function unlock_validation() {
 	form_validate_lock = false;
 }
-
 
 function drawButton(id, label, action, classes) {
 	
@@ -341,7 +318,6 @@ function draw_level_table() {
 	document.write('</table>');
 }
 
-
 function get_image_link(src, alt, title) {
 
 	var im = document.createElement('img');
@@ -351,7 +327,6 @@ function get_image_link(src, alt, title) {
 
 	return im;
 }
-
 
 function draw_force_panel(drone_count, drone_id, mine_count, mine_id, holds_count, cargo_count, form_id) {
 
@@ -453,14 +428,7 @@ function draw_force_panel(drone_count, drone_id, mine_count, mine_id, holds_coun
 	else {
 		fp.appendChild(get_image_link('./res/fp/dm50_d.png', 'Drop 50 Mines', 'No Mines'));
 	}
-
-
 }
-
-
-
-
-
 
 // Thanks to http://stackoverflow.com/a/2901298
 function numberWithCommas(x) {
@@ -521,7 +489,6 @@ function open_player(id) {
 	return false;
 }
 
-
 function open_ship() {
 	
 	var frame = document.getElementById('main_iframe');
@@ -538,7 +505,6 @@ function open_alliance() {
 
 	show_div('main_popup');
 	return false;
-
 }
 
 function open_message(go_to_inbox) {
@@ -554,7 +520,6 @@ function open_message(go_to_inbox) {
 
 	show_div('main_popup');
 	return false;
-
 }
 
 function open_base_build() {
@@ -593,7 +558,6 @@ function open_attack_force(force_id) {
 	return false;
 }
 
-
 function attack_player(solution_group, player_id) {
 	
 	top.location.href = 'handler.php?task=attack&solution_group=' + solution_group + '&player_id=' + player_id + '&form_id=' + form_id;
@@ -605,9 +569,6 @@ function attack_player_forces(solution_group, force_id) {
 	top.location.href = 'handler.php?task=attack&solution_group=' + solution_group + '&force_id=' + force_id + '&form_id=' + form_id;
 	return false;
 }
-
-
-
 
 var _internal_seed = 0;
 
@@ -625,9 +586,6 @@ function random(max) {
 	return Math.floor((_internal_random() * 2000000000) % max);
 }
 
-
-
-
 function base_number_format(n) {
 	if (n < 10) {
 		return '0' + n;
@@ -637,9 +595,6 @@ function base_number_format(n) {
 	}
 }
 
-
-
-
 /**
  * Generates the base field in the browser
  *
@@ -647,7 +602,6 @@ function base_number_format(n) {
  * I am truly sorry for this function.
  */
 function load_base_field() {
-
 
 	var field = document.getElementById('base_field');
 
@@ -669,15 +623,11 @@ function load_base_field() {
 
 	// 0 north, 1 above equator, 2 below equator, 3 south
 	var lattitude = random(4);
-
-
 	var can_land = false;
 
 	if (player_id == base_owner || (alliance > 0 && alliance == base_alliance)) {
 		can_land = true;
 	}
-
-
 
 	for (x = 0; x <= 99; x++) {
 		for (y = 0; y <= 99; y++) {
@@ -708,8 +658,6 @@ function load_base_field() {
 
 			grid_item.style.top = ((display_size - ty) * image_size) + 'px';
 			grid_item.style.left = ((tx - 1) * image_size) + 'px';
-
-
 
 			if (lattitude == 0) {
 
@@ -771,7 +719,6 @@ function load_base_field() {
 			}
 			else if (lattitude == 1) {
 
-
 				// Mid southern part of a planet
 
 				if (y < 20) {
@@ -801,8 +748,6 @@ function load_base_field() {
 				else {
 					grid_item.style.backgroundImage = 'url(res/base/grass_' + grass_number + '.png)';
 				}
-				
-
 			}
 			else if (lattitude == 2) {
 
@@ -835,10 +780,6 @@ function load_base_field() {
 				else {
 					grid_item.style.backgroundImage = 'url(res/base/grass_' + grass_number + '.png)';
 				}
-				
-
-
-
 			}
 			else if (lattitude == 3) {
 
@@ -896,15 +837,11 @@ function load_base_field() {
 				else {
 					grid_item.style.backgroundImage = 'url(res/base/grass_' + grass_number + '.png)';
 				}
-				
-
-
 			}
 			else {
 				grid_item.style.backgroundImage = 'url(res/base/grass_' + grass_number + '.png)';
 			}
 		
-
 			if (rock_number <= 3) {
 				var grid_image = document.createElement('div');
 
@@ -935,7 +872,7 @@ function load_base_field() {
 
 			if (false) {
 				var grid_link_div = document.createElement('div');
-				grid_link_div.className = 'base_grid_link';
+				grid_link_div.className = 'base_grid_link align_center';
 				
 				if (base_x - x <= 1 && x - base_x <= 1 && base_y - y <= 1 && y - base_y <= 1) {
 					var grid_link = document.createElement('a');
@@ -954,8 +891,6 @@ function load_base_field() {
 			grid.appendChild(grid_item);
 		}
 	}
-
-
 
 	// Prepare a list of action links for rooms we might be flying over like "land" or "build"
 	var over_links = [];
@@ -984,7 +919,6 @@ function load_base_field() {
 		if (room.y + room.height < by - ds + 1) {
 			continue;
 		}
-
 
 		var safe_caption = room.caption.toLowerCase().replace(' ', '_');
 
@@ -1025,11 +959,10 @@ function load_base_field() {
 						}
 
 						break;
-
+					// missing default?
 				}
 			}
 		}
-
 
 		// Display room image
 		var room_div = document.createElement('div');
@@ -1067,7 +1000,7 @@ function load_base_field() {
 	if (over_links.length > 0) {
 
 		var over_link_div = document.createElement('div');
-		over_link_div.className = 'over_links';
+		over_link_div.className = 'over_links align_center';
 
 		for (i = 0; i < over_links.length; i++) {
 
@@ -1076,13 +1009,10 @@ function load_base_field() {
 			link_wrapper.innerHTML = over_links[i];
 
 			over_link_div.appendChild(link_wrapper);
-
 		}
 
 		document.body.appendChild(over_link_div);
 	}
-
-
 
 	// Put down the rectangular grid over the base field
 
@@ -1113,7 +1043,6 @@ function load_base_field() {
 				if (nx < 0 || ny < 0 || nx > 100 || ny > 100) {
 					continue;
 				}
-
 			}
 			else {
 
@@ -1131,7 +1060,7 @@ function load_base_field() {
 			// Links for the grid items
 
 			var grid_link_div = document.createElement('div');
-			grid_link_div.className = 'base_grid_link';
+			grid_link_div.className = 'base_grid_link align_center';
 
 			if (tx - x <= 1 && ty - y <= 1 && x - tx <= 1 && y - ty <= 1) {
 				
@@ -1154,7 +1083,6 @@ function load_base_field() {
 				// player, reserved for when building is ready.
 				//grid_link_div.innerHTML = base_number_format(nx) + '&nbsp;' + base_number_format(ny);
 			}
-
 
 			// Enable player icon and add names to the list.
 			var show_icon = false;			
@@ -1200,12 +1128,7 @@ function load_base_field() {
 	}
 
 	field.appendChild(grid);
-
-
 }
-
-
-
 
 function load_pagination(current_page, total_pages, base_url) {
 
@@ -1240,7 +1163,6 @@ function load_pagination(current_page, total_pages, base_url) {
 	a.innerHTML = '<';
 	div.appendChild(a);
 
-
 	var start = Math.max(0, Math.min(total_pages, current_page + 5) - 10);
 
 	for (var i = 0; i <= 10; i++) {
@@ -1272,7 +1194,6 @@ function load_pagination(current_page, total_pages, base_url) {
 	a.innerHTML = '>';
 	div.appendChild(a);
 
-
 	if (current_page < total_pages - 1) {
 		a = document.createElement('a');
 		a.setAttribute('href', base_url + '&p=' + total_pages);
@@ -1284,10 +1205,7 @@ function load_pagination(current_page, total_pages, base_url) {
 	a.className = 'pagination_link';
 	a.innerHTML = '>>';
 	div.appendChild(a);
-
-
 }
-
 
 function update_textarea_length(input_id, output_id, limit) {
 	
@@ -1328,7 +1246,6 @@ function register_textarea_length_handlers(input_id, output_id, limit) {
 	update_textarea_length(input_id, output_id, limit);
 }
 
-
 function start_recharge(id, width, part, whole, increment) {
 	
 	var rect = document.getElementById(id);
@@ -1345,9 +1262,3 @@ function start_recharge(id, width, part, whole, increment) {
 		return;
 	}, 200);
 }
-
-
-
-
-
-
