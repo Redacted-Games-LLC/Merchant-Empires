@@ -24,6 +24,10 @@
 	include_once('tmpl/common.php');
 	include_once('inc/solutions.php');
 	include_once('inc/cargo.php');
+
+	define("TH_SOLUTION_CENTER", '<th class="solution align_center">');
+	define("TD_SHIP_SOLUTION_CENTER", '<td class="ship solution align_center">');
+	define("TD_ADD_WEAPON_RIGHT", '<td class="add_weapon align_right">');
 ?>
 <div class="header2 header_bold">Weapon Solutions</div>
 <div class="docs_text">
@@ -123,19 +127,19 @@
 
 				echo '<tr class="solution">';
 
-				echo '<th class="solution align_center">';
+				echo TH_SOLUTION_CENTER;
 					echo 'Actions';
 				echo '</th>';
 				
-				echo '<th class="solution align_center">';
+				echo TH_SOLUTION_CENTER;
 					echo 'Seq#';
 				echo '</th>';
 
-				echo '<th class="solution align_center">';
+				echo TH_SOLUTION_CENTER;
 					echo 'Weapon';
 				echo '</th>';
 
-				echo '<th class="solution align_center">';
+				echo TH_SOLUTION_CENTER;
 					echo 'Ammo';
 				echo '</th>';
 
@@ -143,7 +147,7 @@
 					echo 'Vol';
 				echo '</th>';
 
-				echo '<th class="solution align_center">';
+				echo TH_SOLUTION_CENTER;
 					echo 'Acc%';
 				echo '</th>';
 
@@ -202,26 +206,26 @@
 				<?php
 				echo '</td>';
 
-				echo '<td class="ship solution align_center">';
+				echo TD_SHIP_SOLUTION_CENTER;
 				echo $index + 1;
 				echo '</td>';
 
-				echo '<td class="ship solution align_center">';
+				echo TD_SHIP_SOLUTION_CENTER;
 				echo $weapon['caption'];
 				echo '</td>';
 
-				echo '<td class="ship solution align_center">';
+				echo TD_SHIP_SOLUTION_CENTER;
 				$good = $spacegame['goods'][$weapon['ammunition']];
 				echo '<img src="res/goods/'. $good['safe_caption'] .'.png" alt="' . $good['caption'] . '" title="Ammunition Required" width="16" />&nbsp;';
 				echo $good['caption'];
 				echo '</td>';
 
-				echo '<td class="ship solution align_center">';
+				echo TD_SHIP_SOLUTION_CENTER;
 				echo $weapon['volley'];
 				echo '&nbsp;<img src="res/volley.png" width="16" alt="" />';
 				echo '</td>';
 
-				echo '<td class="ship solution align_center">';
+				echo TD_SHIP_SOLUTION_CENTER;
 				echo $weapon['accuracy'];
 				echo '&nbsp;<img src="res/accuracy.png" width="16" alt="" />';
 				echo '</td>';
@@ -230,11 +234,11 @@
 
 				echo '<tr class="solution">';
 
-				echo '<th class="solution align_center">';
+				echo TH_SOLUTION_CENTER;
 					echo 'Score';
 				echo '</th>';
 
-				echo '<th class="solution align_center">';
+				echo TH_SOLUTION_CENTER;
 					echo 'Recharge';
 				echo '</th>';
 
@@ -254,29 +258,29 @@
 
 				echo '<tr class="solution">';
 
-				echo '<td class="ship solution align_center">';
+				echo TD_SHIP_SOLUTION_CENTER;
 				$power = floor(10 * $weapon['volley'] * $weapon['accuracy'] * ($weapon['general_damage'] + $weapon['shield_damage'] + $weapon['armor_damage']));
 				echo $power;
 				$rating += $power;
 				echo '&nbsp;<img src="res/power.png" width="16" alt="Power" />';
 				echo '</td>';
 
-				echo '<td class="ship solution align_center">';
+				echo TD_SHIP_SOLUTION_CENTER;
 				echo RECHARGE_TIME_PER_DAMAGE * $weapon['volley'] * ($weapon['armor_damage'] + $weapon['shield_damage'] + $weapon['general_damage']);
 				echo '&nbsp;<img src="res/clock.png" width="16" alt="" />';
 				echo '</td>';
 
-				echo '<td class="ship solution align_center">';
+				echo TD_SHIP_SOLUTION_CENTER;
 				echo $weapon['general_damage'];
 				echo '&nbsp;<img src="res/shields.png" width="16" alt="" />+<img src="res/armor.png" width="16" alt="" />';
 				echo '</td>';
 
-				echo '<td class="ship solution align_center">';
+				echo TD_SHIP_SOLUTION_CENTER;
 				echo $weapon['shield_damage'];
 				echo '&nbsp;<img src="res/shields.png" width="16" alt="" />';
 				echo '</td>';
 
-				echo '<td class="ship solution align_center">';
+				echo TD_SHIP_SOLUTION_CENTER;
 				echo $weapon['armor_damage'];
 				echo '&nbsp;<img src="res/armor.png" width="16" alt="" />';
 				echo '</td>';
@@ -297,11 +301,11 @@
 			echo 'Expected Results';
 			echo '</th>';
 
-			echo '<th class="solution align_center">';
+			echo TH_SOLUTION_CENTER;
 				echo 'Score';
 			echo '</th>';
 
-			echo '<th class="solution align_center">';
+			echo TH_SOLUTION_CENTER;
 				echo 'Recharge';
 			echo '</th>';
 
@@ -319,27 +323,27 @@
 
 			echo '</tr>';
 
-			echo '<td class="ship solution align_center">';
+			echo TD_SHIP_SOLUTION_CENTER;
 			echo $rating;
 			echo '<img src="res/power.png" width="16" alt="Power" />';
 			echo '</td>';
 
-			echo '<td class="ship solution align_center">';
+			echo TD_SHIP_SOLUTION_CENTER;
 			echo RECHARGE_TIME_PER_DAMAGE * ($general_damage + $shield_damage + $armor_damage) / $count;
 			echo '&nbsp;<img src="res/clock.png" width="16" alt="" />';
 			echo '</td>';
 
-			echo '<td class="ship solution align_center">';
+			echo TD_SHIP_SOLUTION_CENTER;
 			echo $general_damage;
 			echo '&nbsp;<img src="res/shields.png" width="16" alt="" />+<img src="res/armor.png" width="16" alt="" />';
 			echo '</td>';
 			
-			echo '<td class="ship solution align_center">';
+			echo TD_SHIP_SOLUTION_CENTER;
 			echo $shield_damage;
 			echo '&nbsp;<img src="res/shields.png" width="16" alt="" />';
 			echo '</td>';
 			
-			echo '<td class="ship solution align_center">';
+			echo TD_SHIP_SOLUTION_CENTER;
 			echo $armor_damage;
 			echo '&nbsp;<img src="res/armor.png" width="16" alt="" />';
 			echo '</td>';
@@ -381,12 +385,12 @@
 				echo ' Race';
 				echo '</td>';
 
-				echo '<td class="add_weapon align_right">';
+				echo TD_ADD_WEAPON_RIGHT;
 				echo $weapon['stations'] . '&nbsp;';
 				echo '<img src="res/station.png" alt="station" title="Stations Needed" width="16" />';
 				echo '</td>';
 
-				echo '<td class="add_weapon align_right">';
+				echo TD_ADD_WEAPON_RIGHT;
 				echo $weapon['racks'] . '&nbsp;';
 				echo '<img src="res/rack.png" alt="rack" title="Racks Needed" width="16" />';
 				echo '</td>';
@@ -424,18 +428,18 @@
 				echo '<img src="res/accuracy.png" alt="accuracy" title="Accuracy per Round" width="16" />';
 				echo '</td>';
 
-				echo '<td class="add_weapon align_right">';
+				echo TD_ADD_WEAPON_RIGHT;
 				echo $weapon['general_damage'] . '&nbsp;';
 				echo '<img src="res/shields.png" alt="shields" title="Shield Damage" width="16" />+';
 				echo '<img src="res/armor.png" alt="armor" title="Armor Damage" width="16" />';
 				echo '</td>';
 
-				echo '<td class="add_weapon align_right">';
+				echo TD_ADD_WEAPON_RIGHT;
 				echo $weapon['shield_damage'] . '&nbsp;';
 				echo '<img src="res/shields.png" alt="shields" title="Shield Damage" width="16" />';
 				echo '</td>';
 
-				echo '<td class="add_weapon align_right">';
+				echo TD_ADD_WEAPON_RIGHT;
 				echo $weapon['armor_damage'] . '&nbsp;';
 				echo '<img src="res/armor.png" alt="armor" title="Armor Damage" width="16" />';
 				echo '</td>';

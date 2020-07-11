@@ -33,6 +33,9 @@
 
 	include_once('inc/ships.php');
 
+	define("PORT_GOODS_TEXT", '<div class="port_goods_text align_center">');
+	define("PORT_ITEM", '<div class="port_item align_center">');
+	define("HEADER_4_BOLD", '<div class="header4 header_bold">');
 
 	$empty_holds_available = $spacegame['ship']['holds'];
 
@@ -51,7 +54,7 @@
 		echo '<img src="res/goods/' . $item['details']['safe_caption'] . '.png" width="32" height="32" />';
 		echo '</div>';
 
-		echo '<div class="port_goods_text align_center">';
+		echo PORT_GOODS_TEXT;
 		echo '<strong>';
 		echo $item['details']['caption'];
 		echo '</strong>';
@@ -73,7 +76,7 @@
 		if ($item['upgrade'] > 0) {
 			
 			echo '<div class="port_goods_target align_center">';
-				echo '<div class="port_goods_text align_center">';
+				echo PORT_GOODS_TEXT;
 				echo 'For&nbsp;';
 				echo '</div>';
 
@@ -81,7 +84,7 @@
 				echo '<img src="res/goods/' . strtolower(str_replace(' ', '_', $spacegame['goods'][$item['upgrade']]['caption'])) . '.png" width="20" height="20" />';
 				echo '</div>';
 
-				echo '<div class="port_goods_text align_center">';
+				echo PORT_GOODS_TEXT;
 				echo '<strong>';
 				echo $spacegame['goods'][$item['upgrade']]['caption'];
 				echo '</strong>';
@@ -143,9 +146,10 @@
 		global $empty_holds_available;
 
 		if ($spacegame['port_trades']['buys_count'] > 0) {
-			echo '<div class="header4 header_bold">We need the following goods if you carry them:</div>';
+			echo HEADER_4_BOLD;
+			echo 'We need the following goods if you carry them:</div>';
 
-			echo '<div class="port_item align_center">';
+			echo PORT_ITEM;
 			
 			foreach ($spacegame['port_trades']['buys'] as $id => $item) {
 				make_goods_div($item, $place_id, $empty_holds_available);
@@ -163,9 +167,10 @@
 
 
 		if ($spacegame['port_trades']['sells_count'] > 0) {
-			echo '<div class="header4 header_bold">We have the following goods for your purchase if you want them:</div>';
+			echo HEADER_4_BOLD;
+			echo 'We have the following goods for your purchase if you want them:</div>';
 
-			echo '<div class="port_item align_center">';
+			echo PORT_ITEM;
 			
 			foreach ($spacegame['port_trades']['sells'] as $id => $item) {
 				make_goods_div($item, $place_id, $empty_holds_available);
@@ -183,9 +188,10 @@
 		global $empty_holds_available;
 		
 		if ($spacegame['port_upgrades']['buys_count'] > 0) {
-			echo '<div class="header4 header_bold">We want to start new production but need the following goods:</div>';
+			echo HEADER_4_BOLD;
+			echo 'We want to start new production but need the following goods:</div>';
 
-			echo '<div class="port_item align_center">';
+			echo PORT_ITEM;
 			
 			foreach ($spacegame['port_upgrades']['buys'] as $id => $item) {
 				make_goods_div($item, $place_id, $empty_holds_available, $item['amount'] == 0);
@@ -202,7 +208,8 @@
 		global $empty_holds_available;
 
 		if ($spacegame['port_upgrades']['sells_count'] > 0) {
-			echo '<div class="header4 header_bold">We have the following &quot;waste&quot; from new production we will sell undeclared:</div>';
+			echo HEADER_4_BOLD;
+			echo 'We have the following &quot;waste&quot; from new production we will sell undeclared:</div>';
 
 			echo '<div class="port_item">';
 			
