@@ -23,7 +23,7 @@
 
 	include_once('tmpl/common.php');
 ?>
-<div class="header2">
+<div class="header2 header_bold">
 	Welcome to Merchant Empires
 </div>
 <div class="docs_text">

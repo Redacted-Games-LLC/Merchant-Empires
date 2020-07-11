@@ -20,9 +20,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
-
-	
 	include_once('tmpl/common.php');
 ?>
 
@@ -36,7 +33,7 @@
 
 						echo "<div class='ns_square ns_{$dir}' onclick='return open_scan(" . ($spacegame['player']['x'] + $dx) . ',' . ($spacegame['player']['y'] + $dy) . ")'>";
 
-						echo '<div class="ns_sector">';
+						echo '<div class="ns_sector align_center">';
 		
 						if ($spacegame['player']['x'] + $dx < 0 || $spacegame['player']['x'] + $dx > 999 || $spacegame['player']['y'] + $dy < 0 || $spacegame['player']['y'] + $dy > 999) {
 							echo '<br class="clear" />';
@@ -87,7 +84,6 @@
 							echo '<div class="ns_force_top" title="Enemy Forces">&nbsp;</div>';
 						}
 						
-
 						echo "</div>";
 					}
 				}
@@ -98,10 +94,7 @@
 			&nbsp;
 		</div>
 	<?php } ?>
-	<div class="move_scan_text">
+	<div class="move_scan_text align_center">
 		&nbsp;<br />S<br /><br />C<br /><br />A<br /><br />N
 	</div>
-	
 </div>
-
-

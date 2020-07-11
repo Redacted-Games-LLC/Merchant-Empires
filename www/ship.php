@@ -42,7 +42,7 @@
 			<script type="text/javascript">drawButton('close', 'close', 'return true;');</script>
 		</a>
 	</div>
-	<div class="header1">Ship Console</div>
+	<div class="header1 header_bold">Ship Console</div>
 	<div class="popup_menu">
 		<?php include_once('tmpl/ship/menu.php'); ?>
 	</div>

@@ -28,31 +28,26 @@
 
 ?>
 
-<!--
-Need to remove bolding for <th>.
-Need to align table headers.
--->
-
-<div class="header2">Subspace Broadcast</div>
+<div class="header2 header_bold">Subspace Broadcast</div>
 <div class="docs_text">
 	A subspace broadcast will be sent to all online players using the Imperial
 	Frequency. Some players may have this frequency disabled.
 </div>
 <div class="docs_text">
 	<form action="handler.php" method="post">
-		<table class="message" role="presentation">
-			<tr class="message">
+		<table role="presentation">
+			<tr>
 				<td class="message align_right" colspan="2">
 					<span class="characters_left" id="characters_left">&nbsp;</span>
 				</td>
 			</tr>
-			<tr class="message">
+			<tr>
 				<td class="message">Message:</td>
 				<td class="message">
 					<textarea class="msg_form_input" id="msg_input" name="message" rows="6" cols="60" maxlength="<?php echo MAXIMUM_SUBSPACE_MESSAGE_LENGTH; ?>"></textarea>
 				</td>
 			</tr>
-			<tr class="message">
+			<tr>
 				<td class="message">&nbsp;</td>
 				<td class="message">
 					<script type="text/javascript">
@@ -73,7 +68,7 @@ Need to align table headers.
 	minutes.
 </div>
 <hr />
-<div class="header3">Sent Messages</div>
+<div class="header3 header_bold">Sent Messages</div>
 <div class="docs_text">
 	<?php 
 		if ($spacegame['message_count'] <= 0) {

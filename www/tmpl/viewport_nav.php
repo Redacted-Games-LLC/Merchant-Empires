@@ -25,7 +25,7 @@
 ?>
 
 <div id="nav_control_outer">
-	<div class="float_right move_scan_text">
+	<div class="float_right move_scan_text align_center">
 		&nbsp;<br />M<br /><br />O<br /><br />V<br /><br />E
 	</div>
 
@@ -43,7 +43,7 @@
 
 					echo "<div class='ns_square ns_{$dir}' onclick='location.href = ". '"' . $nav_link . '"' . "' title='Move Here'>";
 					
-					echo '<div class="ns_sector">';
+					echo '<div class="ns_sector align_center">';
 		
 					if ($spacegame['player']['x'] + $dx < 0 || $spacegame['player']['x'] + $dx > 999 || $spacegame['player']['y'] + $dy < 0 || $spacegame['player']['y'] + $dy > 999) {
 						echo '<br class="clear" />';
@@ -100,26 +100,12 @@
 					}
 
 					if($spacegame['player']['base_id'] > 0) {
-						echo "<div class='takeoff'>Takeoff</div>";
+						echo "<div class='takeoff align_center'>Takeoff</div>";
 					}
 				
 					echo '</div>';
 				}
 			}
-
-
-
 		?>
 	</div>
 </div>
-
-
-
-
-
-
-
-
-
-
-

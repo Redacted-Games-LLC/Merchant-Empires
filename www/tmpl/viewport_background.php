@@ -50,6 +50,12 @@
 			
 				break 2;
 
+			case 9: // Warp
+				echo '<div class="viewport_big_warp" style="';
+				echo 'background: url(res/warp.png) no-repeat; background-size: 100% 100%;';
+				echo '">&nbsp;</div>';
+				break 2;
+
 			case 12: // Ice Giant Planet
 				echo '<div class="viewport_big_planetoid" style="';
 				echo 'background: url(res/planets/neptune_'. $dir .'.png) no-repeat;';
@@ -59,5 +65,3 @@
 		}
 	}
 ?>
-
-

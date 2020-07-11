@@ -23,7 +23,7 @@
 
 	include_once('tmpl/common.php');
 ?>
-<div class="header2">Game and Usage Policies</div>
+<div class="header2 header_bold">Game and Usage Policies</div>
 <div class="docs_text">
 	Remember if you don't agree with these policies you may always
 	<a href="docs.php?page=hosting">download and host</a> your own
@@ -37,7 +37,7 @@
 		<li><a href="docs.php?page=bots">Bot Policy</a></li>
 	</ul>
 </div>
-<div class="header2">General Rules</div>
+<div class="header2 header_bold">General Rules</div>
 <div class="docs_text">
 	Experience farming through combat is the big no-no in this game. We
 	don't want you creating players or using meat puppets just so your

@@ -23,27 +23,27 @@
 
 	include_once('tmpl/common.php');
 ?>
-<div class="header2">Privacy Practices</div>
-<div class="header3">Personal Information</div>
+<div class="header2 header_bold">Privacy Practices</div>
+<div class="header3 header_bold">Personal Information</div>
 <div class="docs_text">
 	We don't share anything we collect, but whether or not anything we do collect is personally
 	identifiable is really up to you. We won't ask you for your real name or address or such.
 	The following is a list of things we ask for.
 </div>
-<div class="header4">Username</div>
+<div class="header4 header_bold">Username</div>
 <div class="docs_text">
 	Our signup page requires a username for login purposes. The username you choose is stored
 	in our database for login purposes only. This information is not publicly shared. You should
 	never use personally identifiable information in a username.
 </div>
-<div class="header4">Passwords</div>
+<div class="header4 header_bold">Passwords</div>
 <div class="docs_text">
 	Passwords are stored using a hash function and every user has their own generated salt. Upon
 	logging in your password attempt is hashed in the same way and compared to what we have
 	stored in our db. Though we cannot recover an original cleartext password you should not use
 	personal information when choosing one.
 </div>
-<div class="header4">Email Address</div>
+<div class="header4 header_bold">Email Address</div>
 <div class="docs_text">
 	Our signup page asks an email address but you do not have to give one. Email addresses may be
 	personally identifiable by nature; we only use it for password recovery and if we have to
@@ -51,7 +51,7 @@
 	updates, or other spam emails. Your email address will not be shared, sold, or intentionally 
 	publicized by us.
 </div>
-<div class="header4">Player Names</div>
+<div class="header4 header_bold">Player Names</div>
 <div class="docs_text">
 	Players can name their characters. Player names are public and players may also elect to share
 	their player name online. Choosing names may unintentionally create a forensic connection to
@@ -59,4 +59,3 @@
 	player name, including whether to use names which are known in other game universes or even a
 	real name.
 </div>
-

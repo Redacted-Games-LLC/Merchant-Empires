@@ -52,7 +52,7 @@
 			<script type="text/javascript">drawButton('close', 'close', 'return true;');</script>
 		</a>
 	</div>
-	<div class="header2">Locate Place</div>
+	<div class="header2 header_bold">Locate Place</div>
 	<div class="popup_text">
 		Lost? The Imperial Government can help! The following places are
 		sorted by distance (mouseover the links to see how far). When you
@@ -64,14 +64,14 @@
 	<?php
 		foreach ($places as $caption => $list) {
 			echo '<hr />';
-			echo '<div class="header3">';
+			echo '<div class="header3 header_bold">';
 			echo $caption;
 			echo '</div>';
 
-			echo '<div class="places_to_locate">';
+			echo '<div class="places_to_locate align_center">';
 			
 			foreach ($list as $id => $place) {
-				echo '<div class="place_to_locate">';
+				echo '<div class="place_to_locate align_center">';
 				echo $place['caption'];
 				echo ' ('; 
 				$dist = max(abs($place['x'] - $spacegame['player']['y']), abs($place['y'] - $spacegame['player']['y']));

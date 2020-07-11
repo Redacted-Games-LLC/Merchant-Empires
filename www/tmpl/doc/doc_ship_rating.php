@@ -23,7 +23,7 @@
 
 	include_once('tmpl/common.php');
 ?>
-<div class="header2">Attack / Defense Rating</div>
+<div class="header2 header_bold">Attack / Defense Rating</div>
 <div class="docs_text">	
 	Ships are rated as to their attack and defense capabilities. A high-level
 	ship with strong weapons will have a higher attack capability than an
@@ -33,22 +33,22 @@
 	The minimum attack:defense rating is 1:1, and you will see it given in that
 	form in the game viewport.
 </div>
-<div class="header3">Attack Rating Contributors</div>
+<div class="header3 header_bold">Attack Rating Contributors</div>
 <div class="docs_text">
 	The following things will contribute to an attack rating.
 </div>
-<div class="header4">
+<div class="header4 header_bold">
 	Player Level
 </div>
 <div class="docs_text">
 	Every player level adds <?php echo ATTACK_RATING_PER_LEVEL; ?> to the attack
 	rating.
 </div>
-<div class="header3">Defense Rating Contributors</div>
+<div class="header3 header_bold">Defense Rating Contributors</div>
 <div class="docs_text">
 	The following things will contribute to a defense rating.
 </div>
-<div class="header4">
+<div class="header4 header_bold">
 	Armor and Shields
 </div>
 <div class="docs_text">

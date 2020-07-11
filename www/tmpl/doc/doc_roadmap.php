@@ -23,12 +23,12 @@
 
 	include_once('tmpl/common.php');
 ?>
-<div class="header2">Roadmap</div>
+<div class="header2 header_bold">Roadmap</div>
 <div class="docs_text">
 	The goal is to bring back the feeling of playing APME right around
 	the Profit &amp; Prey round, with a marked improvement on bases.
 </div>
-<div class="header3">Major Release 1.0 goals - Round 1</div>
+<div class="header3 header_bold">Major Release 1.0 goals - Round 1</div>
 <div class="docs_text">
 	<ol>
 		<li>Fully navigable galaxy environment for multiple players <img src="res/safe_scan_force.png" width="18" height="18" alt="Done" /></li>
@@ -52,7 +52,7 @@
 		<li>Ship switching, hangars <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
 	</ol>
 </div>
-<div class="header3">Major Release 1.1 goals - Round 2</div>
+<div class="header3 header_bold">Major Release 1.1 goals - Round 2</div>
 <div class="docs_text">
 	<ol>
 		<li>Tractor beam hold, raiding <img src="res/hostile_scan_force.png" width="18" height="18" alt="Not done" /></li>
@@ -61,7 +61,7 @@
 	</ol>
 </div>
 
-<div class="header3">Stuff that is probably not going to get implemented.</div>
+<div class="header3 header_bold">Stuff that is probably not going to get implemented.</div>
 <div class="docs_text">
 	<ol>
 		<li>Searching for good buyers/sellers</li>

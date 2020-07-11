@@ -32,7 +32,7 @@
 ?>
 
 <div class="full_spread">
-	<div class="header2"><img src="res/gold.png" width="16" alt="gold ribbon" />&nbsp;Gold Membership Information</div>
+	<div class="header2 header_bold"><img src="res/gold.png" width="16" alt="gold ribbon" />&nbsp;Gold Membership Information</div>
 
 	<div class="docs_text">
 		<?php 
@@ -74,16 +74,16 @@
 					echo '<a href="handler.php?task=gold&amp;subtask=obtain&amp;form_id='. $_SESSION['form_id'] .'">clicking here</a>.</big> ';
 					echo ' The key will be stored with your user automatically.';
 				}
-				
+
 			}
 			else {
-				echo 'You do not have an active gold membership.To activate one, ';
+				echo 'You do not have an active gold membership. To activate one, ';
 				echo 'enter a Gold key below.';
 			}
 		?>
 	</div>
 	<hr />
-	<div class="header3">Enable Gold Key</div>
+	<div class="header3 header_bold">Enable Gold Key</div>
 	<?php if (!HAVOC_ROUND) { ?>
 		<div class="docs_text">
 			Enter a key here to add Gold Membership time to your player. You can
@@ -107,7 +107,7 @@
 		</div>
 	<?php } ?>
 	<hr />
-	<div class="header3">Store Gold Key</div>
+	<div class="header3 header_bold">Store Gold Key</div>
 	<div class="docs_text">
 		Storing a Gold key protects it by attaching it to your user account. From there
 		it can be accessed through this page from any of your active players.
@@ -126,7 +126,7 @@
 		</form>
 	</div>
 	<hr />
-	<div class="header4">Your Stored Keys</div>
+	<div class="header4 header_bold">Your Stored Keys</div>
 	<div class="docs_warning">
 		<strong>WARNING:</strong> Removing a key will take it out of storage.
 		Not only can the Gold key be activated by anyone who has it, if you have
@@ -153,9 +153,9 @@
 
 			foreach ($spacegame['gold_keys'] as $record_id => $key) {
 				echo '<tr class="gold_key">';
-				echo '<td class="gold_key">' . $key['key'] . '</td>';
-				echo '<td class="gold_time">' . floor($key['time']/86400) . '</td>';
-				echo '<td class="gold_actions">';
+				echo '<td class="gold_key gold_padding">' . $key['key'] . '</td>';
+				echo '<td class="gold_time gold_padding">' . floor($key['time']/86400) . '</td>';
+				echo '<td class="align_center gold_padding">';
 					if (!HAVOC_ROUND) {
 						echo '[<a href="handler.php?task=gold&amp;subtask=enable&amp;key=' . $key['key'] . '&amp;form_id='. $_SESSION['form_id'] .'">Enable</a>]&nbsp;&nbsp;&nbsp;&nbsp;';
 					}
@@ -171,7 +171,7 @@
 		}
 	?>
 	<hr />
-	<div class="header3">Transfer Gold Key</div>
+	<div class="header3 header_bold">Transfer Gold Key</div>
 	<div class="docs_text">
 		You can transfer a gold key to another player. When you do so it will
 		attach to their <em>user</em> and they will be free to enable it on any
@@ -198,10 +198,8 @@
 		</form>
 	</div>
 	
-
 	<br class="clear" />
 </div>
-
 	
 <?php	
 	include_once('tmpl/html_end.php');

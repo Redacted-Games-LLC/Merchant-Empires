@@ -23,7 +23,7 @@
 
 	include_once('tmpl/common.php');
 ?>
-<div class="header2">Alien Races of the Game</div>
+<div class="header2 header_bold">Alien Races of the Game</div>
 <div class="docs_text">
 	People of the Galactic races have been at war with each other for almost
 	a thousand years, possibly even more. The cause is long forgotten, and very
@@ -46,7 +46,7 @@
 	Every attempt at formally ending the war seems to fail. The Imperial
 	Government continuously, and mysteriously, refuses to discuss this issue.
 </div>
-<div class="header3">Racial Notes</div>
+<div class="header3 header_bold">Racial Notes</div>
 <div class="docs_text">
 	There are <a href="docs.php?page=alignment">alignment</a> changes if you
 	kill any allied or enemy player.

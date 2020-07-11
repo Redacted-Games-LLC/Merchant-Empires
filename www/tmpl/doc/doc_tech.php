@@ -23,13 +23,13 @@
 
 	include_once('tmpl/common.php');
 ?>
-<div class="header2">Ship Technology</div>
+<div class="header2 header_bold">Ship Technology</div>
 <div class="docs_text">	
 	Tech dealers provide goods solar collectors, oil platforms, <a href="docs.php?page=ordnance">ordnance</a>,
 	port packages, shields and armor.
 </div>
 <hr />
-<div class="header3">Solar Collectors</div>
+<div class="header3 header_bold">Solar Collectors</div>
 <div class="docs_text">	
 	Solar collectors are a type of dealer which provides very cheap energy harvested from a
 	star. They charge only one 1 <img src="res/credits.png" width="16" height="16" alt="¢" title="Credits" />

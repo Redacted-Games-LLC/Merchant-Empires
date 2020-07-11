@@ -25,7 +25,7 @@
 
 ?>
 <div class="news <?php echo 'news_author' . $article['author']; ?>">
-	<div class="news_date">
+	<div class="news_date align_right">
 		<?php echo date(DATE_RFC850, $article['live']); ?><br />
 		<em>By: <strong><?php echo $spacegame['news']['authors'][$article['author']]; ?></strong></em>
 	</div>

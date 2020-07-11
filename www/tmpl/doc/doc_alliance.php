@@ -23,7 +23,7 @@
 
 	include_once('tmpl/common.php');
 ?>
-<div class="header2">Alliances</div>
+<div class="header2 header_bold">Alliances</div>
 <div class="docs_text">
 	Players can group together into mixed-race alliances. Members of alliances can
 	safely enter sectors mined by their mates and avoid targeting by drones or
@@ -34,20 +34,20 @@
 	in the next section. There is no alliance account and no way for an alliance
 	to pool money from the players.
 </div>
-<div class="header3">Imperial Tax and Member Limits</div>
+<div class="header3 header_bold">Imperial Tax and Member Limits</div>
 <div class="docs_text">
 	There is no limit to the number of players who can join an alliance.
 	However, there is a tax. The rate is 1% plus 0.2% per alliance member, rounded
 	up. Eight people will pay 3%, 15 will pay 4% while 16-20 members will pay 5%,
 	and so forth.
 </div>
-<div class="header3">Treaties and Politics</div>
+<div class="header3 header_bold">Treaties and Politics</div>
 <div class="docs_text">
 	There are <strong>no treaties</strong> allowed between alliances.
 	Alliances are not considered racial. Each player is still responsible
 	for their own alignment.
 </div>
-<div class="header3">Creating an Alliance</div>
+<div class="header3 header_bold">Creating an Alliance</div>
 <div class="docs_text">
 	Any player who has reached level <?php echo ALLIANCE_CREATION_LEVEL; ?>
 	may form an alliance.
@@ -56,7 +56,7 @@
 	The player who creates an alliance is called a Founder and can manipulate 
 	alliance settings such as recruitment status.
 </div>
-<div class="header3">Joining an Alliance</div>
+<div class="header3 header_bold">Joining an Alliance</div>
 <div class="docs_text">
 	Players who are not in an alliance can request to join up to <?php echo ALLIANCE_REQUEST_LIMIT; ?>
 	recruiting alliances. To find out if an alliance is recruiting, click on the
@@ -73,7 +73,7 @@
 	an open join request. They can see open requests on their Alliance Member List
 	page and the lead was already messaged for you.
 </div>
-<div class="header3">Leaving an Alliance</div>
+<div class="header3 header_bold">Leaving an Alliance</div>
 <div class="docs_text">
 	Players can leave an alliance at any time in the Alliance Status page, or they
 	can be kicked out from the member page. Alliance leaders must demote themselves

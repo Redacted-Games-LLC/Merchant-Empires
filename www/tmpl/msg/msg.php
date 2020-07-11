@@ -162,7 +162,7 @@
 						echo $message['message'];
 					}
 				echo '</div>';
-				echo '<div class="message_posted">';
+				echo '<div class="message_posted align_right">';
 					echo 'Sent '. date(DATE_RFC850, $message['posted']);
 				echo '</div>';
 				

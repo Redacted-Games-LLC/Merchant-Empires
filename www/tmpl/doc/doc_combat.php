@@ -23,7 +23,7 @@
 
 	include_once('tmpl/common.php');
 ?>
-<div class="header2">Combat</div>
+<div class="header2 header_bold">Combat</div>
 <div class="docs_text">
 	Combat occurs between various combinations of players, forces, and bases.
 </div>

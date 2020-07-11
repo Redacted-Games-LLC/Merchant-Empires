@@ -32,9 +32,8 @@
 
 
 ?>
-	<div class="header2">Base Research Administration</div>
+	<div class="header2 header_bold">Base Research Administration</div>
 	<div class="docs_text">
 		You can manipulate base research using this page.
 	</div>
 	<hr />
-	

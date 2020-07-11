@@ -23,9 +23,9 @@
 
 	include_once('tmpl/common.php');
 ?>
-<div class="header2">Ship Status</div>
+<div class="header2 header_bold">Ship Status</div>
 <hr />
-<div class="header3">Ship Name</div>
+<div class="header3 header_bold">Ship Name</div>
 <div class="docs_text">
 	Your ship name can contain 2 to 12 characters using letters, numbers, and underscore only,
 	unless you have an active <a href="docs.php?page=gold" target="_blank">Gold Membership</a>.

@@ -30,7 +30,7 @@
 
 ?>
 <div class="popup_spread">
-	<div class="header1">We're Sorry</div>
+	<div class="header1 header_bold">We're Sorry</div>
 	<hr />
 	<div class="docs_text">
 		You have reached this page because Internet Explorer 11 is currently not supported.

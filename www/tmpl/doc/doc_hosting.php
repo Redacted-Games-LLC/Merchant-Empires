@@ -23,7 +23,7 @@
 
 	include_once('tmpl/common.php');
 ?>
-<div class="header2">Downloading and Hosting</div>
+<div class="header2 header_bold">Downloading and Hosting</div>
 <div class="docs_text">
 	To host your own Merchant Empires server you should be able to set up and secure a 
 	MySQL database server and an Apache web server running PHP. If doing these things

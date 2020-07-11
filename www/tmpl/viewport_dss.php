@@ -27,10 +27,10 @@
 <div class="viewport_dss">
 	<div class="viewport_dss_background dss_position">
 		<svg width="192" height="96">
-			<line x1="0" y1="45" x2="192" y2="45" style="stroke:rgb(48,64,64);stroke-width:1;stroke-opacity:0.8;" />
-			<line x1="0" y1="49" x2="192" y2="49" style="stroke:rgb(48,64,64);stroke-width:1;stroke-opacity:0.8;" />
-			<line x1="94" y1="0" x2="94" y2="96" style="stroke:rgb(48,64,64);stroke-width:1;stroke-opacity:0.8;" />
-			<line x1="98" y1="0" x2="98" y2="96" style="stroke:rgb(48,64,64);stroke-width:1;stroke-opacity:0.8;" />
+			<line x1="0" y1="45" x2="192" y2="45" style="stroke:rgb(128,128,128);stroke-width:1;stroke-opacity:0.8;" />
+			<line x1="0" y1="49" x2="192" y2="49" style="stroke:rgb(128,128,128);stroke-width:1;stroke-opacity:0.8;" />
+			<line x1="94" y1="0" x2="94" y2="96" style="stroke:rgb(128,128,128);stroke-width:1;stroke-opacity:0.8;" />
+			<line x1="98" y1="0" x2="98" y2="96" style="stroke:rgb(128,128,128);stroke-width:1;stroke-opacity:0.8;" />
 
 			<?php
 

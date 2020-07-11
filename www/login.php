@@ -37,7 +37,7 @@
 		die();
 	}
 	
-	$tmpl['page_title'] = 'Login User';
+	$tmpl['page_title'] = 'Log In';
 
 	include_once('tmpl/html_begin.php');
 
@@ -79,7 +79,6 @@
 		}
 	}
 
-
 	mt_srand(microtime(true));
 	$test_x = mt_rand(300,700);
 	$test_y = mt_rand(300,700);
@@ -113,30 +112,28 @@
 	$phrase = 'Which sector would be ' . $x_word . ' of and ' . $y_word . ' from the sector ' . $test_x . ', ' . $test_y . '?';
 
 ?>
-
-
 	<div id="login_form_box">
 		<form id="login_form" action="handler.php" method="post">
 			<div class="login_intro">
 				Enter your username and password to join the game!
 			</div>
 			
-			<div class="login_form_item">
+			<div class="login_form_item align_center">
 				&nbsp;
-				<div class="left_column login_form_label">
+				<div class="left_column align_right">
 					<label for="usernamea">Username:</label>
 				</div>
-				<div class="right_column">
+				<div class="right_column align_left">
 					<input id="usernamea" name="username" type="text" maxlength="16" size="20" />
 				</div>
 			</div>
 			
-			<div class="login_form_item">
+			<div class="login_form_item align_center">
 				&nbsp;
-				<div class="left_column login_form_label">
+				<div class="left_column align_right">
 					<label for="password1a">Password:</label>
 				</div>
-				<div class="right_column">
+				<div class="right_column align_left">
 					<input id="password1a" name="password1" type="password" maxlength="128" size="20" />
 				</div>
 			</div>
@@ -156,57 +153,57 @@
 				here and we'll get you started.
 			</div>
 		
-			<div class="login_form_item">
+			<div class="login_form_item align_center">
 				&nbsp;
-				<div class="left_column login_form_label">
+				<div class="left_column align_right">
 					<label for="usernameb">Username:</label>
 				</div>
-				<div class="right_column">
+				<div class="right_column align_left">
 					<input id="usernameb" name="username" type="text" maxlength="16" size="20" />
 				</div>
 			</div>
 			
-			<div class="login_form_item">
+			<div class="login_form_item align_center">
 				&nbsp;
-				<div class="left_column login_form_label">
+				<div class="left_column align_right">
 					<label for="password1b">Pass (6+ chrs):</label><br />
 				</div>
-				<div class="right_column">
+				<div class="right_column align_left">
 					<input id="password1b" name="password1" type="password" maxlength="128" size="20" />
 				</div>
 			</div>
 			
-			<div class="login_form_item">
+			<div class="login_form_item align_center">
 				&nbsp;
-				<div class="left_column login_form_label">
+				<div class="left_column align_right">
 					<label for="password2b">Confirm Password:</label>
 				</div>
-				<div class="right_column">
+				<div class="right_column align_left">
 					<input id="password2b" name="password2" type="password" maxlength="128" size="20" />
 				</div>
 			</div>
 			
-			<div class="login_form_item">
+			<div class="login_form_item align_center">
 				&nbsp;
-				<div class="left_column login_form_label">
+				<div class="left_column align_right">
 					<label for="email">EMail:</label>
 				</div>
-				<div class="right_column">
+				<div class="right_column align_left">
 					<input id="emailb" name="email" type="text" maxlength="128" size="30" />
 				</div>
 			</div>
 
-			<div class="login_form_item">
+			<div class="login_form_item align_center">
 				<input id="policyb" name="policy" type="checkbox" />
 				<label for="policyb">Check here to agree with <a href="docs.php?page=policy" target="_blank">our policies</a>.</label>
 			</div>
 			
-			<div class="login_form_item">
+			<div class="login_form_item align_center">
 				&nbsp;
-				<div class="left_long_column login_form_label">
+				<div class="left_long_column">
 					<?php echo $phrase; ?>
 				</div>
-				<div class="right_short_column">
+				<div class="right_short_column align_right">
 					<input id="try_x" name="try_x" type="text" maxlength="4" size="6" />,
 					<input id="try_y" name="try_y" type="text" maxlength="4" size="6" />
 					<!-- 
@@ -227,11 +224,6 @@
 			<input id="signup_task" name="task" type="hidden" value="1ogin" />
 		</form>
 	</div>
-
-
-
-
-	
 <?php	
 	include_once('tmpl/html_end.php');
 ?>

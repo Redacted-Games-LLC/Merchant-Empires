@@ -23,13 +23,13 @@
 
 	include_once('tmpl/common.php');
 ?>
-<div class="header2">Warps</div>
+<div class="header2 header_bold">Warps</div>
 <div class="docs_text">
 	The warp network is a relic from days past.
 </div>
 <div class="docs_text">
 </div>
-<div class="header3">
+<div class="header3 header_bold">
 </div>
 <div class="docs_text">
 </div>

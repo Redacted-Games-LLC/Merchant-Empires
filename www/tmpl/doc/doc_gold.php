@@ -23,13 +23,13 @@
 
 	include_once('tmpl/common.php');
 ?>
-<div class="header2">Gold Membership</div>
+<div class="header2 header_bold">Gold Membership</div>
 <div class="docs_text">
 	Players who have donated to the game are granted Gold Membership status for a period
 	of time conferring some cosmetic and convenience perks, but nothing which would give
 	significant advantage against other players. 
 </div>
-<div class="header3">Benefits</div>
+<div class="header3 header_bold">Benefits</div>
 <div class="docs_text">
 	Gold Membership benefits are almost always cosmetic. Here is the list:
 </div>
@@ -46,7 +46,7 @@
 	into responding to Gold Members we stand firm that these terms apply to <em>all</em>
 	users and/or players.
 </div>
-<div class="header3">Enabling a Gold Membership</div>
+<div class="header3 header_bold">Enabling a Gold Membership</div>
 <div class="docs_text">
 	Gold Memberships are enabled using Keys which may look like the following:	
 </div>
@@ -63,7 +63,7 @@
 	When the round officially ends a special key will be generated with any remaining gold
 	membership time.
 </div>
-<div class="header3">Support</div>
+<div class="header3 header_bold">Support</div>
 <div class="docs_text">
 	You can contact <a href="mailto:<?php echo GOLD_EMAIL; ?>">Gold Support</a> if you have
 	any issues with your membership.

@@ -1,0 +1,72 @@
+/* Not used, from original game.css*/
+
+.float_left {float: left;}
+
+.normal_bold {
+	font-variant: normal;
+	font-weight: bold;
+}
+
+.o1 {opacity: 0.1;}
+.o2 {opacity: 0.2;}
+.o3 {opacity: 0.3;}
+.o4 {opacity: 0.4;}
+.o5 {opacity: 0.5;}
+.o6 {opacity: 0.6;}
+.o7 {opacity: 0.7;}
+.o8 {opacity: 0.8;}
+
+div.center_spread {
+	position: relative;
+	width: 99%;
+}
+
+div.center_spread_middle {
+	position: relative;
+	margin: 0px 210px;
+	padding:10px;
+	min-height: 420px;
+}
+
+div.dealer_spread {
+    border: solid 2px #118811;
+    background-color: #001100;
+}
+
+div.port_empty {
+    position: relative;
+    width: 550px;
+    height: 40px;
+    float: left;
+    border: solid 2px #000011;
+    background-color: #000011;
+    margin: 8px;
+    padding: 3px;
+}
+
+div.port_spread {
+    border: solid 2px #111188;
+    background-color: #000011;
+}
+
+div.port_text {
+    color: lightgray;
+    margin: 16px 0;
+}
+
+div.return_code {
+    border: solid 1px yellow;
+    background: #222200;
+    margin: 4px;
+    padding: 3px;
+}
+
+div.unknown_station {
+    background: url('../unknown_station.png') no-repeat;
+    background-size: 64px 64px;
+}
+
+td.add_weapon_row {
+    padding: 4px 8px;
+    white-space: nowrap;
+}

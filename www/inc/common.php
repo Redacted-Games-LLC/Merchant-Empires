@@ -41,7 +41,7 @@
 	include_once('inc/whitelist.php');
 
 	function dump_r($dump = array()) {
-		echo '<pre class="dump">';
+		echo '<pre class="dump align_left">';
 		
 		if (is_array($dump)) {
 			echo htmlentities(print_r($dump, true));

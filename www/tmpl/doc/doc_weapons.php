@@ -23,7 +23,7 @@
 
 	include_once('tmpl/common.php');
 ?>
-<div class="header2">Weapons</div>
+<div class="header2 header_bold">Weapons</div>
 <div class="docs_text">
 	Ships are able to carry weapons to <a href="docs.php?page=damage">damage and destroy</a> other ships.
 </div>
@@ -48,7 +48,7 @@
 	damage the weapon is capable of. Ships have their own recharge delay which is added to this.
 	Sometimes firing at less than full charge is necessary.
 </div>
-<div class="header3">Racks and Stations</div>
+<div class="header3 header_bold">Racks and Stations</div>
 <div class="docs_text">
 	There are two types of hardpoints available on ships for the installation of weapons,
 	lighter Stations and heavier Racks. Stations are used for low recoil weapons such as
@@ -60,7 +60,7 @@
 	should come with at least one hardpoint except in rare circumstances, and most will
 	have several.
 </div>
-<div class="header3">Weapon Solutions</div>
+<div class="header3 header_bold">Weapon Solutions</div>
 <div class="docs_text">
 	Attaching a group of weapons to their appropriate racks and stations and binding them
 	to an attack button is called a Weapon Solution. You can create weapon solutions in

@@ -24,16 +24,15 @@
 	include_once('tmpl/common.php');
 ?>
 	
-	<div class="header4"><a href="admin.php?page=main">Game Administration</a></div>
+	<div class="header4 header_bold"><a href="admin.php?page=main">Game Administration</a></div>
 	<hr noshade="noshade" size="1" />
 	<ul class="docs_menu">
-		<li class="docs_menu"><?php echo get_admin_link('users', 'User Editor', 'users'); ?></li>
-		<li class="docs_menu"><?php echo get_admin_link('system', 'System Editor', 'system'); ?></li>
-		<li class="docs_menu"><?php echo get_admin_link('ports', 'Port Editor', 'ports'); ?></li>
-		<li class="docs_menu"><?php echo get_admin_link('goods', 'Goods Editor', 'goods'); ?></li>
-		<li class="docs_menu"><?php echo get_admin_link('research', 'Base Research', 'research'); ?></li>
-		<li class="docs_menu"><?php echo get_admin_link('build', 'Base Construction', 'build'); ?></li>
-		<li class="docs_menu"><?php echo get_admin_link('gold', 'Gold Keys', 'gold'); ?></li>
-		<li class="docs_menu"><?php echo get_admin_link('news', 'News Desk', 'news'); ?></li>
+		<li><?php echo get_admin_link('users', 'User Editor', 'users'); ?></li>
+		<li><?php echo get_admin_link('system', 'System Editor', 'system'); ?></li>
+		<li><?php echo get_admin_link('ports', 'Port Editor', 'ports'); ?></li>
+		<li><?php echo get_admin_link('goods', 'Goods Editor', 'goods'); ?></li>
+		<li><?php echo get_admin_link('research', 'Base Research', 'research'); ?></li>
+		<li><?php echo get_admin_link('build', 'Base Construction', 'build'); ?></li>
+		<li><?php echo get_admin_link('gold', 'Gold Keys', 'gold'); ?></li>
+		<li><?php echo get_admin_link('news', 'News Desk', 'news'); ?></li>
 	</ul>
-

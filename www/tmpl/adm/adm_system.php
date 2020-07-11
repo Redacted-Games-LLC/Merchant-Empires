@@ -35,14 +35,14 @@
 	}
 
 ?>
-<div class="header2">Galaxy System Administration</div>
+<div class="header2 header_bold">Galaxy System Administration</div>
 <div class="docs_text">
 	You can manipulate existing systems or create new systems using
 	this interface. Numerous systems can impact game performance so
 	use some thought with this tool.
 </div>
 <hr />
-<div class="header3">
+<div class="header3 header_bold">
 	Regenerate Galaxy
 </div>
 <div class="docs_text">
@@ -64,7 +64,7 @@
 	<img src="map.php?seed=<?php echo $seed; ?>" width="600" height="600" alt="Galaxy Map" title="Generated Galaxy Map" />
 </div>
 <hr />
-<div class="header3">Reset All Ports</div>
+<div class="header3 header_bold">Reset All Ports</div>
 <div class="docs_text">
 	If you hit this button you will remove all ports from the galaxy. New
 	ports will regenerate in protected systems. If you aren't doing this
@@ -78,4 +78,3 @@
 		<input type="hidden" name="form_id" value="<?php echo $_SESSION['form_id']; ?>" />
 	</form>
 </div>
-

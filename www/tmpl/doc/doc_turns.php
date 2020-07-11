@@ -23,7 +23,7 @@
 
 	include_once('tmpl/common.php');
 ?>
-<div class="header2">Turns</div>
+<div class="header2 header_bold">Turns</div>
 <div class="docs_text">
 	Just about every game action you perform uses up <em>Turns</em>. These represent
 	units of time which smooth the playing field between players with little real time to
@@ -34,7 +34,7 @@
 	<?php echo TURNS_PER_UPDATE; ?> every <?php echo TURN_UPDATE_TIME; ?> seconds. When a
 	player runs out of turns, they will be unable to move, trade, or attack.
 </div>
-<div class="header3">Turn Consumers</div>
+<div class="header3 header_bold">Turn Consumers</div>
 <div class="docs_text">
 	Your ship engines will burn the most turns by far. Movement takes up at least 1 turn
 	<em>per sector</em> and can reach 10 on some ships. Traveling 40 sectors to a battle
