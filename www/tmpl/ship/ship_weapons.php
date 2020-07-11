@@ -365,7 +365,7 @@
 
 			foreach ($carried_weapons as $weapon) {
 				
-				echo '<tr class="add_weapon">';
+				echo '<tr>';
 
 				echo '<td class="add_weapon" rowspan="2"><strong>';
 				echo nl2br($weapon['caption']);

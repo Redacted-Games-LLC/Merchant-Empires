@@ -40,7 +40,7 @@
 
  /* to be worked on later */
  @import url("css/message.css"); /* table.message & tr.message in multiple docs, but not defined here */
- @import url("css/ship.css"); /* tr.add_weapon in multiple docs but not defined here, multiple identical margins */
+ @import url("css/ship.css"); /* multiple identical margins */
  @import url("css/base.css"); /* p.over_link & a.over_link in game.js, but not defined here */
 
  @font-face {
