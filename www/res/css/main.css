@@ -87,6 +87,15 @@ input.ship_form_input {
 	color: lightgray;
 }
 
+li.ignore_list {
+	display: inline-block;
+	border: solid 1px #cccccc;
+	padding: 2px 10px;
+	margin: 4px;
+	white-space: nowrap;
+	font-size: 70%;
+}
+
 li.popup_list {
 	display: inline-block;
 	border: solid 1px #cccccc;
@@ -107,6 +116,12 @@ pre.dump {
 
 span.no_race_war {color: cyan;}
 span.race_war {color: orange;}
+
+span.turn_cost {
+	color: yellow;
+	padding-left: 8px;
+	font-weight: bold;
+}
 
 svg.attack_recharge {
 	position: absolute;
@@ -166,6 +181,8 @@ td.ship {
 	padding: 4px;    
 }
 
+td.message {vertical-align: top;}
+
 td.ship_info_key {background-color: #002200;}
 
 td.ship_info_value {
@@ -215,6 +232,13 @@ tr.solution {
 ul.docs_menu {
 	padding: 0;
 	margin: 8px;
+}
+
+ul.ignore_list {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	display: inline;
 }
 
 ul.popup_list {

@@ -35,19 +35,19 @@
 </div>
 <div class="docs_text">
 	<form action="handler.php" method="post">
-		<table class="message" role="presentation">
-			<tr class="message">
+		<table role="presentation">
+			<tr>
 				<td class="message align_right" colspan="2">
 					<span class="characters_left" id="characters_left">&nbsp;</span>
 				</td>
 			</tr>
-			<tr class="message">
+			<tr>
 				<td class="message">Message:</td>
 				<td class="message">
 					<textarea class="msg_form_input" id="msg_input" name="message" rows="6" cols="60" maxlength="<?php echo MAXIMUM_SUBSPACE_MESSAGE_LENGTH; ?>"></textarea>
 				</td>
 			</tr>
-			<tr class="message">
+			<tr>
 				<td class="message">&nbsp;</td>
 				<td class="message">
 					<script type="text/javascript">

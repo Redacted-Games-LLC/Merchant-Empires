@@ -41,19 +41,19 @@
 </div>
 <div class="docs_text">
 	<form action="handler.php" method="post">
-		<table class="message" role="presentation">
-			<tr class="message">
+		<table role="presentation">
+			<tr>
 				<td class="message">Alliance:</td>
 				<td class="message"><input class="msg_form_input" type="text" name="alliance" value="<?php echo $name ?>" maxlength="24" size="24" /></td>
 				<td class="message align_right">
 					<span class="characters_left" id="characters_left">&nbsp;</span>
 				</td>
 			</tr>
-			<tr class="message">
+			<tr>
 				<td class="message">Message:</td>
 				<td class="message" colspan="2"><textarea class="msg_form_input" id="msg_input" name="message" rows="6" cols="60" maxlength="<?php echo MAXIMUM_MESSAGE_LENGTH; ?>"></textarea></td>
 			</tr>
-			<tr class="message">
+			<tr>
 				<td class="message">&nbsp;</td>
 				<td class="message" colspan="2">
 					<script type="text/javascript">

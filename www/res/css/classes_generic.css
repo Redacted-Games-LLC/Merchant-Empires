@@ -9,13 +9,13 @@
 .bottom {vertical-align: bottom;}
 
 .captionHeader {
-    width: 250px;
-    padding-left: 20px;
+	width: 250px;
+	padding-left: 20px;
 }
 
 .characters_left {
-    font-size: 85%;
-    color: cyan;
+	font-size: 85%;
+	color: cyan;
 }
 
 .clear {clear: both;}
@@ -23,22 +23,22 @@
 .float_right {float: right;}
 
 .good {
-    display: flex;
-    flex-flow: column wrap;
+	display: flex;
+	flex-flow: column wrap;
 }
 
 .goodCaption {
-    width: 200px; 
-    float: left; 
-    padding-left: 35px;
+	width: 200px; 
+	float: left; 
+	padding-left: 35px;
 }
 
 .goodContainer1 {height: 500px;}
 .goodContainer2 {height: 125px;}
 
 .goodLevel {
-    width: 20px; 
-    float: left; 
+	width: 20px; 
+	float: left; 
 }
 
 .lvlHeader {width: 20px;}
@@ -46,29 +46,34 @@
 .margin {margin: 10px;}
 
 .move_scan_text {
-    font-size: 150%;
-    width: 34px;
+	font-size: 150%;
+	width: 34px;
+}
+
+.msg_form_input {
+	background-color: black;
+	color: lightgray;
 }
 
 .news {
-    width: 100%;
-    margin: 10px;
-    padding: 26px;
-    color: black;
-    border: solid 2px lightgray;
-    background-color: #b09070;
+	width: 100%;
+	margin: 10px;
+	padding: 26px;
+	color: black;
+	border: solid 2px lightgray;
+	background-color: #b09070;
 }
 
 .news_abstract {
-    margin: 0 20px;
-    font-size: 120%;
+	margin: 0 20px;
+	font-size: 120%;
 }
 
 .news_article {
-    font-family: serif;
-    visibility: hidden;
-    display: none;
-    font-size: 110%;
+	font-family: serif;
+	visibility: hidden;
+	display: none;
+	font-size: 110%;
 }
 
 .news_author0 {background-color: #bbbb66;}
@@ -76,27 +81,27 @@
 .news_author-2 {background-color: #ff4444;}
 
 .news_date {
-    width: 240px;
-    padding: 3px 6px 3px 0;
-    border: solid 1px black;
-    font-size: 75%;
-    float: right;
+	width: 240px;
+	padding: 3px 6px 3px 0;
+	border: solid 1px black;
+	font-size: 75%;
+	float: right;
 }
 
 .news_headline {
-    font-size: 150%;
-    font-weight: bold;
+	font-size: 150%;
+	font-weight: bold;
 }
 
 .news_readme {
-    margin: 12px 4px;
-    text-decoration: underline;
-    font-style: italic;
-    color: #004400;
-    font-size: 90%;
-    font-variant: small-caps;
-    font-family: sans-serif;
-    cursor: pointer;
+	margin: 12px 4px;
+	text-decoration: underline;
+	font-style: italic;
+	color: #004400;
+	font-size: 90%;
+	font-variant: small-caps;
+	font-family: sans-serif;
+	cursor: pointer;
 }
 
 .normal {
@@ -107,8 +112,8 @@
 .o9 {opacity: 0.9;}
 
 .pagination_link {
-    margin: 2px 8px;
-    padding: 4px;
+	margin: 2px 8px;
+	padding: 4px;
 }
 
 .pointer {cursor: pointer;}
