@@ -46,7 +46,7 @@
 	</div>
 	<div class="docs_text">
 		<form action="handler.php" method="post">
-			<label class="ship_form_label" for="alliance_name">Alliance Name:</label>
+			<label for="alliance_name">Alliance Name:</label>
 			<input class="ship_form_input" type="text" name="name" id="alliance_name" maxlength="24" size="30" />
 
 			<script type="text/javascript">drawButton('create', 'create', 'validate_create()');</script>
