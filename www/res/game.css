@@ -21,25 +21,18 @@
  */
 
  @charset "utf-8";
-
- /* currently working on these files */
+ 
  @import url("css/main.css");
+ @import url("css/header_footer.css");
  @import url("css/classes_generic.css");
  @import url("css/classes_div.css");
- @import url("css/ids.css");
+ @import url("css/element_ids.css");
 
  /* selectors being used but not defined */
  /* li.docs_menu in tmpl/doc/menu.php & tmpl/adm/menu.php */
 
- /* unused selectors are moved here */
+ /* un-used selectors from original css have been moved here */
  /* not_used.css */
-
-/* completed */
- @import url("css/header.css");
- @import url("css/footer.css");
-
- /* to be worked on later */
-
 
  @font-face {
 	font-family: CascadiaMono;
