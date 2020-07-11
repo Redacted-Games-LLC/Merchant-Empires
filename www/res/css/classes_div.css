@@ -51,6 +51,33 @@ div.allied_ship {
 	background: #000011;
 }
 
+div.attack_button {
+    position: relative;
+    display: inline-block;
+    width: 180px;
+    height: 180px;
+    border: solid 3px red;
+    margin: 10px;
+    background-image: url(../attack_button.png);
+    background-size: 180px 180px;
+    cursor: pointer;
+}
+
+div.attack_buttons {
+    width: 640px;
+    background-color: #100;
+}
+
+div.attack_solution {
+    position: absolute;
+    font-size: 34px;
+    top: 64px;
+    left: 0;
+    width: 100%;
+    margin-left: auto;
+    margin-top: auto;
+}
+
 div.base {
     width: 64px;
     background: url('../base.png') no-repeat;
