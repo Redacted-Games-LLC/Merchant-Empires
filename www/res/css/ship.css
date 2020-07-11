@@ -23,7 +23,7 @@ div.attack_solution {
     position: absolute;
     font-size: 34px;
     top: 64px;
-    left: 0px;
+    left: 0;
     width: 100%;
     margin-left: auto;
     margin-top: auto;
@@ -52,35 +52,20 @@ td.add_weapon {
     white-space: nowrap;
 }
 
-td.add_weapon_center {
-    padding: 4px 8px;
-    white-space: nowrap;
-}
-
-td.add_weapon_right {
-    padding: 4px 8px;
-    white-space: nowrap;
-}
-
-td.ship_info_key {
+td.ship {
     width: 30px;
     margin: 0 0 0 4px;
-    padding: 4px;
-    background-color: #002200;
+    padding: 4px;    
 }
+
+td.ship_info_key {background-color: #002200;}
 
 td.ship_info_value {
-    width: 30px;
-    margin: 0 0 0 4px;
-    padding: 4px;
     background-color: #002222;
     font-weight: bold;
 }
 
 td.solution {
-    width: 30px;
-    margin: 0 0 0 4px;
-    padding: 4px;
     background-color: #002222;
     font-size: 90%;
     white-space: nowrap;
@@ -97,12 +82,7 @@ th.solution {
 
 tr.add_weapon_row {border-bottom: solid 1px #777;}
 
-tr.ship_info {
-    margin: 4px 0;
-    padding: 1px;
-    background-color: #000000;
-}
-
+tr.ship_info,
 tr.solution {
     margin: 4px 0;
     padding: 1px;
@@ -110,7 +90,6 @@ tr.solution {
 }
 
 span.no_race_war {color: cyan;}
-
 span.race_war {color: orange;}
 
 svg.attack_recharge {
