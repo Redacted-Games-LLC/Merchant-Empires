@@ -1,4 +1,6 @@
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=desmondkung_Merchant-Empires&metric=alert_status)](https://sonarcloud.io/dashboard?id=desmondkung_Merchant-Empires)
+
 **NOTICE:**<br>
 This game requires a fair amount of technical setup.<br>
 It will not be ready to play until the following steps to set it up are completed.
