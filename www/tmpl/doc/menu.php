@@ -28,8 +28,8 @@
 <hr noshade="noshade" size="1" />
 <ul class="docs_menu">
 	<li><a href="docs.php?page=quick">Quick Start</a></li>
-	<li">
-		<a href="docs.php?page=players">Players
+	<li>
+		<a href="docs.php?page=players">Players</a>
 		<ul class="docs_menu">
 			<li><a href="docs.php?page=turns">Turns</a></li>
 			<li><a href="docs.php?page=levels">Experience and Levels</a></li>
