@@ -26,7 +26,7 @@
  *
  *
  */
-	if (!(php_sapi_name() === 'cli')) {
+	if (php_sapi_name() !== 'cli') {
 		header('Location: login.php');
 		die('You must run this from the command line.');
 	}
@@ -51,14 +51,11 @@
 			$len = strlen($event_name);
 
 			echo "    " . $event_name . str_repeat(" ", 20 - $len) . $event->getRunTime() . " seconds\n";
-		}
-
-		
+		}		
 	}	
 
 	echo "\n";
 	echo "The event queue is starting now.\n\n";
-
 
 	$current_time = PAGE_START_TIME;
 	$running = true;
@@ -81,9 +78,6 @@
 		}
 
 		sleep(2);
-
-	}; // while $running
+	} // while $running
 
 	echo "Terminating Event Processor. Goodbye!\n";
-
-?>

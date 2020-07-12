@@ -40,11 +40,9 @@
 			break;
 		}
 		
-		if (LOGIN_LOCKED || ((START_OF_ROUND - PAGE_START_TIME > 0) && !DEV_ROUND)) {
-			if (SIGNUP_ADMIN != $username) {
-				$return_codes[] = 1120;
-				break;
-			}
+		if ((LOGIN_LOCKED || ((START_OF_ROUND - PAGE_START_TIME > 0) && !DEV_ROUND)) && (SIGNUP_ADMIN != $username)) {
+			$return_codes[] = 1120;
+			break;
 		}
 		
 		$password1 = $_POST['password1'];
@@ -166,5 +164,3 @@
 	} while (false);
 	
 	session_write_close();
-
-?>

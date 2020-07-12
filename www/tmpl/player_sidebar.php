@@ -75,7 +75,7 @@
 		<div class="sidebar_level_item">
 			<svg width="95" height="20">
   				<rect width="95" height="10" style="fill:rgb(0,0,64);stroke-width:2;stroke:rgb(255,255,255)" />
-  				<rect width="<?php echo ($progress * 95); ?>" height="10" style="fill:rgb(0,255,128);stroke-width:2;stroke:rgb(255,255,255)" />
+  				<rect width="<?php echo $progress * 95; ?>" height="10" style="fill:rgb(0,255,128);stroke-width:2;stroke:rgb(255,255,255)" />
 			</svg>
 		</div>
 		<div class="sidebar_level_item">

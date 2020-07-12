@@ -47,11 +47,9 @@
 			break;
 		}
 	
-		if ($_REQUEST['group'] == 'admin') {
-			if (!get_user_field(USER_ID, 'admin', 'admin')) {
-				$return_codes[] = 1153;
-				break;
-			}
+		if (($_REQUEST['group'] == 'admin') && (!get_user_field(USER_ID, 'admin', 'admin'))) {
+			$return_codes[] = 1153;
+			break;
 		}
 
 		if (!isset($_REQUEST['key']) || !validate_keyname($_REQUEST['key'])) {
@@ -64,9 +62,7 @@
 			break;
 		}
 
-		
 		$db = isset($db) ? $db : new DB(true);
-
 
 		$user_id = 0;
 		$rs = $db->get_db()->query("select record_id from users where username = '". $_REQUEST['user'] ."'");
@@ -79,7 +75,6 @@
 			$return_codes[] = 1156;
 			break;
 		}
-
 
 		if (isset($_REQUEST['btn_update_x'])) {
 
@@ -108,7 +103,6 @@
 				$return_codes[] = 1154;
 				break;
 			}
-
 		}
 		elseif (isset($_REQUEST['btn_add_x'])) {
 				
@@ -120,7 +114,6 @@
 				$return_codes[] = 1155;
 				break;
 			}
-
 		}
 		else {
 			$return_codes[] = 1068;
@@ -128,6 +121,3 @@
 		}
 
 	} while (false);
-
-
-?>
