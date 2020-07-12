@@ -151,10 +151,7 @@ div#viewport_header_left {
 div#viewport_main_spread {
     position: relative;
     width: 98%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 6px;
-    margin-bottom: 6px;
+    margin: 6px auto 6px;
     border: solid 2px #9cbead;
     overflow: hidden;
     min-width: 1024px;
