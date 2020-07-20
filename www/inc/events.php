@@ -26,10 +26,18 @@
 	function register_event($event) {
 		global $spacegame;
 		$spacegame['events'][] = $event;
+		
+		if (isset($spacegame['event_count'])) {
+			$spacegame['event_count'] += 1;
+		}
+		else {
+			$spacegame['event_count'] = 1;
+		}
 	}
 
 	abstract class Event {
 		private $time_left = 0;
+		private $run_count = 0;
 
 		public function __construct() {
 			$this->resetTimeLeft();
@@ -38,6 +46,10 @@
 		abstract public function run();
     	abstract public function getRunTime();
 
+    	public function incrementRun() {
+    		$this->run_count += 1;
+    	}
+
     	public function getTimeLeft($elapsed = 0) {
     		$this->time_left -= $elapsed;
     		return $this->time_left;
@@ -45,6 +57,10 @@
 
     	public function resetTimeLeft() {
     		$this->time_left = $this->getRunTime();
+    	}
+
+    	public function getRunCount() {
+    		return $this->run_count;
     	}
 	}
 

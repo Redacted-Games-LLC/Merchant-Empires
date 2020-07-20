@@ -189,7 +189,12 @@
 	}
 
 	// One of the events spits a timestamp on the console at this interval.
-	define('EVENT_TIMESTAMP_TIME', 600);
+	if (DEV_ROUND) {
+		define('EVENT_TIMESTAMP_TIME', 30);
+	}
+	else {
+		define('EVENT_TIMESTAMP_TIME', 600);
+	}
 
 	// How often to check damage and death reports to produce battle reports.
 	define('EVENT_PLAYER_LOG_TIME', 10);

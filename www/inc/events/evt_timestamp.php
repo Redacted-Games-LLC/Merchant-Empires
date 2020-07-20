@@ -26,7 +26,7 @@
  */
 
 	include_once('inc/events.php');
-	
+	\
 	register_event(new Event_Timestamp());
 
 	/**
@@ -43,7 +43,21 @@
 		}
 
 		public function run() {
+
+			$this->incrementRun();
+
 			echo "TIMESTAMP (RFC850): " . date(DATE_RFC850) . "\n";
+
+			global $spacegame;
+
+			foreach ($spacegame['event_names'] as $event_name => $event) {
+				
+				echo '     ';
+				echo $event_name . str_repeat(' ', 24 - strlen($event_name));
+				echo "\t" . $event->getRunCount() . "\t" . $event->getTimeLeft() . "/" . $event->getRunTime() . "\n";
+			}
+
+			echo "\n";
 		}
 
 	};
