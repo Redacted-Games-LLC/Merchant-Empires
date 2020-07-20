@@ -97,7 +97,7 @@
 	// look for ports which have not been updated in a certain time (defined below) and
 	// run update procedures. This includes checking supply and demand and also running
 	// new upgrades.
-	define('PORT_EVENT_CYCLE', 23);
+	define('PORT_EVENT_CYCLE', 14);
 
 	// How often a port wants to regenerate supply and demand, but the time will take
 	// longer as a round goes on.
@@ -199,6 +199,12 @@
 
 	// One of the events spits a timestamp on the console at this interval.
 	define('EVENT_MESSAGING_TIME', 9);
+
+	// One of the events causes mines to be attacked by available drones in a sector.
+	define('EVENT_ATTACK_MINES_TIME', 23);
+
+	// One of the events causes drones to be attacked by available drones in a sector.
+	define('EVENT_ATTACK_DRONES_TIME', 53);
 
 	// Minimum and maximum alignment
 	define('ALIGNMENT_LIMIT', 500);
