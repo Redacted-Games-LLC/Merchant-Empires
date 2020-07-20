@@ -27,7 +27,6 @@
 
 	if ($spacegame['player']['base_id'] <= 0) {
 		header('Location: viewport.php?rc=1116');
-		break;
 	}
 
 	include_once('inc/rooms.php');
@@ -35,9 +34,7 @@
 	$tmpl['no_fluff'] = true;
 	$tmpl['page_title'] = 'Base Construction';
 
-	include_once('tmpl/html_begin.php');
-
-	
+	include_once('tmpl/html_begin.php');	
 ?>
 
 <div class="port_update_button">
@@ -45,16 +42,15 @@
 		<script type="text/javascript">drawButton('close', 'close', 'true');</script>
 	</a>
 </div>
-<div class="header2">
+<div class="header2 header_bold">
 	<?php echo $tmpl['page_title']; ?>
 </div>
-<div class="header3">
+<div class="header3 header_bold">
 	<?php echo $base_caption; ?>
 </div>
 <div class="dealer_text">
 	<?php quit($spacegame); ?>
 </div>
-
 	
 <?php
 	include_once('tmpl/html_end.php');

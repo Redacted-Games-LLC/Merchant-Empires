@@ -24,6 +24,10 @@
 	include_once('inc/page.php');
 	include_once('inc/game.php');
 
+	define("HEADER3_BOLD", '<div class="header3 header_bold">');
+	define("HEADER5_BOLD", '<div class="header5 header_bold">');
+	define("DIV_CLOSE", '</div>');
+
 	do { // Dummy loop
 		
 		$db = isset($db) ? $db : new DB;
@@ -85,19 +89,13 @@
 					$spacegame['target_dist'] = $dist2;
 					$spacegame['target_dir'] = get_dir($dx, $dy);
 				}
-
 			}
-
 		} // if ship_type <= 0
-		
 		
 		$spacegame['players']['safe'] = array();
 		$spacegame['players']['hostile'] = array();
 
 		$players = get_players($spacegame['player']);
-
-
-
 
 	} while (false);
 
@@ -145,8 +143,6 @@
 		return $players;
 	}	
 
-
-	
 	$tmpl['page_title'] = 'Viewport';
 
 	include_once('tmpl/html_begin.php');
@@ -160,12 +156,9 @@
 		?>
 
 		<div id="viewport_header">
-				
 			<div id="viewport_header_left">
-
 				<div id="hud_controls">
 					<div>
-
 						<?php 
 								$mine_count = 0;
 								$mine_cargo = 0;
@@ -185,13 +178,9 @@
 											$drone_count += $cargo_record['amount'];
 										}
 									}
-
 									$cargo_count = $spacegame['cargo_volume'];
 								}
-
 						?>
-							
-
 						<div id="force_panel">
 							<script language="javascript" type="text/javascript"><!--
 
@@ -200,41 +189,39 @@
 							// -->
 							</script>
 						</div>
-
 					</div>	
 
-					<div class="sector_name">
+					<div class="sector_name align_center">
 					<?php
 						if ($spacegame['player']['ship_type'] > 0) {
 							
 							if (isset($spacegame['system'])) {
-								echo '<div class="header5">';
+								echo HEADER5_BOLD;
 								echo $spacegame['system']['caption'] . ' System';
-								echo '</div>';
+								echo DIV_CLOSE;
 
-								echo '<div class="header3">';
+								echo HEADER3_BOLD;
 								echo $spacegame['player']['x'] . ', ' . $spacegame['player']['y'];
-								echo '</div>';
+								echo DIV_CLOSE;
 							}
 							elseif ($spacegame['player']['base_id'] > 0) {
-								echo '<div class="header5">';
+								echo HEADER5_BOLD;
 								echo $base_caption;
-								echo '</div>';
+								echo DIV_CLOSE;
 
-								echo '<div class="header3">';
+								echo HEADER3_BOLD;
 								echo $spacegame['player']['base_x'] . ', ' . $spacegame['player']['base_y'];
-								echo '</div>';
+								echo DIV_CLOSE;
 							}
 							else {
-								echo '<div class="header5">';
+								echo HEADER5_BOLD;
 								echo '&nbsp;';
-								echo '</div>';
+								echo DIV_CLOSE;
 
-								echo '<div class="header3">';
+								echo HEADER3_BOLD;
 								echo '&nbsp;';
-								echo '</div>';
+								echo DIV_CLOSE;
 							}
-
 
 							if (isset($spacegame['places'])) {
 								$success = false;
@@ -242,25 +229,34 @@
 								foreach ($spacegame['places'] as $place) {
 									switch ($place['place_type']) {
 										case '2':
-											echo '<div class="header5">Star '. $place['caption'] .'</div>';
+											echo HEADER5_BOLD;
+											echo 'Star '. $place['caption'] .DIV_CLOSE;
 											$success = true;
 											break;
+
+										case '9': // Warp
+											echo HEADER5_BOLD. $place['caption'] .DIV_CLOSE;
+											$success = true;
+											break;											
 
 										case '3': // Earth Planet
 										case '5': // Rocky Planet
 										case '12': // Ice Giant
-											echo '<div class="header5">Planetoid '. $place['caption'] .'</div>';
+											echo HEADER5_BOLD;
+											echo 'Planetoid '. $place['caption'] .DIV_CLOSE;
 											$success = true;
 											break;
 									}
 								}
 
 								if (!$success) {
-									echo '<div class="header5">&nbsp;</div>';
+									echo HEADER5_BOLD;
+									echo '&nbsp;</div>';
 								}
 							}
 							else {
-								echo '<div class="header5">&nbsp;</div>';
+								echo HEADER5_BOLD;
+								echo '&nbsp;</div>';
 							}
 						}
 						else {
@@ -290,19 +286,18 @@
 								?>
 								
 								<?php include_once('tmpl/viewport_dss.php'); ?>
-							
-							
-								<div class="viewport_console">
-									<div class="viewport_console_item" onclick="return open_locator()">
+
+								<div class="viewport_console align_center">
+									<div class="viewport_console_item align_center" onclick="return open_locator()">
 										NAV
 									</div>
-									<div class="viewport_console_item" onclick="return open_ship()">
+									<div class="viewport_console_item align_center" onclick="return open_ship()">
 										SHIP
 									</div>
-									<div class="viewport_console_item" onclick="return open_alliance()">
+									<div class="viewport_console_item align_center" onclick="return open_alliance()">
 										TEAM
 									</div>
-									<div class="viewport_console_item" onclick="return open_message(0)">
+									<div class="viewport_console_item align_center" onclick="return open_message(0)">
 										COM
 									</div>
 								</div>
@@ -319,21 +314,14 @@
 			<?php include_once('tmpl/viewport_scan.php'); ?>
 			<br class="clear" />
 		</div>
-		
-
 
 	<?php
-		
-
-
-
 	if ($spacegame['player']['ship_type'] > 0) {
 		if ($spacegame['player']['base_id'] <= 0 && $spacegame['place_count'] > 6) {
 			include_once('tmpl/viewport_stations.php');
 		}
-
 		?>
-		<div class="viewport_split">
+		<div class="viewport_split align_center">
 
 			<table width="100%" role="presentation">
 				<tr>
@@ -355,13 +343,10 @@
 					</td>
 					<td width="200" valign="top"><?php include_once('tmpl/player_sidebar.php'); ?></td>
 				</tr>
-			</table>
-			
+			</table>			
 			<div class="clear">&nbsp;</div>
 		</div>
 		<?php
-		
-
 	}
 	else {
 		if ($spacegame['place_count'] > 0 && $spacegame['player']['base_id'] <= 0) {
@@ -369,26 +354,18 @@
 		}
 	}
 
-
-
 	if (isset($spacegame['base'])) {
 		include_once('tmpl/viewport_base.php');	
 	}
-	
-	
+		
 	?>
-
 		<div class="clear">&nbsp;</div>
 		<?php if (isset($_REQUEST['dmg'])) { ?>
-			<div class="taking_damage">
+			<div class="taking_damage align_center">
 				TAKING taking_damage
 			</div>
 		<?php } ?>
-
 	</div>
-
-
-	
 <?php	
 	include_once('tmpl/html_end.php');
 ?>

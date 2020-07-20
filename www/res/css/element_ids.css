@@ -1,0 +1,179 @@
+/**
+ * Element IDs
+ *
+ * @package [Redacted]Me
+ * ---------------------------------------------------------------------------
+ *
+ * Merchant Empires by [Redacted] Games LLC - A space merchant game of war
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+div#base_field {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
+    width: 564px;
+    height: 564px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: black;
+    border: solid 2px yellow;
+    overflow: hidden;
+}
+
+div#disabled_scan_controls {
+    position: relative;
+    width: 256px;
+    height: 256px;
+    border: solid 1px #007700;
+    background: url("../no_radar.png") no-repeat;
+}
+
+div#floating_message_box {
+	position: absolute;
+	left: 0;
+	background-color: #111100;
+	border: dotted 5px #444411;
+	text-align: center;
+	font-size: 110%;
+}
+
+div#force_panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 72px;
+    height: 256px;
+    margin: 0;
+    padding-top: 4px;
+}
+
+div#hud_controls {
+    position: relative;
+    float: right;
+    width: 99%;
+    height: 256px;
+    margin-left: -1px;
+    margin-right: 2px;
+}
+
+div#login_form_box {
+    position: relative;
+    width: 720px;
+    margin: 20px auto;
+    border: solid 2px #555511;
+}
+
+div#main_popup {
+	visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	background: url('../teal_dither.png') repeat;
+}
+
+div#nav_control_outer {
+    float: left;
+    position: relative;
+    width: 290px;
+    height: 256px;
+    margin-left: -291px;
+    margin-right: 2px;
+    background-color: #551100;
+}
+
+div#nav_controls {
+    position: relative;
+    width: 256px;
+    height: 256px;
+    border: solid 1px #007700;
+    background: url("../navigation.png") no-repeat;
+}
+
+div#pagination {text-align: center;}
+
+div#scan_control_outer {
+    float: right;
+    position: relative;
+    width: 290px;
+    margin-right: -291px;
+    margin-left: 2px;
+    background-color: #551100;
+}
+
+div#scan_controls {
+    position: relative;
+    width: 256px;
+    height: 256px;
+    border: solid 1px #007700;
+    background: url("../radar.gif") no-repeat;
+}
+
+div#sector_stations {
+    position: relative;
+    width: 96%;
+    margin: 8px auto;
+    border: solid 1px #555511;
+    padding: 8px;
+}
+
+div#viewport_header {
+    padding: 1px;
+    word-wrap: break-word;
+    margin-left: 304px;
+    margin-right: 304px;
+    min-width: 454px;
+}
+
+div#viewport_header_left {
+    float: left;
+    width: 100%;
+    margin-right: -1px;
+}
+
+div#viewport_main_spread {
+    position: relative;
+    width: 98%;
+    margin: 6px auto 6px;
+    border: solid 2px #9cbead;
+    overflow: hidden;
+    min-width: 1024px;
+    min-height: 380px;
+    background: #001 url("../starfield_ugly.png") repeat;
+}
+
+/* to keep footer at bottom of page, header and body reside in this wrapper */
+div#wrapper {min-height: calc(100vh - 65px);}  /* 65px is height of footer */
+
+iframe#main_iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 72%;
+	height: 76%;  /* maintain at 76% to prevent vertical scroll for webkit on main pages of 14" screen & above */
+	margin: 5% 13%;
+	padding: 10px;
+	background: #000011;
+}
+
+input#floating_message_close {
+	width: 128px;
+	margin: 8px 35%;
+}

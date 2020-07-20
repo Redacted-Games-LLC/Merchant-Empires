@@ -23,7 +23,7 @@
 
 	include_once('tmpl/common.php');
 ?>
-<div class="header2">License Information</div>
+<div class="header2 header_bold">License Information</div>
 <div class="docs_text">
 	This edition of Merchant Empires is released under the GNU GPL version 3 software license.
 	Information on this license may be found <a href="https://www.gnu.org/licenses/gpl.html" target="_blank" rel="noopener noreferrer">here</a>.
@@ -31,7 +31,7 @@
 	Merchant Empires, which was GPLv2 with the "later version" option.
 </div>
 <hr />
-<div class="header3">License Text</div>
+<div class="header3 header_bold">License Text</div>
 <div class="docs_text">
 	The following is the full text of the GNU GPLv3 License as it applies to this software:
 </div>

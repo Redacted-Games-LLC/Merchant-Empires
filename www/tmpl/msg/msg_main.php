@@ -25,7 +25,7 @@
 	include_once('inc/news.php');
 
 ?>
-<div class="header2">Galaxy News</div>
+<div class="header2 header_bold">Galaxy News</div>
 <div class="docs_text">
 	<?php
 
@@ -50,5 +50,3 @@
 	?>
 
 </div>
-
-

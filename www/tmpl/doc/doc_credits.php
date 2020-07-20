@@ -23,7 +23,7 @@
 
 	include_once('tmpl/common.php');
 ?>
-<div class="header2">Credits</div>
+<div class="header2 header_bold">Credits</div>
 <div class="docs_text">
 	<ul>
 		<li>Bryan Brunton, original developer of Merchant Empires</li>

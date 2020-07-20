@@ -23,7 +23,7 @@
 
 	include_once('tmpl/common.php');
 ?>
-<div class="header2">Navigation</div>
+<div class="header2 header_bold">Navigation</div>
 <div class="docs_text">
 	This page will attempt to explain the general concepts of navigation to you.
 </div>
@@ -36,7 +36,7 @@
 	The <a href="docs.php?page=quick">Quick Start Guide</a> contains a tutorial which
 	combines some features of trade, navigation and warps.
 </div>
-<div class="header3">Sector Numbers</div>
+<div class="header3 header_bold">Sector Numbers</div>
 <div class="docs_text">
 	This edition of Merchant Empires has a static galaxy spanning <strong>000 000</strong>
 	to <strong>999 999</strong>. You may fly about anywhere in this range by clicking the
@@ -48,10 +48,10 @@
 <div class="docs_text">
 	Things you see in this image are:
 	<ul>
-		<li><img src="res/solar_scan.png" width="16" alt="solar scan" />Sun</li>
-		<li><img src="res/planetoid_scan.png" width="20" alt="planetoid scan" />Planetoid</li>
-		<li><img src="res/warp.png" width="20" alt="warp" />Warp</li>
-		<li><img src="res/government_scan.png" width="20" alt="government scan" />Imperial Government Protected Sector</li>
+		<li><img src="res/solar_scan.png" width="20" alt="solar scan" />&nbsp;Sun</li>
+		<li><img src="res/planetoid_scan.png" width="20" alt="planetoid scan" />&nbsp;Planetoid</li>
+		<li><img src="res/warp_scan.png" width="20" alt="warp" />&nbsp;Warp</li>
+		<li><img src="res/government_scan.png" width="20" alt="government scan" />&nbsp;Imperial Government Protected Sector</li>
 	</ul>
 </div>
 <div class="docs_text">
@@ -70,7 +70,7 @@
 	click on these you will use up some <a href="docs.php?page=turns">turns</a> and
 	hopefully move to the clicked-on sector uneventfully.
 </div>
-<div class="header3">Galaxy Structure</div>
+<div class="header3 header_bold">Galaxy Structure</div>
 <div class="docs_text">
 	The galaxy is centered at <strong>500 500</strong> with the Zycklirg to Northwest,
 	Mawlor to the East, and Xollian to Southwest. Currently it looks as follows:
@@ -85,7 +85,7 @@
 	remaining systems surround these prime systems and provide places for the players
 	to establish their own territories.
 </div>
-<div class="header3">Deep Space Scanner</div>
+<div class="header3 header_bold">Deep Space Scanner</div>
 <div class="docs_text">
 	Between the viewport navigation panel and the scanner is the Deep Space Scanner.
 	Centuries ago this device was regulated to the point where only wealthy traders
@@ -114,9 +114,9 @@
 	sectors (they have the extra circle around them) and warp paths which can be
 	followed if you are lost.
 </div>
-<div class="header3">Warps</div>
+<div class="header3 header_bold">Warps</div>
 <div class="docs_text">
-	<img src="res/doc/warp.png" width="300" alt="warp" />
+	<img src="res/doc/warp.png" width="150" alt="warp" />
 </div>
 <div class="docs_text">
 	Long ago a race of scientists known as the Paragon discovered the secret to
@@ -134,7 +134,7 @@
 	Warps require <?php echo WARP_TURN_MULTIPLIER; ?> times the normal ship turns per
 	sector to use.
 </div>
-<div class="header4">Mawlor Connection</div>
+<div class="header4 header_bold">Mawlor Connection</div>
 <div class="docs_text">
 	Shortly after the original warp network was completed the Paragon announced plans
 	for a ring network circling the galaxy. Due to heavier than normal hostilities between
@@ -146,7 +146,7 @@
 	the Mawlor were eventually able to derive jump technology, and to this day have kept
 	it out of the hands of the other races.
 </div>
-<div class="header3">Bases</div>
+<div class="header3 header_bold">Bases</div>
 <div class="docs_text">
 	In this version of Merchant Empires you can fly over <a href="docs.php?page=bases">Bases</a>
 	just as you can fly around a solar system. When you click on a base on a planet you will
@@ -171,7 +171,7 @@
 	ship TPS and landing will cost <?php echo BASE_LAND_TURN_MULTIPLIER; ?> times. Taking off
 	will cost <?php echo BASE_TAKEOFF_TURN_MULTIPLIER; ?> times the number of turns.
 </div>
-<div class="header4">Landing</div>
+<div class="header4 header_bold">Landing</div>
 <div class="docs_text">
 	Whenever you are hovered over a <em>Landing Pad</em> you will be given the option to land.
 	All bases have a special type of landing pad called a <em>Control Pad</em> near the center,

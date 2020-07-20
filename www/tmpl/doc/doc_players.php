@@ -23,7 +23,7 @@
 
 	include_once('tmpl/common.php');
 ?>
-<div class="header2">Players</div>
+<div class="header2 header_bold">Players</div>
 <div class="docs_text">
 	Players are human-controlled characters (and in some cases
 	bot-controlled with human owners). You can interact with them

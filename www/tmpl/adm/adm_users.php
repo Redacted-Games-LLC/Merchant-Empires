@@ -32,12 +32,12 @@
 
 
 ?>
-	<div class="header2">User Administration</div>
+	<div class="header2 header_bold">User Administration</div>
 	<div class="docs_text">
 		You can manipulate registered users using this page.
 	</div>
 	<hr />
-	<div class="header3">Search for User</div>
+	<div class="header3 header_bold">Search for User</div>
 	<div class="docs_text">
 		Enter at least 2 characters to search <strong>both</strong> users and players. You will be
 		presented with a list of the best matches.
@@ -54,17 +54,17 @@
 		if (isset($spacegame['search_results'])) {
 
 			echo '<hr />';
-			echo '<div class="header3">Search Results</div>';
+			echo '<div class="header3 header_bold">Search Results</div>';
 			echo '<div class="docs_text">';
 
 			if ($spacegame['search_result_count'] <= 0) {
 				echo 'No results found. Please try again!';
 			}
 			else {
-				echo '<div class="user_list">';
+				echo '<div class="user_list align_left">';
 
 				foreach ($spacegame['search_results'] as $result) {
-					echo '<div class="user_list_item">';
+					echo '<div class="user_list_item align_left">';
 					
 						echo '<div class="user_list_caption">';
 							echo '<a href="admin.php?page=user&amp;user=';
@@ -84,17 +84,16 @@
 			echo '</div>';
 		}
 		
-
 		if (isset($spacegame['users'])) {
 
 			echo '<hr />';
-			echo '<div class="header3">User List</div>';
+			echo '<div class="header3 header_bold">User List</div>';
 			echo '<div class="docs_text">';
-				echo '<div class="user_list">';
+				echo '<div class="user_list align_left">';
 
 				foreach ($spacegame['users'] as $user) {
 
-					echo '<div class="user_list_item">';
+					echo '<div class="user_list_item align_left">';
 
 						echo '<div class="user_list_caption">';
 						echo '<a href="admin.php?page=user&amp;user=';
@@ -123,10 +122,6 @@
 				?>
 			</script>
 
-		<?php
-
-			
+		<?php			
 		}
-
-
 ?>

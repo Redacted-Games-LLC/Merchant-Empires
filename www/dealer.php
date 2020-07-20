@@ -47,10 +47,10 @@
 		<script type="text/javascript">drawButton('close', 'close', 'return true;');</script>
 	</a>
 </div>
-<div class="header2">
+<div class="header2 header_bold">
 	<?php echo $spacegame['places'][$place_id]['caption']; ?>
 </div>
-<div class="header3">
+<div class="header3 header_bold">
 	<?php
 		if (isset($spacegame['system']) && $spacegame['system']['race'] > 0) {
 			echo $spacegame['races'][$spacegame['system']['race']]['caption'] . ' ';
@@ -68,13 +68,13 @@
 		}
 	?>
 </div>
-<div class="header5">
+<div class="header5 header_bold">
 	We carry the following goods. Items which are out of stock will
 	be routinely replenished as we are able to.
 </div>
 <?php foreach ($spacegame['inventory_groups'] as $group => $members) { ?>
 	<div class="dealer_shelf">
-		<div class="header4">
+		<div class="header4 header_bold">
 			<?php 
 				$type_caption = $spacegame['inventory'][$members[0]]['type_caption'];
 				echo $type_caption;
@@ -120,7 +120,6 @@
 				</div>
 			<?php } ?>
 
-			
 		<?php } ?>
 		<div class="dealer_items">
 			<?php foreach ($members as $member) {
@@ -139,11 +138,11 @@
 
 								?>
 								<div class="dealer_ship_icon">&nbsp;</div>
-								<div class="dealer_ship_level">
+								<div class="dealer_ship_level align_center">
 									Rank <?php echo $item['details']['rank']; ?>
 								</div>
 								<div class="dealer_ship_stats">
-									<div class="header5">
+									<div class="header5 header_bold">
 										<?php echo $item['details']['caption']; ?>
 									</div>
 									<div class="dealer_ship_text">
@@ -180,13 +179,13 @@
 								<div class="dealer_goods_image">
 									<img src="res/goods/<?php echo $item['details']['safe_caption']; ?>.png" width="32" height="32" alt="dealer good" />
 								</div>
-								<div class="dealer_goods_text">
+								<div class="dealer_goods_text align_center">
 									<?php echo $item['details']['caption']; ?>
 								</div>
-								<div class="dealer_goods_price">
+								<div class="dealer_goods_price align_center">
 									<?php echo number_format($item['final_price']); ?><img src="res/credits.png" width="16" height="16" alt="credits" />
 								</div>
-								<div class="dealer_goods_stock">
+								<div class="dealer_goods_stock align_center">
 									<?php echo number_format($item['stock']); ?> Left
 								</div>
 								
@@ -237,8 +236,6 @@
 
  <?php } ?>
 
-
-	
 <?php
 	include_once('tmpl/html_end.php');
 ?>

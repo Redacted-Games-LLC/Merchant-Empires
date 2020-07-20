@@ -23,7 +23,7 @@
 
 	include_once('tmpl/common.php');
 ?>
-<div class="header2">Bases!</div>
+<div class="header2 header_bold">Bases!</div>
 <div class="docs_text">
 	By far the most player time will be spent flying around on bases. A
 	base allows players to produce goods which are not available via 
@@ -34,7 +34,7 @@
 	Bases also provide a measure of protection depending on how advanced
 	they are and the attention to defense.
 </div>
-<div class="header3">Getting a Base</div>
+<div class="header3 header_bold">Getting a Base</div>
 <div class="docs_text">
 	A <a href="docs.php?page=base_package">Base Package</a> allows you to deploy a 
 	base. Then, just find a planetoid in an unprotected sector. Use the ship screen
@@ -47,7 +47,7 @@
 	a base is through a Landing Pad you won't be able to land until this Control Pad
 	is finished.
 </div>
-<div class="header3">Landing on a Base</div>
+<div class="header3 header_bold">Landing on a Base</div>
 <div class="docs_text">
 	You can land on a base only on Landing Pads. All bases will have a Control Pad
 	near the center. Bases are 100x100 putting the center at 50,50 <strong>but</strong>

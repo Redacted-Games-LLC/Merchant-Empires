@@ -76,7 +76,7 @@
 		
 		for ($i = 1; $i <= MAX_PLAYERS_PER_USER; $i++) {
 			?>
-			<div class="player_select">
+			<div class="player_select align_center">
 				<form id="select_player_form<?php echo $i; ?>" action="handler.php" method="post">
 				<?php 
 					if ($player_number < $player_count) {
@@ -93,12 +93,10 @@
 							<br />
 						</div>
 						
-						<div class="header3">
+						<div class="header3 header_bold">
 							<?php echo $player['caption']; ?><br />
 							<br />
 						</div>
-						
-						
 						
 						<script type="text/javascript">drawButton('sel<?php echo $i; ?>', 'join', 'validate_select_player(<?php echo $i; ?>)');</script>
 						<input type="hidden" name="player_id" value="<?php echo $player['id']; ?>" />
@@ -161,8 +159,6 @@
 
 </div>
 
-
-	
 <?php	
 	include_once('tmpl/html_end.php');
 ?>

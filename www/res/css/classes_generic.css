@@ -1,0 +1,139 @@
+/**
+ * Generic classes
+ *
+ * @package [Redacted]Me
+ * ---------------------------------------------------------------------------
+ *
+ * Merchant Empires by [Redacted] Games LLC - A space merchant game of war
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+.align_center {text-align: center;}
+.align_left {text-align: left;}
+.align_right {text-align: right;}
+
+.bigger {font-size: larger;}
+
+.bottom {vertical-align: bottom;}
+
+.captionHeader {
+	width: 250px;
+	padding-left: 20px;
+}
+
+.characters_left {
+	font-size: 85%;
+	color: cyan;
+}
+
+.clear {clear: both;}
+
+.float_right {float: right;}
+
+.good {
+	display: flex;
+	flex-flow: column wrap;
+}
+
+.goodCaption {
+	width: 200px; 
+	float: left; 
+	padding-left: 35px;
+}
+
+.goodContainer1 {height: 500px;}
+.goodContainer2 {height: 125px;}
+
+.goodLevel {
+	width: 20px; 
+	float: left; 
+}
+
+.lvlHeader {width: 20px;}
+
+.margin {margin: 10px;}
+
+.move_scan_text {
+	font-size: 150%;
+	width: 34px;
+}
+
+.msg_form_input {
+	background-color: black;
+	color: lightgray;
+}
+
+.news {
+	width: 100%;
+	margin: 10px;
+	padding: 26px;
+	color: black;
+	border: solid 2px lightgray;
+	background-color: #b09070;
+}
+
+.news_abstract {
+	margin: 0 20px;
+	font-size: 120%;
+}
+
+.news_article {
+	font-family: serif;
+	visibility: hidden;
+	display: none;
+	font-size: 110%;
+}
+
+.news_author0 {background-color: #bbbb66;}
+.news_author-1 {background-color: #60dd60;}
+.news_author-2 {background-color: #ff4444;}
+
+.news_date {
+	width: 240px;
+	padding: 3px 6px 3px 0;
+	border: solid 1px black;
+	font-size: 75%;
+	float: right;
+}
+
+.news_headline {
+	font-size: 150%;
+	font-weight: bold;
+}
+
+.news_readme {
+	margin: 12px 4px;
+	text-decoration: underline;
+	font-style: italic;
+	color: #004400;
+	font-size: 90%;
+	font-variant: small-caps;
+	font-family: sans-serif;
+	cursor: pointer;
+}
+
+.normal {
+	font-variant: normal;
+	font-weight: normal;
+}
+
+.o9 {opacity: 0.9;}
+
+.pagination_link {
+	margin: 2px 8px;
+	padding: 4px;
+}
+
+.pointer {cursor: pointer;}

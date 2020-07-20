@@ -23,7 +23,7 @@
 
 	include_once('tmpl/common.php');
 ?>
-<div class="header2">Alliance List</div>
+<div class="header2 header_bold">Alliance List</div>
 <?php 
 
 	if ($spacegame['alliances_count'] <= 0) {
@@ -36,8 +36,8 @@
 		foreach ($spacegame['alliances'] as $alliance_id => $alliance) { 
 ?>
 
-			<div class="alliance_list">
-				<div class="alliance_list_item">
+			<div class="alliance_list align_left">
+				<div class="alliance_list_item align_left">
 					<a href="alliance.php?page=members&amp;alliance_id=<?php echo $alliance_id; ?>">
 						<?php echo $alliance['caption']; ?>
 						<?php if ($alliance['recruiting'] > 0) { ?>
@@ -51,6 +51,4 @@
 <?php
 		}
 	}
-?>
-
- 	
+?>	

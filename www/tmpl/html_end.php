@@ -23,9 +23,8 @@
 
 	include_once('tmpl/common.php');
 	
-	if (!isset($tmpl['no_fluff'])) {
-		if (defined('PAGE_START_OFFSET') && USER_ID > 0) {
-			echo '<div id="page_build">';
+	if ((!isset($tmpl['no_fluff'])) && (defined('PAGE_START_OFFSET') && USER_ID > 0)) {
+			echo '<div id="page_build" class="align_center">';
 			echo 'Inflation <strong>';
 			echo round(INFLATION, 1);
 			echo '%</strong><br />';
@@ -35,21 +34,18 @@
 			echo ' ms</strong><br />';
 			
 			echo '</div>';
-		}
-
-		?>
-		<div id="final_footer">
-			<div class="left_footer_column"><img src="res/redacted_logo.png" width="280" alt="branding logo" /></div>
-			<div class="right_footer_column">
-				Released under the Open Source <a href="docs.php?page=license" target="_blank">GNU GPLv3</a> License
-			</div>
-			&nbsp;<br />
-			&nbsp;<br />
-			&nbsp;<br />
-			&nbsp;
+	} ?>
 		</div>
-	<?php } ?>
-	&nbsp;<br />
-	&nbsp;<br />
-</body>
+		<footer>
+			<!-- use <span> instead of <div> as we want license text on logo right, not logo bottom -->
+			<span id="footer_left_column" class="align_left"><img src="res/redacted_logo.png" width="280" alt="branding logo" /></span>
+			<span id="footer_right_column" class="align_right">Released under the Open Source <a href="docs.php?page=license" target="_blank">GNU GPLv3</a> License</span>
+
+			<!-- required for footer background color -->
+			&nbsp;<br />
+			&nbsp;<br />
+			&nbsp;<br />
+			&nbsp;<br />
+		</footer>
+	</body>
 </html>

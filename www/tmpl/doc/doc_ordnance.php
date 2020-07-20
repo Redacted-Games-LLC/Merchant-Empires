@@ -23,7 +23,7 @@
 
 	include_once('tmpl/common.php');
 ?>
-<div class="header2">
+<div class="header2 header_bold">
 	Sector Ordnance
 </div>
 <div class="docs_text">
@@ -44,6 +44,3 @@
 	Players can deploy mines and drones but can only retrieve drones, mine fields need
 	to be manually cleared with weapons. Both mines and drones are easily destroyed.
 </div>
-
-
-

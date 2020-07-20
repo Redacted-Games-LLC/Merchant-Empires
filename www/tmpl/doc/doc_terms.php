@@ -23,8 +23,8 @@
 
 	include_once('tmpl/common.php');
 ?>
-<div class="header2">Terms of Use</div>
-<div class="header3">Basic Stuff</div>
+<div class="header2 header_bold">Terms of Use</div>
+<div class="header3 header_bold">Basic Stuff</div>
 <div class="docs_text">
 	We make no warranties for this product; it is provided as-is. If you don't
 	like what we have going on you can <a href="docs.php?page=hosting">download
@@ -36,14 +36,14 @@
 	around. Don't forget to take breaks; get up and pace around a bit every so often
 	at minimum.
 </div>
-<div class="header3">Compensation for Bugs</div>
+<div class="header3 header_bold">Compensation for Bugs</div>
 <div class="docs_text">
 	The long and short is we won't give you back your goods, credits, experience,
 	alignment, or turns that you lost for whatever reason. I am sorry for the 
 	situation but please report the bug and we can try to fix it or tell us about
 	the unfair event and we can examine if there is a balance issue.
 </div>
-<div class="header3">Gold Membership Issues</div>
+<div class="header3 header_bold">Gold Membership Issues</div>
 <div class="docs_text">
 	Players can activate <a href="docs.php?page=gold">Gold Memberships</a> with
 	keys earned by themselves or given by other users. Users who donate and earn keys
@@ -54,4 +54,3 @@
 	If you have issues with your keys please contact
 	<a href="mailto:<?php echo GOLD_EMAIL; ?>">Gold Support</a>.
 </div>
-

@@ -23,7 +23,7 @@
 
 	include_once('tmpl/common.php');
 ?>
-<div class="header2">Alliance Status</div>
+<div class="header2 header_bold">Alliance Status</div>
 <?php
 	if ($spacegame['player']['alliance'] > 0) {
 
@@ -53,7 +53,7 @@
 	if ($spacegame['invites_count'] > 0) {
 	
 		echo '<hr />';
-		echo '<div class="header4">Current Recruitment Requests</div>';
+		echo '<div class="header4 header_bold">Current Recruitment Requests</div>';
 		echo '<div class="docs_text">';
 
 		foreach ($spacegame['invites'] as $invite_id => $invite) {
@@ -85,7 +85,7 @@
 		if (defined('ALLIANCE_LEADER') && ALLIANCE_LEADER) {
 			echo '<hr />';
 
-			echo '<div class="header4">Current Recruitment Requests</div>';
+			echo '<div class="header4 header_bold">Current Recruitment Requests</div>';
 			echo '<div class="docs_text">';
 
 			if ($spacegame['alliance_invites_count'] > 0) {
@@ -123,7 +123,7 @@
 			echo '</div>';
 
 
-			echo '<div class="header4">Recruitment Settings</div>';
+			echo '<div class="header4 header_bold">Recruitment Settings</div>';
 			echo '<form action="handler.php" method="post">';
 			?>
 				<input type="hidden" name="task" value="alliance" />
@@ -156,7 +156,7 @@
 
 			echo '<hr />';
 
-			echo '<div class="header4">Leave Alliance</div>';
+			echo '<div class="header4 header_bold">Leave Alliance</div>';
 			echo '<div class="docs_text">';
 
 			echo 'The following button allows you to leave an alliance.';
@@ -173,6 +173,5 @@
 			echo '</form>';
 			echo '</div>';
 		}
-
 	}
 ?>

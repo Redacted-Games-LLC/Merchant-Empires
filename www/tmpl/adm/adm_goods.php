@@ -21,155 +21,70 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-	include_once('tmpl/common.php');
-
 	if (!get_user_field(USER_ID, 'admin', 'goods')) {
 		header('Location: viewport.php?rc=1030');
 		die();
 	}
-
-	include_once('inc/goods.php');
-	include_once('inc/good_upgrades.php');
-
-	define("TABLEHEADER_LVL", '<th scope="col" width="35"><strong>Lvl</strong></th>');
-	define("TABLEHEADER_GOODCAPTION", '<th scope="col" width="195"><strong>Good Caption</strong></th>');
+	
+	include_once('tmpl/goods_list.php');
 
 ?>
-
-<!-- To work on sorting goods into tables vertically instead of horizontally --> 
-
-<div class="header2">Goods Administration</div>
-<div class="docs_text">
-	You can manipulate existing goods or create new ones using this tool.
-</div>
+<br />
 <hr />
-<div class="header3">List of Goods</div>
-<div class="docs_text">
-	<table width="100%">
-	<caption hidden>List of Goods</caption>
+<div class="header3 header_bold">Goods That Do Not Upgrade</div>
+<br />
+<div>
+	
 	<?php
 		$columns = 3;
-		$column = 0;
-		
-		echo '<tr>';
-
+		echo TBL_OPEN;
+		echo '<caption hidden>Goods That Do Not Upgrade</caption>';
 		for ($i = 0; $i < $columns; $i++) {
 			echo TABLEHEADER_LVL;
 			echo TABLEHEADER_GOODCAPTION;
 		}
-
-		foreach ($spacegame['goods'] as $good_id => $good) {
-
-			if ($column <= 0) {
-				echo '</tr>';
-				echo '<tr>';
-				$column = $columns;
-			}
-			
-			$column -= 1;
-
-			echo '<td><em>' . $good['level'] . '</em></td>';
-
-			echo '<td>';
-
-			echo '<img src="res/goods/' . $good['safe_caption'] . '.png" width="20" height="20" />';
-
-			echo '&nbsp;&nbsp;';
-
-			echo '<a href="admin.php?page=good&amp;id='. $good_id .'">';
-
-			$good_caption = $good['caption'];
-
-			if (strlen($good_caption) >= 15) {
-				echo substr($good_caption, 0, 12) . '...';
-			}
-			else {
-				echo $good_caption;
-			}
-			echo '</a>';
-
-			echo '</td>';
-			
-			
-		}
-
-		echo '</tr>';
-	?>
-	</table>
-</div>
-<hr />
-<div class="header3">Goods That Do Not Upgrade</div>
-<div class="docs_text">
-	<table width="100%">
-	<caption hidden>Goods That Do Not Upgrade</caption>
-	<?php
-		$column = 0;
+		echo TBL_CLOSE;
 		
-		echo '<tr>';
-
-		for ($i = 0; $i < $columns; $i++) {
-			echo TABLEHEADER_LVL;
-			echo TABLEHEADER_GOODCAPTION;
-		}
+		echo '<div class="good goodContainer2">';
+		
+		$goods_list = array();
 
 		foreach ($spacegame['goods'] as $good_id => $good) {
 
 			if ($good['target_count'] > 0) {
 				continue;
 			}
-
-			if ($column <= 0) {
-				echo '</tr>';
-				echo '<tr>';
-				$column = $columns;
-			}
 			
-			$column -= 1;
-
-			echo '<td><em>' . $good['level'] . '</em></td>';
-
-			echo '<td>';
-
-			echo '<img src="res/goods/' . $good['safe_caption'] . '.png" width="20" height="20" />';
-
-			echo '&nbsp;&nbsp;';
-
-			echo '<a href="admin.php?page=good&amp;id='. $good_id .'">';
-
-			$good_caption = $good['caption'];
-
-			if (strlen($good_caption) >= 15) {
-				echo substr($good_caption, 0, 12) . '...';
-			}
-			else {
-				echo $good_caption;
-			}
-			echo '</a>';
-
-			echo '</td>';
-			
+			$goods_list[$good_id] = $good;
 			
 		}
+		
+		print_goods($goods_list);
+		
+		echo DIV_CLOSE;
 
-		echo '</tr>';
 	?>
-	</table>
 
 </div>
+<br />
 <hr />
-<div class="header3">Basic Goods</div>
-<div class="docs_text">
-	<table width="100%">
-	<caption hidden>Basic Goods</caption>
+<div class="header3 header_bold">Basic Goods</div>
+<br />
+<div>
+	
 	<?php
-		$column = 0;
-		
-		echo '<tr>';
-
+		$columns = 3;
+		echo TBL_OPEN;
+		echo '<caption hidden>Basic Goods</caption>';
 		for ($i = 0; $i < $columns; $i++) {
 			echo TABLEHEADER_LVL;
 			echo TABLEHEADER_GOODCAPTION;
 		}
+		echo TBL_CLOSE;
+		
+		echo '<div class="good goodContainer2">';
+		
+		$goods_list = array();
 
 		foreach ($spacegame['goods'] as $good_id => $good) {
 
@@ -177,47 +92,18 @@
 				continue;
 			}
 
-			if ($column <= 0) {
-				echo '</tr>';
-				echo '<tr>';
-				$column = $columns;
-			}
-			
-			$column -= 1;
-
-			echo '<td><em>' . $good['level'] . '</em></td>';
-
-			echo '<td>';
-
-			echo '<img src="res/goods/' . $good['safe_caption'] . '.png" width="20" height="20" />';
-
-			echo '&nbsp;&nbsp;';
-
-			echo '<a href="admin.php?page=good&amp;id='. $good_id .'">';
-
-			$good_caption = $good['caption'];
-
-			if (strlen($good_caption) >= 15) {
-				echo substr($good_caption, 0, 12) . '...';
-			}
-			else {
-				echo $good_caption;
-			}
-			echo '</a>';
-
-			echo '</td>';
-			
-			
+			$goods_list[$good_id] = $good;
 		}
+		print_goods($goods_list);
 
-		echo '</tr>';
+		echo DIV_CLOSE;
 
 	?>
-	</table>
 
 </div>
+<br />
 <hr />
-<div class="header3">Create New Good</div>
+<div class="header3 header_bold">Create New Good</div>
 <div class="docs_text">
 	Enter the information below to create a new good.
 </div>

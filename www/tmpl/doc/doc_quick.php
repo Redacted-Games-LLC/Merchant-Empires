@@ -23,13 +23,13 @@
 
 	include_once('tmpl/common.php');
 ?>
-<div class="header2">Quick Start Guide</div>
+<div class="header2 header_bold">Quick Start Guide</div>
 <div class="docs_text">
 	If you just want to get going, then here is a quick start sheet for you. Once
 	you get your turns burned down to 1000, go ahead and come for the rest of the
 	manual. Make sure you are in a safe location though!
 </div>
-<div class="header3">Browser Stuff</div>
+<div class="header3 header_bold">Browser Stuff</div>
 <div class="docs_text">
 	This is a web browser game, so you play by clicking links. The server will
 	process your request and update your viewport. You don't need any plugins
@@ -37,7 +37,7 @@
 	redirect is intended and you might get funky results if you use the back
 	button.
 </div>
-<div class="header3">Joining a Game</div>
+<div class="header3 header_bold">Joining a Game</div>
 <div class="docs_text">
 	After signing up, you can link up to 4 players with your account. How many
 	players you run will depend on the life commitments you have, but to start
@@ -62,7 +62,7 @@
 	click on the sector numbers above the green arrow to navigate to a ship
 	dealer and get your first starter ship. 
 </div>
-<div class="header4">Viewport</div>
+<div class="header4 header_bold">Viewport</div>
 <div class="docs_text">
 	Once you are in a real ship, your viewport will come alive.
 </div>
@@ -81,7 +81,7 @@
 	move, make sure the sector has a green star in it and you can't be
 	attacked. Some players make a great living never leaving these zones!
 </div>
-<div class="header3">Making Money</div>
+<div class="header3 header_bold">Making Money</div>
 <div class="docs_text">
 	When trading, seek out a <a href="docs.php?page=port">port</a> with a high value demand:
 </div>

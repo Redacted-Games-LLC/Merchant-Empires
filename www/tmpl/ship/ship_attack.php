@@ -122,7 +122,7 @@
 	include_once('inc/cargo.php');
 	include_once('inc/ranks.php');
 ?>
-<div class="header2">Attacking <?php echo ($force_id > 0 ? 'Forces of ' : 'Player ') . $player['caption']; ?></div>
+<div class="header2 header_bold">Attacking <?php echo ($force_id > 0 ? 'Forces of ' : 'Player ') . $player['caption']; ?></div>
 <div class="docs_text">
 	<strong>Target Information</strong>
 </div>
@@ -172,7 +172,7 @@
 	}
 	else {
 
-		echo '<div class="attack_buttons">';
+		echo '<div class="attack_buttons align_center">';
 
 
 		$carried_weapons = array();
@@ -242,7 +242,7 @@
 				echo 'attack_player('. $solution_keys[$s] .',' . $player['record_id'] . ');">';
 			}
 			
-			echo '<div class="attack_solution">';
+			echo '<div class="attack_solution align_center">';
 			echo '#' . ($s + 1);
 			echo '</div>';
 
@@ -255,17 +255,10 @@
 			echo 'start_recharge("recharge_rect_'. $s .'", 105.0, ' . $recharge_part . ', ' . $recharge_whole . ', '. (RECHARGE_TIME_PER_DAMAGE * 3.0) .');';
 			echo '</script>';
 
-
 			echo '</div>';
-
-
-
 
 		}
 
 		echo '</div>';
 	}
 ?>
-
-
-

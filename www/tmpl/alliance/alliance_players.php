@@ -26,7 +26,7 @@
 	include_once('inc/players.php');
 
 ?>
-<div class="header2"><?php 
+<div class="header2 header_bold"><?php 
 	if ($spacegame['page_number'] > 0) {
 		echo 'Players Active over the Last ' . floor(ACTIVE_PLAYER_TIME / (3600 * 24)) . ' Days';
 	}
@@ -43,11 +43,11 @@
 	}
 ?></div>
 <hr />
-<div class="header4">Showing <?php echo $spacegame['player_count'] . ' Player' . ($spacegame['player_count'] == 1 ? '' : 's'); ?>:</div>
-<div class="alliance_list">
+<div class="header4 header_bold">Showing <?php echo $spacegame['player_count'] . ' Player' . ($spacegame['player_count'] == 1 ? '' : 's'); ?>:</div>
+<div class="alliance_list align_left">
 	<?php
 		foreach ($spacegame['players'] as $player) {
-			echo '<div class="alliance_list_item" title="Level '. $player['level'] .'">';
+			echo '<div class="alliance_list_item align_left" title="Level '. $player['level'] .'">';
 			
 			if ($player['gold_expiration'] > PAGE_START_TIME) {
 				echo '<div class="alliance_list_item_gold">';
@@ -64,21 +64,20 @@
 			echo '</div>';
 
 			if ($player['alliance'] > 0) {
-				echo '<div class="alliance_list_item_alliance">';
+				echo '<div class="alliance_list_item_alliance align_right">';
 				echo '<a href="alliance.php?page=members&amp;alliance_id='. $player['alliance'] .'">';
 				echo '<small>' . $spacegame['alliances'][$player['alliance']]['caption'] . '</small>';
 				echo '</a>';
 				echo '</div>';
 			}
 			else {
-				echo '<div class="alliance_list_item_alliance">';
+				echo '<div class="alliance_list_item_alliance align_right">';
 				echo '<small><em>NO ALLIANCE</em></small>';
 				echo '</div>';	
 			}
 
 			echo '</div>';
 		}
-
 
 	?>
 </div>

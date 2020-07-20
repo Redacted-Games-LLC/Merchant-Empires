@@ -23,7 +23,7 @@
 
 	include_once('tmpl/common.php');
 ?>
-<div class="header2">
+<div class="header2 header_bold">
 	Drones
 </div>
 <div class="docs_text">
@@ -58,4 +58,3 @@
 	are docked. This along with the travel time of weapon blasts can lead some damage reports
 	to arrive after drones have been retrieved.
 </div>
-

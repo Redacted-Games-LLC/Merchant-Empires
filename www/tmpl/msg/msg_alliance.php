@@ -34,31 +34,26 @@
 
 ?>
 
-<!--
-Need to remove bolding for <th>.
-Need to align table headers.
--->
-
-<div class="header2">Message Alliance</div>
+<div class="header2 header_bold">Message Alliance</div>
 <div class="docs_text">
 	Sends a message to an <a href="alliance.php?page=list">alliance</a> by name. All
 	members of the alliance will receive the message.
 </div>
 <div class="docs_text">
 	<form action="handler.php" method="post">
-		<table class="message" role="presentation">
-			<tr class="message">
+		<table role="presentation">
+			<tr>
 				<td class="message">Alliance:</td>
 				<td class="message"><input class="msg_form_input" type="text" name="alliance" value="<?php echo $name ?>" maxlength="24" size="24" /></td>
 				<td class="message align_right">
 					<span class="characters_left" id="characters_left">&nbsp;</span>
 				</td>
 			</tr>
-			<tr class="message">
+			<tr>
 				<td class="message">Message:</td>
 				<td class="message" colspan="2"><textarea class="msg_form_input" id="msg_input" name="message" rows="6" cols="60" maxlength="<?php echo MAXIMUM_MESSAGE_LENGTH; ?>"></textarea></td>
 			</tr>
-			<tr class="message">
+			<tr>
 				<td class="message">&nbsp;</td>
 				<td class="message" colspan="2">
 					<script type="text/javascript">
@@ -79,7 +74,7 @@ Need to align table headers.
 	days.
 </div>
 <hr />
-<div class="header3">Sent Messages</div>
+<div class="header3 header_bold">Sent Messages</div>
 <div class="docs_text">
 	<?php 
 		if ($spacegame['message_count'] <= 0) {

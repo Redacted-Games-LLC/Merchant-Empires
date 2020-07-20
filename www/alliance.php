@@ -24,9 +24,6 @@
 	include_once('inc/page.php');
 	include_once('inc/alliance.php');
 
-	
-
-
 	function get_alliance_link($page, $caption) {
 		echo "<a href='alliance.php?page={$page}'>{$caption}</a>";
 	}
@@ -45,7 +42,7 @@
 		</a>
 	</div>
 	
-	<div class="header1"><?php
+	<div class="header1 header_bold"><?php
 		echo 'War Desk';
 
 		if ($spacegame['player']['alliance'] > 0) {
@@ -82,7 +79,6 @@
 	<br class="clear" />
 </div>
 
-	
 <?php	
 	include_once('tmpl/html_end.php');
 ?>

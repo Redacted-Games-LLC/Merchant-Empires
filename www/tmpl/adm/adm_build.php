@@ -32,12 +32,12 @@
 
 
 ?>
-	<div class="header2">Base Construction Administration</div>
+	<div class="header2 header_bold">Base Construction Administration</div>
 	<div class="docs_text">
 		You can manipulate base construction using this page.
 	</div>
 	<hr />
-	<div class="header2">Room List</div>
+	<div class="header2 header_bold">Room List</div>
 	<?php
 
 		if ($spacegame['room_type_count'] <= 0) {
@@ -47,11 +47,11 @@
 		}
 		else {
 			echo '<div class="docs_text">';
-			echo '<div class="room_list">';
+			echo '<div class="room_list align_left">';
 
 			foreach ($spacegame['room_types'] as $room_type_id => $room_type) {
 
-				echo '<div class="room_list_item">';
+				echo '<div class="room_list_item align_left">';
 
 				echo '<a href="admin.php?page=room&amp;room='. $room_type['safe_caption'] .'">';
 				echo $room_type['caption'];
@@ -64,11 +64,9 @@
 			echo '</div>';
 		}
 
-
-
 	?>
 	<hr />
-	<div class="header2">Add New Room</div>
+	<div class="header2 header_bold">Add New Room</div>
 	<div class="docs_text">
 		Your room will be created with a build limit of 0 preventing it from being used by players
 		until you have configured it, but it won't be visible.
@@ -89,7 +87,3 @@
 		</form>
 
 	</div>
-
-	
-
-

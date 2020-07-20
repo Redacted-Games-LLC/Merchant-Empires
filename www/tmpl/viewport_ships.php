@@ -24,10 +24,10 @@
 	include_once('tmpl/common.php');
 	include_once('inc/ships.php');
 ?>
-	<div class="viewport_ships">
+	<div class="viewport_ships align_center">
 			
 		<div class="viewport_hostile_ships">
-			<div class="viewport_hostile_ships_head">
+			<div class="viewport_hostile_ships_head align_left">
 				Hostile Ships &amp; Ordnance
 			</div>
 			<?php
@@ -86,12 +86,12 @@
 
 					echo '<div class="hostile_ship">';
 
-					echo '<div class="ship_level">';
+					echo '<div class="ship_level align_right">';
 					echo 'L' . $player['level'] . ' ';
 					echo $spacegame['races'][$player['race']]['caption'];
 					echo '</div>';
 
-					echo '<div class="ship_alliance">';
+					echo '<div class="ship_alliance align_left">';
 					if ($player['alliance'] > 0) {
 						echo $spacegame['alliances'][$player['alliance']]['caption'];
 					}
@@ -100,7 +100,7 @@
 					}
 					echo '</div>';
 
-					echo '<div class="ship_player_name">';
+					echo '<div class="ship_player_name align_center">';
 
 					$weight = '';
 
@@ -117,16 +117,16 @@
 
 					echo '</div>';
 
-					echo '<div class="ship_name">';
+					echo '<div class="ship_name align_center">';
 					echo '<img class="bottom" src="res/unknown_ship.png" width="16" height="16" />';
 					echo $player['ship_name'] == '' ? DEFAULT_SHIP_NAME : $player['ship_name'];
 					echo '</div>';
 
-					echo '<div class="ship_links" title="Show Attack Popup" onclick="return open_attack(' . $player['record_id'] . ');">';
+					echo '<div class="ship_links align_right" title="Show Attack Popup" onclick="return open_attack(' . $player['record_id'] . ');">';
 						echo 'Attack';
 					echo '</div>';
 
-					echo '<div class="ship_type">';
+					echo '<div class="ship_type align_left">';
 					echo $player['attack_rating'] . ':' . compute_dr($player);
 					echo ' ' . $spacegame['ships'][$player['ship_type']]['caption'];
 					echo '</div>';
@@ -146,7 +146,7 @@
 		</div>
 		
 		<div class="viewport_safe_ships">
-			<div class="viewport_safe_ships_head">
+			<div class="viewport_safe_ships_head align_left">
 				Allied Ships &amp; Ordnance
 			</div>
 			<?php
@@ -201,12 +201,12 @@
 
 					echo '<div class="allied_ship">';
 
-					echo '<div class="ship_level">';
+					echo '<div class="ship_level align_right">';
 					echo 'L' . $player['level'] . ' ';
 					echo $spacegame['races'][$player['race']]['caption'];
 					echo '</div>';
 
-					echo '<div class="ship_alliance">';
+					echo '<div class="ship_alliance align_left">';
 					if ($player['alliance'] > 0) {
 						echo $spacegame['alliances'][$player['alliance']]['caption'];
 					}
@@ -215,7 +215,7 @@
 					}
 					echo '</div>';
 
-					echo '<div class="ship_player_name">';
+					echo '<div class="ship_player_name align_center">';
 					
 					if ($player['gold_expiration'] > PAGE_START_TIME) {
 						echo '<img src="res/gold.png" alt="gold" title="Gold Member" height="12" />';
@@ -227,16 +227,16 @@
 					
 					echo '</div>';
 
-					echo '<div class="ship_name">';
+					echo '<div class="ship_name align_center">';
 					echo '<img class="bottom" src="res/unknown_ship.png" width="16" height="16" />';
 					echo $player['ship_name'] == '' ? DEFAULT_SHIP_NAME : $player['ship_name'];
 					echo '</div>';
 					
-					echo '<div class="ship_links">';
+					echo '<div class="ship_links align_right">';
 					echo '&nbsp;';
 					echo '</div>';
 
-					echo '<div class="ship_type">';
+					echo '<div class="ship_type align_left">';
 					echo $player['attack_rating'] . ':' . compute_dr($player);
 					echo ' ' . $spacegame['ships'][$player['ship_type']]['caption'];
 					echo '</div>';

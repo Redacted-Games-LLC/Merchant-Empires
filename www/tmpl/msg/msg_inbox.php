@@ -34,7 +34,7 @@
 	
 
 ?>
-<div class="header2">Inbox</div>
+<div class="header2 header_bold">Inbox</div>
 <div class="docs_text">
 	<?php
 		echo '<p>';
@@ -70,7 +70,7 @@
 </div>
 
 <hr />
-<div class="header3">Ignore List</div>
+<div class="header3 header_bold">Ignore List</div>
 <div class="docs_text">
 	<?php
 
@@ -99,6 +99,5 @@
 			echo '</ul>';
 			echo '<div>';
 		}
-
 	?>
 </div>

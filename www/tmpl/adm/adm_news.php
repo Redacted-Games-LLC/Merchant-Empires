@@ -51,7 +51,7 @@
 
 ?>
 
-<div class="header2">News Desk</div>
+<div class="header2 header_bold">News Desk</div>
 <?php if ($preview) { ?>
 	<div class="docs_text">
 		Here is your preview:
@@ -68,27 +68,27 @@
 </div>
 <div class="docs_text">
 	<form action="handler.php" method="post">
-		<table class="message" role="presentation">
-			<tr class="message">
+		<table role="presentation">
+			<tr>
 				<td class="message">&nbsp;</td>
 				<td class="message align_right">
 					<span class="characters_left" id="headline_characters_left">&nbsp;</span>
 				</td>
 			</tr>
-			<tr class="message">
+			<tr>
 				<td class="message">Headline:</td>
 				<td class="message"><input class="msg_form_input" id="msg_headline" type="text" name="headline" maxlength="<?php echo NEWS_HEADLINE_LIMIT; ?>" value="<?php echo $article['headline']; ?>" size="58" /></td>
 				<td class="message align_right">
 					<span class="characters_left" id="abstract_characters_left">&nbsp;</span>
 				</td>
 			</tr>
-			<tr class="message">
+			<tr>
 				<td class="message">Abstract:</td>
 				<td class="message" colspan="2">
 					<textarea class="msg_form_input" id="msg_abstract" name="abstract" rows="3" cols="58" maxlength="<?php echo NEWS_ABSTRACT_LIMIT; ?>"><?php echo $article['abstract']; ?></textarea>
 				</td>
 			</tr>
-			<tr class="message">
+			<tr>
 				<td class="message">Author:</td>
 				<td class="message">
 					<select name="author">
@@ -109,25 +109,25 @@
 					<span class="characters_left" id="article_characters_left">&nbsp;</span>
 				</td>
 			</tr>
-			<tr class="message">
+			<tr>
 				<td class="message">Article:</td>
 				<td class="message" colspan="2">
 					<textarea class="msg_form_input" id="msg_article" name="article" rows="20" cols="58" maxlength="<?php echo NEWS_ARTICLE_LIMIT; ?>"><?php echo $article['article']; ?></textarea>
 				</td>
 			</tr>
-			<tr class="message">
+			<tr>
 				<td class="message">Publish&nbsp;Timestamp:</td>
 				<td class="message" colspan="2"><input class="msg_form_input" type="text" name="live_date" maxlength="10" size="12" value="<?php echo $article['live']; ?>" /></td>
 			</tr>
-			<tr class="message">
+			<tr>
 				<td class="message">Archive&nbsp;Timestamp:</td>
 				<td class="message" colspan="2"><input class="msg_form_input" type="text" name="archive_date" maxlength="10" size="12" value="<?php echo $article['archive']; ?>" /></td>
 			</tr>
-			<tr class="message">
+			<tr>
 				<td class="message">Purge&nbsp;Timestamp:</td>
 				<td class="message" colspan="2"><input class="msg_form_input" type="text" name="expiration_date" maxlength="10" size="12" value="<?php echo $article['expiration']; ?>" /></td>
 			</tr>
-			<tr class="message">
+			<tr>
 				<td class="message">Submit:</td>
 				<td class="message" colspan="2">
 					<script type="text/javascript">

@@ -39,7 +39,7 @@
 
 ?>
 <div class="popup_spread">
-	<div class="header1">Error</div>
+	<div class="header1 header_bold">Error</div>
 	<hr />
 	<div class="docs_text">
 		You have reached this page because something you did generated

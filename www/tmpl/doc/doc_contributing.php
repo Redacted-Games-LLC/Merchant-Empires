@@ -23,12 +23,12 @@
 
 	include_once('tmpl/common.php');
 ?>
-<div class="header2">Contributing</div>
+<div class="header2 header_bold">Contributing</div>
 <div class="docs_text">
 	Outside of <a href="docs.php?page=gold">donating money</a> there are a few things you
 	can do. Note that contributions cannot earn any favoritism from [Redacted]Me Staff.
 </div>
-<div class="header3">What project are you contributing towards?</div>
+<div class="header3 header_bold">What project are you contributing towards?</div>
 <div class="docs_text">
 	The Merchant Empires game consists of a fully functioning, open source engine for space
 	trade and combat, but it does not come with a complete ship, weps or goods list, those
@@ -47,7 +47,7 @@
 	<a href="https://www.reddit.com/r/merchantempires" target="_blank" rel="noopener noreferrer">subreddit</a> for
 	community feedback.
 </div>
-<div class="header3">Images and Art</div>
+<div class="header3 header_bold">Images and Art</div>
 <div class="docs_text">
 	New artwork can be submitted via pull request. Include the image file and another text
 	file containing the commercial license or public domain release. Name it like so:
@@ -61,7 +61,7 @@
 	<a href="docs.php?page=credits">Credits</a>. You get one line, but if you want to ref
 	the commit count or something without getting spammy it may not be out of question.
 </div>
-<div class="header3">Suggestions without Contributions</div>
+<div class="header3 header_bold">Suggestions without Contributions</div>
 <div class="docs_text">
 	If you are unable to create art or code you can try pitching your idea on the
 	<a href="http://reddit.com/r/MerchantEmpires" target="_blank" rel="noopener noreferrer">subreddit</a> with the [Suggestion] tag to

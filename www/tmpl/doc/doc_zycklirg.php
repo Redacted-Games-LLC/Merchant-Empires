@@ -23,7 +23,7 @@
 
 	include_once('tmpl/common.php');
 ?>
-<div class="header2">The Infested Zyck'lirg</div>
+<div class="header2 header_bold">The Infested Zyck'lirg</div>
 <div class="docs_text">
 	Every galaxy in the cluster was flipped upside down when the
 	Zyck'lirg hordes arrived. Legend has forgotten who opened
@@ -40,13 +40,13 @@
 	they operate, and therefore cannot learn to fly Xollian or
 	Mawlor craft.
 </div>
-<div class="header3">Swarm Technology (Upcoming)</div>
+<div class="header3 header_bold">Swarm Technology (Upcoming)</div>
 <div class="docs_text">
 	Zyck'lirgs ships are equipped with Swarm Technology. They can deploy
 	combat drones in all surrounding sectors with a single click. This
 	even happens automatically if a Zyck'lirg ship is destroyed.
 </div>
-<div class="header3">Balance Notes</div>
+<div class="header3 header_bold">Balance Notes</div>
 <div class="docs_text">
 	A Zyck'lirg player is one who wants an early advantage in fighting. They don't end their
 	career nearly as powerful as Mawlor or Xollian, and when past their prime, they are only

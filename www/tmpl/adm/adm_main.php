@@ -28,7 +28,7 @@
 		die();
 	}
 ?>
-<div class="header2">Game Administration</div>
+<div class="header2 header_bold">Game Administration</div>
 <div class="docs_text">
 	Select a page on the left.
 </div>

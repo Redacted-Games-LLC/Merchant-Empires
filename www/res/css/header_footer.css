@@ -1,0 +1,77 @@
+/**
+ * For /www/tmpl/html_begin.php & /www/tmpl/html_end.php
+ *
+ * @package [Redacted]Me
+ * ---------------------------------------------------------------------------
+ *
+ * Merchant Empires by [Redacted] Games LLC - A space merchant game of war
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+header {
+	background: url("../head_piece.png") repeat-x;
+	height: 96px;
+	font-size: 120%;
+	font-weight: bold;
+	padding: 2px;
+}
+
+footer {
+	background-color: #110011;
+	font-size: 80%;
+}
+
+div#game_menu {
+	position: absolute;
+	top: 64px;
+	left: 32px;
+	width: 640px;
+}
+
+div#page_build {
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	width: 192px;
+	background: url('../teal_dither.png') repeat;
+	border: solid 1px darkgray;
+}
+
+/* ensure width for left & right footer columns add up to <100%, else license text will drop below logo */
+span#footer_left_column {
+	width: 49%;
+	float: left;
+	padding-left: 8px;
+}
+
+span#footer_right_column {
+	width: 49%;
+	float: right;
+	padding-right: 8px;
+}
+
+span#game_logo {
+	position: absolute;
+	top: 10px;
+	left: 22px;
+	width: 600px;
+}
+
+span#game_title {
+	position: absolute;
+	top: 18px;
+	left: 340px;
+	width: 600px;
+}

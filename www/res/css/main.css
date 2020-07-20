@@ -1,0 +1,288 @@
+/**
+ * Main
+ *
+ * @package [Redacted]Me
+ * ---------------------------------------------------------------------------
+ *
+ * Merchant Empires by [Redacted] Games LLC - A space merchant game of war
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+html,
+body {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+	font-size: 12pt;
+	background-color: #05050a;
+	color: lightgray;
+}
+
+a {
+	color: #ffff77;
+	font-weight: bold;
+	text-decoration: none;
+	font-variant: small-caps;
+	font-size: 110%;
+}
+
+a.game_menu {
+	color: #FFFF00;
+	font-size: 80%;
+	text-shadow: 1px 1px #000000;
+}
+
+a.pagination_current_link {
+	margin: 2px 12px;
+	border: dotted 2px lightgray;
+	font-size: 120%;
+	padding: 3px 8px;
+}
+
+form.solution {display: inline-block;}
+
+img.alliance_list_recruit_image {
+	float: right;
+	width: 20px;
+	height: 20px;
+}
+
+img.base_player_icon {
+    position: absolute;
+    top: 44px;
+    left: 44px;
+    width: 32px;
+    height: 32px;
+}
+
+img.base_small_grid_image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+input.dealer_form_button {
+	position: absolute;
+	top: 0;
+	left: 60px;
+}
+
+input.dealer_form_text {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: black;
+	color: lightgray;
+}
+
+input.form_button {
+	position: relative;
+	height: 24px;
+	vertical-align: bottom;
+}
+
+input.form_input {
+	background-color: black;
+	color: lightgray;
+}
+
+input.port_form_button {
+	position: absolute;
+	top: 0;
+	left: 60px;
+}
+
+input.port_form_input {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: black;
+	color: lightgray;
+}
+
+input.select_player_name {width: 140px;}
+
+input.ship_form_input {
+	background-color: black;
+	color: lightgray;
+}
+
+li.ignore_list {
+	display: inline-block;
+	border: solid 1px #cccccc;
+	padding: 2px 10px;
+	margin: 4px;
+	white-space: nowrap;
+	font-size: 70%;
+}
+
+li.popup_list {
+	display: inline-block;
+	border: solid 1px #cccccc;
+	padding: 3px 16px;
+	margin: 4px;
+	white-space: nowrap;
+}
+
+pre {font-family: CascadiaMono, monospace;}
+
+pre.dump {
+	background-color: lightgray;
+	color: black;
+	margin: 10px;
+	padding: 10px;
+	border: solid 2px gray;
+}
+
+span.no_race_war {color: cyan;}
+span.race_war {color: orange;}
+
+span.turn_cost {
+	color: yellow;
+	padding-left: 8px;
+	font-weight: bold;
+}
+
+svg.attack_recharge {
+	position: absolute;
+	top: 132px;
+	left: 36px;
+}
+
+table.add_weapon {
+	display: inline-block;
+	border-collapse: collapse;
+	border: solid 1px #777;
+}
+
+table.gold_key {border: none;}
+
+table.levels {width: 100%;}
+
+table.ship_info {width: 100%;}
+
+table.solution {
+	width: 100%;
+	margin: 16px;
+}
+
+td.add_weapon {
+	padding: 4px 8px;
+	white-space: nowrap;
+}
+
+td.experience {
+	margin: 0 0 0 1px;
+	background-color: #222222;
+	padding: 4px;
+}
+
+td.gold_key {
+	width: 400px;
+	font-size: 110%;
+	font-weight: bold;
+	color: #2c6;
+}
+
+td.gold_padding {padding: 2px 8px;}
+td.gold_time {font-size: 110%;}
+
+td.level {
+	margin: 0 0 0 4px;
+	background-color: #002200;
+	padding: 4px;
+	font-weight: bold;
+	width: 30px;
+}
+
+td.ship {
+	width: 30px;
+	margin: 0 0 0 4px;
+	padding: 4px;    
+}
+
+td.message {vertical-align: top;}
+
+td.ship_info_key {background-color: #002200;}
+
+td.ship_info_value {
+	background-color: #002222;
+	font-weight: bold;
+}
+
+td.solution {
+	background-color: #002222;
+	font-size: 90%;
+	white-space: nowrap;
+}
+
+th.gold_key {
+	padding: 6px 12px;
+	font-size: 120%;
+	font-weight: bold;
+	background-color: #333;
+}
+
+th.solution {
+	width: 30px;
+	margin: 0 0 0 4px;
+	padding: 4px;
+	background-color: #002200;
+	font-weight: bold;
+	white-space: nowrap;
+}
+
+tr.add_weapon_row {border-bottom: solid 1px #777;}
+
+tr.gold_key {border: solid 1px #888;}
+
+tr.levels {
+	margin: 4px 0;
+	background-color: #000000;
+	padding: 1px;
+}
+
+tr.ship_info,
+tr.solution {
+	margin: 4px 0;
+	padding: 1px;
+	background-color: #000000;
+}
+
+ul.docs_menu {
+	padding: 0;
+	margin: 8px;
+}
+
+ul.ignore_list {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	display: inline;
+}
+
+ul.popup_list {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	display: inline;
+}

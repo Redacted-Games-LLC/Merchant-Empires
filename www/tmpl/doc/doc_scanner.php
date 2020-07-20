@@ -23,7 +23,7 @@
 
 	include_once('tmpl/common.php');
 ?>
-<div class="header2">Scanner</div>
+<div class="header2 header_bold">Scanner</div>
 <div class="docs_text">
 	The scanner is an item which identifies hostile forces and ships in the immediate
 	area. The data returned is minimal but directly fed to the viewport allowing further
@@ -51,18 +51,16 @@
 	and have their cloak active you <em>will not</em> see their pentagon on the scanner.
 	<a href="docs.php?page=mawlor">Mawlors</a> can also learn to fly Xollian ships.
 </div>
-<div class="header3">Current Sector Telemetry Data</div>
+<div class="header3 header_bold">Current Sector Telemetry Data</div>
 <div class="docs_text">
 	The installed scanner also provides a list of forces and ships in the current sector
 	and enough telemetry data to interact or attack or attack them. For ships you will
 	also have access to player name and alliance but for forces you'll have to perform
 	an active scan to see who owns them.
 </div>
-<div class="header3">Active Scan</div>
+<div class="header3 header_bold">Active Scan</div>
 <div class="docs_text">
 	To perform an active scan, click on the sector number in the scanner. A popup will
 	appear detailing the forces found. You can do this for your current sector or any
 	of the eight surrounding sectors.
 </div>
-
-

@@ -27,7 +27,6 @@
 
 	if (!isset($_REQUEST['player_id']) || !is_numeric($_REQUEST['player_id']) || $_REQUEST['player_id'] < 0 || $_REQUEST['player_id'] != floor($_REQUEST['player_id'])) {
 		$return_codes[] = 1087;
-		break;
 	}
 
 	$player_id = $_REQUEST['player_id'];
@@ -46,7 +45,7 @@
 	if (is_null($player)) {
 ?>
 
-	<div class="header2">Player Information : <em>Uknown Player</em></div>
+	<div class="header2 header_bold">Player Information : <em>Uknown Player</em></div>
 	<div class="docs_text">
 		Please return to the <a href="alliance.php?page=players&amp;start=0">player list</a>
 		and try again.
@@ -54,7 +53,7 @@
 
 <?php } else { ?>
 
-	<div class="header2">Player Information : <?php echo $player['caption']; ?></div>
+	<div class="header2 header_bold">Player Information : <?php echo $player['caption']; ?></div>
 	<div class="docs_text">
 		Level: <?php echo $player['level']; ?><br />
 		Experience: <?php echo number_format($player['experience']); ?><br />
@@ -66,12 +65,12 @@
 	</div>
 	<hr />
 	<?php if ($player['alliance'] > 0) { ?>
-		<div class="header2">Alliance : <?php echo $spacegame['alliances'][$player['alliance']]['caption']; ?></div>
+		<div class="header2 header_bold">Alliance : <?php echo $spacegame['alliances'][$player['alliance']]['caption']; ?></div>
 		<div class="docs_text">
 			<a href="alliance.php?page=members&amp;alliance_id=<?php echo $player['alliance'] ?>">View all members</a> of this alliance.
 		</div>
 	<?php } else { ?>
-		<div class="header2">Alliance : <em>NO ALLIANCE</em></div>
+		<div class="header2 header_bold">Alliance : <em>NO ALLIANCE</em></div>
 		<div class="docs_text">
 			This player is not a member of an alliance.
 		</div>

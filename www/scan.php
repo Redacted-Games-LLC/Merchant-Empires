@@ -41,7 +41,7 @@
 		</a>
 	</div>
 
-	<div class="header1">Scan Sector</div>
+	<div class="header1 header_bold">Scan Sector</div>
 	<hr />
 	<?php if (isset($spacegame['scan'])) {
 			if ($spacegame['scan_count'] <= 0) { 

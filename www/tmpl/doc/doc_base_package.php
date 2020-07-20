@@ -23,12 +23,12 @@
 
 	include_once('tmpl/common.php');
 ?>
-<div class="header2">Base Package Deployment</div>
+<div class="header2 header_bold">Base Package Deployment</div>
 <div class="docs_text">
 	You can pick up a base package at any tech dealer. Bases can be deployed on just about
 	any planetoid which can support a port.
 </div>
-<div class="header3">Base Area</div>
+<div class="header3 header_bold">Base Area</div>
 <div class="docs_text">
 	When deployed a base package will terraform a flat land area of 100x100. The depth of 
 	the prepared soil will not be enough to maintain shrubbery or trees, but grasses may
@@ -39,7 +39,7 @@
 	surface resources might be possible such as planting trees, but even if not alternatives
 	such as domed tree farms might be an option.
 </div>
-<div class="header3">Control Pad</div>
+<div class="header3 header_bold">Control Pad</div>
 <div class="docs_text">
 	Bases will automatically start construction of a Control Pad. When finished, you will be
 	able to land on a base.
