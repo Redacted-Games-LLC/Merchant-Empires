@@ -1,6 +1,8 @@
 <?php
 /**
- * Performs housekeeping queries on a schedule.
+ * Performs housekeeping queries on a schedule. THESE CHORES SHOULD GAIN THEIR 
+ * OWN EVENT HANDLER. This is just a temporary dump. If you have time split this
+ * chore out properly.
  * 
  * @package [Redacted]Me
  * ---------------------------------------------------------------------------
@@ -23,12 +25,12 @@
 
 	include_once('inc/events.php');
 	
-	register_event(new Event_Housekeeping());
+	register_event(new Event_Expire_News());
 
-	class Event_Housekeeping extends Event {
+	class Event_Expire_News extends Event {
 		
 		public function getRunTime() {
-			return EVENT_HOUSEKEEPING_TIME;
+			return EVENT_EXPIRE_NEWS_TIME;
 		}
 
 		public function run() {
@@ -37,26 +39,7 @@
 			$db = isset($db) ? $db : new DB;
 
 			$time = time();
-
-			// Expired alliance requests
-
-			$request_time = $time - (OPEN_REQUEST_DAYS * 3600 * 24);
-			$reject_time = $time - (REJECTED_REQUEST_DAYS * 3600 * 24);
-
-			if (!($st = $db->get_db()->prepare('delete from alliance_invitations where requested <= ? or (rejected > 0 and rejected <= ?)'))) {
-				echo (__FILE__ . '::' . __LINE__ . "Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
-				return;
-			}
-		
-			$st->bind_param("ii", $request_time, $reject_time);
-				
-			if (!$st->execute()) {
-				echo ("Query execution failed: (" . $st->errno . ") " . $st->error);
-				return;
-			}
-
-			// Expired news
-
+			
 			if (!($st = $db->get_db()->prepare('delete from news where expiration <= ?'))) {
 				echo (__FILE__ . '::' . __LINE__ . "Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 				return;
