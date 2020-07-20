@@ -1,8 +1,6 @@
 <?php
 /**
- * Performs housekeeping queries on a schedule. THESE CHORES SHOULD GAIN THEIR 
- * OWN EVENT HANDLER. This is just a temporary dump. If you have time split this
- * chore out properly.
+ * Handles expiring new articles on a schedule.
  * 
  * @package [Redacted]Me
  * ---------------------------------------------------------------------------
