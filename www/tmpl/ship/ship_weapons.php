@@ -33,7 +33,6 @@
 	define("TD_CLOSE", '</td>');
 	define("TR_CLOSE", '</tr>');
 	define("TH_CLOSE", '</th>');
-	define("DIV_CLOSE", '</div>');
 ?>
 <div class="header2 header_bold">Weapon Solutions</div>
 <div class="docs_text">
@@ -46,17 +45,22 @@
 	if ($spacegame['weapon_count'] <= 0) {
 		echo '<div class="docs_text">';
 		echo 'There are no discovered weapons in the galaxy.';
-		echo DIV_CLOSE;
+		echo '</div>';
 	}
 	elseif (WEAPON_SOLUTION_LIMIT <= 0) {
 		echo '<div class="docs_text">';
 		echo 'Weapon solutions are not available at this time.';
-		echo DIV_CLOSE;
+		echo '</div>';
 	}
 	elseif ($spacegame['player']['ship_type'] <= 0) {
 		echo '<div class="docs_text">';
 		echo 'You must be in a ship to manipulate weapon solutions.';
-		echo DIV_CLOSE;
+		echo '</div>';
+	}
+	elseif ($spacegame['player']['level'] < MINIMUM_KILLABLE_LEVEL) {
+		echo '<div class="docs_text">';
+		echo 'You must be level ' . MINIMUM_KILLABLE_LEVEL . ' to engage in weapons and hostilities.';
+		echo '</div>';
 	}
 	else {
 
@@ -370,7 +374,7 @@
 
 			echo '<div class="header5 header_bold">';
 			echo 'Add Weapons from Cargo:';
-			echo DIV_CLOSE;
+			echo '</div>';
 
 			
 			echo '<table class="add_weapon">';

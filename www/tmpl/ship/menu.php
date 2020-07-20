@@ -28,7 +28,6 @@
 		<li class="popup_list"><?php echo get_ship_link('main', 'Ship Status'); ?></li>
 		<li class="popup_list"><?php echo get_ship_link('deploy', 'Deploy'); ?></li>
 		<li class="popup_list"><?php echo get_ship_link('weapons', 'Weapons'); ?></li>
-
 	</ul>
 
 	<hr />

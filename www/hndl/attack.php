@@ -60,10 +60,10 @@
 			error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			break;
 		}
-
 		
 		// Some checks to make sure this is ok
 	
+		// Is player at a level which allows combat?
 		if ($spacegame['player']['level'] < MINIMUM_KILLABLE_LEVEL) {
 			$return_codes[] = 1194;
 			break;
@@ -81,27 +81,30 @@
 			$force_id = $_REQUEST['force_id'];
 		}
 
+		// Gotta be either player or force (todo: or base)
 		if ($player_id <= 0 && $force_id <= 0) {
 			$return_codes[] = 1197;
 			break;
 		}
 
+		// But can't be both of player or force (todo: or base)
 		if ($player_id > 0 && $force_id > 0) {
 			$return_codes[] = 1198;
 			break;
 		}
 
+		// Check which solution group we are firing
 		if (!isset($_REQUEST['solution_group']) || !is_numeric($_REQUEST['solution_group']) || $_REQUEST['solution_group'] <= 0) {
 			$return_codes[] = 1189;
 			break;
 		}
 
-
 		$solution_group = $_REQUEST['solution_group'];
 
 		include_once('inc/ships.php');
 		include_once('inc/ranks.php');
-		
+
+		// Set up the news message. This is a sloppy way of doing things.		
 		$message = '';
 
 		$message .= $spacegame['races'][$spacegame['player']['race']]['caption'];
@@ -128,10 +131,12 @@
 		$hitters = array();
 
 
-
 		$db = isset($db) ? $db : new DB;
 
 		if ($force_id > 0) {
+			// We are attacking forces in a sector. Check who they belong to
+			// and make that player the "victim"
+
 			if ($spacegame['player']['base_id'] > 0) {
 				$return_codes[] = 1200;
 				break;
@@ -151,6 +156,10 @@
 			$player_id = $force['owner'];
 		}
 
+
+		// If we were attacking forces, we should now have the owner. Otherwise, we now have the player.
+		// Let's load their info.
+
 		$rs = $db->get_db()->query("select * from players where record_id = '" . $player_id . "'");	
 
 		$rs->data_seek(0);
@@ -160,9 +169,15 @@
 			break;
 		}
 
+		// Now if we were attacking the player we need to do some more work.
+
 		if ($force_id <= 0) {
+
+			// Make sure we are on the same base or in orbit together
+
 			if ($player['base_id'] != $spacegame['player']['base_id']) {
 				$return_codes[] = 1200;
+				break;
 			}
 
 			if ($player['base_id'] > 0) {
@@ -240,8 +255,11 @@
 			$player_armor = $player['armor'];
 
 			$ship = $spacegame['ships'][$player['ship_type']];
-
 		}
+
+
+		// We have our target info. Now lets load our weapon solutions and see what
+		// kind of damage we are going to do.
 
 		include_once('inc/solutions.php');
 		
@@ -285,6 +303,8 @@
 		$message .= ' in sector ' . $spacegame['player']['x'] . ',' . $spacegame['player']['y'] . ':<br /><br />';
 
 		$fire_count = 0;
+
+		// Loop through weapons in solution and get firing.
 
 		foreach ($spacegame['solution_groups'][$solution_group] as $solution_id) {
 
@@ -600,7 +620,7 @@
 			}
 
 			$return_codes[] = 1205;
-			$return_vars['amt'] = $total_damage;
+			$return_vars['amt'] = $fire_count;
 		}
 		else {
 			$hitters[] = array(
