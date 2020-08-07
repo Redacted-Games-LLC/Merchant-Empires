@@ -118,7 +118,7 @@
 					echo '</div>';
 
 					echo '<div class="ship_name align_center">';
-					echo '<img class="bottom" src="res/unknown_ship.png" width="16" height="16" />';
+					echo '<img class="bottom" src="res/unknown_ship.png" width="16" height="16" alt="unknown_ship" />';
 					echo $player['ship_name'] == '' ? DEFAULT_SHIP_NAME : $player['ship_name'];
 					echo '</div>';
 
@@ -228,7 +228,7 @@
 					echo '</div>';
 
 					echo '<div class="ship_name align_center">';
-					echo '<img class="bottom" src="res/unknown_ship.png" width="16" height="16" />';
+					echo '<img class="bottom" src="res/unknown_ship.png" width="16" height="16" alt="unknown_ship" />';
 					echo $player['ship_name'] == '' ? DEFAULT_SHIP_NAME : $player['ship_name'];
 					echo '</div>';
 					
