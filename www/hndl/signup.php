@@ -160,6 +160,11 @@
 				$return_codes[] = 1179;
 			}
 		}
+		else {
+			if (set_user_field($id, 'user', 'users', '1')) {
+				$return_page = 'viewport';
+			}
+		}
 		
 	} while (false);
 	
