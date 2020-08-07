@@ -58,7 +58,7 @@
 						}
 					}
 
-					echo "<small><br />$mines Mines(s) and $drones Drone(s)<br /></small>";
+					echo "<small><br />$drones Drone(s) and $mines Mine(s)<br /></small>";
 				}
 
 
@@ -175,7 +175,7 @@
 						}
 					}
 
-					echo "<small><br />$mines Mines(s) and $drones Drone(s)<br /></small>";
+					echo "<small><br />$drones Drone(s) and $mines Mine(s)<br /></small>";
 				}
 
 				foreach ($players as $id => $player) {
