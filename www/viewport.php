@@ -298,7 +298,7 @@
 										TEAM
 									</div>
 									<div class="viewport_console_item align_center" onclick="return open_message(0)">
-										COM
+										MSG
 									</div>
 								</div>
 					<?php
@@ -362,7 +362,7 @@
 		<div class="clear">&nbsp;</div>
 		<?php if (isset($_REQUEST['dmg'])) { ?>
 			<div class="taking_damage align_center">
-				TAKING taking_damage
+				WARNING! TAKING DAMAGE!
 			</div>
 		<?php } ?>
 	</div>
