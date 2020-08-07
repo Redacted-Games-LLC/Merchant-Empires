@@ -69,7 +69,7 @@
 				}
 				else {
 					echo '<br /><br />';
-					echo '<big><strong>The round is over!</strong> You can obtain a Gold Key with '; 
+					echo '<strong>The round is over!</strong> You can obtain a Gold Key with '; 
 					echo 'your remaining membership time by ';
 					echo '<a href="handler.php?task=gold&amp;subtask=obtain&amp;form_id='. $_SESSION['form_id'] .'">clicking here</a>.</big> ';
 					echo ' The key will be stored with your user automatically.';
