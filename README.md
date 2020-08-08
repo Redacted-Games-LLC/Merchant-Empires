@@ -11,7 +11,7 @@ Place the unzipped files somewhere in-accessible by others, and protect web acce
 
 ## Pre-reqs:
  - MySQL 8.0.21
- - PHP 7.4.8
+ - PHP 7.4.9
 
 > Software versions listed are current as of CY2020.<br>
 > Pre-requisite deviation from the above might cause undesired side effects.<br>
@@ -31,8 +31,8 @@ Grant the following privileges to access them:
     - ALTER, DELETE, EXECUTE, INSERT, SELECT, SHOW VIEW, UPDATE
 
 4. Import the following files in order:
- - **db/structure_users.sql** into user schema
- - **db/structure_game.sql** into game schema
+ - **db/structure_users_mysql80.sql** into user schema
+ - **db/structure_game_mysql80.sql** into game schema
  - **db/data_game.sql** into game schema
  - files in db/patches, if any.
 
@@ -40,7 +40,7 @@ Grant the following privileges to access them:
 
     **Note:** There is no data to insert into user schema.
 
-5. Get ahold of a game package containing ships, goods, and weapons.<br>
+5. Get hold of a game package containing ships, goods, and weapons.<br>
 You can get one from the official Merchant Empires by [Redacted] Games LLC at the following link:
 
     https://www.dropbox.com/s/yaa6ffjbssu9279/round1_rel1.zip?dl=0
@@ -137,7 +137,7 @@ The default image pack should be made available for download as a separate packa
 
 15. Once goods are added, go back to the Admin tool "System Editor" and scroll to the bottom.<br>
 Hit the "Reset" button to generate the initial ports inside the Imperial zones.<br>
-The event processor should then add the upgrades within a few minutes.
+The event processor should then add the trade ports within a few minutes.
 
 16. You should be ready to make the game public and play.<br>
 Reduce PHP.ini script execution time to 30 seconds.<br>
