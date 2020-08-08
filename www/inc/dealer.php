@@ -78,6 +78,7 @@
 					if (HAVOC_ROUND) {
 						$item_ref['final_price'] *= HAVOC_SHIP_COST;
 					}
+					break;
 
 				case 'Goods':
 				case 'People':

@@ -130,10 +130,11 @@
 								$death[$row]['player']['friendly_assists'][] = $row;
 								$players[$row['player']] = null;
 							}
+							break;
 
 						default:
 							// Do nothing, not ours to reconcile.
-							continue;
+							break;
 					}
 		
 					$reconciled_log_items[] = $record_id;
