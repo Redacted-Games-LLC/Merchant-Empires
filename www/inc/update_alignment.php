@@ -89,7 +89,7 @@
 
 					default:
 						// Do nothing
-						continue;
+						break;
 				}
 
 				$reconciled_log_items[] = $log_id;
