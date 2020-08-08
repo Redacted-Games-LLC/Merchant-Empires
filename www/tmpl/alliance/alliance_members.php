@@ -98,7 +98,7 @@
 				echo '</div>';
 			}
 			
-			echo '<small>' . $member['rank'] . '</small>';
+			echo '<small>' . $member['ranks_caption'] . '</small>';
 
 			if ($spacegame['player']['alliance'] == $alliance_id && $spacegame['player']['record_id'] == $spacegame['alliances'][$alliance_id]['founder']) {
 			
