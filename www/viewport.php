@@ -323,10 +323,10 @@
 		?>
 		<div class="viewport_split align_center">
 
-			<table width="100%" role="presentation">
+			<table style="width: 100%;" role="presentation">
 				<tr>
-					<td width="200" valign="top"><?php include_once('tmpl/ship_sidebar.php'); ?></td>
-					<td valign="top"><?php
+					<td style="width: 200px; vertical-align: top;"><?php include_once('tmpl/ship_sidebar.php'); ?></td>
+					<td style="vertical-align: top;"><?php
 
 						if ($spacegame['player']['base_id'] > 0) {
 							echo '&nbsp;';
@@ -341,7 +341,7 @@
 
 					?>
 					</td>
-					<td width="200" valign="top"><?php include_once('tmpl/player_sidebar.php'); ?></td>
+					<td style="width: 200px; vertical-align: top;"><?php include_once('tmpl/player_sidebar.php'); ?></td>
 				</tr>
 			</table>			
 			<div class="clear">&nbsp;</div>

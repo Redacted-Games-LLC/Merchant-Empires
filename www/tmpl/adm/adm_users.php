@@ -112,7 +112,7 @@
 			?>
 			
 			<div id="pagination">
-				<br clear="all" />
+				<br style="clear: both;" />
 			</div>
 			<script type="text/Javascript">
 				<?php

@@ -178,7 +178,7 @@
 		}
 
 		echo '<div id="pagination">';
-		echo '<br clear="all" />';
+		echo '<br style="clear: both;" />';
 		echo '</div>';
 		echo '<script type="text/Javascript">load_pagination(';
 		echo $spacegame['page_number'] .', '. $spacegame['max_pages'] .',';

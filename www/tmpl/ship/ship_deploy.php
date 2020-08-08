@@ -309,7 +309,7 @@
 				</form>
 			</div>
 			<?php } ?>
-			<hr noshade="noshade" size="1" />
+			<hr id="noshade" />
 		</div>
 		
 	<?php } ?>
