@@ -126,9 +126,7 @@ This is used by DSS and game docs. **THIS IS CRITICAL.**
 After a few moments, the new galaxy will be created.<br>
 **Warning:** Any logged-in player will be forcefully logged off in a manner that tells them a spoof is detected.
 
-    If your galaxy fails to create because of script execution timeout, edit your PHP.ini and run it again (refer to step 2).<br>
-    You can even create galaxies over a live server!<br>
-    But everyone will be logged off quickly.
+    If your galaxy fails to create due to script execution timeout, edit your PHP.ini and run it again (refer to step 2).
 
 14. The game expects a "goods" folder in the "www/res" folder.<br>
 You must add this or link to another goods folder.<br>
