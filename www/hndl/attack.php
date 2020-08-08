@@ -569,9 +569,6 @@
 					$return_vars['dmg'] = 'true';
 				}
 
-				$complete_count += $hit_amount;
-				$complete_damage += $total_damage;
-
 				// Message drone owners about potential damage to ship
 
 				$message = '';
