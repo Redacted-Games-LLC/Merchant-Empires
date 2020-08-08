@@ -124,9 +124,9 @@
 		// NOTE: Technically if they can pickup then they have deployed so they
 		// should have a cargo entry. We shouldn't assume though.
 
-		$cargo_id = $spacegame['cargo_index'][$good_id];
-
 		if (isset($spacegame['cargo_index'][$good_id])) {
+			$cargo_id = $spacegame['cargo_index'][$good_id];
+			
 			// Update
 			
 			if (!($st = $db->get_db()->prepare("update player_cargo set amount = amount + ? where record_id = ?"))) {
