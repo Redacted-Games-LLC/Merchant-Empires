@@ -182,7 +182,7 @@
 								}
 						?>
 						<div id="force_panel">
-							<script language="javascript" type="text/javascript"><!--
+							<script type="text/javascript"><!--
 
 								<?php echo "draw_force_panel('{$drone_count}','{$drone_cargo}','{$mine_count}','{$mine_cargo}','{$holds_count}','{$cargo_count}','" . $_SESSION['form_id'] . "');" ?>
 
