@@ -318,7 +318,7 @@
 			if (!($st = $db->get_db()->prepare("insert into places (caption, places.system, x, y, type) values (?,?,?,?,?)"))) {
 				error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 				$return_codes[] = 1006;
-				break 3;
+				break 2;
 			}
 
 			$st->bind_param("siiii", $dealer_name, $system_id, $x, $y, $place_types['Ship Dealer']);
@@ -326,7 +326,7 @@
 			if (!$st->execute()) {
 				$return_codes[] = 1006;
 				error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
-				break 3;
+				break 2;
 			}
 
 			$dealer_id = $db->last_insert_id('places');
@@ -336,7 +336,7 @@
 			if (!($st = $db->get_db()->prepare("insert into dealer_inventory (place, item_type, item, stock, price, last_update) values (?,?,?,?,?,?)"))) {
 				error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 				$return_codes[] = 1006;
-				break 3;
+				break 2;
 			}
 
 			// Starter ships of non races first
@@ -388,7 +388,7 @@
 			if (!($st = $db->get_db()->prepare("insert into places (caption, places.system, x, y, type) values (?,?,?,?,?)"))) {
 				error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 				$return_codes[] = 1006;
-				break 3;
+				break 2;
 			}
 
 			$st->bind_param("siiii", $dealer_name, $system_id, $x, $y, $place_types['Tech Dealer']);
@@ -396,7 +396,7 @@
 			if (!$st->execute()) {
 				$return_codes[] = 1006;
 				error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
-				break 3;
+				break 2;
 			}
 
 			$dealer_id = $db->last_insert_id('places');
@@ -404,7 +404,7 @@
 			if (!($st = $db->get_db()->prepare("insert into dealer_inventory (place, item_type, item, stock, price, last_update) values (?,?,?,?,?,?)"))) {
 				error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 				$return_codes[] = 1006;
-				break 3;
+				break 2;
 			}
 
 			foreach ($tech_goods as $good_id => $good) {

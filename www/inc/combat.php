@@ -181,7 +181,7 @@
 						$db->get_db()->autocommit(true);
 						error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 						$return_codes[] = 1006;
-						break 2;
+						break;
 					}
 					
 					$st->bind_param("i", $player_id);
@@ -191,7 +191,7 @@
 						$db->get_db()->autocommit(true);
 						$return_codes[] = 1006;
 						error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
-						break 2;
+						break;
 					}
 				}
 
