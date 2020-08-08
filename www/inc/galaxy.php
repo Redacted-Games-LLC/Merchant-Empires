@@ -569,7 +569,7 @@
 
 		if (!($st = $db->get_db()->prepare("update port_goods set distance = ? where record_id = ?"))) {
 			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
-			break 2;
+			return;
 		}
 
 		$distance = 0;
