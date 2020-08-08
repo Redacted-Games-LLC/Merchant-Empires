@@ -48,7 +48,4 @@
 				$spacegame['place_count']++;
 			}
 		}
-
 	} while (false);
-
-?>

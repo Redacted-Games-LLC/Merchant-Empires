@@ -68,7 +68,6 @@
 
 					$spacegame['over_rooms'][$row['record_id']] = $row;
 					$spacegame['over_room_count']++;
-
 				}
 			}
 
@@ -78,13 +77,10 @@
 			if ($row = $rs->fetch_assoc()) {
 				$base_caption = $row['caption'];
 			}
-
 		}
 		else if (isset($_REQUEST['plid']) && is_numeric($_REQUEST['plid']) && $_REQUEST['plid'] > 0) {
 			
 			// Viewing a base
-
-
 
 			$rs = $db->get_db()->query("select caption, x, y from places where record_id = '". $_REQUEST['plid'] ."'");
 			
@@ -98,7 +94,6 @@
 
 				$base_caption = $row['caption'];
 			}
-
 
 			// Load base information
 
@@ -154,13 +149,9 @@
 					$spacegame['over_room_count']++;
 				}
 			}
-
 		}
 		else {
 			// Nothing to do here.
 			break;
-		}
-		
+		}		
 	} while (false);
-
-?>

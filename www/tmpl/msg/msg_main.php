@@ -48,5 +48,4 @@
 		echo '"message.php?page=main&pp='. $spacegame['per_page'] .'&"';
 		echo ')</script>';
 	?>
-
 </div>

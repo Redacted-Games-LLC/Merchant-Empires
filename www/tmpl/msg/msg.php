@@ -55,8 +55,7 @@
 
 			$msg_type = 'Unknown Message';
 			$msg_box = 'message';
-			$msg_head = 'message_head';
-			
+			$msg_head = 'message_head';			
 
 			switch ($message['type']) {
 				case 0:
@@ -79,9 +78,7 @@
 					else {
 						$msg_box = 'hostile_alliance_message';
 						$msg_head = 'hostile_alliance_message_head';
-					}
-
-					
+					}					
 					break;
 
 				case 3:
@@ -95,9 +92,7 @@
 					$msg_box = 'battle_message';
 					$msg_head = 'battle_message_head';
 					break;
-
 			}
-
 
 			echo '<div class="' . $msg_box . '">';
 				echo '<div class="'. $msg_head .'">';
@@ -192,6 +187,3 @@
 		echo ')</script>';
 
 	} while (false);
-
-
-?>

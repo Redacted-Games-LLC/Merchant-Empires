@@ -65,6 +65,3 @@
 		$return_codes[] = 1093;
 
 	} while (false);
-
-
-?>

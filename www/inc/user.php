@@ -33,7 +33,6 @@
 		if (!isset($_REQUEST['user']) || !validate_username($_REQUEST['user'])) {
 			break;
 		}
-
 		
 		$db_user = isset($db_user) ? $db_user : new DB(true);
 
@@ -65,6 +64,3 @@
 		$spacegame['user_info']['fields'] = get_user_field($spacegame['user_info']['record_id']);
 
 	} while (false);
-
-
-?>

@@ -305,7 +305,6 @@
 				break;
 			}
 
-
 			if (!($st = $db->get_db()->prepare('update port_goods set amount = amount - ?, last_update = ? where record_id = ? and amount >= ?'))) {
 				$db->get_db()->rollback();
 				$db->get_db()->autocommit(true);
@@ -364,8 +363,6 @@
 					error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 					break;
 				}
-
-
 			}
 			else {
 				// Insert
@@ -398,8 +395,5 @@
 			player_log($player_id, $action, $amount, $place_id);
 			$return_codes[] = 1026;
 			$return_vars['amt'] = $credits;
-		}
-		
+		}		
 	} while (false);
-
-?>

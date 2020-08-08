@@ -23,7 +23,6 @@
 	include_once('inc/common.php');
 	include_once('inc/game.php');
 	
-
 	do { // Dummy loop
 		
 		$player_id = PLAYER_ID;
@@ -86,7 +85,4 @@
 			$spacegame['scan'][$row['record_id']] = $row;
 			$spacegame['scan_count']++;
 		}
-
 	} while (false);
-
-?>

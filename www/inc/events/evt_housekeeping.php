@@ -68,12 +68,5 @@
 				echo ("Query execution failed: (" . $st->errno . ") " . $st->error);
 				return;
 			}
-
-
 		}
-
 	};
-
-
-
-?>

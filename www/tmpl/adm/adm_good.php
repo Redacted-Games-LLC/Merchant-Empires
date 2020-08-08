@@ -60,8 +60,7 @@
 		while ($row = $rs->fetch_assoc()) {
 			$adm_requirements[$row['good']] = $row;
 			$adm_requirements_count++;
-		}
-		
+		}		
 	}
 
 ?>

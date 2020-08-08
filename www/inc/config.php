@@ -434,6 +434,3 @@
 
 	// How much time must exist between each shot to prevent flooding
 	define('ATTACK_FLOOD_DELAY', 4);
-
-
-?>

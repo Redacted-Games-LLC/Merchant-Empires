@@ -23,7 +23,6 @@
 
 	include_once('hndl/common.php');
 
-
 	do { // Dummy Loop
 
 		$return_vars['page'] = 'deploy';
@@ -94,5 +93,3 @@
 		$return_codes[] = 1206;
 
 	} while (false);
-
-?>

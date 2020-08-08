@@ -92,7 +92,6 @@
 								echo '<div class="ns_system" title="Solar System">&nbsp;</div>';
 							}
 						}
-
 					}
 				
 					if (isset($spacegame['target_dir']) && $spacegame['target_dir'] == $dir) {

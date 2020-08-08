@@ -61,5 +61,3 @@
 				break;
  		}
 	} while (false);
-
-?>

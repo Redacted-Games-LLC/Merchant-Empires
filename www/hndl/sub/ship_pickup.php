@@ -58,7 +58,6 @@
 			break;
 		}
 
-
 		if (!isset($_REQUEST['good']) || !is_numeric($_REQUEST['good']) || $_REQUEST['good'] <= 0) {
 			$return_codes[] = 1021;
 			break;
@@ -73,11 +72,9 @@
 			$return_codes[] = 1103;
 			break;
 		}
-
 		
 		$x = $spacegame['player']['x'];
 		$y = $spacegame['player']['y'];
-
 
 		$record_id = 0;
 		$amount = 0;
@@ -145,8 +142,6 @@
 				error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 				break;
 			}
-
-
 		}
 		else {
 			// Insert
@@ -169,6 +164,3 @@
 		}
 
 	} while (false);
-
-
-?>

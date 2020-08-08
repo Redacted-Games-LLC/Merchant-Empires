@@ -91,8 +91,7 @@
 				if ($dist2 < pow($distance_between_stars, 2)) {
 					continue 2;
 				}	
-			}
-		
+			}		
 			
 			$new_stars[] = $this_star;
 			$new_star_count++;
@@ -162,7 +161,6 @@
 		//TODO: get this from elsewhere.
 		$races = array(0=>"Mawlor", 1=>"Zyck'lirg", 2=>'Xollian', 3=>"Mawlor", 4=>"Zyck'lirg");
 
-
 		for ($r = 1; $r <= 3; $r++) {
 			$race_prot = $prot[$r];
 
@@ -180,11 +178,8 @@
 			}
 		}
 
-
 		return $stars;
 	}
-
-
 
 	function generate_warps($stars, $star_count) {
 
@@ -234,15 +229,11 @@
 		}
 
 		return $warps;
-
 	}
-
-
 
 	function generate_system($star) {
 
 		$stuff_grid = array();
-
 
 		if ($star['size'] >= BINARY_STAR_MIN_RADIUS && mt_rand(0,1000) < 1000 * BINARY_STAR_CHANCE) {
 			// Binary star
@@ -290,9 +281,6 @@
 		return $stuff_grid;
 	}
 
-
-
-
 	function insert_place($caption, $system_id, $x, $y, $type_id, $return_codes = array()) {
 
 		if (is_null($caption) || strlen($caption) > 24) {
@@ -308,8 +296,7 @@
 		}
 
 		global $db;
-		$db = isset($db) ? $db : new DB;
-		
+		$db = isset($db) ? $db : new DB;		
 		
 		if (!($st = $db->get_db()->prepare("insert into places (caption, system, x, y, type) values (?,?,?,?,?)"))) {
 			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
@@ -327,8 +314,6 @@
 
 		return $db->last_insert_id('places');
 	}
-
-
 
 	function find_empty_sector(&$x, &$y, $variance, $no_centering = false) {
 
@@ -380,7 +365,6 @@
 		return false;
 	}
 
-
 	function insert_warp($place_id, $x, $y) {
 
 		global $db;
@@ -400,10 +384,6 @@
 
 		return $db->last_insert_id('warps');
 	}
-
-
-
-
 
 	function insert_port($caption, $system, $x, $y, $supply_count, $demand_count, $planet_type, $update_distances = true) {
 
@@ -535,8 +515,6 @@
 		return true;
 	}
 
-
-
 	function update_distances($goods_array = null) {
 
 		global $db;
@@ -625,13 +603,9 @@
 		}
 	}
 
-
-
-
 	function insert_solar_collector($caption, $system, $x, $y) {
 
 		$db = isset($db) ? $db : new DB;
-
 
 		$place_type = 0;
 		$item_type = 0;
@@ -639,7 +613,6 @@
 		$good_level = 0;
 		$amount = 0;
 		$time = PAGE_START_TIME;
-
 
 		$rs = $db->get_db()->query("select record_id from place_types where caption = 'Solar Collector'");
 	
@@ -651,7 +624,6 @@
 		if ($row = $rs->fetch_assoc()) {
 			$place_type = $row['record_id'];
 		}
-
 
 		$rs = $db->get_db()->query("select record_id, max_stock from item_types where caption = 'Goods'");
 	
@@ -739,14 +711,10 @@
 			$return_codes[] = 1006;
 			error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			return false;
-		}		
-
+		}
 
 		return true;
 	}
-
-
-
 
 	function insert_base($caption, $system, $x, $y, $owner, $alliance) {
 
@@ -754,7 +722,6 @@
 		$db = isset($db) ? $db : new DB;
 
 		$place_type = 0;
-
 
 		$rs = $db->get_db()->query("select record_id from place_types where caption = 'Base'");
 	
@@ -786,8 +753,6 @@
 			error_log('Missing control pad in base room types.');
 			return false;
 		}
-
-
 
 		if (!($st = $db->get_db()->prepare("insert into places (caption, system, x, y, type) values (?,?,?,?,?)"))) {
 			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
@@ -853,11 +818,5 @@
 			return 0;
 		}
 
-
 		return $base_id;
 	}
-
-
-
-
-?>

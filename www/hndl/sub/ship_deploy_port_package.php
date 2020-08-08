@@ -83,7 +83,6 @@
 			break;
 		}
 
-
 		// Remove a cargo entry
 		
 		if (!($st = $db->get_db()->prepare("update player_cargo set amount = amount - 1 where record_id = ? and amount = ?"))) {
@@ -100,8 +99,6 @@
 			break;
 		}
 
-
-
 		// Alright, let us deploy the port.
 
 		if (!insert_port($port_carrier['caption'], $port_carrier['system'], $port_carrier['x'], $port_carrier['y'], 3, 3, $port_carrier['place_type'])) {
@@ -112,5 +109,3 @@
 		$return_codes[] = 1076;
 
 	} while (false);
-
-?>

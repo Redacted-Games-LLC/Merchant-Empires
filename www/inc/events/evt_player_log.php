@@ -138,8 +138,7 @@
 					}
 		
 					$reconciled_log_items[] = $record_id;
-				}
-				
+				}				
 			}
 
 			// Cleanup leftover deaths from previous loop
@@ -249,7 +248,6 @@
 				}
 				else {
 					// Player died to other players.
-
 					//TODO: Player died to other players.
 
 					$offender_list = implode(', ', $offender_names);
@@ -272,16 +270,6 @@
 					echo ("Query execution failed: (" . $st->errno . ") " . $st->error);
 					return;
 				}
-
 			}
-
-
-
-
 		}
-
 	};
-
-
-
-?>

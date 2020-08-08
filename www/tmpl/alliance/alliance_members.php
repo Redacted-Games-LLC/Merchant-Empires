@@ -29,7 +29,6 @@
 		$alliance_id = $_REQUEST['alliance_id'];
 	}
 
-
 	$members = array();
 	$member_count = 0;
 
@@ -42,8 +41,6 @@
 		$members[] = $row;
 		$member_count++;
 	}
-
-
 
 ?>
 <div class="header2 header_bold">Alliance Members : <?php echo $spacegame['alliances'][$alliance_id]['caption']; ?></div>
@@ -109,8 +106,7 @@
 					echo '<div class="alliance_list_item_kick align_right">';
 					echo '[<a href="handler.php?task=alliance&amp;subtask=leave&amp;player_id=' . $member['record_id'] . '&amp;form_id='. $_SESSION['form_id'] .'">Kick</a>]';
 					echo '</div>';
-				}
-			
+				}			
 			}
 
 			echo '</div>';

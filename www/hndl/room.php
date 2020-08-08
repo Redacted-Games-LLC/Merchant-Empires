@@ -26,7 +26,6 @@
 
 	$return_page = 'build';
 	
-
 	do { // Dummy loop
 
 		$request_subtask = $_REQUEST['subtask'];
@@ -70,5 +69,3 @@
 				break 2;
  		}
 	} while (false);
-
-?>

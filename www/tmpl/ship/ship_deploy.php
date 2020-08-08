@@ -78,7 +78,6 @@
 						else {
 							$deploy_amount = 1;
 						}
-
 						break;
 
 					case 'shields':
@@ -104,7 +103,6 @@
 							$deploy_amount = 0;
 							echo 'You do not need to replenish any ' . $spacegame['goods'][$tech['good']]['caption'];
 						}
-
 						break;
 
 					case 'solar_collectors':
@@ -129,7 +127,6 @@
 						else {
 							$deploy_amount = 1;
 						}
-
 						break;
 
 					case 'drones':
@@ -194,7 +191,6 @@
 
 							echo 'You can deploy up to ' . $deploy_amount . ' drones in this sector.';
 						}
-
 						break;
 
 					case 'mines':
@@ -248,7 +244,6 @@
 
 							echo 'You can deploy up to ' . $deploy_amount . ' mines in this sector.';
 						}
-
 						break;
 
 					case 'base_package':
@@ -271,11 +266,8 @@
 						else {
 							$deploy_amount = 1;
 							$selectable_caption = true;
-						}
-
-						
+						}						
 						break;
-
 
 					default:
 						echo 'Not sure what this does. Be careful with it...';

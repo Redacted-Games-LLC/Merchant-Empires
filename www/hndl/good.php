@@ -40,7 +40,6 @@
 		die();
 	}
 
-
 	do { // Dummy loop
 	
 		$return_page = 'admin';
@@ -172,7 +171,6 @@
 				$return_codes[] = 1047;
 				break;
 
-
 			case 'add_requirement':
 
 				$return_vars['page'] = 'good';
@@ -186,7 +184,6 @@
 					$return_codes[] = 1021;
 					break 2;
 				}
-
 
 				$db = isset($db) ? $db : new DB;
 
@@ -216,7 +213,6 @@
 				$return_codes[] = 1049;
 				break;
 
-
 			case 'delete_requirement':
 				
 				$return_vars['page'] = 'good';
@@ -230,7 +226,6 @@
 					$return_codes[] = 1021;
 					break 2;
 				}
-
 
 				$db = isset($db) ? $db : new DB;
 
@@ -259,7 +254,6 @@
 
 				$return_codes[] = 1055;
 				break;
-
 
 			case 'add_start':
 
@@ -351,7 +345,6 @@
 				$return_vars['page'] = 'goods';
 				$return_vars['id'] = '0';
 
-
 				if ($good_id <= 0) {
 					$return_codes[] = 1021;
 					break 2;
@@ -429,7 +422,6 @@
 					break;
 				}
 
-
 				// Last one...
 
 				if (!($st = $db->get_db()->prepare("delete from goods where record_id = ?"))) {
@@ -446,7 +438,6 @@
 					break;
 				}
 
-
 				$return_codes[] = 1055;
 				break;
 
@@ -454,7 +445,4 @@
 				$return_codes[] = 1041;
 				break 2;
 		}
-
 	} while (false);
-
-?>

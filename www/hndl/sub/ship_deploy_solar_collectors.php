@@ -82,7 +82,6 @@
 			break;
 		}
 
-
 		// Remove a cargo entry
 		
 		if (!($st = $db->get_db()->prepare("update player_cargo set amount = amount - 1 where record_id = ? and amount = ?"))) {
@@ -99,7 +98,6 @@
 			break;
 		}
 
-
 		// Alright, let us deploy the solar collector.
 
 		if (!insert_solar_collector($star['caption'] . ' Energy', $star['system'], $star['x'], $star['y'])) {
@@ -110,5 +108,3 @@
 		$return_codes[] = 1079;
 
 	} while (false);
-
-?>

@@ -74,7 +74,6 @@
 					echo '<a href="handler.php?task=gold&amp;subtask=obtain&amp;form_id='. $_SESSION['form_id'] .'">clicking here</a>.</big> ';
 					echo ' The key will be stored with your user automatically.';
 				}
-
 			}
 			else {
 				echo 'You do not have an active gold membership. To activate one, ';
@@ -148,8 +147,7 @@
 				echo '<th class="gold_key">Key</th>';
 				echo '<th class="gold_key">Days</th>';
 				echo '<th class="gold_key">Actions</th>';
-			echo '</tr>';
-			
+			echo '</tr>';			
 
 			foreach ($spacegame['gold_keys'] as $record_id => $key) {
 				echo '<tr class="gold_key">';

@@ -96,7 +96,6 @@
 				$db->get_db()->autocommit(true);
 			}
 
-
 			// Dealers second
 
 			$item_types = array();
@@ -107,7 +106,6 @@
 			while ($row = $rs->fetch_assoc()) {
 				$item_types[$row['record_id']] = $row;
 			}
-
 
 			$update_dealers = array();
 			$update_dealer_count = 0;
@@ -124,7 +122,6 @@
 
 				$goods_to_update = ($time - $row['last_update']) * GOODS_PER_UPDATE / PORT_UPDATE_TIME;
 				$amount = min($item_types[$row['item_type']]['max_stock'], $row['stock'] + $goods_to_update);	
-
 
 				$db->get_db()->autocommit(false);
 
@@ -148,11 +145,5 @@
 				$db->get_db()->autocommit(true);
 
 			}
-
 		}
-
 	};
-
-
-
-?>

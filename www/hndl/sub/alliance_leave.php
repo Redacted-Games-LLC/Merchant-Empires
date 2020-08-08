@@ -151,7 +151,6 @@
 					error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
 					break;
 				}
-
 			}
 			else {
 				// Remove the alliance
@@ -172,10 +171,6 @@
 			}
 		}
 
-
 		$return_codes[] = 1099;
 
 	} while (false);
-
-
-?>

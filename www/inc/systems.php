@@ -54,12 +54,9 @@
 							$spacegame['sector'][get_dir($dx, $dy)]['system'] = $row;
 						}
 					}
-
 				}
 			}
-
 		}
-
 
 		if (isset($spacegame['sector']['m']['system'])) {
 			$angle = atan2($spacegame['sector']['m']['system']['x'] - $x, $spacegame['sector']['m']['system']['y'] - $y);
@@ -67,8 +64,7 @@
 
 			$spacegame['sector']['m']['system']['direction'] = $angles[3 + ($angle / (M_PI / 4))];
 			$spacegame['system'] = $spacegame['sector']['m']['system'];
-		}
-		
+		}		
 
 		$spacegame['own_tax_rate'] = $spacegame['races'][$spacegame['player']['race']]['tax_rate'];
 		$spacegame['other_tax_rate'] = 0;
@@ -80,9 +76,5 @@
 		}
 
 		$spacegame['tax_multiplier'] = 1 + ($spacegame['own_tax_rate'] / 100) + ($spacegame['other_tax_rate'] / 100);
-
 		
-
 	} while (false);
-
-?>

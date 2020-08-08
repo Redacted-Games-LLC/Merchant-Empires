@@ -41,8 +41,4 @@
 			$spacegame['rank_levels'][$row['level']] = $row;
 			$spacegame['ranks_count']++;
 		}
-
 	} while (false);
-
-
-?>

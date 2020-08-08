@@ -40,7 +40,6 @@
 	$star_count = 0;
 	$stars = build_star_map($galaxy_size, $seed, $star_count);
 
-
 	$races = array();
 	$races[0]['count'] = 0;
 	$races[1]['count'] = 0;
@@ -51,10 +50,7 @@
 		$races[$stars[$i]['race']]['count'] += 1;
 	}
 
-
 	$warps = generate_warps($stars, $star_count);
-	
-
 
 	header('Content-type: image/png');
 	
@@ -66,9 +62,7 @@
 	$races[3]['color'] = imagecolorallocate($i_hnd, 128, 255, 128);
 
 	$warp_color = imagecolorallocate($i_hnd, 128, 128, 128);
-	
-	
-	
+		
 	$cx = $galaxy_size / 2;
 	$cy = $galaxy_size / 2;
 
@@ -95,4 +89,3 @@
 	
 	imagepng($i_hnd);
 	imagedestroy($i_hnd);
-?>

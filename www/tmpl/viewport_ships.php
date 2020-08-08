@@ -36,8 +36,7 @@
 				if (isset($spacegame['sector']['m']['hostile_ordnance_count']) && $spacegame['sector']['m']['hostile_ordnance_count'] > 0) {
 
 					$mines = 0;
-					$drones = 0;
-				
+					$drones = 0;				
 
 					foreach($spacegame['sector']['m']['hostile_ordnance'] as $ordnance_id => $ordnance) {
 
@@ -61,7 +60,6 @@
 					echo "<small><br />$drones Drone(s) and $mines Mine(s)<br /></small>";
 				}
 
-
 				foreach ($players as $id => $player) {
 					
 					if ($id == $spacegame['player']['record_id']) {
@@ -81,8 +79,7 @@
 						if ($player['base_x'] != $spacegame['player']['base_x'] || $player['base_y'] != $spacegame['player']['base_y']) {
 							continue;
 						}	
-					}
-					
+					}					
 
 					echo '<div class="hostile_ship">';
 

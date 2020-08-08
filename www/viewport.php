@@ -65,7 +65,6 @@
 					$spacegame['target_dist'] = max($adx, $ady);
 					$spacegame['target_dir'] = get_dir($dx, $dy);
 				}
-
 			}
 		}
 		else {

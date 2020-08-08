@@ -128,7 +128,6 @@
 				error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
 				break;
 			}
-
 		}
 		else {
 			// Insert new login attempt
@@ -158,7 +157,6 @@
 				error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
 				break;
 			}
-
 		}
 
 		if ($salt == '') {
@@ -222,9 +220,7 @@
 			
 			$return_codes[] = 1007;
 			break;
-		}
-		
+		}		
 	} while (false);
 
 	session_write_close();
-?>

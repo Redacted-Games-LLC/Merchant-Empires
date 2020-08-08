@@ -27,7 +27,6 @@
  *
  */
 
-
 $RETURN_CODES = array(
 
 	1000 => 'Developer was too lazy to put a better return message in.',
@@ -280,10 +279,5 @@ function get_message($code) {
 	}
 	else {
 		return 'Unknown return code.';
-	}
-	
+	}	
 }
-
-
-
-?>

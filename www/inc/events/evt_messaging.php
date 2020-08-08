@@ -25,9 +25,6 @@
 	
 	register_event(new Event_Messaging());
 
-	/**
-	 * 
-	 */
 	class Event_Messaging extends Event {
 		
 		public function getRunTime() {
@@ -84,11 +81,5 @@
 					return;
 				}
 			}
-
 		}
-
 	};
-
-
-
-?>

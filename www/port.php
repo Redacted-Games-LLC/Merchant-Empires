@@ -43,7 +43,6 @@
 		$empty_holds_available -= $spacegame['cargo_volume'];
 	}
 
-
 	function make_goods_div($item = array(), $place_id = 0, $holds_available = 1, $upgrading = false) {
 
 		global $spacegame;
@@ -89,10 +88,8 @@
 				echo $spacegame['goods'][$item['upgrade']]['caption'];
 				echo '</strong>';
 				echo '</div>';
-			echo '</div>';
-				
+			echo '</div>';				
 		}
-
 
 		if ($upgrading) {
 			echo '<div class="port_buttons" title="Port has obtained enough resources to start new production.">';
@@ -139,7 +136,6 @@
 		echo '</div>';
 	}
 
-
 	function port_trade_buys() {
 		global $spacegame;
 		global $place_id;
@@ -165,7 +161,6 @@
 		global $place_id;
 		global $empty_holds_available;
 
-
 		if ($spacegame['port_trades']['sells_count'] > 0) {
 			echo HEADER_4_BOLD;
 			echo 'We have the following goods for your purchase if you want them:</div>';
@@ -180,7 +175,6 @@
 			echo '<br class="clear" />';
 		}
 	}
-
 
 	function port_upgrade_buys() {
 		global $spacegame;

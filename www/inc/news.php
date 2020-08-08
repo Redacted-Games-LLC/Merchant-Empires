@@ -23,7 +23,6 @@
 
 	include_once('inc/common.php');
 
-
 	if (PLAYER_ID > 0) {
 		include_once('inc/game.php');
 	}
@@ -66,10 +65,8 @@
 			if ($spacegame['page_number'] > $spacegame['max_pages']) {
 				$spacegame['page_number'] = $spacegame['max_pages'];
 			}
-
 		}
 	} while (false);
-
 
 	function insert_article($headline, $abstract, $article, $author, $live_date, $archive_date, $expiration_date, &$return_codes = array(), $trial_run = false) {
 
@@ -134,5 +131,3 @@
 
 		return $db->get_db()->affected_rows > 0;
 	}
-
-?>

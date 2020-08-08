@@ -60,7 +60,6 @@
 			error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			break;
 		}
-
 		
 		// Some checks to make sure this is ok
 	
@@ -96,7 +95,6 @@
 			break;
 		}
 
-
 		$solution_group = $_REQUEST['solution_group'];
 
 		include_once('inc/ships.php');
@@ -126,8 +124,6 @@
 		$player_shields = 0;
 		$player_armor = 0;
 		$hitters = array();
-
-
 
 		$db = isset($db) ? $db : new DB;
 
@@ -275,7 +271,6 @@
 			else {
 				$message .= ' "' . $player['ship_name'] . '"';
 			}
-
 		}
 
 		if ($player['base_id'] > 0) {
@@ -340,7 +335,6 @@
 					$goods_to_reduce[$weapon['ammunition']] += $weapon['volley'];
 				}
 			}
-
 
 			$recharge = RECHARGE_TIME_PER_DAMAGE * $weapon['volley'] * ($weapon['shield_damage'] + $weapon['general_damage'] + $weapon['armor_damage']);
 			$recharge += $spacegame['ship']['recharge'];
@@ -487,8 +481,6 @@
 			}
 		}
 
-
-
 		// Hand out damage
 
 		include_once('inc/combat.php');
@@ -528,7 +520,6 @@
 					break;
 				}
 			}
-
 
 			if (!($st = $db->get_db()->prepare("delete from ordnance where amount <= 0"))) {
 				error_log(__FILE__ . '::' . __LINE__ . "Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
@@ -620,11 +611,5 @@
 
 			$return_codes[] = 1204;
 			$return_vars['amt'] = $total_damage;
-		}
-
-		
+		}		
 	} while (false);
-	
-	
-	
-?>

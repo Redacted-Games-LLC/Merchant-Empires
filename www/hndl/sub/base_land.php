@@ -79,7 +79,6 @@
 			break;
 		}
 
-
 		$time = PAGE_START_TIME;
 		$turns = $spacegame['player']['turns'];
 		$turn_cost = $spacegame['ship']['tps'] * BASE_LAND_TURN_MULTIPLIER;
@@ -110,7 +109,3 @@
 		}
 				
 	} while (false);
-	
-	
-
-?>

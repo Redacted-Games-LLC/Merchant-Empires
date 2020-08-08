@@ -82,6 +82,3 @@
 		$return_codes[] = 1125;
 
 	} while (false);
-
-
-?>

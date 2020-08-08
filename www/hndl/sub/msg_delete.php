@@ -86,12 +86,6 @@
 			break;
 		}			
 		
-
 		$return_codes[] = 1141;
 
-		
-
 	} while (false);
-
-
-?>

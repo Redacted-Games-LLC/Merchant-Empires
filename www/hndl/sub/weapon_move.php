@@ -113,14 +113,12 @@
 						$swap_sequence = $record_id;
 					}
 				}
-
 			}
 		}
 		else {
 			$return_codes[] = 1189;
 			break;
 		}
-
 
 		if (!($st = $db->get_db()->prepare("update solutions set sequence = -1 where record_id = ?"))) {
 			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
@@ -166,6 +164,3 @@
 
 		$return_codes[] = 1191;
 	} while (false);
-
-
-?>

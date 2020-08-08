@@ -45,9 +45,4 @@
 		public function run() {
 			echo "TIMESTAMP (RFC850): " . date(DATE_RFC850) . "\n";
 		}
-
 	};
-
-
-
-?>

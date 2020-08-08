@@ -23,10 +23,7 @@
 	include_once('inc/common.php');
 	include_once('inc/game.php');
 
-
 	do { // Dummy Loop
-
-		
 
 		$db = isset($db) ? $db : new DB;
 
@@ -49,9 +46,7 @@
 			$spacegame['ignore_index'][$row['ignore']] = $row['record_id'];
 			$spacegame['ignore_list_count']++;
 		}
-
 	} while (false);
-
 
 	function send_message($message, $targets = array(), $ttl = 600, $type = 1) {
 
@@ -103,7 +98,3 @@
 
 		return true;
 	}
-
-
-
-?>

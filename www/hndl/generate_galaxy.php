@@ -63,7 +63,6 @@
 			break;
 		}
 
-
 		$tables = array(
 			'user_players',
 			'alliance_invitations',
@@ -107,7 +106,6 @@
 				break;
 			}
 		}
-
 
 		$race_list = array();
 		$race_count = 0;
@@ -172,9 +170,6 @@
 			$tech_goods[$row['record_id']] = $row;
 		}
 
-
-
-
 		$time = PAGE_START_TIME;
 
 		$number = 100;
@@ -215,7 +210,6 @@
 			$system_id = $db->last_insert_id('systems');
 
 			$stars[$star_i]['system_id'] = $system_id;
-
 
 			$place_candidates = array();
 			$place_candidate_count = 0;
@@ -295,7 +289,6 @@
 								error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 								break 3;
 							}
-
 						}
 						else {
 							$place_candidates[] = array('x' => $x, 'y' => $y);
@@ -338,7 +331,6 @@
 
 			$dealer_id = $db->last_insert_id('places');
 		
-
 			// Prepared query is reused for a few things below it
 
 			if (!($st = $db->get_db()->prepare("insert into dealer_inventory (place, item_type, item, stock, price, last_update) values (?,?,?,?,?,?)"))) {
@@ -346,7 +338,6 @@
 				$return_codes[] = 1006;
 				break 3;
 			}
-
 
 			// Starter ships of non races first
 
@@ -370,7 +361,6 @@
 						break 4;
 					}
 				}
-				
 			}
 
 			// Remaining racial ships next
@@ -387,7 +377,6 @@
 			}
 
 			// Done with ships, now tech dealers
-
 
 			$dealer_name = $name . ' Tech';
 
@@ -428,13 +417,10 @@
 					break 3;
 				}
 			}
-
 		}
-
 
 		// Add warps
 		$warps = generate_warps($stars, $star_count);
-
 
 		foreach ($warps as $warp) {
 
@@ -495,11 +481,6 @@
 			}
 			*/
 		}
-
 		
 		$return_codes[] = 1211;		
 	} while (false);
-
-
-	
-?>

@@ -53,8 +53,7 @@
 		echo ' ago and will end ';
 		echo $round_left . ' day' . ($round_left == 1 ? '' : 's');
 		echo ' from now.';
-
-
+		
 	?>
 </div>
 <div class="docs_text">

@@ -43,10 +43,5 @@
 
 		if (isset($spacegame['player']['ship_type']) && $spacegame['player']['ship_type'] > 0) {
 			$spacegame['ship'] = $spacegame['ships'][$spacegame['player']['ship_type']];
-		}
-		
+		}		
 	} while (false);
-
-
-
-?>

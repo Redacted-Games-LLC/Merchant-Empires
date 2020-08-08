@@ -52,7 +52,6 @@
 				die();
 		}
 
-
 		$spacegame['inventory'] = array();
 		$spacegame['inventory_groups'] = array();
 		$spacegame['inventory_count'] = 0;
@@ -100,8 +99,5 @@
 				
 				$item_ref['details'] = $row;
 			}
-		}
-		
+		}		
 	} while (false);
-
-?>

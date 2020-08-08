@@ -24,4 +24,3 @@
 	@define('SPACEGAME', true);
 	include_once('inc/common.php');
 	include_once('inc/session.php');
-?>

@@ -26,7 +26,6 @@
 
 	do { /* Dummy Loop */
 
-
 		$align_delta = PAGE_START_TIME - $spacegame['player']['last_alignment'];
 
 		if ($align_delta >= ALIGNMENT_UPDATE_TIME) {
@@ -95,7 +94,6 @@
 
 				$reconciled_log_items[] = $log_id;
 			}
-
 			
 			foreach ($reconciled_log_items as $log_id) {
 
@@ -149,11 +147,5 @@
 			$db->get_db()->commit();
 			$db->get_db()->autocommit(true);
 
-		}
-		
+		}		
 	} while (false);
-
-
-
-
-?>

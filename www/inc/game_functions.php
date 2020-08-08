@@ -44,8 +44,7 @@
 			}
 			else {
 				return 'u';
-			}
-			
+			}			
 		}
 		else {
 			if ($dx < 0) {
@@ -82,7 +81,6 @@
 		return true;
 	}
 
-
 	function compute_dr($player) {
 		
 		$dr = 0;
@@ -91,6 +89,3 @@
 
 		return round(max($dr, 1));
 	}
-
-
-?>

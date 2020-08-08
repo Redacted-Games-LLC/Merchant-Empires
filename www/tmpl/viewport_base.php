@@ -28,6 +28,3 @@
 	<br style="clear: both;" />
 </div>
 <script>load_base_field();</script>
-
-
-

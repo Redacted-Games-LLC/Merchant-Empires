@@ -90,7 +90,4 @@
 			error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
 			break;
 		}
-
 	} while (false);
-
-?>

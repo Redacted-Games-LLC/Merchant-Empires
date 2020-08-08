@@ -124,6 +124,3 @@
 		$return_vars['page'] = 'main';
 		$return_codes[] = 1148;
 	} while (false);
-
-
-?>

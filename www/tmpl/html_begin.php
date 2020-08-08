@@ -111,7 +111,6 @@
 				}
 
 				echo "];\n";
-
 			}
 
 			if (isset($spacegame['base'])) {
@@ -136,7 +135,6 @@
 				}
 
 				echo "];\n";
-
 			}
 			else {
 				echo "var base_place = 0;\n";

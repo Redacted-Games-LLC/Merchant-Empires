@@ -250,8 +250,7 @@
 		}
 		
 		return $user_fields[$user][$group][$key];
-	}
-	
+	}	
 	
 	function set_user_field($user, $group, $key, $value = null) {
 
@@ -297,6 +296,3 @@
 
 		return $db_user->get_db()->affected_rows > 0;
 	}
-
-
-?>

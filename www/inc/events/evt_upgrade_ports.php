@@ -34,7 +34,6 @@
 		private $reverse_upgrade_paths = array();
 		private $port_place_types = array();
 
-
 		public function __construct() {
 
 			global $db;
@@ -50,7 +49,6 @@
 			}
 
 			$place_type_string = join(',', $place_types);
-
 
 			$upgrade_paths = array();
 			$reverse_upgrade_paths = array();
@@ -167,12 +165,9 @@
 				update_distances($goods_list);
 			}
 
-
 			// Now add a replacement upgrade to the port.
 			$this->add_upgrades_to_port($place_id, 1);
 		}
-
-
 
 		private function add_upgrades_to_port($place_id, $upgrade_count) {
 
@@ -311,7 +306,6 @@
 					$good_list[] = $good;
 					$good_count++;
 				}
-
 			}
 
 			if ($good_count > 0) {
@@ -323,9 +317,4 @@
 				}
 			}
 		}
-
 	};
-
-
-
-?>

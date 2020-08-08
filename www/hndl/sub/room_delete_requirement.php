@@ -62,6 +62,3 @@
 		$return_codes[] = 1177;
 
 	} while (false);
-
-
-?>
