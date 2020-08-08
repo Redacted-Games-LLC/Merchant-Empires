@@ -31,7 +31,7 @@
 
 		$db = isset($db) ? $db : new DB;
 
-		$rs = $db->get_db()->query("select * from ships order by race, rank, caption");
+		$rs = $db->get_db()->query("select * from ships order by race, ships.rank, caption");
 
 		$rs->data_seek(0);
 

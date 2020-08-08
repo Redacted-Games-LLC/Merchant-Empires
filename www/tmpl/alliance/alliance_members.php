@@ -34,7 +34,7 @@
 
 	$db = isset($db) ? $db : new DB;
 
-	$rs = $db->get_db()->query("select players.record_id, players.caption, players.level, players.gold_expiration, ranks.caption as rank from players, ranks where alliance = '". $alliance_id ."' and players.rank = ranks.record_id order by experience desc, caption");
+	$rs = $db->get_db()->query("select players.record_id, players.caption, players.level, players.gold_expiration, ranks.caption as ranks_caption from players, ranks where alliance = '". $alliance_id ."' and players.rank = ranks.record_id order by experience desc, caption");
 	
 	$rs->data_seek(0);
 	while ($row = $rs->fetch_assoc()) {

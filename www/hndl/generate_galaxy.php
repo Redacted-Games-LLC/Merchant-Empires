@@ -148,7 +148,7 @@
 		$ships = array();
 		$ship_count = 0;
 
-		$rs = $db->get_db()->query('select * from ships order by caption, rank');
+		$rs = $db->get_db()->query('select * from ships order by caption, ships.rank');
 
 		$rs->data_seek(0);
 		while ($row = $rs->fetch_assoc()) {

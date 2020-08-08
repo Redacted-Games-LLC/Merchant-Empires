@@ -34,7 +34,7 @@
 		$x = $spacegame['player']['x'];
 		$y = $spacegame['player']['y'];
 
-		$rs = $db->get_db()->query("select places.record_id as id, places.type as place_type, places.caption as caption, place_types.caption as type, system, x, y from places, place_types where x >= '{$x}' - 1 and y >= '{$y}' - 1 and x <= '{$x}' + 1 and y <= '{$y}' + 1 and places.type = place_types.record_id");
+		$rs = $db->get_db()->query("select places.record_id as id, places.type as place_type, places.caption as caption, place_types.caption as type, places.system, x, y from places, place_types where x >= '{$x}' - 1 and y >= '{$y}' - 1 and x <= '{$x}' + 1 and y <= '{$y}' + 1 and places.type = place_types.record_id");
 	
 		$rs->data_seek(0);
 		while ($row = $rs->fetch_assoc()) {
