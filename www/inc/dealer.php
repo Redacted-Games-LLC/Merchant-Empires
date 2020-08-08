@@ -77,6 +77,7 @@
 					if (HAVOC_ROUND) {
 						$item_ref['final_price'] *= HAVOC_SHIP_COST;
 					}
+					$table = strtolower($item_ref['type_caption']);
 					break;
 
 				case 'Goods':
