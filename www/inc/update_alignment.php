@@ -35,7 +35,7 @@
 			$player_id = PLAYER_ID;
 			$db->get_db()->autocommit(false);
 
-			$rs = $db->get_db()->query("select * from player_log where player = '{$player_id}' and reconciled <= 0 and action >= 1 and action <= 6 order by timestamp");
+			$rs = $db->get_db()->query("select * from player_log where player = '{$player_id}' and reconciled > 0 and action >= 1 and action <= 6 order by timestamp");
 
 			if (!$rs) {
 				$db->get_db()->rollback();
