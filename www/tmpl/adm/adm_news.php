@@ -47,6 +47,7 @@
 		$article['live'] = $_REQUEST['live_date'];
 		$article['archive'] = $_REQUEST['archive_date'];
 		$article['expiration'] = $_REQUEST['expiration_date'];
+		$article['record_id'] = null;
 	}
 
 ?>
