@@ -78,7 +78,6 @@
 			break;
 		}
 
-
 		$enabled = false;
 
 		$rs = $db->get_db()->query("select * from message_ignore where player = '$player_id' and `ignore` = '$player'");
@@ -88,9 +87,7 @@
 			$enabled = true;
 		}
 		
-
 		$expiration = PAGE_START_TIME + IGNORE_DURATION;
-
 
 		if ($enabled) {
 
@@ -107,7 +104,6 @@
 				error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
 				break;
 			}
-
 		}
 		else {
 
@@ -125,7 +121,6 @@
 				break;
 			}
 
-
 			if ($db->get_db()->affected_rows <= 0) {
 				$return_codes[] = 1142;
 				break;
@@ -139,9 +134,4 @@
 
 		$return_codes[] = 1143;
 
-		
-
 	} while (false);
-
-
-?>

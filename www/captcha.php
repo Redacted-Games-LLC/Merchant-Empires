@@ -60,10 +60,7 @@
 		$r = mt_rand(0, 15) - 5;
 
 		imagettftext($image_handle, $captcha_font_size, $r, $x, $y, $text_color, $captcha_font, $chars[$i]);	
-	}
-
-	
+	}	
 
 	imagepng($image_handle);
 	imagedestroy($image_handle);
-?>

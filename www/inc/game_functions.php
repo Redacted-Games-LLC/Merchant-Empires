@@ -23,10 +23,6 @@
 
 	include_once ('inc/common.php');
 
-	do { /* Dummy Loop */
-	} while (false);
-
-
 	function get_dir($dx = 0, $dy = 0) {
 		if ($dy < 0) {
 			if ($dx < 0) {
@@ -48,8 +44,7 @@
 			}
 			else {
 				return 'u';
-			}
-			
+			}			
 		}
 		else {
 			if ($dx < 0) {
@@ -86,7 +81,6 @@
 		return true;
 	}
 
-
 	function compute_dr($player) {
 		
 		$dr = 0;
@@ -95,6 +89,3 @@
 
 		return round(max($dr, 1));
 	}
-
-
-?>

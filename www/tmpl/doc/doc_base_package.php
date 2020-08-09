@@ -44,4 +44,3 @@
 	Bases will automatically start construction of a Control Pad. When finished, you will be
 	able to land on a base.
 </div>
-

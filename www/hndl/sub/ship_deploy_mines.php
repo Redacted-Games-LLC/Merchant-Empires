@@ -25,4 +25,3 @@
 	// file for mines and drones and this reconciles it.
 
 	include_once('hndl/sub/ship_deploy_drones.php');
-?>

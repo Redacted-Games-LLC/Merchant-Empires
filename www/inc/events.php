@@ -64,7 +64,6 @@
     	}
 	}
 
-
 	do {
 
 		$spacegame['events'] = array();
@@ -76,8 +75,4 @@
 				include_once('inc/events/' . $file);
 			}
 		}
-
 	} while (false);
-
-
-?>

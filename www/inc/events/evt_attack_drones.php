@@ -44,14 +44,5 @@
 
 			// Have drones "fire" on drones when they don't match the alliance
 
-
-
-
 		}
-
-	};
-
-
-
-?>
-
+	}

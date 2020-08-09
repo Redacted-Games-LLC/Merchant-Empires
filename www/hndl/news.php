@@ -32,13 +32,10 @@
 		die();
 	}
 
-	if (isset($_SESSION['form_id'])) {
-		if (!isset($_REQUEST['form_id']) || $_SESSION['form_id'] != $_REQUEST['form_id']) {
-			header('Location: viewport.php?rc=1181');
-			die();
-		}
+	if ((isset($_SESSION['form_id'])) && (!isset($_REQUEST['form_id']) || $_SESSION['form_id'] != $_REQUEST['form_id'])) {
+		header('Location: viewport.php?rc=1181');
+		die();
 	}
-	
 
 	do { // Dummy loop
 
@@ -76,5 +73,3 @@
  		}
 
 	} while (false);
-
-?>

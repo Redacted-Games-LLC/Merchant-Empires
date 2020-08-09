@@ -22,5 +22,3 @@
  */
 
 	include_once('tmpl/goods_list.php');
-
-?>

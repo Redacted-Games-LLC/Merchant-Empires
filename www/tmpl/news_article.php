@@ -36,7 +36,7 @@
 		&nbsp;<br />
 		<?php echo $article['abstract']; ?>
 	</div>
-	<hr noshade="noshade" />
+	<hr id="noshade" />
 	<div id="news_readme_show_<?php echo $article['record_id']; ?>" class="news_readme" onclick="show_article_div('news_readme_show_', 'news_readme_hide_', 'news_article_', '<?php echo $article['record_id']; ?>')">
 		(Read Article...)
 	</div>

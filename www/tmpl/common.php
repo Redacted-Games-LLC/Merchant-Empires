@@ -29,5 +29,3 @@
 	if ((!isset($tmpl)) || (!is_array($tmpl))) {
 		die('Set the $tmpl array before including template pages.');
 	}
-
-?>

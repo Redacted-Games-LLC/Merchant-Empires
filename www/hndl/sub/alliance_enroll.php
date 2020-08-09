@@ -53,7 +53,6 @@
 			break;
 		}
 
-
 		$time = PAGE_START_TIME;
 
 		$db = isset($db) ? $db : new DB;
@@ -141,7 +140,6 @@
 			break;
 		}
 
-
 		// Update bases and ordnance
 
 		if (!($st = $db->get_db()->prepare('update bases set alliance = ? where owner = ?'))) {
@@ -172,12 +170,6 @@
 			break;
 		}
 
-
-
-
 		$return_codes[] = 1096;
 
 	} while (false);
-
-
-?>

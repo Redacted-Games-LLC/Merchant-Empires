@@ -65,9 +65,4 @@
 				$spacegame['tech_count']++;
 			}
 		}
-
 	} while (false);
-
-
-
-?>

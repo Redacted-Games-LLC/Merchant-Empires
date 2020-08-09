@@ -66,10 +66,5 @@
 			}
 
 			$spacegame['solution_groups'][$row['group']][] = $row['record_id'];
-		}
-		
+		}		
 	} while (false);
-
-
-
-?>

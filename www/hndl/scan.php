@@ -23,15 +23,10 @@
 
 	include_once('inc/page.php');
 
-	if (isset($_SESSION['form_id'])) {
-		if (!isset($_REQUEST['form_id']) || $_SESSION['form_id'] != $_REQUEST['form_id']) {
-			header('Location: viewport.php?rc=1181');
-			die();
-		}
+	if ((isset($_SESSION['form_id'])) && (!isset($_REQUEST['form_id']) || $_SESSION['form_id'] != $_REQUEST['form_id'])) {
+		header('Location: viewport.php?rc=1181');
+		die();
 	}
 
 	$return_page = 'viewport';
-		
-	
 	$return_codes[] = 1017;
-?>

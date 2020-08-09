@@ -169,8 +169,17 @@
 			return false;
 		}
 
-		// http://badsyntax.co/post/javascript-email-validation-rfc822
-		return preg_match('/^([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22))*\x40([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d))*$/', $email) > 0;
+		// https://stackoverflow.com/a/42037557
+		$emailIsValid = false;
+		if (!empty($email)) {
+			$domain = ltrim(stristr($email, '@'), '@') . '.';
+			$user   = stristr($email, '@', TRUE);
+
+			if (!empty($user) && !empty($domain) && checkdnsrr($domain)) {
+				$emailIsValid = true;
+			}
+		}
+		return $emailIsValid;
 	}
 	
 	function validate_playername($playername) {
@@ -241,8 +250,7 @@
 		}
 		
 		return $user_fields[$user][$group][$key];
-	}
-	
+	}	
 	
 	function set_user_field($user, $group, $key, $value = null) {
 
@@ -288,6 +296,3 @@
 
 		return $db_user->get_db()->affected_rows > 0;
 	}
-
-
-?>

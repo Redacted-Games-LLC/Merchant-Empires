@@ -57,12 +57,10 @@
 		$return_codes[] = 1001;
 	}
 
-
 	if (!defined('CANCEL_REDIRECT')) {
-		$return_code_list = implode($return_codes, ',');
+		$return_code_list = implode(',', $return_codes);
 		$return_var_list = http_build_query($return_vars);
 		header("Location: {$return_page}.php?rc={$return_code_list}&{$return_var_list}");
 	}
 	
 	die();
-?>

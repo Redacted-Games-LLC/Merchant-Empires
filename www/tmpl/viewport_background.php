@@ -23,7 +23,6 @@
 
 	include_once('tmpl/common.php');
 
-
 	// Show the background of the page based on what place we are over.
 
 	$dir = isset($spacegame['system']) ? $spacegame['system']['direction'] : 'ul';
@@ -39,15 +38,13 @@
 			case 3: // Earth Planet
 				echo '<div class="viewport_big_planetoid" style="';
 				echo 'background: url(res/planets/earth_'. $dir .'.png) no-repeat;';
-				echo '">&nbsp;</div>';
-				
+				echo '">&nbsp;</div>';				
 				break 2;
 
 			case 5: // Rocky Planet
 				echo '<div class="viewport_big_planetoid" style="';
 				echo 'background: url(res/planets/pluto_'. $dir .'.png) no-repeat;';
-				echo '">&nbsp;</div>';
-			
+				echo '">&nbsp;</div>';			
 				break 2;
 
 			case 9: // Warp
@@ -59,9 +56,7 @@
 			case 12: // Ice Giant Planet
 				echo '<div class="viewport_big_planetoid" style="';
 				echo 'background: url(res/planets/neptune_'. $dir .'.png) no-repeat;';
-				echo '">&nbsp;</div>';
-			
+				echo '">&nbsp;</div>';			
 				break 2;
 		}
 	}
-?>

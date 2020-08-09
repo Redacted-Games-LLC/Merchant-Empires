@@ -74,5 +74,3 @@
 
 	// DELETE THE FOLLOWING LINE WHEN YOU HAVE FINISHED MAKING CHANGES.
 	die('I did not delete the line I was supposed to in DBCONFIG.php when done.');
-
-?>

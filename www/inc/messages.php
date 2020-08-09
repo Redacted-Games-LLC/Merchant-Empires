@@ -40,7 +40,6 @@
 
 		$spacegame['message_receivers'] = array();
 		$spacegame['message_receivers_count'] = 0;
-			
 
 		$db = isset($db) ? $db : new DB;
 
@@ -80,10 +79,8 @@
 					$spacegame['message_senders'][$row['sender']] = null;
 					$spacegame['message_sender_count']++;
 				}
-			}
-			
+			}			
 		}
-
 		
 		if (defined('SENT_MSG_TYPE') && $spacegame['message_receivers_count'] > 0) {
 
@@ -97,10 +94,8 @@
 
 					while ($row = $rs->fetch_assoc()) {
 						$spacegame['message_receivers'][$row['record_id']] = $row['caption'];
-					}	
-
+					}
 					break;
-
 
 				case 2: // Alliance message
 					$receivers = array_keys($spacegame['message_receivers']);
@@ -111,11 +106,9 @@
 
 					while ($row = $rs->fetch_assoc()) {
 						$spacegame['message_receivers'][$row['record_id']] = $row['caption'];
-					}	
-
+					}
 					break;
 			}
-
 		}
 		else if ($spacegame['message_sender_count'] > 0) {
 
@@ -130,13 +123,9 @@
 			}
 		}
 
-
 		$spacegame['max_pages'] = ceil($total_count / $spacegame['per_page']);
 
 		if ($spacegame['page_number'] > $spacegame['max_pages']) {
 			$spacegame['page_number'] = $spacegame['max_pages'];
 		}
-
 	} while (false);
-
-?>

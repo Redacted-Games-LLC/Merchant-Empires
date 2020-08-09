@@ -44,7 +44,6 @@
 			break;
 		}
 
-
 		$db = isset($db) ? $db : new DB;
 
 		$turn_cost = MSG_HIDE_DELETE_TURN_COST;
@@ -119,8 +118,4 @@
 
 		$return_codes[] = 1147;
 
-
 	} while (false);
-
-
-?>

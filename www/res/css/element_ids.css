@@ -162,6 +162,8 @@ div#viewport_main_spread {
 /* to keep footer at bottom of page, header and body reside in this wrapper */
 div#wrapper {min-height: calc(100vh - 65px);}  /* 65px is height of footer */
 
+hr#noshade {border: 1px solid rgb(128, 128, 128);}
+
 iframe#main_iframe {
 	position: absolute;
 	top: 0;

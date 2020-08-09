@@ -108,6 +108,3 @@
 		$return_codes[] = 1137;
 
 	} while (false);
-
-
-?>

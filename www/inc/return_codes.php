@@ -27,7 +27,6 @@
  *
  */
 
-
 $RETURN_CODES = array(
 
 	1000 => 'Developer was too lazy to put a better return message in.',
@@ -129,7 +128,7 @@ $RETURN_CODES = array(
 	1096 => 'You have enrolled the player and they should appear on the alliance list.',
 	1097 => 'That player is not in your alliance.',
 	1098 => 'Alliance leaders and founders must be demoted before being removed.',
-	1099 => 'You have kicked that player out of the alliance.',
+	1099 => 'Player is out of the alliance.',
 	1100 => 'That deployed tech is already topped off so nothing changed.',
 	1101 => 'You can only deploy ordnance off planet and within a solar system.',
 	1102 => 'The limit for that ordnance has already been reached for this sector.',
@@ -244,7 +243,7 @@ $RETURN_CODES = array(
 	1212 => 'Failed to update the message waiting indicator.',
 	1213 => 'Your message(s) have been marked as read.',
 	1214 => 'Failed to mark your message(s) as read.',
-	1215 => '',
+	1215 => 'You must select a player before News Desk works.',
 	1216 => '',
 	1217 => '',
 	1218 => '',
@@ -280,10 +279,5 @@ function get_message($code) {
 	}
 	else {
 		return 'Unknown return code.';
-	}
-	
+	}	
 }
-
-
-
-?>

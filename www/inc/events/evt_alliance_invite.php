@@ -32,6 +32,8 @@
 		}
 
 		public function run() {
+
+			$this->incrementRun();
 		
 			$this->incrementRun();
 			
@@ -54,11 +56,5 @@
 				echo ("Query execution failed: (" . $st->errno . ") " . $st->error);
 				return;
 			}
-
 		}
-
-	};
-
-
-
-?>
+	}

@@ -64,7 +64,6 @@
 			break;
 		}
 
-
 		$db = isset($db) ? $db : new DB;
 
 		$time = PAGE_START_TIME;
@@ -87,6 +86,3 @@
 		$return_codes[] = 1091;
 
 	} while (false);
-
-
-?>

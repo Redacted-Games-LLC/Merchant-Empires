@@ -47,7 +47,6 @@
 
 		$value = $_REQUEST['value'];
 
-
 		$db = isset($db) ? $db : new DB;
 
 		if (!($st = $db->get_db()->prepare('update alliances set recruiting = ? where record_id = ?'))) {
@@ -64,10 +63,6 @@
 			break;
 		}
 
-
 		$return_codes[] = 1088;
 
 	} while (false);
-
-
-?>

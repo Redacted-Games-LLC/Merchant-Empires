@@ -265,7 +265,6 @@
 						</select>
 					</p>
 
-
 					<script type="text/javascript">drawButton('add', 'add', 'validate_add()')</script>
 
 					<input type="hidden" name="task" value="room" />

@@ -145,7 +145,7 @@
 			<input id="login_task" name="task" type="hidden" value="1ogin" />
 		</form>
 		
-		<hr noshade="noshade" size="2" />
+		<hr id="noshade" />
 		
 		<form id="signup_form" action="handler.php" method="post">
 			<div class="login_intro">

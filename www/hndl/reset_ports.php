@@ -145,5 +145,3 @@
 		update_distances();
 
 	} while (false);
-
-?>

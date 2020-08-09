@@ -44,11 +44,9 @@
 			$return_codes[] = 1075;
 			break;
 		}
-
 		
 		include_once('inc/places.php');
 		include_once('inc/place_types.php');
-
 		
 		switch ($good['safe_caption']) {
 			case 'port_package':
@@ -77,6 +75,3 @@
 		}
 
 	} while (false);
-
-
-?>
