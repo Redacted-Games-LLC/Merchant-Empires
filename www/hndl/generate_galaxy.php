@@ -240,7 +240,7 @@
 						$planet_pos++;
 					}
 
-					if (!($st = $db->get_db()->prepare("insert into places (caption, places.system, x, y, type) values (?,?,?,?,?)"))) {
+					if (!($st = $db->get_db()->prepare(INSERT_PLACES))) {
 						error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 						$return_codes[] = 1006;
 						break 3;
@@ -260,7 +260,7 @@
 
 							$dealer_name = $name . ' Energy';
 
-							if (!($st = $db->get_db()->prepare("insert into places (caption, places.system, x, y, type) values (?,?,?,?,?)"))) {
+							if (!($st = $db->get_db()->prepare(INSERT_PLACES))) {
 								error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 								$return_codes[] = 1006;
 								break 3;
@@ -315,7 +315,7 @@
 			$x = $place_candidate['x'];
 			$y = $place_candidate['y'];
 
-			if (!($st = $db->get_db()->prepare("insert into places (caption, places.system, x, y, type) values (?,?,?,?,?)"))) {
+			if (!($st = $db->get_db()->prepare(INSERT_PLACES))) {
 				error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 				$return_codes[] = 1006;
 				break 2;
@@ -385,7 +385,7 @@
 			$x = $place_candidate['x'];
 			$y = $place_candidate['y'];
 
-			if (!($st = $db->get_db()->prepare("insert into places (caption, places.system, x, y, type) values (?,?,?,?,?)"))) {
+			if (!($st = $db->get_db()->prepare(INSERT_PLACES))) {
 				error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 				$return_codes[] = 1006;
 				break 2;

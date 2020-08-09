@@ -23,6 +23,8 @@
 
 	include_once('inc/page.php');
 
+	define("INSERT_PLACES", "insert into places (caption, places.system, x, y, type) values (?,?,?,?,?)");
+
 	function build_star_map($galaxy_size, $seed, &$star_count = 0) {
 
 		$distance_between_stars = 12;
@@ -298,7 +300,7 @@
 		global $db;
 		$db = isset($db) ? $db : new DB;		
 		
-		if (!($st = $db->get_db()->prepare("insert into places (caption, places.system, x, y, type) values (?,?,?,?,?)"))) {
+		if (!($st = $db->get_db()->prepare(INSERT_PLACES))) {
 			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			$return_codes[] = 1006;
 			return 0;
@@ -396,7 +398,7 @@
 		$demand_start_amount = -PORT_LIMIT;
 		$supply_start_amount = PORT_LIMIT;
 
-		if (!($st = $db->get_db()->prepare("insert into places (caption, places.system, x, y, type) values (?,?,?,?,?)"))) {
+		if (!($st = $db->get_db()->prepare(INSERT_PLACES))) {
 			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			$return_codes[] = 1006;
 			return false;
@@ -678,7 +680,7 @@
 			}
 		}
 		else {
-			if (!($st = $db->get_db()->prepare("insert into places (caption, places.system, x, y, type) values (?,?,?,?,?)"))) {
+			if (!($st = $db->get_db()->prepare(INSERT_PLACES))) {
 				error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 				$return_codes[] = 1006;
 				return false;
@@ -754,7 +756,7 @@
 			return false;
 		}
 
-		if (!($st = $db->get_db()->prepare("insert into places (caption, places.system, x, y, type) values (?,?,?,?,?)"))) {
+		if (!($st = $db->get_db()->prepare(INSERT_PLACES))) {
 			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			return 0;
 		}
