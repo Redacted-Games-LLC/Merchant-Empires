@@ -63,6 +63,13 @@
 		}		
 	}
 
+	if (ctype_digit($_GET['id'])) {
+		$good_id = $_GET['id'];
+	}
+	else {
+		$good_id = null;
+	}
+
 ?>
 <div class="header2 header_bold"><a href="admin.php?page=goods">Goods Administration</a> :: <?php echo isset($adm_good['caption']) ? $adm_good['caption'] : 'No Good Selected'; ?></div>
 <?php if (!isset($adm_good['caption'])) { ?>
@@ -80,7 +87,7 @@
 	<img src="res/goods/<?php echo $adm_good['safe_caption']; ?>.png" width="64" height="64" alt="admin good" />
 </div>
 <div class="docs_text">
-	<a href="docs.php?page=good&amp;id=<?php echo $_GET['id']; ?>" target="_blank">Click Here</a> to view good information.<br />
+	<a href="docs.php?page=good&amp;id=<?php echo $good_id; ?>" target="_blank">Click Here</a> to view good information.<br />
 	You can make changes to the selected good below:
 </div>
 <hr />
