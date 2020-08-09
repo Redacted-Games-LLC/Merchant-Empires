@@ -25,6 +25,7 @@
 -- Host: localhost    Database: spacegame_users
 -- ------------------------------------------------------
 -- Server version	8.0.21
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 
 --
 -- Table structure for table `users`
