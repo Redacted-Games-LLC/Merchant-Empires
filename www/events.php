@@ -40,6 +40,7 @@
 
 	echo "\n";
 	echo "The following events are being monitored:\n\n";
+	$spacegame['event_names'] = array();
 
 	foreach ($spacegame['events'] as $event) {
 
@@ -51,6 +52,8 @@
 			$len = strlen($event_name);
 
 			echo "    " . $event_name . str_repeat(" ", 20 - $len) . $event->getRunTime() . " seconds\n";
+
+			$spacegame['event_names'][$event_name] = $event;
 		}		
 	}	
 
@@ -77,7 +80,7 @@
 			sleep(1);
 		}
 
-		sleep(2);
+		sleep(1);
 	} // while $running
 
 	echo "Terminating Event Processor. Goodbye!\n";

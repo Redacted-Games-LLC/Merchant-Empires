@@ -1,6 +1,6 @@
 <?php
 /**
- * Performs housekeeping queries on a schedule.
+ * Handles expiring alliance invitation requests.
  * 
  * @package [Redacted]Me
  * ---------------------------------------------------------------------------
@@ -23,22 +23,22 @@
 
 	include_once('inc/events.php');
 	
-	register_event(new Event_Housekeeping());
+	register_event(new Event_Alliance_Invite());
 
-	class Event_Housekeeping extends Event {
+	class Event_Alliance_Invite extends Event {
 		
 		public function getRunTime() {
-			return EVENT_HOUSEKEEPING_TIME;
+			return EVENT_ALLIANCE_RESPONSE_TIME;
 		}
 
 		public function run() {
+
+			$this->incrementRun();
 		
 			global $db;
 			$db = isset($db) ? $db : new DB;
 
 			$time = time();
-
-			// Expired alliance requests
 
 			$request_time = $time - (OPEN_REQUEST_DAYS * 3600 * 24);
 			$reject_time = $time - (REJECTED_REQUEST_DAYS * 3600 * 24);
@@ -49,20 +49,6 @@
 			}
 		
 			$st->bind_param("ii", $request_time, $reject_time);
-				
-			if (!$st->execute()) {
-				echo ("Query execution failed: (" . $st->errno . ") " . $st->error);
-				return;
-			}
-
-			// Expired news
-
-			if (!($st = $db->get_db()->prepare('delete from news where expiration <= ?'))) {
-				echo (__FILE__ . '::' . __LINE__ . "Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
-				return;
-			}
-		
-			$st->bind_param("i", $time);
 				
 			if (!$st->execute()) {
 				echo ("Query execution failed: (" . $st->errno . ") " . $st->error);
