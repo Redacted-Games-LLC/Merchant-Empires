@@ -26,7 +26,7 @@
  */
 
 	include_once('inc/events.php');
-	\
+
 	register_event(new Event_Timestamp());
 
 	/**
@@ -59,4 +59,4 @@
 
 			echo "\n";
 		}
-	};
+	}

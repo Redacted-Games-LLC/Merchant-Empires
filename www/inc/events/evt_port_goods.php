@@ -145,7 +145,6 @@
 
 				$db->get_db()->commit();
 				$db->get_db()->autocommit(true);
-
 			}
 		}
-	};
+	}
