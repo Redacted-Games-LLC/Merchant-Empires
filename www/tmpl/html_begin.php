@@ -82,7 +82,6 @@
 				echo 'var base_y = ' . $spacegame['player']['base_y'] . ";\n";
 			}
 
-
 			if (isset($players)) {
 				echo "var players = [\n";
 
@@ -158,6 +157,11 @@
 		<div id="game_menu" class="align_left">
 			<?php
 				if (USER_ID > 0) {
+					if (get_user_field(USER_ID, 'admin')) {
+						echo '<a class="game_menu" href="admin.php">Admin</a>';
+						echo '&nbsp;&nbsp;|&nbsp;&nbsp;';
+					}
+					
 					if (PLAYER_ID > 0) {
 						echo '<a class="game_menu" href="viewport.php">Refresh Viewport</a>';
 						echo '&nbsp;&nbsp;|&nbsp;&nbsp;';
