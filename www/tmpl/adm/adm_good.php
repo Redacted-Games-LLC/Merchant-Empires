@@ -80,6 +80,7 @@
 	<img src="res/goods/<?php echo $adm_good['safe_caption']; ?>.png" width="64" height="64" alt="admin good" />
 </div>
 <div class="docs_text">
+	<a href="docs.php?page=good&amp;id=<?php echo $_GET['id']; ?>" target="_blank">Click Here</a> to view good information.<br />
 	You can make changes to the selected good below:
 </div>
 <hr />
