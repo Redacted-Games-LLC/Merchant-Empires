@@ -26,6 +26,9 @@
 	if (PLAYER_ID > 0) {
 		include_once('inc/game.php');
 	}
+	else {
+		echo '<script type="text/javascript">window.location.href = "select_player.php?rc=1215"</script>';
+	}
 	
 	do { // Dummy Loop
 		$spacegame['news']['authors'] = array();
