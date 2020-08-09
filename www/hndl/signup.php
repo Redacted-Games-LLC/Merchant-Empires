@@ -161,7 +161,7 @@
 			}
 		}
 		else {
-			if (set_user_field($id, 'user', 'users', '1')) {
+			if (set_user_field($id, 'user', 'ban', '0')) {
 				$return_page = 'viewport';
 			}
 		}
