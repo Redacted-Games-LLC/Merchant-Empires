@@ -32,6 +32,8 @@
 		}
 
 		public function run() {
+
+			$this->incrementRun();
 			
 			global $db;
 			$db = isset($db) ? $db : new DB;

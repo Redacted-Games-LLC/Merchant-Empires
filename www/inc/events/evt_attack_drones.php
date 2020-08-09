@@ -1,7 +1,7 @@
 <?php
 /**
- * Menu of ship related pages.
- *
+ * Causes drones to occasionally fire on local enemy drones
+ * 
  * @package [Redacted]Me
  * ---------------------------------------------------------------------------
  *
@@ -21,13 +21,37 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-	include_once('tmpl/common.php');
-?>
+	include_once('inc/events.php');
 	
-	<ul class="popup_list">
-		<li class="popup_list"><?php echo get_ship_link('main', 'Ship Status'); ?></li>
-		<li class="popup_list"><?php echo get_ship_link('deploy', 'Deploy'); ?></li>
-		<li class="popup_list"><?php echo get_ship_link('weapons', 'Weapons'); ?></li>
-	</ul>
+	register_event(new Event_Attack_Drones());
 
-	<hr />
+	class Event_Attack_Drones extends Event {
+		
+		public function getRunTime() {
+			return EVENT_ATTACK_DRONES_TIME;
+		}
+
+		public function run() {
+
+			$this->incrementRun();
+		
+			global $db;
+			$db = isset($db) ? $db : new DB;
+
+			// Load up all sectors that have drones that belong to different
+			// players. 
+
+
+			// Have drones "fire" on drones when they don't match the alliance
+
+
+
+
+		}
+
+	};
+
+
+
+?>
+

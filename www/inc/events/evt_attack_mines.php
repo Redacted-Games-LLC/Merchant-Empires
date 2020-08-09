@@ -1,7 +1,7 @@
 <?php
 /**
- * Menu of ship related pages.
- *
+ * Causes drones to occasionally fire on local enemy mines
+ * 
  * @package [Redacted]Me
  * ---------------------------------------------------------------------------
  *
@@ -21,13 +21,37 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-	include_once('tmpl/common.php');
-?>
+	include_once('inc/events.php');
 	
-	<ul class="popup_list">
-		<li class="popup_list"><?php echo get_ship_link('main', 'Ship Status'); ?></li>
-		<li class="popup_list"><?php echo get_ship_link('deploy', 'Deploy'); ?></li>
-		<li class="popup_list"><?php echo get_ship_link('weapons', 'Weapons'); ?></li>
-	</ul>
+	register_event(new Event_Attack_Mines());
 
-	<hr />
+	class Event_Attack_Mines extends Event {
+		
+		public function getRunTime() {
+			return EVENT_ATTACK_MINES_TIME;
+		}
+
+		public function run() {
+
+			$this->incrementRun();
+		
+			global $db;
+			$db = isset($db) ? $db : new DB;
+
+			// Load up all sectors that have both mines and drones that belong 
+			// to different players. 
+
+
+			// Have drones "fire" on mines when they don't match the alliance
+
+
+
+
+		}
+
+	};
+
+
+
+?>
+

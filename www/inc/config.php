@@ -97,7 +97,7 @@
 	// look for ports which have not been updated in a certain time (defined below) and
 	// run update procedures. This includes checking supply and demand and also running
 	// new upgrades.
-	define('PORT_EVENT_CYCLE', 23);
+	define('PORT_EVENT_CYCLE', 14);
 
 	// How often a port wants to regenerate supply and demand, but the time will take
 	// longer as a round goes on.
@@ -189,16 +189,30 @@
 	}
 
 	// One of the events spits a timestamp on the console at this interval.
-	define('EVENT_TIMESTAMP_TIME', 600);
+	if (DEV_ROUND) {
+		define('EVENT_TIMESTAMP_TIME', 30);
+	}
+	else {
+		define('EVENT_TIMESTAMP_TIME', 600);
+	}
 
 	// How often to check damage and death reports to produce battle reports.
 	define('EVENT_PLAYER_LOG_TIME', 10);
 
-	// One of the events performs housekeeping tasks at this interval.
-	define('EVENT_HOUSEKEEPING_TIME', 41);
+	// One of the events performs expiring new tasks at this interval.
+	define('EVENT_EXPIRE_NEWS_TIME', 37);
 
 	// One of the events spits a timestamp on the console at this interval.
 	define('EVENT_MESSAGING_TIME', 9);
+
+	// One of the events causes mines to be attacked by available drones in a sector.
+	define('EVENT_ATTACK_MINES_TIME', 23);
+
+	// One of the events causes drones to be attacked by available drones in a sector.
+	define('EVENT_ATTACK_DRONES_TIME', 53);
+
+	// How long we should check for alliance rejections
+	define('EVENT_ALLIANCE_RESPONSE_TIME', 17);
 
 	// Minimum and maximum alignment
 	define('ALIGNMENT_LIMIT', 500);

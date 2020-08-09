@@ -170,6 +170,17 @@
 		echo 'You must be in a ship to manipulate weapon solutions.';
 		echo '</div>';
 	}
+	elseif ($spacegame['player']['level'] < MINIMUM_KILLABLE_LEVEL) {
+		echo '<div class="docs_text">';
+		echo 'You must be level ' . MINIMUM_KILLABLE_LEVEL . ' to engage in combat and hostilities.';
+		echo '</div>';
+	}
+	elseif ($spacegame['solution_group_count'] <= 0) {
+		echo '<div class="docs_text">';
+		echo 'You have no assigned weapon solutions. Please configure your weapons in the ';
+		echo '<a href="ship.php?page=weapons" title="Ship Weapons">Ship Weapons</a> tab.';
+		echo '</div>';
+	}
 	else {
 
 		echo '<div class="attack_buttons align_center">';

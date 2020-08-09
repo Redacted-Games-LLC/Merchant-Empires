@@ -1,7 +1,7 @@
 <?php
 /**
- * Menu of ship related pages.
- *
+ * Handles expiring new articles on a schedule.
+ * 
  * @package [Redacted]Me
  * ---------------------------------------------------------------------------
  *
@@ -21,13 +21,42 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-	include_once('tmpl/common.php');
-?>
+	include_once('inc/events.php');
 	
-	<ul class="popup_list">
-		<li class="popup_list"><?php echo get_ship_link('main', 'Ship Status'); ?></li>
-		<li class="popup_list"><?php echo get_ship_link('deploy', 'Deploy'); ?></li>
-		<li class="popup_list"><?php echo get_ship_link('weapons', 'Weapons'); ?></li>
-	</ul>
+	register_event(new Event_Expire_News());
 
-	<hr />
+	class Event_Expire_News extends Event {
+		
+		public function getRunTime() {
+			return EVENT_EXPIRE_NEWS_TIME;
+		}
+
+		public function run() {
+
+			$this->incrementRun();
+		
+			global $db;
+			$db = isset($db) ? $db : new DB;
+
+			$time = time();
+			
+			if (!($st = $db->get_db()->prepare('delete from news where expiration <= ?'))) {
+				echo (__FILE__ . '::' . __LINE__ . "Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+				return;
+			}
+		
+			$st->bind_param("i", $time);
+				
+			if (!$st->execute()) {
+				echo ("Query execution failed: (" . $st->errno . ") " . $st->error);
+				return;
+			}
+
+
+		}
+
+	};
+
+
+
+?>

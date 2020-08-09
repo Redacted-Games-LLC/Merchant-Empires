@@ -161,13 +161,13 @@
 							case 33: // Mines
 								$mines += $ordnance['amount'];
 								$success = true;
-								echo '<img src="res/allied_mines.png" width="32" height="32" title="'. $ordnance['amount'] .' Mine(s)" />';
+								echo '<img onclick="open_attack_force('. $ordnance['record_id'] .');" src="res/allied_mines.png" width="32" height="32" title="'. $ordnance['amount'] .' Mine(s)" />';
 								break;
 
 							case 34: // Drones
 								$drones += $ordnance['amount'];
 								$success = true;
-								echo '<img src="res/allied_drones.png" width="32" height="32" title="'. $ordnance['amount'] .' Drones(s)" />';
+								echo '<img onclick="open_attack_force('. $ordnance['record_id'] .');" src="res/allied_drones.png" width="32" height="32" title="'. $ordnance['amount'] .' Drones(s)" />';
 								break;
 						}
 					}

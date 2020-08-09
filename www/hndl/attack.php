@@ -62,8 +62,8 @@
 		}
 		
 		// Some checks to make sure this is ok
-
-		// Is player at a level which allows combat?	
+	
+		// Is player at a level which allows combat?
 		if ($spacegame['player']['level'] < MINIMUM_KILLABLE_LEVEL) {
 			$return_codes[] = 1194;
 			break;
@@ -253,7 +253,6 @@
 			$player_armor = $player['armor'];
 
 			$ship = $spacegame['ships'][$player['ship_type']];
-
 		}
 
 		// We have our target info. Now lets load our weapon solutions and see what
