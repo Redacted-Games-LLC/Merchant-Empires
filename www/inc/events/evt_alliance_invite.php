@@ -34,8 +34,6 @@
 		public function run() {
 
 			$this->incrementRun();
-		
-			$this->incrementRun();
 			
 			global $db;
 			$db = isset($db) ? $db : new DB;
