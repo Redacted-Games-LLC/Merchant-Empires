@@ -29,8 +29,8 @@
 		define('PLAYER_ID', 0);
 
 	} else {
-		if (isset($_SERVER['REMOTE_ADDR'])) {
-			$length = strlen($_SERVER['REMOTE_ADDR']);
+		if (getClientIP() != null) {
+			$length = strlen(getClientIP());
 			
 			if ($length < 3 || $length > 40) {
 				die('Your IP address must be valid and within range to access game pages.');

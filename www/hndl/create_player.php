@@ -45,7 +45,7 @@
 		}
 		
 		if ($player_race < 0 || !is_numeric($player_race)) {
-			error_log('User ' . USER_ID . ' from ' . $_SERVER['REMOTE_ADDR'] . ' attempted to access an invalid race.');
+			error_log('User ' . USER_ID . ' from ' . getClientIP() . ' attempted to access an invalid race.');
 			$return_codes[] = 1009;
 			break;
 		}
@@ -70,7 +70,7 @@
 		}
 		
 		if (!isset($race_list[$player_race])) {
-			error_log('User ' . USER_ID . ' from ' . $_SERVER['REMOTE_ADDR'] . ' attempted to access an invalid race.');
+			error_log('User ' . USER_ID . ' from ' . getClientIP() . ' attempted to access an invalid race.');
 			$return_codes[] = 1009;
 			break;
 		}

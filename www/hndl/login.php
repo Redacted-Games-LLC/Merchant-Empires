@@ -48,7 +48,7 @@
 		// Get stuff from db
 		$db_user = isset($db_user) ? $db_user : new DB(true);
 
-		$ip = inet_ntop(inet_pton($_SERVER['REMOTE_ADDR']));
+		$ip = inet_ntop(inet_pton(getClientIP()));
 		$id = 0;
 		$salt = '';
 
@@ -214,7 +214,7 @@
 			}
 			
 			$_SESSION['uid'] = $id;
-			$_SESSION['form_id'] = substr(hash('sha256', microtime() . $id . $_SERVER['REMOTE_ADDR']), 16, 32);
+			$_SESSION['form_id'] = substr(hash('sha256', microtime() . $id . getClientIP()), 16, 32);
 		}
 		else {
 			

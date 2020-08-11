@@ -36,7 +36,7 @@
 	$center_y = ($captcha_height + $text_height) / 2;
 
 	mt_srand(microtime(true));
-	$chars = substr(hash('sha256', $_SERVER['REMOTE_ADDR'] . microtime()), 0, $captcha_length);
+	$chars = substr(hash('sha256', getClientIP() . microtime()), 0, $captcha_length);
 
 	header('Content-type: image/png');
 
