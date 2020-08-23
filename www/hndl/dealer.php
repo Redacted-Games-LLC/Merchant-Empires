@@ -238,6 +238,11 @@
 					break 2;
 				}
 
+				if ($credits > $spacegame['player']['credits']) {
+					$return_codes[] = 1025;
+					break 2;
+				}
+
 				$db = isset($db) ? $db : new DB;
 
 				$db->get_db()->autocommit(false);
