@@ -33,7 +33,7 @@
 			break;
 		}
 		
-		if (!defined('ALLIANCE_LEADER') || !ALLIANCE_LEADER) {
+		if (!ALLIANCE_LEADER) {
 			$return_codes[] = 1086;
 			break;
 		}
