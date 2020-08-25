@@ -65,4 +65,23 @@
 
 		$return_codes[] = 1088;
 
+		// Reject all pending join requests if recruitment is disabled
+		if ($value == 0) {
+
+			$time = PAGE_START_TIME;
+
+			if (!($st = $db->get_db()->prepare('update alliance_invitations set rejected = ? where alliance = ? and rejected <= 0'))) {
+				error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+				$return_codes[] = 1006;
+				break;
+			}
+			
+			$st->bind_param("ii", $time, $alliance_id);
+			
+			if (!$st->execute()) {
+				$return_codes[] = 1006;
+				error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
+				break;
+			}
+		}
 	} while (false);
