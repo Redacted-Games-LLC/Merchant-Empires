@@ -23,6 +23,7 @@
 
 	include_once('hndl/common.php');
 	include_once('inc/alliance.php');
+	include_once('inc/msg_functions.php');
 
 	$return_vars['page'] = 'list';
 	$return_vars['alliance_id'] = 0;
@@ -84,5 +85,11 @@
 		}
 
 		$return_codes[] = 1091;
+
+		// Notify alliance leader of recruitment request
+		$message = "Requesting to join your alliance.";
+		$targets = array();
+		$targets[] = $spacegame['alliances'][$alliance_id]['founder'];
+		send_message($message, $targets, MESSAGE_EXPIRATION, 1);
 
 	} while (false);
