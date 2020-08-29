@@ -23,6 +23,7 @@
 
 	include_once('hndl/common.php');
 	include_once('inc/game.php');
+	include_once('inc/msg_functions.php');
 
 	$return_vars['page'] = 'inbox';
 	$return_vars['p'] = $_REQUEST['p'];
@@ -125,6 +126,27 @@
 				$return_codes[] = 1142;
 				break;
 			}
+
+			$read_time = PAGE_START_TIME;
+
+			if (!($st = $db->get_db()->prepare("update message_targets set message_targets.read = ? where `target` = ? and sender = ?"))) {
+				error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+				$return_codes[] = 1006;
+				break;
+			}
+			
+			$st->bind_param("iii", $read_time, $player_id, $player);
+			
+			if (!$st->execute()) {
+				$return_codes[] = 1006;
+				error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
+				break;
+			}
+	
+			if ($db->get_db()->affected_rows <= 0) {
+				$return_codes[] = 1214;
+				break;
+			}	
 		}
 		
 		if ($db->get_db()->affected_rows <= 0) {
@@ -133,5 +155,7 @@
 		}
 
 		$return_codes[] = 1143;
+
+		unsetMessageWaiting();
 
 	} while (false);

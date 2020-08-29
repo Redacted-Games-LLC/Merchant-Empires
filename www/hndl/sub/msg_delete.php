@@ -23,6 +23,7 @@
 
 	include_once('hndl/common.php');
 	include_once('inc/game.php');
+	include_once('inc/msg_functions.php');
 
 	$return_vars['page'] = 'inbox';
 	$return_vars['p'] = $_REQUEST['p'];
@@ -87,5 +88,7 @@
 		}			
 		
 		$return_codes[] = 1141;
+
+		unsetMessageWaiting();
 
 	} while (false);
