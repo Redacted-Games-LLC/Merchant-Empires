@@ -185,7 +185,6 @@
 
 		echo '<div class="attack_buttons align_center">';
 
-
 		$carried_weapons = array();
 		$carried_count = 0;
 
@@ -195,7 +194,6 @@
 				$carried_count++;
 			}
 		}
-
 		
 		$solution_groups = array_reverse($spacegame['solution_groups'], true);
 		$solution_keys = array_keys($spacegame['solution_groups']);
@@ -267,7 +265,6 @@
 			echo '</script>';
 
 			echo '</div>';
-
 		}
 
 		echo '</div>';

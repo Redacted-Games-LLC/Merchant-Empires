@@ -48,7 +48,7 @@
 		// Get stuff from db
 		$db_user = isset($db_user) ? $db_user : new DB(true);
 
-		$ip = inet_ntop(inet_pton($_SERVER['REMOTE_ADDR']));
+		$ip = inet_ntop(inet_pton(getClientIP()));
 		$id = 0;
 		$salt = '';
 
@@ -128,7 +128,6 @@
 				error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
 				break;
 			}
-
 		}
 		else {
 			// Insert new login attempt
@@ -158,7 +157,6 @@
 				error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
 				break;
 			}
-
 		}
 
 		if ($salt == '') {
@@ -216,15 +214,13 @@
 			}
 			
 			$_SESSION['uid'] = $id;
-			$_SESSION['form_id'] = substr(hash('sha256', microtime() . $id . $_SERVER['REMOTE_ADDR']), 16, 32);
+			$_SESSION['form_id'] = substr(hash('sha256', microtime() . $id . getClientIP()), 16, 32);
 		}
 		else {
 			
 			$return_codes[] = 1007;
 			break;
-		}
-		
+		}		
 	} while (false);
 
 	session_write_close();
-?>

@@ -220,7 +220,6 @@
 				send_message($message, $targets, MESSAGE_EXPIRATION, 4);
 			}
 
-
 			if (players_attack_player($player_id, $hitters)) {
 				// Player is dead
 				$serial = ($spacegame['player']['y'] * 1000) + $spacegame['player']['x'];
@@ -230,7 +229,6 @@
 				break;
 			}
 		}
-
 
 		// Remove some turns and move the player
 				
@@ -247,7 +245,6 @@
 			error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
 			break;
 		}
-
 
 		// Drones attack when entering a sector
 
@@ -329,7 +326,4 @@
 				break;
 			}
 		}
-
 	} while (false);
-
-?>

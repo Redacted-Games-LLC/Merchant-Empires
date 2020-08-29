@@ -24,7 +24,6 @@
 	include_once('inc/page.php');
 	include_once('inc/game.php');
 
-
 	$places = array();
 
 	$db = isset($db) ? $db : new DB;
@@ -37,10 +36,8 @@
 		$places[$row['type_caption']][$row['record_id']] = $row;
 	}
 
-
 	$tmpl['page_title'] = 'Locate Place';
 	$tmpl['no_fluff'] = true;
-
 
 	include_once('tmpl/html_begin.php');
 

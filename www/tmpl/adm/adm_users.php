@@ -30,7 +30,6 @@
 
 	include_once('inc/search_users.php');
 
-
 ?>
 	<div class="header2 header_bold">User Administration</div>
 	<div class="docs_text">
@@ -74,8 +73,7 @@
 							echo '</a>';
 						echo '</div>';
 
-					echo '</div>';
-					
+					echo '</div>';					
 				}
 
 				echo '</div>';
@@ -112,7 +110,7 @@
 			?>
 			
 			<div id="pagination">
-				<br clear="all" />
+				<br style="clear: both;" />
 			</div>
 			<script type="text/Javascript">
 				<?php

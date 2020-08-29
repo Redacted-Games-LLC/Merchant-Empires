@@ -117,10 +117,8 @@
 				echo '</tr>';
 			}
 
-
 			echo '</table>';
 		}
-
 	?>
 </div>
 <div class="docs_text">

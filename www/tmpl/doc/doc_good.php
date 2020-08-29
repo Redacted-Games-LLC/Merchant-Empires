@@ -66,8 +66,7 @@
 				$doc_requirements[$row['good']] = $row;
 				$doc_requirements_count++;
 			}
-		}
-		
+		}		
 	}
 
 ?>

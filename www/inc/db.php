@@ -27,13 +27,11 @@
 
 	include_once('inc/common.php');
 	
-
 	if (!file_exists('DBCONFIG.php')) {
 		die('FATAL: including db.php without editing DBCONFIG.php so someone did not follow README.txt');
 	}
 
 	include_once('DBCONFIG.php');
-
 
 	class DB {
 		
@@ -73,7 +71,6 @@
 		public function prepare($statement) {
 			$stmt = $this->db->prepare($statement);
 		}
-
 		
 		public function last_insert_id($table) {
 
@@ -116,9 +113,3 @@
 			return 0;
 		}		
 	}
-
-
-
-
-
-?>

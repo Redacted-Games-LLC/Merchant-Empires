@@ -24,11 +24,9 @@
 	define('CLOSE_SESSION', false);
 	include_once('inc/page.php');
 
-	if (isset($_SESSION['form_id'])) {
-		if (!isset($_REQUEST['form_id']) || $_SESSION['form_id'] != $_REQUEST['form_id']) {
-			header('Location: viewport.php?rc=1181');
-			die();
-		}
+	if ((isset($_SESSION['form_id'])) && (!isset($_REQUEST['form_id']) || $_SESSION['form_id'] != $_REQUEST['form_id'])) {
+		header('Location: viewport.php?rc=1181');
+		die();
 	}
 
 	$return_page = 'select_player';
@@ -58,7 +56,6 @@
 			break;
 		}
 		
-		
 		$user_id = USER_ID;
 		$session_id = session_id();
 		$time = PAGE_START_TIME;
@@ -81,5 +78,4 @@
 
 	} while (false);
 	
-	session_write_close();	
-?>
+	session_write_close();

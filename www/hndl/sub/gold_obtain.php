@@ -64,7 +64,6 @@
 			break;
 		}
 
-
 		$exp -= END_OF_ROUND;
 		$days = ceil($exp / 86400);
 		$exp = $days * 86400;
@@ -101,6 +100,3 @@
 		$return_codes[] = 1134;
 	
 	} while (false);
-
-
-?>

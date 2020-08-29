@@ -38,9 +38,4 @@
 			$spacegame['gold_keys'][$row['record_id']] = $row;
 			$spacegame['gold_key_count']++;
 		}
-
 	} while (false);
-
-
-
-?>

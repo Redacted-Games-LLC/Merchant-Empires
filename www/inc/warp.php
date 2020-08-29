@@ -51,9 +51,4 @@
 		while ($row = $rs->fetch_assoc()) {
 			$spacegame['warp'] = $row;
 		}
-
 	} while (false);
-
-
-
-?>

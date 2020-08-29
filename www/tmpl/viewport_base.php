@@ -25,9 +25,6 @@
 ?>
 
 <div id="base_field">
-	<br clear="all" />
+	<br style="clear: both;" />
 </div>
 <script>load_base_field();</script>
-
-
-

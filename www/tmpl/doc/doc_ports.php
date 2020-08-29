@@ -74,4 +74,3 @@
 	Ports may have new industry options which you may upgrade to. You may view the options
 	on the goods page.
 </div>
-

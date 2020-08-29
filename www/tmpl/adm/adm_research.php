@@ -30,7 +30,6 @@
 
 	include_once('inc/research.php');
 
-
 ?>
 	<div class="header2 header_bold">Base Research Administration</div>
 	<div class="docs_text">

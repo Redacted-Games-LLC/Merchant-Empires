@@ -76,7 +76,6 @@
 
 		echo '</div>';
 	}
-
 	
 	if ($spacegame['player']['alliance']  > 0) {
 
@@ -121,7 +120,6 @@
 			}
 
 			echo '</div>';
-
 
 			echo '<div class="header4 header_bold">Recruitment Settings</div>';
 			echo '<form action="handler.php" method="post">';

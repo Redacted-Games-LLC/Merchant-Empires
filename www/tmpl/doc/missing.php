@@ -30,4 +30,3 @@
 	are removed for maintenance so if the link does not work after 
 	awhile go ahead and report the bug.
 </div>
-

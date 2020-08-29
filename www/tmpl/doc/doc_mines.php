@@ -40,7 +40,7 @@
 	There can be up to <?php echo MAX_ORDNANCE_PER_SECTOR; ?> mines in a sector. Each player
 	can have a stack of up to <?php echo MAX_ORDNANCE_PER_PLAYER; ?> mines, and there is an
 	<?php echo MINE_HIT_PERCENT; ?>% Percent chance a player will hit one of those stacks. If
-	a stack is hit, up to <?php echo (MINES_ATTACKING_PER_PLAYER * 100); ?>% of the stack can
+	a stack is hit, up to <?php echo MINES_ATTACKING_PER_PLAYER * 100; ?>% of the stack can
 	hit the player. Finally, each mine does <?php echo MINE_ATTACK_DAMAGE; ?> points of 
 	<a href="docs.php?page=damage">general damage</a>.
 </div>

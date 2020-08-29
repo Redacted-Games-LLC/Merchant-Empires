@@ -25,7 +25,7 @@
 ?>
 
 <div class="header4 header_bold"><a href="docs.php?page=main">Game Documentation</a></div>
-<hr noshade="noshade" size="1" />
+<hr id="noshade" />
 <ul class="docs_menu">
 	<li><a href="docs.php?page=quick">Quick Start</a></li>
 	<li>

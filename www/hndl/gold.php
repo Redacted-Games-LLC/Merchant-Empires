@@ -58,5 +58,3 @@
 				break;
  		}
 	} while (false);
-
-?>

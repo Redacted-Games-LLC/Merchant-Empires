@@ -38,7 +38,6 @@
 			$spacegame['alliances_count']++;
 		}
 
-
 		$spacegame['alliance_members'] = array();
 
 		$rs = $db->get_db()->query("select record_id, alliance from players where alliance > 0 order by alliance");
@@ -47,13 +46,4 @@
 		while ($row = $rs->fetch_assoc()) {
 			$spacegame['alliance_members'][$row['alliance']][] = $row['record_id'];
 		}
-
-		
-
-		
-
 	} while (false);
-
-
-
-?>

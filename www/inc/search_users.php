@@ -56,7 +56,6 @@
 			$spacegame['users'] = array();
 			$spacegame['user_count'] = 0;
 
-
 			$rs = $db->get_db()->query("select SQL_CALC_FOUND_ROWS username from users order by username limit ". (($spacegame['page_number'] - 1) * $spacegame['per_page']) . "," . $spacegame['per_page']);
 
 			$total_count = $db->found_rows();
@@ -69,9 +68,5 @@
 			}
 
 			$spacegame['max_pages'] = ceil($total_count / $spacegame['per_page']);
-		}
-	
+		}	
 	} while (false);
-
-
-?>

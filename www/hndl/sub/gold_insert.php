@@ -42,7 +42,6 @@
 
 		$keys = explode("\n", $_REQUEST['keys']);
 
-
 		$db_user = isset($db_user) ? $db_user : new DB(true);
 
 		if (!($st = $db_user->get_db()->prepare('insert into gold_keys (`type`, `key`, `time`) values (?, ?, ?)'))) {
@@ -96,10 +95,6 @@
 			}
 		}
 
-
 		$return_codes[] = 1122;
 		
 	} while (false);
-
-
-?>

@@ -61,7 +61,6 @@
 	</div>
 	<br class="clear" />
 </div>
-
 	
 <?php	
 	include_once('tmpl/html_end.php');

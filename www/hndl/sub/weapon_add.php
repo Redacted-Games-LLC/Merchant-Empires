@@ -81,7 +81,6 @@
 		include_once('inc/solutions.php');
 		include_once('inc/ships.php');
 
-
 		if (!isset($spacegame['weapons'][$weapon_add])) {
 			$return_codes[] = 1186;
 			break;
@@ -152,7 +151,6 @@
 
 				$solution_group = $i + 1;
 			}
-
 		}
 		else {
 			if (!isset($spacegame['solution_groups'][$solution_group])) {
@@ -211,6 +209,3 @@
 		$return_codes[] = 1193;
 
 	} while (false);
-
-
-?>

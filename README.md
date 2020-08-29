@@ -1,4 +1,6 @@
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=desmondkung_Merchant-Empires&metric=alert_status)](https://sonarcloud.io/dashboard?id=desmondkung_Merchant-Empires)
+
 **NOTICE:**<br>
 This game requires a fair amount of technical setup.<br>
 It will not be ready to play until the following steps to set it up are completed.
@@ -8,13 +10,11 @@ Do **NOT** unzip this source into your web root.<br>
 Place the unzipped files somewhere in-accessible by others, and protect web access to it until you are ready to go.
 
 ## Pre-reqs:
- - MySQL 5.7.30
- - PHP 5.6.40
+ - MySQL 8.0.21
+ - PHP 7.4.9
 
-> Software versions listed are old with some already out of support as of CY2020.<br>
-> This project was created when those software versions were still current.<br>
-> Pre-requisite deviation from the above is known to cause undesired side effects.<br>
-> Upgrading of codes to support current versions is planned.
+> Software versions listed are current as of CY2020.<br>
+> Pre-requisite deviation from the above might cause undesired side effects.<br>
 
 <br>
 
@@ -31,8 +31,8 @@ Grant the following privileges to access them:
     - ALTER, DELETE, EXECUTE, INSERT, SELECT, SHOW VIEW, UPDATE
 
 4. Import the following files in order:
- - **db/structure_users.sql** into user schema
- - **db/structure_game.sql** into game schema
+ - **db/structure_users_mysql80.sql** into user schema
+ - **db/structure_game_mysql80.sql** into game schema
  - **db/data_game.sql** into game schema
  - files in db/patches, if any.
 
@@ -40,7 +40,7 @@ Grant the following privileges to access them:
 
     **Note:** There is no data to insert into user schema.
 
-5. Get ahold of a game package containing ships, goods, and weapons.<br>
+5. Get hold of a game package containing ships, goods, and weapons.<br>
 You can get one from the official Merchant Empires by [Redacted] Games LLC at the following link:
 
     https://www.dropbox.com/s/yaa6ffjbssu9279/round1_rel1.zip?dl=0
@@ -126,9 +126,7 @@ This is used by DSS and game docs. **THIS IS CRITICAL.**
 After a few moments, the new galaxy will be created.<br>
 **Warning:** Any logged-in player will be forcefully logged off in a manner that tells them a spoof is detected.
 
-    If your galaxy fails to create because of script execution timeout, edit your PHP.ini and run it again (refer to step 2).<br>
-    You can even create galaxies over a live server!<br>
-    But everyone will be logged off quickly.
+    If your galaxy fails to create due to script execution timeout, edit your PHP.ini and run it again (refer to step 2).
 
 14. The game expects a "goods" folder in the "www/res" folder.<br>
 You must add this or link to another goods folder.<br>
@@ -137,7 +135,7 @@ The default image pack should be made available for download as a separate packa
 
 15. Once goods are added, go back to the Admin tool "System Editor" and scroll to the bottom.<br>
 Hit the "Reset" button to generate the initial ports inside the Imperial zones.<br>
-The event processor should then add the upgrades within a few minutes.
+The event processor should then add the trade ports within a few minutes.
 
 16. You should be ready to make the game public and play.<br>
 Reduce PHP.ini script execution time to 30 seconds.<br>

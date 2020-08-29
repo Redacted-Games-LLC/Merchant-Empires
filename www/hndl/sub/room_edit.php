@@ -186,7 +186,6 @@
 			}
 			
 			$st->bind_param("siiiiiidiiiiiis", $caption, $width, $height, $armor, $build_time, $build_cost, $build_limit, $turn_cost, $can_land, $power, $shield_generators, $turrets, $turret_damage, $experience, $room['caption']);
-			
 		}
 		else {
 			if (!($st = $db->get_db()->prepare("update room_types set caption = ?, width = ?, height = ?, hit_points = ?, build_time = ?, build_cost = ?, build_limit = ?, turn_cost = ?, can_land = ?, power = ?, good = ?, production = ?, shield_generators = ?, turrets = ?, turret_damage = ?, experience = ? where caption = ?"))) {
@@ -197,7 +196,6 @@
 			
 			$st->bind_param("siiiiiidiiiiiiiis", $caption, $width, $height, $armor, $build_time, $build_cost, $build_limit, $turn_cost, $can_land, $power, $good, $production, $shield_generators, $turrets, $turret_damage, $experience, $room['caption']);
 		}
-
 		
 		if (!$st->execute()) {
 			$return_codes[] = 1006;
@@ -209,9 +207,5 @@
 			$return_codes[] = 1174;
 			break;
 		}
-
 		
 	} while (false);
-
-
-?>

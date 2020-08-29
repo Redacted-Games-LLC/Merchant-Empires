@@ -31,7 +31,7 @@
 
 		$db = isset($db) ? $db : new DB;
 
-		$rs = $db->get_db()->query("select * from ships order by race, rank, caption");
+		$rs = $db->get_db()->query("select * from ships order by race, ships.rank, caption");
 
 		$rs->data_seek(0);
 
@@ -43,10 +43,5 @@
 
 		if (isset($spacegame['player']['ship_type']) && $spacegame['player']['ship_type'] > 0) {
 			$spacegame['ship'] = $spacegame['ships'][$spacegame['player']['ship_type']];
-		}
-		
+		}		
 	} while (false);
-
-
-
-?>

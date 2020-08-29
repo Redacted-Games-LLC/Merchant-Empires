@@ -29,9 +29,7 @@
 	include_once('inc/messages.php');
 
 	define('LOAD_IGNORE_CAPTIONS', true);
-	include_once('inc/msg_functions.php');
-
-	
+	include_once('inc/msg_functions.php');	
 
 ?>
 <div class="header2 header_bold">Inbox</div>

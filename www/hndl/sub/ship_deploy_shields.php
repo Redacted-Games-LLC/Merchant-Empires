@@ -25,4 +25,3 @@
 	// file for shields and armor and this reconciles it.
 
 	include_once('hndl/sub/ship_deploy_armor.php');
-?>

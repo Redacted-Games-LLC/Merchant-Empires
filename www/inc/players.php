@@ -26,10 +26,8 @@
 	do { // Dummy loop
 
 		include_once('inc/pagination.php');
-
 	
 		$db = isset($db) ? $db : new DB;
-
 
 		$spacegame['players'] = array();
 		$spacegame['player_count'] = 0;
@@ -48,13 +46,4 @@
 			$spacegame['players'][$row['record_id']] = $row;
 			$spacegame['player_count']++;
 		}
-
-
-
-		
-
 	} while (false);
-
-
-
-?>

@@ -36,7 +36,7 @@
 	$center_y = ($captcha_height + $text_height) / 2;
 
 	mt_srand(microtime(true));
-	$chars = substr(hash('sha256', $_SERVER['REMOTE_ADDR'] . microtime()), 0, $captcha_length);
+	$chars = substr(hash('sha256', getClientIP() . microtime()), 0, $captcha_length);
 
 	header('Content-type: image/png');
 
@@ -60,10 +60,7 @@
 		$r = mt_rand(0, 15) - 5;
 
 		imagettftext($image_handle, $captcha_font_size, $r, $x, $y, $text_color, $captcha_font, $chars[$i]);	
-	}
-
-	
+	}	
 
 	imagepng($image_handle);
 	imagedestroy($image_handle);
-?>

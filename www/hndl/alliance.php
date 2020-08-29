@@ -33,7 +33,6 @@
 
 	$return_page = 'alliance';
 	
-
 	do { // Dummy loop
 
 		switch ($_REQUEST['subtask']) {
@@ -62,5 +61,3 @@
 				break;
  		}
 	} while (false);
-
-?>

@@ -62,7 +62,7 @@
 		
 		if (!$rs){
 			error_log(__FILE__ . '::' . __LINE__ . ' Error while a list of players for a user.');
-			die('<center>Player Selection is briefly unavailable.</center>');
+			die('Player Selection is briefly unavailable.');
 		}
 
 		$rs->data_seek(0);

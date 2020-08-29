@@ -27,5 +27,3 @@
 <div class="docs_text">
 	Combat occurs between various combinations of players, forces, and bases.
 </div>
-
-

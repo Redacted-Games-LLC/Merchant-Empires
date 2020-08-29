@@ -36,8 +36,6 @@
 	$return_page = 'viewport';
 	$return_vars['plid'] = $place_id;
 
-
-
 	do { // Dummy loop
 
 		if ((!isset($_REQUEST['amount'])) || (!is_numeric($_REQUEST['amount'])) || $_REQUEST['amount'] <= 0) {
@@ -75,7 +73,6 @@
 			$return_codes[] = 1024;
 			break;
 		}
-
 
 		$player_id = PLAYER_ID;
 		$credits = floor($item['final_price'] * $amount);
@@ -123,8 +120,7 @@
 				$attack_rating = $spacegame['solution_damage'] * ATTACK_RATING_PER_DAMAGE;
 				$attack_rating += $spacegame['player']['level'] * ATTACK_RATING_PER_LEVEL;
 				$attack_rating = round(max($attack_rating, 1));
-				
-				
+								
 				$db = isset($db) ? $db : new DB;
 
 				$db->get_db()->autocommit(false);
@@ -242,6 +238,10 @@
 					break 2;
 				}
 
+				if ($credits > $spacegame['player']['credits']) {
+					$return_codes[] = 1025;
+					break 2;
+				}
 
 				$db = isset($db) ? $db : new DB;
 
@@ -304,8 +304,6 @@
 						error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 						break 2;
 					}
-
-
 				}
 				else {
 					// Insert
@@ -331,7 +329,6 @@
 					}
 
 				}
-
 							
 				$db->get_db()->commit();
 				$db->get_db()->autocommit(true);
@@ -344,10 +341,6 @@
 				break 2;
 		}
 		
-
 		$return_page = 'viewport';
 
 	} while (false);
-
-
-?>

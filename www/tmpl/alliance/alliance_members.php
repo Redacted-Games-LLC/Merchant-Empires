@@ -29,21 +29,18 @@
 		$alliance_id = $_REQUEST['alliance_id'];
 	}
 
-
 	$members = array();
 	$member_count = 0;
 
 	$db = isset($db) ? $db : new DB;
 
-	$rs = $db->get_db()->query("select players.record_id, players.caption, players.level, players.gold_expiration, ranks.caption as rank from players, ranks where alliance = '". $alliance_id ."' and players.rank = ranks.record_id order by experience desc, caption");
+	$rs = $db->get_db()->query("select players.record_id, players.caption, players.level, players.gold_expiration, ranks.caption as ranks_caption from players, ranks where alliance = '". $alliance_id ."' and players.rank = ranks.record_id order by experience desc, caption");
 	
 	$rs->data_seek(0);
 	while ($row = $rs->fetch_assoc()) {
 		$members[] = $row;
 		$member_count++;
 	}
-
-
 
 ?>
 <div class="header2 header_bold">Alliance Members : <?php echo $spacegame['alliances'][$alliance_id]['caption']; ?></div>
@@ -101,7 +98,7 @@
 				echo '</div>';
 			}
 			
-			echo '<small>' . $member['rank'] . '</small>';
+			echo '<small>' . $member['ranks_caption'] . '</small>';
 
 			if ($spacegame['player']['alliance'] == $alliance_id && $spacegame['player']['record_id'] == $spacegame['alliances'][$alliance_id]['founder']) {
 			
@@ -109,8 +106,7 @@
 					echo '<div class="alliance_list_item_kick align_right">';
 					echo '[<a href="handler.php?task=alliance&amp;subtask=leave&amp;player_id=' . $member['record_id'] . '&amp;form_id='. $_SESSION['form_id'] .'">Kick</a>]';
 					echo '</div>';
-				}
-			
+				}			
 			}
 
 			echo '</div>';

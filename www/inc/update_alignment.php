@@ -26,7 +26,6 @@
 
 	do { /* Dummy Loop */
 
-
 		$align_delta = PAGE_START_TIME - $spacegame['player']['last_alignment'];
 
 		if ($align_delta >= ALIGNMENT_UPDATE_TIME) {
@@ -36,7 +35,7 @@
 			$player_id = PLAYER_ID;
 			$db->get_db()->autocommit(false);
 
-			$rs = $db->get_db()->query("select * from player_log where player = '{$player_id}' and reconciled <= 0 and action >= 1 and action <= 6 order by timestamp");
+			$rs = $db->get_db()->query("select * from player_log where player = '{$player_id}' and reconciled > 0 and action >= 1 and action <= 6 order by timestamp");
 
 			if (!$rs) {
 				$db->get_db()->rollback();
@@ -90,12 +89,11 @@
 
 					default:
 						// Do nothing
-						continue;
+						break;
 				}
 
 				$reconciled_log_items[] = $log_id;
 			}
-
 			
 			foreach ($reconciled_log_items as $log_id) {
 
@@ -132,7 +130,7 @@
 					$db->get_db()->autocommit(true);
 					error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 					$return_codes[] = 1006;
-					break 2;
+					break;
 				}
 
 				$st->bind_param("iii", $new_alignment, $align_delta, $player_id);
@@ -142,18 +140,12 @@
 					$db->get_db()->autocommit(true);
 					$return_codes[] = 1006;
 					error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
-					break 2;
+					break;
 				}
 			}
 
 			$db->get_db()->commit();
 			$db->get_db()->autocommit(true);
 
-		}
-		
+		}		
 	} while (false);
-
-
-
-
-?>

@@ -28,9 +28,7 @@
 		die();
 	}
 
-
 	include_once('inc/user.php');
-
 
 ?>
 	<div class="header2 header_bold">User Administration: <em><?php echo $spacegame['user_info']['username']; ?></em></div>
@@ -72,9 +70,7 @@
 				?>
 			</div>
 
-
 		<?php } ?>
-
 
 		<div class="header3 header_bold">User Fields</div>
 		<div class="docs_text">
@@ -134,7 +130,3 @@
 		</div>
 
 	<?php } ?>
-	
-<?php
-
-?>

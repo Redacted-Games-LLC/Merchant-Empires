@@ -154,7 +154,7 @@
 										<strong>
 											<?php
 												if ($spacegame['player']['ship_type'] <= 0 && $item['details']['rank'] <= 1) {
-													echo '<big>Free!</big> 0';
+													echo 'Free! 0';
 												}
 												else {
 													echo number_format($item['final_price'] * $alignment_adjust); 

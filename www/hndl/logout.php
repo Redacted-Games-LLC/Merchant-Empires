@@ -32,4 +32,3 @@
 	session_write_close();
 	
 	$return_codes[] = 1008;
-?>

@@ -82,7 +82,6 @@
 			break;
 		}
 		
-
 		$st->bind_param("si", $ship_name, $player_id);
 		
 		if (!$st->execute()) {
@@ -94,5 +93,3 @@
 		$return_codes[] = 1065;
 
 	} while (false);
-
-?>

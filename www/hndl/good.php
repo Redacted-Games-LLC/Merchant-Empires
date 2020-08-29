@@ -40,7 +40,6 @@
 		die();
 	}
 
-
 	do { // Dummy loop
 	
 		$return_page = 'admin';
@@ -48,19 +47,19 @@
 
 		$good = array();
 		$good_id = 0;
-		
-		$request_name = $_REQUEST['name'];
-		$request_level = $_REQUEST['level'];
-		$request_tech = $_REQUEST['tech'];
-		$request_requirement = $_REQUEST['requirement'];
-		$request_target = $_REQUEST['target'];
-		$request_percent = $_REQUEST['percent'];
-		$request_supply = $_REQUEST['supply'];
-		$request_start = $_REQUEST['start'];
+
+		$request_name = (isset($_REQUEST['name']) ? $_REQUEST['name'] : null);
+		$request_level = (isset($_REQUEST['level']) ? $_REQUEST['level'] : null);
+		$request_tech = (isset($_REQUEST['tech']) ? $_REQUEST['tech'] : null);
+		$request_requirement = (isset($_REQUEST['requirement']) ? $_REQUEST['requirement'] : null);
+		$request_target = (isset($_REQUEST['target']) ? $_REQUEST['target'] : null);
+		$request_percent = (isset($_REQUEST['percent']) ? $_REQUEST['percent'] : null);
+		$request_supply = (isset($_REQUEST['supply']) ? $_REQUEST['supply'] : null);
+		$request_start = (isset($_REQUEST['start']) ? $_REQUEST['start'] : null);
 		
 		include_once('inc/goods.php');
 
-		if (isset($spacegame['goods'][$_REQUEST['id']])) {
+		if (isset($_REQUEST['id']) ? $_REQUEST['id'] : null) {
 			$good_id = $_REQUEST['id'];
 			$good = $spacegame['goods'][$good_id];
 			$return_vars['page'] = 'good';
@@ -172,7 +171,6 @@
 				$return_codes[] = 1047;
 				break;
 
-
 			case 'add_requirement':
 
 				$return_vars['page'] = 'good';
@@ -186,7 +184,6 @@
 					$return_codes[] = 1021;
 					break 2;
 				}
-
 
 				$db = isset($db) ? $db : new DB;
 
@@ -216,7 +213,6 @@
 				$return_codes[] = 1049;
 				break;
 
-
 			case 'delete_requirement':
 				
 				$return_vars['page'] = 'good';
@@ -230,7 +226,6 @@
 					$return_codes[] = 1021;
 					break 2;
 				}
-
 
 				$db = isset($db) ? $db : new DB;
 
@@ -259,7 +254,6 @@
 
 				$return_codes[] = 1055;
 				break;
-
 
 			case 'add_start':
 
@@ -351,7 +345,6 @@
 				$return_vars['page'] = 'goods';
 				$return_vars['id'] = '0';
 
-
 				if ($good_id <= 0) {
 					$return_codes[] = 1021;
 					break 2;
@@ -429,7 +422,6 @@
 					break;
 				}
 
-
 				// Last one...
 
 				if (!($st = $db->get_db()->prepare("delete from goods where record_id = ?"))) {
@@ -446,7 +438,6 @@
 					break;
 				}
 
-
 				$return_codes[] = 1055;
 				break;
 
@@ -454,7 +445,4 @@
 				$return_codes[] = 1041;
 				break 2;
 		}
-
 	} while (false);
-
-?>

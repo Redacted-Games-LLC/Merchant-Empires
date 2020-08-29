@@ -103,8 +103,8 @@
 
 		include_once('inc/ships.php');
 		include_once('inc/ranks.php');
-
-		// Set up the news message. This is a sloppy way of doing things.		
+		
+		// Set up the news message. This is a sloppy way of doing things.
 		$message = '';
 
 		$message .= $spacegame['races'][$spacegame['player']['race']]['caption'];
@@ -130,7 +130,6 @@
 		$player_armor = 0;
 		$hitters = array();
 
-
 		$db = isset($db) ? $db : new DB;
 
 		if ($force_id > 0) {
@@ -155,7 +154,6 @@
 
 			$player_id = $force['owner'];
 		}
-
 
 		// If we were attacking forces, we should now have the owner. Otherwise, we now have the player.
 		// Let's load their info.
@@ -257,7 +255,6 @@
 			$ship = $spacegame['ships'][$player['ship_type']];
 		}
 
-
 		// We have our target info. Now lets load our weapon solutions and see what
 		// kind of damage we are going to do.
 
@@ -293,7 +290,6 @@
 			else {
 				$message .= ' "' . $player['ship_name'] . '"';
 			}
-
 		}
 
 		if ($player['base_id'] > 0) {
@@ -360,7 +356,6 @@
 					$goods_to_reduce[$weapon['ammunition']] += $weapon['volley'];
 				}
 			}
-
 
 			$recharge = RECHARGE_TIME_PER_DAMAGE * $weapon['volley'] * ($weapon['shield_damage'] + $weapon['general_damage'] + $weapon['armor_damage']);
 			$recharge += $spacegame['ship']['recharge'];
@@ -507,8 +502,6 @@
 			}
 		}
 
-
-
 		// Hand out damage
 
 		include_once('inc/combat.php');
@@ -548,7 +541,6 @@
 					break;
 				}
 			}
-
 
 			if (!($st = $db->get_db()->prepare("delete from ordnance where amount <= 0"))) {
 				error_log(__FILE__ . '::' . __LINE__ . "Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
@@ -598,9 +590,6 @@
 					$return_vars['dmg'] = 'true';
 				}
 
-				$complete_count += $hit_amount;
-				$complete_damage += $total_damage;
-
 				// Message drone owners about potential damage to ship
 
 				$message = '';
@@ -640,11 +629,5 @@
 
 			$return_codes[] = 1204;
 			$return_vars['amt'] = $total_damage;
-		}
-
-		
+		}		
 	} while (false);
-	
-	
-	
-?>

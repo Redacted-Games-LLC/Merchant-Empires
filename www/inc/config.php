@@ -408,10 +408,10 @@
 	define('NEWS_ARTICLE_LIMIT', 65536);
 
 	// Allowed news abstract tags to use in strip_tags
-	define('ALLOWED_ABSTRACT_TAGS', '<a><em><font><img><s><span><strong><u>');
+	define('ALLOWED_ABSTRACT_TAGS', '<a><em><img><s><span><strong><u>');
 
 	// Allowed news article tags to use in strip_tags
-	define('ALLOWED_ARTICLE_TAGS', '<a><br><em><font><h1><h2><h3><h4><h5><h6><img><li><ol><p><s><span><strong><table><td><th><tr><u><ul>');
+	define('ALLOWED_ARTICLE_TAGS', '<a><br><em><h1><h2><h3><h4><h5><h6><img><li><ol><p><s><span><strong><table><td><th><tr><u><ul>');
 	
 	// When to archive news articles by default
 	define('DEFAULT_NEWS_ARCHIVE_TIME', 86400 * 7);
@@ -448,6 +448,3 @@
 
 	// How much time must exist between each shot to prevent flooding
 	define('ATTACK_FLOOD_DELAY', 4);
-
-
-?>

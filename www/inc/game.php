@@ -38,7 +38,6 @@
 		
 		$spacegame = array();
 
-
 		$spacegame['sector']['ul'] = array();
 		$spacegame['sector']['u'] = array();
 		$spacegame['sector']['ur'] = array();
@@ -50,7 +49,6 @@
 		$spacegame['sector']['dr'] = array();
 
 		$spacegame['gold'] = false;
-
 
 		$spacegame['actions'] = array(
 			'buy' => 1,
@@ -101,7 +99,3 @@
 		include_once('inc/update_alignment.php');
 
 	} while (false);
-
-
-
-?>

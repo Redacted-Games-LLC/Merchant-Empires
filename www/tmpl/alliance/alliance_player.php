@@ -41,7 +41,6 @@
 		$player = $row;
 	}
 
-
 	if (is_null($player)) {
 ?>
 
@@ -75,5 +74,4 @@
 			This player is not a member of an alliance.
 		</div>
 	<?php } ?>
-
 <?php } ?>

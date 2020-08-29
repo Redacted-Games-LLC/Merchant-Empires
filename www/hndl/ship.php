@@ -26,7 +26,6 @@
 
 	$return_page = 'ship';
 
-
 	do { // Dummy loop
 
 		$request_subtask = $_REQUEST['subtask'];
@@ -59,5 +58,3 @@
 				break;
  		}
 	} while (false);
-
-?>

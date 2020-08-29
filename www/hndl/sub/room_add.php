@@ -56,7 +56,6 @@
 			$caption = $_REQUEST['caption'];
 		}
 
-
 		define('MINIMUM_ROOM_INFO', 1);
 		include_once('inc/rooms.php');
 
@@ -96,6 +95,3 @@
 		$return_codes[] = 1171;
 
 	} while (false);
-
-
-?>

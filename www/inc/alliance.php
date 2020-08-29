@@ -28,7 +28,6 @@
 
 		$db = isset($db) ? $db : new DB;
 
-
 		$spacegame['alliance'] = array();
 
 		$spacegame['invites'] = array();
@@ -38,7 +37,6 @@
 
 		$spacegame['alliance_invites'] = array();
 		$spacegame['alliance_invites_count'] = 0;
-
 		
 		$alliance_id = $spacegame['player']['alliance'];
 
@@ -72,9 +70,4 @@
 				}
 			}
 		}
-		
-
 	} while (false);
-
-
-?>

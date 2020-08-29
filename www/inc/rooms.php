@@ -30,7 +30,6 @@
 		$spacegame['room_type_count'] = 0;
 		$spacegame['room_index'] = array();
 
-
 		$db = isset($db) ? $db : new DB;
 
 		if (defined('MINIMUM_ROOM_INFO')) {
@@ -44,7 +43,6 @@
 				$spacegame['room_index'][$row['safe_caption']] = $row['record_id'];
 				$spacegame['room_type_count']++;
 			}
-
 		}
 		else {
 			$rs = $db->get_db()->query("select * from room_types order by caption, record_id");
@@ -106,10 +104,5 @@
 			foreach ($requirements as $room_id => $requirement_list) {
 				$spacegame['room_types'][$room_id] = array_merge($spacegame['room_types'][$room_id], $requirements[$room_id]);
 			}
-
-		}
-
-		
+		}		
 	} while (false);
-
-?>

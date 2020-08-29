@@ -55,9 +55,7 @@
 			break;
 		}
 
-
 		$db = isset($db) ? $db : new DB;
-
 
 		$alliance_id = 0;
 
@@ -96,7 +94,6 @@
 			break;
 		}
 
-
 		// Remove some turns
 		if (!($st = $db->get_db()->prepare('update players set turns = turns - ? where record_id = ?'))) {
 			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
@@ -122,6 +119,3 @@
 		$return_codes[] = 1137;
 
 	} while (false);
-
-
-?>

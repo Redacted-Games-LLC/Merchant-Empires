@@ -61,7 +61,6 @@
 
 			// All Messages
 
-
 			if (!($st = $db->get_db()->prepare("update message_targets set `read` = ? where `target` = ?"))) {
 				error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 				$return_codes[] = 1006;
@@ -83,7 +82,6 @@
 
 			$return_codes[] = 1213;
 			
-
 		}
 		else {
 
@@ -134,9 +132,4 @@
 			break;
 		}
 
-
-
 	} while (false);
-
-
-?>

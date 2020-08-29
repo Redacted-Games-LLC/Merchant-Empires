@@ -25,7 +25,7 @@
 ?>
 	
 	<div class="header4 header_bold"><a href="admin.php?page=main">Game Administration</a></div>
-	<hr noshade="noshade" size="1" />
+	<hr id="noshade" />
 	<ul class="docs_menu">
 		<li><?php echo get_admin_link('users', 'User Editor', 'users'); ?></li>
 		<li><?php echo get_admin_link('system', 'System Editor', 'system'); ?></li>

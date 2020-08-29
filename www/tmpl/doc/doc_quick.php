@@ -53,8 +53,7 @@
 		echo ' ago and will end ';
 		echo $round_left . ' day' . ($round_left == 1 ? '' : 's');
 		echo ' from now.';
-
-
+		
 	?>
 </div>
 <div class="docs_text">
@@ -122,7 +121,7 @@
 	<img src="res/doc/planet_shadow.png" alt="Planet shadow" width="256" title="The shadow on the planet shows which direction to the star." />
 </div>
 <div class="docs_text">
-	Warps can be up to <?php echo (WARP_LOCATION_VARIANCE + 1); ?> units away from a star.
+	Warps can be up to <?php echo WARP_LOCATION_VARIANCE + 1; ?> units away from a star.
 	In a binary system, this could mean a lot of search area. For our search, we find two
 	warps near the stars, but the warp we actually need is out by itself:
 </div>

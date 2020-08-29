@@ -30,7 +30,6 @@
 
 	include_once('inc/rooms.php');
 
-
 ?>
 	<div class="header2 header_bold">Base Construction Administration</div>
 	<div class="docs_text">
@@ -72,7 +71,6 @@
 		until you have configured it, but it won't be visible.
 	</div>
 	<div class="docs_text">
-
 		<form action="handler.php" method="post">
 			<p>
 				<label for="caption">Caption:</label>
@@ -85,5 +83,4 @@
 			<input type="hidden" name="subtask" value="add" />
 			<input type="hidden" name="form_id" value="<?php echo $_SESSION['form_id']; ?>" />
 		</form>
-
 	</div>

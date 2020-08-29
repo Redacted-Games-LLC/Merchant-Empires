@@ -32,7 +32,7 @@
 		}
 
 		public function run() {
-		
+
 			$this->incrementRun();
 			
 			global $db;
@@ -54,11 +54,5 @@
 				echo ("Query execution failed: (" . $st->errno . ") " . $st->error);
 				return;
 			}
-
 		}
-
-	};
-
-
-
-?>
+	}

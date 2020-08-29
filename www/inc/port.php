@@ -32,8 +32,6 @@
 	function get_port_sell_value($level = 1, $distance = 1, $stock = 15000) {
 		return ($level + 4) * $distance - (4 * $distance * $stock / PORT_LIMIT);
 	}
-
-
 	
 	do { // Dummy loop
 
@@ -63,7 +61,6 @@
 			$place_id = $_REQUEST['plid'];
 		}
 
-
 		$spacegame['port_goods'] = array();
 		$spacegame['port_goods_count'] = 0;
 
@@ -85,7 +82,6 @@
 
 		$spacegame['port_upgrades']['buys'] = array();
 		$spacegame['port_upgrades']['buys_count'] = 0;
-
 		
 		$db = isset($db) ? $db : new DB;
 
@@ -134,8 +130,7 @@
 					}
 					else {
 						$spacegame['port_upgrades']['targets_count'][$row['upgrade']] = 1;
-					}
-					
+					}					
 				}
 				else {
 					// Buy for a trade demand
@@ -143,7 +138,6 @@
 					$spacegame['port_trades']['buys_count'] += 1;
 					$spacegame['port_trades_count'] += 1;
 				}
-
 			}
 			else if ($row['supply'] > 0) {
 				// Port wants to sell
@@ -170,9 +164,4 @@
 				}
 			}
 		}
-
 	} while (false);
-
-
-
-?>

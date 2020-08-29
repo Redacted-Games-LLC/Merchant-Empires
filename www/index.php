@@ -25,5 +25,3 @@
  */
 
 	header('Location: viewport.php');
-
-?>

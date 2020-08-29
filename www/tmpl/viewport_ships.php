@@ -36,8 +36,7 @@
 				if (isset($spacegame['sector']['m']['hostile_ordnance_count']) && $spacegame['sector']['m']['hostile_ordnance_count'] > 0) {
 
 					$mines = 0;
-					$drones = 0;
-				
+					$drones = 0;				
 
 					foreach($spacegame['sector']['m']['hostile_ordnance'] as $ordnance_id => $ordnance) {
 
@@ -58,9 +57,8 @@
 						}
 					}
 
-					echo "<small><br />$mines Mines(s) and $drones Drone(s)<br /></small>";
+					echo "<small><br />$drones Drone(s) and $mines Mine(s)<br /></small>";
 				}
-
 
 				foreach ($players as $id => $player) {
 					
@@ -81,8 +79,7 @@
 						if ($player['base_x'] != $spacegame['player']['base_x'] || $player['base_y'] != $spacegame['player']['base_y']) {
 							continue;
 						}	
-					}
-					
+					}					
 
 					echo '<div class="hostile_ship">';
 
@@ -118,7 +115,7 @@
 					echo '</div>';
 
 					echo '<div class="ship_name align_center">';
-					echo '<img class="bottom" src="res/unknown_ship.png" width="16" height="16" />';
+					echo '<img class="bottom" src="res/unknown_ship.png" width="16" height="16" alt="unknown_ship" />';
 					echo $player['ship_name'] == '' ? DEFAULT_SHIP_NAME : $player['ship_name'];
 					echo '</div>';
 
@@ -175,7 +172,7 @@
 						}
 					}
 
-					echo "<small><br />$mines Mines(s) and $drones Drone(s)<br /></small>";
+					echo "<small><br />$drones Drone(s) and $mines Mine(s)<br /></small>";
 				}
 
 				foreach ($players as $id => $player) {
@@ -228,7 +225,7 @@
 					echo '</div>';
 
 					echo '<div class="ship_name align_center">';
-					echo '<img class="bottom" src="res/unknown_ship.png" width="16" height="16" />';
+					echo '<img class="bottom" src="res/unknown_ship.png" width="16" height="16" alt="unknown_ship" />';
 					echo $player['ship_name'] == '' ? DEFAULT_SHIP_NAME : $player['ship_name'];
 					echo '</div>';
 					

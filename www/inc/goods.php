@@ -46,8 +46,4 @@
 			$spacegame['good_index'][$row['safe_caption']] = $row['record_id'];
 			$spacegame['goods_count']++;
 		}
-
 	} while (false);
-
-
-?>

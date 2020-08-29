@@ -108,10 +108,6 @@
 			break;
 		}
 
-
 		$return_codes[] = 1128;
 		
 	} while (false);
-
-
-?>

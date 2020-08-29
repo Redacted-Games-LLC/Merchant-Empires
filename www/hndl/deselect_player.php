@@ -32,8 +32,7 @@
 	}
 
 	$return_page = 'select_player';
-	
-		
+			
 	do { /* Dummy loop for "break" support. */
 	
 		$_SESSION['pid'] = 0;
@@ -41,5 +40,4 @@
 
 	} while (false);
 	
-	session_write_close();	
-?>
+	session_write_close();

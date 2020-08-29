@@ -59,7 +59,6 @@
 
 		include_once('inc/rooms.php');
 
-
 		$time = PAGE_START_TIME;
 		$turns = $spacegame['player']['turns'];
 		$turn_cost = 1; // TODO: get turn cost from build.
@@ -89,17 +88,7 @@
 			break;
 		}
 		
-
 		// TODO: Check to see if we are at our limit for concurrent builds
-
-
 		// TODO: Load info and start the build
 
-		
-
-
 	} while (false);
-	
-	
-
-?>

@@ -60,7 +60,6 @@
 			break;
 		}
 
-
 		include_once('inc/systems.php');
 
 		if ($spacegame['player']['base_id'] > 0) {
@@ -77,8 +76,6 @@
 			$return_codes[] = 1105;
 			break;
 		}
-
-
 
 		$amount = 1;
 
@@ -134,7 +131,6 @@
 			break;
 		}
 
-
 		// Remove from cargo
 
 		if (!($st = $db->get_db()->prepare("update player_cargo set amount = amount - ? where record_id = ? and amount = ?"))) {
@@ -170,13 +166,12 @@
 				error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 				break;
 			}						
-
 		}
 		else {
 			// Add ordnance
 			$alliance = $spacegame['player']['alliance'] > 0 ? $spacegame['player']['alliance'] : null;
 
-			if (!($st = $db->get_db()->prepare("insert into ordnance (system, x, y, good, amount, owner, alliance) values (?, ?, ?, ?, ?, ?, ?)"))) {
+			if (!($st = $db->get_db()->prepare("insert into ordnance (ordnance.system, x, y, good, amount, owner, alliance) values (?, ?, ?, ?, ?, ?, ?)"))) {
 				error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 				$return_codes[] = 1006;
 				break;
@@ -191,11 +186,4 @@
 			}
 		}
 
-
-
-
-
 	} while (false);
-
-
-?>

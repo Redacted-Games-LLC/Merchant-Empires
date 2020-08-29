@@ -46,8 +46,6 @@
 			$db->get_db()->autocommit(false);
 		}
 
-
-
 		$player = array();
 
 		$rs = $db->get_db()->query("select caption, shields, armor, ship_type, ship_name from players where record_id = '$player_id'");
@@ -70,7 +68,6 @@
 		}
 
 		// Loop through hitters and attack player one by one
-
 
 		foreach ($hitters as $hitter) {
 
@@ -184,7 +181,7 @@
 						$db->get_db()->autocommit(true);
 						error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 						$return_codes[] = 1006;
-						break 2;
+						break;
 					}
 					
 					$st->bind_param("i", $player_id);
@@ -194,7 +191,7 @@
 						$db->get_db()->autocommit(true);
 						$return_codes[] = 1006;
 						error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
-						break 2;
+						break;
 					}
 				}
 
@@ -207,10 +204,8 @@
 
 				return true;
 			}
-
 			
 			// Damage player
-
 
 			if (!($st = $db->get_db()->prepare('update players set shields = ?, armor = ? where record_id = ?'))) {
 				error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
@@ -228,11 +223,8 @@
 				$db->get_db()->rollback();
 				$db->get_db()->autocommit(true);
 				break;
-			}
-			
+			}			
 		}
-
-
 
 		if (!$already_in_a_transaction) {
 			if (!$db->get_db()->commit()) {
@@ -243,17 +235,3 @@
 
 		return $player['armor'] <= 0;
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-?>

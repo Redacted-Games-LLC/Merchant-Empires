@@ -32,12 +32,10 @@
 			break;
 		}
 
-
 		$db = isset($db) ? $db : new DB;
 		$player_id = PLAYER_ID;
 
 		$credits = ($spacegame['player']['level'] + 1) * CARGO_DUMP_COST * INFLATION_MULTIPLIER;
-
 
 		if (!($st = $db->get_db()->prepare('update players set turns = turns - ?, credits = credits - ? where record_id = ? and credits = ?'))) {
 			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
@@ -70,5 +68,3 @@
 		$return_codes[] = 1066;
 
 	} while (false);
-
-?>

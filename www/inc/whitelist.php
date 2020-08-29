@@ -34,9 +34,6 @@ $tmpl_msg_array = ["alliance", "inbox", "main", "player", "subspace"];
 
 $tmpl_ship_array = ["attack", "deploy", "main", "weapons"];
 
-
 // handlers
 
 $hndl_array = ["alliance", "attack", "base", "common", "create_player", "dealer", "deselect_player", "generate_galaxy", "gold", "good", "index", "level", "login", "logout", "message", "move", "news", "port", "reset_ports", "room", "scan", "select_player", "ship", "signup", "target", "users", "warp", "weapon"];
-
-?>

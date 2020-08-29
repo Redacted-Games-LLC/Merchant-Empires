@@ -53,5 +53,3 @@
 	near the center. Bases are 100x100 putting the center at 50,50 <strong>but</strong>
 	when hovering you are flying over twice the area; the hover center is 25,25.
 </div>
-
-

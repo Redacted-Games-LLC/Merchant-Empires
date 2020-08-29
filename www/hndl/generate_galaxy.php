@@ -63,7 +63,6 @@
 			break;
 		}
 
-
 		$tables = array(
 			'user_players',
 			'alliance_invitations',
@@ -108,7 +107,6 @@
 			}
 		}
 
-
 		$race_list = array();
 		$race_count = 0;
 		
@@ -150,7 +148,7 @@
 		$ships = array();
 		$ship_count = 0;
 
-		$rs = $db->get_db()->query('select * from ships order by caption, rank');
+		$rs = $db->get_db()->query('select * from ships order by caption, ships.rank');
 
 		$rs->data_seek(0);
 		while ($row = $rs->fetch_assoc()) {
@@ -171,9 +169,6 @@
 		while ($row = $rs->fetch_assoc()) {
 			$tech_goods[$row['record_id']] = $row;
 		}
-
-
-
 
 		$time = PAGE_START_TIME;
 
@@ -216,7 +211,6 @@
 
 			$stars[$star_i]['system_id'] = $system_id;
 
-
 			$place_candidates = array();
 			$place_candidate_count = 0;
 
@@ -246,7 +240,7 @@
 						$planet_pos++;
 					}
 
-					if (!($st = $db->get_db()->prepare("insert into places (caption, system, x, y, type) values (?,?,?,?,?)"))) {
+					if (!($st = $db->get_db()->prepare(INSERT_PLACES))) {
 						error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 						$return_codes[] = 1006;
 						break 3;
@@ -266,7 +260,7 @@
 
 							$dealer_name = $name . ' Energy';
 
-							if (!($st = $db->get_db()->prepare("insert into places (caption, system, x, y, type) values (?,?,?,?,?)"))) {
+							if (!($st = $db->get_db()->prepare(INSERT_PLACES))) {
 								error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 								$return_codes[] = 1006;
 								break 3;
@@ -295,7 +289,6 @@
 								error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 								break 3;
 							}
-
 						}
 						else {
 							$place_candidates[] = array('x' => $x, 'y' => $y);
@@ -322,10 +315,10 @@
 			$x = $place_candidate['x'];
 			$y = $place_candidate['y'];
 
-			if (!($st = $db->get_db()->prepare("insert into places (caption, system, x, y, type) values (?,?,?,?,?)"))) {
+			if (!($st = $db->get_db()->prepare(INSERT_PLACES))) {
 				error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 				$return_codes[] = 1006;
-				break 3;
+				break 2;
 			}
 
 			$st->bind_param("siiii", $dealer_name, $system_id, $x, $y, $place_types['Ship Dealer']);
@@ -333,20 +326,18 @@
 			if (!$st->execute()) {
 				$return_codes[] = 1006;
 				error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
-				break 3;
+				break 2;
 			}
 
 			$dealer_id = $db->last_insert_id('places');
 		
-
 			// Prepared query is reused for a few things below it
 
 			if (!($st = $db->get_db()->prepare("insert into dealer_inventory (place, item_type, item, stock, price, last_update) values (?,?,?,?,?,?)"))) {
 				error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 				$return_codes[] = 1006;
-				break 3;
+				break 2;
 			}
-
 
 			// Starter ships of non races first
 
@@ -370,7 +361,6 @@
 						break 4;
 					}
 				}
-				
 			}
 
 			// Remaining racial ships next
@@ -388,7 +378,6 @@
 
 			// Done with ships, now tech dealers
 
-
 			$dealer_name = $name . ' Tech';
 
 			$place_candidate = $place_candidates[mt_rand(0, $place_candidate_count - 1)];
@@ -396,10 +385,10 @@
 			$x = $place_candidate['x'];
 			$y = $place_candidate['y'];
 
-			if (!($st = $db->get_db()->prepare("insert into places (caption, system, x, y, type) values (?,?,?,?,?)"))) {
+			if (!($st = $db->get_db()->prepare(INSERT_PLACES))) {
 				error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 				$return_codes[] = 1006;
-				break 3;
+				break 2;
 			}
 
 			$st->bind_param("siiii", $dealer_name, $system_id, $x, $y, $place_types['Tech Dealer']);
@@ -407,7 +396,7 @@
 			if (!$st->execute()) {
 				$return_codes[] = 1006;
 				error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
-				break 3;
+				break 2;
 			}
 
 			$dealer_id = $db->last_insert_id('places');
@@ -415,7 +404,7 @@
 			if (!($st = $db->get_db()->prepare("insert into dealer_inventory (place, item_type, item, stock, price, last_update) values (?,?,?,?,?,?)"))) {
 				error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 				$return_codes[] = 1006;
-				break 3;
+				break 2;
 			}
 
 			foreach ($tech_goods as $good_id => $good) {
@@ -428,13 +417,10 @@
 					break 3;
 				}
 			}
-
 		}
-
 
 		// Add warps
 		$warps = generate_warps($stars, $star_count);
-
 
 		foreach ($warps as $warp) {
 
@@ -495,11 +481,6 @@
 			}
 			*/
 		}
-
 		
 		$return_codes[] = 1211;		
 	} while (false);
-
-
-	
-?>

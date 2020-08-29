@@ -30,7 +30,6 @@
 		$spacegame['research_item_count'] = 0;
 		$spacegame['research_index'] = array();
 
-
 		$db = isset($db) ? $db : new DB;
 
 		$rs = $db->get_db()->query("select * from research_items order by caption, record_id");
@@ -49,7 +48,6 @@
 			$spacegame['research_count']++;
 		}
 
-
 		foreach ($spacegame['research_items'] as $record_id => $room) {
 			$rs = $db->get_db()->query("select * from research_requirements where goal = '". $record_id ."'");
 			$rs->data_seek(0);
@@ -63,10 +61,5 @@
 				$spacegame['research_items'][$record_id]['requirements'][$row['record_id']] = $row;
 				$spacegame['research_items'][$record_id]['requirement_count']++;
 			}
-
 		}
-
-		
 	} while (false);
-
-?>

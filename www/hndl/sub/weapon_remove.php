@@ -120,8 +120,6 @@
 				error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 				break;
 			}
-
-
 		}
 		else {
 			// Insert
@@ -164,6 +162,3 @@
 
 		$return_codes[] = 1192;
 	} while (false);
-
-
-?>

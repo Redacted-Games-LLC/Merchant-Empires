@@ -40,8 +40,4 @@
 			$spacegame['place_types_index'][$row['caption']] = $row['record_id'];
 			$spacegame['place_types_count']++;
 		}
-
 	} while (false);
-
-
-?>

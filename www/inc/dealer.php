@@ -52,7 +52,6 @@
 				die();
 		}
 
-
 		$spacegame['inventory'] = array();
 		$spacegame['inventory_groups'] = array();
 		$spacegame['inventory_count'] = 0;
@@ -78,6 +77,8 @@
 					if (HAVOC_ROUND) {
 						$item_ref['final_price'] *= HAVOC_SHIP_COST;
 					}
+					$table = strtolower($item_ref['type_caption']);
+					break;
 
 				case 'Goods':
 				case 'People':
@@ -99,8 +100,5 @@
 				
 				$item_ref['details'] = $row;
 			}
-		}
-		
+		}		
 	} while (false);
-
-?>
