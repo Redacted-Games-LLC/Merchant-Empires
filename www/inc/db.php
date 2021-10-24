@@ -51,7 +51,7 @@
 			if ($user) {
 				$db = @(new MySQLi(USER_DB_HOST, USER_DB_USER, USER_DB_PASS, USER_DB_NAME));
 				// Comment line above and un-comment lines below for SSL connection to DB
-				//if(!$db->real_connect(USER_DB_HOST, USER_DB_USER, USER_DB_PASS, USER_DB_NAME, USER_DB_PORT, MYSQLI_CLIENT_SSL)) {
+				//if(!$db->real_connect(USER_DB_HOST, USER_DB_USER, USER_DB_PASS, USER_DB_NAME, USER_DB_PORT, NULL, MYSQLI_CLIENT_SSL)) {
 				//	error_log(__FILE__ . '::' . __LINE__ . ' User database connect error: (' . mysqli_connect_errno() . ') ' . mysqli_connect_error());
 				//	header('Location: login.php?rc=1165');
 				//	die();
@@ -60,7 +60,7 @@
 			else {
 				$db = @(new MySQLi(DB_HOST, DB_USER, DB_PASS, DB_NAME));
 				// Comment line above and un-comment lines below for SSL connection to DB
-				//if(!$db->real_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT, MYSQLI_CLIENT_SSL)) {
+				//if(!$db->real_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT, NULL, MYSQLI_CLIENT_SSL)) {
 				//	error_log(__FILE__ . '::' . __LINE__ . ' Game database connect error: (' . mysqli_connect_errno() . ') ' . mysqli_connect_error());
 				//	header('Location: login.php?rc=1165');
 				//	die();

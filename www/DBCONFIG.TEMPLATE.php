@@ -64,7 +64,7 @@
 	// Un-comment following lines and replace with appropriate CA cert, if needed.
 	// Follow directions in inc/db.php to complete procedure.
 	// Remember to enable php_openssl.dll in php.ini for SSL connection to work.
-	//define('SQL_SSL_CA_CERT', 'DigiCertGlobalRootG2.crt.pem');
+	//define('SQL_SSL_CA_CERT', 'full path to cert');
 	//define('DB_PORT', '3306');
 	//define('USER_DB_PORT', '3306');
 
