@@ -98,3 +98,30 @@
 
 		return true;
 	}
+
+	// Check if there are any unread messages, then set message waiting flag to zero if none
+	function unsetMessageWaiting() {
+		$db = isset($db) ? $db : new DB;
+		$player_id = PLAYER_ID;
+
+		$rs = $db->get_db()->query("select * from message_targets where target = '$player_id' and message_targets.read = 0 and hidden = 0");
+		$count = $rs->num_rows;
+
+		if ($count == 0) {
+			if (!($st = $db->get_db()->prepare("update players set unread_messages = 0 where record_id = ?"))) {
+				error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
+				$return_codes[] = 1006;
+			}
+
+			$st->bind_param("i", $player_id);
+
+			if (!$st->execute()) {
+				error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
+				$return_codes[] = 1006;
+			}
+
+			if ($db->get_db()->affected_rows <= 0) {
+				$return_codes[] = 1212;
+			}
+		}
+	}

@@ -22,6 +22,7 @@
  */
 
 	include_once('hndl/common.php');
+	include_once('inc/alliance.php');
 
 	$return_vars['page'] = 'main';
 	
