@@ -46,7 +46,7 @@
 			//if (!$db) {
 			//	die("mysqli_init failed");
 			//}
-			//$db->ssl_set(NULL, NULL, SQL_SSL_CA_CERT, NULL, NULL);
+			//$db->ssl_set(SQL_SSL_CLIENT_KEY, SQL_SSL_CLIENT_CERT, SQL_SSL_CA_CERT, NULL, NULL);
 
 			if ($user) {
 				$db = @(new MySQLi(USER_DB_HOST, USER_DB_USER, USER_DB_PASS, USER_DB_NAME));
