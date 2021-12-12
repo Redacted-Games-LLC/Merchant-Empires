@@ -76,7 +76,7 @@
 
 		$db = isset($db) ? $db : new DB;
 		
-		if (!($st = $db->get_db()->prepare('update players set level = ?, rank = ?, attack_rating = ? where record_id = ? and level = ? and rank = ?'))) {
+		if (!($st = $db->get_db()->prepare('update players set level = ?, players.rank = ?, attack_rating = ? where record_id = ? and level = ? and players.rank = ?'))) {
 			error_log(__FILE__ . '::' . __LINE__ . " Prepare failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			$return_codes[] = 1006;
 			break;
@@ -90,7 +90,4 @@
 			error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
 			break;
 		}
-
 	} while (false);
-
-?>

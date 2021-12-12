@@ -26,7 +26,6 @@
 
 	do { /* Dummy Loop */
 
-
 		$turn_delta = PAGE_START_TIME - $spacegame['player']['last_turns'];
 
 		if ($turn_delta >= TURN_UPDATE_TIME) {
@@ -55,14 +54,4 @@
 			$spacegame['player']['turns'] += $turns_to_add;
 			$spacegame['player']['last_turns'] += $turn_delta;
 		}
-
-
-		
-
-
 	} while (false);
-
-
-
-
-?>

@@ -27,9 +27,7 @@
 	$return_page = 'viewport';
 
 	do { // dummy loop
-
 		// This sub page should have common stuff loaded by its parent.
-
 
 		$rx = 0;
 		$ry = 0;
@@ -49,7 +47,6 @@
 					break;
 				}
 			}
-
 		}
 
 		if (isset($_REQUEST['y']) && is_numeric($_REQUEST['y'])) {
@@ -125,7 +122,6 @@
 		$player_id = PLAYER_ID;
 		$alliance_id = $spacegame['player']['alliance'];
 
-
 		// Remove some turns and move the player
 				
 		if (!($st = $db->get_db()->prepare('update players set base_x = base_x + ?, base_y = base_y + ?, turns = turns - ?, last_move = ? where record_id = ? and base_x = ? and base_y = ?'))) {
@@ -141,11 +137,5 @@
 			error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $st->errno . ") " . $st->error);
 			break;
 		}
-	
-
-				
+		
 	} while (false);
-	
-	
-
-?>

@@ -72,22 +72,9 @@
 						echo '<image class="o'.$dt.'" x="'. (88 + $player['x'] - $spacegame['player']['x']) .'" y="'. (38 + $spacegame['player']['y'] - $player['y']) .'" width="15" height="15" xlink:href="res/rdot.png" />';
 					}
 				}
-			
 			?>
 			<image x="0" y="0" width="192" height="96" xlink:href="res/dss_frame.png" />
 		</svg>
 	</div>
 	&nbsp;
 </div>
-
-
-
-
-
-
-
-
-
-
-
-

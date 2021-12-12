@@ -89,11 +89,6 @@
 		}
 
 		// TODO: Check to see if we are at our limit for concurrent researches
-		
 		// TODO: Load info and start the research project
 
 	} while (false);
-	
-	
-
-?>

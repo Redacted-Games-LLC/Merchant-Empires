@@ -37,8 +37,4 @@
 			$spacegame['goods'][$row['target']]['sources'][$row['good']] = $spacegame['goods'][$row['good']];
 			$spacegame['goods'][$row['target']]['source_count'] = isset($spacegame['goods'][$row['target']]['source_count']) ? $spacegame['goods'][$row['target']]['source_count'] + 1 : 1;
 		}
-
 	} while (false);
-
-
-?>

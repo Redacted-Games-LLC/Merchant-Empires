@@ -46,13 +46,4 @@
 		else {
 			$spacegame['per_page'] = ceil((MAX_PER_PAGE - MIN_PER_PAGE) / 2);
 		}
-
-		
-		
-
-		
-	
 	} while (false);
-
-
-?>

@@ -33,7 +33,6 @@
 
 	$return_page = 'viewport';
 
-
 	do { // Dummy loop
 
 		switch ($_REQUEST['subtask']) {
@@ -71,5 +70,3 @@
 				break;
  		}
 	} while (false);
-
-?>

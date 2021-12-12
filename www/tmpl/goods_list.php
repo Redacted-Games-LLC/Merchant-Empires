@@ -47,7 +47,14 @@
 			echo DIV_GOODCAPTION_OPEN;
 			echo '<img src="res/goods/' . $good['safe_caption'] . '.png" width="20" height="20" />';
 			echo '&nbsp;&nbsp;';
-			echo '<a href="admin.php?page=good&amp;id='. $good_id .'">';
+
+			if (!get_user_field(USER_ID, 'admin', 'goods')) {
+				echo '<a href="docs.php?page=good&amp;id='. $good_id .'">';
+			}
+			else {
+				echo '<a href="admin.php?page=good&amp;id='. $good_id .'">';
+			}
+
 			$good_caption = $good['caption'];
 			if (strlen($good_caption) >= 20) {
 				echo substr($good_caption, 0, 17) . '...';

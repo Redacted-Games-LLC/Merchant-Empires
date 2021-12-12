@@ -42,12 +42,5 @@
 		while ($row = $rs->fetch_assoc()) {
 			$spacegame['start_goods'][$row['place_type']][$row['supply'] > 0 ? 'supply' : 'demand'][$row['good']] = $row['percent'];
 			$spacegame['start_good_count']++;
-		}
-
-
-
+		}		
 	} while (false);
-
-
-
-?>

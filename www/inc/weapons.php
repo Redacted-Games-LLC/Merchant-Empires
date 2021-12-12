@@ -39,10 +39,5 @@
 			$spacegame['weapons'][$row['record_id']] = $row;
 			$spacegame['weapons_index'][$row['caption']] = $row['record_id'];
 			$spacegame['weapon_count']++;
-		}
-		
+		}		
 	} while (false);
-
-
-
-?>

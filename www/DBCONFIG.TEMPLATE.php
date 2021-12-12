@@ -60,6 +60,16 @@
 	// when setting up the round or if no admin accounts are accessible.
 	define('SIGNUP_ADMIN', '');
 
+	// SSL CA cert for DB connections
+	// Un-comment following lines and replace with appropriate CA cert, if needed.
+	// Follow directions in inc/db.php to complete procedure.
+	// Remember to enable php_openssl.dll in php.ini for SSL connection to work.
+	//define('SQL_SSL_CLIENT_KEY', 'absolute path to cert');
+	//define('SQL_SSL_CLIENT_CERT', 'absolute path to cert');
+	//define('SQL_SSL_CA_CERT', 'absolute path to cert');
+	//define('DB_PORT', '3306');
+	//define('USER_DB_PORT', '3306');
+
 	// This information is for the database server which holds all game tables
 	define('DB_HOST', 'localhost');
 	define('DB_USER', 'spacegame');
@@ -74,5 +84,3 @@
 
 	// DELETE THE FOLLOWING LINE WHEN YOU HAVE FINISHED MAKING CHANGES.
 	die('I did not delete the line I was supposed to in DBCONFIG.php when done.');
-
-?>

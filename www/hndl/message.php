@@ -26,7 +26,6 @@
 
 	$return_page = 'message';
 
-
 	do { // Dummy loop
 
 		$request_subtask = $_REQUEST['subtask'];
@@ -63,5 +62,3 @@
 				break;
  		}
 	} while (false);
-
-?>

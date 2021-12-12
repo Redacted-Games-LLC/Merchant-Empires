@@ -51,7 +51,3 @@
 	// This is only really used by the galaxy generator. Setting it to a favored
 	// seed saves some development time.
 	define('GALAXY_SEED', 1629859799);
-
-
-
-?>

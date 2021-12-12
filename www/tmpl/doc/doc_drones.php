@@ -42,7 +42,7 @@
 	There can be up to <?php echo MAX_ORDNANCE_PER_SECTOR; ?> drones in a sector. Each player
 	can have a stack of up to <?php echo MAX_ORDNANCE_PER_PLAYER; ?> drones, and every hostile
 	stack will contribute towards attacking a player if there are enough drones in it. Up to
-	<?php echo (DRONES_ATTACKING_PER_PLAYER * 100); ?>% of the stack can fire upon a player at
+	<?php echo DRONES_ATTACKING_PER_PLAYER * 100; ?>% of the stack can fire upon a player at
 	once doing <?php echo DRONE_ATTACK_DAMAGE; ?> points of 
 	<a href="docs.php?page=damage">general damage</a> each.
 </div>

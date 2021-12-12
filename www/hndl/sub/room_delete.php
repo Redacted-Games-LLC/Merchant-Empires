@@ -70,6 +70,3 @@
 		unset($return_vars['room']);
 
 	} while (false);
-
-
-?>

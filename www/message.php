@@ -28,7 +28,6 @@
 	$tmpl['page_title'] = 'Communications';
 
 	include_once('tmpl/html_begin.php');
-
 	
 	function get_msg_link($page, $caption) {
 		echo "<a href='message.php?page={$page}'>{$caption}</a>";

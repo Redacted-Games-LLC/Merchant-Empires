@@ -857,13 +857,13 @@ function load_base_field() {
 				}
 
 				if (rock_number <= 1) {
-					grid_image.innerHTML = '<img class="'+ grid_image_class +'" src="res/base/rock_1.png" />';
+					grid_image.innerHTML = '<img class="'+ grid_image_class +'" src="res/base/rock_1.png" alt="rock_1" />';
 				}
 				else if (rock_number <= 2) {
-					grid_image.innerHTML = '<img class="'+ grid_image_class +'" src="res/base/rock_2.png" />';
+					grid_image.innerHTML = '<img class="'+ grid_image_class +'" src="res/base/rock_2.png" alt="rock_2" />';
 				}
 				else if (rock_number <= 3) {
-					grid_image.innerHTML = '<img class="'+ grid_image_class +'" src="res/base/rock_3.png" />';
+					grid_image.innerHTML = '<img class="'+ grid_image_class +'" src="res/base/rock_3.png" alt="rock_3" />';
 				}
 
 				grid_item.appendChild(grid_image);

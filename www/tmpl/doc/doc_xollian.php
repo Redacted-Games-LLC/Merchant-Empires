@@ -52,4 +52,3 @@
 	instead taking advantage of the economy to best their enemies. A Xollian might
 	not win a fight but he'll most easily afford a replacement ship.
 </div>
-

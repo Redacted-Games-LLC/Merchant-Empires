@@ -65,7 +65,6 @@
 					$spacegame['target_dist'] = max($adx, $ady);
 					$spacegame['target_dir'] = get_dir($dx, $dy);
 				}
-
 			}
 		}
 		else {
@@ -112,7 +111,7 @@
 			$x = $player['base_x'];
 			$y = $player['base_y'];
 
-			$rs = $db->get_db()->query("select * from players where death = 0 and ship_type > 0 and base_id = '". $player['base_id'] ."' and base_x >= $x - ". BASE_DISTANCE ." and base_x <= $x + ". BASE_DISTANCE ." and base_y >= $y - ". BASE_DISTANCE ." and base_y <= $y + ". BASE_DISTANCE ." order by rank desc, level desc, experience desc, caption");
+			$rs = $db->get_db()->query("select * from players where death = 0 and ship_type > 0 and base_id = '". $player['base_id'] ."' and base_x >= $x - ". BASE_DISTANCE ." and base_x <= $x + ". BASE_DISTANCE ." and base_y >= $y - ". BASE_DISTANCE ." and base_y <= $y + ". BASE_DISTANCE ." order by players.rank desc, level desc, experience desc, caption");
 		}
 		else {
 
@@ -122,13 +121,13 @@
 				$base_x = $player['base_x'];
 				$base_y = $player['base_y'];
 
-				$rs = $db->get_db()->query("select * from players where death = 0 and ship_type > 0 and ((base_id <= 0 and x >= $x - ". DOT_DISTANCE ." and x <= $x + ". DOT_DISTANCE ." and y >= $y - ". DOT_DISTANCE ." and y <= $y + ". DOT_DISTANCE .") or (base_id = '". $spacegame['base']['record_id'] ."' and base_x >= $base_x - ". BASE_DISTANCE ." and base_x <= $base_x + ". BASE_DISTANCE ." and base_y >= $base_y - ". BASE_DISTANCE ." and base_y <= $base_y + ". BASE_DISTANCE .")) order by rank desc, level desc, experience desc, caption");
+				$rs = $db->get_db()->query("select * from players where death = 0 and ship_type > 0 and ((base_id <= 0 and x >= $x - ". DOT_DISTANCE ." and x <= $x + ". DOT_DISTANCE ." and y >= $y - ". DOT_DISTANCE ." and y <= $y + ". DOT_DISTANCE .") or (base_id = '". $spacegame['base']['record_id'] ."' and base_x >= $base_x - ". BASE_DISTANCE ." and base_x <= $base_x + ". BASE_DISTANCE ." and base_y >= $base_y - ". BASE_DISTANCE ." and base_y <= $base_y + ". BASE_DISTANCE .")) order by players.rank desc, level desc, experience desc, caption");
 			}
 			else {
 				$x = $player['x'];
 				$y = $player['y'];
 
-				$rs = $db->get_db()->query("select * from players where death = 0 and ship_type > 0 and base_id <= 0 and x >= $x - ". DOT_DISTANCE ." and x <= $x + ". DOT_DISTANCE ." and y >= $y - ". DOT_DISTANCE ." and y <= $y + ". DOT_DISTANCE ." order by rank desc, level desc, experience desc, caption");
+				$rs = $db->get_db()->query("select * from players where death = 0 and ship_type > 0 and base_id <= 0 and x >= $x - ". DOT_DISTANCE ." and x <= $x + ". DOT_DISTANCE ." and y >= $y - ". DOT_DISTANCE ." and y <= $y + ". DOT_DISTANCE ." order by players.rank desc, level desc, experience desc, caption");
 			}
 		}
 
@@ -182,7 +181,7 @@
 								}
 						?>
 						<div id="force_panel">
-							<script language="javascript" type="text/javascript"><!--
+							<script type="text/javascript"><!--
 
 								<?php echo "draw_force_panel('{$drone_count}','{$drone_cargo}','{$mine_count}','{$mine_cargo}','{$holds_count}','{$cargo_count}','" . $_SESSION['form_id'] . "');" ?>
 
@@ -298,7 +297,7 @@
 										TEAM
 									</div>
 									<div class="viewport_console_item align_center" onclick="return open_message(0)">
-										COM
+										MSG
 									</div>
 								</div>
 					<?php
@@ -323,10 +322,10 @@
 		?>
 		<div class="viewport_split align_center">
 
-			<table width="100%" role="presentation">
+			<table style="width: 100%;" role="presentation">
 				<tr>
-					<td width="200" valign="top"><?php include_once('tmpl/ship_sidebar.php'); ?></td>
-					<td valign="top"><?php
+					<td style="width: 200px; vertical-align: top;"><?php include_once('tmpl/ship_sidebar.php'); ?></td>
+					<td style="vertical-align: top;"><?php
 
 						if ($spacegame['player']['base_id'] > 0) {
 							echo '&nbsp;';
@@ -341,7 +340,7 @@
 
 					?>
 					</td>
-					<td width="200" valign="top"><?php include_once('tmpl/player_sidebar.php'); ?></td>
+					<td style="width: 200px; vertical-align: top;"><?php include_once('tmpl/player_sidebar.php'); ?></td>
 				</tr>
 			</table>			
 			<div class="clear">&nbsp;</div>
@@ -362,7 +361,7 @@
 		<div class="clear">&nbsp;</div>
 		<?php if (isset($_REQUEST['dmg'])) { ?>
 			<div class="taking_damage align_center">
-				TAKING taking_damage
+				WARNING! TAKING DAMAGE!
 			</div>
 		<?php } ?>
 	</div>

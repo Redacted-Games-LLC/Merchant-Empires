@@ -26,11 +26,9 @@
 	include_once('inc/warp.php');
 	include_once('inc/ships.php');
 
-	if (isset($_SESSION['form_id'])) {
-		if (!isset($_REQUEST['form_id']) || $_SESSION['form_id'] != $_REQUEST['form_id']) {
-			header('Location: viewport.php?rc=1181');
-			die();
-		}
+	if (isset($_SESSION['form_id']) && (!isset($_REQUEST['form_id']) || $_SESSION['form_id'] != $_REQUEST['form_id'])) {
+		header('Location: viewport.php?rc=1181');
+		die();
 	}
 
 	$return_page = 'viewport';
@@ -72,7 +70,4 @@
 			error_log(__FILE__ . '::' . __LINE__ . " Query execution failed: (" . $db->get_db()->errno . ") " . $db->get_db()->error);
 			break;
 		}
-
 	} while (false);
-
-?>
